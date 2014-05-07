@@ -1,0 +1,9 @@
+#!/bin/sh
+#requires GraphicsMagick
+
+gm mogrify -size 128x128 -format png \
+	-transparent "#000000" \
+	-bordercolor none -border 1x1 -trim \
+	-fuzz "4%%" -fill "#000000AA" -opaque "#ff00ff" \
+	-geometry "128x128>" \
+	*_1.tga

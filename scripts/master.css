@@ -1,0 +1,568 @@
+body {overflow:hidden;}
+
+/****************************************
+	error 
+****************************************/
+.errormsg {
+	border:2px dashed red;
+	padding:3px; margin-bottom:8px;
+	color:brown;
+	font-weight:bold;
+}
+
+
+/****************************************
+	grid 
+****************************************/
+
+.grid-container {
+	position: absolute;
+	top: 0;
+	left: 308px;
+	bottom: 0;
+	/*right: 0;*/
+	z-index: 1;
+	
+	width: 640px;
+	background-color: #F6F6F6;
+}
+
+
+/****************************************
+	ids 
+****************************************/
+
+#display-ids {
+	float:right; clear:right;
+	vertical-align:bottom;
+}
+#display-ids label {
+	font-size: 7pt;	
+}
+#display-ids input {
+	width: 8px;
+	height: 8px;
+	vertical-align: middle;
+	margin:0px;
+}
+
+#count-results {
+	float:right; clear:right;
+	font-size: 7pt;	
+}
+
+.tinylink {
+	/*display:block;
+	float:right; clear:right;*/
+	font-size: 7pt;	
+}
+#ignoremodurl {
+	font-size: 7pt;	
+}
+
+
+/****************************************
+	gem & path icons (general)
+****************************************/
+.gemicon {
+	width:14px;
+	height:14px;
+	position:relative;
+	top:3px;	
+}
+.gemicon.Gem_B { width:12px; }
+
+.pathicon {
+	width:14px;
+	height:14px;	
+	position:relative;
+	top:3px;
+}
+.pathicon.Path_D { width:11px; padding:0px 1px 0px 2px; }
+.pathicon.Path_E { width:12px; padding:0px 1px 0px 1px; }
+.pathicon.Path_F, .pathicon.Path_A { top:2px; }
+
+.pathicon.Path_R { width:13px; padding:0px 1px 0px 0px; }
+.pathicon.Path_U { width:12px; padding:0px 1px 0px 1px; border:0; }
+
+.abilityicon {
+	width:14px;
+	height:14px;	
+	position:relative;
+	top:3px;
+}
+
+/****************************************
+	page overlays 
+****************************************/
+
+div.overlay {
+	position: fixed;
+	top: 5px;
+	right: 20px;
+	
+	width: 300px;
+
+	border: 4px solid;/* ridge #445500;*/
+	border-radius:10px;
+	border-color: #ac8400;
+	box-shadow: 5px 5px 5px #888888;
+	overflow:hidden;
+}
+
+div.static-overlay-container {
+	position: fixed;
+	top:0px;
+	left:0px;
+	bottom:0px;
+	
+	width: 308px;
+	
+	padding: 0px;	
+	
+	z-index: 1000;
+}
+div.primary-overlay {
+	position: static;
+	margin-bottom: 5px;
+}
+div.fixed-overlay {
+	position: static;
+	
+}
+
+input.overlay-pin, #global-unpin-all-btn {
+	/*cursor:pointer;*/
+	width: 17px;
+	height: 17px;
+	border: none;
+
+	float:right;
+	clear:right;
+	cursor: pointer;
+	
+	display: none;
+}
+
+
+/****************************************
+	primary details 
+****************************************/
+#primary-details {
+	padding:0;
+}
+#primary-header {
+	background: #D3D3D3;
+}
+
+#primary-header h3{
+	margin:0px;
+	padding:0.4em 0.8em;
+}
+#primary-header #global-tiny-buttons{
+	padding:0em 0.4em;
+}
+
+div#global-buttons {
+	float:right;
+	clear:right;
+	margin-bottom:0px;
+	padding:0.4em;
+}
+div#page-tabs{
+	/*border-bottom:2px solid black;*/
+	/*margin-bottom:0.5em;*/
+	margin-left:5px;
+}
+div#page-tabs button{
+	/*border:2px solid #282f36;*/
+	border: 2px solid;
+	border-top-left-radius:5px;
+	border-top-right-radius:5px;
+	border-color: #ac8400;
+	padding-bottom:0px;
+	margin-bottom:0px;
+	
+	background:#cbb99d;
+	font-weight:bold;
+	
+	position:relative;
+	top:2px;
+		
+	/*display: inline;*/
+	cursor: pointer;
+}
+div#page-tabs button.disabled {
+	background:#ded0b7;
+	border-bottom-color: #ded0b7;
+	
+	cursor: default;
+}
+
+
+#primary-filters {
+	border:2px solid #ac8400;
+	/*border-top-width:0px;*/
+	border-radius: 5px;
+	/*box-shadow: 5px 5px 5px #888888;*/
+	background: #ded0b7;
+	padding:0.4em;
+	padding-top:0.6em;
+}
+
+input.search-box {
+}
+
+input.clear-filters-btn, #global-clear-filters-btn{
+	font-weight:bold;
+	font-size: 8pt;
+	padding:0px;
+	width: 18px;
+	height:18px;
+	
+	display:block;
+	float:right;
+	clear:right;
+}
+
+/****************************************
+	filter buttons 
+****************************************/
+#advanced-options label, #advanced-options a {
+	font-size: 7pt;	
+}
+#advanced-options input {
+	width: 8px;
+	height: 8px;
+	vertical-align: middle;
+	margin:0px;
+}
+#advanced-options {
+	padding: 0 0.4em;
+	background: #D0D0D0;
+	/*margin-top: 5px;*/
+}
+
+.toggle-path {
+	/*width:10px;
+	height:10px;*/
+	vertical-align: middle;
+	padding:0px; margin:0px;
+	margin-left:0px;
+}
+.toggle-path + label {
+	padding:0px; margin:0px; 
+}
+.toggle-path + label img {
+	padding:0px; margin:0px;
+	position:relative;
+	left: -5px;
+	
+	margin-right:-5px;
+}
+
+.filters-text {
+}
+
+.filters-items {
+	padding-top: 0.2em;
+}
+.filters-paths {
+	padding-bottom: 0.4em;
+}
+
+
+/****************************************
+	panels 
+****************************************/
+.panel, .primary-panel {
+	/* interface starts hidden */
+	display:none;
+}
+
+
+/****************************************
+	details overlays 
+****************************************/
+div.overlay-contents {
+	background: #FFCC66;
+}
+div.overlay-header {
+	padding:0.4em;
+	
+	background: #772200;
+	color: #EEFFAA;
+}
+	div.overlay-header .item-image {
+		float:right;
+		height:36px; 
+		width:36px; 
+		background-position:center; 
+		background-repeat:no-repeat;
+	}
+	.item div.overlay-header h2 { padding-right: 40px; }
+	.item div.overlay-header p { padding-right: 40px; }
+	
+	div.overlay-header h2 {
+		margin: 0em;	padding: 0em;	border: none;
+		margin-bottom: 0.4em;
+	}
+	div.overlay-header p {
+		margin: 0em;	padding: 0em;
+		white-space: nowrap;
+	}
+
+div.overlay-main {
+	border: 2px solid #FFAA2E;
+	border-style: solid none;
+	padding:0.6em;
+}
+	table.overlay-table {
+		border-spacing: 0px;
+		border-collapse: collapse;
+		margin-bottom:0.4em;
+	}
+	div.overlay-main h4 {
+		padding-bottom: 0px;
+		margin-bottom: 0px;
+	}
+	div.overlay-main th {
+		padding: 0em 0.3em;
+		white-space: nowrap;
+		font-weight:normal;
+		text-align: left;
+		vertical-align: top;
+	}
+	div.overlay-main td {
+		padding: 0em 0.3em;
+		min-width: 5em;
+		vertical-align:top;
+	}
+	div.overlay-main tr.mpath td {
+		vertical-align:middle;
+	}
+	
+	span.flag {
+		white-space: nowrap;
+		font-style: italic;
+	}	
+	
+	div.overlay-main table.wpn-table {
+		border-spacing: 0px;
+		border-collapse: collapse;
+		
+		background: #FFAA2E;
+		/*border: 2px solid orange;*/
+	}
+	/* unit page image position */
+	div.overlay-main.unit-image-bg {
+		background-repeat:no-repeat; 
+		background-position:98% 5px;
+	}
+	
+	
+div.overlay-footer {
+	padding:0.4em;
+}
+	div.overlay-footer p.firstline {
+		margin: 0em;	padding: 0em;
+		/*margin-bottom: 0.4em;*/
+	}
+	div.overlay-descr {
+		margin: 0em;	padding: 0em;
+		/*margin-top: 0.4em;*/
+	}
+	div.overlay-descr p {
+		margin-bottom:0.2em;
+	}
+
+	.overlay-wiki-link {
+		float:right;
+		clear:right;
+		font-size: 80%;
+		display: none;
+	}
+
+
+	/* spell specifuic layout stuff (compact top of desc due to no cost line) */
+	div.spell div.overlay-main {
+		padding-bottom:0px;
+		margin-bottom:0px;
+	}
+/*	div.spell div.overlay-footer {
+		padding-top:0px;  
+		margin-bottom:0px;
+	}*/
+	div.spell div.overlay-main {
+		position:relative;
+	}
+	div.spell div.overlay-wiki-link {
+		position:absolute; bottom:-17px;right:3px;
+	}
+
+	
+	a.ref {
+		/* white-space: nowrap; */
+	}
+	a {
+		color:#3668AB;	
+	}
+	a.ref.wpn, a.ref.armor {
+		white-space: nowrap;
+	}
+	input.inline-button {
+		color:#3668AB;
+		padding:0px;
+		border: 1px solid #3668AB;
+		background: none;
+	}
+
+
+/****************************************
+	color scheme 
+***************************************/
+
+.grid-container {
+	border-left: 3px solid #C0C0C0;
+}
+/* page bg */
+body {
+	background:#ffffe6;	
+}
+/* behind fixed overlays */
+.static-overlay-container {
+	
+	background: #D3D3D3;
+}
+/* overlay header */
+div.overlay-header {
+	background: #282f36; /*#6e2900;*/
+}
+/*div.popup div.overlay-header {
+	cursor:move;
+}*/
+div.overlay-header * {
+	color: #FFFFFF; /*#FCFFBF;*/
+}
+/* overlay main */
+#primary-details, div.overlay-contents {
+	background: #ded0b7;
+	/*background-image:url('guiborder2.png'); 
+	background-size: 100% 100%;*/
+}
+.slick-row:hover {
+     background-color:#ded0b7;
+}
+/* overlay highlights */
+div.overlay-main table.wpn-table {
+	/*background: #ffd635;*/
+	background: #ded0b7;
+}div.overlay-main{ 
+	/*border-color: #ffd635;*/ 
+	border-color: #ded0b7; 
+}
+/* overlay borders */
+.overlay { 
+	border-color: #485562; 
+}
+
+
+
+/* overlay id hihglight */
+.hidden-row, .hidden-block, .hidden-inline {
+	display:none;
+/*	background-color: #FFFF00;*/
+	color: rgba(0,0,0,0.4);
+	background-color: rgba(100,100,255,0.1);
+}
+.modding-row, .modding-block, .modding-inline {
+	display:none;
+	color: rgba(0,0,100,0.45);
+	background-color: rgba(0,0,255,0.10);
+}
+.internal-row, .internal-block, .internal-inline {
+	display:none;
+	/*background-color: #FFFF00;*/
+	color: rgba(150,0,25,0.60);
+	/*background-color: rgba(100,100,255,0.1);*/
+}
+.modded {
+	color: rgba(0,0,100,0.8);
+	background-color: rgba(0,255,255,0.30);	
+}
+/* overlay id hihglight */
+.strange  {
+	background-color: turquoise;
+	/*color: #004bab;*/
+}
+
+
+/* background color for armor properties */
+.armor-table,
+.item .overlay-table .protbody, .item .overlay-table .prothead, .item .overlay-table .protshield,
+.item .overlay-table:not(.wpn-table) .def, .item .overlay-table .enc, .item .overlay-table .parry {
+	background: #ded0b7;	
+}
+
+
+/*  */
+/*.unit .overlay-table .enc, .unit .overlay-table .ap { 
+	border-bottom: 2px dashed #ffd635;*/
+}*/
+
+div.spell table.spell-effect th, div.spell table.spell-effect td.widecell {
+	padding-left: 1em;
+}
+div.spell table.spell-effect.nextspell {
+	border-top: 2px dashed #ffd635;*/
+}
+
+.overlay-table tr[title] {
+	background: rgba(255,255,255,0.3);
+	/*border-right: 1px dashed rgba(255,255,255,0.8);*/
+}
+.overlay-table tr[title]:hover {
+	/*font-weight: bold;*/
+	background: #ffffff;
+}
+
+
+table.spell-effect {
+}
+/*
+table.spell-table.ritual tr.rng, table.spell-table.ritual tr.prec, table.spell-table.ritual tr.aoe,
+table.spell-table.effect2 {
+	display:none;
+}
+*/
+div > div.national-spell {
+	/*background: #EECCsFF;*/
+	/*font-weight:bold;
+	color: #AA77FF;*/
+	
+	/*border-bottom: 2px solid #AA77FF; /*pinkish*/
+	/*border-bottom: 2px solid #7b7bef; /*national spell color from dom3*/
+	border-bottom: 2px solid #6190CD; /*slickgrid blue*/
+}
+
+
+
+
+
+span.flag:first-letter {text-transform:capitalize;}
+th:first-letter {text-transform:capitalize;}
+p:first-letter, div:first-letter {text-transform:capitalize;}
+
+div.numeric{ text-align:right; }
+
+
+#page-tail {
+	position:absolute;
+	right:0px;
+	bottom:0px;
+	padding:0.2em 0.4em;
+	margin:0px;
+	font-size: 10pt;
+}
+
+hr { border:none; border-bottom:2px solid #FFAA2E;}

@@ -1,0 +1,382 @@
+id	name	type	constlevel	mainpath	mainlevel	secondarypath	secondarylevel	weapon	armor	shockres	fireres	coldres	poisonres	darkvision	airshield	regeneration	woundfend	fixforge	autodishealer	healer	alch	insa	hp	protf	protb	mr	morale	str	att	def	prec	enc	mapspeed	ap	reinvigoration	pen	stealth	stealthb	forest	mount	waste	swamp	fly	float	sailsz	maxsail	waterbreathing	giftofwater	airbr	flytr	quick	eth	trample	bless	luck	fluck	curse	disease	cursed	taint	ldr-n	ldr-u	ldr-m	inspirational	taskmaster	fear	awe	animalawe	exp	chill	heat	gold	F	A	W	E	S	D	N	B	H	firerange	airrange	waterrange	earthrange	astralrange	deathrange	naturerange	bloodrange	tmpfiregems	tmpairgems	tmpwatergems	tmpearthgems	tmpastralgems	tmpdeathgems	tmpnaturegems	tmpbloodslaves	gf	ga	gw	ge	gs	gd	gn	gb	berserk	bers	fireshield	banefireshield	iceprot	invul	bloodvengeance	pillagebonus	patrolbonus	castledef	siegebonus	supplybonus	researchbonus	heretic	douse	void	diseasecloud	poisoncloud	reaper	crossbreeder	ivylord	spelleffect	startbattlespell	autocombatspell	itemspell	ritual	sumrit	#sumrit	sumauto	#sumauto	sumbat	#sumbat	affliction	restrictions	special	test
+1	Champion's Trident	2-h wpn	12		0			135																																																																																																																																					
+2	Fire Sword	1-h wpn	0	F	1			76																																																																																																																																					
+3	Ice Sword	1-h wpn	0	W	1			77																																																																																																																																					
+4	Stinger	1-h wpn	0	E	1			78																																																																																																																																					
+5	Sword of Sharpness	1-h wpn	0	E	1			74																																																																																																																																					
+6	Sword of Sharpness	2-h wpn	0	E	1			108																																																																																																																																					
+7	Axe of Sharpness	1-h wpn	0	E	1			245																																																																																																																																					
+8	Enchanted Sword	1-h wpn	0	S	1			75																																																																																																																																					
+9	Enchanted Spear	1-h wpn	0	S	1			120																																																																																																																																					
+10	Enchanted Pike	2-h wpn	0	S	1			220																																																																																																																																					
+11	Hunter's Knife	1-h wpn	0	N	1			242																																																																																																																																					
+12	Thorn Spear	1-h wpn	0	N	1			79																																																																																																																																					
+13	Thorn Staff	2-h wpn	0	N	1			81																																																																																																																																					
+14	Sceptre of Authority	1-h wpn	2	F	1			134																																																					25																																																																					Combustion											
+15	Holy Scourge	2-h wpn	2	F	1			402																																																																																																																																					
+16	Just Man's Cross	2-h wpn	2	F	1			161																																																																																																																																					
+17	Thunder Whip	1-h wpn	2	A	1			208																																																																																																																																					
+18	Longbow of Accuracy	2-h wpn	2	A	1			152																																																																																																																																					
+19	Lightning Rod	2-h wpn	2	E	1			238		15																																																																																																																										534	2								
+20	Ice Pebble Staff	2-h wpn	2	W	3			238				5																																																																																																																						Numbness											
+21	Smasher	1-h wpn	2	E	2			327																																																																																																																																					
+22	Main Gauche of Parrying	1-h wpn	2	E	1			99																																																																																																																																					
+23	Halberd of Might	2-h wpn	2	E	1			107																				4																																																																																																																	
+24	Hammer of the Mountains	2-h wpn	2	E	1			130																																																																																																																																					
+25	Star of Heroes	1-h wpn	2	E	1			173																																																																																																																																					
+26	Faithful	1-h wpn	2	E	1	S	1	102																																															1																																																																																						
+27	Piercer	2-h wpn	2	E	1	A	1	168																																																																																																																																				can be used underwater	
+28	Dwarven Hammer	1-h wpn	2	E	3			115										2																																																																																																																											
+29	Bane Blade	1-h wpn	2	D	1			42																																																																																																																																					
+30	Bane Blade	2-h wpn	2	D	1			41																																																																																																																																					
+31	Rod of the Leper King	1-h wpn	2	D	1			172																																																		1				50																																																																															
+32	Duskdagger	1-h wpn	2	D	1	S	1	129																																																																																																																																					
+33	Black Bow of Botulf	2-h wpn	2	D	1			155																																																																																																																																					
+34	Gloves of the Gladiator	2-h wpn	2	N	2			128																																																																																																																																					
+35	Serpent Kryss	1-h wpn	2	N	1			297					5																																																																																																																																
+36	Knife of the Damned	1-h wpn	2	N	1	S	1	117																																																	1		1																																																																																		
+37	Jade Knife	1-h wpn	2	N	1	B	1	309																																																																																																																																				"+2 blood sacrifice, restricted to Mictlan"	
+38	Staff of Flame Focus	2-h wpn	2	F	1			238																																																																										1																																																											
+39	Fire Bola	1-h wpn	4	F	1			301																																																																																																																																					
+40	Wand of Wild Fire	1-h wpn	4	F	3			172																																																																																																																										Fireball											
+41	Flambeau	2-h wpn	4	F	3			95			5																																																																																																																							Holy Pyre											
+42	Fire Brand	1-h wpn	4	F	1	E	1	80			5																2																																																																																																																		
+43	Lightning Spear	1-h wpn	4	A	1			278																																																																																																																																					
+44	Thunder Bow	2-h wpn	4	A	2			243																																																																																																																																					
+45	Golden Arbalest	2-h wpn	4	A	1	E	1	565																																																																																																																																					
+46	Vision's Foe	2-h wpn	4	A	1	D	1	332																																																																																																																																					
+47	Staff of Corrosion	2-h wpn	4	W	2	F	1	238																																																																																																																										Acid Bolt											
+48	Frost Brand	1-h wpn	4	W	1			82				5																																																																																																																																	
+49	Rune Smasher	1-h wpn	4	W	2	F	2	233																												2																																																																																																									
+50	Sword of Swiftness	1-h wpn	4	W	2			106																																																																																																																																					
+51	Midget Masher	2-h wpn	4	E	1			133																																																																																																																																					
+52	Eyecatcher	1-h wpn	4	E	1	W	1	548																																																																																																																																					
+53	Elf Bane	1-h wpn	4	E	1	S	1	246																																																																																																																																					
+54	Implementor Axe	2-h wpn	4	E	1	D	1	181																																																										5																																															25																												
+55	Flesh Eater	1-h wpn	4	B	1			149																																																																																																		3																																			
+56	Starfire Staff	1-h wpn	4	S	2			172																																																																														1																																												Star Fires											
+57	Herald Lance	1-h wpn	4	S	2			109																																																								1																																																																		Solar Rays											
+58	Doom Glaive	2-h wpn	2	D	1	S	1	430																																																																																																																																					
+59	Skull Staff	2-h wpn	4	D	2			238																																																																						1																																																															
+60	Vine Bow	2-h wpn	4	N	1			303																																																																																																																																					
+61	Snake Bladder Stick	1-h wpn	4	N	1			183																																																																																																																																					
+62	Thistle Mace	1-h wpn	4	N	2			163																																																																							1																																																														
+63	Whip of Command	1-h wpn	4	N	1			140																																																					25				2																																																																												
+64	Vine Whip	1-h wpn	4	N	2			136																																																																																																																																					
+65	Rat Tail	1-h wpn	4	N	2			138																																																									1			4																																																																									
+66	Skull Standard	2-h wpn	4	N	2	D	1	100																																																										5																																																																Panic											
+67	Summer Sword	1-h wpn	4	N	2	E	1	178																																																																																																													100													Tangle Vines											
+68	Heart Finder Sword	1-h wpn	4	B	3			111																																																																																																																																					
+69	Rod of the Phoenix	1-h wpn	6	F	4			151																																																																																																																										Incinerate											
+70	Staff of Elemental Mastery	2-h wpn	6	F	4	W	4	238			5	5																																																													1	1	1	1						1	1	1	1																																																								
+71	Carmine Cleaver	2-h wpn	6	F	2	E	1	570			5																																																																																																	7																																	
+72	Evening Star	1-h wpn	6	F	1	D	1	304																																																																																																																																					
+73	Bow of War	2-h wpn	6	A	1			154																																																																																																																																					
+74	Staff of Storms	2-h wpn	6	A	5			105																																																																																																																								Storm		Lightning Bolt		534	5								
+75	Star of Thraldom	1-h wpn	6	A	1			218																																																																																																																																					
+76	Staff of Elemental Mastery	2-h wpn	6	A	4	E	4	238		5															15																																																1	1	1	1						1	1	1	1																																										Stoneskin														
+77	Demon Bane	2-h wpn	6	W	1			436			15																																																																																																																																		
+78	Wave Breaker	2-h wpn	6	W	3			83																																							1																																																																																	Friendly Currents													
+79	Gate Cleaver	2-h wpn	6	E	3			169																																																																																																												50																									
+80	Moon Blade	2-h wpn	6	S	1			289																																																																																																																																					
+81	Ethereal Crossbow	2-h wpn	6	S	1			180																																																																																																																																				can be used underwater	
+82	Banefire Crossbow	2-h wpn	6	D	1			434																																																	1																																																																																				
+83	Shadow Brand	1-h wpn	6	D	2	E	1	395																																																																																																																																					
+84	Ivory Bow	2-h wpn	6	D	3	A	1	566																																																						5																																																																															
+85	Wraith Sword	2-h wpn	6	D	4			110																																																																																																																																					
+86	Standard of the Damned	2-h wpn	6	D	4			100																																																										5																																																																Drain Life											
+87	Axe of Hate	1-h wpn	6	N	2			412					-15																																																																																																																	1															
+88	Treelord's Staff	2-h wpn	6	N	6			238																															1																																								2									1																																																					
+89	Banner of the Northern Star	2-h wpn	6	S	5			100																		-2																																																																																																						Light of the Northern Star													
+90	Blood Thorn	1-h wpn	6	B	4			101																																																																								1																																																													
+91	Hell Sword	2-h wpn	6	B	3	F	2	241			5																																																																																															3																																			
+92	Demon Whip	1-h wpn	6	F	1	B	1	277																																																																																																																																					
+93	O'al Kan's Sceptre	1-h wpn	8	F	2			410				5																																																	50																					1																																																Fireball											
+94	Unquenched Sword	1-h wpn	8	F	7			84																																																																																																		1																						Heat from Hell													
+95	Ember	1-h wpn	8	F	2	W	2	191			5	5																																																																																																																																	
+96	Sword of Justice	2-h wpn	8	F	3	S	3	170			5																																																																						1																																																	Prison of Fire											
+97	Tempest	2-h wpn	8	A	6			113		15																																																																																																																						Storm		Thunder Strike											
+98	Winter Bringer	1-h wpn	8	W	2			151																																																																																																																										Falling Frost											
+99	Trident from Beyond	2-h wpn	8	W	3	S	2	193																																																																			1																																																																		
+100	Dawn Fang	1-h wpn	8	E	2	S	2	555									20									1																																									1																																																																										
+101	The Summit	1-h wpn	8	E	6			162																																																																																																																																					
+102	The Stone Sword	2-h wpn	8	E	5			103																																																																																																																																					
+103	Mage Bane	1-h wpn	8	E	7			87																		5																																		x																																																																																	
+104	Hammer of the Forge Lord	2-h wpn	8	E	5	F	3	184										4																																																																																																																											
+105	The Tartarian Chains	1-h wpn	8	E	4	F	2	188																																																																																																																																				Ashen Angel may attack wielder	
+106	The Sword of Many Colors	2-h wpn	8	E	4	S	3	195																																																																	1	1	1	1																																																																	
+107	Twin Spear	1-h wpn	8	S	1	B	1	295																																															1						50																																																																					Call Lesser Horror											
+108	Twin Spear	1-h wpn	8	S	1	D	1	296																																															1						50																																																																																
+109	The Oath Rod of Kurgi	2-h wpn	8	S	2	B	2	157																																																																										1	1	1	1	1	1	1	1																																									Horror Mark											
+110	The Sword of Aurgelmer	1-h wpn	8	S	6			179																			4																												1		1																																																																							Will of the Fates													
+111	Rod of Death	1-h wpn	8	D	1			59																																																																																																																										Control the Dead											
+112	The Flailing Hands	2-h wpn	8	D	2			158																		1										1																																										1																																																															
+113	The Sickle whose Crop is Pain	1-h wpn	8	D	6			187																																																																																																																																				+1 death gems per kill	
+114	Sceptre of Dark Regency	1-h wpn	8	D	6			386																																																																						2									2																																																						
+115	Sword of Injustice	1-h wpn	8	D	4			205																																																																									1																																															Protection of the Sepulchre													
+116	Woundflame	1-h wpn	8	D	4			97																																																		1																																																																x																			
+117	Sun Slayer	2-h wpn	8	D	6			72																																																										5												1																																																				Drain Life											
+118	Picus's Axe of Rulership	1-h wpn	8	D	2	E	1	341																																																																																																																																					
+119	The Sharpest Tooth	1-h wpn	8	N	2	S	1	336					25																																																																																																																																
+120	Sceptre of Corruption	1-h wpn	8	B	4			172																																																			1	x	50																																																																					Bane Fire											
+121	Procas's Axe of Rulership	1-h wpn	8	B	2	E	1	340																																																																																																																																					
+122	Harvest Blade	2-h wpn	8	B	3	N	1	122																			2																																1							5																																									0																																		
+123	Dimensional Rod	1-h wpn	8	S	3			443																																											1								1	x																	1									1																																									Quickness													increases insanity over time	
+124	Infernal Sword	2-h wpn	8	B	1	F	1	444			5																																																																																																																																		
+125	The Staff from the Sun	2-h wpn	8	S	5	F	1	540			5																																																														1									2								1																																																			
+126	Black Steel Tower Shield	shield	0	E	1				41																																																																																																																																		Cannot be used by mounted units		
+127	Black Steel Kite Shield	shield	0	E	1				69																																																																																																																																				
+128	Enchanted Shield	shield	0	S	1				92																																																																																																																																				
+129	Raw Hide Shield	shield	0	N	1				70																																																																																																																																				
+130	Weightless Tower Shield	shield	2	A	2				65																																																																																																																																		Cannot be used by mounted units		
+131	Weightless Kite Shield	shield	2	A	2				66																																																																																																																																				
+132	Lead Shield	shield	2	E	2				42																	4																																																																																																																			
+133	Shield of Valor	shield	2	E	1	A	1		57						80																																																																																																																														
+134	Crystal Shield	shield	2	S	3	E	2		73																																																																																																																							Power of the Spheres											Cannot be used by mounted units		
+135	Eye Shield	shield	2	N	2				61																																																																																																																																			eyeloss on attacker	
+136	Golden Hoplon	shield	4	F	2				71		15																																																																																																																																		
+137	Charcoal Shield	shield	4	E	2	F	1		60		5																																																																																																	7																																	
+138	Lucky Coin	shield	4	S	2				67																																														1																																																																																						
+139	Shield of the Accursed	shield	4	S	2	B	1		62																																																																																																																																			horror mark on attacker	
+140	Vine Shield	shield	4	N	2				63																																																																																																																																			entanglement on attacker	
+141	Totem Shield	shield	4	N	1	S	1		70																																																																																																																																			curse on attacker	
+142	Shield of Gleaming Gold	shield	6	E	1	F	1		71																																																										1																																																																										
+143	Scutata Volturnus	shield	6	A	1	E	1		87	5																																																																																																																							Shocking Grasp										Cannot be used by mounted units		
+144	Lantern Shield	shield	6	D	2	F	1		88																																																						1			5																																																														Corpse Candle													
+145	Immaculate Shield	shield	8	F	3	S	2		71																																																										2														1																																														Blessing														
+146	Barrier	shield	8	E	5				68	15	15																	4																																																																																																																	
+147	The Aegis	shield	8	E	6				64																																																									5																																																																										petrification	
+148	Shield of the Dawn	shield	8	E	3	S	2		178		5						20									1																																									1																																																																										
+149	Black Steel Helmet	helm	0	E	1				40																																																																																																																																				
+150	Dragon Helmet	helm	2	F	1				21		5																5																																																																																																																		
+151	Horror Helmet	helm	2	D	2				21																																																									5																																																																											
+152	Black Laurel	helm	2	D	2																																																																																																																															259	2							restricted to Ashen Empire Ermor (MA)	
+153	Ivy Crown	helm	2	N	1																																		1																																																																																							1						"361, 362"	??								
+154	Horned Helmet	helm	2	N	1			331	21																																																																																																																																				
+155	Flame Helmet	helm	4	F	4				80																										-3																																						1																																																																				
+156	Helmet of Heroes	helm	4	F	1	E	1		174																																																							2																																																																													
+157	Winged Helmet	helm	4	A	4				21																																																																	1																																																																			
+158	Crown of Command	helm	4	S	2				148																																																				50		25	1																																																																													
+159	Spirit Mask	helm	4	D	2	N	1		187																	1																																						2																																																																	Frighten												
+160	Mistletoe Garland	helm	2	N	1								2																																										1																																																																																						
+161	Spirit Helmet	helm	6	A	3				79																																																																																																																								Lightning Bolt												
+162	Iron Face	helm	6	E	4				173																																																																																																																						Iron Skin														
+163	Starshine Skullcap	helm	6	S	2				83																	2																																																			1																																																																
+164	Skullface	helm	6	D	5				21																																																					10																1																																																				Horde of Skeletons											
+165	Wraith Crown	helm	6	D	6				148																																											1										50																																																																		Undead Horde													
+166	Crown of Overmight	helm	8	F	6	E	3		55															30				5																															1		100			1																																																																		Charm											
+167	Amon Hotep	helm	8	F	6	S	5		148		5														25	5																																	1								5																																												25																				Mummification										
+168	Helmet of Perfection	helm	8	W	3	A	3		175																																																							3			5																																																																									eyeloss on attacker	
+169	Helmet of the Dawn	helm	8	E	2	S	1		180								20									2																																									1																																																																										
+170	The Jade Mask	helm	8	D	7	N	3		45				15			10										3																																								10												2																																																				Rigor Mortis									Can only be used by coldblooded units		
+171	Crown of the Ivy King	helm	8	N	2								15			5																							1																													5																																																										x	Barkskin				Awaken Vine Men	"361, 362"	??								
+172	The Crown of Despair	misc	8	D	2									100																																																				5																					1																																																						
+173	Black Steel Plate	armor	0	E	1				39																																																																																																																																				
+174	Black Steel Full Plate	armor	0	E	2				38																																																																																																																																				
+175	Berserker Pelt	armor	0	N	1				44																																																																																																		0																																		
+176	Fire Plate	armor	2	F	1				75		5																2																																																																																																																		
+177	Robe of Missile Protection	armor	2	A	1										80																																																																																																																														
+178	Lightweight Scale Mail	armor	2	A	1				49																																																																																																																																				
+179	Mirror Armor	armor	2	A	1	W	1		177																	3																																																																																																																			
+180	Weightless Scale Mail	armor	2	A	2				50																																																																																																																																				
+181	Copper Plate	armor	2	A	1				89	25																																																																																																																						Charge Body													
+182	Shambler Skin Armor	armor	2	W	1				37																																						1																																																																																														
+183	Dire Wolf Pelt	armor	2	N	1				176			5																	1	1																																																																																																															
+184	Armor of Souls	armor	2	B	6				56																	5																																																						1																																																													
+185	Ranger's Cloak	armor	2	N	1																																	30																																																																																																							
+186	Chain Mail of Displacement	armor	4	A	2				81																																																																																																																																				
+187	Silver Hauberk	armor	4	A	2	E	1		48						80																																																																																																																														
+188	Brightmail Haubergeon	armor	4	A	1	E	1		185																																																																																																																																				
+189	Elemental Armor	armor	4	E	2	F	1		59	10	10	10																																																																																																																																	
+190	Robe of the Sea	armor	4	W	3																																										1																												1																																																																		
+191	Shroud of the Battle Saint	armor	4	S	1				54																																													1																																																																									Blessing														
+192	Robe of Shadows	armor	4	S	2																																	20														1																																																																																									
+193	Shademail Haubergeon	armor	4	D	2	E	1		186																												20																																																																																																								
+194	Armor of Twisting Thorns	armor	4	B	3	N	2		34				5																																														1																				1	1																																																												weak poison on attacker if armed with length 0 weapon	
+195	Marble Armor	armor	6	E	2				109																15																																																																																																						Stoneskin														
+196	Stymphalian Wings	armor	6	E	4				74																				-4														1										1													5																																																																									Cannot be used by mounted units		
+197	Rainbow Armor	armor	6	A	1	N	1		90																	2									3																																																																																																										
+198	Robe of the Magi	armor	6	A	6	B	6																												5																									x													1	1	1	1	1	1	1	1																																																													
+199	Robe of Invulnerability	armor	6	D	4																				25																																																																																						25																Invulnerability														
+200	Rime Hauberk	armor	6	W	2				46			5																																																										6																																								1																															
+201	Jade Armor	armor	6	W	2	E	1		107																																										1																																																																												Quickness														
+202	Bone Armor	armor	6	D	5				51			5																																																																																																																				Soul Vortex													
+203	Hydra Skin Armor	armor	6	N	2				43				15			10																																																																																																																													
+204	Red Dragon Scale Mail	armor	6	F	2				36		15																4																																																																																																																		
+205	Blue Dragon Scale Mail	armor	6	W	2				36			15															4																																																																																																																		
+206	Green Dragon Scale Mail	armor	6	N	2				36				15														4																																																																																																																		
+207	Aseftik's Armor	armor	8	E	4				35																	3	8																																1																																																																																		
+208	Monolith Armor	armor	8	E	5				47							10											10																																																																																																																Cannot be used by mounted units		
+209	Armor of the Dawn	armor	8	E	3	S	2		179		5						30									1																																									1																																																																										
+210	Robe of Calius the Druid	armor	8	N	3					10	10	10														3												20									1																																																																																														
+211	Fenris' Pelt	armor	8	N	4				72			5																												1																																																																			0																					Howl													
+212	Armor of Virtue	armor	8	S	3				110																																													1													4																																																														Returning											automatically casts Returning when wearer is wounded	
+213	Flesh Ward	armor	8	B	6				82																			4							2																								1	x																				1																																1																											Cannot be used by inanimate beings		
+214	Pebble Skin Suit	armor	8	B	4	E	1									10									15			2																															1																	1																																																			Stoneskin												Cannot be used by inanimate beings	turns wearer into troll (518) if MR fails	
+215	Boots of Long Strides	boots	0	N	1																												1																																																																																																											double movement in battle	
+216	Boots of the Behemoth	boots	2	E	1																																																1																																																																																								
+217	Boots of Giant Strength	boots	2	E	1																							5																																																																																																																	
+218	Birch Boots	boots	2	N	1							5	5																											1																																																																																																					
+219	Ranger's Boots	boots	2	N	1																														2			20	1																																																																																																						
+220	Brimstone Boots	boots	4	F	1	E	1				15																	4													1																																																																																																				
+221	Chi Shoes	boots	4	A	1			175																																																																																																																																					
+222	Winged Shoes	boots	4	A	2																												1										1																																																																																																		
+223	Earth Boots	boots	4	E	2																																																																							1																																																																	
+224	Boots of the Messenger	boots	4	N	1																														3				1	1	1	1																																																																																																			
+225	Boots of Quickness	boots	6	W	2																												2																		1																																																																												Quickness														
+226	Boots of Stone	boots	6	E	2																				15															1																																																																																							Stoneskin														
+227	Boots of Youth	boots	6	B	2																														3																																																																																																									prevents aging	
+228	Boots of Antaeus	boots	8	E	5	N	1									10																	1		5																																									1																																																																	
+229	Sandals of the Crane	boots	8	S	1																																																																																																																												Blink												
+230	Boots of the Planes	boots	8	S	6																																															1								x																																																																							Teleport										
+231	The Boots of Calius the Druid	boots	8	N	4																												1		10																																																																																																										
+232	Ring of Fire	misc	0	F	1						15																																																																																																																																		
+233	Ring of Tamed Lightning	misc	0	A	1					15																																																																																																																																			
+234	Ring of Frost	misc	0	W	1							15																																																																																																																																	
+235	Bear Claw Talisman	misc	0	E	1	N	1																				2	5																																																																																																																	
+236	Skull Talisman	misc	0	D	1																																																									1																																																																		Animate Skeleton		Animate Skeleton						longdead	1				
+237	Snake Ring	misc	0	N	1								30																																																																																																																					Poison Touch											
+238	Slave Collar	misc	0	B	1																						20																																1																																																																															Feeblemind			
+239	Imp Familiar	misc	2	B	1																																																						1	x		1																																																								3										Summon Imp Familiar													
+240	Burning Pearl	misc	2	F	1						5																		4																																																																																																																
+241	Fire in a Jar	misc	2	F	1							5																																																																														1																																																			
+242	Ring of Warning	misc	2	A	1																																																																																																													10																										allows 2x bodyguards against assassins	
+243	Ring of Levitation	misc	2	A	1																																							1																																																																																																	
+244	Owl Quill	misc	2	A	1																																																																																																																	6																							
+245	Eye of Aiming	misc	2	A	1																										8																												1																																																																															Lost an Eye			
+246	Amulet of Missile Protection	misc	2	A	2										80																																																																																																																														
+247	Amulet of Breathing	misc	2	A	2																																										1																																																																																														
+248	Gossamer Cloth	misc	2	A	2	N	1																																																																																																																																					Glamour for 25 units	
+249	Ring of Water Breathing	misc	2	W	1																																										1																																																																																														
+250	Clam of Pearls	misc	2	W	1	N	1																																																																																							2																																															
+251	Bracers of Protection	misc	2	E	1				76																																																																																																																																				
+252	Lodestone Amulet	misc	2	E	1																					2																																																																																																																			
+253	Wound Fend Amulet	misc	2	E	1	S	1										25																																																																																																																												
+254	The Pebble Pouch	misc	2	E	1			546																																																																																																																																			"Must have size 4, str 20, 2 hands"		
+255	Pendant of Luck	misc	2	S	1																																																		1																																																																																						
+256	Cat's Eye Amulet	misc	2	E	1	D	1							50																							20																																																																																																								
+257	Effigy of War	misc	2	D	1	N	1																																																																																																																																					Army size +50 for enemy scouts	
+258	Handful of Acorns	misc	2	N	1																																																										1																																																																	Summon three Vine Men													
+259	Barkskin Amulet	misc	2	N	1																				10																																																																																																						Barkskin														
+260	Cat Charm	misc	2	N	2				77																																																																																																																																				
+261	Enormous Cauldron of Broth	misc	2	N	3																																																																																																																100																								
+262	Ring of the Warrior	misc	2	B	1																						2		5																																																																																																																
+263	Soul Contract	misc	2	B	7	F	1																																																				1	x		10																																																																								304	1						
+264	Medallion of Vengeance	misc	4	F	1																																																																																																																																							unit explodes upon death	
+265	Pills of Water Breathing	misc	4	A	2																																											20																																																																																												uw points indicate total size	
+266	Dancing Trident	misc	4	A	1			121																																																																																																																																					
+267	Wall Shaker	misc	4	A	3																																																																																																															25														Panic											
+268	Bag of Winds	misc	4	A	5																												1																														1											1																																																						Summon Lesser Air Elemental													
+269	Flying Carpet	misc	4	A	3																																													14																																																																																										flytr points indicate total size	
+270	Dancing Shield	misc	4	A	1	E	1																	20																																																																																																																				50% chance to block any incoming attack that is not AN	
+271	Enchanted Mirror	misc	4	A	2																																																																																																																																							Army size +75 for enemy scouts	
+272	Cauldron of the Elven Halls	misc	4	A	3																																																																																																																																							Glamour for 50 units	
+273	Amulet of the Fish	misc	4	W	1	A	1																																										1																																																																																												
+274	Manual of Water Breathing	misc	4	N	3	W	1																																									50																																																																																												uw points indicate total size	
+275	Girdle of Might	misc	4	E	1																							3							3																																																																																																										
+276	Crystal Matrix	misc	4	E	1	S	1																																																																																																																									Communion Master													
+277	Slave Matrix	misc	4	E	1	S	1																																																																																																																									Communion Slave													
+278	Amulet of Antimagic	misc	4	S	1																					4																																																																																																																			
+279	Spell Focus	misc	4	S	1																															1																				1																																																																							Fool's Luck														
+280	Eye of the Void	misc	4	S	1																					-2										2																							1	x																																																																														Lost an Eye		dispels illusions	
+281	Stone Sphere	misc	4	S	2	E	1																																																					x																																																																							Astral Window										
+282	Crystal Coin	misc	4	S	2	E	2																																																																						1																																																																
+283	Amulet of the Dead	misc	4	D	1																																																																																																																																							"Increases number of reanimated ghouls, soulless and longdead"	
+284	Champion's Skull	misc	4	D	2																																																																4																																																																								
+285	Bane Venom Charm	misc	4	D	2																																																					1																																																																		10																kills population in province and spreads disease	
+286	Horn of Valor	misc	4	N	1																																																											1																																																																													
+287	Acorn Necklace	misc	4	N	1	E	1			5																																													1																																																																								Luck														
+288	Endless Bag of Wine	misc	4	N	1																																																																																																																50																								
+289	Amulet of Giants	misc	4	N	1																																																																																																																										Enlarge (1) (max 4)													Enlarge to size 4 (max)	
+290	Lychantropos' Amulet	misc	4	N	2									50		10																																											1																																																0																																	turns wearer into Skinshifter (400) if MR fails	
+291	Ring of Regeneration	misc	4	N	2											10																																																																																																																													
+292	Amulet of Resilience	misc	4	N	2																														5																																																																																																										
+293	Miraculous Cure All Elixir	misc	4	N	5														1																																																																																																																										
+294	Astral Serpent	misc	4	N	1	S	1	177					5																																																																																																																																
+295	Sanguine Dowsing Rod	misc	4	B	1																																																																																																																			1																					
+296	Brazen Vessel	misc	4	B	5																																																																											1																																																													
+297	The Heart of Life	misc	4	B	3								5																						10																								1																																																																															Chest Wound	Cannot be used by inanimate beings		
+298	Lifelong Protection	misc	4	B	4																																																						1	x		5																																																																			Summon Imps							303	?			summons new imps every time they are killed	
+299	Blood Stone	misc	4	B	3	E	2																																																																					1																	1																																																
+300	Water Lens	misc	4	W	1																																																																															1								1																																																	
+301	Lightless Lantern	misc	6	F	1																																																							x																																																										12																						slight chance of horror mark	
+302	Skull of Fire	misc	6	F	1	D	1					-5																																																													1																																																																				
+303	Barrel of Air	misc	6	A	4																																											150																																																																																												uw points indicate total size	
+304	Mirror of False Impressions	misc	6	A	4																																																								-20																																																																															All units in army look same for scouts	
+305	Water Bracelet	misc	6	W	1																																																																						1																																																																		
+306	Bottle of Living Water	misc	6	W	2																																																										1																																																																	Summon Water Elemental								409?	1				
+307	Sea King's Goblet	misc	6	W	3																																											100																																																																																												uw points indicate total size	
+308	The Copper Arm	misc	6	E	3	F	1																																																				1																																																																																	+1 hand slot	
+309	Stone Bird	misc	6	E	1	A	1	176																																																																																																																																					
+310	Crystal Heart	misc	6	E	2	S	2																																																				1																																																																															Chest Wound	Cannot be used by inanimate beings	"resurrects bearer on death, not usable by lifeless creatures"	
+311	Stone Idol	misc	6	E	2	S	2																																																																																																																3																						
+312	Eye Pendant	misc	6	E	3	D	3												1																																																																																															10																										allows 2x bodyguards against assassins	
+313	Arcane Lens	misc	6	S	3																																																																													1	1	1	1	1	1	1	1																																																				
+314	Eye of Innocence	misc	6	S	2																																	40																					1																																																																															Lost an Eye			
+315	Ring of Wizardry	misc	6	S	8																															1																																					1	1	1	1	1	1	1	1																																																													
+316	Ring of Sorcery	misc	6	S	7																															1																																									1	1	1	1																																																													
+317	Skull Mentor	misc	6	D	2																																																																																																																	18																							
+318	Elixir of Life	misc	6	N	2	F	2																																																																																																																																					"prevents aging, resurrects bearer upon death"	
+319	Pocket Ship	misc	6	N	3	A	2																																						200	4																																																																																														grants sailing	
+320	Moonvine Bracelet	misc	6	N	3	S	1																																																																								1																																																	Summon Vine Man								361	1				
+321	The Black Heart	misc	6	B	2																						2																																1																																																																															Chest Wound	Cannot be used by inanimate beings	stealthy bearer becomes an assassin	
+322	Blood Pendant	misc	6	B	2									50														2																																																													1																																																				
+323	The Ruby Eye	misc	8	F	3																																																						1														1																																																																	Lost an Eye		occasionally produces water gems	
+324	Fever Fetish	misc	8	F	1	N	1																																																			1																																								*																																										"gem production not automatic, chance based on how many hit points wearer has lost to disease"	
+325	The Ark	misc	8	F	6	S	6																																																																																																																									Ark												"Spreads dominion, causes disease among non-sacred units"	
+326	Amulet of the Doppelganger	misc	8	A	3																																50																																																																																																								
+327	The Flying Ship	misc	8	A	5																																																																																																																																							grants flying movement to army	
+328	Igor Könhelm's Tome	misc	8	A	2	D	2																																																																																																																													534	12							"+12 Corpse Constructs per summoning, increased strength during storm (stormpower 5)"	
+329	Tome of High Power	misc	8	A	2	S	2																																																					x														1			1																																																															powerful horror mark	
+330	The Magic Lamp	misc	8	A	5	F	4																																																																																																																												Summon Jinn	490	1								
+331	Krupp's Bracers	misc	8	E	2				78																										3																																																																																																										
+332	The First Anvil	misc	8	E	6																																																																																																																																							Master Smith (1)	
+333	Holger the Head	misc	8	E	1	D	1																																																																																																														-3											Grow Headless Hoburg								1139	1				
+334	Percival the Pocket Knight	misc	8	E	2	N	1																																																																																																																									Grow Knight								959	1				
+335	Alchemist's Stone	misc	8	E	1	F	1				5	5									100																																																																																																																							alchemy bonus 50%	
+336	Gate Stone	misc	8	E	8	S	8																																																																																																																												Astral Travel										
+337	Atlas of Creation	misc	8	E	5	S	5																																																					x																1	1		1																																																				Record of Creation										
+338	Bell of Cleansing	misc	8	W	2						5																																																																																																																						Cleansing Chime											automatically attacks demons who come near and hits them with banishment	
+339	Orb of Atlantis	misc	8	W	4	E	1																																									200														10													1																																																					Friendly Currents		Summon Lesser Water Elemental										uw points indicate total size	
+340	The Astral Harpoon	misc	8	S	5	B	1																																																																																																																												Astral Harpoon										
+341	The Forbidden Light	misc	8	S	5	F	5				5	5																																															1	x													2				2																																																			Solar Brilliance												powerful horror mark	
+342	Nethgul	misc	8	S	3	W	2																																																																																																																										various												
+343	The Black Mirror	misc	8	S	4	B	2																			-4																															1																																																																								Disbelieve		Mind Hunt									dispels illusions	
+344	The Horror Harmonica	misc	8	S	6	D	4																				-2																																	x																																																																				Wailing Winds		Call Horror											
+345	Tome of the Lower Planes	misc	8	S	3	B	2																																																																									1																																																												Increases chance of returning from Inferno & Kokytos	
+346	Carcator the Pocket Lich	misc	8	D	4																																																									20																																																								4										Grow Lich								960	1				
+347	The Ankh	misc	8	D	6					5																																																		x																																																																				Life After Death													
+348	Disease Grinder	misc	8	D	3	F	1																																																																																																																																					Disease Grinder (1)	
+349	The Black Book of Secrets	misc	8	D	2	B	2																																																											5												1		1																																																													
+350	The Green Eye	misc	8	N	2																															2																							1																																																																						Sleep									Lost an Eye			
+351	Wondrous Box of Monsters	misc	8	N	5																																																																																																																												Grow Monster												
+352	Fountain of Youth	misc	8	N	3	F	3																																																																																																																																					Prevents aging for everyone in the same province	
+353	Midget's Revenge	misc	8	N	1	W	1																					2	3	3																																																																																																	Enlargement												Max size 1		
+354	Soulstone of the Wolves	misc	8	N	6	E	1																																																																																																																									Howl			Call of the Wild										
+355	The Chalice	misc	8	N	5	S	3									10				5																																																																																																														Banishment											
+356	The Tome of Gaia	misc	8	N	2	E	2																																																																					1			1																																																														
+357	The Manual of Cross Breeding	misc	8	B	3	N	3																																																																																																																						?																
+358	The Gift of Kurgi	misc	8	B	6				94													10		10																			1									1			1		1			x						30																																																														Call Lesser Horror			Send Lesser Horror										
+359	Ardmon's Soul Trap	misc	8	B	3	S	1																					-2							-1																																																																																													Open Soul Trap								"1539, 1540, 1541"	??			Stolen Strength (2) (strength loss is permanent)	
+360	Shortsword	2-h wpn	12	E	3			132							80																																																																																																																													Oberf?hrer the Hoburg Hero	
+361	Hammer of the Cyclops	2-h wpn	12	E	6			119										4																																																																																																																										"Master Smith (1), Polypercheron the Cyclops"	
+362	The Admiral's Sword	1-h wpn	12	D	3			186																																																										5																																																																											
+363	Precious	misc	12	F	2																							4	4																																																																																																															Bogus the Troll	
+364	Vial of Frozen Tears	misc	12	W	4	D	3																																																																				1			1																																																														Starke the Ice Druid	
+365	Crown of Katafagus	helm	12	D	6				148	15	15																																																1							5												1																																																										mummy				Katafagus the Lich	
+366	Crown of Ptah	helm	12	F	5	D	6		148																	3	4																														1		1							10																																																														Power of the Sepulchre		Control the Dead										Ptah the Divine Mummy	
+367	Robe of the Sorceress	armor	12	E	5	S	5		98																																																																				1	1	1	1																																																												Satina the Sorceress	
+368	Sun Armor	armor	12	F	4				95																		4																																								3																																																																									Solaris the Paladin	
+369	Sun Helmet	helm	12	F	4				96																	5																																									1																																																																									Solaris the Paladin	
+370	Sun Sword	1-h wpn	12	F	4			275																																														1							25																																														0																				Blessing													Solaris the Paladin	
+371	Sun Shield	shield	12	F	4				97	15	15																																																								1																																																																									Solaris the Paladin	
+372	Greenstone Armor	armor	12	E	3				108																																																																																																																																			Bogus the Troll	
+373	The Protection of Geryon	misc	8	B	5																																																						1																																																																																		
+374	Pearl of Light	misc	12	W	5	S	5																													1																																																																																																									
+375	Draupnir	misc	8	E	5																																																																			200																																																																					
+376	Champion's Helmet	helm	12		0				174																		4																																																																																																																		
+377	Champion's Gladius	1-h wpn	12		1		1	588																																																																																																																																					
+378	Golden Sandals	boots	12		1																																																																																																																																								
+379	Enchanted Ring Mail Armor	armor	0	S	1				194																																																																																																																																				
+380	Mercury Barrel	misc	6	W	1	E	1																																																																																																																																						
+381	Storm Spool	misc	4	A	1					15																																																																																																																																			
