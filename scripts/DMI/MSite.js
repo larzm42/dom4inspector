@@ -68,6 +68,14 @@ MSite.prepareData_PostMod = function() {
 		//searchable string
 		o.searchable = o.name.toLowerCase();
 
+		if (!o.scale1) {
+			o.scale1 = '';
+		}
+		
+		if (!o.scale2) {
+			o.scale2 = '';
+		}
+		
 		//magic paths
 		o.mpath = '';
 		var research = 0;
@@ -205,14 +213,16 @@ MSite.CGrid = Utils.Class( DMI.CGrid, function() {
 	//grid columns
 	var columns = [
 		{ id: "name",     width: 145, name: "Site Name", field: "name", sortable: true },
-		{ id: "level",     width: 60, name: "Level", field: "level", sortable: true },
-		{ id: "path",      width: 70, name: "Path", field: "path", sortable: true },
-		{ id: "listed_gempath",    width: 70, name: "Gems", field: "listed_gempath", sortable: true, formatter: DMI.GridFormat.OrderedPaths },
+		{ id: "level",     width: 40, name: "Level", field: "level", sortable: true },
+		{ id: "path",      width: 50, name: "Path", field: "path", sortable: true },
+		{ id: "scale1",      width: 50, name: "Scale", field: "scale1", sortable: true },
+		{ id: "scale2",      width: 50, name: "Scale", field: "scale2", sortable: true },
+		{ id: "listed_gempath",    width: 120, name: "Gems", field: "listed_gempath", sortable: true, formatter: DMI.GridFormat.OrderedPaths },
 	];
 	
 	this.superClass.call(this, 'site', modctx.sitedata, columns); //superconstructor
 	
-	$(this.domsel+' .grid-container').css('width', 530);//set table width
+	$(this.domsel+' .grid-container').css('width', 600);//set table width
 
 	
 	//in closure scope
@@ -223,9 +233,10 @@ MSite.CGrid = Utils.Class( DMI.CGrid, function() {
 	this.getSearchArgs = function() {
 		var args = Utils.merge(this.getPropertyMatchArgs(), {
 			str: $(that.domselp+" input.search-box").val().toLowerCase(),
+			sitepath: $(that.domselp+" select.sitepath").val() ,
+			sitescale: $(that.domselp+" select.sitescale").val() ,
 			mpaths: ''
 		});
-		if ($.isEmptyObject(args.type)) delete args.type;
 
 		//create string of mpaths from checkboxes
 		$(that.domselp+' .toggle-path:checked').each(function() {
@@ -252,6 +263,14 @@ MSite.CGrid = Utils.Class( DMI.CGrid, function() {
 			return false;
 		}
 		
+		//site path
+		if (args.sitepath && !( args.sitepath == o.path ))
+			return false;
+
+		//site scale
+		if (args.sitescale && !( args.sitescale == o.scale1 || args.sitescale == o.scale2 ))
+			return false;
+
 		//key =~ val
 		if (args.key) {
 			var r = o.matchProperty(o, args.key, args.comp, args.val);

@@ -72,6 +72,8 @@ MNation.prepareData_PreMod = function() {
 		o.heroes = [];	
 		o.multiheroes = [];
 		o.spells = [];
+		o.addgod = [];
+		o.delgod = [];
 		// Get realms of nation
 		var realms = [];
 		for (var oj=0, attr; attr = modctx.attributes_by_nation[oj];  oj++) {
