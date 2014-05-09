@@ -49,6 +49,10 @@ MArmor.prepareData_PostMod = function() {
 			o.protbody = Math.floor((parseInt(o.torso) + (parseInt(o.upper) + parseInt(o.lower)) / 2) / 2);
 		}
 		
+		if (o.prot) {
+			o.protbody = o.prot;
+		}
+		
 		if (o.general) {
 			o.protbody = parseInt(o.protbody || '0') + parseInt(o.general);
 			if (o.prothead) {
