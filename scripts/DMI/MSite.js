@@ -30,11 +30,13 @@ MSite.ritual_string = {
 MSite.initSite = function(o) {
 	o.hmon = [];
 	o.hcom = [];	
+	o.sum = [];	
 }
 MSite.prepareData_PreMod = function() {
 	for (var oi=0, o;  o= modctx.sitedata[oi];  oi++) {
 		o.hmon = [];
 		o.hcom = [];	
+		o.sum = [];	
 		var capunit = Utils.keyListToTable(o, 'hmon');
 		for (var oj=0, cap; cap = capunit[oj]; oj++) {
 			var u = modctx.unitlookup[cap];
@@ -43,6 +45,10 @@ MSite.prepareData_PreMod = function() {
 			} else {
 				o.hmon.push(cap);
 			}
+		}
+		var summons = Utils.keyListToTable(o, 'sum');
+		for (var oj=0, cap; cap = summons[oj]; oj++) {
+			o.sum.push(cap);
 		}
 	}
 }
@@ -194,6 +200,38 @@ MSite.prepareData_PostMod = function() {
 							if (Math.round(unit.id) == uid && unit.nations && o.nations) {
 								unit.recruitedby = unit.recruitedby || [];
 								unit.recruitedby.push( o );
+							}
+						}
+					}
+				}
+			}
+		}
+		if (o.sum.length == 0) {
+			delete o.sum;
+		} else {
+			for (var cc=0; uid=o.sum[cc]; cc++) {
+				var found = false;
+				for (var uniti=0, unit;  unit= modctx.unitdata[uniti];  uniti++) {
+					if (Math.round(unit.id) == uid && unit.nations && o.nations) {
+						for (var ii=0,natid; natid=o.nations[ii]; ii++) {
+							if (unit.nations[natid] && !found) {
+								unit.summonedfrom = unit.summonedfrom || [];
+								unit.summonedfrom.push( o );
+								found = true;
+							}
+						}
+					} else if (Math.round(unit.id) == uid && !found) {
+						unit.summonedfrom = unit.summonedfrom || [];
+						unit.summonedfrom.push( o );
+						found = true;
+					}
+				}
+				if (!found) {
+					for (var cc=0; uid=o.sum[cc]; cc++) {
+						for (var uniti=0, unit;  unit= modctx.unitdata[uniti];  uniti++) {
+							if (Math.round(unit.id) == uid && unit.nations && o.nations) {
+								unit.summonedfrom = unit.summonedfrom || [];
+								unit.summonedfrom.push( o );
 							}
 						}
 					}
@@ -496,14 +534,8 @@ var displayorder = DMI.Utils.cutDisplayOrder(aliases, formats,
 	'hmon',	'units',	function(v,o){ 
 		return list_units(v, o); 
 	},
-	'sum1',	'summon',	function(v,o){ 
-		return Utils.is(o.n_sum1) ?  Utils.unitRef(v)+' x '+o.n_sum1  :  Utils.unitRef(v); 
-	},
-	'sum2',	'summon',	function(v,o){ 
-		return Utils.is(o.n_sum2) ?  Utils.unitRef(v)+' x '+o.n_sum2  :  Utils.unitRef(v); 
-	},
-	'sum3',	'summon',	function(v,o){ 
-		return Utils.is(o.n_sum3) ?  Utils.unitRef(v)+' x '+o.n_sum3  :  Utils.unitRef(v); 
+	'sum',	'summon',	function(v,o){ 
+		return list_units(v, o); 
 	},
 	'nations', 'start site', list_nations,
 	'other', 'other'

@@ -947,12 +947,12 @@ id	name	rarity	loc	level	path	F	A	W	E	S	D	N	B	gold	res	sup	unr	exp	lab	fort	scal
 988	Grove of Hooded Spirits	2	2	3	Nature							1									Growth																																									3%									
 989	Fungus Forest	1	719	1	Nature							1																																																											
 990	Birdsong Tower	2	17119	1	Nature																																				N	2																												reveals mundane score graphs	
-991	The Crone	2	16607	2	Nature																																																																	reveals mundane score graphs	
+991	The Crone	2	16607	2	Nature																																																											10%						reveals mundane score graphs	
 992	Thorn Maze	1	95	2	Nature							1																													N	2																													
 993	Earthroot Grove	2	18	1	Nature							1																													N	2																													
 994	Starsong Grove	2	16386	3	Nature					1																															S	3																													
 995	Tree of Life	2	16599	2	Nature																																																									3%									
-996	Tree of Knowledge	2	16607	2	Nature													8																																																					
+996	Tree of Knowledge	2	16607	2	Nature													8																																														4%							
 997	Tower of the Moon	2	16607	2	Nature																																												2145	1																					
 998	Vale of Healing Herbs	2	199	2	Nature																																																									2%									
 999	Slave Market	0	735	0	Blood								3				2																																																						
@@ -970,7 +970,7 @@ id	name	rarity	loc	level	path	F	A	W	E	S	D	N	B	gold	res	sup	unr	exp	lab	fort	scal
 1011	The Golden City	2	17440	0	Water									50	10																												1056																												
 1012	Subterranean City	2	17920	0	Earth									30	20																																																								
 1013	Demon Gate	5	223	0	Blood												10																																88	1																					
-1014	Cursed Land	5	223	0	Nature																Magic																																																		
+1014	Cursed Land	5	223	0	Nature																Magic																																											2%							
 1015	Ruins of the Old Empire	1	1247	0	Death						1																																																												
 1016	Ancient Temple of C'tis	1	1152	0	Death						1																																																												
 1017	The Throne of the Moon	12	17407	0	Holy			1		1													2				-1								3																																				
@@ -979,7 +979,7 @@ id	name	rarity	loc	level	path	F	A	W	E	S	D	N	B	gold	res	sup	unr	exp	lab	fort	scal
 1020	Toad Tribe Settlement	5	128	0	Nature																																						1614	1613																										Extra units for native PD (1 per point)	
 1021	The Throne of Sorcery	13	17407	0	Holy					1	1	1											3																																					20%											
 1022	The Throne of Elements	13	17407	0	Holy	1	1	1	1														3																																		20%														
-1023	The Shattered Throne	13	17407	0	Holy					2			4				10				Magic	Misfortune	3					1																																	30%				5%						
+1023	The Shattered Throne	13	17407	0	Holy					2			4				10				Magic	Misfortune	3					1																																	30%			1%	5%						
 1024	The Throne of the First Age	12	17407	0	Holy																Magic		3																																																
 1025	The Throne of the Second Age	11	17407	0	Holy																		2											1																																					
 1026	The Throne of the Stars	11	17407	0	Holy					2													1																		S	1																													

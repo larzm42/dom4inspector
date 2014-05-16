@@ -1,5 +1,5 @@
 id	name	type	constlevel	mainpath	mainlevel	secondarypath	secondarylevel	weapon	armor	shockres	fireres	coldres	poisonres	darkvision	airshield	regeneration	woundfend	fixforge	autodishealer	healer	alch	insa	hp	protf	protb	mr	morale	str	att	def	prec	enc	mapspeed	ap	reinvigoration	pen	stealth	stealthb	forest	mount	waste	swamp	fly	float	sailsz	maxsail	waterbreathing	giftofwater	airbr	flytr	quick	eth	trample	bless	luck	fluck	curse	disease	cursed	taint	ldr-n	ldr-u	ldr-m	inspirational	taskmaster	fear	awe	animalawe	exp	chill	heat	gold	F	A	W	E	S	D	N	B	H	firerange	airrange	waterrange	earthrange	astralrange	deathrange	naturerange	bloodrange	tmpfiregems	tmpairgems	tmpwatergems	tmpearthgems	tmpastralgems	tmpdeathgems	tmpnaturegems	tmpbloodslaves	gf	ga	gw	ge	gs	gd	gn	gb	berserk	bers	fireshield	banefireshield	iceprot	invul	bloodvengeance	pillagebonus	patrolbonus	castledef	siegebonus	supplybonus	researchbonus	heretic	douse	void	diseasecloud	poisoncloud	reaper	crossbreeder	ivylord	spelleffect	startbattlespell	autocombatspell	itemspell	ritual	sumrit	#sumrit	sumauto	#sumauto	sumbat	#sumbat	affliction	restrictions	special	test
-1	Champion's Trident	2-h wpn	12		0			135																																																																																																																																					
+1	Champion's Trident	2-h wpn	12		0			135																																																					25																																																																																
 2	Fire Sword	1-h wpn	0	F	1			76																																																																																																																																					
 3	Ice Sword	1-h wpn	0	W	1			77																																																																																																																																					
 4	Stinger	1-h wpn	0	E	1			78																																																																																																																																					
@@ -61,7 +61,7 @@ id	name	type	constlevel	mainpath	mainlevel	secondarypath	secondarylevel	weapon	a
 60	Vine Bow	2-h wpn	4	N	1			303																																																																																																																																					
 61	Snake Bladder Stick	1-h wpn	4	N	1			183																																																																																																																																					
 62	Thistle Mace	1-h wpn	4	N	2			163																																																																							1																																																														
-63	Whip of Command	1-h wpn	4	N	1			140																																																					25				2																																																																												
+63	Whip of Command	1-h wpn	4	N	1			140																																																					100				2																																																																												
 64	Vine Whip	1-h wpn	4	N	2			136																																																																																																																																					
 65	Rat Tail	1-h wpn	4	N	2			138																																																									1			4																																																																									
 66	Skull Standard	2-h wpn	4	N	2	D	1	100																																																										5																																																																Panic											
@@ -109,7 +109,7 @@ id	name	type	constlevel	mainpath	mainlevel	secondarypath	secondarylevel	weapon	a
 108	Twin Spear	1-h wpn	8	S	1	D	1	296																																															1						50																																																																																
 109	The Oath Rod of Kurgi	2-h wpn	8	S	2	B	2	157																																																																										1	1	1	1	1	1	1	1																																									Horror Mark											
 110	The Sword of Aurgelmer	1-h wpn	8	S	6			179																			4																												1		1																																																																							Will of the Fates													
-111	Rod of Death	1-h wpn	8	D	1			59																																																																																																																										Control the Dead											
+111	Rod of Death	1-h wpn	8	D	1			59																																																						20																																																																				Control the Dead											
 112	The Flailing Hands	2-h wpn	8	D	2			158																		1										1																																										1																																																															
 113	The Sickle whose Crop is Pain	1-h wpn	8	D	6			187																																																																																																																																				+1 death gems per kill	
 114	Sceptre of Dark Regency	1-h wpn	8	D	6			386																																																																						2									2																																																						
@@ -288,7 +288,7 @@ id	name	type	constlevel	mainpath	mainlevel	secondarypath	secondarylevel	weapon	a
 287	Acorn Necklace	misc	4	N	1	E	1			5																																													1																																																																								Luck														
 288	Endless Bag of Wine	misc	4	N	1																																																																																																																50																								
 289	Amulet of Giants	misc	4	N	1																																																																																																																										Enlarge (1) (max 4)													Enlarge to size 4 (max)	
-290	Lychantropos' Amulet	misc	4	N	2									50		10																																											1																																																0																																	turns wearer into Skinshifter (400) if MR fails	
+290	Lychantropos' Amulet	misc	4	N	2									50		10												4																															1																																																0																																	turns wearer into Skinshifter (400) if MR fails	
 291	Ring of Regeneration	misc	4	N	2											10																																																																																																																													
 292	Amulet of Resilience	misc	4	N	2																														5																																																																																																										
 293	Miraculous Cure All Elixir	misc	4	N	5														1																																																																																																																										
@@ -337,7 +337,7 @@ id	name	type	constlevel	mainpath	mainlevel	secondarypath	secondarylevel	weapon	a
 336	Gate Stone	misc	8	E	8	S	8																																																																																																																												Astral Travel										
 337	Atlas of Creation	misc	8	E	5	S	5																																																					x																1	1		1																																																				Record of Creation										
 338	Bell of Cleansing	misc	8	W	2						5																																																																																																																						Cleansing Chime											automatically attacks demons who come near and hits them with banishment	
-339	Orb of Atlantis	misc	8	W	4	E	1																																									200														10													1																																																					Friendly Currents		Summon Lesser Water Elemental										uw points indicate total size	
+339	Orb of Atlantis	misc	8	W	4	E	1																																									200																											1																																																					Friendly Currents		Summon Lesser Water Elemental										uw points indicate total size	
 340	The Astral Harpoon	misc	8	S	5	B	1																																																																																																																												Astral Harpoon										
 341	The Forbidden Light	misc	8	S	5	F	5				5	5																																															1	x													2				2																																																			Solar Brilliance												powerful horror mark	
 342	Nethgul	misc	8	S	3	W	2																																																																																																																										various												
@@ -359,7 +359,7 @@ id	name	type	constlevel	mainpath	mainlevel	secondarypath	secondarylevel	weapon	a
 358	The Gift of Kurgi	misc	8	B	6				94													10		10																			1									1			1		1			x						30																																																														Call Lesser Horror			Send Lesser Horror										
 359	Ardmon's Soul Trap	misc	8	B	3	S	1																					-2							-1																																																																																													Open Soul Trap								"1539, 1540, 1541"	??			Stolen Strength (2) (strength loss is permanent)	
 360	Shortsword	2-h wpn	12	E	3			132							80																																																																																																																													Oberf?hrer the Hoburg Hero	
-361	Hammer of the Cyclops	2-h wpn	12	E	6			119										4																																																																																																																										"Master Smith (1), Polypercheron the Cyclops"	
+361	Hammer of the Cyclops	2-h wpn	12	E	6			119																																																																																																																																				"Master Smith (1), Polypercheron the Cyclops"	
 362	The Admiral's Sword	1-h wpn	12	D	3			186																																																										5																																																																											
 363	Precious	misc	12	F	2																							4	4																																																																																																															Bogus the Troll	
 364	Vial of Frozen Tears	misc	12	W	4	D	3																																																																				1			1																																																														Starke the Ice Druid	
@@ -376,7 +376,7 @@ id	name	type	constlevel	mainpath	mainlevel	secondarypath	secondarylevel	weapon	a
 375	Draupnir	misc	8	E	5																																																																			200																																																																					
 376	Champion's Helmet	helm	12		0				174																		4																																																																																																																		
 377	Champion's Gladius	1-h wpn	12		1		1	588																																																																																																																																					
-378	Golden Sandals	boots	12		1																																																																																																																																								
+378	Golden Sandals	boots	12		1																																																								25																																																																																
 379	Enchanted Ring Mail Armor	armor	0	S	1				194																																																																																																																																				
 380	Mercury Barrel	misc	6	W	1	E	1																																																																																																																																						
 381	Storm Spool	misc	4	A	1					15																																																																																																																																			

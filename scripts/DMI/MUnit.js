@@ -808,7 +808,7 @@ MUnit.prepareForRender = function(o) {
 		var isldr = is(o.leader);
 		if (n= parseInt(o.A)) {
 			if (isldr) bonus('air magic', 'magicleader', n*5);
-			//bonus('air magic','prec', n);
+			if (isldr) bonus('air magic', 'shockres', n*2);
 		}
 		if (n= parseInt(o.B)) {
 			if (isldr) bonus('blood magic', 'magicleader', n*5);
@@ -833,7 +833,7 @@ MUnit.prepareForRender = function(o) {
 		if (n= parseInt(o.F)) {
 			if (isldr) bonus('fire magic', 'leader', n*5);  
 			if (isldr) bonus('fire magic', 'magicleader', n*5);
-			//bonus('fire magic', 'att', n);
+			if (isldr) bonus('fire magic', 'fireres', n*2);
 			
 			if (is(o.fireshield))
 				bonus('fire magic', 'fireshield', n);
@@ -843,13 +843,13 @@ MUnit.prepareForRender = function(o) {
 		if (n= parseInt(o.N)) {
 			if (isldr) bonus('nature magic', 'magicleader', n*5);
 			bonus('nature magic', 'supplybonus', n*10);
+			if (isldr) bonus('fire magic', 'poisonres', n*2);
 		}
 		if (n= parseInt(o.W)) {	
 			if (isldr) bonus('water magic', 'magicleader', n*5);
-			//bonus('water magic', 'def', n);
-			
 			if (is(o.cold))
 				bonus('water magic', 'cold', n);
+			if (isldr) bonus('water magic', 'coldres', n*2);
 		}				
 
 		//formatted leadership
@@ -1466,7 +1466,8 @@ var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 	
 	'voidsanity',		'void sanity',		
 	'voidsum',		'void summoning',	Format.Signed, //rl'yeh	
-	'recruitedby', 'recruited from', list_sites
+	'recruitedby', 'recruited from', list_sites,
+	'summonedfrom', 'summoned from', list_sites
 	
 ]);
 var flagorder = Utils.cutDisplayOrder(aliases, formats,
