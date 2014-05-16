@@ -9,6 +9,18 @@ var Utils = DMI.Utils;
 var modctx = DMI.modctx;
 var modconstants = DMI.modconstants;
 
+MUnit.realmNames = {
+		1: 	'North',
+		2: 	'Celtic',
+		3: 	'Mediterranean',
+		4: 	'Far East',
+		5: 	'Middle East',
+		6: 	'Middle America',
+		7: 	'Africa',
+		8: 	'India',
+		9: 	'Deeps',
+		10: 'Default'
+}
 
 //determines unit type sort order (and identifies commanders)
 MUnit.unitSortableTypes = {
@@ -117,6 +129,7 @@ MUnit.initUnit = function(o) {
 	o.weapons = [];
 	o.armor = [];
 	o.randompaths = [];
+	o.realms = [];
 	o.typechar = '';
 	
 	o.hand = '2';
@@ -134,7 +147,13 @@ MUnit.prepareData_PreMod = function() {
 		
 		o.nationname = '';
 		o.weapons = Utils.keyListToTable(o, 'wpn');
-		
+
+		o.realms = [];
+		var realms = Utils.keyListToTable(o, 'realm');
+		for (var oj=0, realm; realm = realms[oj]; oj++) {
+			o.realms.push(realm);
+		}
+
 		//consolidate armor types to a single array
 		var arr = [];
 		for (var k in {armor1:1, armor2:1, armor3:1, armor4:1}) {
@@ -179,6 +198,10 @@ MUnit.prepareData_PostMod = function() {
 		o.renderOverlay = MUnit.renderOverlay;
 		o.matchProperty = MUnit.matchProperty;
 		
+		if (o.realms.length == 0) {
+			delete o.realms;
+		}
+		
 		//unique
 		o.fullname = o.name;
 		if (o.fixedname) {
@@ -214,6 +237,10 @@ MUnit.prepareData_PostMod = function() {
 			o.gcost = o.basecost;
 		} else {
 			o.basecost = o.gcost;
+		}
+		
+		if (!o.pathcost) {
+			o.pathcost = 10;
 		}
 
 		//magic paths
@@ -1372,7 +1399,7 @@ var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 	'reinvigoration',		'reinvigoration',
 	'berserk',	'berserker',		Format.SignedZero,
 	'invulnerable',	'invulnerability',
-	'damagerev',	'damage reversal',
+	'damagerev',	'damage reversal', Format.SignedZero,
 	'inn',	'inate spellcaster',
 	'bodyguard',	'bodyguard',
 	'pathboost',	'pathboost',
@@ -1401,6 +1428,7 @@ var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 	'mastersmith',	'master smith',	
 	'douse',	'blood hunt bonus',	Format.Signed,
 	'nobadevents',	'fortune teller',	Format.Percent,
+	'bringeroffortune',	'bringer of fortune',
 	'spreaddom',	'spreads dominion',
 	'incunrest',	'increases unrest',	Format.SignedPerTurn,
 	'diseasecloud',	'spreads plague',
@@ -1430,7 +1458,15 @@ var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 	'incorporate', 'incorporate',
 	'bonusspells', 'bonus spells',
 	'special',	'special',
-	'homerealm',	'homerealm',
+	'realms', 'realm', function(v,o)
+	{ 
+		var realmString = '';
+		for (var i=0, k; k=o.realms[i]; i++) {
+			realmString = realmString + MUnit.realmNames[k] + ' ';
+		}
+		return realmString; 
+		
+	},
 	
 	'shrinkhp',		'shapechange below hp',
 	'growhp',		'shapechange above hp',
@@ -1456,8 +1492,38 @@ var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 	'autosum',	'automatically summons',function(v,o){ 
 		return Format.PerTurn( (o.n_autosum || '1')+' x '+Utils.unitRef(v) );
 	},		
-	'batstartsum',	'summons in battle',	function(v,o){ 
-		return Utils.is(o.n_batstartsum) ?  Utils.unitRef(v)+' x '+o.n_batstartsum  :  Utils.unitRef(v); 
+	'batstartsum1',	'summons in battle',	function(v,o){ 
+		return Utils.unitRef(v)+' x 1'; 
+	},
+	'batstartsum2',	'summons in battle',	function(v,o){ 
+		return Utils.unitRef(v)+' x 2'; 
+	},
+	'batstartsum3',	'summons in battle',	function(v,o){ 
+		return Utils.unitRef(v)+' x 3'; 
+	},
+	'batstartsum4',	'summons in battle',	function(v,o){ 
+		return Utils.unitRef(v)+' x 4'; 
+	},
+	'batstartsum5',	'summons in battle',	function(v,o){ 
+		return Utils.unitRef(v)+' x 5'; 
+	},
+	'batstartsum1d6',	'summons in battle',	function(v,o){ 
+		return Utils.unitRef(v)+' x 1d6'; 
+	},
+	'batstartsum2d6',	'summons in battle',	function(v,o){ 
+		return Utils.unitRef(v)+' x 2d6'; 
+	},
+	'batstartsum3d6',	'summons in battle',	function(v,o){ 
+		return Utils.unitRef(v)+' x 3d6'; 
+	},
+	'batstartsum4d6',	'summons in battle',	function(v,o){ 
+		return Utils.unitRef(v)+' x 4d6'; 
+	},
+	'batstartsum5d6',	'summons in battle',	function(v,o){ 
+		return Utils.unitRef(v)+' x 5d6'; 
+	},
+	'batstartsum6d6',	'summons in battle',	function(v,o){ 
+		return Utils.unitRef(v)+' x 6d6'; 
 	},
 	
 	'heretic',		'heretic',
@@ -1583,7 +1649,7 @@ var ignorekeys = {
 	montag:1,
 	
 	researchbonus:1, listed_mpath:1, 
-	n_domsummon:1, n_makemonster:1, n_batstartsum:1, n_autosum:1, n_summon:1,	
+	n_domsummon:1, n_makemonster:1, n_autosum:1, n_summon:1,	
 	
 	hand:1, head:1, body:1, foot:1, misc:1, 
 	
