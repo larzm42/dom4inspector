@@ -354,7 +354,27 @@ Utils.parseObjectRefs = function(html) {
 
 //type specific functions
 Utils.itemRef  = function(id, text) { return objectRef('item',  id, text); }
-Utils.unitRef  = function(id, text) { return objectRef('unit',  id, text); }
+Utils.unitRef  = function(id, text) { 
+	var ref;
+	if (parseInt(id) < 0) {
+		ref = DMI.modctx.monster_tags_lookup[parseInt(id)];
+		if (ref) {
+			ref = ref.name;
+		} else {
+			ref = '';
+			for (var oi=0, o;  o= DMI.modctx.unitdata[oi];  oi++) {
+				if (o.montag) {
+					if (-parseInt(id) == parseInt(o.montag)) {
+						ref = ref + objectRef('unit', id, text) + ', <br />';
+					}
+				}
+			}
+		}
+	} else {
+		ref = objectRef('unit', id, text);
+	}
+	return ref; 
+}
 Utils.spellRef = function(id, text) { return objectRef('spell', id, text); }
 Utils.wpnRef   = function(id, text) { return objectRef('wpn',   id, text); }
 Utils.armorRef = function(id, text) { return objectRef('armor', id, text); }

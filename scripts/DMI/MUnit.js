@@ -1513,7 +1513,7 @@ var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 	'prophetshape',	'prophet shape',	function(v,o){	return chainedUnitRef(o, 'prophetshape', []);	},
 	
 	'domsummon',	'dominion attracts units',	function(v,o){ 
-		return Format.PerTurn( (o.n_domsummon || '1')+' x '+Utils.unitRef(v) ); 
+		return Format.PerTurn( Utils.unitRef(v) ); 
 	},
 	'makemonster',	'makes units',	function(v,o){ 
 		return Utils.is(o.n_makemonster) ?  Utils.unitRef(v)+' x '+o.n_makemonster  :  Utils.unitRef(v); 
@@ -1522,8 +1522,14 @@ var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 		return Utils.is(o.n_summon) ?  Utils.unitRef(v)+' x '+o.n_summon  :  Utils.unitRef(v); 
 	},
 	'autosum',	'automatically summons',function(v,o){ 
-		return Format.PerTurn( (o.n_autosum || '1')+' x '+Utils.unitRef(v) );
+		return Format.PerTurn( Utils.unitRef(v) );
 	},		
+	'coldsummon',	'summons in cold',	function(v,o){ 
+		return Utils.unitRef(v); 
+	},
+	'turmoilsummon',	'summons in turmoil',	function(v,o){ 
+		return Utils.unitRef(v); 
+	},
 	'batstartsum1',	'summons in battle',	function(v,o){ 
 		return Utils.unitRef(v)+' x 1'; 
 	},
