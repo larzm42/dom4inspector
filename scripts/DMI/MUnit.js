@@ -198,16 +198,14 @@ MUnit.prepareData_PostMod = function() {
 		o.renderOverlay = MUnit.renderOverlay;
 		o.matchProperty = MUnit.matchProperty;
 		
-		if (o.realms.length == 0) {
+		if (o.realns && o.realms.length == 0) {
 			delete o.realms;
 		}
 		
 		//unique
-		o.fullname = o.name;
+		o.linkname = o.fullname = (o.name || '(undefined)');
 		if (o.fixedname) {
-			if (o.fixedname != 'Random')
-				o.fullname = '"'+o.fixedname + '" - '+o.name;
-			
+			o.fullname = '“'+(o.fixedname) + '” - '+o.name;
 			o.unique='1';
 		}
 		
@@ -367,7 +365,7 @@ MUnit.prepareData_PostMod = function() {
 		o.armor = armor;
 		
 		if (o.rcost > 60000)	o.rcost = 1; //gladiators
-		
+
 		//numeric gold costs (for sorting)
 		MUnit.autocalc(o);
 		
@@ -727,7 +725,8 @@ MUnit.prepareForRender = function(o) {
 		var negative = Utils.negative;
 		var mult = Utils.mult;
 		var is = Utils.is;
-		
+		var _isCmdr = isCmdr(o);
+
 		//set sprite url
 		if (o.sprite.spr1)
 			o.sprite.url = 'mods/' + o.sprite.spr1.replace('.tga', '.png').replace(/^.\//, '')
@@ -757,7 +756,7 @@ MUnit.prepareForRender = function(o) {
 		//default age
 		if (is(o.inanimate)) {
 			if (!o.startage) o.startage = '??';
-			if (!o.maxage) o.maxage = '2000??';
+			if (!o.maxage) o.maxage = mult( 400, o.size );			
 			//if (o.E) bonus('earth magic', 'maxage', mult(o.maxage, parseInt(o.E) * 0.5));
 		}
 		else if (is(o.undead)) {
@@ -835,7 +834,7 @@ MUnit.prepareForRender = function(o) {
 		var isldr = is(o.leader);
 		if (n= parseInt(o.A)) {
 			if (isldr) bonus('air magic', 'magicleader', n*5);
-			if (isldr) bonus('air magic', 'shockres', n*2);
+			if (_isCmdr) bonus('air magic', 'shockres', n*2);
 		}
 		if (n= parseInt(o.B)) {
 			if (isldr) bonus('blood magic', 'magicleader', n*5);
@@ -848,7 +847,6 @@ MUnit.prepareForRender = function(o) {
 				bonus('death magic', 'fear', n);						
 			else if (n >= 5)
 				bonus('death magic', 'fear', n-5);
-			
 		}
 		if (n= parseInt(o.S)) {
 			if (isldr) bonus('astral magic', 'magicleader', n*10);
@@ -860,7 +858,7 @@ MUnit.prepareForRender = function(o) {
 		if (n= parseInt(o.F)) {
 			if (isldr) bonus('fire magic', 'leader', n*5);  
 			if (isldr) bonus('fire magic', 'magicleader', n*5);
-			if (isldr) bonus('fire magic', 'fireres', n*2);
+			if (_isCmdr) bonus('fire magic', 'fireres', n*2);
 			
 			if (is(o.fireshield))
 				bonus('fire magic', 'fireshield', n);
@@ -870,13 +868,13 @@ MUnit.prepareForRender = function(o) {
 		if (n= parseInt(o.N)) {
 			if (isldr) bonus('nature magic', 'magicleader', n*5);
 			bonus('nature magic', 'supplybonus', n*10);
-			if (isldr) bonus('fire magic', 'poisonres', n*2);
+			if (_isCmdr) bonus('nature magic', 'poisonres', n*2);
 		}
 		if (n= parseInt(o.W)) {	
 			if (isldr) bonus('water magic', 'magicleader', n*5);
 			if (is(o.cold))
 				bonus('water magic', 'cold', n);
-			if (isldr) bonus('water magic', 'coldres', n*2);
+			if (_isCmdr) bonus('water magic', 'coldres', n*2);
 		}				
 
 		//formatted leadership
@@ -918,6 +916,12 @@ MUnit.prepareForRender = function(o) {
 			bonus('old age', 'ap', mult(o.ap, -0.05 * oldmult));
 		}
 		
+		//afflictions
+		if (o.afflicted) {
+			var affo = DMI.MAffliction.lookup[ o.afflicted ]
+			if (affo) affo.afflictUnit(o, bonus);
+		}
+
 		//mounted def bonus
 		if (is(o.mounted))
 			bonus('mounted', 'def', 3);
@@ -1053,13 +1057,13 @@ MUnit.CGrid = Utils.Class( DMI.CGrid, function() {
 	
 	this.superClass.call(this, 'unit', modctx.unitdata, columns); //superconstructor
 	
-	//replace text with holy icon
-	$(this.domsel+" div.slick-header-column[title=Sacred] span.slick-column-name").replaceWith(Format.AbilityIcon('holy'));
-	
-	
 	//closure scope
 	var that = this;
 	
+	//replace text with holy icon (synchronous call won't work in chrome)
+	setTimeout(function(){
+		$(that.domsel+" div.slick-header-column[id*=sacred] span.slick-column-name").replaceWith(Format.AbilityIcon('holy'));
+	},50);	
 	
 	//selecting a nation
 	$(that.domselp+" select.nation").bind('change', function(e) {
@@ -1158,6 +1162,15 @@ MUnit.CGrid = Utils.Class( DMI.CGrid, function() {
 			if (args.not  ?  r  :  !r)
 				return false;
 		}
+
+		if (args.customjs) {
+			var res = DMI.customFilter(o, args.customjs);
+			if (res == '#ERROR#')
+				args.customjs = null;
+			else if (!res)
+				return false;
+		}
+		
 		return true;
 	}	
 	
@@ -1239,35 +1252,53 @@ MUnit.CGrid = Utils.Class( DMI.CGrid, function() {
 //		return (r2.goldcost - r1.goldcost) || (r2.rcost - r1.rcost);
 //	}	
 	
-	this.init();
-	$(this.domsel+' .grid-container').attachRefMouseEvents();
+	//mouseover events for random magic panes	
+	$(that.domsel+' .grid-container').attachRefMouseEvents();
+	
+	//call filters and update  display
+	//asyncronous to make sure all filter inputs are correctly initialised  
+	setTimeout(function() { 
+		that.init(); 
+	},0);
 });
 MUnit.matchProperty = DMI.matchProperty;
 
 function chainedUnitRef(o, key, refq) {
-	var ref = '<span style="white-space:nowrap;">'+Utils.unitRef(parseInt(o.id))+'</span>';
-	//var ref = Utils.unitRef(parseInt(o.id))+'</span>';
-	//is already in queue?
-	if (Utils.inArray(ref, refq)) {
-		if (ref == refq[0]) {
-			if (refq.length == 2)
-				return '<=> '+refq[1];
-			else
-				refq.push('(this)');			
-		}
-		else {
-			var i=0; while (refq[i]!=ref) i++;
-			refq.push('(repeat from '+i+')');
-		}
-	}
-	else {
-		refq.push(ref);
-		var nextu;
-		if (o[key] && (nextu= modctx.unitlookup[o[key]]))
-			return chainedUnitRef(nextu, key, refq);
-	}
-	var n= 1;
-	return '> '+refq.slice(1).join(' > ');
+    var ref = '<span style="white-space:nowrap;">'+Utils.unitRef(parseInt(o.id), o.linkname)+'</span>';
+    //var ref = Utils.unitRef(parseInt(o.id))+'</span>';
+    //is already in queue?
+    if (Utils.inArray(ref, refq)) {
+            if (ref == refq[0]) {
+                    if (refq.length == 2)
+                            return '⇔&nbsp;'+refq[1];
+                    else
+                            refq.push('‹this›');
+            }
+            else {
+                    var i=0; while (refq[i]!=ref) i++;
+                    refq.push('(repeat from '+i+')');
+            }
+    }
+    else {
+            refq.push(ref);
+            var nextu;
+            if (o[key] && (nextu= modctx.unitlookup[o[key]]))
+                    return chainedUnitRef(nextu, key, refq);
+    }
+    var n= 1;
+    return '⇒&nbsp;'+refq.slice(1).join(' ⇒&nbsp;');
+}
+function twinUnitRef(o, key, return_key) {
+    var shape2 = modctx.unitlookup[ o[key] ];
+    if (shape2) {
+            var ref = '<span style="white-space:nowrap;">'+Utils.unitRef(parseInt(shape2.id), shape2.linkname)+'</span>'
+            if (shape2[return_key] && o == modctx.unitlookup[ shape2[return_key] ]) {
+                    return  '⇔&nbsp;'+ref;
+            }
+            else
+                    return  '⇒&nbsp;'+ref;
+    }
+    return '';
 }
 function list_sites(arr) {
 	//create array of refs
@@ -1302,8 +1333,7 @@ var displayorder2 = Utils.cutDisplayOrder(aliases, formats,
 	'prec',	'precision',	{'0':'0 '},
 
 	'enc',	'encumbrance',	{'0':'0 '},
-	'ap', 	'move',		function(v,o){ return o.mapmove + ' / '+o.ap; },
-	'ldr_str', 'leadership'
+	'ap', 	'move',		function(v,o){ return o.mapmove + ' / '+o.ap; }
 ]);
 var displayorder_cmdr = Utils.cutDisplayOrder(aliases, formats,
 [
@@ -1320,6 +1350,7 @@ var displayorder_pret = Utils.cutDisplayOrder(aliases, formats,
 ]);
 var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 [
+	'ldr_str', 'leadership',
 	'maxage',	'age',	function(v,o){ return o.startage + ' ('+v+')'; },
 	'gcost', 'basecost',
 	
@@ -1457,6 +1488,7 @@ var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 	'digest', 'digest',
 	'incorporate', 'incorporate',
 	'bonusspells', 'bonus spells',
+	'deathparalyze', 'paralyze on death',
 	'special',	'special',
 	'realms', 'realm', function(v,o)
 	{ 
@@ -1474,10 +1506,10 @@ var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 	'secondshape',	'wounded shape',	function(v,o){	return chainedUnitRef(o, 'secondshape', []);	},
 	'shapechange',	'shape changer',	function(v,o){	return chainedUnitRef(o, 'shapechange', []);	},
 	'secondtmpshape','dying shape',	function(v,o){	return chainedUnitRef(o, 'secondtmpshape', []);	},
-	'landshape',	'land shape',	function(v,o){	return chainedUnitRef(o, 'landshape', []);	},
-	'watershape',	'sea shape',	function(v,o){	return chainedUnitRef(o, 'watershape', []);	},
-	'forestshape',	'forest shape',	function(v,o){	return chainedUnitRef(o, 'forestshape', []);	},
-	'plainshape',	'normal shape',	function(v,o){	return chainedUnitRef(o, 'plainshape', []);	},
+	'landshape',	'land shape',	function(v,o){	return twinUnitRef(o, 'landshape', 'watershape');	},
+	'watershape',	'sea shape',	function(v,o){	return twinUnitRef(o, 'watershape', 'landshape');	},
+	'forestshape',	'forest shape',	function(v,o){	return twinUnitRef(o, 'forestshape', 'plainshape');	},
+	'plainshape',	'normal shape',	function(v,o){	return twinUnitRef(o, 'plainshape', 'forestshape');	},
 	'prophetshape',	'prophet shape',	function(v,o){	return chainedUnitRef(o, 'prophetshape', []);	},
 	
 	'domsummon',	'dominion attracts units',	function(v,o){ 
@@ -1613,11 +1645,8 @@ var hiddenkeys = Utils.cutDisplayOrder(aliases, formats,
 var modderkeys = Utils.cutDisplayOrder(aliases, formats,
 [
 	'nametype',	'#nametype',
-	//'dupes',	'duplicates',	function(v,o){ return v.length; },
-	
-	'ressize',	'#ressize',
-	'eyes',		'#eyes',
-	'sprite',	'sprite', function(v,o){ return v && v.url; }
+	'montag',	'#montag',
+	'eyes',		'#eyes'
 ]);
 var ignorekeys = {
 	modded:1,
@@ -1646,7 +1675,8 @@ var ignorekeys = {
 	gcom:1,
 	watt:1,
 	slowrec:1,
-	montag:1,
+	sprite:1,
+	ressize:1,
 	
 	researchbonus:1, listed_mpath:1, 
 	n_domsummon:1, n_makemonster:1, n_autosum:1, n_summon:1,	
@@ -1665,11 +1695,11 @@ var ignorekeys = {
 	summonedby:1, createdby:1,
 
 	//common fields
-	name:1,descr:1,
+	name:1,linkname:1,descr:1,
 	searchable:1, renderOverlay:1, matchProperty:1
 };	
 
-MUnit.renderOverlay = function(o) {
+MUnit.renderOverlay = function(o, isPopup) {
 	MUnit.prepareForRender(o);		
 	var descrpath = 'gamedata/unitdescr/';
 	
@@ -1678,51 +1708,35 @@ MUnit.renderOverlay = function(o) {
 	h+='<div class="unit overlay-contents">';
 	
 	//header
-	h+='	<div class="overlay-header" title="unit id: '+o.id+'"> ';
+	h+='	<div class="overlay-header" title="unit id:'+o.id+'"> ';
 	h+=' 		<input class="overlay-pin" type="image" src="images/PinPageTrns.png" title="unpin" />';
-	// if (o.fixedname && o.fixedname != 'Random')
-	// 	h+='	<h2>"'+o.fixedname + '" - '+o.name+'</h2> ';
-	// else
-	// 	h+='	<h2>'+o.name+'</h2> ';
-	
-	
+
 	h+='		<h2>'+o.fullname+'</h2> ';
 	
 	//nation/commander info
-	var nname = o.nation ?  Utils.nationRef(o.nation.id) : o.nationname;
-	var ntitle = '';
-	if (o.nations) {
-		var nnlist = []; 
-		for (var k in o.nations) {
-			nname = Utils.nationRef( o.nations[k].id );//.fullname;
-			nnlist.push(o.nations[k].shortname);
-		}
-		if (nnlist.length > 1) {
-			nname = o.nationname.replace('various', 'various nations');
-			ntitle = 'title="'+nnlist.join(',  \n')+'"';
-		}
-	}
-	if (nname || o.typechar) {
-		h+='	<p style="float:right; clear:right">'+(o.typechar || '&nbsp;')+'</p> ';
-		h+='	<p '+ntitle+'>'+(nname || '&nbsp;')+'</p> ';
+	var nref = DMI.MNation.nationUnitRefs(o.nations);
+	if (nref || o.typechar || o.holy == 1) {
+		h+='	<p style="float:right; clear:right;">&nbsp;'+(o.holy == 1 ? Format.AbilityIcon('holy', 'sacred') : '')+'</p> ';
+		h+='	<p style="float:right;">'+(o.typechar ? o.typechar : '')+'</p> ';
+		h+='	<p>'+(nref || '&nbsp;')+'</p> ';
 	}
 	h+='	</div>';
-			
+
 	//body
-	h+='	<div class="overlay-main">';
+	h+='	<div class="overlay-main" style="clear:both;">';
 	h+='	<img style="float:right; clear:right;" src="'+o.sprite.url+'" />';
 	h+='	<div style="float:right; clear:right; max-width:50%;">';
 	var tags = [];
 	for (var i=0; i<o.weapons.length; i++)
 		tags.push(Utils.wpnRef(o.weapons[i].id));
 	if (tags.length)
-		h+='	<p>Weapons:<br />'+ tags.join('<br /> ') +'</p>';		
+		h+='	<p>Weapons<span class="internal-inline"> [weapon]</span>:<br />'+ tags.join('<br /> ') +'</p>';		
 	
 	var tags = [];
 	for (var i=0; i<o.armor.length; i++)
 		tags.push(Utils.armorRef(o.armor[i].id));
 	if (tags.length)
-		h+='	<p>Armor:<br />'+ tags.join('<br /> ') +'</p>';
+		h+='	<p>Armor<span class="internal-inline"> [armor]</span>:<br />'+ tags.join('<br /> ') +'</p>';
 	h+='	</div>';	
 	
 	
@@ -1731,12 +1745,10 @@ MUnit.renderOverlay = function(o) {
 	h+= 			Utils.renderDetailsRows(o, displayorder, aliases, formats);
 	h+=' 		</table> ';
 	
-	h+='		<table class="overlay-table"> ';
+	h+='		<table class="overlay-table" style="margin-bottom:0px"> ';
 	h+= 			Utils.renderDetailsRows(o, displayorder2, aliases, formats);
 	h+=' 		</table> ';
-
-	h+='		<table class="overlay-table"> ';
-	// h+= 			Utils.renderDetailsRows(o, displayorder_cmdr, aliases, formats, isCmdr(o) ? '' : 'hidden-row');
+	h+='		<table class="overlay-table" style="margin-top:0px"> ';
 	h+= 			Utils.renderDetailsRows(o, displayorder3, aliases, formats);
 	h+= 			Utils.renderStrangeDetailsRows(o, ignorekeys, aliases, 'strange');
 	h+=' 		</table> ';
@@ -1746,37 +1758,30 @@ MUnit.renderOverlay = function(o) {
 	
 	
 	//commander details
-	h+='		<table class="overlay-table commander '+(isCmdr(o) ? '' : 'hidden-block')+'"> ';
+	h+='		<table class="overlay-table commander '+(isCmdr(o) ? '' : 'hidden-block')+'" style="clear:both;"> ';
 	h+= 			Utils.renderDetailsRows(o, displayorder_cmdr, aliases, formats);
 	h+= 			Utils.renderDetailsRows(o, modderkeys, aliases, formats, 'modding-row');
 	h+='		</table> ';
 	
-	//pretender details
-	// h+='		<table class="overlay-table pretender '+(o.type=='pretender' ? '' : 'hidden-block')+'"> ';
-	// h+= 			Utils.renderDetailsRows(o, displayorder_pret, aliases, formats);
-	// h+='		</table> ';
-
+	//modded
 	if (o.modded) {
-		h+='	<div class="modded hidden-block">Modded<span class="internal-inline"> [modded]</span>:<br />';
-		h+=		o.modded.replace('ERROR:', '<span style="color:red;font-weight:bold;">ERROR:</span>');
-		h+='	</div>';
+		h+='	<div class="modded hidden-block">' + Utils.renderModded(o) +'</div>';
 	}
 	
 	//footer
 	h+='	</div>';
 	h+='	<div class="overlay-footer">';
+	
 	//wikilink
-	h+='		<div class="overlay-wiki-link non-content">';
-	// h+='			<a class="select-text-button hidden-inline" href="javascript:void(0);">[text]</a>';
-	h+='			<a href="http://dom3.servegame.com/wiki/'+o.name.replace(/ /g, '_')+'">[wiki]</a>';
-	h+='		</div>';
-
+	if (!o.moddedname)
+		h+='	<div class="overlay-wiki-link non-content">' + Utils.wikiLink(o.name, o.subname) + '</div>';
+		
 	//source details
 	var isfree = false;
 	var noupkeep = false;
 	if (o.summonedby) {
 		for (var i=0, refarr=[], s; s= o.summonedby[i]; i++) 
-			refarr.push(Utils.spellRef(s.id)); 
+			refarr.push(Utils.spellRef(s.id) +'&nbsp;<span class="tiny flag">('+s.research+')</span>'); 
 		h+='	<p class="firstline">summoned with '+refarr.join(', ')+'</p>';
 		//isfree = true;
 	}
@@ -1801,6 +1806,7 @@ MUnit.renderOverlay = function(o) {
 			isfree = true;
 		}
 	}	
+
 	//cost line
 	var gunit = ' gold';
 	var runit = ' resources <span class="internal-inline"> [rcost]</span>';

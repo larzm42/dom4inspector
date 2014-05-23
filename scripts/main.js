@@ -5,22 +5,25 @@ if (!console) var console={ log:function(){} };
 //$(window).bind('beforeunload', function(){ return ' '; });
 
 
+//read options from querystring (ignore cookie)$('#showmodcmds:checked').prop('checked'
+//DMI.Options['Show mod cmds'] = (location.search.indexOf('showids')!=-1 && location.search.indexOf('showmodcmds=1')!=-1);
+DMI.Options['Ignore mods'] = (location.search.indexOf('showids=1')!=-1 && location.search.indexOf('ignoremods=1')!=-1);
+DMI.Options['Custom js'] = location.search.indexOf('customjs=1')!=-1;
 
 //on page load
 $(function() {
 	console.log('D3MI VERSION: '+versionCode);
 	
-	//load data
-	DMI.selectMods(
-		//on completion
-		initGrids
-	);
+	//begin the loading process (loaddata.js).. 
+	DMI.continueLoading();
 });
 
-
-function initGrids() {
-	//all data is ready
+//called from loaddata.js once all data is loaded
+DMI.initGrids = function() {
+	if (!DMI.Options['Custom js'])
+		$('.customjs').hide();
 	
+	//data dump
 	if (location.search.indexOf('dumpunitkeys') != -1) {
 		var keys = null;
 		var res = /dumpunitkeys=([^\&]*)/.exec(location.search);
@@ -38,7 +41,7 @@ function initGrids() {
 			//add style
 			$( "<style>.hidden-block { display:block; } tr.hidden-row { display:table-row; } .hidden-inline {display:inline; }</style>" )
 			.appendTo( "head" );
-			
+		
 			$(".grid-container").css({left:'320px'})
 			$("div.static-overlay-container").css({width:'320px'})
 			
@@ -51,6 +54,9 @@ function initGrids() {
 
 			DMI.Options['Show ids'] = 1;
 			PaneManager.option_drag_anywhere = 0;
+			
+			// DMI.Options['Custom js'])
+			// 	$('.customjs').show();
 		}
 		else {
 			$( "<style>.hidden-block, tr.hidden-row, .hidden-inline { display:none; }</style>" ).appendTo( "head" );
@@ -69,11 +75,19 @@ function initGrids() {
 			
 			//clear advanced filters
 			$("div.hidden-block div.panel input.clear-filters-btn").trigger('click');
+			
+			//go to valid page
+			if ($("#wpn-page:visible, #armor-page:visible").length)
+				$("#item-page-button").trigger('click');
+			
+			// if (DMI.Options['Custom js'])
+			// 	$('.customjs').hide();
 		}
 		showOrHideModdingInfo();
 		showOrHideKeys();
+		showOrHideModCmds();
 	}	
-	$('#showids').click(showOrHideIds);
+	$('#showids').click( function(){setTimeout(showOrHideIds,0);} ); //asynchronous call as its a bit sluggish
 	
 	function showOrHideModdingInfo() {
 		if ($('#showmoddinginfo').saveState().is(':checked') && DMI.Options['Show ids']) {
@@ -93,7 +107,7 @@ function initGrids() {
 		}
 		//showOrHideKeys();
 	}	
-	$('#showmoddinginfo').click(showOrHideModdingInfo);
+	$('#showmoddinginfo').click( function(){setTimeout(showOrHideModdingInfo,0);} ); //asynchronous call as its a bit sluggish
 	
 	
 	function showOrHideKeys() {
@@ -111,23 +125,37 @@ function initGrids() {
 		}
 		// showOrHideKeys();
 	}	
-	$('#showkeys').click(showOrHideKeys);
+	$('#showkeys').click( function(){setTimeout(showOrHideKeys,0);} );  //asynchronous call as its a bit sluggish
 	
 	
-	//advanced options
-	// function showOrHideKeys() {
-	// 	if ($('#showkeys').saveState().is(':checked') && DMI.Options['Show ids'])
-	// 		DMI.Options['Show database keys'] = 1;
-	// 	else
-	// 		DMI.Options['Show database keys'] = 0;
+	//fix options loaded from querystring
+	//  if (DMI.Options['Show mod cmds'])
+	//  	$('#showmodcmds').prop('checked', true);
+	//  else
+	//  	$('#showmodcmds').prop('checked', false);
+	
+	// function showOrHideModCmds() {
+	// 	$('#showmodcmds').saveState();			
+	// 	window.location.href = $('#permalink').prop('href');
 	// }
-	// $('#showkeys').click(showOrHideKeys);
-
+	// $('#showmodcmds').click(showOrHideModCmds);
+	
+	
 	function showOrHideModCmds() {
-		$('#showmodcmds').saveState();			
-		window.location.href = $('#permalink').prop('href');
-	}
-	$('#showmodcmds').click(showOrHideModCmds);
+		if ($('#showmodcmds').saveState().is(':checked') && DMI.Options['Show ids']) {
+			$('a.show-mod-commands').trigger('click');
+			DMI.Options['Show mod cmds'] = 1;
+		}
+		else {
+			$('a.hide-mod-commands').trigger('click');
+			DMI.Options['Show mod cmds'] = 0;
+		}
+		// showOrHideKeys();
+	}	
+	$('#showmodcmds').click( function(){setTimeout(showOrHideModCmds,0);} );  //asynchronous call as its a bit sluggish
+	
+	
+	
 	
 	// function toggleIgnoreModCmds() {
 	// 	$('#ignoremodcmds').saveState();			
@@ -288,18 +316,93 @@ function initGrids() {
 		DMI.Utils.saveState();
 	});
 	
-	
-	//set list of loaded mods (clears loading msg)
-	if (DMI.modctx.loadedmods.length)
-		$('#page-status').html(DMI.modctx.loadedmods.join(',<br /> '));
-	else 
-		$('#page-status').html('No mods loaded');
-	
-	
+	DMI.onKeyDown = function(e){
+		//console.log('keyCode: '+e.keyCode);
+		
+		//open first result on enter
+		if (e.which == 13) {
+			if (spellgrid) spellgrid.detachShowingDetails();
+			if (itemgrid) itemgrid.detachShowingDetails();
+			if (unitgrid) unitgrid.detachShowingDetails();
+			if (sitegrid) sitegrid.detachShowingDetails();
+			if (wpngrid) wpngrid.detachShowingDetails();
+			if (armorgrid) armorgrid.detachShowingDetails();
+		}
+		//remove last popup on escape
+		//or clear filters if all closed
+		else if (e.which == 27) {
+			var highest = null, highestZIndex = -1;
+			$('div.overlay.popup').each(function(){
+				var zIndex = parseInt(this.style.zIndex);
+				if (zIndex > highestZIndex) {
+					highest = this;
+					highestZIndex = zIndex;
+				}					
+			});
+			if (highest) {
+				$(highest).find('.overlay-pin').trigger('click');
+				$('input.search-box:visible').focus();
+			}
+			else {
+				$('input#global-clear-filters-btn').trigger('click');
+				$('input.search-box:visible').focus();
+			}
+		}
+		//ctrl+left/right changes tab
+		else if (e.ctrlKey) {
+			if (e.which == 37) {	
+				if ($("#item-page:visible").length) {
+					if ($("#armor-page-button:visible").length)
+						$("#armor-page-button").trigger('click');
+					else 
+						$("#unit-page-button").trigger('click');
+				}
+				else if ($("#spell-page:visible").length)
+					$("#item-page-button").trigger('click');
+				
+				else if ($("#unit-page:visible").length) {
+					$("#spell-page-button").trigger('click');				
+				}
+				else if ($("#site-page:visible").length) {
+					$("#unit-page-button").trigger('click');				
+				}
+				else if ($("#wpn-page:visible").length)
+					$("#site-page-button").trigger('click');
+				
+				else if ($("#armor-page:visible").length)
+					$("#wpn-page-button").trigger('click');
+			}
+			else if (e.which == 39) {
+				if ($("#item-page:visible").length)
+					$("#spell-page-button").trigger('click');
+				
+				else if ($("#spell-page:visible").length)
+					$("#unit-page-button").trigger('click');
+				
+				else if ($("#unit-page:visible").length)
+					$("#site-page-button").trigger('click');
+
+				else if ($("#site-page:visible").length) {
+					if ($("#wpn-page-button:visible").length)
+						$("#wpn-page-button").trigger('click');
+					else
+						$("#item-page-button").trigger('click');				
+				}
+				else if ($("#wpn-page:visible").length)
+					$("#armor-page-button").trigger('click');
+				
+				else if ($("#armor-page:visible").length)
+					$("#item-page-button").trigger('click');
+			}
+		}
+	}
+	$('html').on('keydown', DMI.onKeyDown);
+		
 	//wire up unpin-all btn
 	$("#global-unpin-all-btn").click(function(e) {
 		//trigger click on every pin
 		$('input.overlay-pin:visible').trigger('click');
+		$('input.search-box:visible').focus();
 	});
 	//show or hide unpin all button on pane changes
 	PaneManager.onUpdate( function() {
@@ -322,14 +425,4 @@ function initGrids() {
 
 	//save state to cookie on pane changes
 	PaneManager.onUpdate(DMI.Utils.saveState);
-
-	//fix options loaded from querystring
-	if (! DMI.Options['Show mod cmds']) $('#showmodcmds:checked').prop('checked', false);
-	// if (! DMI.Options['Ignore mod cmds']) $('#ignoremodcmds:checked').prop('checked', false);
 }
-
-//read options from querystring (ignore cookie)
-DMI.Options['Show mod cmds'] = (location.search.indexOf('showids')!=-1 && location.search.indexOf('showmodcmds')!=-1);
-DMI.Options['Ignore mods'] = (location.search.indexOf('showids')!=-1 && location.search.indexOf('ignoremods')!=-1);
-	
-

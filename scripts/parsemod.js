@@ -1800,13 +1800,20 @@ modctx.parseMod = function(str, modnum, modname) {
 			}
 			
 			//debug.. attaches relevant mod commands to data (will show on details pane)
-			if (DMI.Options['Show mod cmds'] && cmd && cmd!='descr') {
-				var types =  ['unit', 'spell', 'wpn', 'item', 'armor', 'nation', 'site'];				
+			if (cmd) {
+				if (cmd == 'descr')
+					cstr = cstr.substr(0,30)+'...';
+				var types =  ['unit', 'spell', 'wpn', 'item', 'armor', 'nation', 'site'];
+				var ignorecmds = { selectmonster:1, selectspell:1, selectweapon:1, selectitem:1, selectarmor:1, selectnation:1 }
+				
 				for (var j=0, type; type=types[j]; j++) {
-					if (modctx[type] && cmd!='select'+type) {
-						if (emsg) modctx[type].modded += emsg.split('\n')[0] +'<br />!! ';
+					if (modctx[type] && !ignorecmds[cmd]) {
+						if (emsg)
+							modctx[type].modded += emsg.split('\n')[0] +'<br />!! ';
 
-						if (!modctx[type].modded) modctx[type].modded = "";
+						if (!modctx[type].modded) 
+							modctx[type].modded = "";
+						
 						modctx[type].modded += modnum + ':' + linenum +'&nbsp;&nbsp;'+cstr+'<br />';
 						//modctx.item.cmds += JSON.stringify(args)+'<br />';
 					}

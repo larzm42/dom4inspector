@@ -24,7 +24,6 @@ MSite.ritual_string = {
 
 //////////////////////////////////////////////////////////////////////////
 // PREPARE DATA
-// PREPARE DATA
 //////////////////////////////////////////////////////////////////////////
 
 MSite.initSite = function(o) {
@@ -374,8 +373,11 @@ MSite.CGrid = Utils.Class( DMI.CGrid, function() {
 		//exit bound scope
 	}();
 
-	//final init
-	this.init();
+	//call filters and update  display
+	//asyncronous to make sure all filter inputs are correctly initialised  
+	setTimeout(function() { 
+		that.init(); 
+	},0);
 });
 MSite.matchProperty = function(o, key, comp, val) {
 	if (DMI.matchProperty(o, key, comp, val))
@@ -414,13 +416,13 @@ function list_units(arr, o) {
 			if (Math.round(unit.id) == uid && unit.nations && o.nations) {
 				for (var ii=0,natid; natid=o.nations[ii]; ii++) {
 					if (unit.nations[natid]) {
-						tokens.push( Utils.ref('unit '+unit.id, unit.fullname || unit.name) );
+						tokens.push( Utils.unitRef(unit.id, unit.fullname || unit.name) );
 						break;
 					}
 				}
 				break;
 			} else if (Math.round(unit.id) == uid) {
-				tokens.push( Utils.ref('unit '+unit.id, unit.fullname || unit.name) );
+				tokens.push( Utils.unitRef(unit.id, unit.fullname || unit.name) );
 				break;
 			}
 		}
@@ -586,13 +588,11 @@ MSite.renderOverlay = function(o) {
 	h+= 			Utils.renderDetailsFlags(o, flagorder, aliases, formats);
 	h+= 			Utils.renderStrangeDetailsRows(o, ignorekeys, aliases, 'strange');
 	
+	//modded
 	if (o.modded) {
-		h+='	<tr class="modded hidden-row"><td colspan="2">Modded<span class="internal-inline"> [modded]</span>:<br />';
-		h+=		o.modded.replace('ERROR:', '<span style="color:red;font-weight:bold;">ERROR:</span>');
-		h+='	</td></tr>';
-	}
+		h+='		<tr class="modded hidden-row"><td colspan="2">' + Utils.renderModded(o) +'</td></tr>';
+	}	
 	h+='		</table> ';
-	
 	h+='	</div>';
 	
 	//footer
@@ -600,12 +600,9 @@ MSite.renderOverlay = function(o) {
 	
 	//wikilink
 	h+='		<div class="overlay-wiki-link non-content">';
-	// h+='			<a class="select-text-button hidden-inline" href="javascript:void(0);">[text]</a>';
 	h+='			<a href="http://dom3.servegame.com/wiki/'+o.name.replace(/ /g, '_')+'">[wiki]</a>';
 	h+='		</div>';
-
 	h+='	</div> ';
-	
 	h+='</div> ';
 	
 	return h;

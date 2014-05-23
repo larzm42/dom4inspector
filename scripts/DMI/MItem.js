@@ -12,7 +12,6 @@ var modconstants = DMI.modconstants;
 
 //////////////////////////////////////////////////////////////////////////
 // PREPARE DATA
-// PREPARE DATA
 //////////////////////////////////////////////////////////////////////////
 
 MItem.initItem = function(o) {
@@ -39,6 +38,7 @@ MItem.prepareData_PostMod = function() {
 		//convert to numbers (for column ordering)
 		//doesn't seem to cause any further problems..
 		o.id = parseInt(o.id);
+		o.name = o.name || '(undefined)';
 		o.constlevel = parseInt(o.constlevel);
 		
 		if (o.descr)
@@ -56,16 +56,16 @@ MItem.prepareData_PostMod = function() {
 		} else {
 			o.sprite = 'images/items/item'+o.id+'.png';
 		}
-		
+			
 		//combine linked armor stats
 		if (o.armor) {
 			var a = modctx.armorlookup[o.armor];
 			if (!a) {
-				console.log( 'armor '+o.armor+' not found (item '+o.id+')');
+				console.log( 'armor "'+o.armor+'" not found (item '+o.id+')');
 				continue;
 			}
 			//backlink on armor
-			a.used_by.push( Utils.itemRef(o.id) + ' (item)' );
+			a.used_by.push( Utils.itemRef(o.id) + '(item)' );
 			o.armor = a;
 			
 			o.prot = a.prot
@@ -99,7 +99,7 @@ MItem.prepareData_PostMod = function() {
 		//lookup weapon
 		if (o.weapon) {
 			w = modctx.wpnlookup[o.weapon];
-			if (!w) console.log( 'weapon '+o.weapon+' not found (item '+o.id+')');
+			if (!w) console.log( 'weapon "'+o.weapon+'" not found (item '+o.id+')');
 			//backlink on wpn
 			else w.used_by.push( Utils.itemRef(o.id) + ' (item)' ); 
 			o.weapon = w;
@@ -115,7 +115,7 @@ MItem.prepareData_PostMod = function() {
 			
 		if (o.boosters)
 			o.boosters = '+'+o.boosters;
-
+		
 		if (o.spell) {
 			var spell = DMI.modctx.spelllookup[o.spell];
 			if (o.type=='Ritual') {
@@ -131,8 +131,8 @@ MItem.prepareData_PostMod = function() {
 				o.startbattlespell = o.autospell;
 			}
 		}
+		
 	}
-	
 }
 
 
@@ -150,10 +150,10 @@ function itemConFormatter(row, cell, value, columnDef, dataContext) {
 MItem.CGrid = Utils.Class( DMI.CGrid, function() {
 	//grid columns
 	var columns = [
-		{ id: "name",     width: 145, name: "Item Name", field: "name", sortable: true },
-		{ id: "type",     width: 60, name: "Type", field: "type", sortable: true },
+		{ id: "name",     width: 145, name: "Item Name", field: "name", sortable: true, sortCmp: 'text' },
+		{ id: "type",     width: 60, name: "Type", field: "type", sortable: true, sortCmp: 'text' },
 		{ id: "constlevel",      width: 70, name: "Research", field: "constlevel", sortable: true, formatter: itemConFormatter },
-		{ id: "mpath",    width: 70, name: "Path req", field: "mpath", sortable: true, formatter: DMI.GridFormat.Paths },
+		{ id: "mpath",    width: 70, name: "Path req", field: "mpath", sortable: true, formatter: DMI.GridFormat.Paths, sortCmp: 'text' },
 		{ id: "boosters", width: 165, name: "Boosters", field: "boosters", sortable: true, formatter: DMI.GridFormat.Booster }
 	];
 	
@@ -207,13 +207,21 @@ MItem.CGrid = Utils.Class( DMI.CGrid, function() {
 		}
 		
 		//item type
-		if (args.type && !( args.type[o.type] || args.type[o.wpnclass] ))
+		if (args.type && !(args.type[o.type] || args.type[o.wpnclass]))
 				return false;
 
 		//key =~ val
 		if (args.key) {
 			var r = o.matchProperty(o, args.key, args.comp, args.val);
 			if (args.not  ?  r  :  !r)
+				return false;
+		}
+				
+		if (args.customjs) {
+			var res = DMI.customFilter(o, args.customjs);
+			if (res == '#ERROR#')
+				args.customjs = null;
+			else if (!res)
 				return false;
 		}
 		return true;
@@ -289,8 +297,11 @@ MItem.CGrid = Utils.Class( DMI.CGrid, function() {
 		//exit bound scope
 	}();
 
-	//final init
-	this.init();
+	//call filters and update  display
+	//asyncronous to make sure all filter inputs are correctly initialised  
+	setTimeout(function() { 
+		that.init(); 
+	},0);
 });
 MItem.matchProperty = function(o, key, comp, val) {
 	if (key=='ap') key = 'armorpiercing';
@@ -309,9 +320,18 @@ MItem.matchProperty = function(o, key, comp, val) {
 
 var aliases = {};
 var formats = {};
-var displayorder = DMI.Utils.cutDisplayOrder(aliases, formats,
+var displayorder_armor = DMI.Utils.cutDisplayOrder(aliases, formats,
 [
 //	dbase key	displayed key		function/dict to format value
+	'protbody',	'protection, body',
+	'prothead',	'protection, head',
+	'protshield',	'protection, shield',
+	'def',		'defence',		Format.Signed,
+	'parry',	'parry',
+	'enc',		'encumbrance'
+]);			
+var displayorder2 = DMI.Utils.cutDisplayOrder(aliases, formats,
+[
 	'boosters',	'magic bonus',		Format.Booster,
 	'pen',		'magic penetration',
 
@@ -337,16 +357,10 @@ var displayorder = DMI.Utils.cutDisplayOrder(aliases, formats,
 	'str',		'strength',		Format.Signed,
 	'reinvigoration',		'reinvigoration',
 	'att',		'attack',		Format.Signed,
-			
-	'protbody',	'protection, body',
-	'prothead',	'protection, head',
-	'protshield',	'protection, shield',
-	'def',		'defence',		Format.Signed,
-	'parry',	'parry',
-	'enc',		'encumbrance',
+
 	'invul',	'invulnerable',
 	'darkvision',	'darkvision',
-	
+
 	'airshield',	'air shield',		Format.Percent,
 	'mr',		'magic resistance',	Format.Signed,
 	'regeneration',	'regeneration',		Format.Percent,
@@ -552,7 +566,7 @@ MItem.renderOverlay = function(o) {
 	h+='<div class="item overlay-contents"> ';
 	
 	//header
-	h+='	<div class="overlay-header" title="item id: '+o.id+'"> ';
+	h+='	<div class="overlay-header" title="item id:'+o.id+'"> ';
 	h+='		<div class="item-image" style="background-image:url(\''+o.sprite+'\');">&nbsp;</div> ';
 	h+='		<h2>'+o.name+'</h2> ';
 	h+='		<p>'+formatItemType[o.type]+' '+formatItemCon[o.constlevel]+'</p>';
@@ -563,22 +577,29 @@ MItem.renderOverlay = function(o) {
 	h+=' 		<input class="overlay-pin" type="image" src="images/PinPageTrns.png" title="unpin" />';
 	h+='		<table class="overlay-table"> ';
 	h+= 			Utils.renderDetailsRows(o, hiddenkeys, aliases, formats, 'hidden-row');
+
+	//armor
+	h+= 			Utils.renderDetailsRows(o, displayorder_armor, aliases, formats);
+
+	//armor modded
+	if (o.armor && o.armor.modded) {
+		h+='		<tr class="modded hidden-row"><td colspan="2">' + Utils.renderModded(o.armor) +'</td></tr>';
+	}
+	h+= 			Utils.renderDetailsRows(o, displayorder2, aliases, formats);
 	h+= 			Utils.renderDetailsRows(o, modderkeys, aliases, formats, 'modding-row');
-	h+= 			Utils.renderDetailsRows(o, displayorder, aliases, formats);
 	h+= 			Utils.renderDetailsFlags(o, flagorder, aliases, formats);
 	h+= 			Utils.renderStrangeDetailsRows(o, ignorekeys, aliases, 'strange');
-	
+
+	//modded
 	if (o.modded) {
-		h+='	<tr class="modded hidden-row"><td colspan="2">Modded<span class="internal-inline"> [modded]</span>:<br />';
-		h+=		o.modded.replace('ERROR:', '<span style="color:red;font-weight:bold;">ERROR:</span>');
-		h+='	</td></tr>';
+		h+='		<tr class="modded hidden-row"><td colspan="2">' + Utils.renderModded(o) +'</td></tr>';
 	}
 	h+='		</table> ';
 	
 	//weapon
 	if (o.weapon ){//&& modctx.wpnlookup[o.weapon]) {
 		var isImplicitWpn = (o.type == '1-h wpn' || o.type == '2-h wpn'); 
-		h+= DMI.MWpn.renderWpnTable(o.weapon, isImplicitWpn);
+		h+= DMI.MWpn.renderWpnTable(o.weapon, isImplicitWpn, true);
 	} 
 	h+='	</div>';
 	
@@ -586,10 +607,8 @@ MItem.renderOverlay = function(o) {
 	h+='	<div class="overlay-footer">';
 	
 	//wikilink
-	h+='		<div class="overlay-wiki-link non-content">';
-	// h+='			<a class="select-text-button hidden-inline" href="javascript:void(0);">[text]</a>';
-	h+='			<a href="http://dom3.servegame.com/wiki/'+o.name.replace(/ /g, '_')+'">[wiki]</a>';
-	h+='		</div>';
+	if (!o.moddedname)
+		h+='	<div class="overlay-wiki-link non-content">' + Utils.wikiLink(o.name) + '</div>';
 
 	//cost
 	if (o.constlevel == '12')

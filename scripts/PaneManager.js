@@ -13,7 +13,7 @@ PM.option_drag_anywhere = false;
 //ref must be a string that explains how to render this pane (eg: object id)
 PM.refLink = function(ref, text) {
 	var reftag =  '<input value="'+ref+'" type="hidden" />';
-	return '<a class="ref" href="javascript:return false;">'+reftag+text+'</a>';
+	return '<a class="ref" style="cursor:pointer;">'+reftag+text+'</a>';
 }
 
 //must be implemented externally, should return html.
@@ -46,12 +46,22 @@ $.fn.attachRefClickEvents = function() {
 			if (PM.getOpenPanes(ref).focusAndHighlight().length)
 				return false;
 			
+			//get position of mouseover pane
+			var $mouseover = $('#floating-overlay-child:visible');
+			var position = null;
+			if ($mouseover.length) {
+				position = $mouseover.offset();
+				//position.right = position.left + $mouseover.outerWidth();
+				//position.left = null;
+			}	
+			
 			//hide mouseover pane
 			$('#floating-overlay-child:visible').hide();
 			
 			//create new popup
-			PM.openPane(ref);
+			PM.openPane(ref, position);
 			
+			e.preventDefault();
 			return false;
 		});
 	});
@@ -76,15 +86,20 @@ $.fn.attachRefMouseEvents = function() {
 			//position alongside this overlay (below > right > left)
 			var pos0 =  $pane.offset();
 			var pos0_bot = ($pane.find('div.pane-extension').offset() || {}).top;
-			if (pos0_bot && pos0_bot + $fchild.outerHeight() < $(window).outerHeight()) {
-				//place below overlay
-				$fchild.css({ top: pos0_bot,  left: pos0.left });
-			}	
-			else {  //mouse y. shift up till on screen 
-				var pos_top = evt.pageY || pos0.top;
+			// if (pos0_bot && pos0_bot + $fchild.outerHeight() < $(window).outerHeight()) {
+			// 	//place below overlay
+			// 	$fchild.css({ top: pos0_bot,  left: pos0.left });
+			// }	
+			// else {  //mouse y
+				var pos_top = pos0.top; //align tops
+				if (evt.pageY && (pos_top + $fchild.outerHeight()) < evt.pageY)
+					pos_top = evt.pageY; //align to mouse if totally above mouse height
+				
 				var maxpos_top = $(window).outerHeight() - $fchild.outerHeight()
 				if (pos_top > maxpos_top)
 					pos_top = maxpos_top;
+				if (pos_top < 0)
+					pos_top = 0;
 				
 				//try right then left
 				var pos_left = pos0.left +$pane.outerWidth() -4; //overlap borders
@@ -92,7 +107,7 @@ $.fn.attachRefMouseEvents = function() {
 					pos_left = pos0.left -$fchild.outerWidth() +4;
 				}				
 				$fchild.css({ top: pos_top, 	left: pos_left });
-			}
+			// }
 			//slides open from top
 			$fchild.hide().show("slide", {direction: "up", easing: 'swing', duration: 'fast' });
 		});
@@ -110,6 +125,9 @@ $.fn.attachRefMouseEvents = function() {
 	return this;
 }
 
+PM.closePopups = function() {
+	$('#floating-overlay-child:visible').hide();
+}
 
 
 
@@ -134,7 +152,7 @@ var maxZIndex = 1000;
 
 
 PM.openPane = function(ref, position) {
-	var html = PM.renderPane(ref);
+	var html = PM.renderPane(ref, true);
 	if (!html) return;
 	
 	//hidden field with ref to recreate (or find) this overlay
@@ -162,7 +180,7 @@ PM.openPane = function(ref, position) {
 	
 	
 	//no text selection cursor
-	$p.find('.overlay-header').css({ cursor: 'default' });
+	//$p.find('.overlay-header').css({ cursor: 'default' });
 	
 	//focus on mouse event
 	$p.filter('.popup')
@@ -170,16 +188,17 @@ PM.openPane = function(ref, position) {
 		$p.css('zIndex', ++maxZIndex);
 		triggerCallbacks();
 		
-		if (e.ctrlKey || PM.option_drag_anywhere)
-			$p.draggable({ handle: '' });
+		if (e.ctrlKey) //disable dragging if ctrl key down
+			$p.draggable({cancel: '.overlay'});
 		else
-			$p.draggable({ handle: '.overlay-header' });
+			$p.draggable({cancel: false});
+			
 	})
-	.mousemove(function(e){
-		if (e.ctrlKey || PM.option_drag_anywhere)
-			$p.css({ cursor: 'default' }); //arrow
-		else
+	.bind('mousemove keydown', function(e){
+		if (e.ctrlKey || e.keycode==17)
 			$p.css({ cursor: 'text' }); //text selection cursor
+		else
+			$p.css({ cursor: 'default' }); //arrow
 	})
 	.draggable({
 		drag: function( ev, dd ){

@@ -291,9 +291,6 @@ MNation.prepareData_PostMod = function() {
 			//set nation value on summoned units
 			var arr = s.summonsunits || [];
 			for (var i=0, u; u= arr[i]; i++) {
-				if (u.typechar == 'combat summon' || u.typechar == 'combat summon (cmdr)')
-					continue;
-				
 		 		var basekey;
 		 		if (u.typeclass == 'Unit') {
 		 			basekey = 'unit (Summon)';
@@ -309,14 +306,7 @@ MNation.prepareData_PostMod = function() {
 				u.nations = u.nations || {};
 				u.nations[o.id] = o;
 				u.eracodes = u.eracodes || {}; 
-				u.eracodes[o.eracode] = true;
-				
-				//nationname
-				var ncount=0; for (var k in u.nations) ncount++;
-				if (ncount == 1)
-					u.nationname = o.shortname;
-				else
-					u.nationname = 'various ('+ncount+')';
+				u.eracodes[o.eracode] = true;				
 			}
 		}
 		
@@ -339,13 +329,6 @@ MNation.prepareData_PostMod = function() {
 			u.nations[o.id] = o;
 			u.eracodes = u.eracodes || {}; 
 			u.eracodes[o.eracode] = true;
-			
-			//nationname
-			var ncount=0; for (var k in u.nations) ncount++;
-			if (ncount == 1)
-				u.nationname = o.shortname;
-			else
-				u.nationname = 'various ('+ncount+')';
 		}
 		
 		//units from sites
@@ -493,9 +476,46 @@ MNation.prepareData_PostMod = function() {
 	DMI.MUnit.prepareData_PostNationData();
 }
 
+MNation.nationSummary = function(hsh) {
+	var names = [];
+	
+	for (k in hsh) {
+		names.push( hsh[k].shortname );
+	}
+	if (names.length == 0) return '';
+	
+	if (names.length == 1)
+		return names[0];
+	
+	else return '<span title="'+names.join(',  \n')+'">Various ('+names.length+')</span>';		
+}
 
+MNation.nationUnitRefs = function(hsh) {
+	var refs = [], longRefs = [], eras = [], singlename = null;
+	
+	var k;
+	for (k in hsh) {
+		refs.push( Utils.ref('nation '+hsh[k].id, hsh[k].eracode) );
+		longRefs.push( Utils.ref('nation '+hsh[k].id, hsh[k].shortname) );
 
+		var name = hsh[k].name;
+		singlename = (name==singlename || !singlename) ? name : -1; 
+	}
+	if (refs.length == 0) return '';
+	
+	if (refs.length == 1) 
+		return Utils.ref('nation '+hsh[k].id, hsh[k].shortname);
+		
+	if (refs.length > 1 && singlename != -1) {
+		return refs.join(', ') +' '+ singlename;
+	}
+	
+	if (refs.length <= 3)
+		return longRefs.join(',&nbsp; ')
 
+	return MNation.nationSummary(hsh).replace('Various ','Various nations'); 
+}
+	
 MNation.renderOverlay = function(o) {
 	//template
 	var h=''
@@ -509,18 +529,16 @@ MNation.renderOverlay = function(o) {
 	
 	//mid
 	h+='	<div class="overlay-main">';
-	h+=		Format.Gems(o.gems);
+	h+='		<div class="hidden-block">Nation #:'+o.id+'</div>'; 
+	h+='		<div> '+Format.Gems(o.gems)+'</div>';
 	
 	//wikilink
-	h+='		<div class="overlay-wiki-link non-content" style="clear:both;">';
-	h+='			<a href="http://dom3.servegame.com/wiki/'+o.name.replace(/ /g, '_')+'">[wiki]</a>';
-	h+='		</div>';
-
+	h+='		<div class="overlay-wiki-link non-content" style="clear:both;">' + Utils.wikiLink(o.epithet) + '</div>';
+	
+	//modded
 	if (o.modded) {
-		h+='	<div class="modded hidden-block">Modded<span class="internal-inline"> [modded]</span>:<br />';
-		h+=		o.modded.replace('ERROR:', '<span style="color:red;font-weight:bold;">ERROR:</span>');
-		h+='	</div';
-	}	
+		h+='	<div class="modded hidden-block">' + Utils.renderModded(o) +'</div>';
+	}
 	h+='	</div>';
 	
 	h+='</div> ';

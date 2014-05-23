@@ -138,6 +138,7 @@ DMI.CGrid = Utils.Class(function( domname, data, columns, options) {
 	function checkClearFilters() {
 		$panel = $(this).parents('.panel');
 		if (       $panel.find(" input[type=text]:[value^='']").length
+			|| $panel.find(" textarea:[value^='']").length
 			|| $panel.find(" input[type=checkbox]:checked").length
 			|| $panel.find(" option:not(.default):selected").length 
 		)  
@@ -152,13 +153,25 @@ DMI.CGrid = Utils.Class(function( domname, data, columns, options) {
 	$(that.domselp+" .clear-filters-btn").each( checkClearFilters );
 	
 	//wire up filter controls
-	$(that.domselp+" input[type=text]").bind('change keyup', 	function(e) { that.doSearch(); $(this).saveState(); checkClearFilters.call(this); });
+	$(that.domselp+" input[type=text], "+that.domselp+" textarea").bind('change keyup', 	function(e) {
+		//skip if unchanged (to support other key commands)
+		if ($(this).val() == $(this).prop("lastval")) 
+			return;
+		
+		$(this).prop("lastval", $(this).val());
+		
+		//normal stuff..
+		that.doSearch(); 
+		$(this).saveState(); 
+		checkClearFilters.call(this); 
+	});
 	$(that.domselp+" input[type=checkbox]").bind('change click', 	function(e) { that.doSearch(); $(this).saveState(); checkClearFilters.call(this); });
 	$(that.domselp+" select").bind('change', 			function(e) { that.doSearch(); $(this).saveState(); checkClearFilters.call(this); });
 	$(that.domselp+" input.clear-filters-btn").click(function(e) {
 			$panel = $(this).parents('.panel');
 			//clear inputs and select default options
 			$panel.find(" input[type=text]").val('').saveState();
+			$panel.find(" textarea").val('').saveState();
 			$panel.find(" input[type=checkbox]:checked").prop("checked", false).saveState();
 			$panel.find(" option.default").attr('selected', true).parent().saveState();
 			$(this).hide();
@@ -169,6 +182,38 @@ DMI.CGrid = Utils.Class(function( domname, data, columns, options) {
 			$panel.find(" input[type=text]").first().focus();
 	});
 
+	//grid navigation
+	$(that.domselp+' input[type=text],'+that.domselp+' textarea').keydown(function(e){
+		if (e.ctrlKey && e.which == 38) { //up
+			if (rowShowing === null) return;
+			
+			staticOverlayDetails(rowShowing - 1);
+			that.grid.scrollRowIntoView(rowShowing);
+			e.preventDefault();
+		}
+		else if (e.ctrlKey && e.which == 40) { //down
+			if (rowShowing === null) return;
+			
+			staticOverlayDetails(rowShowing + 1);
+			that.grid.scrollRowIntoView(rowShowing);
+			e.preventDefault();
+		}
+	});
+	$(that.domselp+' input[type=text]').keydown(function(e){
+		// if (e.which == 43 || e.which == 61) {
+		if (e.which == 107) { //keypad +
+			var n = parseInt($(this).val()) || 0;
+			$(this).val(n+1);
+			e.preventDefault();	
+		}
+		// else if (e.which == 45) {
+		else if (e.which == 109) { //keypad -
+			var n = parseInt($(this).val()) || 0;
+			$(this).val(n-1);
+			e.preventDefault();	
+		}
+	});  
+
 	////////////////////////////////////////////////////////////////////////////
 	// overlays
 	////////////////////////////////////////////////////////////////////////////
@@ -176,11 +221,14 @@ DMI.CGrid = Utils.Class(function( domname, data, columns, options) {
 	var $canvas = $(that.grid.getCanvasNode());
 	var $highlightedRow = $(undefined);
 	var detailsShowing = null;
+	var rowShowing = null;
 	
 	
 	var c_handle = null;
 	//mouseover event on grid changes static overlay
 	this.grid.onMouseEnter.subscribe( function (e) {
+		PaneManager.closePopups();//clear any fucked up overlays hanging a	
+			
 		e.currentTarget.style.cursor = 'pointer';
 
 		window.clearTimeout(h_runsearchfilters);
@@ -196,6 +244,7 @@ DMI.CGrid = Utils.Class(function( domname, data, columns, options) {
 	});
 	
 	function hideStaticOverlayDetails(rown) {
+		rowShowing = detailsShowing = null;
 		$(that.domsel+' .fixed-overlay').hide();	
 	}
 	function staticOverlayDetails(rown) {
@@ -209,6 +258,7 @@ DMI.CGrid = Utils.Class(function( domname, data, columns, options) {
 		if (detailsShowing != o) {
 			$(that.domsel+' .fixed-overlay').empty().append( o.renderOverlay(o) );
 		}
+		rowShowing = rown;
 		detailsShowing = o;
 		$(that.domsel+' .fixed-overlay').show();
 	}
@@ -223,35 +273,44 @@ DMI.CGrid = Utils.Class(function( domname, data, columns, options) {
 			
 		PaneManager.openPane( domname+' '+o.id );
 	});
-	
+
+	//open fixed overlay contents in a floating overlay	
+	this.detachShowingDetails = function() {
+		if (isVisible && detailsShowing) {
+			if (PaneManager.getOpenPanes(domname+' '+detailsShowing.id).focusAndHighlight().length)
+				return;
+			
+			PaneManager.openPane( domname+' '+detailsShowing.id );
+		}
+	}
+
 	//ref events on fixed overlay
 	$(that.domsel+' div.fixed-overlay').attachRefMouseEvents().attachRefClickEvents()
 	.dblclick(function() {
-		//double click fixed pane opens a floating one 
-		if (PaneManager.getOpenPanes(domname+' '+detailsShowing.id).focusAndHighlight().length)
-			return;
-			
-		PaneManager.openPane( domname+' '+detailsShowing.id );
+		that.detachShowingDetails();
 	});
 	
+	this.grid.onKeyDown.subscribe(DMI.onKeyDown);
+
 	////////////////////////////////////////////////////////////////////////////
 	// grid sort
 	////////////////////////////////////////////////////////////////////////////
 	
-	var currentSortCmp = null;	
+	var currentSortCmp = null;
 	this.grid.onSort.subscribe(function (e, args) {
 		if (that.preSort)
 			that.preSort(e, args);
 		
 		// declarations for closure
 		var field = args.sortCol.field;
+		var defaultVal = args.sortCol.sortCmp == 'text'?'':0;
 		var sign = args.sortAsc ? 1 : -1;
 		var prevSortCmp = currentSortCmp || that.defaultSortCmp;
 		
 		// store closure in global
 		currentSortCmp = function (dataRow1, dataRow2) {
 			
-			var value1 = dataRow1[field], value2 = dataRow2[field];
+			var value1 = (dataRow1[field] || defaultVal), value2 = (dataRow2[field] || defaultVal);
 			
 			//if equal then sort in previous scope (recurring)
 			if (value1 == value2 && prevSortCmp)
@@ -262,7 +321,8 @@ DMI.CGrid = Utils.Class(function( domname, data, columns, options) {
 		that.dataView.sort(currentSortCmp);
 		
 		that.grid.invalidate();
-		that.grid.render();		
+		that.grid.render();
+			
 	});
 	
 	
@@ -272,10 +332,11 @@ DMI.CGrid = Utils.Class(function( domname, data, columns, options) {
 	
 	this.getPropertyMatchArgs = function() {
 		var args = {
-			key: $(that.domselp+" input.search-key").val().toLowerCase(),
+			key: ($(that.domselp+" input.search-key:visible").val() || '').toLowerCase(),
 			not: $(that.domselp+" input.search-not:checked").length,
 			comp: $(that.domselp+" select.search-comp").val(),
-			val: $(that.domselp+" input.search-val").val()
+			val: $(that.domselp+" input.search-val").val(),
+			customjs: $(that.domselp+" textarea.customjs:visible").val()
 		};
 		if (args.key) {
 			var compstr = args.comp;
@@ -286,15 +347,6 @@ DMI.CGrid = Utils.Class(function( domname, data, columns, options) {
 				case '=~':
 					if (args.val && args.val!='.') {
 						args.comp = function(v,c){ return String(v).match(c); };
-						try{
-							args.val = new RegExp(args.val || '.', 'i');
-						}catch(e){ args.val = /./; }
-					}
-					break;
-					
-				case '!~':
-					if (args.val && args.val!='.') {
-						args.comp = function(v,c){ return !v.match(c); };
 						try{
 							args.val = new RegExp(args.val || '.', 'i');
 						}catch(e){ args.val = /./; }
@@ -334,7 +386,7 @@ DMI.CGrid = Utils.Class(function( domname, data, columns, options) {
 
 		//display first result
 		var result0 = that.grid.getData().getItem(0);
-		if (result0)
+		if (result0) 
 			staticOverlayDetails(0);
 		else 
 			hideStaticOverlayDetails();
@@ -344,7 +396,8 @@ DMI.CGrid = Utils.Class(function( domname, data, columns, options) {
 	}
 	
 	function setGridInfo() {
-		$('#count-results').html(that.dataView.getLength()+' results');
+		var n = that.dataView.getLength();
+		$('#count-results').html( n + (n==1 ? ' result' : ' results'));
 	}
 	
 		
@@ -377,11 +430,16 @@ DMI.CGrid = Utils.Class(function( domname, data, columns, options) {
 		$(this.initialSortTrigger || this.domsel+" div.slick-header-column:first").trigger('click');
 		
 		//display first item
-		staticOverlayDetails(0);
+		setTimeout( function(){staticOverlayDetails(0)}, 0);
 		
 		//show items
 		if (DMI.Options['Show ids'])
 			this.showIds(1);
+		
+		//set textinput lastval properties
+		$(that.domselp+" input[type=text], "+that.domselp+" textarea").each(function() {
+			$(this).prop("lastval", $(this).val());
+		});
 	}
 });
 
@@ -411,6 +469,22 @@ DMI.matchProperty = function(o, key, comparitor, match) {
 	}
 	return false;
 }
+
+DMI.customFilter = function(o, customjs) {
+	var result;
+	try {
+		var num = function(v){ return parseFloat(v) ? parseFloat(v) : 0; };
+		eval('result = '+customjs);
+		$('#custom-js-error').empty();
+		return result;
+	} 
+	catch(e) {
+		$('#custom-js-error').html(String(e));
+		return '#ERROR#';
+	}
+//	return true;
+}
+
 
 //namespace args
 }( window.DMI = window.DMI || {}, jQuery ));

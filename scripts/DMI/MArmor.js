@@ -5,6 +5,7 @@ var MArmor = DMI.MArmor = DMI.MArmor || {};
 
 var Format = DMI.Format;
 var Utils = DMI.Utils;
+
 var modctx = DMI.modctx;
 var modconstants = DMI.modconstants;
 
@@ -26,7 +27,8 @@ MArmor.prepareData_PreMod = function() {
 MArmor.prepareData_PostMod = function() {
 	for (var oi=0, o; o= modctx.armordata[oi]; oi++) {
 		o.id = parseInt(o.id);
-
+		o.name = o.name || '(undefined)';
+		
 		for (var oi2=0, o2; o2 = modctx.protections_by_armor[oi2]; oi2++) {
 			var o2id = parseInt(o2.armor_number);
 			if (o2id == o.id) {
@@ -119,8 +121,11 @@ MArmor.CGrid = Utils.Class( DMI.CGrid, function() {
 		return true;
 	}
 
-	//final init
-	this.init();
+	//call filters and update  display
+	//asyncronous to make sure all filter inputs are correctly initialised  
+	setTimeout(function() { 
+		that.init(); 
+	},0);
 });
 MArmor.matchProperty = DMI.matchProperty;
 
@@ -149,11 +154,16 @@ var flagorder = DMI.Utils.cutDisplayOrder(aliases, formats,
 var hiddenkeys = DMI.Utils.cutDisplayOrder(aliases, formats,
 [
 	'id', 		'armor id',	function(v,o){ return v + ' ('+o.name+')'; },
+	'special',	'special'
+]);
+var modderkeys = DMI.Utils.cutDisplayOrder(aliases, formats,
+[
 	'rcost',	'resource cost'
 ]);
 var ignorekeys = {
-	modded:1,
 	used_by:1,
+	modded:1,
+	id:1,
 	name:1,
 	type:1,
 	torso:1,upper:1,lower:1,general:1,
@@ -169,7 +179,7 @@ MArmor.renderOverlay = function(o, baseAtt) {
 	var slot = { shield:'1 hand', armor:'body', helm:'head', misc:'misc' }[o.type];
 	
 	//header
-	h+='	<div class="overlay-header" title="armor id: '+o.id+'"> ';
+	h+='	<div class="overlay-header" title="armor id:'+o.id+'"> ';
 	h+='		<p style="float:right; height:0px;">'+slot+'</p>';
 	h+='		<h2>'+o.name+'</h2> ';
 	h+='	</div>';
@@ -180,21 +190,21 @@ MArmor.renderOverlay = function(o, baseAtt) {
 	
 	h+='		<table class="overlay-table armor-table"> ';
 	h+= 			Utils.renderDetailsRows(o, hiddenkeys, aliases, formats, 'hidden-row');
+	h+= 			Utils.renderDetailsRows(o, modderkeys, aliases, formats, 'modding-row');
 	h+= 			Utils.renderDetailsRows(o, displayorder, aliases, formats);
 	h+= 			Utils.renderDetailsFlags(o, flagorder, aliases, formats);
 	h+= 			Utils.renderStrangeDetailsRows(o, ignorekeys, aliases, 'strange');
 	
+	//modded
 	if (o.modded) {
-		h+='	<tr class="modded hidden-row"><td colspan="2">Modded<span class="internal-inline"> [modded]</span>:<br />';
-		h+=		o.modded.replace('ERROR:', '<span style="color:red;font-weight:bold;">ERROR:</span>');
-		h+='	</td></tr>';
+		h+='		<tr class="modded hidden-row"><td colspan="2">' + Utils.renderModded(o) +'</td></tr>';
 	}
 	h+='		</table> ';		
 	h+='	</div>';
 	
 	//footer
 	if (o.used_by.length) {
-		h+='<div class="overlay-footer">';
+		h+='<div class="overlay-footer modding-block">';
 		if (o.used_by.length > 8) {
 			//hide uberlong list
 			h+='	<p class="firstline">';
@@ -220,6 +230,9 @@ MArmor.renderOverlay = function(o, baseAtt) {
 	h+='</div> ';
 	return h;	
 }
+
+
+
 
 //namespace args
 }( window.DMI = window.DMI || {}, jQuery ));

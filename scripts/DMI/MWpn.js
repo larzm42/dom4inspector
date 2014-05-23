@@ -5,6 +5,7 @@ var MWpn = DMI.MWpn = DMI.MWpn || {};
 
 var Format = DMI.Format;
 var Utils = DMI.Utils;
+
 var modctx = DMI.modctx;
 var modconstants = DMI.modconstants;
 
@@ -25,13 +26,15 @@ MWpn.prepareData_PreMod = function() {
 MWpn.prepareData_PostMod = function() {
 	for (var oi=0, o; o= modctx.wpndata[oi]; oi++) {
 		o.id = parseInt(o.id);
+		o.name = o.name || '(undefined)';
+
 		
 		o.renderOverlay = MWpn.renderOverlay;
 		o.matchProperty = MWpn.matchProperty;
 
 		//serachable string
 		o.searchable = o.name.toLowerCase();
-
+		
 		var effects = MWpn.getEffect(o);
 		if (effects) {
 			if (effects.effect_number == "2") {
@@ -96,6 +99,7 @@ MWpn.CGrid = Utils.Class( DMI.CGrid, function() {
 	
 	$(this.domsel+' .grid-container').css('width', 530);//set table width
 
+	
 	//in closure scope
 	var that = this;
 
@@ -124,8 +128,11 @@ MWpn.CGrid = Utils.Class( DMI.CGrid, function() {
 		return true;
 	}
 
-	//final init
-	this.init();
+	//call filters and update  display
+	//asyncronous to make sure all filter inputs are correctly initialised  
+	setTimeout(function() { 
+		that.init(); 
+	},0);
 });
 MWpn.matchProperty = function(o, key, comp, val) {
 	if (key=='ap') key = 'armorpiercing';
@@ -167,37 +174,12 @@ var displayorder = DMI.Utils.cutDisplayOrder(aliases, formats,
 	}
 ]);
 
-formats.dmg = function(v,o) {
-	//special values
-	if (v=='999') v = 'death';
-	if (v=='-999') return '0';
-	
-	//force render 0
-	v+= ' ';
-	
-	//append dmgflags
-//	var slist = [];
-//	for (var i=0, k; k=dmgflags[i]; i++)			
-//		if (o[k] == '1') slist.push('<span class="flag">'+aliases[k]+'</span>');
-//	if (slist.length)
-//		v += '(' + slist.join(', ') + ')';
-//	
-//	//not useful information
-//	if (v=='spc ') return '0';
-	
-	return v;
-}
-
-formats.nratt = function(v,o) {
-	if (v=='1' && o.isImplicitWpn)  
-		return '0';
-	//-2 is once every 2 turns
-	return (v && v<0)  ?  '1 per '+(-v)+' turns'  :  v; 
-}
-
 var hiddenkeys = DMI.Utils.cutDisplayOrder(aliases, formats,
 [
 	'id', 		'weap id',	function(v,o){ return v + ' ('+o.name+')'; },
+]);
+var modderkeys = DMI.Utils.cutDisplayOrder(aliases, formats,
+[
 	'rcost',	'resource cost'
 ]);
 var ignorekeys = {
@@ -220,6 +202,7 @@ var ignorekeys = {
 	dt_paralyze:1,
 
 	wpnclass:1,
+	isImplicitWpn:1, showName:1,
 	searchable:1, renderOverlay:1, matchProperty:1
 };
 	
@@ -246,7 +229,7 @@ MWpn.renderOverlay = function(o, baseAtt) {
 	
 	//footer
 	if (o.used_by.length) {
-		h+='<div class="overlay-footer">';
+		h+='<div class="overlay-footer modding-block">';
 		if (o.used_by.length > 8) {
 			//hide uberlong list
 			h+='	<p class="firstline">';
@@ -273,25 +256,19 @@ MWpn.renderOverlay = function(o, baseAtt) {
 }
 
 //weapon tables are also rendered inline in items
-MWpn.renderWpnTable = function(o, isImplicitWpn) {
-	//force render??
-	//if (!o.dmg) o.dmg = '0';
-	o.isImplicitWpn = isImplicitWpn;
-		
-	//ranged weapon specific
-	//aliases.att = (o.wpnclass == 'ranged')  ?  'precision'  :  'attack';
-	
-	//local scope
-	//formats.nratt = function(v){ return (v=='1' && isImplicitWpn)  ?  '0'  :  v; };
-
+MWpn.renderWpnTable = function(o, isImplicitWpn, showName) {
+	o.isImplicitWpn = isImplicitWpn; //affects display of nratt
+	o.showName = showName; //affects display of id
 	
 	//template
 	var h=''
 	h+='		<table class="overlay-table wpn-table"> ';
 	h+= 			Utils.renderDetailsRows(o, hiddenkeys, aliases, formats, 'hidden-row');
+	h+= 			Utils.renderDetailsRows(o, modderkeys, aliases, formats, 'modding-row');
 	h+= 			Utils.renderDetailsRows(o, displayorder, aliases, formats);
+	//h+= 			Utils.renderDetailsFlags(o, flagorder, aliases, formats);
 	h+= 			Utils.renderStrangeDetailsRows(o, ignorekeys, aliases, 'strange');
-	
+		
 	// Attributes
 	for (var oi=0, attr; attr = modctx.attributes_by_weapon[oi];  oi++) {
 		if (attr.weapon_number == o.id) {
@@ -309,11 +286,10 @@ MWpn.renderWpnTable = function(o, isImplicitWpn) {
 		if (specflags)
 			h+=		'<tr><td class="widecell" colspan="2">'+specflags+'</td></tr></div>';
 	}
-
+	
+	//modded
 	if (o.modded) {
-		h+='	<tr class="modded hidden-row"><td colspan="2">Modded<span class="internal-inline"> [modded]</span>:<br />';
-		h+=		o.modded.replace('ERROR:', '<span style="color:red;font-weight:bold;">ERROR:</span>');
-		h+='	</td></tr>';
+		h+='		<tr class="modded hidden-row"><td colspan="2">' + Utils.renderModded(o) +'</td></tr>';
 	}
 	h+='		</table> ';		
 
@@ -325,20 +301,20 @@ MWpn.renderWpnTable = function(o, isImplicitWpn) {
 		h+=' <h4>Auto effect: '+secondaryeffectalways.name+'</h4>';
 		//detect recursion
 		if (secondaryeffectalways == o) {
-		//	throw 'Error, weapon 2nd effect as itself: '+o.id+': '+o.name; 
-		}	
+			//throw 'Error, weapon 2nd effect as itself: '+o.id+': '+o.name; 
+		} 
 		else {
-			h+= MWpn.renderWpnTable(secondaryeffectalways, true);
+			h+= MWpn.renderWpnTable(secondaryeffectalways, true, false);
 		}
 	} 
 	else if (o.secondaryeffect && secondaryeffect && secondaryeffect.id != 0) {
 		h+=' <h4>On-hit effect: '+secondaryeffect.name+'</h4>';
 		//detect recursion
-		if (secondaryeffect == o) {
-		//	throw 'Error, weapon 2nd effect as itself: '+o.id+': '+o.name; 
-		}
+		if (secondaryeffect == o){
+			//throw 'Error, weapon 2nd effect as itself: '+o.id+': '+o.name; 
+		} 
 		else {
-			h+= MWpn.renderWpnTable(secondaryeffect, true);
+			h+= MWpn.renderWpnTable(secondaryeffect, true, false);
 		}
 	}
 	return h;
@@ -492,7 +468,7 @@ MWpn.getEffect = function(weapon) {
 	if (weapon.dmg) {
 		effect.raw_argument = weapon.dmg;
 	}
-	
+
 	if (weapon.range) {
 		if (parseInt(weapon.range) < 0) {
 			effect.range_strength_divisor = -parseInt(weapon.range);

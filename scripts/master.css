@@ -26,6 +26,13 @@ body {overflow:hidden;}
 	width: 640px;
 	background-color: #F6F6F6;
 }
+.slick-row.active {
+	background:#ded0b7;
+	
+}
+.slick-cell.fatigue {
+	padding-right:0.5em;
+}
 
 
 /****************************************
@@ -51,7 +58,7 @@ body {overflow:hidden;}
 	font-size: 7pt;	
 }
 
-.tinylink {
+.tinylink, .tiny {
 	/*display:block;
 	float:right; clear:right;*/
 	font-size: 7pt;	
@@ -65,32 +72,76 @@ body {overflow:hidden;}
 	gem & path icons (general)
 ****************************************/
 .gemicon {
+	color: transparent;
+	display:inline-block; 
+	background-size: 100% 100%;
+
 	width:14px;
 	height:14px;
-	position:relative;
-	top:3px;	
-}
-.gemicon.Gem_B { width:12px; }
 
-.pathicon {
-	width:14px;
-	height:14px;	
 	position:relative;
+}
+.gemicon.Gem_D { background-image:url('../images/magicicons/Gem_D.png'); }
+.gemicon.Gem_E { background-image:url('../images/magicicons/Gem_E.png'); }
+.gemicon.Gem_W { background-image:url('../images/magicicons/Gem_W.png'); }
+.gemicon.Gem_N { background-image:url('../images/magicicons/Gem_N.png'); }
+.gemicon.Gem_F { background-image:url('../images/magicicons/Gem_F.png'); }
+.gemicon.Gem_A { background-image:url('../images/magicicons/Gem_A.png'); }
+.gemicon.Gem_B { background-image:url('../images/magicicons/Gem_B.png'); width:12px; }
+.gemicon.Gem_S { background-image:url('../images/magicicons/Gem_S.png'); }
+.gemicon.Gem_H { background-image:url('../images/magicicons/Gem_H.png'); }
+div.slick-cell .gemicon {
 	top:3px;
 }
-.pathicon.Path_D { width:11px; padding:0px 1px 0px 2px; }
+	
+.pathicon {
+	color: transparent;
+	display:inline-block; 
+	background-size: 100% 100%;
+
+	width:14px;
+	height:14px;	
+
+	position:relative;
+}
+.pathicon.Path_D { background-image:url('../images/magicicons/Path_D.png'); width:10px; margin:0px 2px 0px 2px; }
+.pathicon.Path_E { background-image:url('../images/magicicons/Path_E.png'); width:12px; margin:0px 1px 0px 1px; }
+.pathicon.Path_W { background-image:url('../images/magicicons/Path_W.png'); width:11px; margin:0px 1px 0px 2px; }
+.pathicon.Path_N { background-image:url('../images/magicicons/Path_N.png'); width:13px; margin:0px 1px 0px 0px; }
+.pathicon.Path_F { background-image:url('../images/magicicons/Path_F.png'); width:13px; margin:0px 1px 0px 0px; }
+.pathicon.Path_A { background-image:url('../images/magicicons/Path_A.png'); }
+.pathicon.Path_B { background-image:url('../images/magicicons/Path_B.png'); }
+.pathicon.Path_S { background-image:url('../images/magicicons/Path_S.png'); }
+.pathicon.Path_H { background-image:url('../images/magicicons/Path_H.png'); }
+
+.pathicon.Path_R { background-image:url('../images/magicicons/Path_R.png'); width:13px; margin:0px 1px 0px 0px; }
+.pathicon.Path_U { background-image:url('../images/magicicons/Path_U.png'); width:12px; margin:0px 1px 0px 1px; }
+
+label .pathicon, 	div.slick-cell .pathicon 	{ top:3px; }
+label .pathicon.Path_F, div.slick-cell .pathicon.Path_F { top:2px; }	.pathicon.Path_F { top:-1px; }
+label .pathicon.Path_H, div.slick-cell .pathicon.Path_H { top:4px; }	.pathicon.Path_H { top:1px; }
+/*div.slick-cell .pathicon.Path_A { top:2px; }*/
+
+
+/*.pathicon.Path_D { width:11px; padding:0px 1px 0px 2px; }
 .pathicon.Path_E { width:12px; padding:0px 1px 0px 1px; }
 .pathicon.Path_F, .pathicon.Path_A { top:2px; }
 
 .pathicon.Path_R { width:13px; padding:0px 1px 0px 0px; }
-.pathicon.Path_U { width:12px; padding:0px 1px 0px 1px; border:0; }
+.pathicon.Path_U { width:12px; padding:0px 1px 0px 1px; }*/
 
 .abilityicon {
-	width:14px;
-	height:14px;	
+	color: transparent;
+	display:inline-block; 
+	background-size: 100% 100%;
+
+	width:16px;
+	height:16px;
+
 	position:relative;
-	top:3px;
 }
+.abilityicon.holy { background-image:url('../images/abilityicons/holy.png'); }
+div.slick-cell .abilityicon.holy { top:3px; }
 
 /****************************************
 	page overlays 
@@ -139,8 +190,8 @@ input.overlay-pin, #global-unpin-all-btn {
 
 	float:right;
 	clear:right;
-	cursor: pointer;
 	
+	cursor: pointer;
 	display: none;
 }
 
@@ -148,6 +199,13 @@ input.overlay-pin, #global-unpin-all-btn {
 /****************************************
 	primary details 
 ****************************************/
+h1 {
+	font-size: 120%;
+	margin: 0.2em 0em 0.2em 0.3em;
+}
+h1:first-letter {
+	text-transform: none;	
+}
 #primary-details {
 	padding:0;
 }
@@ -240,7 +298,6 @@ input.clear-filters-btn, #global-clear-filters-btn{
 #advanced-options {
 	padding: 0 0.4em;
 	background: #D0D0D0;
-	/*margin-top: 5px;*/
 }
 
 .toggle-path {
@@ -399,16 +456,27 @@ div.overlay-footer {
 	div.spell div.overlay-wiki-link {
 		position:absolute; bottom:-17px;right:3px;
 	}
-
+	
+	div.wpn div.overlay-main, div.armor div.overlay-main {
+		padding-bottom: 2px;
+		margin-bottom:0px;
+	}
 	
 	a.ref {
 		/* white-space: nowrap; */
 	}
-	a {
-		color:#3668AB;	
+	a, a.ref {
+		color:#3668AB;
+		text-decoration: underline;
+		cursor: pointer;
 	}
 	a.ref.wpn, a.ref.armor {
 		white-space: nowrap;
+	}
+	span.refid {
+		font-size: 7pt;
+		text-decoration:underline;
+		background:none;
 	}
 	input.inline-button {
 		color:#3668AB;
@@ -463,7 +531,8 @@ div.overlay-main table.wpn-table {
 }
 /* overlay borders */
 .overlay { 
-	border-color: #485562; 
+	border-color: #485562;
+	/*cursor: text;*/
 }
 
 
@@ -472,13 +541,13 @@ div.overlay-main table.wpn-table {
 .hidden-row, .hidden-block, .hidden-inline {
 	display:none;
 /*	background-color: #FFFF00;*/
-	color: rgba(0,0,0,0.4);
+	color: rgba(0,0,0,0.60);
 	background-color: rgba(100,100,255,0.1);
 }
 .modding-row, .modding-block, .modding-inline {
 	display:none;
-	color: rgba(0,0,100,0.45);
-	background-color: rgba(0,0,255,0.10);
+	color: rgba(0,0,100,0.70);
+	background-color: rgba(0,0,255,0.09);
 }
 .internal-row, .internal-block, .internal-inline {
 	display:none;
@@ -486,10 +555,30 @@ div.overlay-main table.wpn-table {
 	color: rgba(150,0,25,0.60);
 	/*background-color: rgba(100,100,255,0.1);*/
 }
-.modded {
-	color: rgba(0,0,100,0.8);
-	background-color: rgba(0,255,255,0.30);	
+
+div.modded {background: rgba(0,255,255,0.15);/*#ffe481;*/
+	padding:3px;
+	padding-top:0px;
+} 
+tr.modded td {	background: rgba(0,255,255,0.15);/*#ffe481;*/
+	padding-top:3px;
+	padding:3px;
 }
+.mod-cmds {	
+	color: rgba(0,0,100,0.8);
+	background-color: rgba(0,255,255,0.15);	
+}
+a.hide-mod-commands, a.show-mod-commands {
+	/*color: rgba(54, 104, 171, 0.85);*/
+	color: rgba(48, 94, 151, 0.85);
+	/*color: rgba(54, 104, 171, 0.85);*/
+	/*background-color: rgba(0,255,255,0.10);*/
+	/*border: 1px solid rgba(0,0,100,0.3);*/
+	cursor: pointer;
+	text-decoration: none;
+}
+
+
 /* overlay id hihglight */
 .strange  {
 	background-color: turquoise;
@@ -498,10 +587,32 @@ div.overlay-main table.wpn-table {
 
 
 /* background color for armor properties */
-.armor-table,
-.item .overlay-table .protbody, .item .overlay-table .prothead, .item .overlay-table .protshield,
-.item .overlay-table:not(.wpn-table) .def, .item .overlay-table .enc, .item .overlay-table .parry {
-	background: #ded0b7;	
+table.armor-table,
+div.item table.overlay-table tr.protbody, 
+div.item table.overlay-table tr.prothead, 
+div.item table.overlay-table tr.protshield,
+div.item table.overlay-table:not(.wpn-table) tr.def, 
+div.item table.overlay-table tr.enc, 
+div.item table.overlay-table tr.parry {
+	background: #ded0b7;
+}
+
+/* middle align icons */
+/*div.unit table.overlay-table tr.gemprod td, 
+div.spell table.overlay-table tr.gemcost td, 
+div.spell table.overlay-table tr.find-sites td, 
+div.item table.overlay-table tr.gA td,
+div.item table.overlay-table tr.gF td,
+div.item table.overlay-table tr.gW td,
+div.item table.overlay-table tr.gE td,
+div.item table.overlay-table tr.gS td,
+div.item table.overlay-table tr.gD td,
+div.item table.overlay-table tr.gN td,
+div.item table.overlay-table tr.gB td, */ 
+div.unit table.overlay-table tr.magicboost td, 
+div.spell table.overlay-table tr.magic-bonus td,
+div.item table.overlay-table tr.boosters td {
+	vertical-align: middle;	
 }
 
 
@@ -514,17 +625,25 @@ div.spell table.spell-effect th, div.spell table.spell-effect td.widecell {
 	padding-left: 1em;
 }
 div.spell table.spell-effect.nextspell {
-	border-top: 2px dashed #ffd635;*/
+	border-top: 2px dashed #ffd635;
 }
 
+/*.overlay-table tr[title]:hover {
+	background: rgba(255,255,255,0.3);;
+}
+.overlay-table tr.bonus {
+	background: rgba(255,255,255,0.3);
+}
+.overlay-table tr.bonus:hover {
+	background: #ffffff;
+}*/
 .overlay-table tr[title] {
 	background: rgba(255,255,255,0.3);
-	/*border-right: 1px dashed rgba(255,255,255,0.8);*/
 }
 .overlay-table tr[title]:hover {
-	/*font-weight: bold;*/
 	background: #ffffff;
 }
+
 
 
 table.spell-effect {
@@ -565,4 +684,12 @@ div.numeric{ text-align:right; }
 	font-size: 10pt;
 }
 
-hr { border:none; border-bottom:2px solid #FFAA2E;}
+hr { border:none; border-bottom:2px solid  #ffbf20;}
+
+a img { border-style: none; } /* IE */ 
+
+div.slick-header-column.ui-state-default { text-overflow:clip; overflow: hidden; }
+
+div.overlay-header span.modding-inline{ visibility: hidden; }
+
+

@@ -136,6 +136,7 @@
 					<option title="less than or equal (int)" value="<=">&lt;=</option>
 				</select>
 				<input size="5" type="text" class="search-val" title="search for any named key=~value"  id="itemval" />
+				<textarea class="customjs" style="width:95%; height:100;" ></textarea>
 			</div>
 		</div>
         
@@ -158,6 +159,7 @@
 					<option title="less than or equal (int)" value="<=">&lt;=</option>
 				</select>
 				<input size="5" type="text" class="search-val" title="search for any named key=~value"  id="spellval" />
+				<textarea class="customjs" style="width:95%; height:100;" ></textarea>
 			</div>
 		</div>
 		<div class="modding-block">
@@ -189,6 +191,7 @@
 					<option title="less than or equal (int)" value="<=">&lt;=</option>
 				</select>
 				<input size="5" type="text" class="search-val" title="search for any named key=~value"  id="unitval" />
+				<textarea class="customjs" style="width:95%; height:100;" ></textarea>
 			</div>
 		</div>
 			
@@ -211,6 +214,7 @@
 					<option title="less than or equal (int)" value="<=">&lt;=</option>
 				</select>
 				<input size="5" type="text" class="search-val" title="search for any named key=~value"  id="siteval" />
+				<textarea class="customjs" style="width:95%; height:100;" ></textarea>
 			</div>
 		</div>
 
@@ -233,6 +237,7 @@
 					<option title="less than or equal (int)" value="<=">&lt;=</option>
 				</select>
 				<input size="5" type="text" class="search-val" title="search for any named key=~value"  id="wpnval" />
+				<textarea class="customjs" style="width:95%; height:100;" ></textarea>
 			</div>
 		</div>
 
@@ -255,6 +260,7 @@
 					<option title="less than or equal (int)" value="<=">&lt;=</option>
 				</select>
 				<input size="5" type="text" class="search-val" title="search for any named key=~value"  id="armorval" />
+				<textarea class="customjs" style="width:95%; height:100;" ></textarea>
 			</div>
 		</div>
 		<!-- /TEXT SEARCH -->
@@ -297,11 +303,11 @@
 				<option value="hero (unique),hero (multi),Hero (Event),Hero (item)">Heroes</option>
 			</select>
 		
-			<input class="national" id="unitnat" type="checkbox" 
-			/><label                 for="unitnat">national only</label>
+			<label for="unitnat"><input class="national" id="unitnat" type="checkbox" 
+			/>national only</label>
 			
-			<input class="generic" id="unitgen" type="checkbox" 
-			/><label                 for="unitgen">generic only</label>
+			<label for="unitgen"><input class="generic" id="unitgen" type="checkbox" 
+			/>generic only</label>
 				
 		</div>
         <!-- /SELECT UNIT TYPE -->
@@ -311,32 +317,32 @@
 		<div class="filters-paths  panel itemview spellview siteview">
 			<input type="button" value="X" class="clear-filters-btn" title="clear filters" />
 
-			<input class="toggle-path" type='checkbox' value='F' id="pathF" />
-			<label for="pathF"><img alt="F" class="Path_F pathicon" src="images/magicicons/Path_F.png" /></label>
+			<label for="pathF"><input class="toggle-path" type='checkbox' value='F' id="pathF" 
+			/><img alt="F" class="Path_F pathicon" src="images/magicicons/Path_F.png" /></label>
 			
-			<input class="toggle-path" type='checkbox' value='A' id="pathA" />
-			<label for="pathA"><img alt="A" class="Path_A pathicon" src="images/magicicons/Path_A.png" /></label>
+			<label for="pathA"><input class="toggle-path" type='checkbox' value='A' id="pathA" 
+			/><img alt="A" class="Path_A pathicon" src="images/magicicons/Path_A.png" /></label>
 			
-			<input class="toggle-path" type='checkbox' value='W' id="pathW" />
-			<label for="pathW"><img alt="W" class="Path_W pathicon" src="images/magicicons/Path_W.png" /></label>
+			<label for="pathW"><input class="toggle-path" type='checkbox' value='W' id="pathW" 
+			/><img alt="W" class="Path_W pathicon" src="images/magicicons/Path_W.png" /></label>
 			
-			<input class="toggle-path" type='checkbox' value='E' id="pathE" />
-			<label for="pathE"><img alt="E" class="Path_E pathicon" src="images/magicicons/Path_E.png" /></label>
+			<label for="pathE"><input class="toggle-path" type='checkbox' value='E' id="pathE" 
+			/><img alt="E" class="Path_E pathicon" src="images/magicicons/Path_E.png" /></label>
 			
-			<input class="toggle-path" type='checkbox' value='S' id="pathS" />
-			<label for="pathS"><img alt="S" class="Path_S pathicon" src="images/magicicons/Path_S.png" /></label>
+			<label for="pathS"><input class="toggle-path" type='checkbox' value='S' id="pathS" 
+			/><img alt="S" class="Path_S pathicon" src="images/magicicons/Path_S.png" /></label>
 			
-			<input class="toggle-path" type='checkbox' value='D' id="pathD" />
-			<label for="pathD"><img alt="D" class="Path_D pathicon" src="images/magicicons/Path_D.png" /></label>
+			<label for="pathD"><input class="toggle-path" type='checkbox' value='D' id="pathD" 
+			/><img alt="D" class="Path_D pathicon" src="images/magicicons/Path_D.png" /></label>
 			
-			<input class="toggle-path" type='checkbox' value='N' id="pathN" />
-			<label for="pathN"><img alt="N" class="Path_N pathicon" src="images/magicicons/Path_N.png" /></label>
+			<label for="pathN"><input class="toggle-path" type='checkbox' value='N' id="pathN" 
+			/><img alt="N" class="Path_N pathicon" src="images/magicicons/Path_N.png" /></label>
 			
-			<input class="toggle-path" type='checkbox' value='B' id="pathB" />
-			<label for="pathB"><img alt="B" class="Path_B pathicon" src="images/magicicons/Path_B.png" /></label>
+			<label for="pathB"><input class="toggle-path" type='checkbox' value='B' id="pathB" 
+			/><img alt="B" class="Path_B pathicon" src="images/magicicons/Path_B.png" /></label>
 		
-			<input class="toggle-path" type='checkbox' value='H' id="pathH" />
-			<label for="pathH"><img alt="H" class="Path_H pathicon" src="images/magicicons/Path_H.png" /></label>
+			<label for="pathH"><input class="toggle-path" type='checkbox' value='H' id="pathH" 
+			/><img alt="H" class="Path_H pathicon" src="images/magicicons/Path_H.png" /></label>
 		</div>
         <!-- /PATH CHECKBOXES -->
 
@@ -390,13 +396,14 @@
 				<option value="7">Divine</option>
 				<option disabled=disabled>-------------</option>
 				<option value="-1">unresearchable</option>
+				<option value="-1,0,1,2,3,4,5,6,7">any</option>
 			</select>
 
-			<input class="national" id="spellnat" type="checkbox" 
-			/><label                 for="spellnat">national only</label>
+			<label for="spellnat"><input class="national" id="spellnat" type="checkbox" 
+			/>national only</label>
 			
-			<input class="generic" id="spellgen" type="checkbox" 
-			/><label                 for="spellgen">generic only</label>
+			<label for="spellgen"><input class="generic" id="spellgen" type="checkbox" 
+			/>generic only</label>
 				
 		</div>
         <!-- /SPELL FILTERS LINE1 -->
@@ -520,24 +527,26 @@
 
 		<!--<a href="" class="hidden-inline" id="ignoremodurl" title="link to this page state without mods (middle click for easy comparison of stats pre/post mod)" />[no mods]</a>
 		<div id="display-ids">-->
-				<input id="showids" type='checkbox' name="id" value="id" title="show ids and other hidden details. useful for modders" />
-				<label for="showids" title="show ids, some hidden details and further options for modders">advanced</label>
+				<label for="showids" title="show #s, some hidden details and further options for modders"
+				><input id="showids" type='checkbox' name="id" value="id" title="show ids and other hidden details. useful for modders" 
+				/>advanced</label>
 		<!--</div>-->
 		
-		<span style="float:right;" id="count-results"></span>
+		<span class="hidden-inline" style="float:right;" id="count-results"></span>
 		
 		<div class="hidden-inline">
 		&nbsp;
-		<input id="showmodcmds" type='checkbox' name="modcmds" value="modcmds" title="shows mod commands alongside stats (reloads page)" />
-		<label for="showmodcmds" title="shows mod commands alongside stats (reloads page)">mod cmds</label>
+		<label for="showmodcmds" title="toggles display of all mod commands"
+		><input id="showmodcmds" type='checkbox' name="modcmds" value="modcmds" title="toggles display of all mod commands" 
+		/>mod cmds</label>
 		
-		&nbsp;
-		<input id="showmoddinginfo" type='checkbox' name="showmoddinginfo" value="showmoddinginfo" title="reveals additional hidden info. only useful for modders" />
-		<label for="showmoddinginfo" title="reveals additional hidden info. only useful for modders">more info</label>
+		<label for="showmoddinginfo" title="reveals additional hidden info. only useful for modders"
+		><input id="showmoddinginfo" type='checkbox' name="showmoddinginfo" value="showmoddinginfo" title="reveals additional hidden info. only useful for modders" 
+		/>more info</label>
 				
-		&nbsp;
-		<input id="showkeys" type='checkbox' name="keys" value="keys" title="shows searchable keys. generally these correspond to mod command names" />
-		<label for="showkeys" title="shows searchable keys. generally these correspond to mod command names">show keys</label>
+		<label for="showkeys" title="shows searchable keys. generally these correspond to mod command names"
+		><input id="showkeys" type='checkbox' name="keys" value="keys" title="shows searchable keys. generally these correspond to mod command names" 
+		/>show keys</label>
 		</div>
 
 	</div>

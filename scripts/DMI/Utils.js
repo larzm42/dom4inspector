@@ -4,20 +4,34 @@
 var Utils = DMI.Utils = DMI.Utils || {};
 var Options = DMI.Options = DMI.Options || {};
 
-
-
-
 Options['Show database keys'] = 0;
 Options['Show ids'] = 0;
 Options['Show popup refs'] = 1;
 Options['Show internal keys'] = 1;
 
 //loaded from query string
-Options['Show mod cmds'] = null;
+Options['Show mod cmds'] = null;            
+
+Options['Select mod columns'] = 4;
 
 
+Utils.wikiLink = function(name, subname, cssclass) {
+	if (subname)
+		name += '_(' + subname + ')'
+	
+	name = (name || '').replace(/ /g, '_');
 
-
+	var url = "http://dom3.servegame.com/wiki/"+name
+	var linktext = '[wiki]';
+	var cssclass = cssclass ? ' class="'+cssclass+'"' : '';
+	var title = "..wiki/"+name;
+	
+	return '<a href="'+url+'" title="'+title+'"'+cssclass+'>'+linktext+'</a>';	
+}
+//strips non basic-alphanumeric chars (including spaces)
+Utils.descrFilename = function(name) {
+	return name.replace(/[^a-zA-Z1-9]/g,'')+'.txt';
+}
 
 //display error on page
 Utils.error = function(msg) {
@@ -25,6 +39,9 @@ Utils.error = function(msg) {
 		$('<div class="errormsg">').html(msg)
 	);
 	return msg;
+}
+Utils.clearErrors = function() {
+	$('#primary-details div.errormsg').remove();
 }
 
 //array utils
@@ -94,7 +111,7 @@ Utils.splitToLookup = function(str, delimiter) {
 
 
 Utils.paddedNum = function(v, len) {
-	var str = '00000000'+parseInt(v);
+	var str = '0000000000'+parseInt(v);
 	return 	str.slice(str.length-len);
 }
 //converts numerically listed keys to array [parent.basekey1, parent.basekey2, parent.basekey3]
@@ -117,8 +134,6 @@ Utils.merge = function(o, vals) {
 	return o;	
 }
 		
-
-
 // Utils.sum = function() {
 // 	var nt=0;
 // 	for (var i=0; i<arguments.length; i++)
@@ -147,8 +162,6 @@ Utils.roundup = function(v) {
 
 Utils.is = function(v) { return v && v!='0'; }
 
-
-
 //derives a class from a baseclass. declare constructor inline. supports prototype chaining. eg:
 //  var Mybase = Class(function(myargs){ 
 //      this.id = myarg; 
@@ -166,13 +179,10 @@ Utils.Class = function(basecl, constr) {
 	return constr;
 }
 
-
-
 //strips non basic-alphanumeric chars (including spaces)
 Utils.descrFilename = function(name) {
 	return name.replace(/[^a-zA-Z0-9\-]/g,'')+'.txt';
 }
-
 
 ///////////////////////////////////////////////////////////////////////////
 // render helpers
@@ -197,7 +207,7 @@ Utils.renderFlags = function(arr, noparen){
 
 Utils.addFlags = function(o, arr, ignorekeys){
 	var _arr = (typeof(arr) == 'string')  ?  arguments  :  arr;
-	
+
 	for (var i=0, f, h; f= _arr[i]; i++) {
 		o[f[1]] = 1;
 		ignorekeys[f[1]] = 1;
@@ -251,12 +261,11 @@ Utils.renderDetailsRows = function(o, displayorder, aliases, formats, cssClass) 
 		
 		if (v!='0') {
 			var t = (o.titles && o.titles[k]) ?  (' title="'+o.titles[k]+'"') : '';
-			h+=' <tr class="'+k+' '+cssClass+'"'+t+'> <th>'+ak+': </th> <td>'+v+'</td> </tr> ';
+			h+=' <tr class="'+k+' '+cssClass+'" '+t+'> <th>'+ak+': </th> <td>'+v+'</td> </tr> ';
 		}
 	}
 	return h;
 }
-
 
 
 Utils.renderDetailsFlags = function(o, flagorder, aliases, formats, cssClass) {	
@@ -267,11 +276,11 @@ Utils.renderDetailsFlags = function(o, flagorder, aliases, formats, cssClass) {
 		var k = flagorder[i];
 		if (o[k] && o[k]!='0') {
 			if (o[k]!='1') console.log('flag error: '+k+'='+o[k]);
-			var ak = aliases[k] || k;
+			var ak = (aliases[k] || k).replace(/ /g,'-');
 			//if (DMI.Options['Show database keys'])
 			ak += '<span class="internal-inline"> ['+flagorder[i]+']</span>';
 			
-			terms.push('<span class="flag '+cssClass+'">'+ak+'</span>');    
+			terms.push('<span class="flag '+cssClass+'" title="'+flagorder[i]+'">'+ak+'</span>');    
 		}
 	}
 	if (terms.length)
@@ -290,6 +299,36 @@ Utils.renderStrangeDetailsRows = function(o, ignorekeys, aliases, cssClass) {
 	return Utils.renderDetailsRows(o, displayorder, aliases, {}, cssClass)
 }
 
+Utils.renderModded = function(o) {
+	var h = '';
+	var show = DMI.Options['Show mod cmds'];
+	var modlines = o.modded.replace('ERROR:', '<span style="color:red;font-weight:bold;">ERROR:</span>');
+	var counttxt = '';//'<span class="tiny">('+(modlines.split('<br />').length -1)+' lines)</span>';
+	
+	var codereveal 	= "$(this).hide().siblings('a.hide-mod-commands').css('display','block').parent('div,td').find('p.mod-cmds').show()";
+	var codehide 	= "$(this).hide().siblings('a.show-mod-commands').css('display','block').parent('div,td').find('p.mod-cmds').hide()";
+		
+	
+	h+='		<a class="show-mod-commands"title="show mod commands"			';
+	h+='			style="display:'+(!show ? 'block' : 'none')+';"			'; 
+	h+='			onclick="'+codereveal+'">';
+	h+='				Modded<span class="internal-inline"> [modded]</span> ▷';//►';
+	h+=		counttxt+'</a>';
+
+	h+='		<a class="hide-mod-commands" title="show mod commands"			';
+	h+='			style="display:'+(show ? 'block' : 'none')+';"			'; 
+	h+='			onclick="'+codehide+'">';
+	h+='				Modded<span class="internal-inline"> [modded]</span> ▼';//▽';
+	h+=		'</a>';
+
+	h+='		<p class="mod-cmds" style="margin:0px; padding:0px; display:'+(show ? 'block' : 'none')+';">';
+	h+=			modlines
+	h+='		</p>';
+
+	return h;
+}	
+
+
 ////////////////////////////////////////////////////////////
 // ref: link referencing a local data object
 ////////////////////////////////////////////////////////////
@@ -297,19 +336,20 @@ Utils.renderStrangeDetailsRows = function(o, ignorekeys, aliases, cssClass) {
 Utils.ref = PaneManager.refLink;
 
 //make ref from object of type?
-function objectRef(type, id, text) {
+function objectRef(type, id, text, suffix) {
 	var lookup = DMI.modctx[type+'lookup'] || {};
 	
 	if (typeof(id) == 'string') id = id.toLowerCase();
 	var o = lookup[id]; if (!o) return id;
 	
 	if (typeof(text) != 'string') text = o.fullname || o.name;
+	if (suffix) text += suffix;
 	
-	return Utils.ref(type+' '+o.id, text);
+	var suffix = parseInt(o.id) ? '<span class="modding-inline refid">#'+o.id+'&nbsp;</span>' : '';
+	return suffix + Utils.ref(type+' '+o.id, text);//+'<span class="modding-inline refid">&nbsp;'+o.id+'</span>';
 }
 Utils.parseObjectRefs = function(html) {
-	//return html.replace(/\[(\w+) (\d+)(?:,.*?)?\]/, objectRef);
-	return html.replace(/\[(\w+) (\d+)(?:,.*?)?\]/g, function(_,$1,$2){ return objectRef($1,$2); });
+	return html.replace(/\[(\w+) ([^,\]]+),?\s*([^,\]]*),?([^,\]]*)\]/g, function(_,$1,$2,$3,$4){ return objectRef($1,$2,null,$4); });
 }
 
 //type specific functions
@@ -325,7 +365,8 @@ Utils.afflictionRef = function(name) { return Utils.ref('affliction '+name, name
 Utils.unitOfTypeRef = function(id, utype) {
 	var o = DMI.modctx.unitlookup[id]; 
 	if (!o) return v;
-	return Utils.ref(utype+' '+o.id, o.fullname);
+	var suffix = '<span class="modding-inline refid">#'+o.id+'&nbsp;</span>';
+	return suffix + Utils.ref(utype+' '+o.id, o.linkname);
 }
 Utils.rndMagicRef = function(id, text) {
 	var o = DMI.modctx.unitlookup[id];
@@ -334,7 +375,7 @@ Utils.rndMagicRef = function(id, text) {
 }
 
 //resolves ref and renders popup content
-PaneManager.renderPane = function(ref) {
+PaneManager.renderPane = function(ref, isPopup) {
 	var args = ref.split(/ (.+)/);
 	var o = null;
 	switch(args[0]) {
@@ -352,12 +393,17 @@ PaneManager.renderPane = function(ref) {
 			return DMI.MUnit.renderRandomMagic(o);
 		
 		//unit types
-		case 'unit':
-		case 'cmdr':
-		case 'commander':
-		case 'pretender':
-		case 'special':
-		case 'combat':
+		// case 'unit':
+		// case 'cmdr':
+		// case 'commander':
+		// case 'pretender':
+		// case 'special':
+		// case 'combat':
+		// case 'assassin':
+		// case 'infiltrator':
+		
+		//assume type unit
+		default: 
 			//match "[unit type] [id]"
 			var args2 = /^(.+?) (\d+)$/.exec(ref);
 			if (args2) {
@@ -373,7 +419,7 @@ PaneManager.renderPane = function(ref) {
 		console.log(ref + ' not found');
 		return;
 	}
-	return o.renderOverlay(o);
+	return o.renderOverlay(o, isPopup);
 }
 
 
@@ -382,27 +428,29 @@ PaneManager.renderPane = function(ref) {
 ////////////////////////////////////////////////////////////
 
 var _pqs = new ParsedQueryString();
-var _sessionId = _pqs.params('session') || (_pqs.params('mod') || []).join('_');
+
+var _sessionId = String(_pqs.params('session')) || 'default';// || (_pqs.params('mod') || []).join('_');
 
 Utils.loadState = function() {
 	var qs = location.search;
 	
 	if (!_pqs.param('page')) //not permalink.. load from cookie
-		 qs = $.cookie('state_for_mods_'+_sessionId);
+		 qs = $.cookie('state_for_session_'+_sessionId);
 	
 	//console.log('loadState..'+qs);
 	deSerializeState( qs || '' );
-	
 }
 Utils.saveState = function() {
 	var qs = serializeState();
-	$.cookie('state_for_mods_'+_sessionId, qs);
+	$.cookie('state_for_session_'+_sessionId, qs);
 	
 	var stateurl = location.href.split('?')[0] + qs;
 	$('#permalink').attr('href', stateurl);	
 	$('#select-mods-link').attr('href', stateurl+'&selectmods=1');
 	
 	qs = serializeState(true);
+	
+	//link to page state without mods
 	var ignoremodurl = location.href.split('?')[0] + qs;
 	$('#ignoremodurl').attr('href', ignoremodurl);
 }
@@ -415,6 +463,9 @@ function serializeState(ignoreMods) {
 		// 	args.push( 'mod='+m );
 		for (var i=0, m; m=DMI.loaded_mod_files[i]; i++)
 			args.push( 'mod='+m );
+		
+		for (var i=0, m; m=DMI.loaded_local_mod_files[i]; i++)
+			args.push( 'localmod='+m );
 	}
 	
 	if (s= $('div.page').filter(':visible').attr('id'))
@@ -477,11 +528,11 @@ function deSerializeState(qs) {
 //saves start of input element
 $.fn.saveState = function() {
 	this.each(function() {
-		$el = $(this);
+		var $el = $(this);
 		var tag = $el.prop('tagName');
 		var type = $el.attr('type');
 		
-		if ($el.attr('id') && (tag == 'INPUT' || tag =='SELECT')) {
+		if ($el.attr('id') && (tag == 'INPUT' || tag =='SELECT' || tag == 'TEXTAREA')) {
 			//read state
 			var key = $el.attr('id'), val = $el.val();
 			
@@ -499,6 +550,9 @@ $.fn.saveState = function() {
 			//ignore blank text
 			if (tag =='INPUT' && type == 'text' && val == '')
 				val = null;
+			//ignore blank text
+			if (tag =='TEXTAREA' && val == '')
+				val = null;
 						
 			//update local state
 			if (val == null)
@@ -513,8 +567,6 @@ $.fn.saveState = function() {
 	
 	return this;
 }
-
-
 
 ////////////////////////////////////////////////////////////
 // load dynamic content 
@@ -548,7 +600,6 @@ Utils.loadContent = function(url, domsel) {
 Utils.insertContent = function(html, domsel) {
 	setTimeout(function(){ $(domsel).html(html).hide().slideDown() }, 10);	//target may not exist yet
 }
-
 
 //namespace args
 }( window.DMI = window.DMI || {}, jQuery ));
