@@ -198,7 +198,7 @@ MUnit.prepareData_PostMod = function() {
 		o.renderOverlay = MUnit.renderOverlay;
 		o.matchProperty = MUnit.matchProperty;
 		
-		if (o.realns && o.realms.length == 0) {
+		if (o.realms && o.realms.length == 0) {
 			delete o.realms;
 		}
 		
