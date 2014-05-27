@@ -253,7 +253,7 @@ var modctx = DMI.modctx = {
 			}
 		},
 		newmonster: function(c,a,t,fnw) {
-			if (a.n1 == '') {
+			if (a.n1 == '' || a.n1 == '0') {
 				//get first unused id
 				var id = modctx.unitdata.length;
 				while (modctx.unitlookup[id]) id++;
