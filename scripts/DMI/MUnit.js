@@ -1363,6 +1363,15 @@ var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 	'gN',		'generates nature gems',	function(v){ return v!='0' && Format.PerTurn(Format.Gems(v+'N')); },
 	'gW',		'generates water gems',		function(v){ return v!='0' && Format.PerTurn(Format.Gems(v+'W')); },
 	
+	'tmpfiregems', 'temp fire gems',
+	'tmpairgems', 'temp air gems',
+	'tmpwatergems', 'temp water gems',
+	'tmpearthgems', 'temp earth gems',
+	'tmpastralgems', 'temp astral gems',
+	'tmpdeathgems', 'temp death gems',
+	'tmpnaturegems', 'temp nature gems',
+	'tmpbloodslaves', 'temp blood slaves',
+
 	'reclimit',		'recruitment limit',	Format.PerTurn,
 	'gemprod',	'generates gems',	function(v){ return v!='0' && Format.PerTurn(Format.Gems(v)); },
 
@@ -1579,6 +1588,7 @@ var flagorder = Utils.cutDisplayOrder(aliases, formats,
 //	dbase key	displayed key		function/dict to format value
 	'slow_to_recruit',	'slow to recruit',
 	'reqtemple', 'requires temple',
+	'reqlab', 'requires lab',
 	'unique',	'unique',
 	'immortal',	'immortal',
 	'isold',	'old age',
@@ -1591,7 +1601,7 @@ var flagorder = Utils.cutDisplayOrder(aliases, formats,
 	'bluntres',	'blunt resistant',
 	'pierceres',	'pierce resistant',
 	'cleanshape',	'heals afflictions when shapechanging',
-	
+
 	'animal',	'animal',
 	'undead',	'undead',
 	'demon',	'demon',

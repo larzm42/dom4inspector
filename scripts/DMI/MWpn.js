@@ -169,6 +169,7 @@ var displayorder = DMI.Utils.cutDisplayOrder(aliases, formats,
 	'demonundead', 	'only effect demon and undead',
 	'melee50',		'50% chance of being used',
 	'range050',		'50% chance of being used in melee',
+	'range0',		'can be used in melee',
 	'special',	'special',	function(v,o){ 
 		return v.replace(/affliction:\s*(.*)/i, 'affliction: '+Utils.ref('affliction $1','$1'));
 	}
