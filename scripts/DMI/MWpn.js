@@ -61,7 +61,7 @@ MWpn.prepareData_PostMod = function() {
 			o.dmg = '0';
 		
 		//missile / melee
-		if (o.ammo && o.ammo != '0') {
+		if (o.range && o.range != '0') {
 			if (o.att) {
 				o.prec = o.att;
 				delete o.att;
