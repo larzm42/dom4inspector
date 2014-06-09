@@ -1,7 +1,7 @@
 ---- [1] MOD INFOS LOADING ----
 
 #modname "Omniomicon"
-#description "Project Omniomicon (Chapter 1 - Ledan BETA 1.1) by Pymous (http://www.pymous.com)" -- 04/06/2014
+#description "Project Omniomicon (Chapter 1 - Ledan BETA 2) by Pymous (http://www.pymous.com)" -- 07/06/2014
 #version 0.1
 #icon "Omniomicon/omniomicon_banner.tga"
 
@@ -16,15 +16,15 @@
 #name "Ledan"
 #epithet "Eternal Ice"
 #era 1 ---- Early Era
-#brief "Strange amphibious penguin-like creatures who live in cold coastal regions and craft legendary Ice items. They are flexible and have high reflexes but lack protection 
-and attack skills. Due to their strange morphology they shine in cold and aquatic environments but are vulnerable in temperate or hot climates. Their society structure and hierarchy is built 
-around powerful and sacred priests who are artisans and guardians of a the Eternal Ice knowledge. A strange Cold surround Ledan territory."
-#descr "Leda is a cold coastal region surrounded by Ice and hard, frozen earth where there lives a nation of strange amphibious bipedal creatures.
- These creatures live both underwater, in cold waters where they spend most of their time swimming and fishing, and also on the surface where they have
- raised majestic structures built with and carved from Ice. They are one of the rare intelligent species who successfully developed without any use of fire technology.
- They have mastered Ice crafting and use this knowledge to produce fabulous Ice objects, art and weapons. But all this Ice crafting would be ephemeral without their
- mysterious and secret knowledge of Eternal Ice: The Ice of their craft never melt. These masters of Water and Air magic are sacred 
- and the secret of the Eternal Ice is well guarded and has never been unveiled to the outside world. Now their Pretender god is about to return, and a new era is coming.
+#brief "Leda is a frozen land peopled by peculiar avian beings who are equally at home on the land and in the sea, but who thrive only in the coldest of lands. They use weapons of magical,
+ never-melting Ice, and their capital is built around an ancient and mysterious monolith, called the Eternal Ice, which inexorably spreads their bitterly-cold climate to lands outside their
+ dominion."
+#descr "Leda is a strange land surrounded by frigid seas, glacial ice and hard, frozen tundra. It is the home of the Ledan, a peculiar avian people at home both in the water,
+ where they hunt and tend to their bountiful fisheries, and on the surface, where they have raised intricate and majestic structures of magical Ice. Ledans are odd of shape
+ and awkward, but they are surprisingly sturdy, agile and adaptable. They are strongest in cold and aquatic environments, and become weak and vulnerable in warmer lands.
+ Ledan society centers around a mysterious and magically-radiant monolith they call the Eternal Ice, which freezes the lands and enables the crafting of wondrous objects,
+ both practical and artistic, from enchanted, never-melting Ice. Without the Eternal Ice, Leda would melt into the seas, but with its power the Ledans have been able to
+ spread beyond their ancestral land and forge an empire. Now, the ascendant god of Leda seeks to cover the world in its icy embrace.
  
  "
 #summary "Ledan Dominion Spread Cold 
@@ -341,6 +341,7 @@ structures and often escort Guardians of the Eternal Ice. The LongIce wear the l
 #weapon 1200 -- "ice javelin (3)"
 #armor 15 -- Full leather armor
 #armor 550 -- "Ice Buckler"
+#armor 29 -- Ice Cap
 #gcost 20
 #end
 
@@ -1974,8 +1975,8 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 
 #newmonster 4252
 #name "Corrupted Red Thrower" -- Mega Blood Javelineer
-#spr1 "./Omniomicon/Ledan/ledan_corrupted_Jav.tga"
-#spr2 "./Omniomicon/Ledan/ledan_corrupted_Jav2.tga"
+#spr1 "./Omniomicon/Ledan/ledan_corrupted_jav.tga"
+#spr2 "./Omniomicon/Ledan/ledan_corrupted_jav2.tga"
 #descr "These tough and aggressive blood-covered Ice Throwers are clearly possessed by demons. While normal Ledan are only adapted to cold environments, these poor possessed creatures
  don’t appear to suffer in warmer climes. Even more strangely, they seem seem to have lost their natural cold resistance and refuse to go underwater." 
 #neednoteat -- ??? a conserver?
@@ -2240,6 +2241,41 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #mor 11
 #att 11
 #mapmove 2
+#end
+
+#newmonster 4277
+#name "Whale" 
+#descr "Description missing"
+#spr1 "./Omniomicon/Ledan/ledan_whale.tga" -- chemin sprite
+#spr2 "./Omniomicon/Ledan/ledan_whale2.tga" -- chemin sprite
+#itemslots 12288 -- 2 misc
+#rcost 1
+#gcost 0
+#hp 120
+#size 6
+#ressize 6
+#prot 15
+#mr 10
+#mor 12
+#str 20
+#att 8
+#def 8
+#prec 9
+#enc 2
+#mapmove 1 
+#ap 16 
+#eyes 2
+#weapon 461 -- swallow identique au monster fish
+#aquatic 
+#coldres 25
+#coldpower 1
+#undisciplined
+#animal
+#bluntres -- resistant sous la forme baleine
+#fear 5 -- Elle fait peur la baleine rien qu en raison de sa taille
+-- #trampswallow -- la baleine peut bouffer!
+#digest 1 --- nom nom nom
+#siegebonus 60 ---- Et oui la baleine peut tout defoncer!
 #end
 
 ------------------- SUMMONED COMMANDERS------------------------------------------------------------------------------------------------------
@@ -2577,15 +2613,16 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 --Water Based Titan--  Faire deux formes? Une sur terre forme "ledanienne" + 1 dans l'eau style pingouins géant
 ------------------
 #name "Vodled" 
-#descr "Vodled is a mythical figure of the Ledan pantheon and the symbol of the Water element. He is depicted as a huge underwater creature with many morphological similarities to modern Ledan.
- It is believed that Vodled can magically change his body shape to something very similar to actual Ledan, which allows him to travel on land. Many Ledan believe Vodled is immortal and is living
- somewhere near the Ledan settlements. There is one way to recognize him: At the top of his head there are three “tails” instead of only one. Many Ledan worship Vodled and consider him their
- ancestor. Ledan Wavefighters wear a specific helmet representing the three tails to serve and honor this mythical creature. NOTE: This unit
- has 2 temporary Water gems available at each combat start"
+#descr "The Vodled is a mysterious being revered by the people of Leda as the first Ledan. He is the embodiment of Water, and is often celebrated in their art and hymns as a titan,
+ similar to the Ledan, who roams the seas near their glacial settlements and swallows entire schools of fish, sharks and other delicious sea creatures to bring back to the beaks
+ of his people. He is indeed a Ledan titan, though he often chooses to walk the lands as a Ledan of normal size but of striking aspect. In either form, he always appears with
+ three 'tails' on his head, instead of one, and the cult of the Wavefighters honor this by wearing their peculiar three-tailed helmets. The Vodled has an enormous appetite,
+ though when in the sea he is capable of satisfying his own needs while still providing bounty to his people. NOTE: This unit has 2 temporary Water gems available at each combat start"
 #spr1 "./Omniomicon/Ledan/ledan_pretenderwater.tga" -- chemin sprite
 #spr2 "./Omniomicon/Ledan/ledan_pretenderwater2.tga" -- chemin sprite
 #landshape 4268
 #itemslots 12288 -- 2 misc
+#supplybonus 100 -- supply bonus
 #rcost 1
 #gcost 75
 #startdom 3
@@ -2604,19 +2641,15 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #mapmove 2 
 #ap 16 
 #eyes 2
------ Il faudra lui enlever les slots d armes armures et garder que du misc
 #weapon 461 -- swallow identique au monster fish
---aucune armure
 #amphibian --- la baleine peut pas aller sur la terre ferme. Faire un landshape pour transformation en ancetre pingouin
 #coldres 25
 #coldpower 1
 #expertleader -- C'est un pretendant dieu apres tout...
 #magicskill 2 3 -- water magic
---#giftofwater 120 -- Sous forme "baleine" peut transporter tout une armée?
 #darkvision 50
 #bluntres -- resistant sous la forme baleine
 #fear 5 -- Elle fait peur la baleine rien qu en raison de sa taille
--- #trampswallow -- la baleine peut bouffer!
 #digest 1 --- nom nom nom
 #siegebonus 100 ---- Et oui la baleine peut tout defoncer!
 #tmpwatergems 2 --- 2 water gems pour combat
@@ -2626,13 +2659,14 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 ---------Version landshape enlevee a cause bug----------
 #newmonster 4268
 #name "Vodled (landshape)" 
-#descr "Vodled is a mythical figure of the Ledan pantheon and the symbol of the Water element. He is depicted as a huge underwater creature with many morphological similarities to modern Ledan.
- It is believed that Vodled can magically change his body shape to something very similar to actual Ledan, which allows him to travel on land. Many Ledan believe Vodled is immortal and is living
- somewhere near the Ledan settlements. There is one way to recognize him: At the top of his head there are three “tails” instead of only one. Many Ledan worship Vodled and consider him their
- ancestor. Ledan Wavefighters wear a specific helmet representing the three tails to serve and honor this mythical creature. NOTE: This unit has 
- 2 temporary Water gems available at each combat start"
+#descr "The Vodled is a mysterious being revered by the people of Leda as the first Ledan. He is the embodiment of Water, and is often celebrated in their art and hymns as a titan,
+ similar to the Ledan, who roams the seas near their glacial settlements and swallows entire schools of fish, sharks and other delicious sea creatures to bring back to the beaks
+ of his people. He is indeed a Ledan titan, though he often chooses to walk the lands as a Ledan of normal size but of striking aspect. In either form, he always appears with
+ three 'tails' on his head, instead of one, and the cult of the Wavefighters honor this by wearing their peculiar three-tailed helmets. The Vodled has an enormous appetite,
+ though when in the sea he is capable of satisfying his own needs while still providing bounty to his people. NOTE: This unit has 2 temporary Water gems available at each combat start"
 #spr1 "./Omniomicon/Ledan/ledan_pretenderwater_ls.tga" -- chemin sprite
 #watershape 4267
+#supplybonus -20 -- glutonous
 #coldpower 1
 #maxage 1000
 #itemslots 15494 -- normal
@@ -2668,11 +2702,12 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #stormimmune
 #awe 3
 #stormpower 2
-#descr "Neboled is a mythical figure of the Ledan pantheon and is traditionally associated with the Air element. He is described as a giant flying Ledan with colored feathery arms.
- Popular wisdom depicts the ancestors of the Ledan as flying creatures able to travel huge distance in a world covered by Ice. It is believed the Ledan lost their ability to fly when
- the world’s temperature started to increase and the iced ocean started to be more accessible for fishing. Flying was no longer necessary and feathers were unsuited to the new, wetter
- environment. Ledan now settle around accessible fishing areas where the ice is thinner and more and more children are being born without any feathers. Neboled is believed to be the last
- king of the flying ancestors. NOTE: This unit has 2 temporary Air gems available at each combat start"
+#descr "According to the stories of the Ledan elders, the Ledan were once a flying people, with beautifully-plumed wings that sparkled in the sun. Their ancestors could effortlessly
+ fly great distances over the world when it was still untainted and properly covered in ice. But when this paradise was lost, they left the skies and took to the oceans to eat of fish
+ and crabs, settling in the only part of the world that kept its crystalline beauty. The Ledan have since forgotten how to fly, instead becoming sleek swimmers, agile of limb and strong
+ of body. While some Ledan are still born with limbfeathers, there are fewer and fewer every generation. The Neboled, the Ledan titan of Air, was a king of old and is the last of
+ the flying Ledan, able to soar above the lands, keeping watch over the children of his people. He has little fear of lightning and dances on the highest mountaintops during storms.
+ NOTE: This unit has 2 temporary Air gems available at each combat start"
 #spr1 "./Omniomicon/Ledan/ledan_pretenderair.tga" -- chemin sprite
 #spr2 "./Omniomicon/Ledan/ledan_pretenderair2.tga" -- chemin sprite
 #rcost 1
@@ -2710,9 +2745,11 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 --WARRIOR based Titan--  
 ------------------
 #name "Frozen One" --- 
-#descr "The Frozen One is a mythical figure of the Ledan pantheon, and the symbol of warfare and protection. Depicted as a huge Ice creature, he is believed
- to be the first Guardian of the Eternal Ice, protecting it eternally. Popular wisdom claims the Frozen One is hidden somewhere under the Ice and will return with the other Guardians
- as soon as the Eternal Ice is in danger. It is said he will lead the Ledan to victory against their enemies."
+#descr "The Frozen One is the warrior [titan / colossus] of the Ledan, their guardian and their warmaster. He is never mentioned in the old tales, but according to the prophecies
+ of the Ice Keepers he is a sacred titan of the Ledan who has lain hidden, deep in the glacial ice, for ages, waiting to come if ever there is danger to the Eternal Ice. This
+ time has come and the Frozen One has indeed come to fulfill the prophecy and lead the Ledan to victory against their enemies. Not quite properly a titan, and bearing no resemblance
+ to the Ledan, the Frozen One is a huge, strangely-alien being composed of pure, living Ice. He carries a great Ice trident and exudes a bone-chilling cold. The Ledan both revere
+ and fear him, as they know that he shows no compassion and little tolerance for error, questioning or disrespect."
 #spr1 "./Omniomicon/Ledan/ledan_pretenderhero.tga" 
 #spr2 "./Omniomicon/Ledan/ledan_pretenderhero2.tga" 
 #pierceres -- resistance percage
@@ -2740,6 +2777,8 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #ap 10 
 #eyes 2
 #weapon 1203 -- "Ice Trident"
+#weapon 69 -- Icicle fist (create new Icefist weapon later, same effect)
+#weapon 93 -- Cold Breath
 #amphibian
 #cold 15 --- Cold chill aura
 #fireres -10 -- Susceptible au feu 
@@ -2760,10 +2799,10 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 --Pretender mixed --  Style recherche? rainbow? generateur de gems? 
 ------------------
 #name "Blue King" --- Quelle forme? Vieux Ledan hermite? 
-#descr "The Blue King is another legendary figure of the Ledan pantheon. He is the symbol of wisdom and harmony. It is said he was the one who led the Ledan to their Golden Age by encouraging
- Ice crafting as well as exchanges with and tolerance for other civilizations. He was a great Ledan, entirely devoted to his kind, but also a great mage, researcher, and philosopher.
- He remains the most famous leader in Ledan history. It is said that he even mastered his own mortality. His great intelligence and wisdom compelled him to retire by himself to an unknown
- place so that younger Ledan generations could freely choose their own destiny."
+#descr "The Blue King is the great philosopher-king of the Ledan, revered as the greatest and wisest leader of the Ledan to ever have lived. To his people, he has come to symbolize the
+ virtues of wisdom and harmony. It is he, according to the old stories, who brought about the Great Ice Age of Leda by encouraging his people to master Icecraft and fostering exchange
+ with the peoples of the outside world. The Blue King is a mage of such skill and knowledge that he has mastered his own mortality, and now vies for Ascendance so that he may lead his
+ people to a new age of prosperity as they spread their dominion over the lands. He is both an able researcher and an inspiring teacher, and is knowledgeable in the secret arts of healing."
 #spr1 "./Omniomicon/Ledan/ledan_pretenderrainbow.tga" 
 #spr2 "./Omniomicon/Ledan/ledan_pretenderrainbow2.tga" 
 #rcost 1
@@ -2804,13 +2843,15 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 --Ledan immobile Eternal Ice --  
 ------------------
 #name "Eternal Ice" --- 
-#descr "The Eternal Ice is a strange Ice block discovered by the Ledan while they were sculpting their Ice Citadel. At first this block was no different from others, and the Ice Sculptors
- were planning to carve it, but they simply couldn’t. The Ice was so strong that they could not even make a scratch on it. Ice Sculptors started to carve all around this material they could
- not break. Strangely, the more they made space around it, the more a peculiar wind started to blow and temperatures started to fall incredibly fast. It appeared the block had a strange dark
- coloring inside and an odd symbol was discovered near its base. Many months later, Ledan sculptors who worked on this site noticed that the Ice parts of the tools they used didn’t melt.
- These sculptors were the first to form the Order of the Eternal Ice, known as Ice Keepers, who to this day remains the leading faction in Ledan society."
+#descr "Many years ago, ice-sculptors carving the Ice Citadel discovered a large block that was impervious to their tools and could not chipped, etched or even scratched. As they carved out
+ the ice around the strange block, a fae wind began to blow in toward it, and it seemed to fill the cavern with a comfortable icy chill. Excited at their discovery, the sculptors studied it
+ for many months, and found that inside the block was a dark obelisk adorned with an odd symbol. More importantly, they found that they could use its power to form tools and other objects of
+ Ice that were not only as hard and resilient as the ones their icecrafters have made since the times of old, but that would not melt even when placed in fire. These sculptors formed the Order
+ of the Eternal Ice, and called themselves the Ice Keepers. Only a few of them know that the Eternal Ice itself is alive and has awakened, and has its own secret purpose, which it now seeks
+ to fulfill by becoming Pantrokrator of this world."
 #spr1 "./Omniomicon/Ledan/ledan_eternalice.tga" 
 #spr2 "./Omniomicon/Ledan/ledan_eternalice2.tga" 
+#batstartsum4 "Guardian of the Eternal Ice" --
 #rcost 1
 #gcost 0
 #startdom 4
@@ -3285,6 +3326,24 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #effect 10001 -- summon ritual
 #fatiguecost 400 -- 4 gems
 #nreff 1003 -- nombre d effets 5+
+#restricted 101 -- Restricted to LEDAN
+#end
+
+#newspell
+#name "Call Whale"
+#descr "Summon and bind a huge Whale to help Ledan armies."
+#onlygeosrc 4 -- only castable in sea provinge tag
+#spec 8388608
+#school 0 -- conjuration
+#researchlevel 4
+#path 0 6 -- nature
+#path 1 2 -- water
+#pathlevel 0 2
+#pathlevel 1 2
+#damagemon "Whale"
+#effect 10001 -- summon ritual
+#fatiguecost 300 -- 3 gems
+#nreff 1 -- 1 baleine
 #restricted 101 -- Restricted to LEDAN
 #end
 
