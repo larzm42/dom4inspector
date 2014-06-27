@@ -36,7 +36,7 @@ id	name	effect_record_id	att	def	len	nratt	ammo	secondaryeffect	secondaryeffecta
 34	Blow Pipe	35	2	0	0	1	15	54	0	1
 35	Ice Knife	36	2	0	0	1	0	0	0	1
 36	Ice Lance	37	1	0	4	1	0	0	0	2
-37	Ice Blade	38	1	1	1	1	0	0	0	4
+37	Ice Blade	38	1	1	2	1	0	0	0	4
 38	Snake Hair	39	-2	0	0	5	0	50	0	0
 39	Free	40	0	0	0	0	0	0	0	0
 40	Whip	41	-1	0	5	1	0	0	0	1
@@ -154,7 +154,7 @@ id	name	effect_record_id	att	def	len	nratt	ammo	secondaryeffect	secondaryeffecta
 152	Longbow of Accuracy	153	30	0	0	1	12	0	0	0
 153	Stick	154	0	1	1	1	0	0	0	0
 154	Bow of War	155	0	0	0	13	7	0	0	0
-155	Black Bow	156	5	0	0	1	12	0	156	0
+155	Black Bow	156	5	0	0	1	12	156	0	0
 156	Feeblemind	157	0	0	0	1	0	0	0	0
 157	Oath Rod	158	3	5	4	1	0	156	0	0
 158	Flailing Hands	159	4	-1	3	2	0	0	159	0
@@ -302,7 +302,7 @@ id	name	effect_record_id	att	def	len	nratt	ammo	secondaryeffect	secondaryeffecta
 300	Head Butt	301	1	-1	0	1	0	0	0	0
 301	Fire Bola	302	2	0	0	1	50	0	302	0
 302	Fire Bonds	303	0	0	0	1	0	0	0	0
-303	Vine Bow	304	0	0	0	1	12	137	0	0
+303	Vine Bow	304	0	0	0	1	12	0	137	0
 304	Evening Star	305	6	-2	2	1	0	0	305	0
 305	Fire and Weakness	306	0	0	0	1	0	0	306	0
 306	Weakness	307	0	0	0	1	0	0	0	0
@@ -364,7 +364,7 @@ id	name	effect_record_id	att	def	len	nratt	ammo	secondaryeffect	secondaryeffecta
 362	Chakram	363	0	0	0	1	2	0	0	2
 363	Iron Cudgel	364	0	0	3	1	0	0	0	2
 364	Curse Luck	365	0	0	0	1	0	0	0	0
-365	Flail of Misfortune	366	3	-3	3	2	0	366	0	0
+365	Flail of Misfortune	366	3	-3	3	2	0	0	366	0
 366	Curse Luck	367	0	0	5	1	0	0	0	0
 367	Horror Mark	368	0	0	0	1	0	0	0	0
 368	Horror Mark	369	100	0	0	1	30	0	0	0
@@ -609,3 +609,10 @@ id	name	effect_record_id	att	def	len	nratt	ammo	secondaryeffect	secondaryeffecta
 607	Freeze	608	0	0	0	0	0	0	0	0
 608	Sword of Oaths	609	1	1	2	1	0	0	0	0
 609	Grab and Swallow	610	0	-2	0	1	0	0	0	0
+610	Sacred Circlet	611	0	0	1	1	0	0	0	0
+611	Ice Spear	612	1	0	4	1	0	0	0	2
+612	Ice Blade	613	1	2	1	1	0	0	0	4
+613	Enchanted Bow	614	2	0	0	1	12	0	0	0
+614	Tusk	615	0	0	0	1	0	0	0	0
+615	Hoof	616	0	0	0	1	0	0	0	0
+616	The Bloody Mace	617	5	0	3	1	0	564	0	0

@@ -10,6 +10,7 @@ number	name	test
 11	Special Attack
 13	Heal
 15	Return Home
+16	Unknown
 17	Temporary Morale Boost
 19	Teleport
 20	Blink
@@ -95,6 +96,7 @@ number	name	test
 119	Send Lady Midday
 120	Release Imprisoned Ones
 121	Grab and Swallow
+122	Unknown
 500	Dehydrate
 504	Resist Element
 509	Protect against Element

@@ -35,7 +35,7 @@ id	name	type	constlevel	mainpath	mainlevel	secondarypath	secondarylevel	weapon	a
 34	Gloves of the Gladiator	2-h wpn	2	N	2			128																																																																																																																																					
 35	Serpent Kryss	1-h wpn	2	N	1			297					5																																																																																																																																
 36	Knife of the Damned	1-h wpn	2	N	1	S	1	117																																																	1		1																																																																																		
-37	Jade Knife	1-h wpn	2	N	1	B	1	309																																																																																																																																				"+2 blood sacrifice, restricted to Mictlan"	
+37	Jade Knife	1-h wpn	2	N	1	B	1	309																																																																																																																																				+2 blood sacrifice, restricted to Mictlan	
 38	Staff of Flame Focus	2-h wpn	2	F	1			238																																																																										1																																																											
 39	Fire Bola	1-h wpn	4	F	1			301																																																																																																																																					
 40	Wand of Wild Fire	1-h wpn	4	F	3			172																																																																																																																										Fireball											
@@ -151,7 +151,7 @@ id	name	type	constlevel	mainpath	mainlevel	secondarypath	secondarylevel	weapon	a
 150	Dragon Helmet	helm	2	F	1				21		5																5																																																																																																																		
 151	Horror Helmet	helm	2	D	2				21																																																									5																																																																											
 152	Black Laurel	helm	2	D	2																																																																																																																															259	2							restricted to Ashen Empire Ermor (MA)	
-153	Ivy Crown	helm	2	N	1																																		1																																																																																							1						"361, 362"	??								
+153	Ivy Crown	helm	2	N	1																																		1																																																																																							1						361, 362	??								
 154	Horned Helmet	helm	2	N	1			331	21																																																																																																																																				
 155	Flame Helmet	helm	4	F	4				80																										-3																																						1																																																																				
 156	Helmet of Heroes	helm	4	F	1	E	1		174																																																							2																																																																													
@@ -169,7 +169,7 @@ id	name	type	constlevel	mainpath	mainlevel	secondarypath	secondarylevel	weapon	a
 168	Helmet of Perfection	helm	8	W	3	A	3		175																																																							3			5																																																																									eyeloss on attacker	
 169	Helmet of the Dawn	helm	8	E	2	S	1		180								20									2																																									1																																																																										
 170	The Jade Mask	helm	8	D	7	N	3		45				15			10										3																																								10												2																																																				Rigor Mortis									Can only be used by coldblooded units		
-171	Crown of the Ivy King	helm	8	N	2								15			5																							1																													5																																																										x	Barkskin				Awaken Vine Men	"361, 362"	??								
+171	Crown of the Ivy King	helm	8	N	2								15			5																							1																													5																																																										x	Barkskin				Awaken Vine Men	361, 362	??								
 172	The Crown of Despair	misc	8	D	2									100																																																				5																					1																																																						
 173	Black Steel Plate	armor	0	E	1				39																																																																																																																																				
 174	Black Steel Full Plate	armor	0	E	2				38																																																																																																																																				
@@ -252,7 +252,7 @@ id	name	type	constlevel	mainpath	mainlevel	secondarypath	secondarylevel	weapon	a
 251	Bracers of Protection	misc	2	E	1				76																																																																																																																																				
 252	Lodestone Amulet	misc	2	E	1																					2																																																																																																																			
 253	Wound Fend Amulet	misc	2	E	1	S	1										25																																																																																																																												
-254	The Pebble Pouch	misc	2	E	1			546																																																																																																																																			"Must have size 4, str 20, 2 hands"		
+254	The Pebble Pouch	misc	2	E	1			546																																																																																																																																			Must have size 4, str 20, 2 hands		
 255	Pendant of Luck	misc	2	S	1																																																		1																																																																																						
 256	Cat's Eye Amulet	misc	2	E	1	D	1							50																							20																																																																																																								
 257	Effigy of War	misc	2	D	1	N	1																																																																																																																																					Army size +50 for enemy scouts	
@@ -281,11 +281,11 @@ id	name	type	constlevel	mainpath	mainlevel	secondarypath	secondarylevel	weapon	a
 280	Eye of the Void	misc	4	S	1																					-2										2																							1	x																																																																														Lost an Eye		dispels illusions	
 281	Stone Sphere	misc	4	S	2	E	1																																																					x																																																																							Astral Window										
 282	Crystal Coin	misc	4	S	2	E	2																																																																						1																																																																
-283	Amulet of the Dead	misc	4	D	1																																																																																																																																							"Increases number of reanimated ghouls, soulless and longdead"	
+283	Amulet of the Dead	misc	4	D	1																																																																																																																																							Increases number of reanimated ghouls, soulless and longdead	
 284	Champion's Skull	misc	4	D	2																																																																4																																																																								
 285	Bane Venom Charm	misc	4	D	2																																																					1																																																																		10																kills population in province and spreads disease	
 286	Horn of Valor	misc	4	N	1																																																											1																																																																													
-287	Acorn Necklace	misc	4	N	1	E	1			5																																													1																																																																								Luck														
+287	Acorn Necklace	misc	4	N	1	E	1			15																																													1																																																																								Luck														
 288	Endless Bag of Wine	misc	4	N	1																																																																																																																50																								
 289	Amulet of Giants	misc	4	N	1																																																																																																																										Enlarge (1) (max 4)													Enlarge to size 4 (max)	
 290	Lychantropos' Amulet	misc	4	N	2									50		10												4																															1																																																0																																	turns wearer into Skinshifter (400) if MR fails	
@@ -308,7 +308,7 @@ id	name	type	constlevel	mainpath	mainlevel	secondarypath	secondarylevel	weapon	a
 307	Sea King's Goblet	misc	6	W	3																																											100																																																																																												uw points indicate total size	
 308	The Copper Arm	misc	6	E	3	F	1																																																				1																																																																																	+1 hand slot	
 309	Stone Bird	misc	6	E	1	A	1	176																																																																																																																																					
-310	Crystal Heart	misc	6	E	2	S	2																																																				1																																																																															Chest Wound	Cannot be used by inanimate beings	"resurrects bearer on death, not usable by lifeless creatures"	
+310	Crystal Heart	misc	6	E	2	S	2																																																				1																																																																															Chest Wound	Cannot be used by inanimate beings	resurrects bearer on death, not usable by lifeless creatures	
 311	Stone Idol	misc	6	E	2	S	2																																																																																																																3																						
 312	Eye Pendant	misc	6	E	3	D	3												1																																																																																															10																										allows 2x bodyguards against assassins	
 313	Arcane Lens	misc	6	S	3																																																																													1	1	1	1	1	1	1	1																																																				
@@ -316,17 +316,17 @@ id	name	type	constlevel	mainpath	mainlevel	secondarypath	secondarylevel	weapon	a
 315	Ring of Wizardry	misc	6	S	8																															1																																					1	1	1	1	1	1	1	1																																																													
 316	Ring of Sorcery	misc	6	S	7																															1																																									1	1	1	1																																																													
 317	Skull Mentor	misc	6	D	2																																																																																																																	18																							
-318	Elixir of Life	misc	6	N	2	F	2																																																																																																																																					"prevents aging, resurrects bearer upon death"	
+318	Elixir of Life	misc	6	N	2	F	2																																																																																																																																					prevents aging, resurrects bearer upon death	
 319	Pocket Ship	misc	6	N	3	A	2																																						200	4																																																																																														grants sailing	
 320	Moonvine Bracelet	misc	6	N	3	S	1																																																																								1																																																	Summon Vine Man								361	1				
 321	The Black Heart	misc	6	B	2																						2																																1																																																																															Chest Wound	Cannot be used by inanimate beings	stealthy bearer becomes an assassin	
 322	Blood Pendant	misc	6	B	2									50														2																																																													1																																																				
 323	The Ruby Eye	misc	8	F	3																																																						1														1																																																																	Lost an Eye		occasionally produces water gems	
-324	Fever Fetish	misc	8	F	1	N	1																																																			1																																								*																																										"gem production not automatic, chance based on how many hit points wearer has lost to disease"	
-325	The Ark	misc	8	F	6	S	6																																																																																																																									Ark												"Spreads dominion, causes disease among non-sacred units"	
+324	Fever Fetish	misc	8	F	1	N	1																																																			1																																								*																																										gem production not automatic, chance based on how many hit points wearer has lost to disease	
+325	The Ark	misc	8	F	6	S	6																																																																																																																									Ark												Spreads dominion, causes disease among non-sacred units	
 326	Amulet of the Doppelganger	misc	8	A	3																																50																																																																																																								
 327	The Flying Ship	misc	8	A	5																																																																																																																																							grants flying movement to army	
-328	Igor Könhelm's Tome	misc	8	A	2	D	2																																																																																																																													534	12							"+12 Corpse Constructs per summoning, increased strength during storm (stormpower 5)"	
+328	Igor Könhelm's Tome	misc	8	A	2	D	2																																																																																																																													534	12							+12 Corpse Constructs per summoning, increased strength during storm (stormpower 5)	
 329	Tome of High Power	misc	8	A	2	S	2																																																					x														1			1																																																															powerful horror mark	
 330	The Magic Lamp	misc	8	A	5	F	4																																																																																																																												Summon Jinn	490	1								
 331	Krupp's Bracers	misc	8	E	2				78																										3																																																																																																										
@@ -357,9 +357,9 @@ id	name	type	constlevel	mainpath	mainlevel	secondarypath	secondarylevel	weapon	a
 356	The Tome of Gaia	misc	8	N	2	E	2																																																																					1			1																																																														
 357	The Manual of Cross Breeding	misc	8	B	3	N	3																																																																																																																						?																
 358	The Gift of Kurgi	misc	8	B	6				94													10		10																			1									1			1		1			x						30																																																														Call Lesser Horror			Send Lesser Horror										
-359	Ardmon's Soul Trap	misc	8	B	3	S	1																					-2							-1																																																																																													Open Soul Trap								"1539, 1540, 1541"	??			Stolen Strength (2) (strength loss is permanent)	
+359	Ardmon's Soul Trap	misc	8	B	3	S	1																					-2							-1																																																																																													Open Soul Trap								1539, 1540, 1541	??			Stolen Strength (2) (strength loss is permanent)	
 360	Shortsword	2-h wpn	12	E	3			132							80																																																																																																																													Oberf?hrer the Hoburg Hero	
-361	Hammer of the Cyclops	2-h wpn	12	E	6			119																																																																																																																																				"Master Smith (1), Polypercheron the Cyclops"	
+361	Hammer of the Cyclops	2-h wpn	12	E	6			119																																																																																																																																				Master Smith (1), Polypercheron the Cyclops	
 362	The Admiral's Sword	1-h wpn	12	D	3			186																																																										5																																																																											
 363	Precious	misc	12	F	2																							4	4																																																																																																															Bogus the Troll	
 364	Vial of Frozen Tears	misc	12	W	4	D	3																																																																				1			1																																																														Starke the Ice Druid	
@@ -380,3 +380,4 @@ id	name	type	constlevel	mainpath	mainlevel	secondarypath	secondarylevel	weapon	a
 379	Enchanted Ring Mail Armor	armor	0	S	1				194																																																																																																																																				
 380	Mercury Barrel	misc	6	W	1	E	1																																																																																																																																						
 381	Storm Spool	misc	4	A	1					15																																																																																																																																			
+382	Crown of the Shah	helm	2	F	1	A	1		148																																																				100	25																																																																															

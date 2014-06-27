@@ -9,7 +9,7 @@ id	name	rarity	loc	level	path	F	A	W	E	S	D	N	B	gold	res	sup	unr	exp	lab	fort	scal
 8	The Forges of Ulm	5	0	0	Earth				5																																																														
 9	The Temple City	5	0	0	Death						4	2																															177	1366	783																										
 10	Tower of a Thousand Stars	5	0	0	Astral					4		1																															301	747																											
-11	The Citadel of Frozen Crystal	5	0	0	Water		3	2																																			358																												
+11	The Citadel of Frozen Crystal	5	0	0	Water		3	2																																			2547	358																											
 12	Empoisoners Guild	5	0	0	Nature																																						503	502																											
 13	The House of Fiery Justice	5	0	0	Holy	4				1																																	222	223																						50%					
 14	The Grove of Gaia	5	0	0	Nature							5																															769																												
@@ -38,8 +38,8 @@ id	name	rarity	loc	level	path	F	A	W	E	S	D	N	B	gold	res	sup	unr	exp	lab	fort	scal
 37	The Deepest Cave of the Province	5	0	2	Earth				1																																																														
 38	Temple of the Everburning Pyre	5	0	0	Fire	1																																					1970	1966	990																										
 39	The Smouldercone	5	0	0	Fire	3															Heat																						923	89																											
-40	The Citadel of Frozen Crystal	5	0	0	Water		1	1																																			1004																												
-41	Ravens Vale	5	0	0	Earth				1		1																																1003	1280																											
+40	The Citadel of Frozen Crystal	5	0	0	Water		1	1																																			1004	2576																											
+41	Ravens Vale	5	0	0	Earth				1		1																																1003	2548	1280																										
 42	Black Forest	5	0	0	Nature					1		1																															1028	1011																											
 43	The Sacred Swamp	5	0	1	Nature							3																															1879	761	1859	1850																									
 44	The Black Temple	5	0	0	Holy																																						738	1237																											
@@ -92,7 +92,7 @@ id	name	rarity	loc	level	path	F	A	W	E	S	D	N	B	gold	res	sup	unr	exp	lab	fort	scal
 91	Carnutes	5	0	0	Nature				2	3		1																															1222	1223	1204																										
 92	Temple of the Pure War	5	0	0	Holy		1																																				1247																												
 93	Mountain of the Mystics	5	0	0	Earth	1			1			1																															1248																												
-94	Palace of the Eagle Kings	5	0	0	Air		5	1																																			1286	1289																											
+94	Palace of the Eagle Kings	5	0	0	Air		3	1																																			1286	127	1289																										
 95	Mountain of the Oni Kings	5	0	0	Earth	1	1		1		3																																1316																												
 96	Patala	5	0	0	Earth			2	1																																		1318	1319																											
 97	The Jeweled City	5	0	0	Earth					1																																	1320	1321	1322																										
@@ -166,6 +166,10 @@ id	name	rarity	loc	level	path	F	A	W	E	S	D	N	B	gold	res	sup	unr	exp	lab	fort	scal
 165	The Chamber of the Broken Seal	5	0	0	Death						5										Death																																																		
 166	The Chamber of the Broken Seal	5	0	0	Death						1																																2508																												
 167	The Womb of the Earth	5	0	0	Earth			1																																			2493	2492																											
+168	Spire Horn Mountain	5	0	0	Air		1																																				2558																												
+169	Ravens Vale	5	0	0	Earth				1																																		2560	2559																											
+170	Lake Urmia	5	0	0	Water		1	1		1																																	2592																												
+171	Mountain of the Everburning Caverns	5	0	0	Fire	1																																					2629	2587																											
 210	Tar Pits	0	219	1	Fire	1																																																																	
 211	Sun Ridge	0	223	1	Fire	2																																																																	
 212	Gold Apple Tree	1	223	2	Fire	2																																																																	
@@ -746,8 +750,8 @@ id	name	rarity	loc	level	path	F	A	W	E	S	D	N	B	gold	res	sup	unr	exp	lab	fort	scal
 787	The Throne of Stability	11	17407	0	Holy																		1																																																
 788	The Throne of the Deeps	11	16640	0	Holy																		1																50										438	1																					
 789	The Throne of Bones	11	17407	0	Holy																		1														3																																		
-790	The Throne of Knowledge	12	16607	0	Holy																		1																				479	478																											
-791	The Crystal Throne	12	16607	0	Holy				1	1													1																				340																												
+790	The Throne of Knowledge	12	16607	0	Holy																		2																				479	478																											
+791	The Crystal Throne	12	16607	0	Holy				1	1													2																				340																												
 792	The High Throne	11	17407	0	Holy																		3																																																
 793	The Throne of Law	11	17407	0	Holy																Order		1	-1																																															
 794	The Throne of Zeal	11	17407	0	Holy																		2													1																																			
@@ -903,7 +907,7 @@ id	name	rarity	loc	level	path	F	A	W	E	S	D	N	B	gold	res	sup	unr	exp	lab	fort	scal
 944	Underworld Entrance	2	223	3	Earth				2						20																																																								
 945	Abyss	2	255	1	Earth				1																																																														
 946	Heart of the Mountain	2	16388	3	Earth				2																																E	3																													
-947	Basilisk Cave	2	223	2	Earth				1																																															15%															
+947	Basilisk Cave	2	223	2	Earth				1																																															20%															
 948	Rune of Earth	1	255	2	Earth																																				E	2																													
 949	Unfound Door	0	255	4	Astral					1																																																													
 950	Starlit Pond	0	215	1	Astral					1																																																													
@@ -913,10 +917,10 @@ id	name	rarity	loc	level	path	F	A	W	E	S	D	N	B	gold	res	sup	unr	exp	lab	fort	scal
 954	Brook of Glimmering Pearls	1	215	1	Astral			1		1																																																													
 955	Seer's Grave	2	767	2	Astral					1																																																												reveals magic score graphs	
 956	Dreaming Stone	2	767	2	Astral																																				S	2																												reveals magic score graphs	
-957	Sorcerer's Circle	2	223	2	Astral																																																							15%											
-958	Archaic Diagram	2	255	2	Astral																																																				15%														
-959	Chamber of Enchantment	2	223	2	Astral														lab																																								15%												
-960	Unsettling Pattern	2	255	2	Astral																																																							15%					5%						
+957	Sorcerer's Circle	2	223	2	Astral																																																							20%											
+958	Archaic Diagram	2	255	2	Astral																																																				20%														
+959	Chamber of Enchantment	2	223	2	Astral														lab																																								20%												
+960	Unsettling Pattern	2	255	2	Astral																																																							20%					5%						
 961	Basalt Mirror	2	255	2	Astral																																																															1			
 962	Cave of the Sleepers	2	16607	4	Astral					1																																																													
 963	The Gnomon	2	16607	2	Astral					1																															S	3																													
@@ -931,8 +935,8 @@ id	name	rarity	loc	level	path	F	A	W	E	S	D	N	B	gold	res	sup	unr	exp	lab	fort	scal
 972	Tomb of the Grand Thaumathurg	2	16479	3	Death						1																														D	2																													
 973	Sigil of the Ancients	2	16639	3	Death																																				D	3																													
 974	Circle of Sending	2	223	2	Death																																				*	2																							2%						
-975	Nidus of Power	2	255	2	Death																																																							15%											
-976	Conjurer's Circle	2	223	2	Death																																																		10%																
+975	Nidus of Power	2	255	2	Death																																																							20%											
+976	Conjurer's Circle	2	223	2	Death																																																		20%																
 977	Plague Barrow	2	223	1	Death						1																																																				2%								
 978	Pit of Despair	2	16607	1	Death						1						-5																																																						
 979	Wolf Oak	0	223	1	Nature							1																																																											
@@ -953,19 +957,19 @@ id	name	rarity	loc	level	path	F	A	W	E	S	D	N	B	gold	res	sup	unr	exp	lab	fort	scal
 994	Starsong Grove	2	16386	3	Nature					1																															S	3																													
 995	Tree of Life	2	16599	2	Nature																																																									3%									
 996	Tree of Knowledge	2	16607	2	Nature													8																																														4%							
-997	Tower of the Moon	2	16607	2	Nature																																												2145	1																					
+997	Tower of the Moon	2	16607	2	Nature																																												1224	1																					
 998	Vale of Healing Herbs	2	199	2	Nature																																																									2%									
-999	Slave Market	0	735	0	Blood								3				2																																																						
+999	Slave Market	1	735	0	Blood								3				2																																																						
 1000	Secluded Village	0	2	1	Blood								1																																																										
-1001	Sacrificial Grove	0	18	1	Blood																																																								10%										
+1001	Sacrificial Grove	1	18	1	Blood																																																								20%										
 1002	Bleeding Tree	2	2	1	Blood							1																																																											
-1003	Stained Altar	1	16607	1	Blood																																												1736	1											20%										
+1003	Stained Altar	2	16607	1	Blood																																												1736	1											20%										
 1004	Pentagram	1	223	2	Blood																																																																		
 1005	The First Gate	1	17119	1	Blood																																																								10%										
 1006	The Second Gate	1	17119	2	Blood																																																								15%										
 1007	The Third Gate	2	17119	4	Blood																																																								25%										
 1008	Tower of the Deformer	2	16607	2	Blood																																												468	1	460	1	455	1		20%															
-1009	House of Disfigurement	2	16607	2	Blood																																												460	1						10%															
+1009	House of Disfigurement	2	16607	2	Blood																																												460	1						20%															
 1010	Guild of the Merchant Princes	2	17472	0	Astral									30																																																								reveals mundane score graphs	
 1011	The Golden City	2	17440	0	Water									50	10																												1056																												
 1012	Subterranean City	2	17920	0	Earth									30	20																																																								
@@ -997,3 +1001,7 @@ id	name	rarity	loc	level	path	F	A	W	E	S	D	N	B	gold	res	sup	unr	exp	lab	fort	scal
 1038	Translucent Tower	5	16607	3	Air														lab																						A	2	93																												
 1039	Withered Land	5	16607	1	Death						1										Death																																																		
 1040	Hall of the Draugadrott	5	223	2	Death																																																																		
+1041	City of the Ancients	5	16607	2	Earth																																																																10		
+1042	Ancient Scriptorium	5	16607	2	Astral														lab																																																				
+1043	Tomb of Ice	5	16607	3	Water			1													Cold																																																		
+1044	Wellspring of Abundance	5	16607	5	Water			2						20	20						Growth																																																		

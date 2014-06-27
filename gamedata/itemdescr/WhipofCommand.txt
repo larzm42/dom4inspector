@@ -1,1 +1,1 @@
-The wielder of this whip will have his authority greatly increased and will be able to command more men. When used to command slaves it is especially effective and will prevent them from breaking in combat.
+The wielder of this whip will have his authority greatly increased and will be able to command more men. However, the morale of those under his command will be negatively affected. Slaves are used to being whipped, and have their morale increased instead.

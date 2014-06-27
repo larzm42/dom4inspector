@@ -64,7 +64,8 @@ id	name	epithet	abbreviation	file_name_base	era	initial_scout	initial_leader	ini
 76	Utgård	Well of Urd	Ut	late_utgard	3						
 77	Bogarus	Age of Heroes	Bog	late_rus	3						
 78	Patala	Reign of the Nagas	Pa	late_patala	3						
-79	Gath	Last of the Giants	Ga	late_gath	3						
+79	Gath	Last of the Giants	Ga	late_gath	3					
+80	Ragha	Dual Kingdom	Rag	late_ragha	3						
 83	Atlantis	Emergence of the Deep Ones	Atl	early_atlantis	1						
 84	R'lyeh	Time of Aboleths	Rl	early_rlyeh	1						
 85	Pelagia	Pearl Kings	Pe	early_pelagia	1						
