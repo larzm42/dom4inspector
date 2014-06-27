@@ -205,7 +205,7 @@ MUnit.prepareData_PostMod = function() {
 		//unique
 		o.linkname = o.fullname = (o.name || '(undefined)');
 		if (o.fixedname) {
-			o.fullname = '“'+(o.fixedname) + '” - '+o.name;
+			o.fullname = '“'+(o.fixedname) + '“ - '+o.name;
 			o.unique='1';
 		}
 		
@@ -1223,6 +1223,9 @@ MUnit.CGrid = Utils.Class( DMI.CGrid, function() {
 					var b = data[i].listed_mpath;
 					if (b && b.indexOf(L)!=-1)
 						data[i].listed_mpath =  String.fromCharCode(100+parseInt(b.substr(2,2))) + b.substr(1);
+					if (!b) {
+						data[i].listed_mpath = '0';
+					}
 				}
 				//switch sort column header icon
 				if ( $('#unitboosterordericon')
