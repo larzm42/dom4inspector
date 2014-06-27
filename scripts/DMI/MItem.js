@@ -272,6 +272,9 @@ MItem.CGrid = Utils.Class( DMI.CGrid, function() {
 					var b = data[i].boosters;
 					if (b && b.indexOf(L)!=-1)
 						data[i].boosters =  String(b.split(L).length-1) + b.substr(1);
+					if (!b) {
+						data[i].boosters = '0';
+					}
 				}
 				//switch sort column header icon
 				if ( $('#itemboosterordericon')

@@ -348,6 +348,9 @@ MSite.CGrid = Utils.Class( DMI.CGrid, function() {
 					var b = data[i].listed_gempath;
 					if (b && b.indexOf(L)!=-1)
 						data[i].listed_gempath =  String.fromCharCode(100+parseInt(b.substr(2,2))) + b.substr(1);
+					if (!b) {
+						data[i].listed_gempath = '0';
+					}
 				}
 				//switch sort column header icon
 				if ( $('#siteboosterordericon')

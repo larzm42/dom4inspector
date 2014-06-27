@@ -55,7 +55,7 @@ Format.Booster = function(value) {
 	return value.replace(/\d/,'+').replace(/([A-W])/g, '<span class="pathicon Path_$1">$1</span>');
 }
 GridFormat.Booster = function(row, cell, value, columnDef, dataContext) {
-	if (!value) return '';
+	if (!value || value =='0') return '';
 	return value.replace(/\d/,'+').replace(/([A-W])/g, '<span class="pathicon Path_$1">$1</span>');
 }
 GridFormat.OrderedPaths = function(row, cell, value, columnDef, dataContext) {
