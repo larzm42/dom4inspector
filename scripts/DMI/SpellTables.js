@@ -143,7 +143,11 @@ MSpell.uniqueSummon = {
 		13:	/* Summon Tlaloque */ [
 		    1484, 1485, 1486, 1487],
 		14:	/* Release Lord of Civilization */ [
-		    2063, 2065, 2066, 2067, 2064, 2062]
+		    2063, 2065, 2066, 2067, 2064, 2062],
+		15:	/* Unknown */ [
+		    ],
+   	    16:	/* Greater Daeva */ [
+   	        2612, 2613, 2614, 2615, 2616, 2617, 2632, 2634]
 }
 
 MSpell.terrainSummon = {
