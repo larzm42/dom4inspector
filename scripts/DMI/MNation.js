@@ -194,7 +194,7 @@ MNation.prepareData_PostMod = function() {
 				if (attribute.attribute_number == "163") {
 					o.landcom.push(parseInt(attribute.raw_value));
 				}
-				if (attribute.attribute_number == "172" ||
+				if (//attribute.attribute_number == "172" ||
 					attribute.attribute_number == "186" ||
 					attribute.attribute_number == "187" ||
 					attribute.attribute_number == "188") {
