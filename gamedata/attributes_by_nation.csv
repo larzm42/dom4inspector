@@ -2139,7 +2139,7 @@ nation_number	attribute_record_id	test
 80	2138
 80	2139
 80	2140
-83	2141
+80	2141
 83	2142
 83	2143
 83	2144
@@ -2179,7 +2179,7 @@ nation_number	attribute_record_id	test
 83	2178
 83	2179
 83	2180
-84	2181
+83	2181
 84	2182
 84	2183
 84	2184
@@ -2216,7 +2216,7 @@ nation_number	attribute_record_id	test
 84	2215
 84	2216
 84	2217
-85	2218
+84	2218
 85	2219
 85	2220
 85	2221
@@ -2253,7 +2253,7 @@ nation_number	attribute_record_id	test
 85	2252
 85	2253
 85	2254
-86	2255
+85	2255
 86	2256
 86	2257
 86	2258
@@ -2294,7 +2294,7 @@ nation_number	attribute_record_id	test
 86	2293
 86	2294
 86	2295
-87	2296
+86	2296
 87	2297
 87	2298
 87	2299
@@ -2333,7 +2333,7 @@ nation_number	attribute_record_id	test
 87	2332
 87	2333
 87	2334
-88	2335
+87	2335
 88	2336
 88	2337
 88	2338
@@ -2379,7 +2379,7 @@ nation_number	attribute_record_id	test
 88	2378
 88	2379
 88	2380
-89	2381
+88	2381
 89	2382
 89	2383
 89	2384
@@ -2415,7 +2415,7 @@ nation_number	attribute_record_id	test
 89	2414
 89	2415
 89	2416
-90	2417
+89	2417
 90	2418
 90	2419
 90	2420
@@ -2454,7 +2454,7 @@ nation_number	attribute_record_id	test
 90	2453
 90	2454
 90	2455
-91	2456
+90	2456
 91	2457
 91	2458
 91	2459
@@ -2499,7 +2499,7 @@ nation_number	attribute_record_id	test
 91	2498
 91	2499
 91	2500
-92	2501
+91	2501
 92	2502
 92	2503
 92	2504
@@ -2549,3 +2549,4 @@ nation_number	attribute_record_id	test
 92	2548
 92	2549
 92	2550
+92	2551

@@ -220,7 +220,7 @@ id	name	rarity	loc	level	path	F	A	W	E	S	D	N	B	gold	res	sup	unr	exp	lab	fort	scal
 257	Cave of Clouds	0	524	3	Air		1																																																																
 258	Mist Covered Highlands	0	4	0	Air		1																																																																
 259	Desert of Sighs	0	8	1	Air		1				1																																2245																												
-260	Cypress Forest	0	2	1	Air		1					1																																																											
+260	Cypress Forest	0	32770	1	Air		1					1																																																											
 261	Howling Gorge	1	223	1	Air		1																																																																
 262	Canyon of Playful Winds	1	95	1	Air		1																																																																
 263	Cracked Tower	1	223	1	Air		2																																																																
@@ -240,7 +240,7 @@ id	name	rarity	loc	level	path	F	A	W	E	S	D	N	B	gold	res	sup	unr	exp	lab	fort	scal
 277	Stone Spires	2	8	1	Air		2																																		A	2																													
 278	Tempest Spire	2	4	1	Air		1																																				93														20%														
 279	Blizzard Valley	2	4	1	Air		1	1													Cold																																				20%														
-280	Forest of Joy	1	16386	1	Air		1										-5																																																						
+280	Forest of Joy	1	49154	1	Air		1										-5																																																						
 281	The Cloven Mountain	1	16388	1	Air		3		1																																																														
 282	Stairway Mountain	1	16388	1	Air		2		1																																																														
 283	Mirror Wall Palace	1	16607	1	Air		3																																				343																												
@@ -503,11 +503,11 @@ id	name	rarity	loc	level	path	F	A	W	E	S	D	N	B	gold	res	sup	unr	exp	lab	fort	scal
 540	Mandrake Gallows	2	223	2	Nature						1	2																																																											
 541	Jungle Temple	2	2	2	Nature				1			2																																					394	1																					
 542	Maze of Thorn Hedges	2	223	3	Nature					2		1																																																											
-543	Horses Vale	1	16607	0	Nature																																						451	450																										Extra units for native PD (1 per point)	
+543	Horses Vale	1	49375	0	Nature																																						451	450																										Extra units for native PD (1 per point)	
 544	The Cedar Pillars	1	16607	0	Nature		1					2																																															30%												
 545	The Mammoth Forest	1	16386	0	Nature							3																																																											
 546	The Flowering Forest	1	16386	1	Nature							1				100																											363																												
-547	The Cedar Forest	1	16386	1	Nature							2			40																																																								
+547	The Cedar Forest	1	49154	1	Nature							2			40																																																								
 548	Moonvine Circle	1	16607	1	Nature					1		1																															338																												
 549	The Crown Woods	1	16386	1	Nature							1			40																																																								
 550	Gateward Valley	1	16607	1	Nature																																						365																								10%				
@@ -1005,3 +1005,5 @@ id	name	rarity	loc	level	path	F	A	W	E	S	D	N	B	gold	res	sup	unr	exp	lab	fort	scal
 1042	Ancient Scriptorium	5	16607	2	Astral														lab																																																				
 1043	Tomb of Ice	5	16607	3	Water			1													Cold																																																		
 1044	Wellspring of Abundance	5	16607	5	Water			2						20	20						Growth																																																		
+1045	Spirit Pact	5	223	3	Death																																																																		
+1046	Secluded Village	5	223	1	Holy																																												967	1	968	1	969	1																	

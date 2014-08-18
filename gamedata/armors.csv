@@ -155,7 +155,7 @@ id	name	type	def	enc	rcost	test
 153	Basalt Armor	5	-4	6	30
 154	Ancestor Cuirass	5	-1	2	10
 155	Golden Shield	4	4	1	8
-156	Spectral Shield	4	2	0	0
+156	Spectral Shield	4	3	0	0
 157	Crimson Shield	4	4	0	10
 158	Robes	5	0	0	1
 159	Imperial Robes	5	0	0	3
@@ -199,3 +199,7 @@ id	name	type	def	enc	rcost	test
 197	Fossilized Helmet	6	0	0	2
 198	Raptorian Plate Cuirass	5	-1	1	17
 199	Turan Plated Mail	5	-3	4	17
+200	Champion's Cuirass	5	-1	3	20
+201	Armor of Knights	5	-1	2	20
+202	Cloth Armor	5	0	0	1
+203	Reinforced Cloth Armor	5	-1	1	4
