@@ -198,6 +198,7 @@ MSpell.prepareData_PostMod = function() {
 		var _o = o;
 		var _effects = effects;
 		while (_o && _effects) {
+			var arr = [];
 			//get summons data for this spell
 			if (_effects.effect_number == "1" ||
 				_effects.effect_number == "21" ||
@@ -212,13 +213,12 @@ MSpell.prepareData_PostMod = function() {
 				
 				var uid = _effects.raw_argument;
 				
-				var arr;
 				if (uid == "-16") {
 					arr = MSpell.yazads;
 				} else if (uid == "-17") {
 					arr = MSpell.yatas;
 				}
-				if (arr) {
+				if (arr.length > 0) {
 					//create array of refs
 					for (var i=0, unit; unit= arr[i];  i++) {
 						var u = modctx.unitlookup[unit];
@@ -233,9 +233,7 @@ MSpell.prepareData_PostMod = function() {
 						u.type = 'cmdr (Summon)';
 						u.sorttype = MUnit.unitSortableTypes[u.type];
 					}
-					
 				} else {
-
 					var u = modctx.unitlookup[uid];
 					if (!u) {
 						console.log('Unit '+uid+' not found (Spell '+_o.id+')');
