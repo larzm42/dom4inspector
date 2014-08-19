@@ -67,6 +67,22 @@ MSpell.format = {
 function show_summon(unit, count, pathlevel1) {
 	var ref;
 	if (parseInt(unit) < 0) {
+		var arr;
+		if (unit == "-16") {
+			arr = MSpell.yazads;
+		} else if (unit == "-17") {
+			arr = MSpell.yatas;
+		}
+		if (arr) {
+			//create array of refs
+			var tokens = [];
+			for (var i=0, uid; uid= arr[i];  i++)
+				tokens.push( show_summon(uid, 1) );
+			
+			//comma separated & one per line
+			return tokens.join(', <br />');
+		}
+
 		ref = modctx.monster_tags_lookup[parseInt(unit)];
 		if (ref) {
 			ref = ref.name;
@@ -114,6 +130,8 @@ function list_summons(spell, effect) {
 }
 
 MSpell.tartarianGate = [771, 772, 773, 774, 775, 776, 777];
+MSpell.yazads = [2620, 2621, 2622, 2623, 2624, 2625];
+MSpell.yatas = [2633, 2636];
 
 MSpell.uniqueSummon = {
 		1:	/* Bind Ice Devil */ [

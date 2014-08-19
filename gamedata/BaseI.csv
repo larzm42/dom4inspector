@@ -61,7 +61,7 @@ id	name	type	constlevel	mainpath	mainlevel	secondarypath	secondarylevel	weapon	a
 60	Vine Bow	2-h wpn	4	N	1			303																																																																																																																																					
 61	Snake Bladder Stick	1-h wpn	4	N	1			183																																																																																																																																					
 62	Thistle Mace	1-h wpn	4	N	2			163																																																																							1																																																														
-63	Whip of Command	1-h wpn	4	N	1			140																																																					100				2																																																																												
+63	Whip of Command	1-h wpn	4	N	1			140																																																					100			-2	2																																																																												
 64	Vine Whip	1-h wpn	4	N	2			136																																																																																																																																					
 65	Rat Tail	1-h wpn	4	N	2			138																																																									1			4																																																																									
 66	Skull Standard	2-h wpn	4	N	2	D	1	100																																																										5																																																																Panic											
@@ -157,7 +157,7 @@ id	name	type	constlevel	mainpath	mainlevel	secondarypath	secondarylevel	weapon	a
 156	Helmet of Heroes	helm	4	F	1	E	1		174																																																							2																																																																													
 157	Winged Helmet	helm	4	A	4				21																																																																	1																																																																			
 158	Crown of Command	helm	4	S	2				148																																																				50		25	1																																																																													
-159	Spirit Mask	helm	4	D	2	N	1		187																	1																																						2																																																																	Frighten												
+159	Spirit Mask	helm	4	D	2	N	1		187																	1																																																																																																							Frighten												
 160	Mistletoe Garland	helm	2	N	1								2																																										1																																																																																						
 161	Spirit Helmet	helm	6	A	3				79																																																																																																																								Lightning Bolt												
 162	Iron Face	helm	6	E	4				173																																																																																																																						Iron Skin														
@@ -374,13 +374,13 @@ id	name	type	constlevel	mainpath	mainlevel	secondarypath	secondarylevel	weapon	a
 373	The Protection of Geryon	misc	8	B	5																																																						1																																																																																		
 374	Pearl of Light	misc	12	W	5	S	5																													1																																																																																																									
 375	Draupnir	misc	8	E	5																																																																			200																																																																					
-376	Champion's Helmet	helm	12		0				174																		4																																																																																																																		
-377	Champion's Gladius	1-h wpn	12		0			588																																																																																																																																					
+376	Champion's Helmet	helm	12		0				174																		4																																					3																																																																													
+377	Champion's Gladius	1-h wpn	12		0			588																																																								1																																																																													
 378	Golden Sandals	boots	12		0																																																								25																																																																																
 379	Enchanted Ring Mail Armor	armor	0	S	1				194																																																																																																																																				
 380	Mercury Barrel	misc	6	W	1	E	1																																																																																																																																						
 381	Storm Spool	misc	4	A	1					15																																																																																																																																			
-382	Crown of the Shah	helm	2	F	1	A	1		148																																																				100	25																																																																															
+382	Crown of the Shah	helm	2	F	1	A	1		148																																																				100	25		1																																																																													
 383	Dragon Sceptre	1-h wpn	6	F	2			151																																																																																																																																					
 384	Champion's Cuirass	armor	12		1				200																																																																																																																																				
 385	Armor of Knights	armor	6	E	1				201																																																																																																																																				

@@ -211,21 +211,45 @@ MSpell.prepareData_PostMod = function() {
 				_effects.effect_number == "119") {
 				
 				var uid = _effects.raw_argument;
-
-				var u = modctx.unitlookup[uid];
-				if (!u) {
-					console.log('Unit '+uid+' not found (Spell '+_o.id+')');
-					break;
-				}
-
-				//add to list of summoned units (to be attached to nations later)
-				o.summonsunits = o.summonsunits || [];
-				o.summonsunits.push(u);
-
-				//attach spell to unit
-				u.summonedby = u.summonedby || [];
-				u.summonedby.push( o );
 				
+				var arr;
+				if (uid == "-16") {
+					arr = MSpell.yazads;
+				} else if (uid == "-17") {
+					arr = MSpell.yatas;
+				}
+				if (arr) {
+					//create array of refs
+					for (var i=0, unit; unit= arr[i];  i++) {
+						var u = modctx.unitlookup[unit];
+
+						//add to list of summoned units (to be attached to nations later)
+						o.summonsunits = o.summonsunits || [];
+						o.summonsunits.push(u);
+
+						//attach spell to unit
+						u.summonedby = u.summonedby || [];
+						u.summonedby.push( o );
+						u.type = 'cmdr (Summon)';
+						u.sorttype = MUnit.unitSortableTypes[u.type];
+					}
+					
+				} else {
+
+					var u = modctx.unitlookup[uid];
+					if (!u) {
+						console.log('Unit '+uid+' not found (Spell '+_o.id+')');
+						break;
+					}
+
+					//add to list of summoned units (to be attached to nations later)
+					o.summonsunits = o.summonsunits || [];
+					o.summonsunits.push(u);
+
+					//attach spell to unit
+					u.summonedby = u.summonedby || [];
+					u.summonedby.push( o );
+				}
 				if (!u.type) {
 					if (_effects.effect_number == "1") {
 						u.type = 'unit (Summon)';
@@ -235,6 +259,7 @@ MSpell.prepareData_PostMod = function() {
 						u.sorttype = MUnit.unitSortableTypes[u.type];
 					}
 				}
+				
 			} else if (_effects.effect_number == "76" || 
 				_effects.effect_number == "89" || 
 				_effects.effect_number == "100" || 
