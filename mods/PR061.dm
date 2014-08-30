@@ -1,13 +1,14 @@
-#modname "Pretenders Rebalanced 0.20"
+#modname "Pretenders Rebalanced 0.30"
 #description "Re-evaluates the costs and stats of the different pretender choices to be on par with Titans, Dragons and the like."
 #icon "PR.tga"
-#version 0.20
+#version 0.30
+
 
 
 -Arch Druid
 #selectmonster 270
 #magicskill 3 1
-#magicskill 6 2
+#magicskill 2 1
 #end
 
 -Arch Mage
@@ -24,8 +25,9 @@
 
 -Arch Seraph
 #selectmonster 509
+#magicskill 1 2
 #magicskill 4 1
-#cost 20
+#gcost 20
 #end
 
 -Bakemono Kunshu
@@ -35,6 +37,10 @@
 
 -Bitch Queen
 #selectmonster 401
+#magicskill 6 2
+#gcost 0
+#end
+#selectmonster 402
 #magicskill 6 2
 #gcost 0
 #end
@@ -61,6 +67,7 @@
 #selectmonster 246
 #magicskill 6 1
 #gcost 0
+#hp 20
 #end
 
 -Frost Father
@@ -137,6 +144,10 @@
 #magicskill 6 2
 #magicskill 5 1
 #end
+#selectmonster 654
+#magicskill 6 2
+#magicskill 5 1
+#end
 
 -Smoking Mirror
 #selectmonster  857
@@ -159,6 +170,22 @@
 #magicskill 2 2
 #end
 
+-Ancient Kraken
+#selectmonster 973
+#magicskill 2 1
+#pathcost 30
+#end
+
+-Ahura of The Oath
+#selectmonster  2553
+#gcost 75
+#end
+
+-Ahura of The Waters
+#selectmonster  2554
+#gcost 75
+#end
+
 -Bog Mummy
 #selectmonster  643
 #gcost 50
@@ -173,7 +200,6 @@
 #selectmonster 874
 #magicskill 4 2
 #gcost 0
-#magicskill
 #end
 
 -Divine Serpent
@@ -190,6 +216,11 @@
 #selectmonster 1231
 #gcost 0
 #itemslots 13446
+#end
+
+-Gannag Menog
+#selectmonster 2611
+#gcost 100
 #end
 
 -Ghost King
@@ -216,6 +247,7 @@
 -Kamadhenu
 #selectmonster 2466
 #gcost 50
+#prot 10
 #enc 2
 #end
 
@@ -231,7 +263,7 @@
 
 -Moloch
 #selectmonster 120
-#gocost 75
+#gcost 75
 #end
 
 -Mother of Monsters
@@ -272,6 +304,12 @@ Shedu
 #selectmonster 1229
 #gcost 0
 #weapon 33
+#enc 1
+#end
+
+-Spenta Mainyu
+#selectmonster 2555
+#gcost 100
 #end
 
 -Sphinx
@@ -294,7 +332,7 @@ Shedu
 
 -Virtue
 #selectmonster 215
-#gcost 120
+#gcost 100
 #end
 
 -Wyrm
@@ -303,6 +341,16 @@ Shedu
 #pathcost 40
 #end
 
+-Yazad King
+#selectmonster  2578
+#gcost 25
+#pathcost 30
+#end
+
+-Cyclops
+#selectmonster 156
+#gcost 75
+#end
 
 -Dagon
 #selectmonster 109
@@ -316,8 +364,7 @@ Shedu
 
 -Fomorian God King
 #selectmonster 1899
-#magicskill 1 1
-#gcost 50
+#gcost 0
 #end
 
 -Forge Lord
@@ -331,10 +378,15 @@ Shedu
 #gcost 50
 #end
 
+-Nataraja
+#selectmonster 499
+#gcost 75
+#end
+
 -Neter of the Underworld
 #selectmonster 2445
-#ambidextrous 2
 #enc 0
+#fireres 5
 #end
 
 -Melqart
@@ -373,6 +425,10 @@ Shedu
 #pathcost 20
 #end
 
+Teotl of the Night
+#selectmonster 604
+#gcost 75
+#end
 
 -Baphomet
 #selectmonster 607

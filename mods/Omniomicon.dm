@@ -1,8 +1,9 @@
 ---- [1] MOD INFOS LOADING ----
 
 #modname "Omniomicon"
-#description "Project Omniomicon (Chapter 1 - Ledan BETA 3) by Pymous (http://www.pymous.com)" -- 14/06/2014
-#version 3
+#description "Project Omniomicon (Chapter 1 - Ledan BETA 3) by Pymous (http://www.pymous.com). I would like to thanks a lot Marcus and Globu who helped and are still helping
+ on units descriptions to be well writen in a good english and for all suggestions/critics and ideas they proposed to improve the mod. And thanks to many others from the Dom4 community." 
+#version 0.42 -- 06/07/2014
 #icon "Omniomicon/omniomicon_banner.tga"
 
 -- USED SLOTS/ Monsters: 4201-4313
@@ -16,15 +17,15 @@
 #name "Ledan"
 #epithet "Eternal Ice"
 #era 1 ---- Early Era
-#brief "Leda is a frozen land peopled by peculiar avian beings who are equally at home on the land and in the sea, but who thrive only in the coldest of lands. They use weapons of magical,
- never-melting Ice, and their capital is built around an ancient and mysterious monolith, called the Eternal Ice, which inexorably spreads their bitterly-cold climate to lands outside their
- dominion."
-#descr "Leda is a strange land surrounded by frigid seas, glacial ice and hard, frozen tundra. It is the home of the Ledan, a peculiar avian people at home both in the water,
- where they hunt and tend to their bountiful fisheries, and on the surface, where they have raised intricate and majestic structures of magical Ice. Ledans are odd of shape
- and awkward, but they are surprisingly sturdy, agile and adaptable. They are strongest in cold and aquatic environments, and become weak and vulnerable in warmer lands.
- Ledan society centers around a mysterious and magically-radiant monolith they call the Eternal Ice, which freezes the lands and enables the crafting of wondrous objects,
- both practical and artistic, from enchanted, never-melting Ice. Without the Eternal Ice, Leda would melt into the seas, but with its power the Ledans have been able to
- spread beyond their ancestral land and forge an empire. Now, the ascendant god of Leda seeks to cover the world in its icy embrace.
+#brief "Leda is a frozen land peopled by peculiar avian beings who are at home both on the land and in the sea, but who thrive only in the coldest of climates. They use weapons of magical,
+ never-melting Ice, and their capital is built around an ancient and mysterious monolith, called the Eternal Ice, which inexorably spreads their bitterly-cold climate to lands outside
+ their dominion."
+#descr "Leda is a strange land of hard, frozen tundra surrounded by frigid seas and glacial ice. It is the home of the Ledani, a peculiar avian people at home both in the water, where
+ they hunt and tend to their bountiful fisheries, and on the surface, where they have raised intricate and majestic structures of magical Ice. Though the Ledani are odd of shape and awkward,
+ they are surprisingly sturdy, agile and adaptable. They are strongest in cold and aquatic environments, and become weak and vulnerable in warmer lands. Ledan society centers around a
+ mysterious and magically-radiant monolith they call the Eternal Ice, which freezes the lands and enables the crafting of wondrous objects, both practical and artistic, from enchanted,
+ never-melting Ice. Once a reclusive and isolated people, the Ledani have found in it the power to spread beyond their ancestral land and forge an empire. Now, the ascendant god of Leda
+ seeks to cover the world in its icy embrace.
  
  "
 #summary "Ledan Dominion Spread Cold 
@@ -40,16 +41,16 @@ Magic Access - Major paths: Water and Air  / Minor paths: Nature and Blood "
 #flag "Omniomicon/Ledan/ledan_flag.tga"
 #spreadcold 1 --- Spread cold!
 #idealcold 3
-#likesterr 64 -- coast
-#hatesterr 512 -- cave
+#likesterr 4194496 -- plains or waste or forest or border mountain
+#hatesterr 4128 -- cave or swamp
 #fortera 1
 #labcost 500
 #templepic 11
-
+#coastnation -- START ON COAST
 ----- Start Site ----
 #startsite "The Frozen Tower"
 #startsite "The White Pit"
-#startsite "Iceblood Hideout"
+#startsite "Tunnels of the Iceblood Cult"
 
 ----- Provinces Defense units ----
 #defunit1 4201 --"Ledan Militia"
@@ -57,7 +58,7 @@ Magic Access - Major paths: Water and Air  / Minor paths: Nature and Blood "
 #defunit2 4204 -- "Ledan LongIce"
 #defunit2b 4206 -- "Ledan Ice Thrower"
 #defcom1 4209 -- "Ledan Landchief"
-#defcom2 4219 -- "Ledan Mage"
+#defcom2 4219 -- "Ice Mage"
 
 #defmult1 20
 #defmult1b 10
@@ -70,7 +71,7 @@ Magic Access - Major paths: Water and Air  / Minor paths: Nature and Blood "
 #addgod 4270 -- "Frozen One"
 #addgod 4271 -- "Blue King"
 #addgod 4272 -- "Eternal Ice"
-#addgod 4278 -- Ancient Ledan Totem
+#addgod 4278 -- Ancient Totem
 #addgod 4279 -- Frozen ALTAR
 
 --#addgod 1372 -- Annunaki
@@ -87,16 +88,15 @@ Magic Access - Major paths: Water and Air  / Minor paths: Nature and Blood "
 ---- (Some Units are listed on Magic Sites, not here)-------
 
 --Recruitable commanders--
-#addreccom 4208 -- "Ledan Scout" 
-#addreccom 4209 -- "Ledan Landchief" --Cmd 1
-#addreccom 4210 -- "Ledan Protector" -- Cmd 2
-#addreccom 4215 -- "Ice Sculptor" -- Holy 1
-#addreccom 4216 -- "Ice Enchanter" -- Holy 2
-#addreccom 4218 -- "Ice Reader" -- Mage 1
-#addreccom 4219 -- Ledan Mage" -- Mage 2
+#addreccom 4231 -- "Ledan Village Chief" 
+#addreccom 4209 -- "Ledan Landchief"
+#addreccom 4210 -- "Ledan Protector" 
+#addreccom 4215 -- "Ice Sculptor" 
+#addreccom 4218 -- "Ice Reader" 
+#addreccom 4219 -- Ice Mage" 
 
 --unites recrutables--
-#addrecunit 4201 -- "Ledan Militia" -- spear
+#addrecunit 4223 -- "Settler Milita" -- spear
 #addrecunit 4202 -- "Ledan Fighter" -- Trident + buckler
 #addrecunit 4203 -- "Ledan Defender" -- Longspear + shield
 #addrecunit 4204 -- "Ledan LongIce" -- Pike two handed
@@ -106,7 +106,7 @@ Magic Access - Major paths: Water and Air  / Minor paths: Nature and Blood "
 --unites depart--
 #startcom 4209 -- "Ledan Landchief"
 #startscout 4208 -- "Ledan Scout"
-#startunittype1 4201 -- "Ledan Militia"
+#startunittype1 4223 -- "Ledan Settler Militia"
 #startunittype2 4203 -- "Ledan Defender"
 
 --heroes--
@@ -121,7 +121,9 @@ Magic Access - Major paths: Water and Air  / Minor paths: Nature and Blood "
 ---- ALL THESE SPECIAL PROVINCE RECRUITMENT WILL REQUIRE TEMPLE TO RECRUIT (TO SIMULATE SOME ADAPTATION TIME AND CONQUEST)--------
 
 #coastunit1 4273 -- "Ledan Wavefighter" --- recrutement Ledan water specialist sur les forts de cote
+#coastunit2 4321 -- "Ledan Sea Hunter
 #coastcom1 4274 -- "Ledan Waveleader" --- leader water specialists
+#coastcom2 4314 -- "Ledan Sea Hunt Leader (scout)" 
 
 #addforeignunit 4223 -- "Ledan Settler" ---- Colon sur provinces partout ou il n'y a pas de forts
 #addforeigncom 4231 -- "Ledan Settler Chieftain" --- chef des settlers
@@ -129,22 +131,25 @@ Magic Access - Major paths: Water and Air  / Minor paths: Nature and Blood "
 #forestrec 4225 -- "Ledan Taiga Warrior" --- unite recrutable foret arctique
 #forestcom 4232 -- "Ledan Taiga Chieftain" --- chef warrior forest
 #forestcom 4237 -- "Ledan Icewood" --- mage foret (N2*A1*)
+#forestrec 4227 -- Ledan Taiga Javelot, previsouly "Ledan Swamp Warrior" ---- swamp warrior 
+
 
 #wasterec 4226 -- "Ledan Tundra warrior" ---- recrutable waste
 #wastecom 4233 -- "Ledan Tundra Chieftain" ---- recrutable waste cheif
-#wastecom 4238 -- "Ledan Icebone" ---- recrutable waste mage (D1*A2)
+#wastecom 4238 -- "Ledan Icebone" ---- recrutable waste mage 
 
-#swamprec 4227 -- "Ledan Swamp Warrior" ---- swamp warrior
-#swampcom 4234 -- "Ledan Swamp Chieftain" ---- swamp chief
-#swampcom 4239 -- "Ledan Icemarsh" ---- swamp mage
 
-#mountainrec 4228 -- "Ledan Highlander" ---- moutain rec
-#mountaincom 4235 -- "Ledan Highchief" --- moutain com rec
-#mountaincom 4240 -- "Ledan Icerock" --- Mountain mage 
+-- #swampcom 4234 -- "Ledan Swamp Chieftain" ---- swamp chief
+-- #swampcom 4239 -- "Ledan Icemarsh" ---- swamp mage
 
-#caverec 4229 -- Ledan Darksnow" ---- cave warrior
-#cavecom 4236 -- "Ledan Darksnow Chieftain" ---- cave chief
-#cavecom 4241 -- "Ledan DarkIce" --- cave mage 
+#mountainrec 4319 -- Krilan
+-- #mountainrec 4228 -- "Ledan Highlander" ---- moutain rec
+-- #mountaincom 4235 -- "Ledan Highchief" --- moutain com rec
+#mountaincom 4240 -- Krilan Elder
+
+-- #caverec 4229 -- Ledan Darksnow" ---- cave warrior
+-- #cavecom 4236 -- "Ledan Darksnow Chieftain" ---- cave chief
+-- #cavecom 4241 -- "Ledan DarkIce" --- cave mage 
 
 #end
 ------------------------------------------------------------------------------------------------------
@@ -160,6 +165,7 @@ Magic Access - Major paths: Water and Air  / Minor paths: Nature and Blood "
 #gems 2 3
 #gems 1 2
 #homecom 4220 -- "Ledan Archmage"
+#homecom 4216 -- "Ice Enchanter" -- Holy 2
 #homecom 4217 -- "Ice Keeper"
 #homecom 4211 -- "Ledan Champion" -- Elite commander Capital Only
 #homemon 4205 -- "Ledan Ice Warrior" -- Elite Capital Only
@@ -171,16 +177,16 @@ Magic Access - Major paths: Water and Air  / Minor paths: Nature and Blood "
 #path 6
 #rarity 5
 #gems 6 1
-#homecom 4221 -- "Ledan Bearmaster"
+#homecom 4221 -- "Ledan Bearsinger"
 #homecom 4212 -- "Ledan Bear Leader"
 #homemon 4207 -- "Ledan Bear Rider"
 #end
 
 #newsite 1762
-#name "Iceblood Hideout"
+#name "Tunnels of the Iceblood Cult"
 #path 7
 #rarity 5
-#homecom 4222 -- "Ledan Iceblood"
+#homecom 4222 -- "Iceblood"
 #end
 
 ----------------------------------------------
@@ -188,21 +194,22 @@ Magic Access - Major paths: Water and Air  / Minor paths: Nature and Blood "
 ---------------------------------------------
 #newmonster 4201
 #name "Ledan Militia"
-#descr "Ledan militia are hastily-levied troops armed simply with spears and the natural resilience of their people. In their own element they can be passable fighters, but the Ledan
- are people of the ice, and their strength, skill and ability to move are severely affected by any but the coldest climates."
+#descr "Ledan militia are conscripts levied hastily to defend Ledan lands against invading enemies. They are armed simply with spears and the natural resilience of their people. In their
+ own element they can be passable fighters, but the Ledani are people of the ice, and their strength, skill and mobility are severely affected by any but the coldest climates."
 #spr1 "./Omniomicon/Ledan/ledan_militia.tga"
 #spr2 "./Omniomicon/Ledan/ledan_militia2.tga"
 #watershape 4280
+#coldrec 1
 #hp 13
 #mr 10
 #str 8
-#def 9
+#def 8
 #enc 3
 #ap 8
 #size 2
 #prot 2
 #mor 9
-#att 7
+#att 6
 #prec 12
 #mapmove 2
 #eyes 2
@@ -219,21 +226,21 @@ Magic Access - Major paths: Water and Air  / Minor paths: Nature and Blood "
 #copystats 4201 -- Copy Ledan Milita
 #copyspr 4201 -- Copy sprites
 #name "Ledan Militia (watershape)"
-#descr "Ledan militia are hastily-levied troops armed simply with spears and the natural resilience of their people. In their own element they can be passable fighters, but the Ledan
- are people of the ice, and their strength, skill and ability to move are severely affected by any but the coldest climates."
+#descr "Ledan militia are conscripts levied hastily to defend Ledan lands against invading enemies. They are armed simply with spears and the natural resilience of their people. In their
+ own element they can be passable fighters, but the Ledani are people of the ice, and their strength, skill and mobility are severely affected by any but the coldest climates."
 #landshape 4201
 #str 10
-#def 12
+#def 11
 #ap 18
-#att 10
+#att 9
 #end
 
 #newmonster 4202
 #name "Ledan Fighter"
-#descr "The fighters are the main line soldiers of the garrisons of Leda. They are trained to fight reasonably well both on land and underwater, but are at their best in the sea where
- they can take advantage of their natural ability to move gracefully through the water. Fighters are armed with the traditional weapon of the Ledan, a deadly trident crafted of Ice enchanted
- to be as hard and resilient as metal, and to never melt even in fire. They wear no armor, but carry smallshields. The Ledan are people of the Ice, and their strength, skill and fleetness
- of foot are severely affected by any but the coldest climates when on land."
+#descr "The fighters are the main line soldiers of the garrisons of Leda. They are trained to fight reasonably well on land, but are at their best in the sea where their bulk is an advantage,
+ and where they can take  advantage of their natural ability to move gracefully through the water. Fighters are armed with the traditional weapon of the Ledani, a deadly trident crafted
+ of Ice enchanted to be as hard and resilient as metal, and to never melt even in fire. They wear no armor, but carry smallshields. The Ledani are people of the Ice, and their strength,
+ skill and mobility are severely affected by any but the coldest climates."
 #spr1 "./Omniomicon/Ledan/ledan_fighter.tga"
 #spr2 "./Omniomicon/Ledan/ledan_fighter2.tga"
 #watershape 4281
@@ -264,10 +271,10 @@ Magic Access - Major paths: Water and Air  / Minor paths: Nature and Blood "
 #copystats 4202 -- Copy Ledan Fighter
 #copyspr 4202 -- Copy sprites
 #name "Ledan Fighter (watershape)"
-#descr "The fighters are the main line soldiers of the garrisons of Leda. They are trained to fight reasonably well both on land and underwater, but are at their best in the sea where
- they can take advantage of their natural ability to move gracefully through the water. Fighters are armed with the traditional weapon of the Ledan, a deadly trident crafted of Ice enchanted
- to be as hard and resilient as metal, and to never melt even in fire. They wear no armor, but carry smallshields. The Ledan are people of the Ice, and their strength, skill and fleetness
- of foot are severely affected by any but the coldest climates when on land."
+#descr "The fighters are the main line soldiers of the garrisons of Leda. They are trained to fight reasonably well on land, but are at their best in the sea where their bulk is an advantage,
+ and where they can take  advantage of their natural ability to move gracefully through the water. Fighters are armed with the traditional weapon of the Ledani, a deadly trident crafted
+ of Ice enchanted to be as hard and resilient as metal, and to never melt even in fire. They wear no armor, but carry smallshields. The Ledani are people of the Ice, and their strength,
+ skill and mobility are severely affected by any but the coldest climates."
 #landshape 4202
 #str 10
 #def 12
@@ -279,9 +286,10 @@ Magic Access - Major paths: Water and Air  / Minor paths: Nature and Blood "
 #name "Ledan Defender" 
 #spr1 "./Omniomicon/Ledan/ledan_defender.tga"
 #spr2 "./Omniomicon/Ledan/ledan_defender2.tga"
-#descr "Ledan Defenders are specially trained to hold their ground on land. They are equipped with a long spear to keep enemies at a distance and a shield for additional
-protection, especially against ranged weapons. Unlike most Ledan, they wear a leather armor, but it hinders their movement in aquatic environments. Like all Ledan, due to their
- morphology their skills, movement, and strength are severely reduced outside of a very cold environment."
+#descr "Ledan defenders are landfighters, specially-trained to fight and hold their ground on dry ground while shielding their comrades from the enemies’ slings and arrows. They are armed
+ with long spears and simple shields, and wear armor made from sealskin leather. Armor is a burdensome and uncomfortable hindrance that makes it difficult to move in the water for the Ledani,
+ and Defenders find underwater fighting more difficult than their unarmored peers. The Ledani are people of the Ice, and their strength, skill and mobility are severely affected by any but
+ the coldest climates."
 #watershape 4282
 #hp 15
 #rcost 1
@@ -303,7 +311,7 @@ protection, especially against ranged weapons. Unlike most Ledan, they wear a le
 #coldpower 1
 #weapon 28 -- Longpsear
 #armor 2 -- Shield
-#armor 15 -- Full leather armor
+#armor 553 -- Sealskin armor
 #armor 121 -- Leather hood
 #gcost 12
 #end
@@ -312,37 +320,39 @@ protection, especially against ranged weapons. Unlike most Ledan, they wear a le
 #copystats 4203 -- Copy Ledan Defender
 #copyspr 4203 -- Copy sprites
 #name "Ledan Defender (watershape)"
-#descr "Ledan Defenders are specially trained to hold their ground on land. They are equipped with a long spear to keep enemies at a distance and a shield for additional
-protection, especially against ranged weapons. Unlike most Ledan, they wear a leather armor, but it hinders their movement in aquatic environments. Like all Ledan, due to their
- morphology their skills, movement, and strength are severely reduced outside of a very cold environment."
+#descr "Ledan defenders are landfighters, specially-trained to fight and hold their ground on dry ground while shielding their comrades from the enemies’ slings and arrows. They are armed
+ with long spears and simple shields, and wear armor made from sealskin leather. Armor is a burdensome and uncomfortable hindrance that makes it difficult to move in the water for the Ledani,
+ and Defenders find underwater fighting more difficult than their unarmored peers. The Ledani are people of the Ice, and their strength, skill and mobility are severely affected by any but
+ the coldest climates."
 #landshape 4203
 #str 10
 #def 12
 #ap 12
 #att 10
+#mor 9
 #end
 
 #newmonster 4204
-#name "Ledan LongIce"
+#name "Ledan Long-ice"
 #spr1 "./Omniomicon/Ledan/ledan_longice.tga"
 #spr2 "./Omniomicon/Ledan/ledan_longice2.tga"
-#descr "These warriors are guardians of the Ledan cults and represent the official authority of the Eternal Ice Kingdom. They can be found stationed near the entrances of all official
-structures and often escort Guardians of the Eternal Ice. The LongIce wear the longest and most cumbersome of Ledan weaponry but can wield it with surprising ease. They wear a sculpted
- Ice cap and seal leather light-armor but it hinders their movement in aquatic environments. They are formidable at repelling enemies and keeping them at a distance but their huge two-handed
- trident makes them quite vulnerable to archers and other ranged enemies. Like all Ledan, due to their morphology their skills, movement, and strength are severely reduced outside of a very
- cold environment."
+#descr "The Long-ices are the sacred guardsmen of Leda, drawn from the ranks of the stoutest and most vigilant defenders. They stand guard over the Cult halls, temples and royal
+ Ice structures, and act as bodyguards for the Ice Keepers. Garbed in sculpted Ice caps and supple seal-leather armor reinforced with Ice rings, they have abandoned the shields used
+ by their former peers and now wield Ice pikes, the longest weapons used the Ledani. They are trained to a surprising degree of skill with these awkward but deadly weapons, and a line
+ of Long-ices are formidable opponents able to quickly dispatch ranks of armored soldiers and to keep larger enemies at bay. Like the defenders, their armor hampers their ability to
+ fight and move in water, and, like others of their kind, their strength, skill and mobility are severely affected by any but the coldest climates."
 #watershape 4283
 #hp 16
 #bodyguard 1 -- bodyguard
 #ressize 2
 #mr 11
 #str 9
-#def 15 --- pour compenser les malus
+#def 11
 #enc 3
 #ap 8
 #size 2
 #prot 2
-#mor 11
+#mor 12
 #att 7
 #prec 12
 #mapmove 1
@@ -355,7 +365,7 @@ structures and often escort Guardians of the Eternal Ice. The LongIce wear the l
 #reqtemple
 #castledef 2
 #weapon 1204 -- "Ice Pike"
-#armor 15 -- Full leather armor
+#armor 554 -- Icering Sealskin armor
 #armor 29 -- Ice Cap
 #gcost 15
 #end
@@ -363,26 +373,29 @@ structures and often escort Guardians of the Eternal Ice. The LongIce wear the l
 #newmonster 4283
 #copystats 4204 -- Copy Ledan LongIce
 #copyspr 4204 -- Copy sprites
-#name "Ledan LongIce (watershape)"
-#descr "These warriors are guardians of the Ledan cults and represent the official authority of the Eternal Ice Kingdom. They can be found stationed near the entrances of all official
-structures and often escort Guardians of the Eternal Ice. The LongIce wear the longest and most cumbersome of Ledan weaponry but can wield it with surprising ease. They wear a sculpted
- Ice cap and seal leather light-armor but it hinders their movement in aquatic environments. They are formidable at repelling enemies and keeping them at a distance but their huge two-handed
- trident makes them quite vulnerable to archers and other ranged enemies. Like all Ledan, due to their morphology their skills, movement, and strength are severely reduced outside of a very
- cold environment."
+#name "Ledan Long-ice (watershape)"
+#descr "The Long-ices are the sacred guardsmen of Leda, drawn from the ranks of the stoutest and most vigilant defenders. They stand guard over the Cult halls, temples and royal
+ Ice structures, and act as bodyguards for the Ice Keepers. Garbed in sculpted Ice caps and supple seal-leather armor reinforced with Ice rings, they have abandoned the shields used
+ by their former peers and now wield Ice pikes, the longest weapons used the Ledani. They are trained to a surprising degree of skill with these awkward but deadly weapons, and a line
+ of Long-ices are formidable opponents able to quickly dispatch ranks of armored soldiers and to keep larger enemies at bay. Like the defenders, their armor hampers their ability to
+ fight and move in water, and, like others of their kind, their strength, skill and mobility are severely affected by any but the coldest climates."
 #landshape 4204
 #str 11
-#def 15
+#def 14
 #ap 12
 #att 10
+#mor 11
 #end
 
 #newmonster 4205
 #name "Ledan Ice Warrior"
 #spr1 "./Omniomicon/Ledan/ledan_icewarrior.tga"
 #spr2 "./Omniomicon/Ledan/ledan_icewarrior2.tga"
-#descr "This elite group is comprised of the Eternal Ice Kingdom’s mightiest warriors. They are equipped with Holy Ice javelins that they launch at their enemies before engaging in close
- combat with fine Ice glaives. They are protected by an Ice cap and a strong Ice shield. As deadly at medium range as in close combat, they are sacred and represent the best infantry the
- Kingdom can field. Like all Ledan, due to their morphology their skills, movement, and strength are severely reduced outside of a very cold environment."
+#descr "The warriors of the Ice are the elite soldiers of the Kingdom of the Eternal Ice, able to landfight better than many warmlanders. Powerful of limb and body, they carry blessed
+ javelins into battle, hurling them into the enemy ranks before closing to fight with Ice glaives and Ice shields. They are armored in fine, specially-prepared sealskin armor studded
+ with rings of Ice, and wear Ice caps. Deadly both at range and in close, the Ice warriors are honored as the finest infantry the Kingdom can field, and are anointed as sacred by the
+ Cult of the Ice Keepers. As with others of their kind, their ability to fight underwater is reduced by the wearing of armor, and they become weaker and more vulnerable in any but the
+ coldest climates."
 #watershape 4284
 #holy
 #reqtemple
@@ -395,7 +408,7 @@ structures and often escort Guardians of the Eternal Ice. The LongIce wear the l
 #ap 8
 #size 2
 #prot 2
-#mor 11
+#mor 13
 #att 8
 #prec 12
 #mapmove 1
@@ -405,7 +418,7 @@ structures and often escort Guardians of the Eternal Ice. The LongIce wear the l
 #coldpower 1
 #weapon 454 -- Ice Glaive 
 #weapon 1200 -- "ice javelin (3)"
-#armor 15 -- Full leather armor
+#armor 554 -- Icering Sealskin armor
 #armor 550 -- "Ice Buckler"
 #armor 29 -- Ice Cap
 #gcost 20
@@ -415,24 +428,28 @@ structures and often escort Guardians of the Eternal Ice. The LongIce wear the l
 #copystats 4205 -- Copy Ledan Ice Warrior
 #copyspr 4205 -- Copy sprites
 #name "Ledan Ice Warrior (watershape)"
-#descr "This elite group is comprised of the Eternal Ice Kingdom’s mightiest warriors. They are equipped with Holy Ice javelins that they launch at their enemies before engaging in close
- combat with fine Ice glaives. They are protected by an Ice cap and a strong Ice shield. As deadly at medium range as in close combat, they are sacred and represent the best infantry the
- Kingdom can field. Like all Ledan, due to their morphology their skills, movement, and strength are severely reduced outside of a very cold environment."
+#descr "The warriors of the Ice are the elite soldiers of the Kingdom of the Eternal Ice, able to landfight better than many warmlanders. Powerful of limb and body, they carry blessed
+ javelins into battle, hurling them into the enemy ranks before closing to fight with Ice glaives and Ice shields. They are armored in fine, specially-prepared sealskin armor studded
+ with rings of Ice, and wear Ice caps. Deadly both at range and in close, the Ice warriors are honored as the finest infantry the Kingdom can field, and are anointed as sacred by the
+ Cult of the Ice Keepers. As with others of their kind, their ability to fight underwater is reduced by the wearing of armor, and they become weaker and more vulnerable in any but the
+ coldest climates."
 #landshape 4205
 #str 11
 #def 12
 #ap 12
 #att 11
+#mor 12
 #end
 
 #newmonster 4206
-#name "Ledan Ice Thrower"
+#name "Icewind Javelot"
 #spr1 "./Omniomicon/Ledan/ledan_icethrower.tga"
 #spr2 "./Omniomicon/Ledan/ledan_icethrower2.tga"
-#descr "These ranged warriors are sacred to the Ledan. Equipped with enchanted Ice javelins, they symbolize the harmony of Air and Water. Due to their exceptional strength and precision,
- they are able to throw their divine weapons at relatively long range with deadly accuracy. On impact, the enemy is not only pierced by the sharp ice but is also frozen by the magical cold.
- In close combat they switch to their Ice dagger to protect themselves. Like all Ledan, due to their morphology their skills, movement, and strength are severely reduced outside of a very
- cold environment."
+#descr "Icewind javelots are devout Ledan warrior-athletes who train intensively with the javelin, often competing ritually in the traditional athletic games of Leda. They treat the
+ throwing of javelins as a meditation on the harmony of Wind and Ice, and can throw them with such superb strength and accuracy that they routinely practice by throwing wriggling fish
+ high into the air and piercing them through with a javelin before they land. When sent to battle, icewind javelots are given blessed javelins with heads of exceedingly sharp,
+ enchanted Ice that afflicts enemies struck with an intense cold. They are sacred to the people of Leda. Like other Ledani, they are weaker, slower and more vulnerable in any but
+ the coldest temperatures."
 #watershape 4285
 #reqtemple
 #hp 15
@@ -444,7 +461,7 @@ structures and often escort Guardians of the Eternal Ice. The LongIce wear the l
 #ap 8
 #size 2
 #prot 2
-#mor 11
+#mor 12
 #att 8
 #prec 13
 #mapmove 2
@@ -461,30 +478,34 @@ structures and often escort Guardians of the Eternal Ice. The LongIce wear the l
 #newmonster 4285
 #copystats 4206 -- Copy Ledan Ice Thrower
 #copyspr 4206 -- Copy sprites
-#name "Ledan Ice Thrower (watershape)"
-#descr "These ranged warriors are sacred to the Ledan. Equipped with enchanted Ice javelins, they symbolize the harmony of Air and Water. Due to their exceptional strength and precision,
- they are able to throw their divine weapons at relatively long range with deadly accuracy. On impact, the enemy is not only pierced by the sharp ice but is also frozen by the magical cold.
- In close combat they switch to their Ice dagger to protect themselves. Like all Ledan, due to their morphology their skills, movement, and strength are severely reduced outside of a very
- cold environment."
+#name "Icewind Javelot (watershape)"
+#descr "Icewind javelots are devout Ledan warrior-athletes who train intensively with the javelin, often competing ritually in the traditional athletic games of Leda. They treat the
+ throwing of javelins as a meditation on the harmony of Wind and Ice, and can throw them with such superb strength and accuracy that they routinely practice by throwing wriggling fish
+ high into the air and piercing them through with a javelin before they land. When sent to battle, icewind javelots are given blessed javelins with heads of exceedingly sharp,
+ enchanted Ice that afflicts enemies struck with an intense cold. They are sacred to the people of Leda. Like other Ledani, they are weaker, slower and more vulnerable in any but
+ the coldest temperatures."
 #landshape 4206
 #str 12
 #def 11
 #ap 18
 #att 10
+#mor 11
 #end
 
 #newmonster 4207
 #name "Ledan Bear Rider"
 #spr1 "./Omniomicon/Ledan/ledan_bearcav.tga"
 #spr2 "./Omniomicon/Ledan/ledan_bearcav2.tga"
-#descr "Long ago, polar bears were considered the most dangerous predator of the Ledan. When the rising civilization discovered and mastered Ice smelting and magic, things changed radically
- and now the animals wisely keep their distance from these strange little creatures with spiky sticks.  Zelened, the mythical Green Hermit was the first in Ledan history to have tamed one of these
-white-furred monsters. Nowadays, Ledan mystics who develop an affinity with Nature magic are known as BearMasters and continue to tame these animals for battle. Bear Riders are fearless
- and experienced warriors crazy enough to ride these beasts. After years of training they are ready to dominate the battlefield."
+#descr "Long ago, the arctic bears of the tundra hunted the Ledani, and the people of the Ice feared them. But when the Ledani learned language, they could defend themselves against
+ the bears. When they mastered icecraft, they could make weapons to hunt them. And when they mastered magic, they could master the bears. The legendary Green Hermit Zelened,
+ it is said, taught his disciples to tame the white-furred monsters for battle, and his disciples became the Bear Riders, fearless veteran landfighters foolhardy enough to ride
+ such dangerous beasts. The Bear Riders adhere to the Cult of the Bear, a traditionalist splinter sect of the Ice Keepers which is tolerated but not officially recognized. The
+ magic used to permit the taming of the arctic bears makes them subject to the same bond the Ledani have for the cold, though it does not confer upon them the ability to live underwater."
 #supplybonus -2 -- bear eat foods
+#secondshape 4315 -- wounded arctic bear shape
 #reclimit 5
 #mounted
-#hp 40
+#hp 34 -- 52 arctic bear + 16 = 68 . 68/2 = 34. The remaining 34 is for wounded bear
 #ressize 2
 #mr 11
 #str 10
@@ -493,7 +514,7 @@ white-furred monsters. Nowadays, Ledan mystics who develop an affinity with Natu
 #ap 12
 #size 4
 #prot 5
-#mor 11
+#mor 12
 #att 8
 #prec 11
 #mapmove 2
@@ -505,88 +526,135 @@ white-furred monsters. Nowadays, Ledan mystics who develop an affinity with Natu
 #weapon 236 -- Claw--
 #armor 550 -- "Ice Buckler"
 #armor "Ice cap"
-#armor 15 -- full leather armor
+#armor 553 -- Sealskin armor
 #gcost 50
 #end
 
 #newmonster 4213
 #name "Ledan Flagbearer"
-#descr "In the icy wastes of Leda during the frequent snowstorms it becomes difficult to keep large units together. The Ledan have solved this problem by employing the use of giant standards
- in battle. The banners also serve as a rallying point and inspire the Ledan warriors to great deeds."
+#descr "In the icy wastes of Leda, frequent snowstorms limit visibility and make it difficult to keep dispersed units together. To solve this problem, the armies of Leda use flagbearers
+ who carry elaborate, magically-glowing standards in battle, serving as rallying points and inspiring the soldiers to greater bravery and fortitude. The standards themselves, constructed
+ of Ice and bearing special enchantments, are considerably lighter than the wood and metal standards used by the warmlanders, and Ledan flagbearers are uniquely skilled in using them as
+ passable weapons both defensive and offensive. Indeed, they have been known to block warmlanders' arrows using the broadened, shield-like guardpieces mounted on the shafts."
 #spr1 "./Omniomicon/Ledan/ledan_flagbearer.tga"
 #spr2 "./Omniomicon/Ledan/ledan_flagbearer2.tga"
 #reclimit 3 -- limite 3/turn
 #standard 1 -- FLAG BEARER
+#watershape 4316
 #formationfighter 1
 #hp 13
 #mr 10
 #str 8
 #def 9
 #enc 3
-#ap 6
+#ap 8
 #size 2
 #prot 2
-#mor 9
-#att 6
+#mor 11
+#att 7
 #prec 12
 #mapmove 2
 #eyes 2
 #gcost 20
 #rcost 4
 #weapon "Ice Knife"
+#weapon 1210 -- banner shaft
+#armor 555  -- banner guardpiece
 #coldres 25
 #coldpower 1
 #ressize 2
 #amphibian
 #end
 
+#newmonster 4316
+#copystats 4213 -- Copy Ledan Flagbearer
+#copyspr 4213 -- Copy sprites
+#name "Ledan Flagbearer (watershape)"
+#descr "In the icy wastes of Leda, frequent snowstorms limit visibility and make it difficult to keep dispersed units together. To solve this problem, the armies of Leda use flagbearers
+ who carry elaborate, magically-glowing standards in battle, serving as rallying points and inspiring the soldiers to greater bravery and fortitude. The standards themselves, constructed
+ of Ice and bearing special enchantments, are considerably lighter than the wood and metal standards used by the warmlanders, and Ledan flagbearers are uniquely skilled in using them as
+ passable weapons both defensive and offensive. Indeed, they have been known to block warmlanders' arrows using the broadened, shield-like guardpieces mounted on the shafts."
+#landshape 4213
+#str 11
+#def 12
+#ap 12
+#att 10
+#end
+
 #newmonster 4214
 #name "Ledan Holy Flagbearer"
-#descr "Occasionally when a Ledan warrior has distinguished himself on the field of battle, he is taken in by the Ice Keeper cult and rites are said to initiate him into the sacred order.
- Not as a Keeper, but as a Holy Standard Bearer, a warrior of purity and devotion to the Eternal Ice. Given excellent armor and the Holy Standard of the Ice Keeper Cult itself,
- these warriors are revered by other Ledan and inspire them to amazing feats on the battlefield. "
+#descr "From time to time, when a Ledan warrior has distinguished himself both in martial virtue and piety, he is chosen by the Cult of the Ice Keepers for the sought-after honor of being
+ trained and anointed as a holy flagbearer. Given fine icering sealskin armor and entrusted with a sacred battle standard crafted and enchanted by the Ice Keepers themselves, these blessed
+ Ledani are warriors of zealous devotion to the glory of the Eternal Ice and symbols of its power, revered by the soldiers around them as guarantors of victory. Ledan soldiers in the
+ presence of a holy flagbearer are far more likely to hold the line against unfavorable odds than they might be otherwise, perhaps partially out of knowledge that to break and flee while
+ under the banner of the Ice Keepers is a disgrace that may indeed be punished with exile or death."
 #spr1 "./Omniomicon/Ledan/ledan_holyflagbearer.tga"
 #spr2 "./Omniomicon/Ledan/ledan_holyflagbearer2.tga"
-#standard 2 -- FLAG BEARER
+#standard 2 -- Holy FLAG BEARER
 #reclimit 1 -- limite 1/turn
 #formationfighter 1
+#watershape 4317
+#cold 5 -- cold aura
 #holy
-#hp 13
+#hp 15
 #mr 10
 #str 8
-#def 9
+#def 10
 #enc 3
-#ap 6
+#ap 8
 #size 2
 #prot 2
-#mor 9
-#att 6
+#mor 11
+#att 8
 #prec 12
 #mapmove 1
 #eyes 2
 #gcost 50
 #rcost 6
 #weapon "Ice Knife"
-#armor 15 -- full leather armor
+#armor 554 -- Icering Sealskin armor
 #armor "Ice Helmet"
+#weapon 1210 -- banner shaft
+#armor 556  -- holy banner guardpiece
 #coldres 25
 #coldpower 1
 #ressize 2
 #pooramphibian
 #end
 
+#newmonster 4317
+#copystats 4214 -- Copy Ledan Ice Thrower
+#copyspr 4214 -- Copy sprites
+#name "Ledan Holy Flagbearer (watershape)"
+#descr "From time to time, when a Ledan warrior has distinguished himself both in martial virtue and piety, he is chosen by the Cult of the Ice Keepers for the sought-after honor of being
+ trained and anointed as a holy flagbearer. Given fine icering sealskin armor and entrusted with a sacred battle standard crafted and enchanted by the Ice Keepers themselves, these blessed
+ Ledani are warriors of zealous devotion to the glory of the Eternal Ice and symbols of its power, revered by the soldiers around them as guarantors of victory. Ledan soldiers in the
+ presence of a holy flagbearer are far more likely to hold the line against unfavorable odds than they might be otherwise, perhaps partially out of knowledge that to break and flee while
+ under the banner of the Ice Keepers is a disgrace that may indeed be punished with exile or death."
+#landshape 4214
+#str 11
+#def 13
+#ap 12
+#att 11
+#end
+
+-----------------------------
 -------- Province Units--------
+----------------------------
+
 #newmonster 4223
-#name "Ledan Settler"
-#descr "Ledan Settlers are sent to colonize new provinces in the name of The Eternal Ice Kingdom. They are equipped with simple spears and won't stand long against experienced warriors.
- Like all Ledan, due to their morphology their skills, movement, and strength are severely reduced outside of a very cold environment."
+#name "Ledan Settler Militia"
+#descr "Settler militia are Ledan commoners who are sent to colonize and defend the far-flung lands brought under the icy dominion of Leda. Given only rudimentary training and armed
+ simply with spears and the natural resilience of their people, they are of limited tactical usefulness. In their own element, they can be passable fighters, but the Ledani are people
+ of the ice, and their strength, skill and mobility are severely affected by any but the coldest climates."
 #spr1 "./Omniomicon/Ledan/ledan_settler.tga"
 #spr2 "./Omniomicon/Ledan/ledan_settler2.tga"
 #watershape 4286
+#coldrec 1
 #hp 13
 #mr 10
 #str 8
-#def 9
+#def 8
 #enc 3
 #ap 8
 #size 2
@@ -606,23 +674,26 @@ white-furred monsters. Nowadays, Ledan mystics who develop an affinity with Natu
 #end
 
 #newmonster 4286
-#copystats 4223 -- Copy Ledan Settler
+#copystats 4223 -- Copy Settler militia
 #copyspr 4223 -- Copy sprites
-#name "Ledan Settler (watershape)"
-#descr "Ledan Settlers are sent to colonize new provinces in the name of The Eternal Ice Kingdom. They are equipped with simple spears and won't stand long against experienced warriors.
- Like all Ledan, due to their morphology their skills, movement, and strength are severely reduced outside of a very cold environment."
+#name "Ledan Settler Militia (watershape)"
+#descr "Settler militia are Ledan commoners who are sent to colonize and defend the far-flung lands brought under the icy dominion of Leda. Given only rudimentary training and armed
+ simply with spears and the natural resilience of their people, they are of limited tactical usefulness. In their own element, they can be passable fighters, but the Ledani are people
+ of the ice, and their strength, skill and mobility are severely affected by any but the coldest climates."
 #landshape 4223
 #str 10
-#def 12
+#def 11
 #ap 18
 #att 9
 #end
 
 #newmonster 4224
 #name "Ledan Wavefighter (landshape)" -- LANDSHAPE
-#descr "Wavefighters are warriors of a sacred Ledan cult devoted to Vodled, a mythical figure of the Ledan Pantheon who symbolizes the Water element. Theses troops specialize in underwater combat.
- Ledan Wavefighters are recognizable by the strange helmet with three tails they wear. Like all Ledan, due to their morphology their skills, movement, and strength are severely reduced outside
- of a very cold environment."
+#descr "Wavefighters are a sect of warriors who adhere to a minor cult devoted to Vodled, the mythical Ledan werewhale who symbolizes the purity and bounty of the sea. Spending almost all
+ their time under the waves, they are superb swimmers and are unmatched among their kind at the art of underwater fighting. Recognizable by the odd three-finned helmets they wear, they
+ are seen as peculiar, unorthodox and vaguely heretical. However, they are sanctioned by the Kingdom and have the blessing of the Cult of the Ice Keepers not only because the Vodled
+ cult is unthreatening and stresses loyalty to the prevailing order, but also because the wavefighters are a superb underwater fighting force who have turned the tide of more than one
+ battle, earning the love and respect of the people of Leda. Like other Ledani, they are strongest in the cold, and become weaker, slower and more vulnerable in warmer climates."
 #spr1 "./Omniomicon/Ledan/ledan_wavefighter.tga"
 #spr2 "./Omniomicon/Ledan/ledan_wavefighter2.tga"
 #watershape 4273 -- watershape
@@ -656,36 +727,40 @@ white-furred monsters. Nowadays, Ledan mystics who develop an affinity with Natu
 #newmonster 4273 --- WATERSHAPE du Wavefighter
 #copystats 4224 -- COPIE du wavefighter
 #name "Ledan Wavefighter (watershape)"
-#descr "Wavefighters are warriors of a sacred Ledan cult devoted to Vodled, a mythical figure of the Ledan Pantheon who symbolizes the Water element. Theses troops specialize in underwater combat.
- Ledan Wavefighters are recognizable by the strange helmet with three tails they wear. Like all Ledan, due to their morphology their skills, movement, and strength are severely reduced outside
- of a very cold environment."
+#descr "Wavefighters are a sect of warriors who adhere to a minor cult devoted to Vodled, the mythical Ledan werewhale who symbolizes the purity and bounty of the sea. Spending almost all
+ their time under the waves, they are superb swimmers and are unmatched among their kind at the art of underwater fighting. Recognizable by the odd three-finned helmets they wear, they
+ are seen as peculiar, unorthodox and vaguely heretical. However, they are sanctioned by the Kingdom and have the blessing of the Cult of the Ice Keepers not only because the Vodled
+ cult is unthreatening and stresses loyalty to the prevailing order, but also because the wavefighters are a superb underwater fighting force who have turned the tide of more than one
+ battle, earning the love and respect of the people of Leda. Like other Ledani, they are strongest in the cold, and become weaker, slower and more vulnerable in warmer climates."
 #spr1 "./Omniomicon/Ledan/ledan_wavefighter.tga"
 #spr2 "./Omniomicon/Ledan/ledan_wavefighter2.tga"
 #landshape 4224 -- landshape
 #holy
 #reqtemple
-#str 8
+#str 10
 #def 15
-#ap 18
+#ap 22
 #mor 11
 #att 11
 #end
 
 #newmonster 4225
 #name "Ledan Taiga Warrior" -- Forest recruit
-#descr "Taiga warriors are fighters from the Ledan cold forests. Unlike other Ledan, they don’t fight with long weapons but with shorter Ice axes they use both as weapons and tools in the dense
-undergrowth. They wear leather armor which limits injuries in such environments but also hinders their movement in the water. Like all Ledan, due to their morphology their skills, movement,
- and strength are severely reduced outside of a very cold environment."
+#descr "Taiga warriors are the foresters and guardmen of the cold forests of Leda. Serving as treecutters and maintaining the Ledan arborfields, they use their sharp Ice axes both
+ as weapons and tools. They hail from the sparse taiga Ledan communities that have existed on the fringes of Leda from time immemorial, sometimes trapping reindeer and hunting seals.
+ They are a hardy people, and consider themselves distinct from the Ledani of the settled areas, whom they normally avoid except to trade their harvested lumber for fish and other
+ goods of the city. Taiga warriors wear sealskin armor and carry Ice bucklers along with their axes."
 #spr1 "./Omniomicon/Ledan/ledan_taigawarrior.tga"
 #spr2 "./Omniomicon/Ledan/ledan_taigawarrior2.tga"
 #watershape 4287
+#coldrec 1
 #reqtemple
-#hp 17
+#hp 14
 #mr 10
-#str 9
-#def 10
+#str 8
+#def 9
 #enc 3
-#ap 7
+#ap 8
 #size 2
 #prot 2
 #mor 10
@@ -697,7 +772,7 @@ undergrowth. They wear leather armor which limits injuries in such environments 
 #rcost 1
 #weapon 1205 -- "Ice Axe"
 #armor 550 -- "Ice Buckler"
-#armor 5 -- Leather cuirass
+#armor 552 -- Light Sealskin armor
 #armor 121 -- Leather hood
 #coldres 25
 #coldpower 1
@@ -710,36 +785,39 @@ undergrowth. They wear leather armor which limits injuries in such environments 
 #copystats 4225 -- Copy Taiga warrior
 #copyspr 4225 -- Copy sprites
 #name "Ledan Taiga Warrior(watershape)"
-#descr "Taiga warriors are fighters from the Ledan cold forests. Unlike other Ledan, they don’t fight with long weapons but with shorter Ice axes they use both as weapons and tools in the dense
-undergrowth. They wear leather armor which limits injuries in such environments but also hinders their movement in the water. Like all Ledan, due to their morphology their skills, movement,
- and strength are severely reduced outside of a very cold environment."
+#descr "Taiga warriors are the foresters and guardmen of the cold forests of Leda. Serving as treecutters and maintaining the Ledan arborfields, they use their sharp Ice axes both
+ as weapons and tools. They hail from the sparse taiga Ledan communities that have existed on the fringes of Leda from time immemorial, sometimes trapping reindeer and hunting seals.
+ They are a hardy people, and consider themselves distinct from the Ledani of the settled areas, whom they normally avoid except to trade their harvested lumber for fish and other
+ goods of the city. Taiga warriors wear sealskin armor and carry Ice bucklers along with their axes."
 #landshape 4225
-#str 11
-#def 13
-#ap 11
+#str 10
+#def 12
+#ap 12
 #att 11
 #end
 
 #newmonster 4226
-#name "Ledan Tundra Warrior" -- Waste recruit
-#descr "Tundra warriors are nomadic fighters of the arctic wastes. Their white coloring makes them difficult to spot in such environments. They fight with the traditional Ice trident and
-Ice javelins. Compared to other, more peaceful Ledan clans, it is not uncommon to see these warriors raid and pillage for wealth or food. Like all Ledan, due to their morphology their skills,
-movement, and strength are severely reduced outside of a very cold environment."
+#name "Ledan Tundra Walker" -- Waste recruit
+#descr "Ledani are a social and industrious people who find themselves most comfortable in coastal settlements.  Some, however, have taken to a nomadic life, and travel the arctic wastes
+ with their herds of reindeer, hunting and fishing from time to time and trading with the settled Ledani. These Ledani of the tundra clans call themselves the tundra walkers. They are
+ accustomed to defending their herds from raids by warmlanders and on occasion raiding them in return, and are fiercely protective of their territories and eager to expand them. The
+ warriors of the Tundra clans carry traditional Ledan weapons, the Ice trident and Ice javelins. Like other Ledani, they are strongest in the cold, and are at a disadvantage in warmer climates."
 #spr1 "./Omniomicon/Ledan/ledan_tundrawarrior.tga"
 #spr2 "./Omniomicon/Ledan/ledan_tundrawarrior2.tga"
 #watershape 4288
+#coldrec 1
 #reqtemple
 #hp 14
 #mr 10
 #str 8
-#def 10
+#def 9
 #enc 3
 #ap 8
 #size 2
 #prot 2
 #mor 10
 #att 8
-#prec 13
+#prec 12
 #mapmove 2
 #eyes 2
 #gcost 14
@@ -752,36 +830,38 @@ movement, and strength are severely reduced outside of a very cold environment."
 #amphibian
 #wastesurvival
 #pillagebonus 1
-#illusion
+--#illusion
 #end
 
 #newmonster 4288
 #copystats 4226 -- Copy Tundra warrior
 #copyspr 4226 -- Copy sprites
-#name "Ledan Tundra Warrior(watershape)"
-#descr "Tundra warriors are nomadic fighters of the arctic wastes. Their white coloring makes them difficult to spot in such environments. They fight with the traditional Ice trident and
-Ice javelins. Compared to other, more peaceful Ledan clans, it is not uncommon to see these warriors raid and pillage for wealth or food. Like all Ledan, due to their morphology their skills,
-movement, and strength are severely reduced outside of a very cold environment."
+#name "Ledan Tundra Walker(watershape)"
+#descr "Ledani are a social and industrious people who find themselves most comfortable in coastal settlements.  Some, however, have taken to a nomadic life, and travel the arctic wastes
+ with their herds of reindeer, hunting and fishing from time to time and trading with the settled Ledani. These Ledani of the tundra clans call themselves the tundra walkers. They are
+ accustomed to defending their herds from raids by warmlanders and on occasion raiding them in return, and are fiercely protective of their territories and eager to expand them. The
+ warriors of the Tundra clans carry traditional Ledan weapons, the Ice trident and Ice javelins. Like other Ledani, they are strongest in the cold, and are at a disadvantage in warmer climates."
 #landshape 4226
 #str 10
-#def 13
+#def 12
 #ap 18
 #att 11
 #end
 
 #newmonster 4227
-#name "Ledan Swamp Warrior" -- Swamp recruit
+#name "Ledan Taiga Javelot" -- Swamp recruit
 #descr "Swamp warriors are composed of local warrior clans who specialize in marshland fighting. They traditionally imbue their Ice weapons with poison distilled from local herbs. They have
 a somewhat lower constitution than other Ledan warriors due to this hostile environment and the poison they inject into themselves to become partially immune. Like all Ledan, due to their
 morphology their skills, movement, and strength are severely reduced outside of a very cold environment."
-#spr1 "./Omniomicon/Ledan/ledan_swampwarrior.tga"
-#spr2 "./Omniomicon/Ledan/ledan_swampwarrior2.tga"
+#spr1 "./Omniomicon/Ledan/ledan_taigajavelot.tga"
+#spr2 "./Omniomicon/Ledan/ledan_taigajavelot2.tga"
 #watershape 4289
+#coldrec 1
 #reqtemple
 #hp 14
 #mr 10
 #str 8
-#def 10
+#def 9
 #enc 3
 #ap 8
 #size 2
@@ -793,31 +873,63 @@ morphology their skills, movement, and strength are severely reduced outside of 
 #eyes 2
 #gcost 12
 #rcost 1
+#armor 552 -- Light Sealskin armor
 #weapon 1206 -- "Poisoned Ice Javelin"
 #weapon 126 -- Poison dagger
 #coldres 25
-#poisonres 5
+#poisonres 3
 #coldpower 1
 #ressize 2
-#amphibian
-#swampsurvival
+#pooramphibian
+#forestsurvival
 #end
 
 #newmonster 4289
 #copystats 4227 -- Copy swamp warrior
 #copyspr 4227 -- Copy sprites
-#name "Ledan Swamp Warrior(watershape)"
+#name "Ledan Taiga Javelot(watershape)"
 #descr "Swamp warriors are composed of local warrior clans who specialize in marshland fighting. They traditionally imbue their Ice weapons with poison distilled from local herbs. They have
 a somewhat lower constitution than other Ledan warriors due to this hostile environment and the poison they inject into themselves to become partially immune. Like all Ledan, due to their
 morphology their skills, movement, and strength are severely reduced outside of a very cold environment."
 #landshape 4227
 #str 10
-#def 13
+#def 12
 #ap 18
 #att 11
 #end
 
-#newmonster 4228
+#newmonster 4319
+#name "Krilan"
+#spr1 "./Omniomicon/Ledan/ledan_krilan.tga"
+#spr2 "./Omniomicon/Ledan/ledan_krilan2.tga"
+#descr "TO DO!"
+#holy
+#float
+#coldrec 1
+#hp 14
+#ressize 3
+#mr 11
+#str 8
+#def 9
+#enc 3
+#ap 8
+#size 3
+#prot 2
+#mor 11
+#att 8
+#prec 12
+#mapmove 2
+#eyes 2
+#pooramphibian
+#coldres 25
+#coldpower 1
+#weapon 1203 -- "Ice Trident"
+#weapon 1200 -- "ice javelin (3)"
+#gcost 15 
+#rcost 1
+#end
+
+#newmonster 4228 -- NOT USED ANYMORE
 #name "Ledan Highlander" --- mountain
 #descr "Ledan Highlanders are warriors of the mountain clans. They have somewhat higher endurance and tend to be more aggressive than other Ledan. They carry a traditional long Ice spear
  and are fearless warriors. Like all Ledan, due to their morphology their skills, movement, and strength are severely reduced outside of a very cold environment."
@@ -825,6 +937,7 @@ morphology their skills, movement, and strength are severely reduced outside of 
 #spr2 "./Omniomicon/Ledan/ledan_highlander2.tga"
 #reqtemple
 #watershape 4290
+#coldrec 1
 #amphibian
 #berserk 3 -- a tester
 #hp 15
@@ -863,19 +976,23 @@ morphology their skills, movement, and strength are severely reduced outside of 
 #end
 
 #newmonster 4229
-#name "Ledan Darksnow" -- Cave recruit
-#descr "These warriors are called Darksnow by other Ledan. They come from deep underground caves some settlers chose one day to colonize. This is not a natural environment for Ledans
- and they had to adapt to it. Darksnow are stealthy, have acquired partial darkvision, and fight with short Ice weapons more suited to their environment. They have a bad reputation,
- and it is said their leaders are dangerous assassins."
-#spr1 "./Omniomicon/Ledan/ledan_darksnow.tga"
-#spr2 "./Omniomicon/Ledan/ledan_darksnow2.tga"
+#name "Iceblood Tunnelguard" -- Cave recruit
+#descr "The mages of the Iceblood Cult who live in the dark, icy tunnels underneath Leda discovered a sophisticated ritual of Blood that infuses those who undergo it with unnatural
+ strength and resilience, and grants them the ability to see well enough in the darkness to defend the tunnels against both incursions from outsiders as well as from demons loosed
+ by careless summoners. Tunnelguards are Ledan soldiers who, seduced by promises of vigor, status and perhaps even the chance for revenge against old enemies, have sworn loyalty to
+ the mages of the Blood Cult in exchange for undergoing this ritual. They live in the Tunnels of the Iceblood Cult, serving as guards as well as intimidating or killing those who
+ would compromise the Cult's secrecy. Tunnelguards are noticeably more adept with weapons than their unenhanced kin, able even to fight with two blades, though they have lost some
+ of the great resilience against the cold for which the Ledani are known."
+#spr1 "./Omniomicon/Ledan/ledan_tunnelguard.tga"
+#spr2 "./Omniomicon/Ledan/ledan_tunnelguard2.tga"
 #reqtemple
 #watershape 4291
+#demon
 #stealthy 0
 #hp 14
 #mr 10
-#str 8
-#def 10
+#str 11
+#def 11
 #enc 3
 #ap 8
 #size 2
@@ -885,73 +1002,148 @@ morphology their skills, movement, and strength are severely reduced outside of 
 #prec 12
 #mapmove 2
 #eyes 2
-#gcost 12
+#gcost 15
 #rcost 1
 #ambidextrous 2
 #amphibian
 #weapon "Ice Knife"
 #weapon "Ice Knife"
-#coldres 25
-#coldpower 1
+#coldres 8
+--#coldpower 1
 #ressize 2
 #darkvision 30
 #end
 
 #newmonster 4291
-#copystats 4229 -- Copy darksnow
+#copystats 4229 -- Copy tunnelguard
 #copyspr 4229 -- Copy sprites
-#name "Ledan Darksnow(watershape)"
-#descr "These warriors are called Darksnow by other Ledan. They come from deep underground caves some settlers chose one day to colonize. This is not a natural environment for Ledans
- and they had to adapt to it. Darksnow are stealthy, have acquired partial darkvision, and fight with short Ice weapons more suited to their environment. They have a bad reputation,
- and it is said their leaders are dangerous assassins."
+#name "Iceblood Tunnelguard (watershape)"
+#descr "The mages of the Iceblood Cult who live in the dark, icy tunnels underneath Leda discovered a sophisticated ritual of Blood that infuses those who undergo it with unnatural
+ strength and resilience, and grants them the ability to see well enough in the darkness to defend the tunnels against both incursions from outsiders as well as from demons loosed
+ by careless summoners. Tunnelguards are Ledan soldiers who, seduced by promises of vigor, status and perhaps even the chance for revenge against old enemies, have sworn loyalty to
+ the mages of the Blood Cult in exchange for undergoing this ritual. They live in the Tunnels of the Iceblood Cult, serving as guards as well as intimidating or killing those who
+ would compromise the Cult's secrecy. Tunnelguards are noticeably more adept with weapons than their unenhanced kin, able even to fight with two blades, though they have lost some
+ of the great resilience against the cold for which the Ledani are known."
 #landshape 4229
-#str 10
-#def 13
+#str 11
+#def 11
 #ap 18
-#att 13
+#att 10
 #end
---------------------
----- Commandants-----------------------------------------------------------------
---------------------
+------------------------------------------------------------------------------------------------
+---- Commandants-----------------Commandants----------------------Commandants--------------------------
+------------------------------------------------------------------------------------------------
 
 #newmonster 4208
-#name "Ledan Scout"
-#descr "Ledan Scouts are trained to pass unseen across land and sea. Their reports on enemy army movements and available resources are invaluable to the Eternal Ice Kingdom. These units are
-very lightly equipped; they don’t wear any clothing, and are armed only with an Ice dagger."
-#stealthy 0
-#mountainsurvival
-#wastesurvival
-#forestsurvival
-#swampsurvival
+#name "Ledan Sea Hunt Leader"
+#descr "In their undersea hunts, the Ledani can be subtle, moving like sharks and striking like sea snakes. The hunters of the People of the Ice are skilled at stealth and concealment
+ under the waves, and can move through enemy waters undetected, striking where they are unexpected and keeping the Ice Keepers and the warleaders of the Eternal ice Kingdom informed
+ on the movements and resources of their undersea enemies. However, their marine hunting skills are of little use on land, and Leda relies on animal spies to keep it abreast of news
+ on its land-based enemies. Sea hunters carry Ice harpoons which they can hurl underwater a short distance, wounding their quarry before they close in with the traditional Ice knife
+ they use in the hunting of large game."
+#watershape 4314
+#poorleader
 #hp 14
 #mr 10
 #str 8
 #def 10
 #enc 3
-#ap 9
+#ap 8
 #size 2
 #prot 2
 #mor 10
 #att 7
-#prec 14
-#mapmove 3
+#prec 12
+#mapmove 2
 #eyes 2
 #gcost 10012
 #rcost 1
-#weapon "Ice Knife"
+#weapon 35 -- Ice Knife
+#weapon 1214 -- Ice Harpoon
 #coldres 25
 #coldpower 1
 #ressize 2
-#spr1 "./Omniomicon/Ledan/ledan_scout.tga"
-#spy
+#spr1 "./Omniomicon/Ledan/ledan_hunterleader.tga"
+#spr2 "./Omniomicon/Ledan/ledan_hunter2.tga"
 #amphibian
-#noleader
+#end
+
+#newmonster 4314
+#copystats 4208 -- Copy Ledan Hunter
+#copyspr 4208 -- Copy sprites
+#name "Ledan Sea Hunt Leader (watershape)"
+#descr "In their undersea hunts, the Ledani can be subtle, moving like sharks and striking like sea snakes. The hunters of the People of the Ice are skilled at stealth and concealment
+ under the waves, and can move through enemy waters undetected, striking where they are unexpected and keeping the Ice Keepers and the warleaders of the Eternal ice Kingdom informed
+ on the movements and resources of their undersea enemies. However, their marine hunting skills are of little use on land, and Leda relies on animal spies to keep it abreast of news
+ on its land-based enemies. Sea hunters carry Ice harpoons which they can hurl underwater a short distance, wounding their quarry before they close in with the traditional Ice knife
+ they use in the hunting of large game."
+#landshape 4208
+#stealthy 10
+--#spy
+#str 10
+#def 13
+#ap 20
+#att 10
+#prec 13
+#end
+
+#newmonster 4320
+#name "Ledan Sea Hunter"
+#descr "In their undersea hunts, the Ledani can be subtle, moving like sharks and striking like sea snakes. The hunters of the People of the Ice are skilled at stealth and concealment
+ under the waves, and can move through enemy waters undetected, striking where they are unexpected and keeping the Ice Keepers and the warleaders of the Eternal ice Kingdom informed
+ on the movements and resources of their undersea enemies. However, their marine hunting skills are of little use on land, and Leda relies on animal spies to keep it abreast of news
+ on its land-based enemies. Sea hunters carry Ice harpoons which they can hurl underwater a short distance, wounding their quarry before they close in with the traditional Ice knife
+ they use in the hunting of large game."
+#watershape 4321
+#reclimit 8 -- only 8/months
+#hp 14
+#mr 10
+#str 8
+#def 10
+#enc 3
+#ap 8
+#size 2
+#prot 2
+#mor 10
+#att 7
+#prec 12
+#mapmove 2
+#eyes 2
+#gcost 10012
+#rcost 1
+#weapon 35 -- Ice Knife
+#weapon 1214 -- Ice Harpoon
+#coldres 25
+#coldpower 1
+#ressize 2
+#spr1 "./Omniomicon/Ledan/ledan_hunter.tga"
+#spr2 "./Omniomicon/Ledan/ledan_hunter2.tga"
+#amphibian
+#end
+
+#newmonster 4321
+#copystats 4320 -- Copy Ledan Hunter
+#copyspr 4320 -- Copy sprites
+#name "Ledan Sea Hunter (watershape)"
+#descr "In their undersea hunts, the Ledani can be subtle, moving like sharks and striking like sea snakes. The hunters of the People of the Ice are skilled at stealth and concealment
+ under the waves, and can move through enemy waters undetected, striking where they are unexpected and keeping the Ice Keepers and the warleaders of the Eternal ice Kingdom informed
+ on the movements and resources of their undersea enemies. However, their marine hunting skills are of little use on land, and Leda relies on animal spies to keep it abreast of news
+ on its land-based enemies. Sea hunters carry Ice harpoons which they can hurl underwater a short distance, wounding their quarry before they close in with the traditional Ice knife
+ they use in the hunting of large game."
+#landshape 4320
+#stealthy 10
+#str 10
+#def 13
+#ap 20
+#att 10
+#prec 13
 #end
 
 #newmonster 4209
 #name "Ledan Landchief"
-#descr "Landchiefs are standard frontline officers of the Eternal Ice Kingdom on land. They can lead many Ledan warriors and are relatively well equipped but it hinders their movement 
-in aquatic environments."
+#descr "The landchiefs are the line officers of the surface armies of the Eternal Ice Kingdom. They are competent leaders, well-equipped with tridents, smallshields and caps of
+ magical Ice, and armored in sealskin leather. They are trained both in landfighting and undersea fighting in armor, though it still reduces limits their speed and agility under
+ the waves. As with other Ledani, their strength and mobility are at their best in the coldest climates, and are at a considerable disadvantage in warmer climes."
 #spr1 "./Omniomicon/Ledan/ledan_landchief.tga"
 #spr2 "./Omniomicon/Ledan/ledan_landchief2.tga"
 #watershape 4292
@@ -960,7 +1152,7 @@ in aquatic environments."
 #str 9
 #def 10
 #enc 3
-#ap 10
+#ap 8
 #size 2
 #prot 2
 #mor 11
@@ -972,7 +1164,7 @@ in aquatic environments."
 #rcost 1
 #weapon 1203 -- "Ice Trident"
 #armor 550 -- "Ice Buckler"
-#armor 15 -- Full leather armor
+#armor 553 -- Sealskin armor
 #armor "Ice cap"
 #coldres 25
 #coldpower 1
@@ -986,12 +1178,13 @@ in aquatic environments."
 #copystats 4209 -- Copy Landchief
 #copyspr 4209 -- Copy sprites
 #name "Ledan Landchief(watershape)"
-#descr "Landchiefs are standard frontline officers of the Eternal Ice Kingdom on land. They can lead many Ledan warriors and are relatively well equipped but it hinders their movement 
-in aquatic environments."
+#descr "The landchiefs are the line officers of the surface armies of the Eternal Ice Kingdom. They are competent leaders, well-equipped with tridents, smallshields and caps of
+ magical Ice, and armored in sealskin leather. They are trained both in landfighting and undersea fighting in armor, though it still reduces limits their speed and agility under
+ the waves. As with other Ledani, their strength and mobility are at their best in the coldest climates, and are at a considerable disadvantage in warmer climes."
 #landshape 4209
 #str 11
 #def 13
-#ap 14
+#ap 12
 #att 12
 #end
 
@@ -999,20 +1192,21 @@ in aquatic environments."
 #name "Ledan Protector"
 #spr1 "./Omniomicon/Ledan/ledan_protector.tga"
 #spr2 "./Omniomicon/Ledan/ledan_protector2.tga"
-#descr "Protectors are officers drawn from the ranks of veteran LongIce warriors. They are respected, inspiring in battle and have great patrolling skill. They are capable of raising and
- training local militia but have not been trained to lead large armies but small, elite, and defensive force."
+#descr "The protectors are the elite captains of the Long-ice companies. Drawn from the most distinguished of veteran Long-ices, they are respected, and often admired, by their men.
+ They are skilled in coordinating the patrolling and defence of Ledan lands and fortresses. Because Long-ice companies work in smaller, more tightly-disciplined formations,
+ Protectors are not accustomed to leading large numbers of soldiers. Like the Long-ice companies they customarily lead, Protectors wield specially-enchanted Ice pikes."
 #reqtemple
 #watershape 4293
 #hp 16
 #ressize 2
 #mr 11
 #str 9
-#def 16
+#def 12
 #enc 3
-#ap 10
+#ap 8
 #size 2
 #prot 2
-#mor 11
+#mor 13
 #att 8
 #prec 12
 #mapmove 1
@@ -1022,7 +1216,7 @@ in aquatic environments."
 #coldres 25
 #coldpower 1
 #weapon 1204 -- "Ice Pike"
-#armor 15 -- Full leather armor
+#armor 554 -- Icering Sealskin armor
 #armor "Ice Helmet"
 #holy
 #okleader
@@ -1036,12 +1230,13 @@ in aquatic environments."
 #copystats 4210 -- Copy Protector
 #copyspr 4210 -- Copy sprites
 #name "Ledan Protector(watershape)"
-#descr "Protectors are officers drawn from the ranks of veteran LongIce warriors. They are respected, inspiring in battle and have great patrolling skill. They are capable of raising and
- training local militia but have not been trained to lead large armies but small, elite, and defensive force."
+#descr "The protectors are the elite captains of the Long-ice companies. Drawn from the most distinguished of veteran Long-ices, they are respected, and often admired, by their men.
+ They are skilled in coordinating the patrolling and defence of Ledan lands and fortresses. Because Long-ice companies work in smaller, more tightly-disciplined formations,
+ Protectors are not accustomed to leading large numbers of soldiers. Like the Long-ice companies they customarily lead, Protectors wield specially-enchanted Ice pikes."
 #landshape 4210
 #str 11
-#def 16
-#ap 14
+#def 15
+#ap 12
 #att 11
 #end
 
@@ -1049,24 +1244,23 @@ in aquatic environments."
 #name "Ledan Champion"
 #spr1 "./Omniomicon/Ledan/ledan_champion.tga"
 #spr2 "./Omniomicon/Ledan/ledan_champion2.tga"
-#descr "Ledan Champions are veteran respected and renowned Ledan warriors. They can lead huge armies and inspire great courage in all their soldiers. They are relatively well equipped but
- it hinders their movement in aquatic environments."
+#descr "Ledan champions are the most distinguished and admired of Ledan warleaders, skilled at commanding large armies and maintaining strict discipline. Drawn from the most distinguished
+ of sacred Ice Warriors, they are superbly armed and armored, and their presence on the battlefield bolsters the morale of those under their command."
 #inspirational 1
 #watershape 4294
--- #taxcollector -- can collect tax, he is famous warrior after all :p
 #holy
 #incprovdef 1
 #hp 17
 #ressize 2
 #mr 11
-#str 10
+#str 11
 #def 12
 #enc 3
-#ap 10
+#ap 8
 #size 2
 #prot 2
-#mor 11
-#att 9
+#mor 14
+#att 10
 #prec 13
 #mapmove 2
 #eyes 2
@@ -1077,7 +1271,7 @@ in aquatic environments."
 #weapon 454 -- Ice Glaive
 #armor 550 -- "Ice Buckler"
 #armor "Ice Helmet"
-#armor 15 -- full leather armor
+#armor 554 -- Icering Sealskin armor
 #weapon 1200 -- "ice javelin (3)"
 #gcost 10040
 #end
@@ -1089,34 +1283,36 @@ in aquatic environments."
 #descr "Ledan Champions are veteran respected and renowned Ledan warriors. They can lead huge armies and inspire great courage in all their soldiers. They are relatively well equipped but
  it hinders their movement in aquatic environments."
 #landshape 4211
-#str 12
+#str 13
 #def 15
-#ap 14
+#ap 12
 #att 12
 #end
 
 #newmonster 4212
-#name "Ledan Bear Leader"
+#name "Ledan Bear Captain"
 #spr1 "./Omniomicon/Ledan/ledan_bearleader.tga"
 #spr2 "./Omniomicon/Ledan/ledan_bearleader2.tga"
-#descr "Long ago, polar bears were considered the most dangerous predator of the Ledan. When the rising civilization discovered and mastered Ice smelting and magic, things changed radically
-and now the animals wisely keep their distance from these strange little creatures with spiky sticks.  Zelened, the mythical Green Hermit was the first in Ledan history to have tamed one
- of these white-furred monsters. Nowadays while mages known as Bearmasters continue to tame theses animals, it is the Bearleaders who are the warriors and true commanders of this special
- Ledan Bear Cavalry."
+#descr "Bear captains are the renowned commanders of the bear riders. Grizzled veterans of considerable prowess, warriors of noteworthy dignity and bearing, they are an amazing and
+ awe-inspiring sight to the soldiers of Leda, riding magnificent bears of unusual size. It is said that even wild bears respect these scarred veterans and respectfully request leave
+ to pass by. As with their juniors bear riders, the magic used in the taming of the arctic bears makes them more powerful in the cold, but does not empower them to hold their breath
+ for long periods like the Ledani."
 #reqtemple
+#secondshape 4318 -- wounded arctic bear shape
 #mounted
+#animalawe 1
 #inspirational 3
 #supplybonus -2 -- bear eat foods
-#hp 50
+#hp 34
 #ressize 2
 #mr 11
 #str 10
-#def 10
+#def 11
 #enc 4
 #ap 12
 #size 4
 #prot 5
-#mor 11
+#mor 14
 #att 10
 #prec 11
 #mapmove 2
@@ -1127,18 +1323,21 @@ and now the animals wisely keep their distance from these strange little creatur
 #weapon 236 -- Claw--
 #weapon 237 -- Bite--
 #armor 550 -- "Ice Buckler"
-#armor 15 -- full leather armor
+#armor 554 -- Icering Sealskin armor
 #armor "Ice Helmet"
 #gcost 10050
 #end
 
------ Province Commanders-------
+------------------------------------------------------------------------------------------
+----- Province Commanders------ Province Commanders------- Province Commanders------ Pro
+---------------------------------------------------------------------------------------------
 
 #newmonster 4230
 #name "Ledan Waveleader (landshape)"
-#descr "Waveleaders are warriors of a sacred Ledan cult devoted to Vodled, a mythical figure of the Ledan Pantheon who symbolizes the Water element. They are Wavefighter officers and
- are recognizable by the strange helmet with three tails they wear. Like all Ledan, due to their morphology their skills, movement, and strength are severely reduced outside of
- a very cold environment."
+#descr "Waveleaders are both the military and hieratic leaders of the Vodled cult, the minor warrior cult whose members worship the mythical Ledan werewhale. Adhering to a level
+ of devotion to duty, personal asceticism and martial discipline matched by few, the Waveleaders are both able fighters and impressive commanders who inspire unusual loyalty in
+ their subordinates. They are beloved of the people and have the official blessing of the Cult of the Ice Keepers. Within the Vodled cult they live as senior monks, though it
+ grants them no real priestly authority outside of their cult hall."
 #spr1 "./Omniomicon/Ledan/ledan_waveleader.tga"
 #spr2 "./Omniomicon/Ledan/ledan_waveleader2.tga"
 #watershape 4274
@@ -1172,34 +1371,38 @@ and now the animals wisely keep their distance from these strange little creatur
 #newmonster 4274 --- WATERSHAPE du Waveleader
 #copystats 4230 -- COPIE du waveleader
 #name "Ledan Waveleader (watershape)"
-#descr "Waveleaders are warriors of a sacred Ledan cult devoted to Vodled, a mythical figure of the Ledan Pantheon who symbolizes the Water element. They are Wavefighter officers and
- are recognizable by the strange helmet with three tails they wear. Like all Ledan, due to their morphology their skills, movement, and strength are severely reduced outside of
- a very cold environment."
+#descr "Waveleaders are both the military and hieratic leaders of the Vodled cult, the minor warrior cult whose members worship the mythical Ledan werewhale. Adhering to a level
+ of devotion to duty, personal asceticism and martial discipline matched by few, the Waveleaders are both able fighters and impressive commanders who inspire unusual loyalty in
+ their subordinates. They are beloved of the people and have the official blessing of the Cult of the Ice Keepers. Within the Vodled cult they live as senior monks, though it
+ grants them no real priestly authority outside of their cult hall."
 #spr1 "./Omniomicon/Ledan/ledan_waveleader.tga"
 #spr2 "./Omniomicon/Ledan/ledan_waveleader2.tga"
 #landshape 4230 -- landshape
 #holy
 #reqtemple
-#mor 12
-#str 9
+#mor 13
+#str 11
 #def 16
-#ap 18
-#att 11
+#ap 22
+#att 12
 #inspirational 2
 #end
 
 #newmonster 4231
-#name "Ledan Settler Chieftain"
-#descr "Ledan Chieftains lead all the small Ledan settlements. They rule their villages but can sometimes be seen leading small militia forces to protect their lands. They occasionally
- sign on to be leaders of new settler expeditions. Like all Ledan, due to their morphology their skills, movement, and strength are severely reduced outside of a very cold environment."
+#name "Ledan Village Chief"
+#descr "Village chiefs are the civil and militia leaders of small villages and outland settlements. Though most remain in the communities they administer, they
+ occasionally volunteer, or are volunteered, to leave their home provinces to command settler expeditions or oversee construction projects and other administrative tasks for the Kingdom.
+ Aside from the the smallshield they are entitled to carry, they are armed like the settler militia they usually lead, with a simple spear. Like others of their kind, they are at their
+ best in the coldest climates and are at a disadvantage in warmer lands."
 #spr1 "./Omniomicon/Ledan/ledan_settlerchieftain.tga"
 #spr2 "./Omniomicon/Ledan/ledan_settlerchieftain2.tga"
 #okleader
 #watershape 4295
+#coldrec 1
 #hp 14
 #mr 10
 #str 8
-#def 8
+#def 9
 #enc 3
 #ap 8
 #size 2
@@ -1222,24 +1425,28 @@ and now the animals wisely keep their distance from these strange little creatur
 #newmonster 4295
 #copystats 4231 -- Copy SettlerChieftain
 #copyspr 4231 -- Copy sprites
-#name "Ledan Settler Chieftain(watershape)"
-#descr "Ledan Chieftains lead all the small Ledan settlements. They rule their villages but can sometimes be seen leading small militia forces to protect their lands. They occasionally
- sign on to be leaders of new settler expeditions. Like all Ledan, due to their morphology their skills, movement, and strength are severely reduced outside of a very cold environment."
+#name "Ledan Village Chief (watershape)"
+#descr "Village chiefs are the civil and militia leaders of small villages and outland settlements. Though most remain in the communities they administer, they
+ occasionally volunteer, or are volunteered, to leave their home provinces to command settler expeditions or oversee construction projects and other administrative tasks for the Kingdom.
+ Aside from the the smallshield they are entitled to carry, they are armed like the settler militia they usually lead, with a simple spear. Like others of their kind, they are at their
+ best in the coldest climates and are at a disadvantage in warmer lands."
 #landshape 4231
 #str 10
-#def 11
+#def 12
 #ap 18
 #att 10
 #end
 
 #newmonster 4232
-#name "Ledan Taiga Chieftain" -- Forest recruit
-#descr "Taiga chieftains are leaders from settlements located within the Ledan cold forests. They wear leather armor which limits injuries in such environments but also hinders their
- movement in water. Like all Ledan and due to their morphology their skills, movement, and strength are severely reduced outside of a very cold environment."
+#name "Ledan Taiga Chief" -- Forest recruit
+#descr "The chiefs of the taiga warriors are the leaders of the sparse Ledan trading communities of the icy woodlands around Leda, providing lumber for its needs and watching for
+ warmlander spies and invasions. Normally devoted to the simple daily work of hunting, trapping and forestry, in wartime they are sometimes conscripted to lead their able-bodied
+ Ledani in service of the Kingdom. They carry great battleaxes of Ice as symbols of their office."
 #spr1 "./Omniomicon/Ledan/ledan_taigachieftain.tga"
 #spr2 "./Omniomicon/Ledan/ledan_taigachieftain2.tga"
 #reqtemple
 #watershape 4296
+#coldrec 1
 #hp 18
 #mr 11
 #str 10
@@ -1256,22 +1463,23 @@ and now the animals wisely keep their distance from these strange little creatur
 #gcost 10015
 #rcost 1
 #weapon 1208 -- Ice Battleaxe
-#armor 5 -- Leather cuirass
+#armor 552 -- Light Sealskin armor
 #armor "Ice Helmet"
 #coldres 25
 #coldpower 1
 #ressize 2
 #pooramphibian
 #forestsurvival
-#goodleader
+#okleader
 #end
 
 #newmonster 4296
 #copystats 4232 -- Copy Taiga chieftain
 #copyspr 4232 -- Copy sprites
-#name "Ledan Taiga Chieftain(watershape)"
-#descr "Taiga chieftains are leaders from settlements located within the Ledan cold forests. They wear leather armor which limits injuries in such environments but also hinders their
- movement in water. Like all Ledan and due to their morphology their skills, movement, and strength are severely reduced outside of a very cold environment."
+#name "Ledan Taiga Chief(watershape)"
+#descr "The chiefs of the taiga warriors are the leaders of the sparse Ledan trading communities of the icy woodlands around Leda, providing lumber for its needs and watching for
+ warmlander spies and invasions. Normally devoted to the simple daily work of hunting, trapping and forestry, in wartime they are sometimes conscripted to lead their able-bodied
+ Ledani in service of the Kingdom. They carry great battleaxes of Ice as symbols of their office."
 #landshape 4232
 #str 12
 #def 13
@@ -1280,14 +1488,16 @@ and now the animals wisely keep their distance from these strange little creatur
 #end
 
 #newmonster 4233
-#name "Ledan Tundra Chieftain" -- Waste recruit
-#descr "Tundra chieftains are nomadic Ledan leaders of the arctic waste tribes. Their white coloring makes them difficult to spot in such environments. They fight with the traditional Ice trident and
-Ice javelins. Compared to other, more peaceful Ledan clans, it is not uncommon to see these warriors raid and pillage for wealth or food. Like all Ledan, due to their morphology their skills,
-movement, and strength are severely reduced outside of a very cold environment."
+#name "Ledan Tundra Chief" -- Waste recruit
+#descr "The leaders of the tundra walker clans sometimes take up service to the Kingdom in return for promises of territory or the spoils of war, though they dislike the settled Ledani
+ and keep to their own in camp. They are competent though unremarkable war leaders, and are armed with glaives of enchanted Ice. They wear Ice caps and carry Ice javelins, and are
+ otherwise similar to the Ledan they lead. The warriors of the Tundra clans carry traditional Ledan weapons, the Ice trident and Ice javelins. Like other Ledani, they are strongest
+ in the cold, and are at a disadvantage in warmer climates."
 #spr1 "./Omniomicon/Ledan/ledan_tundrachieftain.tga"
 #spr2 "./Omniomicon/Ledan/ledan_tundrachieftain2.tga"
 #reqtemple
 #watershape 4297
+#coldrec 1
 #hp 15
 #mr 11
 #str 9
@@ -1310,19 +1520,20 @@ movement, and strength are severely reduced outside of a very cold environment."
 #coldpower 1
 #ressize 2
 #amphibian
-#goodleader
+#okleader
 #wastesurvival
 #pillagebonus 1
-#illusion
+--#illusion
 #end
 
 #newmonster 4297
 #copystats 4233 -- Copy Tundra chieftain
 #copyspr 4233 -- Copy sprites
-#name "Ledan Tundra Chieftain(watershape)"
-#descr "Tundra chieftains are nomadic Ledan leaders of the arctic waste tribes. Their white coloring makes them difficult to spot in such environments. They fight with the traditional Ice trident and
-Ice javelins. Compared to other, more peaceful Ledan clans, it is not uncommon to see these warriors raid and pillage for wealth or food. Like all Ledan, due to their morphology their skills,
-movement, and strength are severely reduced outside of a very cold environment."
+#name "Ledan Tundra Chief (watershape)"
+#descr "The leaders of the tundra walker clans sometimes take up service to the Kingdom in return for promises of territory or the spoils of war, though they dislike the settled Ledani
+ and keep to their own in camp. They are competent though unremarkable war leaders, and are armed with glaives of enchanted Ice. They wear Ice caps and carry Ice javelins, and are
+ otherwise similar to the Ledan they lead. The warriors of the Tundra clans carry traditional Ledan weapons, the Ice trident and Ice javelins. Like other Ledani, they are strongest
+ in the cold, and are at a disadvantage in warmer climates."
 #landshape 4233
 #str 11
 #def 15
@@ -1331,7 +1542,7 @@ movement, and strength are severely reduced outside of a very cold environment."
 #end
 
 #newmonster 4234
-#name "Ledan Swamp Chieftain" 
+#name "Ledan Swamp Chieftain" --- NOT USED ANYMORE
 #descr "Swamp chieftains are leaders from settlements located within the frozen marshlands. They traditionally imbue their Ice weapons with poison distilled from local herbs. They have
 a somewhat lower constitution than other Ledan warriors due to this hostile environment and the poison they inject in themselves to become partially immune. Like all Ledan, due to their
 morphology their skills, movement, and strength are severely reduced outside of a very cold environment."
@@ -1339,6 +1550,7 @@ morphology their skills, movement, and strength are severely reduced outside of 
 #spr2 "./Omniomicon/Ledan/ledan_swampchieftain2.tga"
 #reqtemple
 #watershape 4298
+#coldrec 1
 #hp 15
 #mr 11
 #str 9
@@ -1363,7 +1575,7 @@ morphology their skills, movement, and strength are severely reduced outside of 
 #ressize 2
 #amphibian
 #swampsurvival
-#goodleader
+#okleader
 #end
 
 #newmonster 4298
@@ -1381,13 +1593,14 @@ morphology their skills, movement, and strength are severely reduced outside of 
 #end
 
 #newmonster 4235
-#name "Ledan Highchief" --- mountain
+#name "Ledan Highchief" --- mountain NOT USED ANYMORE
 #descr "Highchieftains are leaders of the Ledan mountain clans. They have somewhat higher endurance and tend to be more aggressive than other Ledan. They carry a traditional long Ice spear
  and are fearless warriors. Like all Ledan, due to their morphology their skills, movement, and strength are severely reduced outside of a very cold environment."
 #spr1 "./Omniomicon/Ledan/ledan_highchief.tga"
 #spr2 "./Omniomicon/Ledan/ledan_highchief2.tga"
 #reqtemple
 #watershape 4299
+#coldrec 1
 #berserk 3 -- a tester
 #amphibian
 #hp 16
@@ -1428,39 +1641,43 @@ morphology their skills, movement, and strength are severely reduced outside of 
 #end
 
 #newmonster 4236
-#name "Ledan Darksnow Chieftain" -- cave
-#descr "Called Darksnow by other Ledan, these chieftains lead warriors from the deep underground caves some settlers had chosen one day to colonize. This is not a natural environment
- for Ledan and they had to adapt to it. Darksnow are stealthy, have acquired partial darkvision, and fight with short Ice weapons more suited to their environment. They have a bad reputation,
- and it is said their leaders are dangerous assassins."
-#spr1 "./Omniomicon/Ledan/ledan_darksnowchieftain.tga"
-#spr2 "./Omniomicon/Ledan/ledan_darksnowchieftain2.tga"
+#name "Iceblood Enforcer" -- summon blood
+#descr "The mages of the Iceblood Cult who live in the dark, icy tunnels underneath Leda use a sophisticated ritual of Blood that infuses those who undergo it with unnatural strength
+ and resilience, granting them the ability to see well enough in the darkness to defend the tunnels against both incursions from outsiders and from demons loosed by careless summoners.
+ Nightshadows are Ledan officers who, be it by reason of ambition or disgrace, or perhaps even under orders, have submitted themselves to the mages of the Iceblood Cult and have been
+ rewarded with a more powerful empowerment ritual than that used on the Tunnel Guards. Serving to enforce the wishes of the Iceblood Cult leadership and silence its more troublesome
+ opponents, Iceblood Enforcers are imbued with a demonic killing instinct, they are deadly combatants and skilled assassins, able to conceal themselves uncannily in the darkness
+ of night. Like the lesser Blood-enhanced Tunnel Guards, the transformation has reduced their resistance to cold."
+#spr1 "./Omniomicon/Ledan/ledan_enforcer.tga"
+#spr2 "./Omniomicon/Ledan/ledan_enforcer2.tga"
 #reqtemple
 #watershape 4300
+#demon
 #inspirational 1
 #stealthy 0 
 #assassin
 #hp 15
 #mr 11
-#str 9
-#def 12
+#str 13
+#def 13
 #enc 3
 #ap 8
 #size 2
 #prot 2
 #mor 11
-#att 10
+#att 12
 #prec 12
 #mapmove 2
 #eyes 2
-#gcost 10020
+#gcost 20
 #rcost 1
 #ambidextrous 2
 #amphibian
 #weapon 37 -- Ice blade
 #weapon "Ice Knife"
-#armor 5 -- leather cuirass
-#coldres 25
-#coldpower 1
+#armor 552 -- Light Sealskin armor
+#coldres 8
+--#coldpower 1
 #ressize 2
 #darkvision 30
 #end
@@ -1468,77 +1685,88 @@ morphology their skills, movement, and strength are severely reduced outside of 
 #newmonster 4300
 #copystats 4236 -- Copy darksnow chieftain
 #copyspr 4236 -- Copy sprites
-#name "Ledan Darksnow Chieftain(watershape)"
-#descr "Called Darksnow by other Ledan, these chieftains lead warriors from the deep underground caves some settlers had chosen one day to colonize. This is not a natural environment
- for Ledan and they had to adapt to it. Darksnow are stealthy, have acquired partial darkvision, and fight with short Ice weapons more suited to their environment. They have a bad reputation,
- and it is said their leaders are dangerous assassins."
+#name "Iceblood Enforcer (watershape)"
+#descr "The mages of the Iceblood Cult who live in the dark, icy tunnels underneath Leda use a sophisticated ritual of Blood that infuses those who undergo it with unnatural strength
+ and resilience, granting them the ability to see well enough in the darkness to defend the tunnels against both incursions from outsiders and from demons loosed by careless summoners.
+ Nightshadows are Ledan officers who, be it by reason of ambition or disgrace, or perhaps even under orders, have submitted themselves to the mages of the Iceblood Cult and have been
+ rewarded with a more powerful empowerment ritual than that used on the Tunnel Guards. Serving to enforce the wishes of the Iceblood Cult leadership and silence its more troublesome
+ opponents, Iceblood Enforcers are imbued with a demonic killing instinct, they are deadly combatants and skilled assassins, able to conceal themselves uncannily in the darkness
+ of night. Like the lesser Blood-enhanced Tunnel Guards, the transformation has reduced their resistance to cold."
 #landshape 4236
-#str 11
-#def 15
-#ap 12
-#att 13
+#str 13
+#def 13
+#ap 18
+#att 12
 #end
-------------------------
--- Holy Ledan Units---------------------------------------------------------
--------------------------
+--------------------------------------------------------------------------------------------------------
+-- HOLY LEDAN UNITS----------- HOLY LEDAN UNITS--------------- HOLY LEDAN UNITS---------------------------------------------------
+-------------------------------------------------------------------------------------
 
 #newmonster 4215
 #name "Ice Sculptor"
-#descr "Ice Sculptors are the sacred artisans of the Ledan. Their rank is the first step of the ascent to the higher orders of Eternal Ice worship. Ice Sculptors spend an average of 20 years
- before mastering enough Ice crafting and carving to be eligible as Ice enchanters. Meanwhile they also have the duty of assisting mages in their research experiments by crafting strange tools
- and items."
+#descr "Ice sculptors are the skilled artisans of Leda who build the great Ice structures and form the wondrous Ice tools, weapons and armor for which the Ledani are known. Icecraft is
+ considered a sacred art, and the only those ordained by the Cult of the Ice Keepers are permitted to learn its secrets and practice it. As devout acolytes within the Ice Keepers Cult,
+ the Ice sculptors usually work twenty or more years, slowly studying the sacred rituals of the Eternal Ice, as well as the practical mysteries of Ice and Wind magic, before receiving
+ recognition as masters of their craft and becoming eligible for elevation to the ranks of the Ice Enchanters. Ice sculptors are crucial to Leda's trade with the warmlanders, forming
+ nevermelting Ice sculptures and other goods that command hefty prices from foreign merchants."
 #spr1 "./Omniomicon/Ledan/ledan_holy1.tga" 
 #spr2 "./Omniomicon/Ledan/ledan_holy12.tga" 
 #reqtemple
 #watershape 4301
---#inspirational -2
+#iceforging 3
 #gold 3 -- generate gold/month from trading high quality famous sculptures
 #rcost 1
-#gcost 10020
+#gcost 80
 #hp 13
 #size 2
 #ressize 2
 #prot 2
-#mr 11
+#mr 13
 #mor 10
 #str 9
 #att 6
-#def 10
+#def 9
 #prec 12
 #enc 3
 #mapmove 2
 #ap 8
 #eyes 2
-#weapon 13 -- Hammer
+#weapon 1211 -- Ice Chisel
 #holy
 #amphibian
 #coldres 25
 #coldpower 1
 #noleader
-#magicskill 8 1
-#inspiringres 1 -- inspire recherche mages
+#magicskill 8 1 -- holy magic
+-- #inspiringres 1 -- Insipring research removed for tests without
+#magicboost 0 -1 -- LEDANI RESTRICTED FIRE ACCESS
+#custommagic 768 25 -- water or air
 #end
 
 #newmonster 4301
 #copystats 4215 -- Copy Ice sculptor
 #copyspr 4215 -- Copy sprites
 #name "Ice Sculptor(watershape)"
-#descr "Ice Sculptors are the sacred artisans of the Ledan. Their rank is the first step of the ascent to the higher orders of Eternal Ice worship. Ice Sculptors spend an average of 20 years
- before mastering enough Ice crafting and carving to be eligible as Ice enchanters. Meanwhile they also have the duty of assisting mages in their research experiments by crafting strange tools
- and items."
+#descr "Ice sculptors are the skilled artisans of Leda who build the great Ice structures and form the wondrous Ice tools, weapons and armor for which the Ledani are known. Icecraft is
+ considered a sacred art, and the only those ordained by the Cult of the Ice Keepers are permitted to learn its secrets and practice it. As devout acolytes within the Ice Keepers Cult,
+ the Ice sculptors usually work twenty or more years, slowly studying the sacred rituals of the Eternal Ice, as well as the practical mysteries of Ice and Wind magic, before receiving
+ recognition as masters of their craft and becoming eligible for elevation to the ranks of the Ice Enchanters. Ice sculptors are crucial to Leda's trade with the warmlanders, forming
+ nevermelting Ice sculptures and other goods that command hefty prices from foreign merchants."
 #landshape 4215
 #str 11
-#def 13
+#def 12
 #ap 18
 #att 9
 #end
 
 #newmonster 4216
 #name "Ice Enchanter"
-#descr "After spending decades to master Ice crafting and being introduced to Air and Water magic, Ice Sculptors can be appointed Ice Enchanters. They then become initiated into the secret
- of the Eternal Ice by Ice Keepers. This knowledge is used to forge legendary Ice weapons, relics, and items. Ice Enchanters are sacred to the Ledan.
- 
- IMPORTANT NOTE: Master Smith bonus is limited to Air and Water crafting. Ice enchanters can't be empowered to others magic paths. Don't loose magic gems trying it."
+#descr "Ice Enchanters are the senior mages and master craftsmen of the Ice Keepers Cult. Having spent decades mastering the sacred art of Icecrafting and studying the magic of the Ice
+ and the Sky, they have achieved a respectable degree of magical power and have been initiated in the secret of the Eternal Ice by the Ice Keepers, bound forever by its rigid code of
+ secrecy. They are wondrous craftsmen, and form many of the finer enchanted weapons, relics and items produced by Leda. However, this mastery has come at the cost of an unusual degree
+ of narrow-mindedness, and their singular focus on the divine elements to which they have devoted so many years of study makes them reluctant to practice other forms of magic,
+ particularly the disturbing path of Fire, which they absolutely refuse to learn. Ice Enchanters have significant clout in Ledan society, and are invested with priestly authority
+ exceeded only by the Ice Keepers themselves."
 #spr1 "./Omniomicon/Ledan/ledan_holy2.tga" 
 #spr2 "./Omniomicon/Ledan/ledan_holy22.tga" 
 #reqlab
@@ -1547,12 +1775,12 @@ morphology their skills, movement, and strength are severely reduced outside of 
 #researchbonus -5 -- Bad researcher
 #inspirational -1
 #rcost 1
-#gcost 10025
-#hp 13
+#gcost 150
+#hp 14
 #size 2
 #ressize 2
 #prot 2
-#mr 12
+#mr 15
 #mor 10
 #str 9
 #att 6
@@ -1562,33 +1790,36 @@ morphology their skills, movement, and strength are severely reduced outside of 
 #mapmove 2
 #ap 8
 #eyes 2
-#weapon 1203 -- "Ice Trident"
+#weapon 1212 -- Ice Staff
 #holy
 #amphibian
 #coldres 25
 #coldpower 1
 #poorleader
 #magicboost 0 -5 -- Fire -5 Pour annuler l effet mastersmith sur d autre magic 
-#magicboost 3 -5 -- Earth -5 Pour annuler l effet mastersmith sur d autre magic 
-#magicboost 4 -5 -- Astral -5 Pour annuler l effet mastersmith sur d autre magic 
-#magicboost 5 -5 -- Death -5 Pour annuler l effet mastersmith sur d autre magic 
-#magicboost 6 -5 -- Nature -5 Pour annuler l effet mastersmith sur d autre magic 
-#magicboost 7 -5 -- Blood -5 Pour annuler l effet mastersmith sur d autre magic 
+--#magicboost 3 -1 -- Earth -5 Pour annuler l effet mastersmith sur d autre magic 
+--#magicboost 4 -1 -- Astral -5 Pour annuler l effet mastersmith sur d autre magic 
+--#magicboost 5 -1 -- Death -5 Pour annuler l effet mastersmith sur d autre magic 
+--#magicboost 6 -1 -- Nature -5 Pour annuler l effet mastersmith sur d autre magic 
+--#magicboost 7 -1 -- Blood -5 Pour annuler l effet mastersmith sur d autre magic 
 #magicskill 8 2 -- holy magic 
 #magicskill 1 1 -- air magic
 #magicskill 2 1 -- water magic
+#custommagic 768 50 -- random chance water or air
 #fixforgebonus 1
-#mastersmith 2
+#mastersmith 1
 #end
 
 #newmonster 4302
 #copystats 4216 -- Copy Ice enchanter
 #copyspr 4216 -- Copy sprites
 #name "Ice Enchanter(watershape)"
-#descr "After spending decades to master Ice crafting and being introduced to Air and Water magic, Ice Sculptors can be appointed Ice Enchanters. They then become initiated into the secret
- of the Eternal Ice by Ice Keepers. This knowledge is used to forge legendary Ice weapons, relics, and items. Ice Enchanters are sacred to the Ledan.
- 
- IMPORTANT NOTE: Master Smith bonus is limited to Air and Water crafting. Ice enchanters can't be empowered to others magic paths. Don't loose magic gems trying it."
+#descr "Ice Enchanters are the senior mages and master craftsmen of the Ice Keepers Cult. Having spent decades mastering the sacred art of Icecrafting and studying the magic of the Ice
+ and the Sky, they have achieved a respectable degree of magical power and have been initiated in the secret of the Eternal Ice by the Ice Keepers, bound forever by its rigid code of
+ secrecy. They are wondrous craftsmen, and form many of the finer enchanted weapons, relics and items produced by Leda. However, this mastery has come at the cost of an unusual degree
+ of narrow-mindedness, and their singular focus on the divine elements to which they have devoted so many years of study makes them reluctant to practice other forms of magic,
+ particularly the disturbing path of Fire, which they absolutely refuse to learn. Ice Enchanters have significant clout in Ledan society, and are invested with priestly authority
+ exceeded only by the Ice Keepers themselves."
 #landshape 4216
 #str 11
 #def 12
@@ -1598,8 +1829,12 @@ morphology their skills, movement, and strength are severely reduced outside of 
 
 #newmonster 4217
 #name "Ice Keeper"
-#descr "Ice Keepers are the oldest and most experienced Ledan Ice enchanters. They are keepers of the secret of Eternal Ice and are aware of the real power associated with this knowledge.
- Few in number, they compose a council of elders who have the responsibility to initiate Ice Enchanters into the knowledge of the secret."
+#descr "The Ice Keepers are the high priests of the Cult of the Ice Keepers, the ruling faction in Leda. Few in number, they are drawn from the oldest and most accomplished of the Ice
+ Enchanters, and are privy to the secret of the Eternal Ice. They are aware of the monolith's real power, and the danger it brings; the Eternal Ice is draining the warmth from the world and,
+ if left unchecked, will shroud the world in a new ice age that could very well make it difficult, if not impossible, for the peoples of the warmer lands to live. But it will enable the
+ Ledani to spread throughout the world. This secret is closely-guarded, never to be revealed to outsiders, and those who even allude to it outside the Keepers' chambers of the Tower of
+ Ice are condemned to execution. The Ice Keepers are themselves led by a Council of Elders. Ice Keepers are powerful priests, and are highly-competent mages of Water and Air. They are not
+ as hidebound as their juniors, and sometimes study other magics."
 #spr1 "./Omniomicon/Ledan/ledan_holy3.tga" -- chemin sprite
 #spr2 "./Omniomicon/Ledan/ledan_holy32.tga" -- chemin sprite
 #reqlab
@@ -1613,17 +1848,17 @@ morphology their skills, movement, and strength are severely reduced outside of 
 #size 2
 #ressize 2
 #prot 2
-#mr 13
+#mr 16
 #mor 11
 #str 9
 #att 6
-#def 6
+#def 9
 #prec 14
 #enc 3
 #mapmove 2
 #ap 8
 #eyes 2
-#weapon 124 -- Ice Rod
+#weapon 1212 -- Ice staff
 #holy
 #amphibian
 #slowrec
@@ -1636,18 +1871,23 @@ morphology their skills, movement, and strength are severely reduced outside of 
 #magicskill 2 2 -- water magic
 --#custommagic 768 100 -- water or air
 --#custommagic 768 100 -- water or air
-#custommagic 25344 10 -- %chance nature or air or blood or nature
+#custommagic 25344 25 -- %chance nature or air or blood or nature
+#magicboost 0 -1 -- LEDANI RESTRICTED FIRE ACCESS
 #end
 
 #newmonster 4303
 #copystats 4217 -- Copy Ice keeper
 #copyspr 4217 -- Copy sprites
 #name "Ice Keeper(watershape)"
-#descr "Ice Keepers are the oldest and most experienced Ledan Ice enchanters. They are keepers of the secret of Eternal Ice and are aware of the real power associated with this knowledge.
- Few in number, they compose a council of elders who have the responsibility to initiate Ice Enchanters into the knowledge of the secret."
+#descr "The Ice Keepers are the high priests of the Cult of the Ice Keepers, the ruling faction in Leda. Few in number, they are drawn from the oldest and most accomplished of the Ice
+ Enchanters, and are privy to the secret of the Eternal Ice. They are aware of the monolith's real power, and the danger it brings; the Eternal Ice is draining the warmth from the world and,
+ if left unchecked, will shroud the world in a new ice age that could very well make it difficult, if not impossible, for the peoples of the warmer lands to live. But it will enable the
+ Ledani to spread throughout the world. This secret is closely-guarded, never to be revealed to outsiders, and those who even allude to it outside the Keepers' chambers of the Tower of
+ Ice are condemned to execution. The Ice Keepers are themselves led by a Council of Elders. Ice Keepers are powerful priests, and are highly-competent mages of Water and Air. They are not
+ as hidebound as their juniors, and sometimes study other magics."
 #landshape 4217
 #str 11
-#def 9
+#def 12
 #ap 18
 #att 9
 #end
@@ -1657,8 +1897,9 @@ morphology their skills, movement, and strength are severely reduced outside of 
 
 #newmonster 4218
 #name "Ice Reader"
-#descr "Ice Readers are students guided by Ledan Mages in their learning of Water and Air magic. They often serve as scribes and assistants for research purposes and are allowed to conduct
- their own experiments. They spend the rest of their time studying the old Sacred Ledan Ice Tablets to improve their magical abilities and knowledge of history."
+#descr "Ice readers are the young students of the Mage Cult. They study the histories, sacred writings and arcane mysteries in the Ice tablet library of the Ice Palace. Though they
+ usually serve as scribes and assistants for the elder mages, they are on occasion permitted to conduct their own magical research and experimentation. Ice Readers study the magic
+ of Water and Air, though not all show the aptitude to develop skill in the latter."
 #spr1 "./Omniomicon/Ledan/ledan_mage1.tga" -- chemin sprite
 #spr2 "./Omniomicon/Ledan/ledan_mage12.tga" -- chemin sprite
 #reqlab
@@ -1670,7 +1911,7 @@ morphology their skills, movement, and strength are severely reduced outside of 
 #size 2
 #ressize 2
 #prot 2
-#mr 11
+#mr 13
 #mor 10
 #str 7
 #att 6
@@ -1688,6 +1929,7 @@ morphology their skills, movement, and strength are severely reduced outside of 
 #researchbonus 5
 #magicskill 2 1 -- water magic
 #custommagic 256 50 -- %chance +Air
+#magicboost 0 -1 -- LEDANI RESTRICTED FIRE ACCESS
 #weapon 35 -- Ice Knife
 #end
 
@@ -1695,8 +1937,9 @@ morphology their skills, movement, and strength are severely reduced outside of 
 #copystats 4218 -- Copy Ice reader
 #copyspr 4218 -- Copy sprites
 #name "Ice Reader(watershape)"
-#descr "Ice Readers are students guided by Ledan Mages in their learning of Water and Air magic. They often serve as scribes and assistants for research purposes and are allowed to conduct
- their own experiments. They spend the rest of their time studying the old Sacred Ledan Ice Tablets to improve their magical abilities and knowledge of history."
+#descr "Ice readers are the young students of the Mage Cult. They study the histories, sacred writings and arcane mysteries in the Ice tablet library of the Ice Palace. Though they
+ usually serve as scribes and assistants for the elder mages, they are on occasion permitted to conduct their own magical research and experimentation. Ice Readers study the magic
+ of Water and Air, though not all show the aptitude to develop skill in the latter."
 #landshape 4218
 #str 9
 #def 12
@@ -1705,11 +1948,11 @@ morphology their skills, movement, and strength are severely reduced outside of 
 #end
 
 #newmonster 4219
-#name "Ledan Mage"
-#descr "When Ice Readers have mastered to some degree the elements of Water and Air, they officially become Ledan Mages. Some Mages are more skilled in one path than another and a few of
- them even study the Nature path. But with the rise of mankind being seen as a threat to many among the Ledan, some mages have also crossed the line by delving into the forbidden Blood path,
- using human blood. Ledan Mages have the responsibility to teach essential magic skills to the Ice Readers so they can master their own art, allowing them to be further initiated into the
- secret of Eternal Ice."
+#name "Ice Mage"
+#descr "The Mage Cult harbors the bulk of the magic practitioners of Leda, and has many halls throughout the city and its territories. Drawn from those Ice Readers who have shown promise
+ and completed their long period of understudy with the Cult, fully-titled Ice Mages are competent in Water and Air magic. Those who have studied the Ice tablets of the Old Ways under
+ the influence of the secretive Bear Cult occasionally become learned in Nature magic as well. It is whispered that some dabble in forbidden magics, and even that the Archmages turn
+ a blind eye to this impiety, but such rumors are strongly denied by the leadership of the Cult."
 #spr1 "./Omniomicon/Ledan/ledan_mage2.tga" -- chemin sprite
 #spr2 "./Omniomicon/Ledan/ledan_mage22.tga" -- chemin sprite
 #reqlab
@@ -1720,17 +1963,17 @@ morphology their skills, movement, and strength are severely reduced outside of 
 #size 2
 #ressize 2
 #prot 2
-#mr 12
+#mr 15
 #mor 10
 #str 7
 #att 6
-#def 6
+#def 9
 #prec 13
 #enc 3
 #mapmove 2
 #ap 8
 #eyes 2
-#weapon 7 -- Quaterstaff
+#weapon 1212 -- Ice staff
 #amphibian
 #coldres 25
 #coldpower 1
@@ -1739,28 +1982,33 @@ morphology their skills, movement, and strength are severely reduced outside of 
 #magicskill 1 1 -- air magic
 #magicskill 2 2 -- water magic
 #custommagic 768 50 -- %chance Water or Air
-#custommagic 8192 10 -- %chance nature
+#custommagic 24576 10 -- %chance nature or blood
+#magicboost 0 -1 -- LEDANI RESTRICTED FIRE ACCESS
 #end
 
 #newmonster 4305
-#copystats 4219 -- Copy Ledan mage
+#copystats 4219 -- Copy Ice Mage
 #copyspr 4219 -- Copy sprites
-#name "Ledan Mage(watershape)"
-#descr "When Ice Readers have mastered to some degree the elements of Water and Air, they officially become Ledan Mages. Some Mages are more skilled in one path than another and a few of
- them even study the Nature path. But with the rise of mankind being seen as a threat to many among the Ledan, some mages have also crossed the line by delving into the forbidden Blood path,
- using human blood. Ledan Mages have the responsibility to teach essential magic skills to the Ice Readers so they can master their own art, allowing them to be further initiated into the
- secret of Eternal Ice."
+#name "Ice Mage(watershape)"
+#descr "The Mage Cult harbors the bulk of the magic practitioners of Leda, and has many halls throughout the city and its territories. Drawn from those Ice Readers who have shown promise
+ and completed their long period of understudy with the Cult, fully-titled Ice Mages are competent in Water and Air magic. Those who have studied the Ice tablets of the Old Ways under
+ the influence of the secretive Bear Cult occasionally become learned in Nature magic as well. It is whispered that some dabble in forbidden magics, and even that the Archmages turn
+ a blind eye to this impiety, but such rumors are strongly denied by the leadership of the Cult."
 #landshape 4219
 #str 9
-#def 9
+#def 12
 #ap 18
 #att 9
 #end
 
 #newmonster 4220
 #name "Ledan Archmage"
-#descr "Archmages are ancient and experienced masters of the elements of Water and Air. They are sacred to the Ledan due to their power and knowledge. Many of them choose to travel far
- afield in order to learn and experiment with new magic paths. They often come back to the capital in their old age to share what they have learned with younger Ledan mages."
+#descr "The Archmages are the administrators and master teachers of the Mage Cult. Wizened in years and having achieved a level of mastery in the elements of Water and Air that
+ often exceeds that of the Ice Keepers, they are revered by the people of Leda as sacred. The Mage Cult once ruled Leda before the coming of the Cult of the Ice Keepers, but is
+ now subject to the Ice Keepers and, it is said, presided over by a submissive Elder Archmage 'with a soft beak and no tongue'. Indeed, there are those among the Archmages who
+ resent the change and would reverse it, but must be content to bide their time for now. Archmages often travel far afield in order to study and experiment with strange new magics,
+ bringing back their newfound knowledge to share with the younger Ice Mages, though, like the rest of the mages of Leda, they find the Fire magic used by the warmlanders unsettling
+ and are reluctant to tamper with it."
 #spr1 "./Omniomicon/Ledan/ledan_mage3.tga" -- chemin sprite
 #spr2 "./Omniomicon/Ledan/ledan_mage32.tga" -- chemin sprite
 #reqlab
@@ -1772,17 +2020,17 @@ morphology their skills, movement, and strength are severely reduced outside of 
 #size 2
 #ressize 2
 #prot 2
-#mr 13
+#mr 16
 #mor 11
 #str 7
 #att 6
-#def 6
+#def 9
 #prec 14
 #enc 3
 #mapmove 2
 #ap 8
 #eyes 2
-#weapon 124 -- Ice Rod
+#weapon 1212 -- Ice staff
 #amphibian
 #holy
 #slowrec
@@ -1797,27 +2045,35 @@ morphology their skills, movement, and strength are severely reduced outside of 
 #magicskill 2 2 -- water magic
 #custommagic 768 100 -- %chance Water or Air
 #custommagic 768 100 -- %chance Water or Air
-#custommagic 25344 10 -- %chance nature or air or blood or nature
+#custommagic 32512 10 -- %chance water or air or blood or nature or astral or earth or death
+#magicboost 0 -1 -- LEDANI RESTRICTED FIRE ACCESS
 #end
 
 #newmonster 4306
 #copystats 4220 -- Copy Ledan archmage
 #copyspr 4220 -- Copy sprites
-#name "Ledan Archmage(watershape)"
-#descr "Archmages are ancient and experienced masters of the elements of Water and Air. They are sacred to the Ledan due to their power and knowledge. Many of them choose to travel far
- afield in order to learn and experiment with new magic paths. They often come back to the capital in their old age to share what they have learned with younger Ledan mages."
+#name "Ledan Archmage (watershape)"
+#descr "The Archmages are the administrators and master teachers of the Mage Cult. Wizened in years and having achieved a level of mastery in the elements of Water and Air that
+ often exceeds that of the Ice Keepers, they are revered by the people of Leda as sacred. The Mage Cult once ruled Leda before the coming of the Cult of the Ice Keepers, but is
+ now subject to the Ice Keepers and, it is said, presided over by a submissive Elder Archmage 'with a soft beak and no tongue'. Indeed, there are those among the Archmages who
+ resent the change and would reverse it, but must be content to bide their time for now. Archmages often travel far afield in order to study and experiment with strange new magics,
+ bringing back their newfound knowledge to share with the younger Ice Mages, though, like the rest of the mages of Leda, they find the Fire magic used by the warmlanders unsettling
+ and are reluctant to tamper with it."
 #landshape 4220
-#str 9
-#def 9
+#str 10
+#def 12
 #ap 18
 #att 9
 #end
 
 #newmonster 4221
-#name "Ledan Bearmaster"
-#descr "These powerful Ledan Mages are called BearMasters. They spend lot of time learning Ledan history and culture from the writings on the Ancients Ice Tablets. They discovered that Nature,
- nowadays forgotten and left aside, was the most important magic path thousands of years ago. BearMasters have decided to restore and promote Nature magic among the Ledan. Like their ancestors,
- Bearmasters know how to communicate with flora and fauna. Despite their magical skills, they are most noted among Ledan society for being able to tame the ferocious polar bears of Leda."
+#name "Bearsinger"
+#descr "The Bearsingers are the traditionalist priest-mages of the Bear Cult, an unofficial but influential sect of the Cult of the Ice Keepers that seeks to temper the worship
+ of the Eternal Ice with a revival of the old ways of the ancestors. Having discovered in the historical and arcane writings on the Ice tablets of the Ancients that the Ledan
+ were once a people of Nature in earlier times, they now study the ways of the living earth and advocate a restoration of the old rites and practices, including the bizarre
+ practice of consuming a small amount of plants in addition to lifegiving fish. Like their ancient predecessors, the bearsingers know the language of plants and animals, and
+ can tame beasts of all sorts with their soothing warbling, including the ferocious arctic bears which are their namesake. There are those among the Ice Keepers who would see
+ Cult of the Bear outlawed and its adherents exiled, but they are in a minority and dare not speak openly against Prilan, its leader."
 #spr1 "./Omniomicon/Ledan/ledan_nature.tga" -- chemin sprite
 #spr2 "./Omniomicon/Ledan/ledan_nature2.tga" -- chemin sprite
 #reqlab
@@ -1829,11 +2085,11 @@ morphology their skills, movement, and strength are severely reduced outside of 
 #size 2
 #ressize 2
 #prot 2
-#mr 11
+#mr 15
 #mor 10
 #str 7
 #att 6
-#def 10
+#def 9
 #prec 12
 #enc 3
 #mapmove 2
@@ -1853,26 +2109,33 @@ morphology their skills, movement, and strength are severely reduced outside of 
 #beastmaster 2
 #amphibian
 #animalawe 1
+#magicboost 0 -1 -- LEDANI RESTRICTED FIRE ACCESS
 #end
 
 #newmonster 4307
-#copystats 4221 -- Copy Bearmaster
+#copystats 4221 -- Copy Bearsinger
 #copyspr 4221 -- Copy sprites
-#name "Ledan Bearmaster(watershape)"
-#descr "These powerful Ledan Mages are called BearMasters. They spend lot of time learning Ledan history and culture from the writings on the Ancients Ice Tablets. They discovered that Nature,
- nowadays forgotten and left aside, was the most important magic path thousands of years ago. BearMasters have decided to restore and promote Nature magic among the Ledan. Like their ancestors,
- Bearmasters know how to communicate with flora and fauna. Despite their magical skills, they are most noted among Ledan society for being able to tame the ferocious polar bears of Leda."
+#name "Bearsinger (watershape)"
+#descr "The Bearsingers are the traditionalist priest-mages of the Bear Cult, an unofficial but influential sect of the Cult of the Ice Keepers that seeks to temper the worship
+ of the Eternal Ice with a revival of the old ways of the ancestors. Having discovered in the historical and arcane writings on the Ice tablets of the Ancients that the Ledan
+ were once a people of Nature in earlier times, they now study the ways of the living earth and advocate a restoration of the old rites and practices, including the bizarre
+ practice of consuming a small amount of plants in addition to lifegiving fish. Like their ancient predecessors, the bearsingers know the language of plants and animals, and
+ can tame beasts of all sorts with their soothing warbling, including the ferocious arctic bears which are their namesake. There are those among the Ice Keepers who would see
+ Cult of the Bear outlawed and its adherents exiled, but they are in a minority and dare not speak openly against Prilan, its leader."
 #landshape 4221
 #str 9
-#def 13
+#def 12
 #ap 18
 #att 9
 #end
 
 #newmonster 4222
-#name "Ledan Iceblood"
-#descr "Icebloods are deviant Ledan mages whose hatred of humans and lust for power have tipped them towards the forbidden path of Blood. They are considered heretics and are banned
- from Ledan settlements as soon as their bloody activities are publicly discovered and revealed. Icebloods always act in secret and conduct their horrific experiments on humans in hidden places."
+#name "Iceblood"
+#descr "Icebloods are the adherents of a secretive cult of Ledan mages who abandoned their understudy in the Mages Cult to practice the forbidden magic of Blood. Whether because of
+ impatience with the overlong and, perhaps, uninspired plodding over traditional subjects expected by the conservative Mages Cult, or out of a burning hatred for the cruel warmlanders,
+ the students who join the Iceblood cult come to learn exciting and terrible magics with the potential for great power. But, as always, this embrace of Blood magic comes at great cost,
+ and Icebloods are branded as heretics. They must discreetly conduct their activities in hiding on pain of exile from Ledan lands if their practices are publicly discovered and revealed.
+ With the coming of the great war of Ascension, however, the Icebloods have found tacit approval, and some serve the god of Leda from their secret tunnels under the city."
 #spr1 "./Omniomicon/Ledan/ledan_blood.tga" -- chemin sprite
 #spr2 "./Omniomicon/Ledan/ledan_blood2.tga" -- chemin sprite
 #reqlab
@@ -1887,7 +2150,7 @@ morphology their skills, movement, and strength are severely reduced outside of 
 #size 2
 #ressize 2
 #prot 2
-#mr 11
+#mr 15
 #mor 10
 #str 7
 #att 6
@@ -1908,14 +2171,18 @@ morphology their skills, movement, and strength are severely reduced outside of 
 #magicskill 7 2 -- blood magic
 #custommagic 16384 20 -- %chance blood
 #weapon 35 -- Ice Knife
+#magicboost 0 -1 -- LEDANI RESTRICTED FIRE ACCESS
 #end
 
 #newmonster 4308
 #copystats 4222 -- Copy Iceblood
 #copyspr 4222 -- Copy sprites
-#name "Ledan Iceblood(watershape)"
-#descr "Icebloods are deviant Ledan mages whose hatred of humans and lust for power have tipped them towards the forbidden path of Blood. They are considered heretics and are banned
- from Ledan settlements as soon as their bloody activities are publicly discovered and revealed. Icebloods always act in secret and conduct their horrific experiments on humans in hidden places."
+#name "Iceblood (watershape)"
+#descr "Icebloods are the adherents of a secretive cult of Ledan mages who abandoned their understudy in the Mages Cult to practice the forbidden magic of Blood. Whether because of
+ impatience with the overlong and, perhaps, uninspired plodding over traditional subjects expected by the conservative Mages Cult, or out of a burning hatred for the cruel warmlanders,
+ the students who join the Iceblood cult come to learn exciting and terrible magics with the potential for great power. But, as always, this embrace of Blood magic comes at great cost,
+ and Icebloods are branded as heretics. They must discreetly conduct their activities in hiding on pain of exile from Ledan lands if their practices are publicly discovered and revealed.
+ With the coming of the great war of Ascension, however, the Icebloods have found tacit approval, and some serve the god of Leda from their secret tunnels under the city."
 #landshape 4222
 #str 9
 #def 12
@@ -1927,64 +2194,67 @@ morphology their skills, movement, and strength are severely reduced outside of 
 
 #newmonster 4237
 #name "Ledan Icewood"
-#descr "Icewoods are Ledan Mages who live in taiga and other frigid forests. Skilled in Nature and Air magic, they are kindly druids seeking peace, and are often found helping and healing
+#descr "Icewoods are Ice Mages who live in taiga and other frigid forests. Skilled in Nature and Air magic, they are kindly druids seeking peace, and are often found helping and healing
  other Ledan."
 #spr1 "./Omniomicon/Ledan/ledan_icewood.tga" 
 #spr2 "./Omniomicon/Ledan/ledan_icewood2.tga" 
 #reqlab
 #watershape 4309
+#coldrec 1
 #researchbonus -2
 #forestsurvival
 --#researchbonus -5 -- Bad researcher
-#autohealer 1
+#autodishealer 1
 #rcost 1
 #gcost 10020
 #hp 13
 #size 2
 #ressize 2
 #prot 2
-#mr 11
+#mr 15
 #mor 10
 #str 7
 #att 6
-#def 6
+#def 9
 #prec 12
 #enc 3
 #mapmove 2
 #ap 8
 #eyes 2
-#weapon 7 -- Quaterstaff
+#weapon 1212 -- Ice Staff
 #amphibian
 #coldres 25
 #coldpower 1
 #poorleader
 #magicskill 6 1 -- nature magic
-#magicskill 1 1 -- air magic
-#custommagic 8448 100 -- %chance air or nature
+#custommagic 768 100 -- Air or water
+#custommagic 8960 100 -- %chance air or nature or water
+#magicboost 0 -1 -- LEDANI RESTRICTED FIRE ACCESS
 #end
 
 #newmonster 4309
 #copystats 4237 -- Copy Icewood
 #copyspr 4237 -- Copy sprites
 #name "Ledan Icewood(watershape)"
-#descr "Icewoods are Ledan Mages who live in taiga and other frigid forests. Skilled in Nature and Air magic, they are kindly druids seeking peace, and are often found helping and healing
+#descr "Icewoods are Ice Mages who live in taiga and other frigid forests. Skilled in Nature and Air magic, they are kindly druids seeking peace, and are often found helping and healing
  other Ledan."
 #landshape 4237
 #str 9
-#def 9
+#def 12
 #ap 18
 #att 9
 #end
 
 #newmonster 4238
 #name "Ledan Icebone"
-#descr "Icebones are strange Ledan Sorcerers living in the frozen wastelands. Their Air magic skills are useful for the tundra tribes who live in such harsh conditions, but some of them
+#descr "(OLD DESCRIPTION - NEED UPDATE ACCORDING TO THE LORE) Icebones are strange Ledan Sorcerers living in the frozen wastelands. Their Air magic skills are useful for the tundra tribes who live in such harsh conditions, but some of them
  have started to experiment with Death magic. They claim it is for logistic and survival purposes, and curious onlookers have indeed seen them use this power to move goods around, though
  those doing the moving were dead and frozen."
 #spr1 "./Omniomicon/Ledan/ledan_icebone.tga" 
 #spr2 "./Omniomicon/Ledan/ledan_icebone2.tga" 
 #reqlab
 #watershape 4310
+#coldrec 1
 #wastesurvival
 --#researchbonus -5 -- Bad researcher
 #rcost 1
@@ -1993,23 +2263,25 @@ morphology their skills, movement, and strength are severely reduced outside of 
 #size 2
 #ressize 2
 #prot 2
-#mr 11
+#mr 14
 #mor 10
 #str 7
 #att 6
-#def 6
+#def 9
 #prec 12
 #enc 3
 #mapmove 2
 #ap 8
 #eyes 2
-#weapon 7 -- Quaterstaff
+#weapon 1212 -- Ice Staff
 #amphibian
 #coldres 25
 #coldpower 1
 #poorleader
-#custommagic 20483 50 -- death or blood chance 
-#magicskill 1 2 -- air magic
+#custommagic 20739 50 -- death or blood or air chance 
+#magicskill 1 1 -- air magic
+#magicskill 7 1 -- blood magic
+#magicboost 0 -1 -- LEDANI RESTRICTED FIRE ACCESS
 #end
 
 #newmonster 4310
@@ -2021,7 +2293,7 @@ morphology their skills, movement, and strength are severely reduced outside of 
  those doing the moving were dead and frozen."
 #landshape 4238
 #str 9
-#def 9
+#def 12
 #ap 18
 #att 9
 #end
@@ -2034,6 +2306,7 @@ and nature magic."
 #spr2 "./Omniomicon/Ledan/ledan_icemarsh2.tga" -- chemin sprite
 #reqlab
 #watershape 4311
+#coldrec 1
 #researchbonus -2
 #swampsurvival
 --#researchbonus -5 -- Bad researcher
@@ -2043,17 +2316,17 @@ and nature magic."
 #size 2
 #ressize 2
 #prot 2
-#mr 11
+#mr 15
 #mor 10
 #str 7
 #att 6
-#def 6
+#def 9
 #prec 12
 #enc 3
 #mapmove 2
 #ap 8
 #eyes 2
-#weapon 7 -- Quaterstaff
+#weapon 1212 -- Ice Staff
 #amphibian
 #coldres 25
 #coldpower 1
@@ -2063,6 +2336,7 @@ and nature magic."
 #magicskill 6 1 -- nature magic
 #magicskill 2 1 -- water magic
 #custommagic 8704 100 -- 50% chance water or nature
+#magicboost 0 -1 -- LEDANI RESTRICTED FIRE ACCESS
 #end
 
 #newmonster 4311
@@ -2073,69 +2347,74 @@ and nature magic."
 and nature magic."
 #landshape 4239
 #str 9
-#def 9
+#def 12
 #ap 18
 #att 9
 #end
 
 #newmonster 4240
-#name "Ledan Icerock"
-#descr "Icerocks are the Ledan mages living deep in the hills and mountains. Unlike traditional Ledan mages from the cities who specialize in the Water path, Icerocks have developed
-Air magic skills and some even delve into the Earth path. Since their clothing is frequently ornamented with metal or rock elements they are seen as funny and eccentric by traditional
- Ledan from the coasts."
-#spr1 "./Omniomicon/Ledan/ledan_icerock.tga" -- chemin sprite
-#spr2 "./Omniomicon/Ledan/ledan_icerock2.tga" -- chemin sprite
+#name "Krilan Elder"
+#descr "To Do"
+#spr1 "./Omniomicon/Ledan/ledan_krilanelder.tga" -- chemin sprite
+#spr2 "./Omniomicon/Ledan/ledan_krilanelder2.tga" -- chemin sprite
 #reqlab
-#watershape 4312
+--#watershape 4312
+#coldrec 1
 #mountainsurvival
 --#researchbonus -5 -- Bad researcher
+#float
+#holy
 #rcost 1
 #gcost 10020
 #hp 13
 #size 2
 #ressize 2
 #prot 2
-#mr 11
+#mr 13
 #mor 10
 #str 7
 #att 6
-#def 6
+#def 9
 #prec 12
 #enc 3
 #mapmove 2
 #ap 8
 #eyes 2
-#weapon 7 -- Quaterstaff
-#amphibian
+#weapon 1212 -- Ice Staff
+#pooramphibian
 #coldres 25
 #coldpower 1
 #poorleader
 #magicskill 1 2 -- air magic
-#custommagic 1280 50 -- 50% air or earth
+#magicskill 6 1 -- nature magic
+#magicskill 8 1 -- holy magic
+#custommagic 8448 25 -- 25% nature or air chance
+#magicboost 0 -1 -- LEDANI RESTRICTED FIRE ACCESS
 #end
 
-#newmonster 4312
+#newmonster 4312 -- NOT USED ANYMORE
 #copystats 4240 -- Copy Icerock
 #copyspr 4240 -- Copy sprites
 #name "Ledan Icerock(watershape)"
-#descr "Icerocks are the Ledan mages living deep in the hills and mountains. Unlike traditional Ledan mages from the cities who specialize in the Water path, Icerocks have developed
+#descr "Icerocks are the Ice Mages living deep in the hills and mountains. Unlike traditional Ice Mages from the cities who specialize in the Water path, Icerocks have developed
 Air magic skills and some even delve into the Earth path. Since their clothing is frequently ornamented with metal or rock elements they are seen as funny and eccentric by traditional
  Ledan from the coasts."
 #landshape 4240
 #str 9
-#def 9
+#def 12
 #ap 18
 #att 9
 #end
 
 #newmonster 4241
 #name "Ledan DarkIce"
-#descr "The Darkice are mysterious and strange Ledan Mages who joined the Darksnow in their underground settlements. It is said the order is composed mainly of young Mages who left the
- Capital and the traditional teachings of the Ledan Mage cult."
+#descr "The Darkice are mysterious and strange Ice Mages who joined the Darksnow in their underground settlements. It is said the order is composed mainly of young Mages who left the
+ Capital and the traditional teachings of the Ice Mage cult."
 #spr1 "./Omniomicon/Ledan/ledan_darkice.tga"
 #spr2 "./Omniomicon/Ledan/ledan_darkice2.tga"
 #reqlab
 #watershape 4313
+#coldrec 1
 --#researchbonus -5 -- Bad researcher
 #darkvision 30
 #rcost 1
@@ -2144,11 +2423,11 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #size 2
 #ressize 2
 #prot 2
-#mr 11
+#mr 13
 #mor 10
 #str 7
 #att 6
-#def 6
+#def 9
 #prec 12
 #enc 3
 #mapmove 2
@@ -2161,17 +2440,18 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #poorleader
 #magicskill 2 1 -- water magic
 #custommagic 21504 100 -- % chance death or earth or blood
+#magicboost 0 -1 -- LEDANI RESTRICTED FIRE ACCESS
 #end
 
 #newmonster 4313
 #copystats 4241 -- Copy DarkIce
 #copyspr 4241 -- Copy sprites
 #name "Ledan DarkIce(watershape)"
-#descr "The Darkice are mysterious and strange Ledan Mages who joined the Darksnow in their underground settlements. It is said the order is composed mainly of young Mages who left the
- Capital and the traditional teachings of the Ledan Mage cult."
+#descr "The Darkice are mysterious and strange Ice Mages who joined the Darksnow in their underground settlements. It is said the order is composed mainly of young Mages who left the
+ Capital and the traditional teachings of the Ice Mage cult."
 #landshape 4241
 #str 9
-#def 9
+#def 12
 #ap 18
 #att 9
 #end
@@ -2187,9 +2467,10 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #name "Arctic Mammoth"
 #spr1 "./Omniomicon/Ledan/ledan_arctic_mammoth.tga"
 #spr2 "./Omniomicon/Ledan/ledan_arctic_mammoth2.tga"
-#descr "Arctic Mammoths are huge creatures living in frozen regions of Leda. Due to their great bulk and thick, woolly fur, mammoths are resistant to cold. Their sheer size is enough to
- let them trample any smaller creatures and inspire fear in them. Mammoths are intelligent beings with minds of their own. When hurt, they become terrified and enraged and will flee the
- battlefield by the shortest route possible. Friendly troops as well as enemies are knocked over and trampled during the rout of a mammoth."
+#descr "The arctic mammoths of the north are huge beasts, larger even than the mammoths of Caelum, that roam the frozen tundra, grazing on the hardy plants that grow in the cold ground.
+ They have tough hides and thick, woolly fur, and are unbothered by even the coldest of climes. Sometimes used as war beasts by the Bear Cult mages of Leda, their enormous size
+ allows them to trample all but the largest of enemies, and their fearsome tusks can gore those too large to crush underfoot. Like their smaller mammoth and elephant kin, they
+ have minds of their own and will flee the battlefield if routed, trampling friends and enemies alike who stand in their path."
 #gcost 0 -- pour essayer de voir si ca fait 0 upkeep
 #rcost 1
 #animal
@@ -2207,14 +2488,14 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #prot 13
 #mor 10
 #att 8
-#prec 10
+#prec 5
 #mapmove 2
 #eyes 2
-#coldres 5
+#coldres 25
 #coldpower 1
 #siegebonus 10
 #fear 5 -- C est gros quand meme
-#weapon 182 -- Trunk
+#weapon 614 -- Tusk
 #noitem
 #end
 
@@ -2222,39 +2503,43 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #name "Eternal Mammoth"
 #spr1 "./Omniomicon/Ledan/ledan_eternalmammoth.tga"
 #spr2 "./Omniomicon/Ledan/ledan_eternalmammoth2.tga"
-#descr "Eternal Mammoths were sculpted by Ledans, blessed by the Eternal Ice and enliven by some strong magic.
- Their sheer size is enough to let them trample any smaller creatures and inspire fear in them. Eternal Mammoths never rout, which makes them extremely dangerous."
+#descr "Mammoths and bears are the iconic land beasts to the Ledani, and much Ledan art and sculpture depicts them. An eternal mammoth is an enormous, life-sized Ice carving of an
+ arctic mammoth formed by the most accomplished of sculptors and enchanted by the Ice Keepers in a secret and powerful ritual that is performed over a fortnight. Once so enchanted,
+ the statue is imbued with some of the power of the Eternal Ice. Now animated and capable of crushing smaller beings beneath its hardened Ice feet as it moves slowly forward, the
+ eternal mammoth becomes a fearsome war construct that is incredibly tough and difficult to damage, and exudes a powerful chill aura."
 #gcost 0 -- pour essayer de voir si ca fait 0 upkeep
 #rcost 1
+#magicbeing
+#noheal
 #neednoteat
 #trample
 #pierceres
 #slashres -- graisse epaisse
 #inanimate
-#undisciplined
 #holy
 #pooramphibian
 #cold 10 -- chill aura
 #hp 80
 #size 6
 #ressize 6
-#mr 10 -- very poor magic res
+#mr 12 -- very poor magic res
 #str 18
 #def 4
 #enc 0 
-#ap 6
+#ap 10
 #prot 15
 #mor 50 -- mindless
 #att 7
 #prec 10
 #mapmove 2
 #eyes 2
-#coldres 25
+#coldres 35
 #coldpower 1
 #iceprot 3
 #siegebonus 40
 #fear 5 -- C est gros quand meme
 #weapon 182 -- Trunk
+#weapon 614 -- Tusk
 #noitem
 #end
 
@@ -2262,13 +2547,13 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #name "Snowy Owl" -- ne pas oublier de mettre en commander et rajouter les options de leadership
 #spr1 "./Omniomicon/Ledan/ledan_snowy_owl.tga"
 #spr2 "./Omniomicon/Ledan/ledan_snowy_owl.tga"
-#descr "Snowy owls live in cold environments where they often serve the Ledan as scouts once enchanted by a Bearmaster."
+#descr "Snowy owls are raptors of the arctic tundra who are known for their watchful bearing. They sometimes are captured and enchanted to serve as scouts for the Ledan by Bear Cult mages."
 #noleader
 #gcost 0 -- pour essayer de voir si ca fait 0 upkeep
 #rcost 1
 #animal
 #flying
-#undisciplined
+--#undisciplined
 #stealthy 20
 #hp 5
 #size 1
@@ -2276,8 +2561,8 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #mr 10 
 #str 6
 #def 12
-#enc 1
-#ap 18
+#enc 3
+#ap 4
 #prot 0
 #mor 10
 #att 8
@@ -2290,40 +2575,47 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #end
 
 #newmonster 4245
-#name "Possessed Flying Ledan" -- Flying Ledan Demon
+#name "Bloodtainted Blackwing" -- Flying Ledan Demon
 #spr1 "./Omniomicon/Ledan/ledan_blood_flying.tga"
 #spr2 "./Omniomicon/Ledan/ledan_blood_flying2.tga"
-#descr "These Ledan, covered with blood and with strange black wings on their back, seem to be possessed by demons. While normal Ledan are only adapted to cold environments, these poor
- possessed creatures don’t appear to suffer in warmer climes. Even more strangely, they are less resistant to pure cold and they seem hesitant going underwater."
+#descr "The Blood mages of the Iceblood Cult often commune with infernal forces for their needs. With the expansion of the lifegiving cold and the coming of the the ascendant god,
+ they now serve Leda more or less openly. The Bloodtainted are Ledan soldiers who have volunteered to be subjected to a Blood ritual in which they are bonded to minor demonic beings,
+ who agree to serve in exchange for the blood of human captives and the opportunity to drink the blood of the battle-slain. The resulting beings, half-Ledan, half-demon, are repugnant
+ beings, covered in blood and with eyes that betray their corruption, but they are preternaturally strong and resilient. They are not bothered by warmth anymore, though they lose much
+ of their cold resistance in the deal. Blackwings are Bloodtainted whose particular demonic fusion has caused them to sprout great bat-like wings from their backs. Able to fly like the
+ Krilans of old, these demon-bonded Ledan dive into battle with great Ice glaives."
 #gcost 0 -- pour essayer de voir si ca fait 0 upkeep
 #rcost 1
 #flying
 #demon
 #hp 16
-#size 2
-#ressize 2
-#mr 10
+#size 3
+#ressize 3
+#mr 12
 #str 14
 #def 15
 #enc 3
-#ap 16
+#ap 8
 #prot 2
 #mor 11
 #att 10
 #prec 10
 #mapmove 3
 #eyes 2
-#coldres 5 -- Lost some Cold adaptation
+#coldres 8 -- Lost some Cold adaptation
 -- #coldpower 1 Lost Cold power
 #weapon "Ice Glaive" 
 #end
 
 #newmonster 4246
-#name "Corrupted Flying Ledan" -- Version Mega
+#name "Infernal Blackwing" -- Version Mega
 #spr1 "./Omniomicon/Ledan/ledan_blood_flyingmega.tga"
 #spr2 "./Omniomicon/Ledan/ledan_blood_flyingmega2.tga"
-#descr "These tough and aggressive Ledan, covered by blood and with strange black wings on their back, are clearly possessed by demons. While normal Ledan are only adapted to cold environments,
- these poor possessed creatures don’t appear to suffer in warmer climes. Even more strangely, they seem seem to have lost their natural cold resistance and refuse to go underwater."
+#descr "Infernal Ledani are those soldier-volunteers who were subjected to a more powerful Blood ritual, resulting in their bond with a more powerful, and more vicious, demon.
+ Their nature completely altered, these corrupted beings have lost almost all their cold resistance and refuse to enter the water, but they are frighteningly strong, tough, and brutal.
+ With a bloodlust that is barely containable outside of battle, they become a terror on the battlefield, entering a maddened battle-rage at the slightest provocation. Infernal Ledani
+ are greatly upsetting to the people, and their presence in a province will cause disturbances and unrest. Infernal Blackwings, like their lesser demonbonded counterparts, have grown
+ great black wings with which they can fly great distances."
 #gcost 0 -- pour essayer de voir si ca fait 0 upkeep
 #rcost 1
 #flying
@@ -2332,38 +2624,40 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #incunrest 2 -- 0.2/unit/turn
 #berserk 3 -- a tester
 #hp 20
-#size 2
-#ressize 2
-#mr 11
+#size 3
+#ressize 3
+#mr 13
 #str 17
 #def 16
 #enc 3
-#ap 16
+#ap 8
 #prot 6
 #mor 13
 #att 12
 #prec 10
 #mapmove 3
 #eyes 2
--- #coldres 5 -- Lost ALL Cold adaptation
--- #coldpower 1 Lost Cold power
+#coldres 5 
 #weapon "Ice Glaive" 
 #end
 
 #newmonster 4247 -- 
-#name "Possessed Ledan" -- Blood 
+#name "Bloodtainted Ledan" -- Blood 
 #spr1 "./Omniomicon/Ledan/ledan_possessed.tga"
 #spr2 "./Omniomicon/Ledan/ledan_possessed2.tga"
-#descr "These blood-covered Ledan seem to be possessed by demons. While normal Ledan are only adapted to cold environments, these poor possessed creatures don’t appear to suffer in warmer climes.
- Even more strangely, they are less resistant to pure cold and they seem hesitant going underwater."
+#descr "The Blood mages of the Iceblood Cult often commune with infernal forces for their needs. With the expansion of the lifegiving cold and the coming of the the ascendant god,
+ they now serve Leda more or less openly. The Bloodtainted are Ledan soldiers who have volunteered to be subjected to a Blood ritual in which they are bonded to minor demonic beings,
+ who agree to serve in exchange for the blood of human captives and the opportunity to drink the blood of the battle-slain. The resulting beings, half-Ledan, half-demon, are repugnant
+ beings, covered in blood and with eyes that betray their corruption, but they are preternaturally strong and resilient. They are not bothered by warmer climates anymore, though
+ they lose much of their cold resistance in the deal. Most bloodtainted Ledani are armed as they were before the ritual that altered them."
 #montag 4247 -- IMPORTANT
 #demon
 #hp 16
-#mr 10
+#mr 12
 #str 14
 #def 13
 #enc 3
-#ap 12
+#ap 8
 #size 2
 #prot 2
 #mor 11
@@ -2374,8 +2668,7 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #gcost 0 -- pour essayer de voir si ca fait 0 upkeep
 #rcost 1
 #weapon 1202 -- "Ice Longspear"
-#coldres 5 -- Lost some Cold adaptation
---#coldpower 1 --lost cold power
+#coldres 8 -- Lost some Cold adaptation
 #ressize 2
 #pooramphibian -- Daemon dont like waters
 #end
@@ -2383,11 +2676,14 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #newmonster 4248 -- Version Blood du Fighter
 #copystats 4247 -- COPIE
 #montag 4247 -- IMPORTANT
-#name "Possessed Ledan" -- Blood 
+#name "Bloodtainted Ledan" -- Blood 
 #spr1 "./Omniomicon/Ledan/ledan_possessed_alt1.tga"
 #spr2 "./Omniomicon/Ledan/ledan_possessed2_alt1.tga"
-#descr "These blood-covered Ledan seem to be possessed by demons. While normal Ledan are only adapted to cold environments, these poor possessed creatures don’t appear to suffer in warmer climes.
- Even more strangely, they are less resistant to pure cold and they seem hesitant going underwater."
+#descr "The Blood mages of the Iceblood Cult often commune with infernal forces for their needs. With the expansion of the lifegiving cold and the coming of the the ascendant god,
+ they now serve Leda more or less openly. The Bloodtainted are Ledan soldiers who have volunteered to be subjected to a Blood ritual in which they are bonded to minor demonic beings,
+ who agree to serve in exchange for the blood of human captives and the opportunity to drink the blood of the battle-slain. The resulting beings, half-Ledan, half-demon, are repugnant
+ beings, covered in blood and with eyes that betray their corruption, but they are preternaturally strong and resilient. They are not bothered by warmer climates anymore, though
+ they lose much of their cold resistance in the deal. Most bloodtainted Ledani are armed as they were before the ritual that altered them."
 #clearweapons
 #weapon 1203 -- "Ice Trident"
 #armor 1 -- Buckler
@@ -2396,36 +2692,42 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #newmonster 4249 -- Version Blood du Defender
 #copystats 4247 -- COPIE
 #montag 4247 -- IMPORTANT
-#name "Possessed Ledan" -- Blood 
+#name "Bloodtainted Ledan" -- Blood 
 #spr1 "./Omniomicon/Ledan/ledan_possessed_alt2.tga"
 #spr2 "./Omniomicon/Ledan/ledan_possessed2_alt2.tga"
-#descr "These blood-covered Ledan seem to be possessed by demons. While normal Ledan are only adapted to cold environments, these poor possessed creatures don’t appear to suffer in warmer climes.
- Even more strangely, they are less resistant to pure cold and they seem hesitant going underwater."
+#descr "The Blood mages of the Iceblood Cult often commune with infernal forces for their needs. With the expansion of the lifegiving cold and the coming of the the ascendant god,
+ they now serve Leda more or less openly. The Bloodtainted are Ledan soldiers who have volunteered to be subjected to a Blood ritual in which they are bonded to minor demonic beings,
+ who agree to serve in exchange for the blood of human captives and the opportunity to drink the blood of the battle-slain. The resulting beings, half-Ledan, half-demon, are repugnant
+ beings, covered in blood and with eyes that betray their corruption, but they are preternaturally strong and resilient. They are not bothered by warmer climates anymore, though
+ they lose much of their cold resistance in the deal. Most bloodtainted Ledani are armed as they were before the ritual that altered them."
 #clearweapons
 #weapon 28 -- Longpsear
 #armor 2 -- Shield
-#armor 15 -- Full leather armor
+#armor 553 -- Sealskin armor
 #armor 121 -- Leather hood
-#ap 10
+#ap 8
 #mapmove 1
 #end 
 
 #newmonster 4250
-#name "Corrupted Ledan" -- Blood mega version of Possessed Ledan
+#name "Infernal Ledan" -- Blood mega version of Possessed Ledan
 #spr1 "./Omniomicon/Ledan/ledan_corrupted.tga"
 #spr2 "./Omniomicon/Ledan/ledan_corrupted2.tga"
-#descr "These tough and aggressive blood-covered Ledan are clearly possessed by demons. While normal Ledan are only adapted to cold environments, these poor possessed creatures don’t appear
- to suffer in warmer climes. Even more strangely, they seem seem to have lost their natural cold resistance and refuse to go underwater."
+#descr "Infernal Ledani are those soldier-volunteers who were subjected to a more powerful Blood ritual, resulting in their bond with a more powerful, and more vicious, demon.
+ Their nature completely altered, these corrupted beings have lost almost all their cold resistance and refuse to enter the water, but they are frighteningly strong, tough, and
+ brutal. With a bloodlust that is barely containable outside of battle, they become a terror on the battlefield, entering a maddened battle-rage at the slightest provocation.
+ Infernal Ledani are greatly upsetting to the people, and their presence in a province will cause disturbances and unrest. Infernal Ledani no longer take normal sustenance,
+ instead replenishing themselves with periodic blood-feasts."
 #demon
 #neednoteat -- ??? a conserver?
 #berserk 3 -- a tester
 #incunrest 2 -- 0.2/unit/turn
 #hp 20
-#mr 10
+#mr 13
 #str 17
 #def 15
 #enc 3
-#ap 12
+#ap 8
 #size 2
 #prot 6
 #mor 12
@@ -2436,34 +2738,31 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #gcost 0 -- pour essayer de voir si ca fait 0 upkeep
 #rcost 1
 #weapon 1202 -- "Ice Longspear"
---#coldres 5 -- Lost ALL Cold adaptation
---#coldpower 1 --lost cold power
+#coldres 5 
 #ressize 2
--- #pooramphibian -- Corrupted dont ever want to go underwater
 #end
 
 #newmonster 4251
-#name "Ledan Red Thrower"
+#name "Bloodwind Javelot"
 #spr1 "./Omniomicon/Ledan/ledan_redthrower.tga"
 #spr2 "./Omniomicon/Ledan/ledan_redthrower2.tga"
-#descr "These blood-covered Ice Throwers seem to be possessed by demons. While normal Ledan are only adapted to cold environments, these poor possessed creatures don’t appear to suffer in warmer
- climes. Even more strangely, they are less resistant to pure cold and they seem hesitant going underwater."
+#descr "Few things, if any, remain stable in these times. Even the sacred Icewind Javelots, the devout paragons of athletic and moral virtue to the Ledani, now offer up themselves
+ for the corrupting Iceblood ritual that empowers its subjects with demonic strength, binding them to lesser infernal spirits who agree to serve Leda in exchange for the blood
+ of the pure and the slain. These bloodtainted javelots, like other javelots, become unnaturally strong and resilient, and are undaunted by warmer climates, but they lose much
+ of their resistance to the cold. Moreover, by agreeing to and undergoing the heretical ritual so that they may face the warmlanders in their own dominion, they lose their
+ sacred status and the blessings it had conferred."
 #gcost 0
 #rcost 1
---#stealthy 0 -- stealth
---#reclimit 6
 #pooramphibian
 #demon
-#coldres 5
---#coldpower 1
---#berserk 3
+#coldres 8
 #hp 16
 #ressize 2
-#mr 10
+#mr 12
 #str 14
 #def 11
 #enc 3
-#ap 12
+#ap 8
 #size 2
 #prot 2
 #mor 11
@@ -2476,27 +2775,27 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #end
 
 #newmonster 4252
-#name "Corrupted Red Thrower" -- Mega Blood Javelineer
+#name "Crimson Javelot" -- Mega Blood Javelineer
 #spr1 "./Omniomicon/Ledan/ledan_corrupted_jav.tga"
 #spr2 "./Omniomicon/Ledan/ledan_corrupted_jav2.tga"
-#descr "These tough and aggressive blood-covered Ice Throwers are clearly possessed by demons. While normal Ledan are only adapted to cold environments, these poor possessed creatures
- don’t appear to suffer in warmer climes. Even more strangely, they seem seem to have lost their natural cold resistance and refuse to go underwater." 
+#descr "Crimson Javelots are Icewind Javelots who have undergone the more bloody and strenuous Iceblood Cult ritual that produces the infernal Ledani. Like their lesser counterparts,
+ the Bloodwind Javelots, they have given up their sacred status and most of their cold resistance in exchange for being bonded with an infernal being, granting them demonic
+ resilience and strength, and allowing them to fight at full strength even in the warmest lands. But by virtue of the more powerful Infernal ritual, they are fiercer combatants
+ than their old peers, subject to the blood-frenzy should they be provoked in battle, and no longer eat fish." 
 #neednoteat -- ??? a conserver?
 #demon
 #gcost 0 -- pour essayer de voir si ca fait 0 upkeep
 #rcost 1
--- #pooramphibian
--- #coldres 25
--- #coldpower 1
+#coldres 5
 #incunrest 2 -- 0.2/unit/turn
 #berserk 3
 #hp 20
 #ressize 2
-#mr 11
+#mr 13
 #str 18
 #def 12
 #enc 3
-#ap 12
+#ap 8
 #size 2
 #prot 6
 #mor 12
@@ -2509,11 +2808,12 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #end
 
 #newmonster 4253
-#name "Winged Ancestor"
-#spr1 "./Omniomicon/Ledan/ledan_flying_ancestor.tga"
-#spr2 "./Omniomicon/Ledan/ledan_flying_ancestor2.tga"
-#descr "Winged ancestors are unearthly spirits from a time, in ages long past, when the people of Leda moved through the skies as easily as they now do the water. Sometimes seen dancing
- on glaciertops during storms, they serve Neboled, the last of the flying Ledan. They are resistant to nonmagical weapons and lightning, and become more powerful in cold and in storms."
+#name "Krilan Ancestor Spirit"
+#spr1 "./Omniomicon/Ledan/ledan_krilanspirit.tga"
+#spr2 "./Omniomicon/Ledan/ledan_krilanspirit2.tga"
+#descr "Winged ancestors are unearthly spirits from a time, in ages long past, when the people of Leda moved through the skies as easily as they now do the water. Sometimes seen
+ dancing on glaciertops during storms, they serve Neboled, the last of the flying Ledani. They are resistant to nonmagical weapons and lightning, and become more powerful in cold
+ and in storms."
 #holy
 #flying
 #ethereal -- a tester
@@ -2521,13 +2821,13 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #shockres 5
 #stormpower 1 -- a tester
 #hp 16
-#ressize 2
-#mr 11
+#ressize 3
+#mr 13
 #str 9
 #def 10
 #enc 3
-#ap 18
-#size 2
+#ap 7
+#size 3
 #prot 2
 #mor 12
 #att 8
@@ -2543,27 +2843,29 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #end
 
 #newmonster 4254
-#name "Frozen Templar" -- a travailler Background Ledan qui se sont abandonne au Eternal Ice? 
-#descr "Frozen Templars are fanatical Ledan whose devotion to the Eternal Ice has been noted and rewarded by the Cult of the Ice Keepers. In a secret ritual in which the devotees gather
- around the Eternal Ice, each with a sacred Water gem in hand, the mages bond them to the monolith in such a way that they themselves are tempered by it. The gems they hold melt over
- their bodies, then recrystallize as their skin is iced over with enchanted Ice, becoming as hard as steel yet as flexible as it was before. Sustained by their connection to the Eternal Ice
- and blessed by the Ice Keepers, they are sacred to the people of Leda."
+#name "Iceskin Templar" 
+#descr "Iceskin Templars are fanatical Ledan warriors whose devotion to the Eternal Ice has been noted and rewarded by the Cult of the Ice Keepers. In a secret ritual in which the
+ devotees gather around the Eternal Ice, each with a sacred Water gem in hand, the mages bond them to the monolith in such a way that they themselves are tempered by it. The gems
+ they hold melt into a glittering liquid and cover their bodies, recrystallizing as their skin is iced over with enchanted Ice. Upon completion of the process, their iced skin
+ becomes forevermore as hard as steel, and particularly resistant against cutting weapons, though the change limits their ability to move as freely as they could before.
+ Sustained by their connection to the Eternal Ice and blessed by the Ice Keepers, they are sacred to the people of Leda."
 #spr1 "./Omniomicon/Ledan/ledan_frozen.tga"
 #spr2 "./Omniomicon/Ledan/ledan_frozen2.tga"
 #holy -- a tester
+#magicbeing
 #hp 20
 #iceprot 1 -- a tester
 #neednoteat
 #slashres
-#mr 10
-#str 8
+#mr 13
+#str 10
 #def 8
 #enc 0 -- a tester
 #ap 5
 #size 2
-#prot 17
+#prot 15
 #mor 30 -- a tester
-#att 7
+#att 6
 #prec 12
 #mapmove 1
 #eyes 2
@@ -2578,8 +2880,8 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 
 #newmonster 4255
 #name "Ice Guardian" -- Creatures magiques protegeant Eternal Ice
-#descr "Ice Guardians are mysterious and imposing golems of hardened Ice who protect the monolith at the heart of Leda. They radiate cold and are immensely strong and resilient, able
- to draw water from the area around them to quickly repair their bodies should they be harmed. Their power is much diminished when removed from the cold, and they are extremely
+#descr "Ice Guardians are mysterious and imposing golems of hardened Ice who protect the monolith at the heart of Leda. They radiate cold and are immensely strong and resilient,
+ able to draw water from the area around them to quickly repair their bodies should they be harmed. Their power is much diminished when removed from the cold, and they are extremely
  vulnerable when traveling warmer lands. The prophesies of the Ice Keepers hold that there are many Ice Guardians hidden in the ice beneath the monolith, waiting to rise to its
  defense when the time comes. They are sacred to the people of Leda."
 #spr1 "./Omniomicon/Ledan/ledan_eternalice_guardian.tga"
@@ -2588,7 +2890,7 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #magicbeing
 #fireres -10
 #regeneration 10 -- a tester
-#cold 5 -- cold aura
+#cold 10 -- cold aura
 #hp 40
 #iceprot 3 -- a tester
 #neednoteat
@@ -2609,7 +2911,7 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #rcost 1
 #weapon 69 -- Icicle fist (create new Icefist weapon later, same effect)
 #weapon 69 -- Icicle fist (create new Icefist weapon later, same effect)
-#coldres 25
+#coldres 35
 #coldpower 1
 #ressize 4
 #amphibian
@@ -2619,13 +2921,13 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #name "Arctic Bear"
 #spr1 "./Omniomicon/Ledan/ledan_arcticbear.tga"
 #spr2 "./Omniomicon/Ledan/ledan_arcticbear2.tga"
-#descr "Arctic bears roam the coldest lands where the sea meets the ice. Powerful and with a thick, tough hide, they are the kings of their domain. They used to prey on the Ledan in ages
- past before the Ledan learned language, writing and the arts of the ice. Ferocious and extremely dangerous even under the best of circumstances, they are trained and used as mounts by
- brave Ledan warriors."
+#descr "Arctic bears roam the coldest lands where the sea meets the ice. Powerful and with a thick, tough hide, they are the kings of their domain. They used to prey on the Ledani in ages
+ past before the People of the Ice learned language, writing and the arts of icecrafting. Nasty-tempered and extremely dangerous even under the best of circumstances, they are trained and 
+ used as mounts by brave Ledan warriors."
 #animal
 #undisciplined
 #supplybonus -2 -- bear eat foods
-#hp 40
+#hp 52
 #ressize 4
 #mr 8
 #str 18
@@ -2636,10 +2938,10 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #prot 8
 #mor 13
 #att 10
-#prec 11
+#prec 5
 #mapmove 2
 #eyes 2
-#coldres 25
+#coldres 15
 #coldpower 1
 #weapon 237 -- Bite--
 #weapon 236 -- Claw--
@@ -2648,12 +2950,40 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #noitem
 #end
 
+#newmonster 4315
+#copystats 4256 -- Copy arctic bear
+#spr1 "./Omniomicon/Ledan/ledan_bearcav_wounded.tga"
+#spr2 "./Omniomicon/Ledan/ledan_bearcav_wounded2.tga"
+#name "Wounded Arctic Bear"
+#descr "Arctic bears roam the coldest lands where the sea meets the ice. Powerful and with a thick, tough hide, they are the kings of their domain. They used to prey on the Ledani in ages
+ past before the People of the Ice learned language, writing and the arts of icecrafting. Nasty-tempered and extremely dangerous even under the best of circumstances, they are trained and 
+ used as mounts by brave Ledan warriors."
+#firstshape 4256
+#hp 34 -- wounded
+#end
+
+#newmonster 4318
+#copystats 4256 -- Copy arctic bear
+#spr1 "./Omniomicon/Ledan/ledan_bearleader_wounded.tga"
+#spr2 "./Omniomicon/Ledan/ledan_bearleader_wounded2.tga"
+#name "Wounded Arctic Bear"
+#descr "Arctic bears roam the coldest lands where the sea meets the ice. Powerful and with a thick, tough hide, they are the kings of their domain. They used to prey on the Ledani in ages
+ past before the People of the Ice learned language, writing and the arts of icecrafting. Nasty-tempered and extremely dangerous even under the best of circumstances, they are trained and 
+ used as mounts by brave Ledan warriors."
+#firstshape 4256
+#hp 34 -- wounded
+#end
+
 #newmonster 4257
 #name "Eternal Bear"
 #spr1 "./Omniomicon/Ledan/ledan_eternalbear.tga"
 #spr2 "./Omniomicon/Ledan/ledan_eternalbear2.tga"
-#descr "Eternal bears were scultpted by the greatest of Ledans artisans, blessed by the Eternal Ice, and animated by some strong magic."
-#undisciplined
+#descr "Mammoths and bears are the iconic land beasts to the Ledani, and much Ledan art and sculpture depicts them. An eternal bear is a life-sized Ice carving of an arctic bear
+ formed by the most accomplished of sculptors and enchanted by the Ice Keepers in a secret and powerful ritual. Once so enchanted, the erstatue is imbued with some of the power
+ of the Eternal Ice. Now animated, with sharpened teeth and claws of Ice with which it can rend enemies, the eternal bear becomes a fearsome war construct that is incredibly
+ tough and difficult to damage, and exudes a chill aura."
+#magicbeing
+#noheal
 #neednoteat
 #holy
 #slashres
@@ -2663,11 +2993,11 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #cold 5 -- chill aura
 #hp 40
 #ressize 4
-#mr 10 -- poor
+#mr 12 -- poor
 #str 18
 #def 7
 #enc 0
-#ap 6
+#ap 10
 #size 4
 #prot 16
 #mor 50
@@ -2675,7 +3005,7 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #prec 11
 #mapmove 2
 #eyes 2
-#coldres 25
+#coldres 35
 #coldpower 1
 #iceprot 2 -- a tester
 #weapon 237 -- Bite--
@@ -2689,7 +3019,7 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #name "Arctic Fox"
 #spr1 "./Omniomicon/Ledan/ledan_arcticfox.tga"
 #spr2 "./Omniomicon/Ledan/ledan_arcticfox2.tga"
-#descr "Arctic foxes are small, clever dogs who live in the icy tundra. They are coveted for their thick, luxurious fur, and tend to avoid men and their settlements."
+#descr "Arctic foxes are small, clever animals who live in the icy tundra. They are coveted for their thick, luxurious fur, and tend to avoid men and their settlements."
 #animal
 #undisciplined
 #stealthy 0
@@ -2701,14 +3031,14 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #enc 2
 #ap 25
 #size 1
-#prot 8
+#prot 2
 #mor 10
 #att 10
 #prec 10
 #mapmove 3
 #eyes 2
-#coldres 25
-#coldpower 1
+#coldres 15
+--#coldpower 1
 #weapon 237 -- Bite--
 #gcost 0 -- pour essayer de voir si ca fait 0 upkeep
 #rcost 1
@@ -2719,7 +3049,9 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #name "Walrus (landshape)"
 #spr1 "./Omniomicon/Ledan/ledan_walrussnow.tga"
 #spr2 "./Omniomicon/Ledan/ledan_walrussnow2.tga"
-#descr "Description missing"
+#descr "Walruses are fierce animals of the arctic ice who spend most of their time foraging for shellfish in the shallower seas, though they on occasion hunt seals, birds and
+ even smaller whales trapped in the ice. They have tough, thick skin, and large tusks they use to fight and dig holes in the ice. Walruses can be dangerous, aggressive animals,
+ and the Bear Cult mages of Ledan have learned to use them as beasts of war."
 #watershape 4276
 #animal
 #undisciplined
@@ -2729,10 +3061,10 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #mr 8
 #str 16
 #def 8
-#enc 3
-#ap 6
+#enc 5
+#ap 4
 #size 4
-#prot 15
+#prot 8
 #mor 10
 #att 8
 #prec 9
@@ -2751,28 +3083,33 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #name "Walrus (watershape)"
 #spr1 "./Omniomicon/Ledan/ledan_walrus.tga"
 #spr2 "./Omniomicon/Ledan/ledan_walrus2.tga"
-#descr "Description missing"
+#descr "Walruses are fierce animals of the arctic ice who spend most of their time foraging for shellfish in the shallower seas, though they on occasion hunt seals, birds and
+ even smaller whales trapped in the ice. They have tough, thick skin, and large tusks they use to fight and dig holes in the ice. Walruses can be dangerous, aggressive animals,
+ and the Bear Cult mages of Ledan have learned to use them as beasts of war."
 #landshape 4275
+#enc 3
 #mr 8
 #def 11
 #ap 15
 #mor 11
 #att 11
-#mapmove 2
 #end
 
 #newmonster 4277
-#name "Whale" 
-#descr "Description missing"
+#name "Great Whale" 
+#descr "The great whales are majestic beasts who roam the oceans, singing their strange and mysterious song. Aloof to the strugglings of the smaller animals around them, they have
+ only the krakens and other great monsters of the deep as their peers. They swallow entire schools of fish and feed upon even the smallest of shrimps, though they are not averse
+ to eating the occasional larger creature who is unwise enough to linger before them. Normally placid and unthreatening, great whales are sometimes bound to service by Ledan mages
+ of the Bear Cult, and can be frightening opponents, able to swallow all but the largest of creatures in their great maws."
 #spr1 "./Omniomicon/Ledan/ledan_whale.tga" -- chemin sprite
 #spr2 "./Omniomicon/Ledan/ledan_whale2.tga" -- chemin sprite
 #itemslots 12288 -- 2 misc
 #rcost 1
 #gcost 0
-#hp 120
+#hp 200
 #size 6
 #ressize 6
-#prot 15
+#prot 8
 #mr 10
 #mor 12
 #str 20
@@ -2786,7 +3123,7 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #weapon 461 -- swallow identique au monster fish
 #aquatic 
 #coldres 25
-#coldpower 1
+--#coldpower 1
 #undisciplined
 #animal
 #bluntres -- resistant sous la forme baleine
@@ -2811,14 +3148,14 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #berserk 3 -- a tester
 -- #fireres -10 -- a tester
 #hp 25
-#mr 10
+#mr 13
 #str 20
 #def 16
 #enc 3
-#ap 12
+#ap 8
 #size 2
 #prot 6
-#mor 13
+#mor 16
 #att 13
 #prec 11
 #mapmove 2
@@ -2829,7 +3166,7 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #expertundeadleader
 #weapon 37 -- Ice blade
 #weapon 37 -- Ice blade
---#coldres 5 -- Lost ALL Cold adaptation
+#coldres 5 
 --#coldpower 1 --lost cold power
 #ressize 2
 -- #pooramphibian -- Corrupted dont ever want to go underwater
@@ -2851,19 +3188,19 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #size 2
 #ressize 2
 #prot 2
-#mr 11
-#mor 12
+#mr 18
+#mor 16
 #str 10
 #att 9
 #def 10
 #prec 12
 #enc 3
 #mapmove 2
-#ap 12
+#ap 8
 #eyes 2
 -- #amphibian
 #stealthy 0 -- stealth
--- #coldres 25
+#coldres 5
 #fireres -10 -- a tester
 -- #coldpower 1
 #poorleader
@@ -2884,7 +3221,7 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 ----LEDAN HEROES---
 --------------------
 #newmonster 4261
-#name "Mage Cult Leader" -- Sacré Air 4 Water 4 Nature 2
+#name "Speaker of the Mage Cult" -- Sacré Air 4 Water 4 Nature 2
 #fixedname "Starled" ------ NOM FIXE POUR LE HERO
 #descr "Because magic is intrinsically part of the daily lives of the people of Leda, the Mage Cult plays a distinct and autonomous part in Ledan society. Their leader, Starled,
  is a powerful archmage who came to his position honestly by the mastery of his art. Not possessed of noteworthy ambition, he is a scholar, not a politician, and avoids the intrigues
@@ -2898,11 +3235,11 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #size 2
 #ressize 2
 #prot 2
-#mr 15
+#mr 16
 #mor 13
-#str 7
+#str 8
 #att 6
-#def 9
+#def 8
 #prec 15
 #enc 3
 #mapmove 2 
@@ -2920,13 +3257,14 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #magicskill 1 4 -- air magic
 #magicskill 2 4 -- water magic
 #magicskill 6 2 -- nature magic
+#magicboost 0 -1 -- LEDANI RESTRICTED FIRE ACCESS
 #end
 
 #newmonster 4262
 #name "Red Outcast" -- Blood 3 Water 1 Air 1
 #fixedname "Kerlan" ------ NOM FIXE POUR LE HERO
-#descr "Kerlan was a charismatic and respected archmage until his secret dabbling in dark magics was accidentally discovered by a young student. This bloody secret was so horrific and
- incomprehensible to the Mage Cult, and so potentially damaging to their reputation, that he was summarily expelled from the Cult with no explanation to the people. Inadvertently
+#descr "Kerlan was a charismatic and respected archmage until his secret dabbling in dark magics was accidentally discovered by a young student. This bloody secret was so horrific
+ and incomprehensible to the Mage Cult, and so potentially damaging to their reputation, that he was summarily expelled from the Cult with no explanation to the people. Inadvertently
  liberated from the oversight and control of the conservative but timid Mage Cult, Kerlan now continues his practices with impunity as the feared leader of a new sect, the Blood Cult.
  He affects an almost reckless disregard for secrecy at times, but the Blood Cult remains an unacknowledged rumor and his leadership of it is unproven. Now, with war and storms on the
  horizon, he has offered his peculiar services to the ascendant god, and none dare raise their voice to warn of the danger he represents."
@@ -2943,8 +3281,8 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #size 2
 #ressize 2
 #prot 2
-#mr 15
-#mor 13
+#mr 17
+#mor 15
 #str 7
 #att 6
 #def 9
@@ -2968,8 +3306,8 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #newmonster 4263
 #name "Ice Dancer" 
 #fixedname "Bralod" ------ NOM FIXE POUR LE HERO
-#descr "Bralod is the most able warrior of the Ledan, famous for his odd fighting style of wielding two weapons at once. His skill at arms, both on land and underwater, is so formidable
- and his limbs so deft that he is called the Ice Dancer."
+#descr "Bralod is the most renowned warrior of the Ledani, famous for his odd fighting style of wielding two weapons at once. His skill at arms, both on land and underwater,
+ is so formidable, and his limbs so deft, that he is called the Ice Dancer."
 #spr1 "./Omniomicon/Ledan/ledan_hero3.tga" 
 #spr2 "./Omniomicon/Ledan/ledan_hero32.tga" 
 #unique --- important une seule version possible
@@ -2990,7 +3328,7 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #prec 12
 #enc 3
 #mapmove 2
-#ap 10 
+#ap 9 
 #eyes 2
 #weapon "Ice Glaive" -- a mettre arme a deux mains?
 #weapon 1203 -- "Ice Trident"
@@ -3003,11 +3341,12 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #end
 
 #newmonster 4264
-#name "Legendary Ice Thrower" 
+#name "Icewind Champion" 
 #fixedname "Koped" ------ NOM FIXE POUR LE HERO
-#descr "Koped is a warrior of legendary strength who is astonishingly apt at landfighting. He proved his skill and might in the traditional athletic games of Leda by throwing seven
- javelins farther than any Ledan has ever thrown, while still hitting his mark, with such rapidity as to awe the judges. Dashing and charismatic, he admired as the living embodiment
- of athletic and martial prowess by the people of Leda. Now, with the coming of the Ascension wars, Koped leads his people against their enemies."
+#descr "Koped is a devout warrior of legendary strength who is astonishingly apt at landfighting. As the ablest of the Icewind Javelots, he proved his skill and might in the
+ traditional athletic games of Leda by throwing seven javelins farther than any Ledan has ever thrown, while still hitting his mark, with such rapidity as to awe the
+ normally-taciturn judges. Dashing and charismatic, he is admired as the living embodiment of athletic and martial prowess by the people of Leda. Now, with the coming of the
+ Ascension wars, Koped leads his people against their enemies."
 #spr1 "./Omniomicon/Ledan/ledan_hero4.tga" 
 #spr2 "./Omniomicon/Ledan/ledan_hero42.tga" 
 #unique --- important une seule version possible
@@ -3025,7 +3364,7 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #prec 15
 #enc 3
 #mapmove 2
-#ap 9 
+#ap 10 
 #eyes 2
 #weapon 1207 -- "Ice Javelin (5)" -- javelots speciaux?
 #weapon 1207 -- "Ice Javelin (5)" -- javelots speciaux?
@@ -3045,8 +3384,8 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #fixedname "Sveto" ------ NOM FIXE POUR LE HERO
 #descr "Sveto is the eldest of the Ice Keepers, and has lain down all other bonds and interests to devote himself fully to the mysteries of the Eternal Ice. He speaks with the highest
  authority for the ascendant god of Leda, and is considered a being of such transcendent holiness that the water through which his limbs have undulated is collected by servants and
- frozen as sacred Ice jewels gifted to the most loyal of the Ledan. Indeed, there are no living Ledan held higher, save perhaps the wise Blue King, in the esteem of the people. His
- knowledge of the Eternal Ice is so intimate, and his devotion so great, that his mind is bonded to the obelisk and can use it as a magical focus."
+ frozen as sacred Ice jewels gifted to the most loyal of the Ledani. Indeed, there are no living Ledani held higher, save perhaps the wise Blue King, in the esteem of the people.
+ His knowledge of the Eternal Ice is so intimate, and his devotion so great, that his mind is bonded to the obelisk and can use it as a magical focus."
 #spr1 "./Omniomicon/Ledan/ledan_hero5.tga" 
 #spr2 "./Omniomicon/Ledan/ledan_hero52.tga" 
 #unique --- important une seule version possible
@@ -3058,7 +3397,7 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #size 2
 #ressize 2
 #prot 2
-#mr 15
+#mr 16
 #mor 13
 #str 7
 #att 6
@@ -3088,19 +3427,24 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 ------------------
 #name "Keeper of the Old Ways" 
 #fixedname "Prilan" ------ NOM FIXE POUR LE HERO
-#descr "Prilan is an old member of the Ice Keepers cult. He is known for his devotion to the Eternal Ice, but known maybe even more for being the leader of the Bearmasters. He has powerful
- Nature magic skills and he himself once rode the mighty arctic bears."
+#descr "Prilan is both an Elder of the Cult of the Ice Keepers, and the leader of the dissenting Bear Cult sect. He was once among the most zealous of the Ice Keepers, known for his great
+ devotion to the Eternal Ice and his willingness to oppress those who show insufficient reverence for it, but he had an epiphany during his study of the ancient Ice tablets of the ancestors.
+ Emerging from a two-month meditation on the matter, he became the foremost advocate for a revival of the ancient traditions of the Ledani, rooted in the magics of Nature. Prilan has
+ reservations about the path Leda is on, and believes the Ledani should trust to the seas and remain in their ancestral domain, away from the grasping treachery and impious ideas of
+ foreigners. Consequently, some Ice Keepers consider him a dangerous apostate who misleads the young. Nonetheless, he is their equal in priestly authority, and shields the Cult of the
+ Bear from their wrath. Prilan is a master tamer and rides a magnificent bear."
 #spr1 "./Omniomicon/Ledan/ledan_hero6.tga" 
 #spr2 "./Omniomicon/Ledan/ledan_hero62.tga" 
 #unique --- important une seule version possible
 #mounted
 --#rcost 1
 --#gcost 10014
+#secondshape 4315 -- wounded arctic bear shape
 #hp 30
 #size 2
 #ressize 2
 #prot 2
-#mr 15
+#mr 16
 #mor 13
 #str 7
 #att 6
@@ -3136,11 +3480,12 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 --Water Based Titan--  Faire deux formes? Une sur terre forme "ledanienne" + 1 dans l'eau style pingouins géant
 ------------------
 #name "Vodled" 
-#descr "The Vodled is a mysterious being revered by the people of Leda as the first Ledan. He is the embodiment of Water, and is often celebrated in their art and hymns as a titan,
- similar to the Ledan, who roams the seas near their glacial settlements and swallows entire schools of fish, sharks and other delicious sea creatures to bring back to the beaks
- of his people. He is indeed a Ledan titan, though he often chooses to walk the lands as a Ledan of normal size but of striking aspect. In either form, he always appears with
- three 'tails' on his head, instead of one, and the cult of the Wavefighters honor this by wearing their peculiar three-tailed helmets. The Vodled has an enormous appetite,
- though when in the sea he is capable of satisfying his own needs while still providing bounty to his people. NOTE: This unit has 2 temporary Water gems available at each combat start"
+#descr "The Vodled is a mysterious being revered by the people of Leda as the first of the Ledani to dive beneath the waves, leading his people in their exodus from the warming skies.
+ He is the embodiment of Water, and is often celebrated in their art and hymns as a titanic Ledan who roams the seas near their glacial settlements and swallows entire schools of fish,
+ sharks and other delicious sea creatures to bring back to the beaks of his people. He is indeed a Ledan titan, though he often chooses to walk the lands as a Ledan of normal size but
+ of striking aspect. In either form, he has three ‘tails’ on his head, instead of one, and the cult of the Wavefighters honor this by wearing their peculiar three-tailed helmets.
+ The Vodled has an enormous appetite, though when in the sea he is capable of satisfying his own needs while still providing bounty to his people.
+ NOTE: This unit has 2 temporary Water gems available at each combat start"
 #spr1 "./Omniomicon/Ledan/ledan_pretenderwater.tga" -- chemin sprite
 #spr2 "./Omniomicon/Ledan/ledan_pretenderwater2.tga" -- chemin sprite
 #landshape 4268
@@ -3168,7 +3513,7 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #amphibian --- la baleine peut pas aller sur la terre ferme. Faire un landshape pour transformation en ancetre pingouin
 #coldres 25
 #coldpower 1
-#expertleader -- C'est un pretendant dieu apres tout...
+#goodleader 
 #magicskill 2 3 -- water magic
 #darkvision 50
 #bluntres -- resistant sous la forme baleine
@@ -3181,11 +3526,12 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 
 #newmonster 4268
 #name "Vodled (landshape)"  --- VODLED LANDSHAPE
-#descr "The Vodled is a mysterious being revered by the people of Leda as the first Ledan. He is the embodiment of Water, and is often celebrated in their art and hymns as a titan,
- similar to the Ledan, who roams the seas near their glacial settlements and swallows entire schools of fish, sharks and other delicious sea creatures to bring back to the beaks
- of his people. He is indeed a Ledan titan, though he often chooses to walk the lands as a Ledan of normal size but of striking aspect. In either form, he always appears with
- three 'tails' on his head, instead of one, and the cult of the Wavefighters honor this by wearing their peculiar three-tailed helmets. The Vodled has an enormous appetite,
- though when in the sea he is capable of satisfying his own needs while still providing bounty to his people. NOTE: This unit has 2 temporary Water gems available at each combat start"
+#descr "The Vodled is a mysterious being revered by the people of Leda as the first of the Ledani to dive beneath the waves, leading his people in their exodus from the warming skies.
+ He is the embodiment of Water, and is often celebrated in their art and hymns as a titanic Ledan who roams the seas near their glacial settlements and swallows entire schools of fish,
+ sharks and other delicious sea creatures to bring back to the beaks of his people. He is indeed a Ledan titan, though he often chooses to walk the lands as a Ledan of normal size but
+ of striking aspect. In either form, he has three ‘tails’ on his head, instead of one, and the cult of the Wavefighters honor this by wearing their peculiar three-tailed helmets.
+ The Vodled has an enormous appetite, though when in the sea he is capable of satisfying his own needs while still providing bounty to his people.
+ NOTE: This unit has 2 temporary Water gems available at each combat start"
 #spr1 "./Omniomicon/Ledan/ledan_pretenderwater_ls.tga" -- chemin sprite
 #watershape 4267
 #supplybonus -20 -- glutonous
@@ -3211,6 +3557,9 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #mapmove 2 
 #ap 8 
 #eyes 2
+#coldres 25
+#darkvision 50
+#goodleader
 #amphibian
 #end
 
@@ -3224,10 +3573,10 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #stormimmune
 #awe 3
 #stormpower 2
-#descr "According to the stories of the Ledan elders, the Ledan were once a flying people, with beautifully-plumed wings that sparkled in the sun. Their ancestors could effortlessly
- fly great distances over the world when it was still untainted and properly covered in ice. But when this paradise was lost, they left the skies and took to the oceans to eat of fish
- and crabs, settling in the only part of the world that kept its crystalline beauty. The Ledan have since forgotten how to fly, instead becoming sleek swimmers, agile of limb and strong
- of body. While some Ledan are still born with limbfeathers, there are fewer and fewer every generation. The Neboled, the Ledan titan of Air, was a king of old and is the last of
+#descr "According to the stories of the Ledan elders, the Ledani were once a flying people, with beautifully-plumed wings that sparkled in the sun. Their ancestors could effortlessly
+ fly great distances over the world when it was still untainted and properly covered in ice. But when this paradise was lost, they left the skies and took to the oceans to glide among
+ the fish, settling in the only part of the world that kept its crystalline beauty. The Ledani have since forgotten how to fly, instead becoming sleek swimmers, agile of limb and strong
+ of body. While some Ledani are still born with limbfeathers, there are fewer and fewer every generation. The Neboled, the Ledan titan of Air, was a king of old and is the last of
  the flying Ledan, able to soar above the lands, keeping watch over the children of his people. He has little fear of lightning and dances on the highest mountaintops during storms.
  NOTE: This unit has 2 temporary Air gems available at each combat start"
 #spr1 "./Omniomicon/Ledan/ledan_pretenderair.tga" -- chemin sprite
@@ -3269,17 +3618,18 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 --WARRIOR based Titan--  
 ------------------
 #name "Frozen One" --- 
-#descr "The Frozen One is the colossus of the Ledan, their guardian and their warmaster. He is never mentioned in the old tales, but according to the prophecies
- of the Ice Keepers he is a sacred titan of the Ledan who has lain hidden, deep in the glacial ice, for ages, waiting to come if ever there is danger to the Eternal Ice. This
- time has come and the Frozen One has indeed come to fulfill the prophecy and lead the Ledan to victory against their enemies. Not quite properly a titan, and bearing no resemblance
- to the Ledan, the Frozen One is a huge, strangely-alien being composed of pure, living Ice. He carries a great Ice trident and exudes a bone-chilling cold. The Ledan both revere
- and fear him, as they know that he shows no compassion and little tolerance for error, questioning or disrespect."
+#descr "The Frozen One is the guardian of the Eternal ice and the warmaster of the Ledani. He is never mentioned in the old tales, but according to the prophecies of the Ice Keepers
+ he is a sacred titan of the Ledani who has lain hidden, deep in the glacial ice, for ages, and will come if ever there is danger to the Eternal Ice. This time has come and the Frozen
+ One has surfaced to lead the people of Leda to victory against their enemies. Not quite properly a titan, the Frozen One is a huge, strangely-alien being composed of pure, living Ice.
+ He carries a great Ice trident and exudes a bone-chilling cold. The people of Leda both revere and fear him, as he shows no compassion and little tolerance for error, questioning or
+ disrespect."
 #spr1 "./Omniomicon/Ledan/ledan_pretenderhero.tga" 
 #spr2 "./Omniomicon/Ledan/ledan_pretenderhero2.tga" 
 #pierceres -- resistance percage
 #slashres -- resistance coupe
 #magicbeing
 #okmagicleader
+#neednoteat
 #ambidextrous 4
 #magicskill 2 1 -- water magic 
 #regeneration 10
@@ -3297,7 +3647,7 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #att 12
 #def 12
 #prec 12
-#enc 4
+#enc 0
 #mapmove 2 
 #ap 8 
 #eyes 2
@@ -3325,12 +3675,15 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 --Pretender mixed --  Style recherche? rainbow? generateur de gems? 
 ------------------
 #name "Blue King" --- Quelle forme? Vieux Ledan hermite? 
-#descr "The Blue King is the great philosopher-king of the Ledan, revered as the greatest and wisest leader of the Ledan to ever have lived. To his people, he has come to symbolize the
- virtues of wisdom and harmony. It is he, according to the old stories, who brought about the Great Ice Age of Leda by encouraging his people to master Icecraft and fostering exchange
- with the peoples of the outside world. The Blue King is a mage of such skill and knowledge that he has mastered his own mortality, and now vies for Ascendance so that he may lead his
- people to a new age of prosperity as they spread their dominion over the lands. He is both an able researcher and an inspiring teacher, and is knowledgeable in the secret arts of healing."
+#descr "The Blue King is the great philosopher-king of the Ledani, revered as the greatest and wisest leader of the People of the Ice to ever have lived. To his people, he has come to
+ symbolize the virtues of wisdom and harmony. According to the old stories, he spent many years in hermitage in the fens far to the south of Leda, meditating upon the right path, and
+ then traveled the warmer lands, speaking with the people of the outside world. When he returned to take his throne, he encouraged his people to master Icecraft and fostered exchange
+ with the warmlanders, and in so doing brought about the Great Ice Age of Leda. The Blue King is a mage of such skill and knowledge that he has mastered his own mortality, and now vies
+ for Ascendance so that he may lead his people to a new age of prosperity as they spread their dominion over the lands. He is both an able researcher and an inspiring teacher, and is
+ knowledgeable in the secret arts of healing."
 #spr1 "./Omniomicon/Ledan/ledan_pretenderrainbow.tga" 
 #spr2 "./Omniomicon/Ledan/ledan_pretenderrainbow2.tga" 
+#itemslots 31878 -- normal + 3 misc slots
 #rcost 1
 #gcost 30
 #startdom 1
@@ -3353,13 +3706,14 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #amphibian
 #coldres 25 -- 
 #coldpower 1
-#poorleader -- Il n'est pas fait pour mener les hommes au combat 
+#goodleader 
 #magicskill 1 1 -- air magic
 #magicskill 2 1 -- water magic
 #magicskill 6 1 -- nature magic
 #autohealer 1 -- guérit affliction ?
 #researchbonus 8 --- Bonus recherche type sage?
-#inspiringres 2 --- inspire la recherche?
+#inspiringres 3 --- inspire la recherche?
+#inspirational 3
 #forestsurvival
 #swampsurvival
 #end
@@ -3369,17 +3723,17 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 --Ledan immobile Eternal Ice --  
 ------------------
 #name "Eternal Ice" --- 
-#descr "Many years ago, ice-sculptors carving the Ice Citadel discovered a large block that was impervious to their tools and could not chipped, etched or even scratched. As they carved out
- the ice around the strange block, a fae wind began to blow in toward it, and it seemed to fill the cavern with a comfortable icy chill. Excited at their discovery, the sculptors studied it
- for many months, and found that inside the block was a dark obelisk adorned with an odd symbol. More importantly, they found that they could use its power to form tools and other objects of
- Ice that were not only as hard and resilient as the ones their icecrafters have made since the times of old, but that would not melt even when placed in fire. These sculptors formed the Order
- of the Eternal Ice, and called themselves the Ice Keepers. Only a few of them know that the Eternal Ice itself is alive and has awakened, and has its own secret purpose, which it now seeks
- to fulfill by becoming Pantrokrator of this world."
+#descr "Many years ago, ice sculptors carving the Ice Citadel discovered a large block that was impervious to their tools and could not chipped, etched or even scratched. As they carved
+ out the ice around the strange block, a fae wind began to blow in toward it, and it seemed to fill the cavern with a comfortable icy chill. Excited at their discovery, the sculptors
+ studied it for many months, and found that inside the block was a dark obelisk adorned with an odd symbol. More importantly, they found that they could use its power to form tools and
+ other objects of Ice that were not only as hard and resilient as the ones their icecrafters have made since the times of old, but that would not melt even when placed in fire.
+ These sculptors formed the Order of the Eternal Ice, and called themselves the Ice Keepers. Only a few of them know that the Eternal Ice itself is alive and has awakened, and has
+ its own secret purpose, which it now seeks to fulfill by becoming Pantrokrator of this world."
 #spr1 "./Omniomicon/Ledan/ledan_eternalice.tga" 
 #spr2 "./Omniomicon/Ledan/ledan_eternalice2.tga" 
 #batstartsum4 "Ice Guardian" --
-#domsummon20 4254 -- Frozen Templars
-#raredomsummon 4254 -- Frozen Templars
+#domsummon20 4254 -- Iceskin Templars
+#raredomsummon 4254 -- Iceskin Templars
 #blind
 #bonusspells 1
 #rcost 1
@@ -3396,9 +3750,9 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #att 0
 #def 0
 #prec 14
-#enc 3
+#enc 0
 #mapmove 0 
-#ap 0 
+#ap 2 
 #eyes 2
 #weapon "" -- a mettre
 #armor "" -- a mettre 
@@ -3410,10 +3764,11 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #amphibian
 #pierceres -- resistance percage
 #slashres -- resistance coupe
+#unteleportable
 #gemprod 1 1 --- produit 1 gem air/month
 #gemprod 2 1 --- produit 1 gem water/month
-#nobadevents 10 -- Offre serenite, securite
-#coldres 25 -- 
+-- #nobadevents 10 -- Offre serenite, securite
+#coldres 50 -- 
 #fireres -10 --- faiblesse au feu
 #poisonres 25
 #iceprot 3 --- devient encore plus resistant
@@ -3428,11 +3783,13 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 ------------------
 --NATURE ICED TOTEM--
 ------------------
-#name "Ancient Ledan Totem" --- 
-#descr "The ancient Totem of the Ledan is an intricately carved pillar of enchanted Ice that represents the ancient traditions of the Ledan upheld by the Cult of the Bear.
- No Ledan know its age, but it is an ancient object, described in the sacred writings long before mention of the discovery of the Eternal Ice. The spirit which inhabits it
- is a spirit of the living beings that roam the tundra and the oceans. Brought by the Ice Keepers to touch the Eternal Ice, the Totem is now bonded with the monolith. It has
- permitted the Cult of the Ice Keepers to rise in influence, a fact resented by the traditionalist Cult of the Bear. NOTE: The Totem attract and bind few Arctic Animals each months"
+#name "Ancient Totem" --- 
+#descr "The Ancient Totem of the Ledani is an intricately carved pillar of enchanted Ice that represents the ancient traditions of the Ledani upheld by the Cult of the Bear. No Ledani
+ know its age, but it is an ancient object, described in the sacred writings long before mention of the discovery of the Eternal Ice. The spirit which inhabits it is a spirit of the
+ living beings that roam the tundra and the oceans, and heals the faithful brought before it. A wise, oracular being, the spirit of the Totem uses the eyes, ears and noses of its many
+ animal servants to observe the omens protect its people from ill fortune and calamity in their city. Brought by the Ice Keepers to touch the Eternal Ice, the Totem is now bonded with
+ the monolith. It continues to permit the Cult of the Ice Keepers to rule, a fact resented by the traditionalist Cult of the Bear. The Ancient Totem has a strong allure to all living
+ beings, and animals of the ice frequently come to do its bidding."
 #spr1 "./Omniomicon/Ledan/ledan_totem.tga" 
 #spr2 "./Omniomicon/Ledan/ledan_totem2.tga" 
 #autohealer 5 -- healing totem
@@ -3458,14 +3815,15 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #att 0
 #def 0
 #prec 14
-#enc 3
+#enc 0
 #mapmove 0 
-#ap 0 
+#ap 2 
 #eyes 2
 #weapon "" -- a mettre
 #armor "" -- a mettre 
 --#regeneration 5
 #noitem
+#unteleportable
 #immobile 
 #neednoteat --- pas besoin de manger
 #inanimate
@@ -3475,7 +3833,7 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #gemprod 6 1 --- produit 1 gem nature/month
 #gemprod 2 1 --- produit 1 gem water/month
 #nobadevents 20 -- Offre serenite, securite
-#coldres 25 -- 
+#coldres 35 -- 
 #fireres -10 --- faiblesse au feu
 #poisonres 25
 #iceprot 3 --- devient encore plus resistant
@@ -3491,7 +3849,12 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 --BLOOD ALTAR--
 ------------------
 #name "Frozen Altar" --- 
-#descr "Description missing - NOTE: The Frozen Altar turn some Ledans into demons each month."
+#descr "The Frozen Altar is a mysterious artifact discovered near the Eternal Ice. Thought to be a fragment of the sacred monolith, it was declared a sacred object and taken to
+ the Frozen Tower for study. Unfortunately, it disappeared within a fortnight. A hue and cry was raised by the Council of the Ice Keepers, and the garrison arrested many and searched
+ every corner of the city, but it was never found. Unknown to the vexed Keepers, the fragment was taken by the Blood Cult, likely with assistance from inside the Tower. Hidden in the
+ cult's secret tunnels beneath the city, the blood mages of the cult used magic to mask its location while they performed dark rituals and sacrifices over it. Eventually, their work
+ came to fruition, and the magic of the fragment was warped by a powerful demonic sentience who came to abide within it. This sentience, freed from an ancient prison, has corrupted
+ the Ice Keepers and rules over Leda, eager to drive it to conquest its bid for ascendance."
 #spr1 "./Omniomicon/Ledan/ledan_bloodaltar.tga" 
 #spr2 "./Omniomicon/Ledan/ledan_bloodaltar2.tga" 
 #domsummon 4248 -- Possessed
@@ -3553,6 +3916,7 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 
 #newweapon 1200
 #name "Ice Javelin (3)"
+#iceweapon
 #dmg 4
 #att 0
 #range -1
@@ -3568,6 +3932,7 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 
 #newweapon 1201
 #name "Ice Spear"
+#iceweapon
 #dmg 3
 #len 4
 #rcost 1
@@ -3578,6 +3943,7 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 
 #newweapon 1202 
 #name "Ice Longspear"
+#iceweapon
 #dmg 4
 #len 5
 #def -1
@@ -3589,6 +3955,7 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 
 #newweapon 1203 
 #name "Ice Trident"
+#iceweapon
 #dmg 7
 #len 4
 #rcost 2
@@ -3598,25 +3965,28 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #end
 
 #newweapon 1204 
-#name "Ice Pike"
+#name "Enchanted Ice Pike"
+#iceweapon
 #twohanded
 #dmg 5
 #len 6
 #rcost 4
 #sound 12
-#def -2
+#def 0
 #pierce
 #magic
 #secondaryeffect 222
 #end
 
 #newweapon 1205
-#name "Ice Axe"
+#name "Poison Ice Axe"
+#iceweapon
 #twohanded
 #dmg 7
 #len 1
 #rcost 2
 #sound 12 --- a modifier surement
+#secondaryeffect 53 --- Debilitative poison
 #def -1
 #slash
 #magic
@@ -3624,6 +3994,7 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 
 #newweapon 1206
 #name "Poisoned Ice Javelin"
+#iceweapon
 #dmg 4
 #att 0
 #range -1
@@ -3635,11 +4006,11 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #sound 19
 #rcost 5
 #flyspr 110 1
-#range0
 #end
 
 #newweapon 1207
 #name "Ice Javelin (5)"
+#iceweapon
 #dmg 4
 #att 0
 #range -1
@@ -3654,7 +4025,9 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #end
 
 #newweapon 1208 
-#name "Ice Battleaxe"
+#name "Poison Ice Battleaxe"
+#iceweapon
+#secondaryeffect 53 --- Debilitative poison
 #dmg 9
 #att 1
 #len 3
@@ -3667,11 +4040,11 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 
 #newweapon 1209 -- Cold breath for the Frozen ONe
 #name "Eternal Breath"
+#iceweapon
 #dmg 9
 #len 0
 #nratt 1
-#spec 55834575425
-#nostr
+#spec 55834575425 -- Dragon Frost #spec copy (don't know the exact effect)
 #armorpiercing
 #bonus
 #beam
@@ -3685,6 +4058,87 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #explspr 10008 -- 10108
 #sound 16
 #end
+
+#newweapon 1210
+#name "Banner Shaft"
+#twohanded
+#dmg 2
+#blunt
+#att 0 -- holding a banner in formation combat is not like holding a quarterstaff, so I don't recommend giving it a defense bonus
+#def 0 -- defense effect figured into guardpiece definition
+#len 2 -- banners as they were used are not pole weapons -- the top is supposed to stay in the air; it's not agile, it will get fouled up, and it will fail to achieve its primary purpose -- to provide signaling and location information to friendly troops and commanders.  So, here, this value is based on envisioning the guy using the bottom of the pole to knock enemies, while the top stays in the air.  (I've also held them in real life.  There is nothing agile about a military banner.  :)
+#rcost 3
+#sound 10 -- club/axe
+#end
+
+#newweapon 1211
+#name "Ice Chisel"
+#iceweapon
+#dmg 1
+#pierce
+#att 0
+#def 0
+#len 0
+#nratt 1
+#rcost 1
+#sound 7 -- dagger
+#magic
+#secondaryeffectalways 222 -- Cold (fatigue damage, weaker than 160 I think)
+#end
+
+
+#newweapon 1212
+#name "Ice Staff"
+#iceweapon
+#dmg 3
+#blunt
+#att 2
+#def 4
+#len 4
+#nratt 1
+#rcost 3
+#sound 10 -- club
+#twohanded
+#magic
+#secondaryeffectalways 409 -- Small Area Cold
+#secondaryeffect 222 -- (cold)
+#end
+
+#newweapon 1213
+#name "Poisoned Ice Trident"
+#iceweapon
+#secondaryeffect 53 --- Debilitative poison
+#dmg 7
+#len 4
+#rcost 4
+#sound 12
+#pierce
+#magic
+#end
+
+#newweapon 1214
+#name "Ice Harpoon"
+#iceweapon
+#uwok -- works underwater
+#armorpiercing
+#nostr
+#dmg 13
+#pierce
+#secondaryeffect 160 --- Cold 
+#att 0
+#def -1
+#len 0
+#range 15
+#ammo 2
+#nratt -3 -- reload time every 3 rounds
+#rcost 3
+#magic
+#uwok -- this is the new firable underwater command, if I'm not mistaken
+--secondaryeffect 50 -- weak poison
+#sound 19 -- javelin
+#flyspr 110 -- javelin
+#end
+
 ------------------------------------------------------------------------------------------------
 ---ARMORS---------ARMORS---------ARMORS---------ARMORS---------ARMORS---------ARMORS------
 ------------------------------------------------------------------------------------------------
@@ -3708,39 +4162,82 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #rcost 3
 #end
 
+#newarmor 552 -- for Taiga warriors
+#name "Light Sealskin Armor" -- equivalent to leather cuirass
+#type 5
+#prot 3 
+#def 0
+#enc 0 
+#rcost 2 -- costs 1 more than leather cuirass
+#end
 
+#newarmor 553 -- for most armored units
+#name "Sealskin Armor" -- equivalent to full leather armor
+#type 5
+#prot 7 
+#def -1 
+#enc 0 -- encumbrance penalty removed to balance movement speed (why? I think we should keep enc penaly for wearing this armors)
+#rcost 4 -- costs 1 more than full leather armor 
+#end
 
+#newarmor 554 -- as a possible armor for sacred elites
+#name "Icering Sealskin Armor" -- slightly better than ring mail hauberk
+#type 5
+#prot 9 -- dropped by 2
+#def -1 
+#enc 0 
+#rcost 7 -- costs 2 more than ring mail hauberk
+#end
+
+#newarmor 555 -- for Ledan Flagbearer
+#name "Banner Guardpiece"
+#type 4 -- shield
+#prot 10
+#def 1
+#enc 2 -- raise to whatever is necessary to slow the unit down to the desired rate
+#rcost 3
+#end
+
+#newarmor 556 -- for Ledan Holy Flagbearer
+#name "Holy Banner Guardpiece"
+#type 4 -- shield
+#prot 12
+#def 1 -- maybe still keep it at 1
+#enc 2 -- raise to whatever is necessary to slow the unit down to the desired rate
+#rcost 6
+#end
 
 -------------------------------------------------------------------------------------------
 -----SPELLS---------SPELLS--------SPELLS--------SPELLS--------SPELLS--------SPELLS----
 -------------------------------------------------------------------------------------------
 
 #newspell
-#name "Call Arctic Mammoths"
-#descr "Summon and bind Arctic Mammoths to help Ledan armies."
+#name "Summon Arctic Mammoths"
+#descr "The mage summons one of the great Arctic Mammoths of the Ledan tundra and binds it to his service. Customarily summoned by the Bearsingers of the Cult of the Bear,
+ Arctic Mammoths are larger and more resilient than most other elephants and mammoths."
 #school 0 -- conjuration
 #researchlevel 5
 #path 0 6 -- nature
 #path 1 2 -- water
 #pathlevel 0 3
 #pathlevel 1 1
-#damagemon "Arctic Mammoth"
+#damage 4242
 #effect 10001 -- summon ritual
-#fatiguecost 1000
+#fatiguecost 2500 -- 25 gems for 3+
 #nreff 1000 -- nombre d effets
 #restricted 101 -- Restricted to LEDAN
 #end
 
 #newspell
-#name "Call Arctic Bears"
-#descr "Summon and bind Arctic Bears to help Ledan armies."
+#name "Summon Arctic Bears"
+#descr "The mage summons a few Arctic Bears and binds them to his service. Customarily summoned by a Bearsinger, Arctic Bears are large and powerful bears who roam the icy Ledan homeland."
 #school 0 -- conjuration
 #researchlevel 3
 #path 0 6 -- nature
 #path 1 2 -- water
 #pathlevel 0 2
 #pathlevel 1 1
-#damagemon "Arctic Bear"
+#damage 4256
 #effect 10001 -- summon ritual
 #fatiguecost 600
 #nreff 1003 -- nombre d effets
@@ -3748,15 +4245,16 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #end
 
 #newspell
-#name "Summon Winged Ancestors"
-#descr "This ritual summons Ledans Winged Ancestors ghosts."
+#name "Summon Krilan Ancestor Spirits"
+#descr "By means of this ritual, the caster calls a group of the spirits of the ancient ancestors of the Ledani. The winged ancestors of the Ledani were beings of the sky
+ as well as the seas, and are able to fly even in the most tempestuous of storms. Their spirits are now sacred to the Ledani."
 #school 0 -- conjuration
 #researchlevel 3
 #path 0 1 -- air
 #path 1 2 -- water
 #pathlevel 0 2
 #pathlevel 1 1
-#damagemon "Winged Ancestor"
+#damage 4253
 #effect 10001 -- summon ritual
 #fatiguecost 3000
 #nreff 1018 -- nombre d effets
@@ -3765,14 +4263,15 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 
 #newspell
 #name "Enchant Snowy Owl"
-#descr "This enchantment allow some Ledan Mages to use Snowy Owls as scouts"
+#descr "By means of this ritual, the caster calls a group of the spirits of the ancient ancestors of the Ledani. The winged ancestors of the Ledani were beings of the sky as
+ well as the seas, and are able to fly even in the most tempestuous of storms. Their spirits are now sacred to the Ledani."
 #school 4 -- enchantment
 #researchlevel 2
 #path 0 1 -- air
 #path 1 6 -- nature
 #pathlevel 0 1
 #pathlevel 1 1
-#damagemon "Snowy Owl"
+#damage 4244 -- snowy owl summon
 #effect 10021 -- summon commander
 #fatiguecost 300
 #nreff 1 -- nombre d effets
@@ -3780,15 +4279,17 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #end
 
 #newspell
-#name "Summon Guardians of Eternal Ice"
-#descr "This ritual summons the sacred Guardians of the Eternal Ice."
+#name "Call Guardians of the Eternal Ice"
+#descr "This Ice Keeper ritual summons a group of sacred Ice Guardians, powerful ice constructs linked to the Eternal Ice. Ice Guardians are frighteningly powerful and resilient,
+ though they are strongest in the cold and weaken in warmer lands."
 #school 0 -- conjuration
 #researchlevel 6
 #path 0 2 -- water
 #path 1 1 -- air
 #pathlevel 0 4
 #pathlevel 1 2
-#damagemon "Ice Guardian"
+#damage 4255
+#spec 8388608 -- can be castable underwater
 #effect 10001 -- summon ritual
 #fatiguecost 1000
 #nreff 1000 -- nombre d effets
@@ -3796,15 +4297,15 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #end
 
 #newspell
-#name "Skulk of Foxes"
-#descr "Summon and bind Arctic Foxes to help Ledan armies."
+#name "Summon Skulk of Foxes"
+#descr "The caster summons a number of wily Arctic Foxes and binds them to service."
 #school 0 -- conjuration
 #researchlevel 1
 #path 0 6 -- nature
 #path 1 2 -- water
 #pathlevel 0 1
 #pathlevel 1 1
-#damagemon "Arctic Fox"
+#damage 4258
 #effect 10001 -- summon ritual
 #fatiguecost 1000
 #nreff 1019 -- nombre d effets
@@ -3813,30 +4314,35 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 
 #newspell
 #name "Enliven Eternal Mammoths"
-#descr "This enchantment bring magic life to Mammoth sculptures, blessed by the Eternal Ice"
+#descr "Over the course of a fortnight, a group of accomplished Ice Sculptors and Enchanters of the Cult of the Ice Keepers fom a few life-sized statues of arctic mammoths
+ of magical Ice while the caster, normally an Ice Keeper, conducts powerful rituals to imbue them with a bit of the power of the Eternal Ice. Upon completion of the ritual,
+ the thin outermost layer of ice on the statues cracks and falls to the ground as they take on false life, able to move under the command of the mage. Eternal mammoths are powerful,
+ cold-exuding war constructs able to crush underfoot the enemies of Leda like the great beasts whose likeness they are given."
 #school 4 -- enchantment
 #researchlevel 5
 #path 0 2 -- water
 #path 1 1 -- air
 #pathlevel 0 3
 #pathlevel 1 2
-#damagemon "Eternal Mammoth"
+#damage 4243
 #effect 10001 -- summon ritual
-#fatiguecost 1000
+#fatiguecost 2000 -- 20 gems
 #nreff 1000 -- nombre d effets
 #restricted 101 -- Restricted to LEDAN
 #end
 
 #newspell
-#name "Rise Frozen Templars"
-#descr "Frozen Templars are the result of Ledans fanatics devoting their whole life by embracing the Eternal Ice"
+#name "Imbue Iceskin Templars"
+#descr "In a secret ritual conducted by the Cult of the Ice Keepers and attended by a number of its acolytes, a score of devout Ledan soldier-volunteers are enchanted with the
+ power of the Eternal Ice, their skin permanently Iced over with a layer of melted and recrystallized Water gems. Though they are not as quick of movement as they once were, the
+ soldiers, now anointed sacred Iceskin Templars, enjoy the protection of armored skin as hard as the best metal armor used by the warmlanders."
 #school 4 -- enchantment
 #researchlevel 3
 #path 0 2 -- water
 #path 1 1 -- air
 #pathlevel 0 2
 #pathlevel 1 2
-#damagemon "Frozen Templar"
+#damage 4254
 #effect 10001 -- summon ritual
 #fatiguecost 2000
 #nreff 1018 -- nombre d effets
@@ -3845,17 +4351,52 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 
 #newspell
 #name "Enliven Eternal Bears"
-#descr "This enchantment bring magic life to sculpted bears blessed by the Eternal Ice"
+#descr "Over the course of a fortnight, a group of accomplished Ice Sculptors and Enchanters of the Cult of the Ice Keepers fom a few life-sized statues of an arctic bears of
+ magical Ice, while the caster, normally an Ice Keeper, enchants them with powerful magic and imbues them with a bit of the power of the Eternal Ice. Upon completion of the ritual,
+ the thin outermost layer of ice on the statues cracks and falls to the ground as they take on false life, able to move under the command of the mage. Eternal bears are powerful,
+ cold-exuding war constructs that can easily kill enemies with their Ice claws and teeth, and are very difficult to destroy."
 #school 4 -- enchantment
 #researchlevel 4
 #path 0 2 -- water
 #path 1 1 -- air
 #pathlevel 0 2
 #pathlevel 1 1
-#damagemon "Eternal Bear"
+#damage 4257
 #effect 10001 -- summon ritual
-#fatiguecost 1000
+#fatiguecost 800 -- 8 gems
 #nreff 1003 -- nombre d effets
+#restricted 101 -- Restricted to LEDAN
+#end
+
+#newspell
+#name "Call Iceblood Tunnelguards"
+#descr "Call Iceblood Tunnelguards"
+#school 6 -- blood
+#researchlevel 0
+#path 0 7 -- blood
+#path 1 2 -- water
+#pathlevel 0 1
+#pathlevel 1 1
+#damage 4229
+#effect 10001 -- summon ritual
+#fatiguecost 1500 
+#nreff 1012 -- nombre d effets
+#restricted 101 -- Restricted to LEDAN
+#end
+
+#newspell
+#name "Bind Iceblood Enforcer"
+#descr "Bind Iceblood Enforcer"
+#school 6 -- blood
+#researchlevel 1
+#path 0 7 -- blood
+#path 1 2 -- water
+#pathlevel 0 2
+#pathlevel 1 1
+#damage 4236
+#effect 10021 -- summon commander
+#fatiguecost 1000
+#nreff 1 -- nombre d effets
 #restricted 101 -- Restricted to LEDAN
 #end
 
@@ -3884,7 +4425,7 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #path 1 2 -- water
 #pathlevel 0 3
 #pathlevel 1 1
-#damagemon "Corrupted Ledan"
+#damage 4250 
 #effect 10001 -- summon ritual
 #fatiguecost 2000 
 #nreff 1012 -- nombre d effets
@@ -3892,7 +4433,7 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #end
 
 #newspell
-#name "Possessed Flying Ledans"
+#name "Bind Bloodtainted Blackwing"
 #descr "A forbidden Blood ritual"
 #school 6 -- blood
 #researchlevel 2
@@ -3900,7 +4441,7 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #path 1 1 -- air
 #pathlevel 0 2
 #pathlevel 1 1
-#damagemon "Possessed Flying Ledan"
+#damage 4245
 #effect 10001 -- summon ritual
 #fatiguecost 2500
 #nreff 1018 -- nombre d effets
@@ -3908,7 +4449,7 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #end
 
 #newspell
-#name "Corrupted Flying Ledans"
+#name "Bind Infernal Blackwings"
 #descr "A forbidden Blood ritual"
 #school 6 -- blood
 #researchlevel 5
@@ -3916,7 +4457,7 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #path 1 1 -- air
 #pathlevel 0 3
 #pathlevel 1 1
-#damagemon "Corrupted Flying Ledan"
+#damage 4246
 #effect 10001 -- summon ritual
 #fatiguecost 2500
 #nreff 1012 -- nombre d effets
@@ -3932,7 +4473,7 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #path 1 2 -- water
 #pathlevel 0 2
 #pathlevel 1 1
-#damagemon "Ledan Red Thrower"
+#damage 4251
 #effect 10001 -- summon ritual
 #fatiguecost 3000 
 #nreff 1018 -- nombre d effets
@@ -3948,7 +4489,7 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #path 1 2 -- water
 #pathlevel 0 3
 #pathlevel 1 1
-#damagemon "Corrupted Red Thrower"
+#damage 4252
 #effect 10001 -- summon ritual
 #fatiguecost 3000
 #nreff 1012 -- nombre d effets
@@ -3966,7 +4507,7 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #pathlevel 1 1
 #damage 4259
 #effect 10021 -- summon commander
-#fatiguecost 4000
+#fatiguecost 3000 -- 30 blood slaves
 #nreff 1 -- nombre d effets
 #restricted 101 -- Restricted to LEDAN
 #end
@@ -3996,7 +4537,8 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #path 1 2 -- water
 #pathlevel 0 2
 #pathlevel 1 1
-#damagemon "Walrus (landshape)"
+#damage 4275
+#spec 8388608 -- can be castable underwater
 #effect 10001 -- summon ritual
 #fatiguecost 400 -- 4 gems
 #nreff 1003 -- nombre d effets 5+
@@ -4004,17 +4546,17 @@ Air magic skills and some even delve into the Earth path. Since their clothing i
 #end
 
 #newspell
-#name "Call Whale"
+#name "Call Great Whale"
 #descr "Summon and bind a huge Whale to help Ledan armies."
-#onlygeosrc 4 -- only castable in sea provinge tag
-#spec 8388608
+#onlygeosrc 2052 -- only castable in sea provinces tags 4 + 2048
+--#spec 8388608 -- can be castable underwater
 #school 0 -- conjuration
 #researchlevel 4
 #path 0 6 -- nature
 #path 1 2 -- water
 #pathlevel 0 2
 #pathlevel 1 2
-#damagemon "Whale"
+#damage 4277
 #effect 10001 -- summon ritual
 #fatiguecost 300 -- 3 gems
 #nreff 1 -- 1 baleine

@@ -1,6 +1,8 @@
-#modname "UW Expanded 0.3"
+#modname "UW Expanded 0.05"
 #description "A breath or fresh air (breathing) to UW nations and those trying to face them. Increases options for going above and below the waves and gives extra flavor to UW nations."
-#version 0.03
+#version 0.05
+
+#icon "./ExpandedUWv05.tga"
 
 --CHANGELOG--
 Many spells made castable UW, especially summoning spells. 
@@ -120,6 +122,10 @@ EA Oceania :
 MA Atlantis:
 * Add an Apprentice of the Deep recruitable mage, 1W+100%FWE, which should be a mediocre battlemage but a decent researcher
 * New pretenders : Teotl of Rain, Teotl of the Underworld (same reason as in EA)
+* shambler price revisited. Ur was used as a base comparison ; similar stat, +5 natural armor (which is huge), +150% price (which is huge too). Standard enkidu are 17 gold, trained one 22, elite 27
+ - shambler now only cost 130% of an Enkidu (22 gold)
+ - war shambler, warrior of the deep now only cost 130% of an Ur Guard (28 gold) and have good stat (11 att, 10 def)
+ - coral guard, living pillar now have elite stat like an Enki Chosen (att 12, def 10 ; coral guard also get +1 strength)
 (as an aside, the change to coral equipment improve much of their rosters)
 
 MA R'lyeh :
@@ -251,24 +257,72 @@ LA R'lyeh :
 #newweapon 1981
 #name "Prehensible tentacle"
 #rcost 0
-#dmg -5
+#dmg -10
 #att 0
 #def 0
 #len 0
 #sound 9
 #blunt
-#armorpiercing
 #end
 
 #newweapon 1982
 #name "Huge tentacle"
 #rcost 0
-#dmg -3
+#dmg -5
 #att 0
 #def 0
 #len 6
 #sound 9
 #bonus
+#armorpiercing
+#end
+
+#newweapon 1984
+#name "Heavy Coral Lance"
+#rcost 0
+#dmg 5
+#att 1
+#def 0
+#len 4
+#ammo 1
+#sound 12
+#pierce
+#bonus
+#secondaryeffect 51
+#end
+
+#newweapon 1985
+#name "Savage Gore"
+#rcost 0
+#dmg 0
+#att 3
+#def -1
+#len 0
+#sound 38
+#slashing
+#sizeresist
+#bonus
+#end
+
+#selectweapon 503
+#name "Wrath of Water"
+#inanimateimmune
+#friendlyimmune
+#att 5
+#aoe 0
+#dmg 1
+#ammo 10
+#nostr
+#range 40
+#secondaryeffectalways 1986
+#end
+
+#newweapon 1986
+#name "Drowning"
+#dmg 20
+#armornegating
+#sizeresist
+#dt_stun
 #end
 
 #selectweapon 342
@@ -459,7 +513,7 @@ LA R'lyeh :
 
 #copystats 1257
 #name "Ancient Kraken"
-#Descr "Krakens never die from old age. They just grower larger, wiser and stronger. This Kraken is very old and, through the ages, he has seen many a Pretender God rise to godhood. This time, he shall be the new God. The Ancient Kraken has become adept at magic over the millennia and he is a versatile mage."
+#descr "Krakens never die from old age. They just grower larger, wiser and stronger. This Kraken is very old and, through the ages, he has seen many a Pretender God rise to godhood. This time, he shall be the new God. The Ancient Kraken has become adept at magic over the millennia and he is a versatile mage."
 
 #hp 230
 #size 6
@@ -528,6 +582,8 @@ LA R'lyeh :
 
 --Add a tail sweep
 #weapon 532
+
+#mor 18
 
 #inspiringres 1
 #end
@@ -806,17 +862,17 @@ LA R'lyeh :
 --Shambler get a price downgrade
 --Shambler
 #selectmonster 1683
-#gcost 10022
+#gcost 10018
 #end
 
 --Shambler chief
 #selectmonster 1700
-#gcost 10022
+#gcost 10017
 #end
 
 --War shambler
 #selectmonster 1683
-#gcost 10028
+#gcost 10023
 #att 11
 #def 10
 #end
@@ -826,13 +882,6 @@ LA R'lyeh :
 #gcost 10028
 #att 11
 #def 10
-#end
-
---War shambler
-#selectmonster 1683
-#gcost 10028
-#att 11
-#def 9
 #end
 
 --Coral guard
@@ -883,12 +932,6 @@ LA R'lyeh :
 #bodyguard 4
 #fireres 10
 #coldres 10
-#end
-
---Monstruous fish get an actual bite that do damage
-#selectmonster 1664
-#clearweapons
-#weapon 1980
 #end
 
 #newmonster 4127
@@ -959,6 +1002,7 @@ LA R'lyeh :
 #magicskill 2 1
 #magicskill 4 1
 #magicboost 2 1
+#mor 30
 #gcost 10050
 #end
 
@@ -966,6 +1010,7 @@ LA R'lyeh :
 #selectmonster 1519
 #magicskill 2 1
 #magicskill 4 1
+#magicboost 2 0
 #magicboost 4 1
 #gcost 10050
 #end
@@ -1178,8 +1223,8 @@ LA R'lyeh :
 -Tidal Mermage waterform W3?1WAEN
 #newmonster 4122
 #copystats 1415
-#spr1 "./UWGIM/Tidal_Mermage3.tga"
-#spr2 "./UWGIM/Tidal_Mermage4.tga"
+#spr1 "./ExpandedUW/Tidal_Mermage3.tga"
+#spr2 "./ExpandedUW/Tidal_Mermage4.tga"
 #clearspec
 #amphibian
 #landshape 4121
@@ -1256,9 +1301,62 @@ LA R'lyeh :
 
 --EA OCEANIA--
 
+--Ichtycentaur
+#selectmonster 1408
+#gcost 10025
+#clearweapons
+#weapon 1
+#weapon 4
+#end
+
+#selectmonster 1409
+#gcost 10025
+#clearweapons
+#weapon 1
+#weapon 4
+#end
+
+--Ichtytaur
+#selectmonster 2380
+#weapon 1985
+#descr "Life underneath the waves corresponds in many ways to that on dry land. Halfmen, like humans, have underwater counterparts. Ichtytaurs appear as minotaurs with fish tails instead of hind legs. They are wild beings that roam the kelp forests of shallow waters, not unlike the minotaurs that roam the woodlands on dry land. Ichtytaurs have strange abilities of transformation and can remove their tails to walk on dry land. In the sea, they viciously gore their opponents, while on land they fight by charging through the enemy trampling anything that is smaller than themselves. Ichtytaurs are not very accustomated to manufactured weapons."
+#end
+
+#selectmonster 2381
+#str 17
+#hp 30
+#descr "Life underneath the waves corresponds in many ways to that on dry land. Halfmen, like humans, have underwater counterparts. Ichtytaurs appear as minotaurs with fish tails instead of hind legs. They are wild beings that roam the kelp forests of shallow waters, not unlike the minotaurs that roam the woodlands on dry land. Ichtytaurs have strange abilities of transformation and can remove their tails to walk on dry land. In the sea, they viciously gore their opponents, while on land they fight by charging through the enemy trampling anything that is smaller than themselves. Ichtytaurs are not very accustomated to manufactured weapons."
+#end
+
 --Aphroi hierophant
 #selectmonster 2392
 #gcost 10025
+#end
+
+--Aphroi
+#selectmonster 2401
+#clearweapons
+#weapon 1984
+#weapon 31
+#end
+
+#selectmonster 2402
+#clearweapons
+#weapon 1984
+#weapon 31
+#end
+
+--Aphroi Lord
+#selectmonster 2399
+#clearweapons
+#weapon 1984
+#weapon 31
+#end
+
+#selectmonster 2400
+#clearweapons
+#weapon 1984
+#weapon 31
 #end
 
 #selectnation 86
@@ -1267,6 +1365,7 @@ LA R'lyeh :
 #addgod 4304 -- Idol of Beast
 #addgod 2449 -- Idol of Sorcery
 #end
+
 
 --MA ATLANTIS
 
@@ -1289,8 +1388,22 @@ LA R'lyeh :
 #seashape 441
 #end
 
+
+--Shambler
+#selectmonster 206
+#gcost 10017
+#end
+
+--Shambler chief
+#selectmonster 1700
+#gcost 10017
+#end
+
 --War Shambler
 #selectmonster 208
+#gcost 10022
+#att 11
+#def 10
 #clearweapons
 #weapon 772
 --Change weapon (actually, the way he use it) on land
@@ -1308,6 +1421,8 @@ LA R'lyeh :
 
 --Mother Guard
 #selectmonster 209
+#str 16
+#att 12
 #clearweapons
 #weapon 772
 --Change weapon (actually, the way he use it) on land
@@ -1324,7 +1439,20 @@ LA R'lyeh :
 #end
 
 --Coral Guard
+#selectmonster 108
+#gcost 10016
+#hp 15
+#att 12
+#def 11
+#mapmove 2
+#end
+
 #selectmonster 1622
+#gcost 10016
+#hp 15
+#att 12
+#def 11
+#mapmove 2
 #clearweapons
 #weapon 772
 --Change weapon (actually, the way he use it) on land
@@ -1404,14 +1532,21 @@ LA R'lyeh :
 
 --MA R'LYEH
 
+--Starspawn cheaper
 #selectmonster 332
 #gcost 10020
 #end
 
+--Starspawn priest with 2 randoms
 #selectmonster 333
 #custommagic 7680 100
 #custommagic 7680 10
 #gcost 10020
+#end
+
+--Meteorite guard with enc3
+#selectmonster 424
+#enc 3
 #end
 
 --MA PELAGIA--
@@ -1442,14 +1577,14 @@ LA R'lyeh :
 #weapon 3
 #end
 
--Pearl Mage
+--Pearl Mage
 #selectmonster 2423
 #maxage 75
 #startage 66
 #gcost 10001
 #end
 
--Amber Mage
+--Amber Mage
 #selectmonster 1417
 #maxage 75
 #startage 70
@@ -1532,6 +1667,8 @@ LA R'lyeh :
 #holy
 #mounted
 #ressize 2
+#rcost 8
+#gcost 10040
 #descr "The Knights of the Deeps are the elite of Pelagia and the heralds of the New God. They ride on sacred sea-horses. The hippocampus is a magical steed that is able to heal its rider with its horn and even bring the pair above the waves."
 #end
 
@@ -1542,7 +1679,9 @@ LA R'lyeh :
 #heal
 #holy
 #mounted
+#gcost 10040
 #ressize 2
+#rcost 8
 #spr1 "./ExpandedUW/KotD.tga"
 #spr2 "./ExpandedUW/KotD1.tga"
 #watershape 1059
@@ -1552,7 +1691,24 @@ LA R'lyeh :
 #landshape 4133
 #end
 
+#newmonster 4134
+#copystats 2423
+#copyspr 2423
+#name "Pearl Deluger"
+#descr "With the loss of influence of their clan and the disappearance of the Lord's favor in their bloodline, a part of the Pearl clan have gone bitter and belligerious, believing they have to take back the position they believe they should have. They turn their mastery over water against their foes, manipulating the water in their body and either drying their gills or filling their lung with water, preventing them from breathing."
+#clearspec
+#amphibian
+#gcost 10015
+#rcost 1
+#reclimit 4
+#startage 30
+#weapon 7
+#weapon 503
+#end
+
+
 #selectnation 89
+--#addrecunit 4134
 #coastunit2 1049
 #coastcom2 4121
 
@@ -1563,6 +1719,36 @@ LA R'lyeh :
 #end
 
 --MA OCEANIA
+--Ichtytaur
+#selectmonster 2412
+#weapon 1985
+#desc "Life underneath the waves corresponds in many ways to that on dry land. Halfmen, like humans, have underwater counterparts. Ichtytaurs appear as minotaurs with fish tails instead of hind legs. They are wild beings that roam the kelp forests of shallow waters, not unlike the minotaurs that roam the woodlands on dry land. Ichtytaurs have strange abilities of transformation and can remove their tails to walk on dry land. In the sea, they viciously gore their opponents, while on land they fight by charging through the enemy trampling anything that is smaller than themselves. Ichtytaurs are not very accustomated to manufactured weapons."
+#landshape 2413
+#end
+
+#selectmonster 2413
+#str 17
+#hp 30
+#desc "Life underneath the waves corresponds in many ways to that on dry land. Halfmen, like humans, have underwater counterparts. Ichtytaurs appear as minotaurs with fish tails instead of hind legs. They are wild beings that roam the kelp forests of shallow waters, not unlike the minotaurs that roam the woodlands on dry land. Ichtytaurs have strange abilities of transformation and can remove their tails to walk on dry land. In the sea, they viciously gore their opponents, while on land they fight by charging through the enemy trampling anything that is smaller than themselves. Ichtytaurs are not very accustomated to manufactured weapons."
+#watershape 2412
+#end
+
+#selectmonster 2414
+#gcost 10040
+#weapon 1985
+#desc "Life underneath the waves corresponds in many ways to that on dry land. Halfmen, like humans, have underwater counterparts. Ichtytaurs appear as minotaurs with fish tails instead of hind legs. They are wild beings that roam the kelp forests of shallow waters, not unlike the minotaurs that roam the woodlands on dry land. Ichtytaurs have strange abilities of transformation and can remove their tails to walk on dry land. In the sea, they viciously gore their opponents, while on land they fight by charging through the enemy trampling anything that is smaller than themselves. Ichtytaurs are not very accustomated to manufactured weapons."
+#landshape 2415
+#end
+
+#selectmonster 2415
+#gcost 10040
+#str 17
+#hp 30
+#desc "Life underneath the waves corresponds in many ways to that on dry land. Halfmen, like humans, have underwater counterparts. Ichtytaurs appear as minotaurs with fish tails instead of hind legs. They are wild beings that roam the kelp forests of shallow waters, not unlike the minotaurs that roam the woodlands on dry land. Ichtytaurs have strange abilities of transformation and can remove their tails to walk on dry land. In the sea, they viciously gore their opponents, while on land they fight by charging through the enemy trampling anything that is smaller than themselves. Ichtytaurs are not very accustomated to manufactured weapons."
+#watershape 2414
+#end
+
+
 #selectnation 90
 
 #coastcom2 1054
@@ -1673,6 +1859,16 @@ LA R'lyeh :
 #end
 
 -- LA R'LYEH
+
+--The Cultist can lead more than a token force of mad being
+#selectmonster 1639
+#okmagicleader
+#end
+
+#selectmonster 1640
+#okmagicleader
+#end
+
 #selectnation 92
 #addgod 1232 -- Old man of the Sea
 #end
@@ -1719,7 +1915,7 @@ LA R'lyeh :
 #armor 100
 #armor 123
 #armor 155
-#descr "Kydnides are warrior naiades, willing to leave their native river to wreak vengeance upon those who harm the rivers of the world. This is a queen of her kind--able to lead not only her people but all those who wish under the waves. Kydnides manifest themselves as incredibly beautiful women wearing gleaming bronze armor. Unlike other naiades, kydnides do not die if they leave their home."
+#descr "Kydnides are warrior naiades, willing to leave their native river to wreak vengeance upon those who harm the rivers of the world. This is a queen of her kind, able to lead not only her people but all those who wish under the waves. Kydnides manifest themselves as incredibly beautiful women wearing gleaming bronze armor. Unlike other naiades, kydnides do not die if they leave their home."
 #end
 
 --ALTERED SUMMONS--
@@ -2072,7 +2268,7 @@ LA R'lyeh :
 #effect 10021
 #fatiguecost 1100
 #spec 8388608
-#onlygeosrc 288
+#onlygeosrc 4
 #end
 
 #newspell
@@ -2080,6 +2276,8 @@ LA R'lyeh :
 #descr "With an offering of a dozen water gems, a Kydnid Queen is called from a nearby river. Beautiful and deadly, she is able to bring many troops under the waves to bring battle to those cowards hiding in the sea."
 #path 0 2
 #pathlevel 0 3
+#path 1 6
+#pathlevel 1 1
 #school 0
 #researchlevel 4
 #damage 4132
@@ -2091,7 +2289,7 @@ LA R'lyeh :
 #selectitem "Amulet of the Fish"
 #secondarypath -1
 #secondarylevel 0
-#constlevel 0
+#constlevel 2
 #end
 
 #selectitem "Manual of Water Breathing"
@@ -2105,7 +2303,7 @@ LA R'lyeh :
 #selectitem "Amulet of Breathing"
 #mainpath 1
 #mainlevel 1
-#constlevel 0
+#constlevel 2
 #end
 
 #selectitem "Pills of Water Breathing"
@@ -2117,7 +2315,7 @@ LA R'lyeh :
 #selectitem "Ring of Water Breathing"
 #mainpath 2
 #mainlevel 1
-#constlevel 0
+#constlevel 2
 #end
 
 #selectitem "Sea King's Goblet"
@@ -2147,7 +2345,8 @@ LA R'lyeh :
 #giftofwater 24
 #descr "A Water mage who wears this robe will find that it helps him in the use of Water magic. This robe also makes it possible for anyone wearing it to bring a dozen troops underwater or rise above the waves."
 #constlevel 4
-#pathlevel 0 3
+#mainpath 2
+#mainlevel 3
 #type 5
 #end
 
