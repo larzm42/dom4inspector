@@ -318,6 +318,14 @@ input.clear-filters-btn, #global-clear-filters-btn{
 	margin-right:-5px;
 }
 
+.inclusive-search {
+	vertical-align: middle;
+	padding:0px; margin:0px;
+	display:block;
+	float:left;
+	clear:left;
+}
+
 .filters-text {
 }
 

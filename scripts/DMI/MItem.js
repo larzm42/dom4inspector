@@ -172,6 +172,7 @@ MItem.CGrid = Utils.Class( DMI.CGrid, function() {
 			str: $(that.domselp+" input.search-box").val().toLowerCase(),
 			type: Utils.splitToLookup( $(that.domselp+" select.type").val(), ','),
 			constlevel: parseInt( $(that.domselp+" select.constlevel").val() ),
+			inclusive: $(that.domselp+" input.inclusive-search:checked").val(),
 
 			mpaths: ''
 		});
@@ -200,10 +201,21 @@ MItem.CGrid = Utils.Class( DMI.CGrid, function() {
 		
 		//magic paths
 		if (args.mpaths) {
-			if (args.mpaths.indexOf(o.mainpath) == -1)
-				return false;
-			if (o.secondarypath && args.mpaths.indexOf(o.secondarypath) == -1)
-				return false;
+			if(args.inclusive) {
+				if(args.mpaths.indexOf(o.mainpath) == -1) {
+					if(!o.secondarypath) {
+						return false;
+					} else {
+						if(args.mpaths.indexOf(o.secondarypath) == -1)
+							return false;
+					}
+				}
+			} else {
+				if (args.mpaths.indexOf(o.mainpath) == -1)
+					return false;
+				if (o.path2 && args.mpaths.indexOf(o.secondarypath) == -1)
+					return false;
+			}
 		}
 		
 		//item type

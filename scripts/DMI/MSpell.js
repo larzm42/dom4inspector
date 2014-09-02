@@ -376,6 +376,7 @@ MSpell.CGrid = DMI.Utils.Class( DMI.CGrid, function() {
 			
 			type: $(that.domselp+" select.type").val(),
 			schools: Utils.splitToLookup( $(that.domselp+" select.school").val(), ','),
+			inclusive: $(that.domselp+" input.inclusive-search:checked").val(),
 			generic: $(that.domselp+" input.generic:checked").val(),
 			national: $(that.domselp+" input.national:checked").val(),
 			
@@ -482,10 +483,21 @@ MSpell.CGrid = DMI.Utils.Class( DMI.CGrid, function() {
 		
 		//magic paths
 		if (args.mpaths) {
-			if (args.mpaths.indexOf(o.path1) == -1)
-				return false;
-			if (o.path2 && args.mpaths.indexOf(o.path2) == -1)
-				return false;
+			if(args.inclusive) {
+				if(args.mpaths.indexOf(o.path1) == -1) {
+					if(!o.path2) {
+						return false;
+					} else {
+						if(args.mpaths.indexOf(o.path2) == -1)
+							return false;
+					}
+				}
+			} else {
+				if (args.mpaths.indexOf(o.path1) == -1)
+					return false;
+				if (o.path2 && args.mpaths.indexOf(o.path2) == -1)
+					return false;
+			}
 		}
 		
 		//key =~ val
