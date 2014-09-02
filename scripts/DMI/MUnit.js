@@ -1336,7 +1336,13 @@ var displayorder2 = Utils.cutDisplayOrder(aliases, formats,
 	'prec',	'precision',	{'0':'0 '},
 
 	'enc',	'encumbrance',	{'0':'0 '},
-	'ap', 	'move',		function(v,o){ return o.mapmove + ' / '+o.ap; }
+	'ap', 	'move',		function(v,o){ 
+		if (o.flying == '0' || parseInt(o.mapmove) > 2) { 
+			return o.mapmove + ' / '+o.ap; 
+		} else {
+			return (parseInt(o.mapmove)+1) + ' / '+o.ap; 
+		} 
+	}
 ]);
 var displayorder_cmdr = Utils.cutDisplayOrder(aliases, formats,
 [
@@ -1477,8 +1483,8 @@ var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 	'diseasecloud',	'spreads plague',
 	'kokytosret', 	'kokytos returning',	Format.Percent,
 	
-	'seduce',	'capture cmdr (seduction)',	function(v){ if (v=='0') return '0'; return 'morale vs '+v; },
-	'succubus',	'capture cmdr (succubus)',	function(v){ if (v=='0') return '0'; return 'morale vs '+v; },
+	'seduce',	'dream seduction',	function(v){ if (v=='0') return '0'; return 'morale vs '+v; },
+	//'succubus',	'capture cmdr (succubus)',	function(v){ if (v=='0') return '0'; return 'morale vs '+v; },
 	'corrupt',	'capture cmdr (corruption)',	function(v){ if (v=='0') return '0'; return 'morale vs '+v; },
 	'beckon',	'lure cmdr into sea',		function(v){ if (v=='0') return '0'; return 'morale vs '+v; },
 	'startaff',	'starting affliction',	Format.Percent,
@@ -1625,6 +1631,7 @@ var flagorder = Utils.cutDisplayOrder(aliases, formats,
 	'trampswallow',	'swallow',
 	'heal',		'recuperation',
 	'spy',		'spy',
+	'scalewalls',		'scale walls',
 	'assassin',	'assassin',
 	'drainimmune',	'ignores drain scales',
 	'taxcollector',		'tax collector',
@@ -1696,6 +1703,7 @@ var ignorekeys = {
 	slowrec:1,
 	sprite:1,
 	ressize:1,
+	succubus:1,
 	
 	researchbonus:1, listed_mpath:1, 
 	n_domsummon:1, n_makemonster:1, n_autosum:1, n_summon:1,	
