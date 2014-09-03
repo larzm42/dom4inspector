@@ -431,7 +431,7 @@ var displayorder2 = DMI.Utils.cutDisplayOrder(aliases, formats,
 	'startbattlespell',	'start battle spell',	Utils.spellRef,
 	//'ritual',		'overland spell',	Utils.spellRef,
 	'autocombatspell',	'auto spell',	Utils.spellRef,
-	'itemspell',		'combat spell',		Utils.spellRef,
+	'itemspell',		'spell',		Utils.spellRef,
 	
 	'ldr-n',		'leadership',		Format.Signed,
 	'ldr-m',		'leadership (magic)',	Format.Signed,
