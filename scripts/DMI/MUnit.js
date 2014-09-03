@@ -770,7 +770,13 @@ MUnit.prepareForRender = function(o) {
 			if (o.B) bonus('blood magic', 'maxage', mult(o.maxage, parseInt(o.B) * 0.5));
 		}
 		else {
-			if (!o.startage) o.startage = '22';
+			if (!o.startage) {
+				if (o.maxage) {
+					o.startage = parseInt(mult(o.maxage, 0.5)) + parseInt(mult(o.maxage, 0.1));
+				} else {
+					o.startage = '22';
+				}
+			}
 			if (!o.maxage) o.maxage = '50';
 			if (o.N) bonus('nature magic', 'maxage', mult(o.maxage, parseInt(o.N) * 0.5));
 			if (o.F) {
