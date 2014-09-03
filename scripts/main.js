@@ -60,8 +60,8 @@ DMI.initGrids = function() {
 		}
 		else {
 			$( "<style>.hidden-block, tr.hidden-row, .hidden-inline { display:none; }</style>" ).appendTo( "head" );
-			$(".grid-container").css({left:'308px'})
-			$("div.static-overlay-container").css({width:'308px'})
+			$(".grid-container").css({left:'320px'})
+			$("div.static-overlay-container").css({width:'320px'})
 
 			if (itemgrid) itemgrid.showIds(0);
 			if (spellgrid) spellgrid.showIds(0);

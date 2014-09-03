@@ -428,9 +428,9 @@ var displayorder2 = DMI.Utils.cutDisplayOrder(aliases, formats,
 	'ivylord',		'ivy lord',		function(v){ return '+'+v+' '+Utils.unitRef(361)+' / '+Utils.unitRef(362)+' awakening'; },
 	'corpselord',		'corpse lord',		function(v){ return '+'+v+' '+Utils.unitRef(534)+' construction'; },
 	
-	'startbattlespell',	'casts each battle',	Utils.spellRef,
-	'ritual',		'overland spell',	Utils.spellRef,
-	'autocombatspell',	'casts every round',	Utils.spellRef,
+	'startbattlespell',	'start battle spell',	Utils.spellRef,
+	//'ritual',		'overland spell',	Utils.spellRef,
+	'autocombatspell',	'auto spell',	Utils.spellRef,
 	'itemspell',		'combat spell',		Utils.spellRef,
 	
 	'ldr-n',		'leadership',		Format.Signed,
@@ -551,6 +551,7 @@ var ignorekeys = {
 	autospell:1,
 	autospellrepeat:1,
 	n_batstartsum:1,
+	ritual:1,
 	
 	//common fields
 	name:1,descr:1,
