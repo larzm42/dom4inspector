@@ -1516,6 +1516,7 @@ var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 	'bonusspells', 'bonus spells',
 	'deathparalyze', 'paralyze on death',
 	'special',	'special',
+	'explodeondeath',	'explode on death',
 	'realms', 'realm', function(v,o)
 	{ 
 		var realmString = '';
