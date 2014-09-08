@@ -85,8 +85,8 @@ id	name	type	constlevel	mainpath	mainlevel	secondarypath	secondarylevel	weapon	a
 84	Ivory Bow	2-h wpn	6	D	3	A	1	566																																																						5																																																																															
 85	Wraith Sword	2-h wpn	6	D	4			110																																																																																																																																					
 86	Standard of the Damned	2-h wpn	6	D	4			100																																																										5																																																																Drain Life											
-87	Axe of Hate	1-h wpn	6	N	2			412					-15																																																																																																																	1															
-88	Treelord's Staff	2-h wpn	6	N	6			238																															1																																								2									1																																																					
+87	Axe of Hate	1-h wpn	6	N	2			412					-15																																																																																																																																
+88	Treelord's Staff	2-h wpn	6	N	6			238																															1																																								2									1																																						1															
 89	Banner of the Northern Star	2-h wpn	6	S	5			100																		-2																																																																																																						Light of the Northern Star													
 90	Blood Thorn	1-h wpn	6	B	4			101																																																																								1																																																													
 91	Hell Sword	2-h wpn	6	B	3	F	2	241			5																																																																																															3																																			
