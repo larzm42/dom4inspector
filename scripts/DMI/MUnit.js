@@ -393,8 +393,8 @@ MUnit.autocalc = function (o) {
 
 		//Leader cost
 		var ldr_cost = 0;
-		if (o.leader) {
-			ldr_cost = parseInt(leadership[o.leader]);
+		if (o.baseleadership) {
+			ldr_cost = parseInt(leadership[o.baseleadership]);
 		}
 		if (o.inspirational) {
 			ldr_cost = ldr_cost + 10*parseInt(o.inspirational);
@@ -498,6 +498,8 @@ MUnit.autocalc = function (o) {
 			spy_cost = spy_cost + 40;
 		}
 		if (o.seduce && parseInt(o.seduce) > 0) {
+			spy_cost = spy_cost + 60;
+		} else if (o.succubus && parseInt(o.succubus) > 0) {
 			spy_cost = spy_cost + 60;
 		}
 
@@ -1490,7 +1492,7 @@ var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 	'kokytosret', 	'kokytos returning',	Format.Percent,
 	
 	'seduce',	'dream seduction',	function(v){ if (v=='0') return '0'; return 'morale vs '+v; },
-	//'succubus',	'capture cmdr (succubus)',	function(v){ if (v=='0') return '0'; return 'morale vs '+v; },
+	'succubus',	'seduction',	function(v){ if (v=='0') return '0'; return 'morale vs '+v; },
 	'corrupt',	'capture cmdr (corruption)',	function(v){ if (v=='0') return '0'; return 'morale vs '+v; },
 	'beckon',	'lure cmdr into sea',		function(v){ if (v=='0') return '0'; return 'morale vs '+v; },
 	'startaff',	'starting affliction',	Format.Percent,
@@ -1709,7 +1711,7 @@ var ignorekeys = {
 	slowrec:1,
 	sprite:1,
 	ressize:1,
-	succubus:1,
+	baseleadership:1,
 	
 	researchbonus:1, listed_mpath:1, 
 	n_domsummon:1, n_makemonster:1, n_autosum:1, n_summon:1,	
