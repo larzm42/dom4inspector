@@ -1423,7 +1423,8 @@ var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 	'magicpower',	'magic power',
 	'waterbreathing',	'waterbreathing',
 	'giftofwater',	'gift of waterbreathing',
-	
+	'uwregen',	'uw regeneration',	Format.Percent,
+
 	'springpower',	'spring power',
 	'summerpower',	'summer power',
 	'fallpower',	'fall power',

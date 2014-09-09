@@ -21,6 +21,13 @@ MItem.initItem = function(o) {
 MItem.prepareData_PreMod = function() {
 	for (var oi=0, o;  o= modctx.itemdata[oi];  oi++) {
 		o.nations = [];
+
+		o.restricted = [];
+		var nations = Utils.keyListToTable(o, 'restricted');
+		for (var oj=0, nation; nation = nations[oj]; oj++) {
+			o.restricted.push(nation);
+		}
+
 	}
 }
 
@@ -44,6 +51,9 @@ MItem.prepareData_PostMod = function() {
 		if (o.descr)
 			o.descr = '<p>' + o.descr.replace('\n','</p><p>') + '</p>';	
 		
+		if (o.restricted && o.restricted.length == 0) {
+			delete o.restricted;
+		}
 		
 		//serachable string
 		o.searchable = o.name.toLowerCase();
@@ -378,6 +388,7 @@ var displayorder2 = DMI.Utils.cutDisplayOrder(aliases, formats,
 
 	'airshield',	'air shield',		Format.Percent,
 	'mr',		'magic resistance',	Format.Signed,
+	'limitedregeneration',	'limited regeneration',		Format.Percent,
 	'regeneration',	'regeneration',		Format.Percent,
 	
 	'spelleffect',	'bearer affected by spell',	Utils.spellRef,
@@ -395,7 +406,8 @@ var displayorder2 = DMI.Utils.cutDisplayOrder(aliases, formats,
 	
 	'shockres',	'resist shock',		Format.Signed,
 	'woundfend',	'affliction protection',		Format.Percent,
-	
+	'taint',	'horrormark chance', Format.Percent,
+
 	'morale',		'morale bonus',		Format.Signed,
 	'exp',		'experience bonus',	Format.SignedPerTurn,
 	'researchbonus',	'research bonus',	Format.Signed,
@@ -429,10 +441,18 @@ var displayorder2 = DMI.Utils.cutDisplayOrder(aliases, formats,
 	'corpselord',		'corpse lord',		function(v){ return '+'+v+' '+Utils.unitRef(534)+' construction'; },
 	
 	'startbattlespell',	'start battle spell',	Utils.spellRef,
-	//'ritual',		'overland spell',	Utils.spellRef,
 	'autocombatspell',	'auto spell',	Utils.spellRef,
 	'itemspell',		'spell',		Utils.spellRef,
-	
+	'restricted', 'restricted', function(v,o)
+	{ 
+		var restrictedString = '';
+		for (var i=0, k; k=o.restricted[i]; i++) {
+			restrictedString = restrictedString + Utils.nationRef(k) + '<br/>';
+		}
+		return restrictedString; 
+		
+	},
+
 	'ldr-n',		'leadership',		Format.Signed,
 	'ldr-m',		'leadership (magic)',	Format.Signed,
 	'ldr-u',		'leadership (undead)',	Format.Signed,
@@ -484,7 +504,6 @@ var displayorder2 = DMI.Utils.cutDisplayOrder(aliases, formats,
 var flagorder = DMI.Utils.cutDisplayOrder(aliases, formats,
 [
 //	dbase key	displayed key		function/dict to format value
-	'taint',	'horrormark chance',
 	'eth',		'ethereal',
 	'mount',	'mountain survival',
 	'forest',	'forest survival',
