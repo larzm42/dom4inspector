@@ -106,6 +106,7 @@ MItem.prepareData_PostMod = function() {
 			for (var j=0; j<parseInt(o[p]); j++) 
 				o.boosters += p;
 		}
+		
 		//lookup weapon
 		if (o.weapon) {
 			w = modctx.wpnlookup[o.weapon];
@@ -123,7 +124,7 @@ MItem.prepareData_PostMod = function() {
 				o.wpnclass = 'melee';
 		}
 			
-		if (o.boosters)
+		if (o.boosters && o.boosters != "")
 			o.boosters = '+'+o.boosters;
 		
 		if (o.spell) {
@@ -466,7 +467,6 @@ var displayorder2 = DMI.Utils.cutDisplayOrder(aliases, formats,
 	'insa',		'bearer grows insane',	function(v){ return '+'+v+'% chance per turn'; },
 	'horrormarks',		'horror marks bearer',	function(v){ return v+'% chance per turn'; },
 	'berserk',		'berserk when wounded',	Format.SignedZero,
-	'bers',		'gone berserk',		Format.SignedZero,
 	'awe',			'awe',			Format.SignedZero,
 	'animalawe',			'animal awe',		Format.SignedZero,
 	'fear',			'fear',			Format.SignedZero,
@@ -514,6 +514,7 @@ var flagorder = DMI.Utils.cutDisplayOrder(aliases, formats,
 	'trample',	'trample',
 	'fly',		'flying',
 	'quick',	'quickness',
+	'bers',		'gone berserk',
 	'disease',	'diseases bearer',
 	'reaper',	'spreads disease',
 	'crossbreeder',	'crossbreeding bonus',
