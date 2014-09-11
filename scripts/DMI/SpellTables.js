@@ -165,7 +165,7 @@ MSpell.uniqueSummon = {
 		15:	/* Unknown */ [
 		    ],
    	    16:	/* Greater Daeva */ [
-   	        2612, 2613, 2614, 2615, 2616, 2617, 2632, 2634]
+   	        2612, 2613, 2614, 2615, 2616, 2617]
 }
 
 MSpell.terrainSummon = {
