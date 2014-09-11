@@ -495,6 +495,7 @@ var displayorder2 = DMI.Utils.cutDisplayOrder(aliases, formats,
 	'gold', 		'gold generation',	Format.PerTurn, 
 	'bloodsac',		'blood sacrifice',	Format.Signed,
 	'mastersmith',	'master smith',	
+	'armysize',		'army size report',	Format.Signed,
 
 	//'sumrit',		'ritual summoned unit',	Utils.unitRef,
 	//'#sumrit',		'ritual summoned amount',
