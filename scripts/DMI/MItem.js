@@ -359,6 +359,15 @@ var displayorder_armor = DMI.Utils.cutDisplayOrder(aliases, formats,
 var displayorder2 = DMI.Utils.cutDisplayOrder(aliases, formats,
 [
 	'boosters',	'magic bonus',		Format.Booster,
+	'restricted', 'restricted', function(v,o)
+	{ 
+		var restrictedString = '';
+		for (var i=0, k; k=o.restricted[i]; i++) {
+			restrictedString = restrictedString + Utils.nationRef(k) + '<br/>';
+		}
+		return restrictedString; 
+		
+	},
 	'pen',		'magic penetration',
 
 	'ap',		'bonus action points',
@@ -408,6 +417,7 @@ var displayorder2 = DMI.Utils.cutDisplayOrder(aliases, formats,
 	'shockres',	'resist shock',		Format.Signed,
 	'woundfend',	'affliction protection',		Format.Percent,
 	'taint',	'horrormark chance', Format.Percent,
+	'aging',	'advanced aging', 
 
 	'morale',		'morale bonus',		Format.Signed,
 	'exp',		'experience bonus',	Format.SignedPerTurn,
@@ -422,8 +432,8 @@ var displayorder2 = DMI.Utils.cutDisplayOrder(aliases, formats,
 	'naturerange',	'nature ritual range bonus',	Format.Signed,
 	'bloodrange',	'blood ritual range bonus',	Format.Signed,
 	
-	'sumbat',	'monster autosummons', Utils.unitRef,
-	'#sumbat',	'number of autosummons',
+	//'sumbat',	'monster autosummons', Utils.unitRef,
+	//'#sumbat',	'number of autosummons',
 	'batstartsum',	'summons in battle',	function(v,o){ 
 		return Utils.is(o.n_batstartsum) ?  Utils.unitRef(v)+' x '+o.n_batstartsum  :  Utils.unitRef(v); 
 	},
@@ -437,22 +447,15 @@ var displayorder2 = DMI.Utils.cutDisplayOrder(aliases, formats,
 	'taskmaster',	'taskmaster',
 	'poisoncloud', 'poison cloud',
 	'diseasecloud',	'disease cloud',
+	'alch', 'alchemy bonus', Format.Percent,
 	
-	'ivylord',		'ivy lord',		function(v){ return '+'+v+' '+Utils.unitRef(361)+' / '+Utils.unitRef(362)+' awakening'; },
+	'ivylord',		'ivy lord',
 	'corpselord',		'corpse lord',		function(v){ return '+'+v+' '+Utils.unitRef(534)+' construction'; },
+	'lictorlord',		'lictor lord',		function(v){ return '+'+v+' '+Utils.unitRef(259)+' summoning'; },
 	
 	'startbattlespell',	'start battle spell',	Utils.spellRef,
 	'autocombatspell',	'auto spell',	Utils.spellRef,
 	'itemspell',		'spell',		Utils.spellRef,
-	'restricted', 'restricted', function(v,o)
-	{ 
-		var restrictedString = '';
-		for (var i=0, k; k=o.restricted[i]; i++) {
-			restrictedString = restrictedString + Utils.nationRef(k) + '<br/>';
-		}
-		return restrictedString; 
-		
-	},
 
 	'ldr-n',		'leadership',		Format.Signed,
 	'ldr-m',		'leadership (magic)',	Format.Signed,
@@ -490,11 +493,13 @@ var displayorder2 = DMI.Utils.cutDisplayOrder(aliases, formats,
 	'stealth',		'stealth',	Format.Signed,
 	'stealthb',		'stealth bonus',	Format.Signed,
 	'gold', 		'gold generation',	Format.PerTurn, 
+	'bloodsac',		'blood sacrifice',	Format.Signed,
+	'mastersmith',	'master smith',	
 
-	'sumrit',		'ritual summoned unit',	Utils.unitRef,
-	'#sumrit',		'ritual summoned amount',
+	//'sumrit',		'ritual summoned unit',	Utils.unitRef,
+	//'#sumrit',		'ritual summoned amount',
 	'sumauto',		'auto summoned unit',	Utils.unitRef,
-	'#sumauto',		'auto summoned amount',
+	//'#sumauto',		'auto summoned amount',
 	
 	'affliction',		'afflicts bearer',	Utils.afflictionRef,
 	'cannotwear',		'restriction',		{2:'cannot be worn by mounted units', 1073741824:'cannot be worn by lifeless units'},
@@ -523,6 +528,7 @@ var flagorder = DMI.Utils.cutDisplayOrder(aliases, formats,
 	'luck',		'lucky',
 	'fluck',	'fool\'s luck',
 	'curse',	'curses bearer',
+	'eyeloss',	'cause eyeloss',
 	'nofind',	'won\'t be picked up',
 	'nomounted', 'cannot be used by mounted beings',
 	'nocoldblood', 'cannot be used by coldblooded beings',
