@@ -432,8 +432,6 @@ var displayorder2 = DMI.Utils.cutDisplayOrder(aliases, formats,
 	'naturerange',	'nature ritual range bonus',	Format.Signed,
 	'bloodrange',	'blood ritual range bonus',	Format.Signed,
 	
-	//'sumbat',	'monster autosummons', Utils.unitRef,
-	//'#sumbat',	'number of autosummons',
 	'batstartsum',	'summons in battle',	function(v,o){ 
 		return Utils.is(o.n_batstartsum) ?  Utils.unitRef(v)+' x '+o.n_batstartsum  :  Utils.unitRef(v); 
 	},
@@ -496,14 +494,12 @@ var displayorder2 = DMI.Utils.cutDisplayOrder(aliases, formats,
 	'bloodsac',		'blood sacrifice',	Format.Signed,
 	'mastersmith',	'master smith',	
 	'armysize',		'army size report',	Format.Signed,
+	'defender',		'may be attacked by',	Utils.unitRef,
 
-	//'sumrit',		'ritual summoned unit',	Utils.unitRef,
-	//'#sumrit',		'ritual summoned amount',
 	'sumauto',		'auto summoned unit',	Utils.unitRef,
-	//'#sumauto',		'auto summoned amount',
 	
 	'affliction',		'afflicts bearer',	Utils.afflictionRef,
-	'cannotwear',		'restriction',		{2:'cannot be worn by mounted units', 1073741824:'cannot be worn by lifeless units'},
+	'cannotwear',		'restriction',		{2:'cannot be worn by mounted units', 536870912:'can only be worn by coldblooded units', 1073741824:'cannot be worn by inanimate units'},
 	'restrictions',		'restrictions',		
 	'special',		'special',		Utils.parseObjectRefs
 ]);

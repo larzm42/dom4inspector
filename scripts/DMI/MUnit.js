@@ -1831,7 +1831,7 @@ MUnit.renderOverlay = function(o, isPopup) {
 		// h+= ' New magic paths cost<span class="internal-inline"> [pathcost]</span>: '+o.pathcost + ' pts ';
 		
 		h+='<br />';
-		h+= ' Dominion<span class="internal-inline"> [startdom]</span>: '+o.startdom;
+		h+= ' Dominion<span class="internal-inline"> [startdom]</span>: '+(o.startdom ? o.startdom : '1');
 		h+='</p>';
 		isfree = noupkeep = true;
 	}
