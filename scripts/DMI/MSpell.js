@@ -610,6 +610,8 @@ var ignorekeys = {
 };		
 
 MSpell.renderOverlay = function(o) {
+	var descrpath = 'gamedata/spelldescr/';
+
 	//template
 	var h='';
 	h+='<div class="spell overlay-contents"> ';
@@ -644,9 +646,17 @@ MSpell.renderOverlay = function(o) {
 	h+='	</div>';
 	h+='	<div class="overlay-footer">';
 	
-	if (o.description) {
-	h+='		<div class="overlay-descr pane-extension"><p>'+o.description.replace(/\"/g, '')+'</p></div>';
-	}
+	//descr
+	var uid = 'c'+(Math.random());
+	uid = uid.replace('.','');
+	h+='		<div class="overlay-descr pane-extension '+uid+'"></div>';
+	
+	if (o.descr)
+			Utils.insertContent( '<p>'+o.descr+'</p>', 'div.'+uid );
+	else {
+			 var url = descrpath + Utils.descrFilename(o.name);
+			 Utils.loadContent( url, 'div.'+uid );
+	}	
 
 	h+='	</div> ';
 	h+='</div> ';
