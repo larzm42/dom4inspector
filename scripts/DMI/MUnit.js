@@ -1518,6 +1518,7 @@ var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 	'deathparalyze', 'paralyze on death',
 	'special',	'special',
 	'explodeondeath',	'explode on death',
+	'transformation', 'transformation', {'-1': 'bad result', '1': 'good result ' },
 	'realms', 'realm', function(v,o)
 	{ 
 		var realmString = '';
