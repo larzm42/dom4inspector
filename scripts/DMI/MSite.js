@@ -70,15 +70,25 @@ MSite.prepareData_PostMod = function() {
 			o.lab = 1;
 		}
 		
+		if (o.rarity) {
+			o.rarity = parseInt(o.rarity);
+		}
+		
 		//searchable string
 		o.searchable = o.name.toLowerCase();
 
 		if (!o.scale1) {
 			o.scale1 = '';
+			o.scale1sort = 'z';
+		} else {
+			o.scale1sort = o.scale1;
 		}
 		
 		if (!o.scale2) {
 			o.scale2 = '';
+			o.scale2sort = 'z';
+		} else {
+			o.scale2sort = o.scale2;
 		}
 		
 		//magic paths
@@ -245,15 +255,17 @@ MSite.prepareData_PostMod = function() {
 //////////////////////////////////////////////////////////////////////////
 // DEFINE GRID
 //////////////////////////////////////////////////////////////////////////
+function formatScale(_,__,v){ return v=='z' ? "" : v; }
 
 MSite.CGrid = Utils.Class( DMI.CGrid, function() {
 	//grid columns
 	var columns = [
 		{ id: "name",     width: 145, name: "Site Name", field: "name", sortable: true },
 		{ id: "level",     width: 40, name: "Level", field: "level", sortable: true },
+		{ id: "rarirt",     width: 40, name: "Rarity", field: "rarity", sortable: true },
 		{ id: "path",      width: 50, name: "Path", field: "path", sortable: true },
-		{ id: "scale1",      width: 50, name: "Scale", field: "scale1", sortable: true },
-		{ id: "scale2",      width: 50, name: "Scale", field: "scale2", sortable: true },
+		{ id: "scale1",      width: 50, name: "Scale", field: "scale1sort", sortable: true, formatter: formatScale  },
+		{ id: "scale2",      width: 50, name: "Scale", field: "scale2sort", sortable: true, formatter: formatScale },
 		{ id: "listed_gempath",    width: 120, name: "Gems", field: "listed_gempath", sortable: true, formatter: DMI.GridFormat.OrderedPaths },
 	];
 	
@@ -564,6 +576,7 @@ var ignorekeys = {
 	n_sum1:1, n_sum2:1, n_sum3:1,
 	A:1, B:1, D:1, E:1, F:1, N:1, S:1, W:1, H:1,
 	ritrng:1, listed_gempath:1,
+	scale1sort:1, scale2sort:1,
 	
 	//common fields
 	name:1,descr:1,
