@@ -29,25 +29,46 @@ MSite.ritual_string = {
 MSite.initSite = function(o) {
 	o.hmon = [];
 	o.hcom = [];	
+	o.mon = [];
+	o.com = [];	
 	o.sum = [];	
+	o.provdef = [];	
 }
 MSite.prepareData_PreMod = function() {
 	for (var oi=0, o;  o= modctx.sitedata[oi];  oi++) {
 		o.hmon = [];
 		o.hcom = [];	
+		o.mon = [];
+		o.com = [];	
 		o.sum = [];	
+		o.provdef = [];	
 		var capunit = Utils.keyListToTable(o, 'hmon');
 		for (var oj=0, cap; cap = capunit[oj]; oj++) {
-			var u = modctx.unitlookup[cap];
-			if (u.type == 'c') {
-				o.hcom.push(cap);
-			} else {
-				o.hmon.push(cap);
-			}
+			o.hmon.push(cap);
+		}
+		var capcom = Utils.keyListToTable(o, 'hcom');
+		for (var oj=0, cap; cap = capcom[oj]; oj++) {
+			o.hcom.push(cap);
+		}
+		var capcom = Utils.keyListToTable(o, 'hcom');
+		for (var oj=0, cap; cap = capcom[oj]; oj++) {
+			o.hcom.push(cap);
+		}
+		var mon = Utils.keyListToTable(o, 'mon');
+		for (var oj=0, cap; cap = mon[oj]; oj++) {
+			o.mon.push(cap);
+		}
+		var com = Utils.keyListToTable(o, 'com');
+		for (var oj=0, cap; cap = com[oj]; oj++) {
+			o.com.push(cap);
 		}
 		var summons = Utils.keyListToTable(o, 'sum');
 		for (var oj=0, cap; cap = summons[oj]; oj++) {
 			o.sum.push(cap);
+		}
+		var provdef = Utils.keyListToTable(o, 'provdef');
+		for (var oj=0, cap; cap = provdef[oj]; oj++) {
+			o.provdef.push(cap);
 		}
 	}
 }
@@ -91,50 +112,15 @@ MSite.prepareData_PostMod = function() {
 			o.scale2sort = o.scale2;
 		}
 		
-		//magic paths
+		//magic gems
 		o.mpath = '';
-		var research = 0;
 		for (var i=0; i<modconstants.pathkeys.length; i++) {
 			var k = modconstants.pathkeys[i];
 			var plevel  = o[k];
 			
-			// apply bonus
-			if (o.pathboost) {
-				// Only support +1 for now
-				if (o.pathboost.indexOf('1') == 0) {
-					if (k == 'F' && o.pathboost.indexOf('f') != -1) {
-						plevel = parseInt(plevel) + 1;
-					}
-					if (k == 'A' && o.pathboost.indexOf('A') != -1) {
-						plevel = parseInt(plevel) + 1;
-					}
-					if (k == 'W' && o.pathboost.indexOf('W') != -1) {
-						plevel = parseInt(plevel) + 1;
-					}
-					if (k == 'E' && o.pathboost.indexOf('E') != -1) {
-						plevel = parseInt(plevel) + 1;
-					}
-					if (k == 'S' && o.pathboost.indexOf('S') != -1) {
-						plevel = parseInt(plevel) + 1;
-					}
-					if (k == 'D' && o.pathboost.indexOf('D') != -1) {
-						plevel = parseInt(plevel) + 1;
-					}
-					if (k == 'N' && o.pathboost.indexOf('N') != -1) {
-						plevel = parseInt(plevel) + 1;
-					}
-					if (k == 'B' && o.pathboost.indexOf('B') != -1) {
-						plevel = parseInt(plevel) + 1;
-					}
-				}
-			}
 			//append to pathcost code
 			if (Utils.is(plevel)) {
 				o.mpath +=  k + plevel + ' '; //string
-				
-				//add to research total
-				if (k != 'H')
-					research += parseInt(plevel);
 			}
 		}		
 		
@@ -142,6 +128,18 @@ MSite.prepareData_PostMod = function() {
 			o.listed_gempath = '0'+o.mpath;
 		else o.listed_gempath = '';
 
+		//magic gems when claimed
+		o.mpath2 = '';
+		for (var i=0; i<modconstants.pathkeys.length; i++) {
+			var k = modconstants.pathkeys[i];
+			var plevel  = o[k + '2'];
+			
+			//append to pathcost code
+			if (Utils.is(plevel)) {
+				o.mpath2 +=  k + plevel + ' '; //string
+			}
+		}		
+		
 		o.nations = [];
 		for (var nati=0, nat;  nat= modctx.nationdata[nati];  nati++) {
 			if (nat.sites.indexOf(o.id) != -1) {
@@ -150,6 +148,9 @@ MSite.prepareData_PostMod = function() {
 		}
 		if (o.nations.length == 0) {
 			delete o.nations;
+		}
+		if (o.provdef.length == 0) {
+			delete o.provdef;
 		}
 		if (o.hcom.length == 0) {
 			delete o.hcom;
@@ -205,6 +206,70 @@ MSite.prepareData_PostMod = function() {
 				}
 				if (!found) {
 					for (var cc=0; uid=o.hmon[cc]; cc++) {
+						for (var uniti=0, unit;  unit= modctx.unitdata[uniti];  uniti++) {
+							if (Math.round(unit.id) == uid && unit.nations && o.nations) {
+								unit.recruitedby = unit.recruitedby || [];
+								unit.recruitedby.push( o );
+							}
+						}
+					}
+				}
+			}
+		}
+		if (o.com.length == 0) {
+			delete o.com;
+		} else {
+			for (var cc=0; uid=o.com[cc]; cc++) {
+				var found = false;
+				for (var uniti=0, unit;  unit= modctx.unitdata[uniti];  uniti++) {
+					if (Math.round(unit.id) == uid && unit.nations && o.nations) {
+						for (var ii=0,natid; natid=o.nations[ii]; ii++) {
+							if (unit.nations[natid] && !found) {
+								unit.recruitedby = unit.recruitedby || [];
+								unit.recruitedby.push( o );
+								found = true;
+							}
+						}
+					} else if (Math.round(unit.id) == uid && !found) {
+						unit.recruitedby = unit.recruitedby || [];
+						unit.recruitedby.push( o );
+						found = true;
+					}
+				}
+				if (!found) {
+					for (var cc=0; uid=o.com[cc]; cc++) {
+						for (var uniti=0, unit;  unit= modctx.unitdata[uniti];  uniti++) {
+							if (Math.round(unit.id) == uid && unit.nations && o.nations) {
+								unit.recruitedby = unit.recruitedby || [];
+								unit.recruitedby.push( o );
+							}
+						}
+					}
+				}
+			}
+		}
+		if (o.mon.length == 0) {
+			delete o.mon;
+		} else {
+			for (var cc=0; uid=o.mon[cc]; cc++) {
+				var found = false;
+				for (var uniti=0, unit;  unit= modctx.unitdata[uniti];  uniti++) {
+					if (Math.round(unit.id) == uid && unit.nations && o.nations) {
+						for (var ii=0,natid; natid=o.nations[ii]; ii++) {
+							if (unit.nations[natid] && !found) {
+								unit.recruitedby = unit.recruitedby || [];
+								unit.recruitedby.push( o );
+								found = true;
+							}
+						}
+					} else if (Math.round(unit.id) == uid && !found) {
+						unit.recruitedby = unit.recruitedby || [];
+						unit.recruitedby.push( o );
+						found = true;
+					}
+				}
+				if (!found) {
+					for (var cc=0; uid=o.mon[cc]; cc++) {
 						for (var uniti=0, unit;  unit= modctx.unitdata[uniti];  uniti++) {
 							if (Math.round(unit.id) == uid && unit.nations && o.nations) {
 								unit.recruitedby = unit.recruitedby || [];
@@ -462,8 +527,10 @@ var displayorder = DMI.Utils.cutDisplayOrder(aliases, formats,
 	'mpath',	'gems',	function(v,o){
 		return Format.Paths(v.replace(/U\d*/, function(s){return Utils.rndMagicRef(Math.floor(o.id), s);}));
 	},
+	'mpath2',	'gems when claimed',	function(v,o){
+		return Format.Paths(v.replace(/U\d*/, function(s){return Utils.rndMagicRef(Math.floor(o.id), s);}));
+	},
 	'rarity', 'rarity',
-	'loc', 'location', function(v,o){ return Utils.renderFlags(MSite.bitfieldValues(o.loc, modctx.site_terrain_types_lookup), 1) },
 	'gold', 'generates gold',
 	'res', 'generates resources',
 	'sup', 'supply bonus',
@@ -540,18 +607,32 @@ var displayorder = DMI.Utils.cutDisplayOrder(aliases, formats,
 	'mor', 'morale,', Format.Signed,
 	'undying', 'undying',
 	'att', 'attack', Format.Signed,
+	'def', 'defense', Format.Signed,
 	'darkvision', 'darkvision',
 	'aawe', 'animal awe',
+	'awe', 'awe',
+	'reinvigoration', 'reinvigoration',
+	'reveal', 'reveals', {0: 'mundane score graphs', 3: 'magic score graphs', 5: 'dominion score graphs', 999: 'all score graphs'},
 	'rit', 'ritual range', function(v,o){
 		return MSite.ritual_string[v] + ' +' + o.ritrng;
 	},
-	'hcom',	'commanders',	function(v,o){ 
+	'loc', 'location', function(v,o){ return Utils.renderFlags(MSite.bitfieldValues(o.loc, modctx.site_terrain_types_lookup), 1) },
+	'hcom',	'home commanders',	function(v,o){ 
 		return list_units(v, o); 
 	},
-	'hmon',	'units',	function(v,o){ 
+	'hmon',	'home units',	function(v,o){ 
+		return list_units(v, o); 
+	},
+	'com',	'commanders',	function(v,o){ 
+		return list_units(v, o); 
+	},
+	'mon',	'units',	function(v,o){ 
 		return list_units(v, o); 
 	},
 	'sum',	'summon',	function(v,o){ 
+		return list_units(v, o); 
+	},
+	'provdef',	'extra province defence',	function(v,o){ 
 		return list_units(v, o); 
 	},
 	'nations', 'start site', list_nations,
@@ -573,8 +654,9 @@ var modderkeys = Utils.cutDisplayOrder(aliases, formats,
 var ignorekeys = {
 	modded:1,
 	path:1, level:1,
-	n_sum1:1, n_sum2:1, n_sum3:1,
+	n_sum1:1, n_sum2:1, n_sum3:1, n_sum4:1,
 	A:1, B:1, D:1, E:1, F:1, N:1, S:1, W:1, H:1,
+	A2:1, B2:1, D2:1, E2:1, F2:1, N2:1, S2:1, W2:1, H2:1,
 	ritrng:1, listed_gempath:1,
 	scale1sort:1, scale2sort:1,
 	
