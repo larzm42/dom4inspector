@@ -172,7 +172,7 @@ MSpell.prepareData_PostMod = function() {
 			o.fatiguecostsort = -1;
 		} else {
 			if (parseInt(o.gemcost) > 0) {
-				o.fatiguecost = parseInt(o.gemcost) * 100;
+				o.fatiguecost += parseInt(o.gemcost) * 100;
 			}
 			o.fatiguecostsort = parseInt(o.fatiguecost);
 		}
