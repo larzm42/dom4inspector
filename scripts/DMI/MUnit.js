@@ -305,9 +305,15 @@ MUnit.prepareData_PostMod = function() {
 			research *= 2;
 			research += 5;
 		}
+		
 		//add research bonus
 		if (is(o.researchbonus)) 
 			research += parseInt(o.researchbonus);
+		
+		// add fixed research
+		if (is(o.fixedresearch)) {
+			research += parseInt(o.fixedresearch);
+		}
 		
 		//append research to pathcode
 		if (research) 
@@ -1371,24 +1377,6 @@ var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 	'maxage',	'age',	function(v,o){ return o.startage + ' ('+v+')'; },
 	'gcost', 'basecost',
 	
-	'gA',		'generates fire gems',		function(v){ return v!='0' && Format.PerTurn(Format.Gems(v+'A')); },
-	'gB',		'generates blood slaves',	function(v){ return v!='0' && Format.PerTurn(Format.Gems(v+'B')); },
-	'gD',		'generates death gems',		function(v){ return v!='0' && Format.PerTurn(Format.Gems(v+'D')); },
-	'gE',		'generates earth gems',		function(v){ return v!='0' && Format.PerTurn(Format.Gems(v+'E')); },
-	'gF',		'generates fire gems',		function(v){ return v!='0' && Format.PerTurn(Format.Gems(v+'F')); },
-	'gS',		'generates astral gems',	function(v){ return v!='0' && Format.PerTurn(Format.Gems(v+'S')); },
-	'gN',		'generates nature gems',	function(v){ return v!='0' && Format.PerTurn(Format.Gems(v+'N')); },
-	'gW',		'generates water gems',		function(v){ return v!='0' && Format.PerTurn(Format.Gems(v+'W')); },
-	
-	'tmpfiregems', 'temp fire gems',
-	'tmpairgems', 'temp air gems',
-	'tmpwatergems', 'temp water gems',
-	'tmpearthgems', 'temp earth gems',
-	'tmpastralgems', 'temp astral gems',
-	'tmpdeathgems', 'temp death gems',
-	'tmpnaturegems', 'temp nature gems',
-	'tmpbloodslaves', 'temp blood slaves',
-
 	'reclimit',		'recruitment limit',	Format.PerTurn,
 	'gemprod',	'generates gems',	function(v){ return v!='0' && Format.PerTurn(Format.Gems(v)); },
 
@@ -1447,7 +1435,6 @@ var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 	'incprovdef',	'defence organizer',
 	'adept_research',	'adept researcher',
 	'inept_research',	'inept researcher',
-	'divineins',	'max divinely inspired researchers',
 	
 	'makepearls','pearl cultivator',
 	'sailsz',	'sailing size',
@@ -1481,7 +1468,6 @@ var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 	'patrolbonus',	'patrol bonus',		Format.Signed,
 	'pillagebonus',	'pillage bonus',	Format.Signed,
 	'alch',		'alchemy bonus',	Format.Percent,
-	'forgebonus',	'forge bonus',		Format.Percent,
 	'fixforgebonus',	'forge bonus',	
 	'mastersmith',	'master smith',	
 	'douse',	'blood hunt bonus',	Format.Signed,
@@ -1491,6 +1477,7 @@ var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 	'incunrest',	'increases unrest',	Format.SignedPerTurn,
 	'diseasecloud',	'spreads plague',
 	'kokytosret', 	'kokytos returning',	Format.Percent,
+	'lamiabonus', 'lamia bonus',
 	
 	'seduce',	'dream seduction',	function(v){ if (v=='0') return '0'; return 'morale vs '+v; },
 	'succubus',	'seduction',	function(v){ if (v=='0') return '0'; return 'morale vs '+v; },
@@ -1648,8 +1635,8 @@ var flagorder = Utils.cutDisplayOrder(aliases, formats,
 	'drainimmune',	'ignores drain scales',
 	'taxcollector',		'tax collector',
 	'gold',		'gold',
-	'gem',		'gem collector',
-		
+	'divineins',	'divinely inspired',
+
 	'coldblood',	'cold blooded',
 	'pooramphibian','poor amphibian',
 	'amphibian',	'amphibious',
@@ -1717,7 +1704,7 @@ var ignorekeys = {
 	ressize:1,
 	baseleadership:1,
 	
-	researchbonus:1, listed_mpath:1, 
+	researchbonus:1, listed_mpath:1, fixedresearch:1,
 	n_domsummon:1, n_makemonster:1, n_autosum:1, n_summon:1,	
 	
 	hand:1, head:1, body:1, foot:1, misc:1, 
