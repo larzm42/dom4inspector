@@ -145,14 +145,33 @@ MSpell.prepareData_PostMod = function() {
 						if (effects.range_base == "0") {
 							o.aoe_s = "Caster";
 						} else {
-							o.aoe_s = "One person";
+							if (effects.effect_number == "1" ||
+								effects.effect_number == "21" ||
+								effects.effect_number == "26" ||
+								effects.effect_number == "31" ||
+								effects.effect_number == "37" ||
+								effects.effect_number == "38" ||
+								effects.effect_number == "43" ||
+								effects.effect_number == "50" ||
+								effects.effect_number == "81" ||
+								effects.effect_number == "93" ||
+								effects.effect_number == "119" ||
+								effects.effect_number == "76" || 
+								effects.effect_number == "89" || 
+								effects.effect_number == "100" || 
+								effects.effect_number == "114") {
+								delete o.aoe_s;
+								delete o.rng_bat;
+							} else {
+								o.aoe_s = "One person";
+							}
 						}
 					} else {
 						delete o.aoe_s;
 					}
 				}
 			}
-			if (parseInt(o.effects_count) > 1) {
+			if (parseInt(o.effects_count) > 0) {
 				o.nreff = o.effects_count;
 			}
 			if (effects.area_battlefield_pct) {
@@ -570,8 +589,8 @@ var displayorder = Utils.cutDisplayOrder(aliases, formats,
 	'provrange',	'range', 		function(v,o){ return o.provrange == 1 ? v+' province' : v+' provinces' },
 	'aoe_s',	'area of effect', 	MSpell.formatAoe,
 	'nreff', 	'number of effects',	function(v,o){ return o.effplus ? v+'+' : v; },
+	'precision',	'precision',
 	'fatiguecost',	'fatigue cost',		function(v){ return v+'-'; },
-	'precision',	'precision',	{0: '0 '},	
 	'duration',	'duration',	function(v,o){ return o.duration == 1 ? v+' round' : v+' rounds' },
 	'gemcost',	'gems required',	Format.Gems,
 	'onlyowndst', 'target own province', {0:'false', 1:'true'},

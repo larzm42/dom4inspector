@@ -202,6 +202,13 @@ MUnit.prepareData_PostMod = function() {
 			delete o.realms;
 		}
 		
+		if (o.mind) {
+			delete o.mind;
+		}
+		if (o.mor && parseInt(o.mor) == 50) {
+			o.mind = '1';
+		}
+		
 		//unique
 		o.linkname = o.fullname = (o.name || '(undefined)');
 		if (o.fixedname) {
@@ -1605,6 +1612,7 @@ var flagorder = Utils.cutDisplayOrder(aliases, formats,
 	'immobile',	'immobile',
 	'formationfighter',	'formation fighter',
 	'undisciplined',	'undisciplined',
+	'pooramphibian','poor amphibian',
 	'slashres',	'slash resistant',
 	'bluntres',	'blunt resistant',
 	'pierceres',	'pierce resistant',
@@ -1612,10 +1620,8 @@ var flagorder = Utils.cutDisplayOrder(aliases, formats,
 
 	'animal',	'animal',
 	'undead',	'undead',
-	'demon',	'demon',
 	'magicbeing',	'magic being',
-	'inanimate',	'inanimate',
-	'mind',		'mindless',
+	'inanimate',	'lifeless',
 	'ethereal',	'ethereal',
 	'ethtrue',	'true ethereal',
 	'illusion',	'glamour',	
@@ -1628,7 +1634,6 @@ var flagorder = Utils.cutDisplayOrder(aliases, formats,
 	
 	'trample',	'trample',
 	'trampswallow',	'swallow',
-	'heal',		'recuperation',
 	'spy',		'spy',
 	'scalewalls',		'scale walls',
 	'assassin',	'assassin',
@@ -1638,10 +1643,11 @@ var flagorder = Utils.cutDisplayOrder(aliases, formats,
 	'divineins',	'divinely inspired',
 
 	'coldblood',	'cold blooded',
-	'pooramphibian','poor amphibian',
 	'amphibian',	'amphibious',
 	'aquatic',		'aquatic',
 	'neednoteat',	'need not eat',
+	'demon',	'demon',
+	'mind',		'mindless',
 	'noheal',	'only heals in lab',
 	'deathcurse',	'death curse',
 	'float',	'floating',
@@ -1652,7 +1658,8 @@ var flagorder = Utils.cutDisplayOrder(aliases, formats,
 	'mountainsurvival',	'mountain survival',
 	'swampsurvival',	'swamp survival',
 	'forestsurvival',	'forest survival',
-	
+	'heal',		'recuperation',
+
 	'female',	'female',
 	'stonebeing',	'stone being',
 	

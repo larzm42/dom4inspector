@@ -267,7 +267,7 @@ id	name	type	constlevel	mainpath	mainlevel	secondarypath	secondarylevel	weapon	a
 266	Dancing Trident	misc	4	A	1			121																																																																																																																																																		
 267	Wall Shaker	misc	4	A	3																																																																																																															25														Panic																								
 268	Bag of Winds	misc	4	A	5																												1																														1											1																																																						Summon Lesser Air Elemental																										
-269	Flying Carpet	misc	4	A	3																																													14																																																																																										flytr points indicate total size														
+269	Flying Carpet	misc	4	A	3																																													14																																																																																																								
 270	Dancing Shield	misc	4	A	1	E	1																	20																																																																																																																				50% chance to block any incoming attack that is not AN														
 271	Enchanted Mirror	misc	4	A	2																																																																																																																																																		75			
 272	Cauldron of the Elven Halls	misc	4	A	3																																																																																																																																																		-75			
@@ -325,7 +325,7 @@ id	name	type	constlevel	mainpath	mainlevel	secondarypath	secondarylevel	weapon	a
 324	Fever Fetish	misc	8	F	1	N	1																																																			1																																								*																																										gem production not automatic, chance based on how many hit points wearer has lost to disease														
 325	The Ark	misc	8	F	6	S	6																																																																																																																									Ark												Spreads dominion, causes disease among non-sacred units														
 326	Amulet of the Doppelganger	misc	8	A	3																																50																																																																																																																					
-327	The Flying Ship	misc	8	A	5																																																																																																																																							grants flying movement to army														
+327	The Flying Ship	misc	8	A	5																																													500																																																																																																								
 328	Igor Könhelm's Tome	misc	8	A	2	D	2																																																																																																																																					increased strength during storm (stormpower 5)						10								
 329	Tome of High Power	misc	8	A	2	S	2																																																					5														1			1					2	2	2	2	2	2	2	2																																																																	
 330	The Magic Lamp	misc	8	A	5	F	4																																																																																																																											Summon Jinn	Summon Jinn																							
@@ -356,7 +356,7 @@ id	name	type	constlevel	mainpath	mainlevel	secondarypath	secondarylevel	weapon	a
 355	The Chalice	misc	8	N	5	S	3													5																																																																																																														Banishment																								
 356	The Tome of Gaia	misc	8	N	2	E	2																																																																					1			1																																																																											
 357	The Manual of Cross Breeding	misc	8	B	3	N	3																																																					5																																																																	?																													
-358	The Gift of Kurgi	misc	8	B	6				94													10		10																			1									1					1		1	20						30																																																														Call Lesser Horror		Send Lesser Horror	Send Lesser Horror																					307		
+358	The Gift of Kurgi	misc	8	B	6				94													10		20																			1									1					1		1	20						30																																																														Call Lesser Horror		Send Lesser Horror	Send Lesser Horror																					307		
 359	Ardmon's Soul Trap	misc	8	B	3	S	1																					-2							-1																																																																																													Open Soul Trap												Stolen Strength (2) (strength loss is permanent)														
 360	Shortsword	2-h wpn	12	E	3			132							80																																																																																																																													Oberf?hrer the Hoburg Hero														
 361	Hammer of the Cyclops	2-h wpn	12	E	6			119																																																																																																																																				Polypercheron the Cyclops									1					
