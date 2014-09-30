@@ -770,17 +770,29 @@ MUnit.prepareForRender = function(o) {
 		
 		//default age
 		if (is(o.inanimate)) {
-			if (!o.startage) o.startage = '??';
+			if (!o.startage) o.startage = mult( 180, o.size );
 			if (!o.maxage) o.maxage = mult( 400, o.size );			
 			//if (o.E) bonus('earth magic', 'maxage', mult(o.maxage, parseInt(o.E) * 0.5));
 		}
 		else if (is(o.undead)) {
-			if (!o.startage) o.startage = '187';
+			if (!o.startage) {
+				if (o.maxage) {
+					o.startage = parseInt(mult(o.maxage, 0.4));
+				} else {
+					o.startage = '187';
+				}
+			}
 			if (!o.maxage) o.maxage = '500';
 			if (o.D) bonus('death magic', 'maxage', mult(o.maxage, parseInt(o.D) * 0.5));
 		}
 		else if (is(o.demon)) {
-			if (!o.startage) o.startage = '370';
+			if (!o.startage) {
+				if (o.maxage) {
+					o.startage = parseInt(mult(o.maxage, 0.4));
+				} else {
+					o.startage = '370';
+				}
+			}
 			if (!o.maxage) o.maxage = '1000';
 			if (o.B) bonus('blood magic', 'maxage', mult(o.maxage, parseInt(o.B) * 0.5));
 		}
