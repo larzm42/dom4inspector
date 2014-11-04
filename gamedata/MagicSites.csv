@@ -170,6 +170,16 @@ id	name	rarity	loc	level	path	F	A	W	E	S	D	N	B	gold	res	sup	unr	exp	lab	fort	scal
 169	Ravens Vale	5	0	0	Earth				1																																		2559																														2560																													
 170	Lake Urmia	5	0	0	Water		1	1		1																																	2592																																																											
 171	Mountain of the Everburning Caverns	5	0	0	Fire	1																																					2587																														2629																													
+172	Palace of the Sun Kings	5	0	0	Holy	1	1			1																																	2653																														2658	2659																												
+173	Tombs of the Sun Kings	5	0	0	Death				1		1																																2667																														2663																													
+174	Cavern of the Sun	5	0	0	Fire	3			1																																		2672																														2684																													
+175	House of Knives	5	0	0	Blood						2																																																														2736																													
+176	House of Jaguars	5	0	0	Blood																																																																				2736																													
+177	The Sacred Cenote	5	0	0	Water			1																																			2730	2731																													2732																													
+178	The Flooded City	5	0	0	Water			2	1																																		2729																														2714																													
+179	The Cave of Perpetual Darkness	5	0	0	Death						1																																																														2719																													
+180	The Flooded City	5	0	0	Water			1	1																																		2747																														2749																													
+181	The Obsidian Cavern	5	0	0	Death						2																																2743																														2754																													
 210	Tar Pits	0	219	1	Fire	1																																																																																																
 211	Sun Ridge	0	223	1	Fire	2																																																																																																
 212	Gold Apple Tree	1	223	2	Fire	2																																																																																																
@@ -960,7 +970,7 @@ id	name	rarity	loc	level	path	F	A	W	E	S	D	N	B	gold	res	sup	unr	exp	lab	fort	scal
 997	Tower of the Moon	2	16607	2	Nature																																												1224	1																																																				
 998	Vale of Healing Herbs	2	199	2	Nature																																																									2%																																								
 999	Slave Market	1	735	0	Blood								3				2																																																																																					
-1000	Secluded Village	0	2	1	Blood								1																																																																																									
+1000	Forgotten Village	0	2	1	Blood								1																																																																																									
 1001	Sacrificial Grove	1	18	1	Blood																																																								20%																																									
 1002	Bleeding Tree	2	2	1	Blood							1																																																																																										
 1003	Stained Altar	2	16607	1	Blood																																												1736	1											20%																																									
@@ -1006,4 +1016,5 @@ id	name	rarity	loc	level	path	F	A	W	E	S	D	N	B	gold	res	sup	unr	exp	lab	fort	scal
 1043	Tomb of Ice	5	16607	3	Water			1													Cold																																																																																	
 1044	Wellspring of Abundance	5	16607	5	Water			2						20	20						Growth																																																																																	
 1045	Spirit Pact	5	223	3	Death																																																																																				674	675												
-1046	Secluded Village	5	223	1	Holy																																												967	1	968	1	969	1																	970	1																														
+1046	Secluded Village	5	223	1	Astral																																												971	1	970	2	968	1																	969	1																														
+1047	Statue of Hideous Visage	5	223	1	Blood																																																							5%					4%																																					

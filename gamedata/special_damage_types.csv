@@ -8,6 +8,7 @@ bit_value	bit_name	test
 64	Entangle
 128	Enrage (Dominions 3: Cause Confusion)
 256	Decay
+258	Decay
 512	Immolate
 1024	Destroy Armor
 2048	Rust Armor

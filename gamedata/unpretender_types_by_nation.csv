@@ -30,6 +30,7 @@ monster_number	nation_number	test
 2457	27
 138	30
 812	30
+472	31
 138	34
 385	34
 812	34
@@ -77,6 +78,8 @@ monster_number	nation_number	test
 265	54
 266	54
 2457	54
+472	57
+472	58
 138	62
 385	62
 812	62
@@ -116,5 +119,6 @@ monster_number	nation_number	test
 2239	76
 2202	80
 2549	80
+472	81
 472	91
 656	91

@@ -23,6 +23,7 @@ id	name	epithet	abbreviation	file_name_base	era	initial_scout	initial_leader	ini
 28	Hinnom	Sons of the Fallen	Hi	early_gath	1						
 29	Ur	The First City	Ur	early_ur	1						
 30	Berytos	The Phoenix Empire	Be	early_berytos	1						
+31	Xibalba	Vigil of the Sun	Xi	early_xibalba	1						
 33	Arcoscephale	The Old Kingdom	Arc	mid_arcoscephale	2						
 34	Ermor	Ashen Empire	Ash	mid_ermor	2						
 35	Sceleria	The Reformed Empire	Sc	mid_sceleria	2						
@@ -46,6 +47,8 @@ id	name	epithet	abbreviation	file_name_base	era	initial_scout	initial_leader	ini
 53	Bandar Log	Land of the Apes	Ba	mid_bandarlog	2						
 54	Shinuyama	Land of the Bakemono	shi	mid_bakemono	2						
 55	Ashdod	Reign of the Anakim	As	mid_gath	2						
+57	Nazca	Kingdom of the Sun	Naz	mid_nazca	2					
+58	Xibalba	Flooded Caves	Xi	mid_xibalba	2						
 60	Arcoscephale	Sibylline Guidance	Arc	late_arcoscephale	3						
 61	Pythium	Serpent Cult	Py	late_pythium	3						
 62	Lemuria	Soul Gates	Lem	late_lemur	3						
@@ -66,6 +69,7 @@ id	name	epithet	abbreviation	file_name_base	era	initial_scout	initial_leader	ini
 78	Patala	Reign of the Nagas	Pa	late_patala	3						
 79	Gath	Last of the Giants	Ga	late_gath	3					
 80	Ragha	Dual Kingdom	Rag	late_ragha	3						
+81	Xibalba	Return of the Zotz	Xi	late_xibalba	3						
 83	Atlantis	Emergence of the Deep Ones	Atl	early_atlantis	1						
 84	R'lyeh	Time of Aboleths	Rl	early_rlyeh	1						
 85	Pelagia	Pearl Kings	Pe	early_pelagia	1						

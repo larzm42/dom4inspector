@@ -391,9 +391,9 @@ id	name	effect_record_id	att	def	len	nratt	ammo	secondaryeffect	secondaryeffecta
 389	Pearl Trident	390	0	0	4	1	0	0	0	4
 390	Scourge of Vengeance	391	2	0	2	2	0	64	0	2
 391	Serpent	392	4	0	3	1	0	52	0	2
-392	Torch of Strife	393	2	0	2	1	0	64	0	2
-393	Touch of Tisiphone	394	0	0	0	1	0	143	0	0
-394	Curse of Tisiphone	395	0	0	0	1	0	143	0	0
+392	Torch of Strife	393	2	0	2	1	0	622	0	2
+393	Touch of Tisiphone	394	0	0	0	1	0	394	0	0
+394	Curse of Tisiphone	395	0	0	0	1	0	0	0	0
 395	Shadow Brand	396	4	1	2	1	0	0	396	0
 396	Leeching Darkness	397	0	0	0	1	0	0	285	0
 397	Kick	398	0	0	0	1	0	0	0	0
@@ -450,7 +450,7 @@ id	name	effect_record_id	att	def	len	nratt	ammo	secondaryeffect	secondaryeffecta
 448	Death Blessing	449	0	0	6	1	0	143	0	0
 449	Life Drain	450	5	0	0	1	0	0	0	0
 450	Tiny Bite	451	0	0	0	1	0	0	0	0
-451	Obsidian Club Sword	452	0	-1	2	1	0	0	0	2
+451	Obsidian Club Sword	452	0	0	2	1	0	0	0	2
 452	Harpoon	453	-2	0	0	1	1	453	0	1
 453	Harpooning	454	0	0	0	1	0	0	0	0
 454	Ice Glaive	455	0	-1	4	1	0	0	0	6
@@ -616,3 +616,13 @@ id	name	effect_record_id	att	def	len	nratt	ammo	secondaryeffect	secondaryeffecta
 614	Tusk	615	0	0	0	1	0	0	0	0
 615	Hoof	616	0	0	0	1	0	0	0	0
 616	The Bloody Mace	617	5	0	3	1	0	564	0	0
+617	Sun Mace	618	1	0	1	1	0	0	0	1
+618	Sun Spear	619	0	2	4	1	0	0	0	0
+619	Obsidian Dart	620	1	0	0	1	4	0	0	1
+620	Poison Dart	621	1	0	0	1	4	624	0	1
+621	Obsidian Shard Blade	622	2	1	3	1	0	0	0	9
+622	Maddening Rage	623	0	0	0	1	0	0	0	0
+623	Poisoned Obsidian Blade	624	1	0	2	1	0	624	0	7
+624	Paralyzing Poison	625	0	0	0	1	0	0	0	0
+625	Obsidian Blade	626	1	0	2	1	0	0	0	7
+626	Thunder Axe	627	2	0	0	1	0	0	232	0
