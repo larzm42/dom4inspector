@@ -35,8 +35,8 @@ bit_value	bit_name	test
 8589934592	<Unknown>
 17179869184	<Unknown>
 34359738368	<Unknown>
-68719476736	Bludgeoning Resistance (?)
-137438953472	Slashing Resistance (?)
+68719476736	Slashing Resistance
+137438953472	Bludgeoning Resistance
 274877906944	Piercing Resistance
 549755813888	Automatic Shield - Every Other Attack Blocked
 1099511627776	<Unknown>
