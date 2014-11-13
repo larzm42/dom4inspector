@@ -26,7 +26,7 @@ number	name	test
 30	Dispel
 31	Call Horror
 32	Damage (x2 vs Large Creatures) {Wpn: #dt_large}
-33	Damage (x3 vs Small Creatures) {Wpn: #dt_small}
+33	Damage (x2 vs Small Creatures) {Wpn: #dt_small}
 35	Cross Breeding
 37	Remote Summon (Type I)
 38	Remote Summon (Type II)
