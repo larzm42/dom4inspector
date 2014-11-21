@@ -36,7 +36,7 @@ bit_value	bit_name	test
 17179869184	<Unknown Modifier>
 34359738368	<Unknown Modifier>
 68719476736	<Unknown Modifier>
-137438953472	Cannot Be Repelled (?) {Wpn: #unrepel}
+137438953472	Cannot Repel {Wpn: #norepel}
 274877906944	Piercing Damage {Wpn: #pierce}
 549755813888	Bludgeoning Damage {Wpn: #blunt}
 1099511627776	Slashing Damage {Wpn: #slash}

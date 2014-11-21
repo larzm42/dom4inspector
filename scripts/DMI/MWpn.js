@@ -70,6 +70,9 @@ MWpn.prepareData_PostMod = function() {
 		}
 		else {
 			o.wpnclass = 'melee';
+			if (o.ammo == 1) {
+				o.singleuse = 1;
+			}
 			delete o.ammo;
 		}
 		
@@ -183,6 +186,11 @@ var modderkeys = DMI.Utils.cutDisplayOrder(aliases, formats,
 [
 	'rcost',	'resource cost'
 ]);
+var flagorder = Utils.cutDisplayOrder(aliases, formats,
+[
+	'singleuse',	'can only be used once in battle',
+]);
+
 var ignorekeys = {
 	used_by:1,
 	modded:1,
@@ -267,9 +275,10 @@ MWpn.renderWpnTable = function(o, isImplicitWpn, showName) {
 	h+= 			Utils.renderDetailsRows(o, hiddenkeys, aliases, formats, 'hidden-row');
 	h+= 			Utils.renderDetailsRows(o, modderkeys, aliases, formats, 'modding-row');
 	h+= 			Utils.renderDetailsRows(o, displayorder, aliases, formats);
-	//h+= 			Utils.renderDetailsFlags(o, flagorder, aliases, formats);
+	h+= 			Utils.renderDetailsFlags(o, flagorder, aliases, formats);
 	h+= 			Utils.renderStrangeDetailsRows(o, ignorekeys, aliases, 'strange');
-		
+	h+= '<tr><td class="widecell" colspan="2">&nbsp;</td></tr>';	
+	
 	// Attributes
 	for (var oi=0, attr; attr = modctx.attributes_by_weapon[oi];  oi++) {
 		if (attr.weapon_number == o.id) {
@@ -330,7 +339,7 @@ MWpn.bitfieldValues = function(bitfield, masks_dict) {
 			var flag = "none";
 			var flagIndex = values[value].indexOf("Wpn: #");
 			if (flagIndex != -1) {
-				flag = values[value].substring(flagIndex+6, values[value].length-1)
+				flag = values[value].substring(flagIndex+6, values[value].length-2)
 			}
 			value = values[value].replace(/{(.*?)}/g, "");
 			newValues.push([value, flag]);
