@@ -1001,7 +1001,7 @@ MUnit.prepareForRender = function(o) {
 		//protection & encumbrance from armor
 		var p_nat = parseInt(o.prot || '0');
 		
-		var p_body = 0, p_head = 0;
+		var p_body = 0, p_head = 0, p_general = 0;
 		var def_armor = 0, enc_armor = 0;
 		var def_parry = 0;
 		for (var i=0, a; a= o.armor[i]; i++) {
@@ -1013,6 +1013,9 @@ MUnit.prepareForRender = function(o) {
 
 			if (a.prothead)
 				p_head = parseInt(a.prothead);
+			
+			if (a.general)
+				p_general = parseInt(a.general);
 			
 			if (a.type == 'shield')
 				def_parry = a.parry;
@@ -1035,7 +1038,7 @@ MUnit.prepareForRender = function(o) {
 			p_head = (p_nat + p_head - (p_nat * p_head/40));
 			var p_total = ((p_body * 4) + p_head) / 5;
 			
-			p_total = p_head > 10 ? Math.floor(p_total) : p_total;
+			p_total = (p_head > 10 && p_general == 0) ? Math.floor(p_total) : p_total;
 
 			//display strings			
 			o.prot = String(Math.round(p_total));

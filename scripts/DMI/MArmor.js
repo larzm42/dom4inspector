@@ -57,9 +57,7 @@ MArmor.prepareData_PostMod = function() {
 		
 		if (o.general) {
 			o.protbody = parseInt(o.protbody || '0') + parseInt(o.general);
-			if (o.prothead) {
-				o.prothead = parseInt(o.prothead) + parseInt(o.general);
-			}
+			o.prothead = parseInt(o.prothead || '0') + parseInt(o.general);
 		}
 		
 		o.renderOverlay = MArmor.renderOverlay;
