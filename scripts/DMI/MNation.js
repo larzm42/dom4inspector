@@ -289,25 +289,28 @@ MNation.prepareData_PostMod = function() {
 				s.nationname = 'various ('+ncount+')';
 			
 			//set nation value on summoned units
-			var arr = s.summonsunits || [];
-			for (var i=0, u; u= arr[i]; i++) {
-		 		var basekey;
-		 		if (u.typeclass == 'Unit') {
-		 			basekey = 'unit (Summon)';
-		 		} else {
-		 			basekey = 'cmdr (Summon)';
-		 		}
-				if (u.typechar && u.typechar!=basekey) {
-					//find pretender version of this unit
-					u = modctx.getUnitOfType(u, basekey) || modctx.cloneUnit(u);
-				}
-				u.typechar = basekey;
+			var spell = s;
+			do {
+				var arr = spell.summonsunits || [];
+				for (var i=0, u; u= arr[i]; i++) {
+					var basekey;
+					if (u.typeclass == 'Unit') {
+						basekey = 'unit (Summon)';
+					} else {
+						basekey = 'cmdr (Summon)';
+					}
+					if (u.typechar && u.typechar!=basekey) {
+						//find pretender version of this unit
+						u = modctx.getUnitOfType(u, basekey) || modctx.cloneUnit(u);
+					}
+					u.typechar = basekey;
 
-				u.nations = u.nations || {};
-				u.nations[o.id] = o;
-				u.eracodes = u.eracodes || {}; 
-				u.eracodes[o.eracode] = true;				
-			}
+					u.nations = u.nations || {};
+					u.nations[o.id] = o;
+					u.eracodes = u.eracodes || {}; 
+					u.eracodes[o.eracode] = true;				
+				}
+			} while (spell = spell.nextspell);
 		}
 		
 		//associate pretenders
