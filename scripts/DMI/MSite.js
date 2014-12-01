@@ -612,6 +612,7 @@ var displayorder = DMI.Utils.cutDisplayOrder(aliases, formats,
 	'aawe', 'animal awe',
 	'awe', 'awe',
 	'reinvigoration', 'reinvigoration',
+	'airshield', 'air shield',
 	'reveal', 'reveals', {0: 'mundane score graphs', 3: 'magic score graphs', 5: 'dominion score graphs', 999: 'all score graphs'},
 	'rit', 'ritual range', function(v,o){
 		return MSite.ritual_string[v] + ' +' + o.ritrng;
@@ -632,7 +633,8 @@ var displayorder = DMI.Utils.cutDisplayOrder(aliases, formats,
 	'sum',	'summon',	function(v,o){ 
 		return list_units(v, o); 
 	},
-	'provdef',	'extra province defence',	function(v,o){ 
+	'provdefcom',	'extra PD (commander)',	Utils.unitRef,
+	'provdef',	'extra PD (unit)',	function(v,o){ 
 		return list_units(v, o); 
 	},
 	'nations', 'start site', list_nations,
