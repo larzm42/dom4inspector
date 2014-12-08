@@ -115,6 +115,8 @@ function list_summons(spell, effect) {
 		arr = MSpell.terrainSummon[effect.raw_argument];
 	} else if (effect.effect_number == "114") {
 		arr = MSpell.uniqueSummon[effect.raw_argument];
+	} else if (effect.effect_number == "120") {
+		arr = MSpell.unleashImprisonedOnes;
 	}
 	
 	if (!arr) {
@@ -132,6 +134,7 @@ function list_summons(spell, effect) {
 MSpell.tartarianGate = [771, 772, 773, 774, 775, 776, 777];
 MSpell.yazads = [2620, 2621, 2622, 2623, 2624, 2625];
 MSpell.yatas = [2633, 2636];
+MSpell.unleashImprisonedOnes = [2498, 2499, 2500];
 
 MSpell.uniqueSummon = {
 		1:	/* Bind Ice Devil */ [
@@ -341,7 +344,9 @@ MSpell.effectlookup = {
 		119:	function(spell, effect) {
 			return show_summon(effect.raw_argument, spell.effects_count, spell.pathlevel1);
 		},
-		120:	damage_untested,
+		120:	function (spell, effect) {
+			return list_summons(spell, effect);
+		},
 		500:	damage_untested,
 		504:	damage_untested,
 		509:	damage_untested,

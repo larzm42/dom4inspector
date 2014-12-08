@@ -280,7 +280,8 @@ MSpell.prepareData_PostMod = function() {
 			} else if (_effects.effect_number == "76" || 
 				_effects.effect_number == "89" || 
 				_effects.effect_number == "100" || 
-				_effects.effect_number == "114") {
+				_effects.effect_number == "114" ||
+				_effects.effect_number == "120") {
 				
 				var arr;
 				if (_effects.effect_number == "76") {
@@ -291,6 +292,8 @@ MSpell.prepareData_PostMod = function() {
 					arr = MSpell.terrainSummon[_effects.raw_argument];
 				} else if (_effects.effect_number == "114") {
 					arr = MSpell.uniqueSummon[_effects.raw_argument];
+				} else if (_effects.effect_number == "120") {
+					arr = MSpell.unleashImprisonedOnes;
 				}
 				if (!arr) {
 					arr = [o.damage];

@@ -309,6 +309,36 @@ MNation.prepareData_PostMod = function() {
 					u.nations[o.id] = o;
 					u.eracodes = u.eracodes || {}; 
 					u.eracodes[o.eracode] = true;				
+
+					//nationname
+					var ncount=0; for (var k in u.nations) ncount++;
+					if (ncount == 1)
+						u.nationname = o.shortname;
+					else
+						u.nationname = 'various ('+ncount+')';
+					
+					var otherList = [];
+					var other = u;
+					otherList.push(other);
+					while (other = modctx.unitlookup[other.secondshape || other.shapechange || other.forestshape]) {
+						if (otherList.indexOf(other) != -1) {
+							break;
+						}
+						otherList.push(other);
+						other.typechar = basekey;
+
+						other.nations = other.nations || {};
+						other.nations[o.id] = o;
+						other.eracodes = other.eracodes || {}; 
+						other.eracodes[o.eracode] = true;				
+
+						//nationname
+						var ncount=0; for (var k in other.nations) ncount++;
+						if (ncount == 1)
+							other.nationname = o.shortname;
+						else
+							other.nationname = 'various ('+ncount+')';
+					}
 				}
 			} while (spell = spell.nextspell);
 		}
