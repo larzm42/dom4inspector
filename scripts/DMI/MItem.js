@@ -157,11 +157,16 @@ function itemConFormatter(row, cell, value, columnDef, dataContext) {
 	return "Constr " + value;
 }
 
+function itemNameFormatter(row, cell, value, columnDef, dataContext) {
+	if (dataContext.restricted)
+		return '<div class="national-spell">'+value+'</div>';	
+	return value;
+}
 
 MItem.CGrid = Utils.Class( DMI.CGrid, function() {
 	//grid columns
 	var columns = [
-		{ id: "name",     width: 145, name: "Item Name", field: "name", sortable: true, sortCmp: 'text' },
+		{ id: "name",     width: 145, name: "Item Name", field: "name", sortable: true, formatter: itemNameFormatter, sortCmp: 'text' },
 		{ id: "type",     width: 60, name: "Type", field: "type", sortable: true, sortCmp: 'text' },
 		{ id: "constlevel",      width: 70, name: "Research", field: "constlevel", sortable: true, formatter: itemConFormatter },
 		{ id: "mpath",    width: 70, name: "Path req", field: "mpath", sortable: true, formatter: DMI.GridFormat.Paths, sortCmp: 'text' },
