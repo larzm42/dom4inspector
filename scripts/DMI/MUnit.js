@@ -336,6 +336,7 @@ MUnit.prepareData_PostMod = function() {
 		
 		//resource costs
 		o.rcost = parseInt(o.rcost);
+		o.rcostsort = parseInt(o.rcost);
 		o.ressize = parseInt(o.ressize) || 2; //{1:0.5,  2:1,  3:1.5,  4:2,  5:2.5,  6:3}[o.ressize || '2'];
 
 		//filter out weapons we cant find
@@ -351,7 +352,7 @@ MUnit.prepareData_PostMod = function() {
 			Utils.joinArray( Utils.unitRef(o.id), w.used_by )
 				
 			//add resource cost to unit
-			o.rcost += parseInt(w.rcost || '0') * o.ressize / 2;
+			o.rcostsort += parseInt(w.rcost || '0') * o.ressize / 2;
 		}
 		o.weapons = weapons;
 		
@@ -373,21 +374,20 @@ MUnit.prepareData_PostMod = function() {
 			a.used_by.push( Utils.unitRef(o.id) );
 					
 			//add resource cost to unit
-			o.rcost += parseInt(a.rcost || '0') * o.ressize / 2;
+			o.rcostsort += parseInt(a.rcost || '0') * o.ressize / 2;
 		}
 		o.armor = armor;
 		
-		if (o.rcost > 60000)	o.rcost = 1; //gladiators
+		if (o.rcostsort > 60000)	o.rcostsort = 1; //gladiators
 
 		//numeric gold costs (for sorting)
 		MUnit.autocalc(o);
 		
 		if (!o.goldcost)
-			o.rcost = 0;
+			o.rcostsort = 0;
 		else
-			o.rcost = Math.floor(o.rcost || 1);
+			o.rcostsort = Math.floor(o.rcostsort || 1);
 
-		o.rcostsort = parseInt(o.rcost);
 	}
 }
 
@@ -694,6 +694,7 @@ MUnit.prepareData_PostNationData = function(o) {
 		//clear pretender cost
 		if (o.typechar == 'Pretender') {
 			delete o.rcost;
+			delete o.rcostsort;
 		}
 		//sorttype
 		o.sorttype = MUnit.unitSortableTypes[o.typechar];
@@ -961,10 +962,14 @@ MUnit.prepareForRender = function(o) {
 				
 		//weapons
 		var def_wpns = 0;
-		for (var i=0, w;  w= o.weapons[i];  i++) 
+		var rcost_wpns = 0;
+		for (var i=0, w;  w= o.weapons[i];  i++) { 
 			def_wpns += parseInt(w.def || '0');
+			rcost_wpns += parseInt(w.rcost || '0') * o.ressize / 2;
+		}
 		bonus('weapons', 'def', def_wpns);
-			
+		bonus('weapons', 'rcost', rcost_wpns);
+
 		//multi weapon penalty
 		var countarms = 0;
 		var mwpnpen = 0;		
@@ -1004,6 +1009,7 @@ MUnit.prepareForRender = function(o) {
 		var p_body = 0, p_head = 0, p_general = 0;
 		var def_armor = 0, enc_armor = 0;
 		var def_parry = 0;
+		var rcost_armor = 0;
 		for (var i=0, a; a= o.armor[i]; i++) {
 			enc_armor += parseInt(a.enc || '0');
 			def_armor += parseInt(a.def || '0');
@@ -1028,10 +1034,26 @@ MUnit.prepareForRender = function(o) {
 					bonus(a.name, 'prot', p_inc);
 				}
 			}
+			rcost_armor += parseInt(a.rcost || '0') * o.ressize / 2;
+
 		}
 		bonus('armor', 'def', def_armor);
 		bonus('shield parry', 'def', def_parry);
-		
+		bonus('armor', 'rcost', rcost_armor);
+
+		if (o.rcost > 60000)	o.rcost = 1; //gladiators
+
+		if (!o.goldcost)
+			o.rcost = 0;
+		else
+			o.rcost = Math.floor(o.rcost || 1);
+			
+		//clear pretender cost
+		if (o.typechar == 'Pretender') {
+			delete o.rcost;
+			delete o.rcostsort;
+		}
+
 		if (p_body || p_head) {
 			//displayed values
 			p_body = (p_nat + p_body - (p_nat * p_body/40));
@@ -1045,6 +1067,7 @@ MUnit.prepareForRender = function(o) {
 			o.titles.prot = 'basic '+(o.titles.prot || String(p_nat));
 			o.titles.prot += ',  head '+Math.round(p_head)+',  body '+Math.round(p_body);
 		}		
+		
 		//armor encumbrance 
 		if (enc_armor) {
 			//casting encumbrance (double armor)
@@ -1086,7 +1109,7 @@ MUnit.CGrid = Utils.Class( DMI.CGrid, function() {
 		{ id: "goldcost",     width: 32, name: "Gold", field: "goldcost", sortable: true, cssClass: "numeric", formatter: formatGold },
 //		{ id: "gcom",     width: 32, name: "gcom", field: "gcom", sortable: true, cssClass: "numeric", formatter: formatGold },
 //		{ id: "diff",     width: 32, name: "diff", field: "diffsort", sortable: true, cssClass: "numeric", formatter: formatGold },
-		{ id: "rcost",     width: 30, name: "Res", field: "rcostsort", sortable: true, cssClass: "numeric", formatter: formatRes },		
+		{ id: "rcostsort",     width: 30, name: "Res", field: "rcostsort", sortable: true, cssClass: "numeric", formatter: formatRes },		
 		{ id: "sacred",     width: 30, name: "Sac", field: "holy", sortable: true, formatter: formatHoly },
 		{ id: "listed_mpath",     width: 120, name: "Magic", field: "listed_mpath", sortable: true, formatter: DMI.GridFormat.OrderedPaths }
 	];
@@ -1358,6 +1381,8 @@ var formats = {};
 var displayorder = Utils.cutDisplayOrder(aliases, formats,
 [
 	//	dbase key	displayed key		function/dict to format value
+	'goldcost',	'gold',	{'0':'0 '},
+	'rcost',	'resources',	{'0':'0 '},
 	'hp',	'hit points',	function(v,o){ return v + ' &nbsp;(size '+o.size+')'; },
 	'prot',	'protection',	{'0':'0 '},
 	'mr',	'magic res',	{'0':'0 '},
@@ -1532,6 +1557,14 @@ var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 	'special',	'special',
 	'explodeondeath',	'explode on death',
 	'transformation', 'transformation', {'-1': 'bad result', '1': 'good result ' },
+	'fireattuned', 'fire attuned',
+	'airattuned', 'air attuned',
+	'waterattuned', 'water attuned',
+	'earthattuned', 'earth attuned',
+	'astralattuned', 'astral attuned',
+	'deathattuned', 'death attuned',
+	'natureattuned', 'nature attuned',
+	'bloodattuned', 'blood attuned',
 	'realms', 'realm', function(v,o)
 	{ 
 		var realmString = '';
@@ -1738,7 +1771,7 @@ var ignorekeys = {
 	magicboost_A:1, magicboost_B:1, magicboost_D:1, magicboost_E:1, magicboost_F:1, magicboost_N:1, magicboost_S:1, magicboost_W:1, magicboost_H:1,
 	magicboost_all:1,
 	
-	goldcost:1, rcost:1, rcostsort:1,
+	rcostsort:1,
 	
 	weapons:1, armor:1, helmet:1, shield:1, wpn1:1, wpn2:1, wpn3:1, wpn4:1, wpn5:1, wpn6:1,
 	
@@ -1805,7 +1838,7 @@ MUnit.renderOverlay = function(o, isPopup) {
 	h+=' 		</table> ';
 	
 	var flagrows =		Utils.renderDetailsFlags(o, flagorder, aliases, formats);
-	if (flagrows) h+='<p style="margin-top:0px;padding-top:0px;"> '+flagrows+'</p>';
+	if (flagrows) h+='<p style="margin-top:0px;margin-bottom:0px;padding-top:0px;"> '+flagrows+'</p>';
 	
 	
 	//commander details
@@ -1823,54 +1856,28 @@ MUnit.renderOverlay = function(o, isPopup) {
 	h+='	</div>';
 	h+='	<div class="overlay-footer">';
 	
-	//wikilink
-	if (!o.moddedname)
-		h+='	<div class="overlay-wiki-link non-content">' + Utils.wikiLink(o.name, o.subname) + '</div>';
-		
 	//source details
-	var isfree = false;
-	var noupkeep = false;
 	if (o.summonedby) {
 		for (var i=0, refarr=[], s; s= o.summonedby[i]; i++) 
 			refarr.push(Utils.spellRef(s.id) +'&nbsp;<span class="tiny flag">('+s.research+')</span>'); 
 		h+='	<p class="firstline">summoned with '+refarr.join(', ')+'</p>';
-		//isfree = true;
 	}
 	else if (o.typechar=='Pretender') {
 		h+='<p class="firstline">';
 		h+= ' Cost: ' + o.goldcost +' pts ';
-		
 		h+= ' +<span class="internal-inline"> [pathcost]</span> '+o.pathcost + ' pts per magic path';
-		// h+='<br />';
-		// h+= ' New magic paths cost<span class="internal-inline"> [pathcost]</span>: '+o.pathcost + ' pts ';
-		
 		h+='<br />';
 		h+= ' Dominion<span class="internal-inline"> [startdom]</span>: '+(o.startdom ? o.startdom : '1');
 		h+='</p>';
-		isfree = noupkeep = true;
 	}
 	else if ((!o.typechar) || o.typechar=="special") {
 		if (o.createdby) {
 			for (var i=0, refarr=[], s; s= o.createdby[i]; i++) 
 				refarr.push(Utils.unitRef(s.id)); 
 			h+='	<p class="firstline">created by '+refarr.join(', ')+'</p>';
-			isfree = true;
 		}
 	}	
 
-	//cost line
-	var gunit = ' gold';
-	var runit = ' resources <span class="internal-inline"> [rcost]</span>';
-	if (isfree) {
-		if (Utils.is(o.goldcost) && !noupkeep)
-			h+='	<p class="firstline">Upkeep: '+Math.ceil((o.holy ? 0.5 : 1) * parseInt(o.goldcost) / 15) +gunit+'</p>';
-	}
-	else if (o.goldcost == '0')
-		h+='	<p class="firstline">no gold cost</p>';
-	else
-		h+='	<p class="firstline">costs&nbsp; '+ o.goldcost+gunit +',&nbsp; '+ o.rcost+runit +'</p>';
-
-	
 	//descr
 	var uid = 'c'+(Math.random());
 	uid = uid.replace('.','');
