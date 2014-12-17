@@ -1838,7 +1838,7 @@ MUnit.renderOverlay = function(o, isPopup) {
 	h+=' 		</table> ';
 	
 	var flagrows =		Utils.renderDetailsFlags(o, flagorder, aliases, formats);
-	if (flagrows) h+='<p style="margin-top:0px;margin-bottom:0px;padding-top:0px;"> '+flagrows+'</p>';
+	if (flagrows) h+='<p style="margin-top:0px;margin-bottom:5px;padding-top:0px;"> '+flagrows+'</p>';
 	
 	
 	//commander details
