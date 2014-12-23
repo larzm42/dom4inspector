@@ -133,7 +133,7 @@ function list_summons(spell, effect) {
 
 MSpell.tartarianGate = [771, 772, 773, 774, 775, 776, 777];
 MSpell.yazads = [2620, 2621, 2622, 2623, 2624, 2625];
-MSpell.yatas = [2633, 2636];
+MSpell.yatas = [2632, 2633, 2634, 2636];
 MSpell.unleashImprisonedOnes = [2498, 2499, 2500];
 
 MSpell.uniqueSummon = {
