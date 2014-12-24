@@ -100,7 +100,11 @@ function show_summon(unit, count, pathlevel1) {
 		ref = Utils.unitRef(unit);
 	}
 	if (count && count != "0" && count != "1") {
-		ref = ref + " x " + String(spellBonus(count, pathlevel1))
+		ref = ref + " x " + String(spellBonus(count, pathlevel1));
+	}
+	// Marverni gets Iron Boars	
+	if (parseInt(unit) == 924) {
+		ref = ref + '<br/>(' + Utils.unitRef(1808) + ' x ' + String(spellBonus(count, pathlevel1)) + ' for ' + Utils.nationRef(8) + ')';
 	}
 	return ref;
 }

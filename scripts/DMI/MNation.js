@@ -490,6 +490,12 @@ MNation.prepareData_PostMod = function() {
 					u.nationname = o.shortname;
 				else
 					u.nationname = 'various ('+ncount+')';
+				
+				// Marverni gets Iron Boars
+				if (parseInt(o.id) == 8) {
+					var ironBoar = modctx.unitlookup[1808];
+					ironBoar.nationname = o.shortname;
+				}
 			}
 		}
 	}
