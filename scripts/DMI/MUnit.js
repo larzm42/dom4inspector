@@ -909,7 +909,17 @@ MUnit.prepareForRender = function(o) {
 			if (is(o.cold))
 				bonus('water magic', 'cold', n);
 			if (_isCmdr) bonus('water magic', 'coldres', n*2);
-		}				
+		}
+		
+		if (o.command) {
+			if (isldr) bonus('command', 'leader', parseInt(o.command));  
+		}
+		if (o.magiccommand) {
+			if (isldr) bonus('magiccommand', 'magicleader', parseInt(o.magiccommand));  
+		}
+		if (o.undcommand) {
+			if (isldr) bonus('command', 'undeadleader', parseInt(o.undcommand));  
+		}
 
 		//formatted leadership
 		var ldr_arr = [];
@@ -1426,6 +1436,14 @@ var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 	
 	'reclimit',		'recruitment limit',	Format.PerTurn,
 	'gemprod',	'generates gems',	function(v){ return v!='0' && Format.PerTurn(Format.Gems(v)); },
+	'tmpfiregems',	'temp gems', function(v){ return v!='0' && Format.PerBattle(Format.Gems('F' + v)); },
+	'tmpairgems',	'temp gems', function(v){ return v!='0' && Format.PerBattle(Format.Gems('A' + v)); },
+	'tmpwatergems',	'temp gems', function(v){ return v!='0' && Format.PerBattle(Format.Gems('W' + v)); },
+	'tmpearthgems',	'temp gems', function(v){ return v!='0' && Format.PerBattle(Format.Gems('E' + v)); },
+	'tmpastralgems',	'temp gems', function(v){ return v!='0' && Format.PerBattle(Format.Gems('S' + v)); },
+	'tmpdeathgems',	'temp gems', function(v){ return v!='0' && Format.PerBattle(Format.Gems('D' + v)); },
+	'tmpnaturegems',	'temp gems', function(v){ return v!='0' && Format.PerBattle(Format.Gems('N' + v)); },
+	'tmpbloodslaves',	'temp gems', function(v){ return v!='0' && Format.PerBattle(Format.Gems('B' + v)); },
 
 	'onebattlespell','casts each battle',		Utils.spellRef,
 	
@@ -1434,12 +1452,16 @@ var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 	'coldres',	'resist cold',
 	'poisonres',	'resist poison',
 	'shockres',	'resist shock',	
+	'diseaseres',	'resist disease',	Format.Percent,
 	
 	'darkvision',	'dark vision',	Format.Percent,
 	'stealthy',	'stealthy',	Format.SignedZero,//{0:'+0'},
 	'autohealer',	'healer',
 	'autodishealer',	'disease healer',
 	'chaosrec',	'chaos recruit',
+	'deathrec',	'death recruit',
+	'heatrec',	'heat recruit',
+	'coldrec',	'cold recruit',
 	
 	'cold',		'cold aura',
 	'heat',		'heat aura',
@@ -1450,6 +1472,7 @@ var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 	'sacr',		'adept blood sacrificer',
 	
 	'iceprot',	'ice protection',
+	'iceforging',	'ice forging',
 	'firepower',	'fire power',
 	'stormpower',	'storm power',
 	'coldpower',	'cold power',
@@ -1586,6 +1609,9 @@ var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 	'forestshape',	'forest shape',	function(v,o){	return twinUnitRef(o, 'forestshape', 'plainshape');	},
 	'plainshape',	'normal shape',	function(v,o){	return twinUnitRef(o, 'plainshape', 'forestshape');	},
 	'prophetshape',	'prophet shape',	function(v,o){	return chainedUnitRef(o, 'prophetshape', []);	},
+	'xpshape',		'experienced shape',function(v,o){ 
+		return v + ' (' + Utils.unitRef(o.id+1) + ')';
+	},
 	
 	'domsummon',	'dominion attracts units',	function(v,o){ 
 		return Format.PerTurn( Utils.unitRef(v) ); 
@@ -1761,6 +1787,9 @@ var ignorekeys = {
 	sprite:1,
 	ressize:1,
 	baseleadership:1,
+	command:1,
+	undcommand:1,
+	magiccommand:1,
 	
 	researchbonus:1, listed_mpath:1, fixedresearch:1,
 	n_domsummon:1, n_makemonster:1, n_autosum:1, n_summon:1,	

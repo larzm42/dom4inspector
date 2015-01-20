@@ -365,7 +365,9 @@ Utils.unitRef  = function(id, text) {
 			for (var oi=0, o;  o= DMI.modctx.unitdata[oi];  oi++) {
 				if (o.montag) {
 					if (-parseInt(id) == parseInt(o.montag)) {
-						ref = ref + objectRef('unit', id, text) + ', <br />';
+						if (o.id == parseInt(o.id)) {
+							ref = ref + objectRef('unit', o.id, text) + ', <br />';
+						}
 					}
 				}
 			}

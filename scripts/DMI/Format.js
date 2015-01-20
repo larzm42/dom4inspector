@@ -116,6 +116,11 @@ Format.SignedPerTurn = function(v) {
 	if (v.charAt(0)=='-') return v+ ' per month'; 
 	return '+' +v+ ' per month'; 
 };
+Format.PerBattle = function(v) {
+	v = String(v);
+	if (v=='0') return v; 
+	return v+ ' per battle'; 
+};
 
 //namespace args
 }( window.DMI = window.DMI || {}, jQuery ));

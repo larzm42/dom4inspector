@@ -591,6 +591,21 @@ var modctx = DMI.modctx = {
 			modctx.wpn.name = argtrim(a);
 			modctx.wpnlookup[argtrim(a).toLowerCase()] = modctx.wpn;
 		},
+		copyweapon: function(c,a,t){
+			var from = modctx.wpnlookup[a.n1] || modctx.wpnlookup[($.trim(a.s) || '-1').toLowerCase()];
+			if (!from) throw 'original weapon not found';
+			var ignorestats = {
+				//stats to NOT copy
+				modded:1,
+				id:1
+				//name:1,
+			};
+			var to = modctx.wpn;
+			for (var k in to)   if (!ignorestats[k]) delete to[k];
+			for (var k in from) if (!ignorestats[k]) to[k] = from[k];
+				
+		},
+
 		def: 		_num,
 		rcost: 		_num,
 		
@@ -636,6 +651,7 @@ var modctx = DMI.modctx = {
 		dt_weakness:		_bool,
 		dt_drain:		_bool,
 		dt_weapondrain:		_bool,
+		dt_aff:		_bool,
 		sacredonly:		_bool,
 		hardmrneg:		_bool,
 		sizeresist:		_bool,
@@ -665,8 +681,12 @@ var modctx = DMI.modctx = {
 		charge:		_bool,
 		flail:		_bool,
 		nostr:		_bool,
-		mrnegates:		_bool,
+		mrnegates:	_bool,
 		mrnegateseasily:	_bool,
+		ironweapon:		_bool,
+		woodenweapon:	_bool,
+		iceweapon:		_bool,
+		uwok:		_bool,
 		
 		secondaryeffect:	_ref,
 		secondaryeffectalways:	_ref
@@ -887,7 +907,9 @@ var modctx = DMI.modctx = {
 		fireres:	_num,
 		poisonres:	_num,
 		shockres:	_num,
+		diseaseres: 	_num,
 		darkvision:	_num,
+		startingaff: 	_num,
 	
 		stealthy:	_num_def(0),
 		illusion:	_bool,
@@ -1044,7 +1066,7 @@ var modctx = DMI.modctx = {
 			if (!pstr) throw 'invalid magic index';
 			
 			for (var i=0, p; p= pstr.charAt(i); i++) {
-				modctx.unit['g'+p] = argnum2(a);
+				modctx.unit['gemprod'] ? modctx.unit['gemprod'] += p+argnum2(a) : modctx.unit['gemprod'] = p+argnum2(a);
 			}
 		},
 		onebattlespell: _ref,
@@ -1058,6 +1080,7 @@ var modctx = DMI.modctx = {
 		watershape:	_ref,
 		forestshape:	_ref,
 		plainshape:	_ref,
+		xpshape: _num,
 		
 		domsummon:	function(c,a,t){ modctx[t]['domsummon'] = argref(a);  modctx[t]['n_domsummon'] = 'DRN' },
 		domsummon2:	function(c,a,t){ modctx[t]['domsummon'] = argref(a);  modctx[t]['n_domsummon'] = 'DRN/2' },
@@ -1085,6 +1108,7 @@ var modctx = DMI.modctx = {
 		goodleader:	function(c,a,t){ modctx[t]['leader'] = 80; },
 		expertleader:	function(c,a,t){ modctx[t]['leader'] = 120; },
 		superiorleader:	function(c,a,t){ modctx[t]['leader'] = 160; },
+		command:		_num,
 		
 		nomagicleader:		function(c,a,t){ modctx[t]['magicleader'] = 0; },
 		poormagicleader:	function(c,a,t){ modctx[t]['magicleader'] = 10; },
@@ -1105,7 +1129,6 @@ var modctx = DMI.modctx = {
 		magicpower:		_num,
 		randomspell:	_num,
 		reclimit:		_num,
-		chaosrec:		_num,
 		homerealm: 		function(c,a,t){ modctx[t]['realms'].push(argref(a)); },
 		giftofwater:	_num,
 		indepmove:		_num,
@@ -1173,6 +1196,7 @@ var modctx = DMI.modctx = {
 		voidret:		_num,
 		allret:			_num,
 		resources:		_num,
+		iceforging:		_num,
 
 		spy:			_bool,
 		slowrec:		_bool,
@@ -1182,6 +1206,10 @@ var modctx = DMI.modctx = {
 		singlebattle:	_bool,
 		aisinglerec:	_bool,
 		ainorec:		_bool,
+		heatrec:		_num,
+		coldrec:		_num,
+		chaosrec:		_num,
+		deathrec:		_num,
 		lesserhorror:	_bool,
 		greaterhorror:	_bool,
 		doomhorror:		_bool,
@@ -1441,6 +1469,8 @@ var modctx = DMI.modctx = {
 		
 		uwnation: _bool,
 		bloodnation: _ignore, //Hint to AI player
+		coastnation: _ignore, //Hint to AI player
+		cavenation: _ignore, //Hint to AI player
 		
 		nopreach: _ignore,//_bool, //mictlan
 		dyingdom: _ignore,//_bool, //mictlan

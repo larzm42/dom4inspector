@@ -236,6 +236,14 @@ MSpell.prepareData_PostMod = function() {
 					arr = MSpell.yazads;
 				} else if (uid == "-17") {
 					arr = MSpell.yatas;
+				} else if (parseInt(uid) < 0) {
+					for (var oi2=0, o2; o2 = modctx.unitdata[oi2];  oi2++) {
+						if (o2.montag) {
+							if (-parseInt(uid) == parseInt(o2.montag)) {
+								arr.push(parseInt(o2.id));
+							}
+						}
+					}
 				}
 				if (arr.length > 0) {
 					//create array of refs
@@ -736,6 +744,8 @@ MSpell.renderSpellTable = function(o, original_effect) {
 					var val;
 					if (attribute.attribute_number == '702') {
 						val = Utils.renderFlags(MSpell.bitfieldValues(attribute.raw_value, modctx.map_terrain_types_lookup), 1);
+					} else if (attribute.attribute_number == '711') {
+						val = Utils.siteRef(attribute.raw_value);
 					} else {
 						val = attribute.raw_value;
 					}

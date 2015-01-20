@@ -189,6 +189,12 @@ var modderkeys = DMI.Utils.cutDisplayOrder(aliases, formats,
 var flagorder = Utils.cutDisplayOrder(aliases, formats,
 [
 	'singleuse',	'can only be used once in battle',
+	'iceweapon',	'ice weapon',
+	'ironweapon',	'iron weapon',
+	'woodenweapon',	'wooden weapon',
+	'uwok',	'can be used underwater',
+	'inanimateimmune',	'no effect on inanimate',
+	'norepel',	'cannot repel',
 ]);
 
 var ignorekeys = {
@@ -209,6 +215,19 @@ var ignorekeys = {
 	dt_magic:1,
 	dt_raise:1,
 	dt_paralyze:1,
+	mrnegates:1,
+	armornegating:1,
+	bonus:1,
+	unrepel:1,
+	pierce:1,
+	blunt:1,
+	slash:1,
+	charge:1,
+	flail:1,
+	twohanded:1,
+	fire:1,
+	armorpiercing:1,
+	cold:1,
 
 	wpnclass:1,
 	isImplicitWpn:1, showName:1,
