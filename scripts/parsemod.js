@@ -1603,8 +1603,8 @@ var modctx = DMI.modctx = {
 		homemon: function(c,a,t){ modctx[t]['hmon'].push(argref(a)); },
 		homecom: function(c,a,t){ modctx[t]['hcom'].push(argref(a)); },
 
-		mon: function(c,a,t){ modctx[t]['units'].push(argref(a)); },
-		com: function(c,a,t){ modctx[t]['commanders'].push(argref(a)); },
+		mon: function(c,a,t){ modctx[t]['mon'].push(argref(a)); },
+		com: function(c,a,t){ modctx[t]['com'].push(argref(a));	},
 
 		gold: _num,
 		res: _num,
