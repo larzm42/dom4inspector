@@ -50,6 +50,20 @@ MSpell.prepareData_PreMod = function() {
 
 MSpell.prepareData_PostMod = function() {
 	for (var oi=0, o;  o= modctx.spelldata[oi];  oi++) {
+		for (var ai=0, attr; attr = modctx.attributes_by_spell[ai];  ai++) {
+			if (attr.spell_number == o.id) {
+				var attribute = modctx.attributes_lookup[parseInt(attr.attribute_record_id)];
+				if (attribute.attribute_number == "426") {
+					for (var ni=0, n;  n= modctx.nationdata[ni];  ni++) {
+						var nation = modctx.nationlookup[n.id];
+						if (Utils.inArray(attribute.raw_value, nation.homerealm)) {
+							o.nations.push(parseInt(n.id));
+						}
+					}
+				}
+			}
+		}
+
 		//shift nation data to nations (who will shift it back in another form)
 		for (var ni=0, nid, n; nid= o.nations[ni]; ni++) {
 			if (!(n= modctx.nationlookup[nid])) {
