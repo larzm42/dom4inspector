@@ -250,39 +250,61 @@ MUnit.prepareData_PostMod = function() {
 
 		//magic paths
 		o.mpath = '';
+		o.pathboost = '';
+		var allboost = false;
 		var research = 0;
 		for (var i=0; i<modconstants.pathkeys.length; i++) {
 			var k = modconstants.pathkeys[i];
 			var plevel  = o[k];
 			
 			// apply bonus
-			if (o.pathboost) {
-				// Only support +1 for now
-				if (o.pathboost.indexOf('1') == 0) {
-					if (k == 'F' && o.pathboost.indexOf('f') != -1) {
-						plevel = parseInt(plevel) + 1;
-					}
-					if (k == 'A' && o.pathboost.indexOf('A') != -1) {
-						plevel = parseInt(plevel) + 1;
-					}
-					if (k == 'W' && o.pathboost.indexOf('W') != -1) {
-						plevel = parseInt(plevel) + 1;
-					}
-					if (k == 'E' && o.pathboost.indexOf('E') != -1) {
-						plevel = parseInt(plevel) + 1;
-					}
-					if (k == 'S' && o.pathboost.indexOf('S') != -1) {
-						plevel = parseInt(plevel) + 1;
-					}
-					if (k == 'D' && o.pathboost.indexOf('D') != -1) {
-						plevel = parseInt(plevel) + 1;
-					}
-					if (k == 'N' && o.pathboost.indexOf('N') != -1) {
-						plevel = parseInt(plevel) + 1;
-					}
-					if (k == 'B' && o.pathboost.indexOf('B') != -1) {
-						plevel = parseInt(plevel) + 1;
-					}
+			if (o.magicboostF) {
+				if (k == 'F') {
+					plevel = parseInt(plevel) + parseInt(o.magicboostF);
+					o.pathboost += (parseInt(o.magicboostF) > 0 ? '+' + parseInt(o.magicboostF) : parseInt(o.magicboostF)) + 'F ';
+				}
+			}
+			if (o.magicboostA) {
+				if (k == 'A') {
+					plevel = parseInt(plevel) + parseInt(o.magicboostA);
+					o.pathboost += (parseInt(o.magicboostA) > 0 ? '+' + parseInt(o.magicboostA) : parseInt(o.magicboostA)) + 'A ';
+				}
+			}
+			if (o.magicboostW) {
+				if (k == 'W') {
+					plevel = parseInt(plevel) + parseInt(o.magicboostW);
+					o.pathboost += (parseInt(o.magicboostW) > 0 ? '+' + parseInt(o.magicboostW) : parseInt(o.magicboostW)) + 'W ';
+				}
+			}
+			if (o.magicboostE) {
+				if (k == 'E') {
+					plevel = parseInt(plevel) + parseInt(o.magicboostE);
+					o.pathboost += (parseInt(o.magicboostE) > 0 ? '+' + parseInt(o.magicboostE) : parseInt(o.magicboostE)) + 'E ';
+				}
+			}
+			if (o.magicboostS) {
+				if (k == 'S') {
+					plevel = parseInt(plevel) + parseInt(o.magicboostS);
+					o.pathboost += (parseInt(o.magicboostS) > 0 ? '+' + parseInt(o.magicboostS) : parseInt(o.magicboostS)) + 'S ';
+				}
+			}
+			if (o.magicboostD) {
+				if (k == 'D') {
+					plevel = parseInt(plevel) + parseInt(o.magicboostD);
+					o.pathboost += (parseInt(o.magicboostD) > 0 ? '+' + parseInt(o.magicboostD) : parseInt(o.magicboostD)) + 'D ';
+				}
+			}
+			if (o.magicboostN) {
+				if (k == 'N') {
+					plevel = parseInt(plevel) + parseInt(o.magicboostN);
+					o.pathboost += (parseInt(o.magicboostN) > 0 ? '+' + parseInt(o.magicboostN) : parseInt(o.magicboostN)) + 'N ';
+				}
+			}
+			if (o.magicboostALL) {
+				plevel = parseInt(plevel) + parseInt(o.magicboostALL);
+				if (!allboost) {
+					o.pathboost += (parseInt(o.magicboostALL) > 0 ? '+' + parseInt(o.magicboostALL) : parseInt(o.magicboostALL)) + 'ALL ';
+					allboost = true;
 				}
 			}
 			//append to pathcost code
@@ -1790,6 +1812,7 @@ var ignorekeys = {
 	command:1,
 	undcommand:1,
 	magiccommand:1,
+	magicboostF:1,magicboostA:1,magicboostW:1,magicboostE:1,magicboostS:1,magicboostD:1,magicboostN:1,magicboostALL:1,
 	
 	researchbonus:1, listed_mpath:1, fixedresearch:1,
 	n_domsummon:1, n_makemonster:1, n_autosum:1, n_summon:1,	
