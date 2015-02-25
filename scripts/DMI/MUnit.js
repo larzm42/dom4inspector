@@ -1590,6 +1590,7 @@ var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 	'taskmaster',	'task master',
 	'ivylord',	'ivy lord',
 	'blind',	'blind fighter',
+	'eyes',		'eyes',
 	'slimer',	'slimer',
 	'mindslime',	'mind slimer',
 	'crossbreeder',	'crossbreader',
@@ -1752,7 +1753,9 @@ var flagorder = Utils.cutDisplayOrder(aliases, formats,
 	'float',	'floating',
 	'hpoverflow',	'hp overflow',
 	'poisonarmor',	'poison armor',
-	
+	'spreadchaos',	'spreads chaos',
+	'spreaddeath',	'spreads death',
+
 	'wastesurvival',	'wasteland survival',
 	'mountainsurvival',	'mountain survival',
 	'swampsurvival',	'swamp survival',
@@ -1777,7 +1780,6 @@ var modderkeys = Utils.cutDisplayOrder(aliases, formats,
 [
 	'nametype',	'#nametype',
 	'montag',	'#montag',
-	'eyes',		'#eyes'
 ]);
 var ignorekeys = {
 	modded:1,
