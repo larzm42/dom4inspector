@@ -521,7 +521,7 @@ id	name	effect_record_id	att	def	len	nratt	ammo	secondaryeffect	secondaryeffecta
 519	Poison Tipped Spear	520	0	0	4	1	0	51	0	4
 520	Dawn Blade	521	2	2	3	1	0	0	0	8
 521	The First Sword	522	7	7	3	1	0	0	0	0
-522	Golden Horns	523	-1	-1	0	1	0	0	0	0
+522	Golden Horns	523	-1	-1	1	1	0	0	0	0
 523	Golden Sickle	524	2	2	1	1	0	0	0	2
 524	Pillar of Laws	525	-3	-5	3	1	0	0	411	0
 525	Gileadite Bow	526	0	0	0	1	12	0	0	5
@@ -625,4 +625,13 @@ id	name	effect_record_id	att	def	len	nratt	ammo	secondaryeffect	secondaryeffecta
 623	Poisoned Obsidian Blade	624	1	0	2	1	0	624	0	7
 624	Paralyzing Poison	625	0	0	0	1	0	0	0	0
 625	Obsidian Blade	626	1	0	2	1	0	0	0	7
-626	Thunder Axe	627	2	0	0	1	0	0	232	0
+626	Thunder Axe	627	2	0	2	1	0	0	232	0
+627	Death Blessing Disease	628	0	0	6	1	0	0	0	0
+628	Tentacle	629	0	0	0	1	0	0	0	0
+629	Sting	630	-3	0	0	1	0	51	0	0
+630	Ghost Rending Bite	631	0	-1	0	1	0	460	0	0
+631	Serpent Tail	632	0	-1	0	1	0	51	0	0
+632	Serpent Mane	633	-2	0	0	5	0	50	0	0
+633	Obsidian Dart	634	1	0	0	1	4	0	0	1
+634	Antlers	635	-1	0	2	1	0	0	0	0
+635	Magic Lance	636	2	0	4	1	0	0	0	1

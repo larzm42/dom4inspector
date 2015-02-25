@@ -849,14 +849,14 @@ id	name	rarity	loc	level	path	F	A	W	E	S	D	N	B	gold	res	sup	unr	exp	lab	fort	scal
 876	The Dusk Spiral	1	16386	1	Nature						1	1																																																																							2361																					
 877	Blackrose Tower	1	16386	1	Earth						1	1																																																																							2362																					
 878	The Dusk Spiral	1	16386	1	Death						1	1																																																																							2361																					
-879	Hoburg Holdfast	2	3088	0	Nature																																																																									271	273				272						273														272	
+879	Hoburg Holdfast	2	3088	0	Nature																																																																									271	273				272						273															
 880	Hoburg Settlement	2	16	0	Nature																Growth																																																									483					1198																					
 881	Barbarian Warcamp	5	14	0	Nature																																																																									139	140				147	141																				
-882	Knightly Order	5	223	0	Holy																Order																																																									22					23						22														23	
-883	Knightly Order of the Deep	5	32	0	Holy																Order																																																									1060					406						160														406	
+882	Knightly Order	5	223	0	Holy																Order																																																									22					23						22															
+883	Knightly Order of the Deep	5	32	0	Holy																Order																																																									1060					406						1060															
 884	The Halfway Inn	1	16607	0	Astral									10																																																																																										
 885	Ancient Ruin	1	223	0	Nature																																												2223	2																																																						
-886	Order of the Secret Light	2	17631	1	Holy					1																																																																				22					478	23					22														23	
+886	Order of the Secret Light	2	17631	1	Holy					1																																																																				22					478	23					22															
 887	Order of the Undying	2	17631	1	Holy																																												189	3																																																						
 888	Shrine of the Outcast	1	735	1	Holy																																												456	1	459	1																																																				
 889	Temple of the Spider God	2	735	1	Holy																																												782	3	2223	1																																																				
@@ -990,7 +990,7 @@ id	name	rarity	loc	level	path	F	A	W	E	S	D	N	B	gold	res	sup	unr	exp	lab	fort	scal
 1017	The Throne of the Moon	12	17407	0	Holy			1		1													2				-1								3																																																																					
 1018	The Throne of the Sun	13	17407	0	Holy	3																	5	-1		-1	-1			5																																																																										
 1019	Imperial Tomb	5	1247	2	Death						1																																																																																													
-1020	Toad Tribe Settlement	5	128	0	Nature																																																																									1613					1614						1613														-63922	
+1020	Toad Tribe Settlement	5	128	0	Nature																																																																									1613					1614						1613															
 1021	The Throne of Sorcery	13	17407	0	Holy					1	1	1											3																																					20%																																												
 1022	The Throne of Elements	13	17407	0	Holy	1	1	1	1														3																																		20%																																															
 1023	The Shattered Throne	13	17407	0	Holy					2			4				10				Magic	Misfortune	3					1																																	30%			1%	5%																																							
@@ -1001,7 +1001,7 @@ id	name	rarity	loc	level	path	F	A	W	E	S	D	N	B	gold	res	sup	unr	exp	lab	fort	scal
 1028	Necromancer's Lair	2	16398	6	Death						2								lab																						D	2																																																														
 1029	Tower of Ice	2	16396	6	Water			2											lab																						W	2																																																														
 1030	Tower of Thorns	2	16386	6	Nature							2							lab																						N	2																																																														
-1031	Oath Stone	1	16607	6	Death																																																																																				2190														-63342	
+1031	Oath Stone	1	16607	6	Death																																																																																				2190															
 1032	Isle of Rebirth	2	16416	6	Fire	1					1																																																			10%																																										
 1033	Dragon Lair	2	16388	6	Fire	2																																																																																																		
 1034	Halls of the Mountain King	5	16388	5	Earth				1					50																																																																																										
@@ -1015,6 +1015,7 @@ id	name	rarity	loc	level	path	F	A	W	E	S	D	N	B	gold	res	sup	unr	exp	lab	fort	scal
 1042	Ancient Scriptorium	5	16607	2	Astral														lab																																																																																					
 1043	Tomb of Ice	5	16607	3	Water			1													Cold																																																																																			
 1044	Wellspring of Abundance	5	16607	5	Water			2						20	20						Growth																																																																																			
-1045	Spirit Pact	5	223	3	Death																																																																																				674	675													843	
+1045	Spirit Pact	5	223	3	Death																																																																																				674	675														
 1046	Secluded Village	5	223	1	Astral																																												971	1	970	2	968	1																	969	1																																
 1047	Statue of Hideous Visage	5	223	1	Blood																																																							5%					4%																																							
+1048	Altar of Catharsis	5	16607	4	Fire																																												594	1																																																						
