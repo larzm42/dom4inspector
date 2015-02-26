@@ -1533,7 +1533,7 @@ var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 	
 	'makepearls','pearl cultivator',
 	'sailsz',	'sailing size',
-	'sailmaxsz',	'max size of passenger',
+	'sailmaxsz',	'max passenger size',
 
 	'ambidextrous',	'ambidextrous',
 	'reinvigoration',		'reinvigoration',
@@ -1618,7 +1618,12 @@ var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 			realmString = realmString + MUnit.realmNames[k] + ' ';
 		}
 		return realmString; 
-		
+	},
+	'cheapgod20', 'cheap god (20)', function(v,o){ 
+		return DMI.MNation.nationUnitRefs( v );
+	},
+	'cheapgod40', 'cheap god (40)', function(v,o){ 
+		return DMI.MNation.nationUnitRefs( v );
 	},
 	
 	'shrinkhp',		'shapechange below hp',

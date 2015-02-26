@@ -345,6 +345,7 @@ MNation.prepareData_PostMod = function() {
 		
 		//associate pretenders
  		var basekey = 'Pretender';
+		Utils.arrayUnique(o.pretenders);
 		var arr = o.pretenders;
 		for (var i=0; i<arr.length; i++) {
 			if (!arr[i]) continue;
@@ -362,6 +363,24 @@ MNation.prepareData_PostMod = function() {
 			u.nations[o.id] = o;
 			u.eracodes = u.eracodes || {}; 
 			u.eracodes[o.eracode] = true;
+			
+			for (var oj=0, attr; attr = modctx.attributes_by_nation[oj];  oj++) {
+				if (parseInt(attr.nation_number) == o.id) {
+					var attribute = modctx.attributes_lookup[parseInt(attr.attribute_record_id)];
+					if (attribute.attribute_number == "314") {
+						if (u.id == attribute.raw_value) {
+							u.cheapgod20 = u.cheapgod20 || [];
+							u.cheapgod20.push(o);
+						}
+					}
+					if (attribute.attribute_number == "315") {
+						if (u.id == attribute.raw_value) {
+							u.cheapgod40 = u.cheapgod40 || [];
+							u.cheapgod40.push(o);
+						}
+					}
+				}
+			}
 		}
 		
 		//units from sites
