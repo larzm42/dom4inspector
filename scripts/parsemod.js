@@ -463,6 +463,7 @@ var modctx = DMI.modctx = {
 		tmpdeathgems: 	_num,
 		tmpnaturegems: 	_num,
 		tmpbloodslaves: 	_num,
+		guardspiritbonus: _num,
 
 		copyitem: function(c,a,t){
 			var from = modctx.itemlookup[a.n1] || modctx.itemlookup[($.trim(a.s) || '-1').toLowerCase()];
@@ -837,6 +838,7 @@ var modctx = DMI.modctx = {
 		
 		weapon:	function(c,a,t){ modctx[t]['weapons'].push(argref(a)); }, //deferr lookups
 		armor:	function(c,a,t){ modctx[t]['armor'].push(argref(a)); }, //deferr lookups
+		startitem:	function(c,a,t){ modctx[t]['startitem'].push(argref(a)); }, //deferr lookups
 		
 		eyes:	_num,
 		
@@ -1197,6 +1199,7 @@ var modctx = DMI.modctx = {
 		allret:			_num,
 		resources:		_num,
 		iceforging:		_num,
+		guardspiritbonus:	_num,
 
 		spy:			_bool,
 		slowrec:		_bool,

@@ -128,6 +128,7 @@ function isCmdr(u) {
 MUnit.initUnit = function(o) {
 	o.weapons = [];
 	o.armor = [];
+	o.startitem = [];
 	o.randompaths = [];
 	o.realms = [];
 	o.typechar = '';
@@ -1613,6 +1614,10 @@ var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 	'deathattuned', 'death attuned',
 	'natureattuned', 'nature attuned',
 	'bloodattuned', 'blood attuned',
+	'guardspiritbonus', 'guardian spirit',
+	'startitem',	'starts with',	function(v,o){ 
+		return Utils.itemRef(v); 
+	},
 	'realms', 'realm', function(v,o)
 	{ 
 		var realmString = '';
@@ -1764,6 +1769,8 @@ var flagorder = Utils.cutDisplayOrder(aliases, formats,
 	'poisonarmor',	'poison armor',
 	'spreadchaos',	'spreads chaos',
 	'spreaddeath',	'spreads death',
+	'spreadorder',	'spreads order',
+	'spreadgrowth',	'spreads growth',
 
 	'wastesurvival',	'wasteland survival',
 	'mountainsurvival',	'mountain survival',

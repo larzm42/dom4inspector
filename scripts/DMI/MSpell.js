@@ -132,6 +132,7 @@ MSpell.prepareData_PostMod = function() {
 			o.effects_count = o.nreff;
 		}
 		var effects = MSpell.getEffect(o);
+		o.effect_number = effects.effect_number;
 		if (effects) {
 			if (effects.ritual == "1") {
 				o.type = 'Ritual';
@@ -618,7 +619,8 @@ var moddingkeys = Utils.cutDisplayOrder(aliases, formats,
 [
 	'effect',	'effect',	function(v,o){ return v + ' (damage:'+o.damage+')'; },
 	'nextspell',	'nextspell',	function(v,o){ return v.id; },
-	'spec_original',	'special'
+	'spec_original',	'special',
+	'effect_number',	'effect number',
 ]);
 var displayorder = Utils.cutDisplayOrder(aliases, formats,
 [

@@ -500,6 +500,7 @@ var displayorder2 = DMI.Utils.cutDisplayOrder(aliases, formats,
 	'mastersmith',	'master smith',	
 	'armysize',		'army size report',	Format.Signed,
 	'defender',		'may be attacked by',	Utils.unitRef,
+	'guardspiritbonus', 'guardian spirit',
 
 	'sumauto',		'auto summoned unit',	Utils.unitRef,
 	
