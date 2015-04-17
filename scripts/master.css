@@ -358,25 +358,29 @@ div.overlay-header {
 	background: #772200;
 	color: #EEFFAA;
 }
-	div.overlay-header .item-image {
-		float:right;
-		height:36px; 
-		width:36px; 
-		background-position:center; 
-		background-repeat:no-repeat;
-	}
-	.item div.overlay-header h2 { padding-right: 40px; }
-	.item div.overlay-header p { padding-right: 40px; }
-	
-	div.overlay-header h2 {
+div.overlay-header .item-image {
+	float:right;
+	height:36px; 
+	width:36px; 
+	background-position:center; 
+	background-repeat:no-repeat;
+}
+.item div.overlay-header h2 { padding-right: 40px; }
+.item div.overlay-header p { padding-right: 40px; }
+
+div.overlay-header h2 {
+	margin: 0em;	padding: 0em;	border: none;
+	margin-bottom: 0.4em;
+}
+div.overlay-header p {
+	margin: 0em;	padding: 0em;
+	white-space: nowrap;
+}
+div.overlay-header .h2replace {
 		margin: 0em;	padding: 0em;	border: none;
 		margin-bottom: 0.4em;
-	}
-	div.overlay-header p {
-		margin: 0em;	padding: 0em;
-		white-space: nowrap;
-	}
-
+		font-size: 120%; font-weight:bold;
+}
 div.overlay-main {
 	border: 2px solid #FFAA2E;
 	border-style: solid none;

@@ -1681,6 +1681,21 @@ var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 	'batstartsum5',	'summons in battle',	function(v,o){ 
 		return Utils.unitRef(v)+' x 5'; 
 	},
+	'battlesum1',	'summons in battle',	function(v,o){ 
+		return Utils.unitRef(v)+' x 1/turn'; 
+	},
+	'battlesum2',	'summons in battle',	function(v,o){ 
+		return Utils.unitRef(v)+' x 2/turn'; 
+	},
+	'battlesum3',	'summons in battle',	function(v,o){ 
+		return Utils.unitRef(v)+' x 3/turn'; 
+	},
+	'battlesum4',	'summons in battle',	function(v,o){ 
+		return Utils.unitRef(v)+' x 4/turn'; 
+	},
+	'battlesum5',	'summons in battle',	function(v,o){ 
+		return Utils.unitRef(v)+' x 5/turn'; 
+	},
 	'batstartsum1d6',	'summons in battle',	function(v,o){ 
 		return Utils.unitRef(v)+' x 1d6'; 
 	},
@@ -1865,7 +1880,8 @@ MUnit.renderOverlay = function(o, isPopup) {
 	h+='	<div class="overlay-header" title="unit id:'+o.id+'"> ';
 	h+=' 		<input class="overlay-pin" type="image" src="images/PinPageTrns.png" title="unpin" />';
 
-	h+='		<h2>'+o.fullname+'</h2> ';
+	//h+='		<h2>'+o.fullname+'</h2> ';
+	h+='		<div class="h2replace">'+o.fullname+'</div> ';
 	
 	//nation/commander info
 	var nref = DMI.MNation.nationUnitRefs(o.nations);
@@ -1934,7 +1950,7 @@ MUnit.renderOverlay = function(o, isPopup) {
 	}
 	else if (o.typechar=='Pretender') {
 		h+='<p class="firstline">';
-		h+= ' Cost: ' + o.goldcost +' pts ';
+		// h+= ' Cost: ' + o.goldcost +' pts ';
 		h+= ' +<span class="internal-inline"> [pathcost]</span> '+o.pathcost + ' pts per magic path';
 		h+='<br />';
 		h+= ' Dominion<span class="internal-inline"> [startdom]</span>: '+(o.startdom ? o.startdom : '1');
