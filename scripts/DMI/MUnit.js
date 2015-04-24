@@ -1880,7 +1880,6 @@ MUnit.renderOverlay = function(o, isPopup) {
 	h+='	<div class="overlay-header" title="unit id:'+o.id+'"> ';
 	h+=' 		<input class="overlay-pin" type="image" src="images/PinPageTrns.png" title="unpin" />';
 
-	//h+='		<h2>'+o.fullname+'</h2> ';
 	h+='		<div class="h2replace">'+o.fullname+'</div> ';
 	
 	//nation/commander info

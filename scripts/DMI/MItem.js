@@ -501,6 +501,8 @@ var displayorder2 = DMI.Utils.cutDisplayOrder(aliases, formats,
 	'armysize',		'army size report',	Format.Signed,
 	'defender',		'may be attacked by',	Utils.unitRef,
 	'guardspiritbonus', 'guardian spirit',
+	'reanimH', 'reanimation bonus (holy)',
+	'reanimD', 'reanimation bonus (death)',
 
 	'sumauto',		'auto summoned unit',	Utils.unitRef,
 	
@@ -613,7 +615,7 @@ MItem.renderOverlay = function(o) {
 	//header
 	h+='	<div class="overlay-header" title="item id:'+o.id+'"> ';
 	h+='		<div class="item-image" style="background-image:url(\''+o.sprite+'\');">&nbsp;</div> ';
-	h+='		<h2>'+o.name+'</h2> ';
+	h+='		<div class="h2replace">'+o.name+'</div> ';
 	h+='		<p>'+formatItemType[o.type]+' '+formatItemCon[o.constlevel]+'</p>';
 	
 	//mid

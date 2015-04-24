@@ -678,7 +678,7 @@ MSpell.renderOverlay = function(o) {
 	h+='	<div class="overlay-header" title="spell id:'+o.id+'"> ';
 	h+=' 		<input class="overlay-pin" type="image" src="images/PinPageTrns.png" title="unpin" />';
 	h+='		<p style="float:right;">'+o.research+'</p>';
-	h+='		<h2>'+o.name+'</h2> ';
+	h+='		<div class="h2replace">'+o.name+'</div> ';
 
 	var nref = DMI.MNation.nationUnitRefs(o.nations);
 	if (nref)

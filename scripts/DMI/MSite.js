@@ -675,7 +675,7 @@ MSite.renderOverlay = function(o) {
 	//header
 	h+='	<div class="overlay-header" title="site id: '+o.id+'"> ';
 	h+='		<p style="float:right; height:0px;">'+o.path+' (lvl '+o.level+')</p>';
-	h+='		<h2>'+o.name+'</h2> ';
+	h+='		<div class="h2replace">'+o.name+'</div> ';
 	
 	//mid
 	h+='	</div>';

@@ -179,7 +179,7 @@ MArmor.renderOverlay = function(o, baseAtt) {
 	//header
 	h+='	<div class="overlay-header" title="armor id:'+o.id+'"> ';
 	h+='		<p style="float:right; height:0px;">'+slot+'</p>';
-	h+='		<h2>'+o.name+'</h2> ';
+	h+='		<div class="h2replace">'+o.name+'</div> ';
 	h+='	</div>';
 	
 	//mid
