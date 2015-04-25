@@ -1717,6 +1717,9 @@ var modctx = DMI.modctx = {
 	sitelookup: undefined,
 	site: null,
 
+	mercdata: undefined,
+	merclookup: undefined,
+	merc: null,
 
 	
 	// setWpnDamageType: function(key) {

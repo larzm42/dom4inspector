@@ -43,6 +43,7 @@
 	<script type="text/javascript" src="scripts/DMI/MUnit.js?v=30"></script>
 	<script type="text/javascript" src="scripts/DMI/MNation.js?v=30"></script>
 	<script type="text/javascript" src="scripts/DMI/MSite.js?v=30"></script>
+	<script type="text/javascript" src="scripts/DMI/MMerc.js?v=30"></script>
 	<script type="text/javascript" src="scripts/DMI/bitfields.js?v=30"></script>
 	
 	<script type="text/javascript" src="scripts/main.js?v=30"></script>
@@ -88,6 +89,7 @@
 			<button id="spell-page-button" class="page-button" value="spells">Spell</button>
 			<button id="unit-page-button"  class="page-button" value="units">Unit</button>
 			<button id="site-page-button"  class="page-button" value="sites">Site</button>
+			<button id="merc-page-button"  class="page-button" value="mercs">Merc</button>
             <button id="wpn-page-button"  class="page-button hidden-inline" value="wpns">Wp</button>
             <button id="armor-page-button"  class="page-button hidden-inline" value="armor">Ar</button>
 		</div>
@@ -218,6 +220,27 @@
 			</div>
 		</div>
 
+		<div class="filters-text  panel mercview">
+			<input type="button" value="X" class="clear-filters-btn" title="clear filters" />
+
+			search Mercs: <input type="text" class="search-box" title="filter by name or find id" id="mercq" />
+		</div>
+		<div class="hidden-block">
+			<div class="filters-text panel mercview">
+				<input type="button" value="X" class="clear-filters-btn" title="clear filters" />
+			
+				property (key):<input size="5" type="text" class="search-key" title="search for any named key" id="merckey" />
+				!<input tabindex="-1" type="checkbox" class="search-not" id="itemnot" title="not (opposite results)">
+				<select tabindex="-1" class="search-comp" id="merccomp">
+					<option title="regular expression match" class="default" selected="selected" value="=~">=~</option>
+					<option title="equals" value="==">==</option>
+					<option title="greater than or equal (int)" value=">=">&gt;=</option>
+					<option title="less than or equal (int)" value="<=">&lt;=</option>
+				</select>
+				<input size="5" type="text" class="search-val" title="search for any named key=~value"  id="mercval" />
+				<textarea class="customjs" style="width:95%; height:100;" ></textarea>
+			</div>
+		</div>
 
 		<div class="filters-text  panel wpnview">
 			<input type="button" value="X" class="clear-filters-btn" title="clear filters" />
@@ -620,6 +643,14 @@
 	</div>
 
 	<div id="site-page" class="page" style="display:none;">
+		<div class="grid-container"></div>
+		<div class="static-overlay-container">
+			<div class="primary-overlay"></div>
+			<div class="fixed-overlay overlay"></div>
+		</div>
+	</div>
+
+	<div id="merc-page" class="page" style="display:none;">
 		<div class="grid-container"></div>
 		<div class="static-overlay-container">
 			<div class="primary-overlay"></div>

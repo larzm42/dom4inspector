@@ -42,8 +42,8 @@ DMI.initGrids = function() {
 			$( "<style>.hidden-block { display:block; } tr.hidden-row { display:table-row; } .hidden-inline {display:inline; }</style>" )
 			.appendTo( "head" );
 		
-			$(".grid-container").css({left:'320px'})
-			$("div.static-overlay-container").css({width:'320px'})
+			$(".grid-container").css({left:'308px'})
+			$("div.static-overlay-container").css({width:'308px'})
 			
 			if (itemgrid) itemgrid.showIds(1);
 			if (spellgrid) spellgrid.showIds(1);
@@ -51,6 +51,7 @@ DMI.initGrids = function() {
 			if (wpngrid) wpngrid.showIds(1);
 			if (armorgrid) armorgrid.showIds(1);
 			if (sitegrid) sitegrid.showIds(1);
+			if (mercgrid) mercgrid.showIds(1);
 
 			DMI.Options['Show ids'] = 1;
 			PaneManager.option_drag_anywhere = 0;
@@ -60,8 +61,8 @@ DMI.initGrids = function() {
 		}
 		else {
 			$( "<style>.hidden-block, tr.hidden-row, .hidden-inline { display:none; }</style>" ).appendTo( "head" );
-			$(".grid-container").css({left:'320px'})
-			$("div.static-overlay-container").css({width:'320px'})
+			$(".grid-container").css({left:'308px'})
+			$("div.static-overlay-container").css({width:'308px'})
 
 			if (itemgrid) itemgrid.showIds(0);
 			if (spellgrid) spellgrid.showIds(0);
@@ -69,7 +70,8 @@ DMI.initGrids = function() {
 			if (wpngrid) wpngrid.showIds(0);
 			if (armorgrid) armorgrid.showIds(0);
 			if (sitegrid) sitegrid.showIds(0);
-			
+			if (mercgrid) mercgrid.showIds(1);
+
 			DMI.Options['Show ids'] = 0;
 			PaneManager.option_drag_anywhere = 1;
 			
@@ -185,6 +187,7 @@ DMI.initGrids = function() {
 		if (unitgrid) unitgrid.hide();
 		if (wpngrid) wpngrid.hide();
 		if (armorgrid) armorgrid.hide();
+		if (mercgrid) mercgrid.hide();
 		
 		if (!itemgrid) 
 			itemgrid = new DMI.MItem.CGrid();
@@ -208,7 +211,8 @@ DMI.initGrids = function() {
 		if (unitgrid) unitgrid.hide();
 		if (wpngrid) wpngrid.hide();
 		if (armorgrid) armorgrid.hide();
-		
+		if (mercgrid) mercgrid.hide();
+
 		if (!sitegrid) 
 			sitegrid = new DMI.MSite.CGrid();
 		
@@ -222,6 +226,30 @@ DMI.initGrids = function() {
 		DMI.Utils.saveState();
 	});
 	
+	var mercgrid = null;
+	$("#merc-page-button").click(function(e){
+
+		if (sitegrid) sitegrid.hide();
+		if (itemgrid) itemgrid.hide();
+		if (spellgrid) spellgrid.hide();
+		if (unitgrid) unitgrid.hide();
+		if (wpngrid) wpngrid.hide();
+		if (armorgrid) armorgrid.hide();
+		if (mercgrid) mercgrid.hide();
+
+		if (!mercgrid) 
+			mercgrid = new DMI.MMerc.CGrid();
+		
+		mercgrid.show();
+		$(".page-button").prop('disabled', false).removeClass('disabled');
+		$("#merc-page-button").prop('disabled', true).addClass('disabled');
+
+		//focus search box
+		$("div.filters-text.mercview input.search-box").focus();
+		
+		DMI.Utils.saveState();
+	});
+	
 	var spellgrid = null;
 	$("#spell-page-button").click(function(e){
 
@@ -231,7 +259,8 @@ DMI.initGrids = function() {
 		if (unitgrid) unitgrid.hide();
 		if (wpngrid) wpngrid.hide();
 		if (armorgrid) armorgrid.hide();
-		
+		if (mercgrid) mercgrid.hide();
+
 		if (!spellgrid) 
 			spellgrid = new DMI.MSpell.CGrid();
 		
@@ -254,7 +283,8 @@ DMI.initGrids = function() {
 		//if (unitgrid) unitgrid.hide();
 		if (wpngrid) wpngrid.hide();
 		if (armorgrid) armorgrid.hide();
-		
+		if (mercgrid) mercgrid.hide();
+
 		if (!unitgrid) 
 			unitgrid = new DMI.MUnit.CGrid();
 		
@@ -278,7 +308,8 @@ DMI.initGrids = function() {
 		if (unitgrid) unitgrid.hide();
 		//if (wpngrid) wpngrid.hide();
 		if (armorgrid) armorgrid.hide();
-		
+		if (mercgrid) mercgrid.hide();
+
 		if (!wpngrid) 
 			wpngrid = new DMI.MWpn.CGrid();
 		
@@ -302,7 +333,8 @@ DMI.initGrids = function() {
 		if (unitgrid) unitgrid.hide();
 		if (wpngrid) wpngrid.hide();
 		//if (armorgrid) armorgrid.hide();
-		
+		if (mercgrid) mercgrid.hide();
+
 		if (!armorgrid) 
 			armorgrid = new DMI.MArmor.CGrid();
 		
@@ -327,6 +359,7 @@ DMI.initGrids = function() {
 			if (sitegrid) sitegrid.detachShowingDetails();
 			if (wpngrid) wpngrid.detachShowingDetails();
 			if (armorgrid) armorgrid.detachShowingDetails();
+			if (mercgrid) mercgrid.detachShowingDetails();
 		}
 		//remove last popup on escape
 		//or clear filters if all closed
