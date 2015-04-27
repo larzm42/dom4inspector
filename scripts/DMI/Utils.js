@@ -408,6 +408,7 @@ PaneManager.renderPane = function(ref, isPopup) {
 		case 'nation': 	o = DMI.modctx.nationlookup[args[1]]; break;
 		case 'site': 	o = DMI.modctx.sitelookup[args[1]]; break;
 		case 'merc': 	o = DMI.modctx.merclookup[args[1]]; break;
+		case 'event': 	o = DMI.modctx.eventlookup[args[1]]; break;
 		case 'affliction': o = DMI.MAffliction.lookup[args[1]]; break;
 		
 		case 'rndmagic': 

@@ -398,6 +398,7 @@ function downloadData( g_data ) {
            'gamedata/BaseU.csv'+versionCode,
            'gamedata/MagicSites.csv'+versionCode,
            'gamedata/Mercenary.csv'+versionCode,
+           'gamedata/events.csv'+versionCode,
            'gamedata/nations.csv'+versionCode,
            'gamedata/armors.csv'+versionCode,
            'gamedata/protections_by_armor.csv'+versionCode,
@@ -539,6 +540,11 @@ function parseData( g_data ) {
 			if (!data) throw(DMI.Utils.error('ERROR LOADING: gamedata/Mercenary.csv'));
 			modctx.mercdata = parseTextToTable(data);
 			modctx.merclookup = createLookup(modctx.mercdata, 'id', 'name');
+
+			var data = g_data.server_data['gamedata/events.csv'+versionCode];
+			if (!data) throw(DMI.Utils.error('ERROR LOADING: gamedata/events.csv'));
+			modctx.eventdata = parseTextToTable(data);
+			modctx.eventlookup = createLookup(modctx.eventdata, 'id', 'name');
 
 			var data = g_data.server_data['gamedata/nations.csv'+versionCode];
 			if (!data) throw(DMI.Utils.error('ERROR LOADING: gamedata/nations.csv'));
@@ -683,6 +689,7 @@ function parseData( g_data ) {
 			DMI.MSite.prepareData_PreMod();
 			DMI.MNation.prepareData_PreMod();
 			DMI.MMerc.prepareData_PreMod();
+			DMI.MEvent.prepareData_PreMod();
 	
 			//parse the mods
 			for (var i=0, modname; modname = g_data.server_mods_to_load[i]; i++) {
@@ -725,6 +732,7 @@ function parseData( g_data ) {
 			DMI.MNation.prepareData_PostMod();
 			DMI.MSite.prepareData_PostMod();
 			DMI.MMerc.prepareData_PostMod();
+			DMI.MEvent.prepareData_PostMod();
 			
 			//run callback
 			setTimeout(DMI.continueLoading, 1);

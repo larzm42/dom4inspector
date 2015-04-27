@@ -1721,6 +1721,9 @@ var modctx = DMI.modctx = {
 	merclookup: undefined,
 	merc: null,
 
+	eventdata: undefined,
+	eventlookup: undefined,
+	event: null,
 	
 	// setWpnDamageType: function(key) {
 	// 	if (modctx.wpn) {
