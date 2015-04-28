@@ -382,6 +382,7 @@ Utils.wpnRef   = function(id, text) { return objectRef('wpn',   id, text); }
 Utils.armorRef = function(id, text) { return objectRef('armor', id, text); }
 Utils.nationRef = function(id, text) { return objectRef('nation', id, text); }
 Utils.siteRef = function(id, text) { return objectRef('site', id, text); }
+Utils.eventRef = function(id, text) { return objectRef('event', id, text); }
 Utils.afflictionRef = function(name) { return Utils.ref('affliction '+name, name); }
 
 Utils.unitOfTypeRef = function(id, utype) {
