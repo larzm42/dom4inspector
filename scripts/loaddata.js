@@ -410,6 +410,7 @@ function downloadData( g_data ) {
            'gamedata/attribute_keys.csv'+versionCode,
            'gamedata/attributes.csv'+versionCode,
            'gamedata/attributes_by_spell.csv'+versionCode,
+           'gamedata/afflictions.csv'+versionCode,
            'gamedata/buffs_1_types.csv'+versionCode,
            'gamedata/buffs_2_types.csv'+versionCode,
            'gamedata/enchantments.csv'+versionCode,
@@ -580,6 +581,11 @@ function parseData( g_data ) {
 			if (!data) throw(DMI.Utils.error('ERROR LOADING: gamedata/attributes_by_spell.csv'));
 			modctx.attributes_by_spell = parseTextToTable(data);
 		
+			var data = g_data.server_data['gamedata/afflictions.csv'+versionCode];
+			if (!data) throw(DMI.Utils.error('ERROR LOADING: gamedata/afflictions.csv'));
+			modctx.afflictions = parseTextToTable(data);
+			modctx.afflictions_lookup = createLookup(modctx.afflictions, 'bit_value');
+
 			var data = g_data.server_data['gamedata/buffs_1_types.csv'+versionCode];
 			if (!data) throw(DMI.Utils.error('ERROR LOADING: gamedata/buffs_1_types.csv'));
 			modctx.buffs_1_types = parseTextToTable(data);

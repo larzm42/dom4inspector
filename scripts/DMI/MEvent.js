@@ -233,6 +233,12 @@ MEvent.formatTargOrder = function(v,o) {
 	}
 	return ret;
 }
+MEvent.formatGainaff = function(v,o) {
+	var masks_dict = modctx.afflictions_lookup;
+	var values = bitfields.bitfieldValues(v, masks_dict);
+	return values[0];
+}
+
 function list_events(arr) {
 	//create array of refs
 	var tokens = [];
@@ -402,6 +408,9 @@ var effectkeys = DMI.Utils.cutDisplayOrder(aliases, formats,
 	'revealsite',	'site revealed', function(v){ return ' '; },
 	'banished', 'banished', {'-11': 'The Void', '-12': 'Inferno', '-13': 'Kokytos'},
 	'order', 'order',
+	'notext',	'no effect text', function(v){ return ' '; },
+	'pathboost', 'path boost', MEvent.formatMagicPath,
+	'gainaff', 'gain affliction', MEvent.formatGainaff,
 
 	'1d3vis',	'gems',	function(v,o){ return MEvent.formatEventGems(v, o, ' x 1d3'); },
 	'1d6vis',	'gems',	function(v,o){ return MEvent.formatEventGems(v, o, ' x 1d6'); },
