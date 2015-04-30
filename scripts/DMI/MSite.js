@@ -556,6 +556,7 @@ var displayorder = DMI.Utils.cutDisplayOrder(aliases, formats,
 	'scry', 'enter to scry',
 	'adventure', 'adventure',
 	'domspread', 'spreads dominion',
+	'domconflict', 'dominion conflict bonus',
 	'turmoil', 'dominion gets', function(v,o) {
 		if (v > 0) {
 			return 'Turmoil +' + v;
