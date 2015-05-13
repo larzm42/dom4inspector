@@ -458,6 +458,7 @@ DMI.matchProperty = function(o, key, comparitor, match) {
 	}
 	else if ($.isArray(val)) {
 		for (var o, i=0; o=val[i]; i++) {
+			if (o && comparitor(o, match)) return true;
 			if (o.id && comparitor(o.id, match)) return true;
 			if (o.name && comparitor(o.name, match)) return true;
 		}

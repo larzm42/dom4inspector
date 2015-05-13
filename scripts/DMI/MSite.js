@@ -140,6 +140,19 @@ MSite.prepareData_PostMod = function() {
 			}
 		}		
 		
+		o.events = [];
+		for (var evti=0, evt;  evt= modctx.eventdata[evti];  evti++) {
+			if (evt.req_site) {
+				var sitename = evt.description.match(/\[(.*?)\]/);
+				if (sitename[1] == o.name) {
+					o.events.push(evt.id);
+				}
+			}
+		}
+		if (o.events.length == 0) {
+			delete o.events;
+		}
+		
 		o.nations = [];
 		for (var nati=0, nat;  nat= modctx.nationdata[nati];  nati++) {
 			if (nat.sites.indexOf(o.id) != -1) {
@@ -512,6 +525,15 @@ function list_units(arr, o) {
 	//comma separated & one per line
 	return tokens.join(', <br />');
 }
+function list_events(arr) {
+	//create array of refs
+	var tokens = [];
+	for (var i=0, uid; uid= arr[i];  i++)
+		tokens.push( Utils.eventRef( arr[i] ) );
+	
+	//comma separated & one per line
+	return tokens.join(', <br />');
+}
 
 //////////////////////////////////////////////////////////////////////////
 // OVERLAY RENDERING
@@ -639,6 +661,7 @@ var displayorder = DMI.Utils.cutDisplayOrder(aliases, formats,
 		return list_units(v, o); 
 	},
 	'nations', 'start site', list_nations,
+	'events', 'triggered events', list_events,
 	'other', 'other'
 
 ]);

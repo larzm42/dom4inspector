@@ -21,7 +21,19 @@ MEvent.prepareData_PreMod = function() {
 			for (var reqnum=0, req; req = reqs[reqnum];  reqnum++) {
 				var nameval = req.split(' ');
 				if (nameval[0].indexOf('0x') == -1) {
-					o['req_'+nameval[0]] = nameval[1];
+					if (o['req_'+nameval[0]]) {
+						console.log('Multiple: ' + 'req_'+nameval[0] + ' id:'+ o.id);
+						if (o['req_'+nameval[0]].push) {
+							o['req_'+nameval[0]].push(nameval[1]);
+						} else {
+							var oldval = o['req_'+nameval[0]];
+							o['req_'+nameval[0]] = [];
+							o['req_'+nameval[0]].push(oldval);
+							o['req_'+nameval[0]].push(nameval[1]);
+						}
+					} else {
+						o['req_'+nameval[0]] = nameval[1];
+					}
 				}
 			}
 		}
@@ -31,7 +43,12 @@ MEvent.prepareData_PreMod = function() {
 				var nameval = eff.split(' ');
 				if (nameval[0] != 'id') {
 					if (nameval[0].indexOf('0x') == -1) {
-						o[nameval[0]] = nameval[1];
+						if (o[nameval[0]]) {
+							console.log('Multiple: ' +nameval[0] + ' id:'+ o.id);
+						} else {
+							o[nameval[0]] = [];
+						}
+						o[nameval[0]].push(nameval[1]);
 					}
 				} else {
 					o.eff_id = nameval[1];
@@ -187,10 +204,10 @@ MEvent.formatReqSite = function(v,o) {
 	var sitename = o.description.match(/\[(.*?)\]/);
 	switch(parseInt(v)) {
 	case 0: 
-		ret = '(Not present) ' + Utils.siteRef(sitename[1]); 
+		ret = Utils.siteRef(sitename[1]) + ' (Not present)'; 
 		break;
 	case 1: 
-		ret = '(Present) ' + Utils.siteRef(sitename[1]); 
+		ret =  Utils.siteRef(sitename[1]) + ' (Present)'; 
 		break;
 	default:
 		return Utils.siteRef(sitename[1]);
@@ -237,6 +254,85 @@ MEvent.formatGainaff = function(v,o) {
 	var masks_dict = modctx.afflictions_lookup;
 	var values = bitfields.bitfieldValues(v, masks_dict);
 	return values[0];
+}
+
+MEvent.monsterArr = function(v,o,str) {
+	if (v.push) {
+		//create array of refs
+		var tokens = [];
+		for (var i=0, uid; uid= v[i];  i++)
+			tokens.push( Utils.unitRef( parseInt(uid) ) + (str ? str : ''));
+		
+		//comma separated & one per line
+		return tokens.join(', <br />');
+	} else {
+		return Utils.unitRef(parseInt(v)); 
+	}
+}
+MEvent.nationArr = function(v,o) {
+	if (v.push) {
+		//create array of refs
+		var tokens = [];
+		for (var i=0, uid; uid= v[i];  i++)
+			tokens.push( Utils.nationRef( parseInt(uid) ) );
+		
+		//comma separated & one per line
+		return tokens.join(', <br />');
+	} else {
+		return Utils.nationRef(parseInt(v)); 
+	}
+}
+MEvent.seasonArr = function(v,o) {
+	if (v.push) {
+		//create array of refs
+		var tokens = [];
+		for (var i=0, uid; uid= v[i];  i++) {
+			switch(parseInt(uid)) {
+			case 0: ret = tokens.push('spring'); break;
+			case 1: ret = tokens.push('summer'); break;
+			case 2: ret = tokens.push('fall'); break;
+			case 3: ret = tokens.push('winter'); break;
+			}
+
+		}
+		//comma separated & one per line
+		return tokens.join(', <br />');
+	} else {
+		switch(parseInt(v)) {
+		case 0: ret = 'spring'; break;
+		case 1: ret = 'summer'; break;
+		case 2: ret = 'fall'; break;
+		case 3: ret = 'winter'; break;
+		}
+		return Utils.nationRef(parseInt(v)); 
+	}
+	return ret;
+}
+MEvent.gemArr = function(v, o, str) {
+	if (v.push) {
+		//create array of refs
+		var tokens = [];
+		for (var i=0, uid; uid= v[i];  i++)
+			tokens.push( MEvent.formatEventGems(uid, o, str) );
+		
+		//comma separated & one per line
+		return tokens.join(', <br />');
+	} else {
+		return MEvent.formatEventGems(v, o, str); 
+	}
+}
+MEvent.magicitemArr = function(v,o) {
+	if (v.push) {
+		//create array of refs
+		var tokens = [];
+		for (var i=0, uid; uid= v[i];  i++)
+			tokens.push( MEvent.formatMagicItem(uid, o) );
+		
+		//comma separated & one per line
+		return tokens.join(', <br />');
+	} else {
+		return MEvent.formatMagicItem(uid, o); 
+	}
 }
 
 function list_events(arr) {
@@ -286,11 +382,12 @@ var displayorder = DMI.Utils.cutDisplayOrder(aliases, formats,
 	'req_cave', 'cave', {'0': 'cannot be cave', '1': 'must be cave'},
 	'req_freshwater',	'land or sea', {'0': 'cannot have fresh water', '1': 'must have fresh water'},
 	'req_gem', 'gem in lab', {'0': 'Fire', '1': 'Air', '2': 'Water', '3': 'Earth', '4': 'Astral', '5': 'Death', '6': 'Nature', '7': 'Blood slave'},
-	'req_monster',	'monster present', function(v,o){ return Utils.unitRef(parseInt(v)); },
-	'req_nomonster',	'monster not present', function(v,o){ return Utils.unitRef(parseInt(v)); },
-	'req_nomnr', 'unique not present', function(v,o){ return Utils.unitRef(parseInt(v)); },
-	'req_nation', 'nation', Utils.nationRef,
-	'req_notnation', 'not nation', Utils.nationRef,
+	'req_monster',	'monster present', MEvent.monsterArr,
+	'req_nomonster',	'monster not present', MEvent.monsterArr,
+	'req_nomnr', 'unique not present', MEvent.monsterArr,
+	'req_nation', 'nation in play', MEvent.nationArr,
+	'req_fornation', 'for nation', MEvent.nationArr,
+	'req_notnation', 'not nation', MEvent.nationArr,
 	'req_maxunrest',	'maximum unrest',
 	'req_minunrest',	'minimum unrest',
 	'req_pop0ok',	'0 pop ok', function(v){ return ' '; },
@@ -301,8 +398,8 @@ var displayorder = DMI.Utils.cutDisplayOrder(aliases, formats,
 	'req_poptype',	'population type',
 	'req_turn',	'minimun turn',
 	'req_maxturn',	'maximum turn',
-	'req_season',	'only happens in', {'0': 'spring', '1': 'summer', '2': 'fall', '3': 'winter'},
-	'req_noseason',	'cannot happen in', {'0': 'spring', '1': 'summer', '2': 'fall', '3': 'winter'},
+	'req_season',	'only happens in', MEvent.seasonArr,
+	'req_noseason',	'cannot happen in', MEvent.seasonArr,
 	'req_luck',	'luck scale',
 	'req_unluck',	'misfortune scale',
 	'req_order',	'order scale',
@@ -386,7 +483,7 @@ var effectkeys = DMI.Utils.cutDisplayOrder(aliases, formats,
 	'landprod',	'province resources', Format.Signed,
 	'taxboost',	'province tax', Format.Percent,
 	'nation',	'nation that owns event', {'-1': 'random enemy', '-2': 'province owner'},
-	'magicitem', 'magic item', MEvent.formatMagicItem,
+	'magicitem', 'magic item', MEvent.magicitemArr,
 	'unrest',	'unrest', Format.Signed,
 	'lab', 'lab', {'0': 'lab destroyed', '1': 'new lab'},
 	'temple', 'temple', {'0': 'temple destroyed', '1': 'temple gained'},
@@ -398,7 +495,7 @@ var effectkeys = DMI.Utils.cutDisplayOrder(aliases, formats,
 	'curse',	'curse units', Format.Percent,
 	'disease',	'disease units', Format.Percent,
 	'strikeunits',	'unit damage',
-	'addequip', 'add equipment', MEvent.formatMagicItem,
+	'addequip', 'add equipment', MEvent.magicitemArr,
 	'eff_id', 'event identifier',
 	'newdom',	'new province dominion',
 	'revolt',	'province revolts', function(v){ return ' '; },
@@ -413,16 +510,16 @@ var effectkeys = DMI.Utils.cutDisplayOrder(aliases, formats,
 	'pathboost', 'path boost', MEvent.formatMagicPath,
 	'gainaff', 'gain affliction', MEvent.formatGainaff,
 
-	'1d3vis',	'gems',	function(v,o){ return MEvent.formatEventGems(v, o, ' x 1d3'); },
-	'1d6vis',	'gems',	function(v,o){ return MEvent.formatEventGems(v, o, ' x 1d6'); },
-	'2d4vis',	'gems',	function(v,o){ return MEvent.formatEventGems(v, o, ' x 2d4'); },
-	'2d6vis',	'gems',	function(v,o){ return MEvent.formatEventGems(v, o, ' x 2d6'); },
-	'3d6vis',	'gems',	function(v,o){ return MEvent.formatEventGems(v, o, ' x 3d6'); },
-	'4d6vis',	'gems',	function(v,o){ return MEvent.formatEventGems(v, o, ' x 4d6'); },
-	'gemloss',	'lose gems',	function(v,o){ return MEvent.formatEventGems(v, o, ' x 2d6'); },
+	'1d3vis',	'gems',	function(v,o){ return MEvent.gemArr(v, o, ' x 1d3'); },
+	'1d6vis',	'gems',	function(v,o){ return MEvent.gemArr(v, o, ' x 1d6'); },
+	'2d4vis',	'gems',	function(v,o){ return MEvent.gemArr(v, o, ' x 2d4'); },
+	'2d6vis',	'gems',	function(v,o){ return MEvent.gemArr(v, o, ' x 2d6'); },
+	'3d6vis',	'gems',	function(v,o){ return MEvent.gemArr(v, o, ' x 3d6'); },
+	'4d6vis',	'gems',	function(v,o){ return MEvent.gemArr(v, o, ' x 4d6'); },
+	'gemloss',	'lose gems',	function(v,o){ return MEvent.gemArr(v, o, ' x 2d6'); },
 		
-	'killmon',	'kill unit', function(v,o){ return Utils.unitRef(parseInt(v)); },
-	'killcom',	'kill commander', function(v,o){ return Utils.unitRef(parseInt(v)); },
+	'killmon',	'kill unit', MEvent.monsterArr,
+	'killcom',	'kill commander', MEvent.monsterArr,
 	'fireboost',	'boost fire', function(v,o){ return v == 1 ? '1' : Utils.unitRef(parseInt(v)); },
 	'airboost',		'boost air', function(v,o){ return v == 1 ? '1' : Utils.unitRef(parseInt(v)); },
 	'waterboost',	'boost water', function(v,o){ return v == 1 ? '1' : Utils.unitRef(parseInt(v)); },
@@ -433,32 +530,32 @@ var effectkeys = DMI.Utils.cutDisplayOrder(aliases, formats,
 	'bloodboost',	'boost bood', function(v,o){ return v == 1 ? '1' : Utils.unitRef(parseInt(v)); }, 
 	'holyboost',	'boost holy', function(v,o){ return v == 1 ? '1' : Utils.unitRef(parseInt(v)); }, 
 
-	'stealthcom',	'stealthy commander', function(v,o){ return Utils.unitRef(parseInt(v)); },
-	'assassin',	'assassin', function(v,o){ return Utils.unitRef(parseInt(v)); },
+	'stealthcom',	'stealthy commander', MEvent.monsterArr,
+	'assassin',	'assassin', MEvent.monsterArr,
 
-	'com',	'commander', 	function(v,o){ return Utils.unitRef(parseInt(v)); },
-	'2com',	'commander', 	function(v,o){ return Utils.unitRef(parseInt(v)) + ' x 2'; },
-	'4com',	'commander', 	function(v,o){ return Utils.unitRef(parseInt(v)) + ' x 4'; },
-	'5com',	'commander', 	function(v,o){ return Utils.unitRef(parseInt(v)) + ' x 5'; },
+	'com',	'commander', 	MEvent.monsterArr,
+	'2com',	'commander', 	function(v,o){ return MEvent.monsterArr(v, o, ' x 2'); },
+	'4com',	'commander', 	function(v,o){ return MEvent.monsterArr(v, o, ' x 4'); },
+	'5com',	'commander', 	function(v,o){ return MEvent.monsterArr(v, o, ' x 5'); },
 
-	'1unit',	'unit', 	function(v,o){ return Utils.unitRef(parseInt(v)); },
-	'1d3units',	'units', 	function(v,o){ return Utils.unitRef(parseInt(v)) + ' x 1d3'; },
-	'1d6units',	'units', 	function(v,o){ return Utils.unitRef(parseInt(v)) + ' x 1d6'; },
-	'2d6units',	'units', 	function(v,o){ return Utils.unitRef(parseInt(v)) + ' x 2d6'; },
-	'3d6units',	'units', 	function(v,o){ return Utils.unitRef(parseInt(v)) + ' x 3d6'; },
-	'4d6units',	'units', 	function(v,o){ return Utils.unitRef(parseInt(v)) + ' x 4d6'; },
-	'5d6units',	'units', 	function(v,o){ return Utils.unitRef(parseInt(v)) + ' x 5d6'; },
-	'6d6units',	'units', 	function(v,o){ return Utils.unitRef(parseInt(v)) + ' x 6d6'; },
-	'7d6units',	'units', 	function(v,o){ return Utils.unitRef(parseInt(v)) + ' x 7d6'; },
-	'8d6units',	'units', 	function(v,o){ return Utils.unitRef(parseInt(v)) + ' x 8d6'; },
-	'9d6units',	'units', 	function(v,o){ return Utils.unitRef(parseInt(v)) + ' x 9d6'; },
-	'10d6units',	'units', 	function(v,o){ return Utils.unitRef(parseInt(v)) + ' x 10d6'; },
-	'11d6units',	'units', 	function(v,o){ return Utils.unitRef(parseInt(v)) + ' x 11d6'; },
-	'12d6units',	'units', 	function(v,o){ return Utils.unitRef(parseInt(v)) + ' x 12d6'; },
-	'13d6units',	'units', 	function(v,o){ return Utils.unitRef(parseInt(v)) + ' x 13d6'; },
-	'14d6units',	'units', 	function(v,o){ return Utils.unitRef(parseInt(v)) + ' x 14d6'; },
-	'15d6units',	'units', 	function(v,o){ return Utils.unitRef(parseInt(v)) + ' x 15d6'; },
-	'16d6units',	'units', 	function(v,o){ return Utils.unitRef(parseInt(v)) + ' x 16d6'; },
+	'1unit',	'unit', 	function(v,o){ return MEvent.monsterArr(v, o); },
+	'1d3units',	'units', 	function(v,o){ return MEvent.monsterArr(v, o, ' x 1d3'); },
+	'1d6units',	'units', 	function(v,o){ return MEvent.monsterArr(v, o, ' x 1d6'); },
+	'2d6units',	'units', 	function(v,o){ return MEvent.monsterArr(v, o, ' x 2d6'); },
+	'3d6units',	'units', 	function(v,o){ return MEvent.monsterArr(v, o, ' x 3d6'); },
+	'4d6units',	'units', 	function(v,o){ return MEvent.monsterArr(v, o, ' x 4d6'); },
+	'5d6units',	'units', 	function(v,o){ return MEvent.monsterArr(v, o, ' x 5d6'); },
+	'6d6units',	'units', 	function(v,o){ return MEvent.monsterArr(v, o, ' x 6d6'); },
+	'7d6units',	'units', 	function(v,o){ return MEvent.monsterArr(v, o, ' x 7d6'); },
+	'8d6units',	'units', 	function(v,o){ return MEvent.monsterArr(v, o, ' x 8d6'); },
+	'9d6units',	'units', 	function(v,o){ return MEvent.monsterArr(v, o, ' x 9d6'); },
+	'10d6units',	'units', 	function(v,o){ return MEvent.monsterArr(v, o, ' x 10d6'); },
+	'11d6units',	'units', 	function(v,o){ return MEvent.monsterArr(v, o, ' x 11d6'); },
+	'12d6units',	'units', 	function(v,o){ return MEvent.monsterArr(v, o, ' x 12d6'); },
+	'13d6units',	'units', 	function(v,o){ return MEvent.monsterArr(v, o, ' x 13d6'); },
+	'14d6units',	'units', 	function(v,o){ return MEvent.monsterArr(v, o, ' x 14d6'); },
+	'15d6units',	'units', 	function(v,o){ return MEvent.monsterArr(v, o, ' x 15d6'); },
+	'16d6units',	'units', 	function(v,o){ return MEvent.monsterArr(v, o, ' x 16d6'); },
 	
 	'linkedCodes', 'triggered events', list_events,
 	'linkedResetCodes', 'reset events', list_events,

@@ -227,6 +227,19 @@ MUnit.prepareData_PostMod = function() {
 			}
 		}
 		
+		o.events = [];
+		for (var evti=0, evt;  evt= modctx.eventdata[evti];  evti++) {
+			if (evt.req_monster) {
+				if (evt.req_monster == o.id) {
+					o.events.push(evt.id);
+				}
+			}
+		}
+		if (o.events.length == 0) {
+			delete o.events;
+		}
+
+		
 		//localise useful functions
 		var sum = Utils.sum;
 		var negative = Utils.negative;
@@ -1404,6 +1417,16 @@ function list_sites(arr) {
 	//comma separated & one per line
 	return tokens.join(', <br />');
 }
+function list_events(arr) {
+	//create array of refs
+	var tokens = [];
+	for (var i=0, uid; uid= arr[i];  i++)
+		tokens.push( Utils.eventRef( arr[i] ) );
+	
+	//comma separated & one per line
+	return tokens.join(', <br />');
+}
+
 
 //////////////////////////////////////////////////////////////////////////
 // OVERLAY RENDERING
@@ -1721,6 +1744,7 @@ var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 	
 	'voidsanity',		'void sanity',		
 	'voidsum',		'void summoning',	Format.Signed, //rl'yeh	
+	'events', 'triggered events', list_events,
 	'recruitedby', 'recruited from', list_sites,
 	'summonedfrom', 'summoned from', list_sites
 	
