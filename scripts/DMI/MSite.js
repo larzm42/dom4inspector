@@ -144,13 +144,30 @@ MSite.prepareData_PostMod = function() {
 		for (var evti=0, evt;  evt= modctx.eventdata[evti];  evti++) {
 			if (evt.req_site) {
 				var sitename = evt.description.match(/\[(.*?)\]/);
-				if (sitename[1] == o.name) {
+				if (sitename && sitename.length > 1 && sitename[1] == o.name) {
+					o.events.push(evt.id);
+				} else if (evt.req_site == o.id) {
 					o.events.push(evt.id);
 				}
 			}
 		}
 		if (o.events.length == 0) {
 			delete o.events;
+		}
+		
+		o.newsiteevents = [];
+		for (var evti=0, evt;  evt= modctx.eventdata[evti];  evti++) {
+			if (evt.newsite) {
+				var sitename = evt.description.match(/\[(.*?)\]/);
+				if (sitename && sitename.length > 1 && sitename[1] == o.name) {
+					o.newsiteevents.push(evt.id);
+				} else if (evt.newsite == o.id) {
+					o.newsiteevents.push(evt.id);
+				}
+			}
+		}
+		if (o.newsiteevents.length == 0) {
+			delete o.newsiteevents;
 		}
 		
 		o.nations = [];
@@ -662,6 +679,7 @@ var displayorder = DMI.Utils.cutDisplayOrder(aliases, formats,
 	},
 	'nations', 'start site', list_nations,
 	'events', 'triggered events', list_events,
+	'newsiteevents', 'new site events', list_events,
 	'other', 'other'
 
 ]);

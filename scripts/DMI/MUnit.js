@@ -230,7 +230,11 @@ MUnit.prepareData_PostMod = function() {
 		o.events = [];
 		for (var evti=0, evt;  evt= modctx.eventdata[evti];  evti++) {
 			if (evt.req_monster) {
-				if (evt.req_monster == o.id) {
+				if (evt.req_monster.push) {
+					if (evt.req_monster.indexOf(''+o.id) != -1) {
+						o.events.push(evt.id);
+					}
+				} else if (evt.req_monster == o.id) {
 					o.events.push(evt.id);
 				}
 			}

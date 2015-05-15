@@ -22,7 +22,6 @@ MEvent.prepareData_PreMod = function() {
 				var nameval = req.split(' ');
 				if (nameval[0].indexOf('0x') == -1) {
 					if (o['req_'+nameval[0]]) {
-						console.log('Multiple: ' + 'req_'+nameval[0] + ' id:'+ o.id);
 						if (o['req_'+nameval[0]].push) {
 							o['req_'+nameval[0]].push(nameval[1]);
 						} else {
@@ -44,11 +43,17 @@ MEvent.prepareData_PreMod = function() {
 				if (nameval[0] != 'id') {
 					if (nameval[0].indexOf('0x') == -1) {
 						if (o[nameval[0]]) {
-							console.log('Multiple: ' +nameval[0] + ' id:'+ o.id);
+							if (o[nameval[0]].push) {
+								o[nameval[0]].push(nameval[1]);
+							} else {
+								var oldval = o[nameval[0]];
+								o[nameval[0]] = [];
+								o[nameval[0]].push(oldval);
+								o[nameval[0]].push(nameval[1]);
+							}
 						} else {
-							o[nameval[0]] = [];
+							o[nameval[0]] = nameval[1];
 						}
-						o[nameval[0]].push(nameval[1]);
 					}
 				} else {
 					o.eff_id = nameval[1];
@@ -69,12 +74,28 @@ MEvent.prepareData_PostMod = function() {
 		o.id = parseInt(o.id);
 		o.searchable = o.description.toLowerCase();
 		
-		if (o.req_code && o.req_code != 0) {
+		if (o.req_code) {
 			var linkedReqCodes = [];
-			for (var oj=0, o2;  o2 = modctx.eventdata[oj];  oj++) {
-				if (o2.code) {
-					if (parseInt(o.req_code) == parseInt(o2.code)) {
-						linkedReqCodes.push(o2.id);
+			var reqcodes = [];
+			if (o.req_code.push) {
+				reqcodes = o.req_code;
+			} else {
+				reqcodes.push(o.req_code);
+			}
+			for (var ix = 0; ix < reqcodes.length; ix++) {
+				if (reqcodes[ix] && reqcodes[ix] != 0) {
+					for (var oj=0, o2; o2 = modctx.eventdata[oj];  oj++) {
+						if (o2.code) {
+							if (o2.code.push) {
+								if (o2.code.indexOf(reqcodes[ix]) != -1) {
+									linkedReqCodes.push(o2.id);
+								}
+							} else {
+								if (parseInt(reqcodes[ix]) == parseInt(o2.code)) {
+									linkedReqCodes.push(o2.id);
+								}
+							}
+						}
 					}
 				}
 			}
@@ -82,13 +103,29 @@ MEvent.prepareData_PostMod = function() {
 		}
 		if (o.code && o.code != 0) {
 			var linkedCodes = [];
-			for (var ok=0, o3;  o3 = modctx.eventdata[ok];  ok++) {
-				if (o3.req_code) {
-					if (parseInt(o.code) == parseInt(o3.req_code)) {
-						linkedCodes.push(o3.id);
+			var codes = [];
+			if (o.code.push) {
+				codes = o.code;
+			} else {
+				codes.push(o.code);
+			}
+			for (var ix = 0; ix < codes.length; ix++) {
+				if (codes[ix] && codes[ix] != 0) {
+					for (var ok=0, o3;  o3 = modctx.eventdata[ok];  ok++) {
+						if (o3.req_code) {
+							if (o3.req_code.push) {
+								if (o3.req_code.indexOf(codes[ix]) != -1) {
+									linkedCodes.push(o3.id);
+								}
+							} else {
+								if (parseInt(codes[ix]) == parseInt(o3.req_code)) {
+									linkedCodes.push(o3.id);
+								}
+							}
+						}
 					}
 				}
-			}
+			}			
 			o.linkedCodes = linkedCodes;
 		}
 		if (o.resetcode && o.resetcode != 0) {
@@ -255,6 +292,19 @@ MEvent.formatGainaff = function(v,o) {
 	var values = bitfields.bitfieldValues(v, masks_dict);
 	return values[0];
 }
+MEvent.gainaffArr = function(v,o) {
+	if (v.push) {
+		//create array of refs
+		var tokens = [];
+		for (var i=0, uid; uid= v[i];  i++)
+			tokens.push( MEvent.formatGainaff( uid, o ) );
+		
+		//comma separated & one per line
+		return tokens.join(', <br />');
+	} else {
+		return MEvent.formatGainaff( v, o ); 
+	}
+}
 
 MEvent.monsterArr = function(v,o,str) {
 	if (v.push) {
@@ -266,7 +316,7 @@ MEvent.monsterArr = function(v,o,str) {
 		//comma separated & one per line
 		return tokens.join(', <br />');
 	} else {
-		return Utils.unitRef(parseInt(v)); 
+		return Utils.unitRef(parseInt(v)) + (str ? str : ''); 
 	}
 }
 MEvent.nationArr = function(v,o) {
@@ -280,6 +330,19 @@ MEvent.nationArr = function(v,o) {
 		return tokens.join(', <br />');
 	} else {
 		return Utils.nationRef(parseInt(v)); 
+	}
+}
+MEvent.magicPathArr = function(v,o) {
+	if (v.push) {
+		//create array of refs
+		var tokens = [];
+		for (var i=0, uid; uid= v[i];  i++)
+			tokens.push( MEvent.formatMagicPath( parseInt(uid)) );
+		
+		//comma separated & one per line
+		return tokens.join(', <br />');
+	} else {
+		return MEvent.formatMagicPath(parseInt(v)); 
 	}
 }
 MEvent.seasonArr = function(v,o) {
@@ -304,7 +367,6 @@ MEvent.seasonArr = function(v,o) {
 		case 2: ret = 'fall'; break;
 		case 3: ret = 'winter'; break;
 		}
-		return Utils.nationRef(parseInt(v)); 
 	}
 	return ret;
 }
@@ -423,11 +485,11 @@ var displayorder = DMI.Utils.cutDisplayOrder(aliases, formats,
 	'req_pathblood', 'blood mage level', 
 	'req_pathholy', 'holy mage level',
 	
-	'req_targpath1', 'level 1+ mage', MEvent.formatMagicPath,
-	'req_targpath2', 'level 2+ mage', MEvent.formatMagicPath,
-	'req_targpath3', 'level 3+ mage', MEvent.formatMagicPath,
-	'req_targpath4', 'level 4+ mage', MEvent.formatMagicPath,
-	'req_targmnr', 'target monster', function(v,o){ return Utils.unitRef(parseInt(v)); },
+	'req_targpath1', 'level 1+ mage', MEvent.magicPathArr,
+	'req_targpath2', 'level 2+ mage', MEvent.magicPathArr,
+	'req_targpath3', 'level 3+ mage', MEvent.magicPathArr,
+	'req_targpath4', 'level 4+ mage', MEvent.magicPathArr,
+	'req_targmnr', 'target monster', MEvent.monsterArr,
 	'req_foundsite', 'found site', MEvent.formatReqSite,
 	'req_hiddensite', 'hidden site', MEvent.formatReqSite,
 	'req_site', 'site', MEvent.formatReqSite,
@@ -482,7 +544,7 @@ var effectkeys = DMI.Utils.cutDisplayOrder(aliases, formats,
 	'landgold',	'province income', Format.Signed,
 	'landprod',	'province resources', Format.Signed,
 	'taxboost',	'province tax', Format.Percent,
-	'nation',	'nation that owns event', {'-1': 'random enemy', '-2': 'province owner'},
+	'nation',	'owning nation', {'-1': 'random enemy', '-2': 'province owner'},
 	'magicitem', 'magic item', MEvent.magicitemArr,
 	'unrest',	'unrest', Format.Signed,
 	'lab', 'lab', {'0': 'lab destroyed', '1': 'new lab'},
@@ -502,13 +564,13 @@ var effectkeys = DMI.Utils.cutDisplayOrder(aliases, formats,
 	'researchaff',	'researcher affliction',
 	'visitors',	'bogus and company',
 	'linger',	'turns to linger',
-	'revealprov',	'province revealed to world', function(v){ return ' '; },
+	'revealprov',	'province revealed', function(v){ return ' '; },
 	'revealsite',	'site revealed', function(v){ return ' '; },
 	'banished', 'banished', {'-11': 'The Void', '-12': 'Inferno', '-13': 'Kokytos'},
 	'order', 'order',
 	'notext',	'no effect text', function(v){ return ' '; },
-	'pathboost', 'path boost', MEvent.formatMagicPath,
-	'gainaff', 'gain affliction', MEvent.formatGainaff,
+	'pathboost', 'path boost', MEvent.magicPathArr,
+	'gainaff', 'gain affliction', MEvent.gainaffArr,
 
 	'1d3vis',	'gems',	function(v,o){ return MEvent.gemArr(v, o, ' x 1d3'); },
 	'1d6vis',	'gems',	function(v,o){ return MEvent.gemArr(v, o, ' x 1d6'); },
