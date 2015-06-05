@@ -220,13 +220,6 @@ MUnit.prepareData_PostMod = function() {
 		//searchable string
 		o.searchable = o.fullname.toLowerCase();
 		
-		// Prophetshape
-		if (o.special) {
-			if (o.special.indexOf('Prophetform') != -1) {
-				o.prophetshape = parseInt(o.special.substr(11));
-			}
-		}
-		
 		o.events = [];
 		for (var evti=0, evt;  evt= modctx.eventdata[evti];  evti++) {
 			if (evt.req_monster) {
@@ -1427,10 +1420,28 @@ function list_events(arr) {
 	for (var i=0, uid; uid= arr[i];  i++)
 		tokens.push( Utils.eventRef( arr[i] ) );
 	
-	//comma separated & one per line
-	return tokens.join(', <br />');
-}
+	var h = '';
+	if (tokens.length > 4) {
+		//hide uberlong list
+		h+='<div><div>'+tokens.length+' events ';
+		
+		//button to reveal
+		var codereveal = "$(this).parent('div').hide().parent('div').find('.full-list').show()"
+		h+='<input class="inline-button" style="padding:none" type="button" value="show" onclick="'+codereveal+'"/>';
+		h+='</div>';
+	
+		//the actual list
+		h+='<div class="full-list"style="display:none">';
+		h+='	'+ tokens.join(', <br />');
+		h+='</div>';
+	} else {
+		h+='<div>';
+		h+='	'+ tokens.join(', <br />');
+		h+='</div></div>';
+	}
 
+	return h;
+}
 
 //////////////////////////////////////////////////////////////////////////
 // OVERLAY RENDERING
@@ -1627,6 +1638,7 @@ var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 	'patience', 'patience',
 	'uwdamage', 'underwater damage',
 	'digest', 'digest',
+	'acidsplash', 'acid splash',
 	'incorporate', 'incorporate',
 	'bonusspells', 'bonus spells',
 	'deathparalyze', 'paralyze on death',
@@ -1774,6 +1786,7 @@ var flagorder = Utils.cutDisplayOrder(aliases, formats,
 	'cleanshape',	'heals afflictions when shapechanging',
 
 	'animal',	'animal',
+	'drake',	'drake',
 	'undead',	'undead',
 	'magicbeing',	'magic being',
 	'inanimate',	'lifeless',
