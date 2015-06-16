@@ -251,6 +251,10 @@ MSpell.prepareData_PostMod = function() {
 					arr = MSpell.yazads;
 				} else if (uid == "-17") {
 					arr = MSpell.yatas;
+				} else if (o.id == "320") {
+					arr = MSpell.angelichost;
+				} else if (o.id == "975") {
+					arr = MSpell.hordefromhell;
 				} else if (parseInt(uid) < 0) {
 					for (var oi2=0, o2; o2 = modctx.unitdata[oi2];  oi2++) {
 						if (o2.montag) {

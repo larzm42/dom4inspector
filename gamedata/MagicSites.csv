@@ -59,7 +59,7 @@ id	name	rarity	loc	level	path	F	A	W	E	S	D	N	B	gold	res	sup	unr	exp	lab	fort	scal
 58	Vanhalla	5	0	0	Air		3		1																																		262																														263	264																															
 59	Helhalla	5	0	0	Death		1																																				855	1503																													1507	847																															
 60	God Forest	5	0	0	Nature	1						2																															889																														890																																
-61	God Mountain	5	0	0	Earth				2																																*	1	876																														894	891	877																														
+61	God Mountain	5	0	0	Earth				2																																FAWESDNB	1	876																														894	891	877																														
 62	The Temple Marsh	5	0	0	Nature			1			2	2																															164	2236	2237																												2238																																
 63	The City of Tombs	5	0	0	Death	1					3																																1166																														1095																																
 64	Temple of the Spheres	5	0	0	Astral					1																																																															670																																
@@ -303,7 +303,7 @@ id	name	rarity	loc	level	path	F	A	W	E	S	D	N	B	gold	res	sup	unr	exp	lab	fort	scal
 330	The Frozen Forest	1	16386	2	Water			3				1									Cold																																																														309																						
 331	The Sea of the Tears of Men	2	16607	2	Water			2			2																																																																																														
 332	The Water Sphere	1	16607	3	Water			3																																	W	2																																																															
-333	The Great Mirror of Maaki	2	16607	3	Water		1	1		1																															*	1																																																															
+333	The Great Mirror of Maaki	2	16607	3	Water		1	1		1																															FAWESDNB	1																																																															
 334	The Sea Underneath	2	17119	4	Water			5																																																																																																	
 335	Temple of the Turning Tide	2	64	1	Water			1																																																20%																											529																						
 336	Black Ice Valley	2	4	1	Water			1			1																																														20%																																																
@@ -409,7 +409,7 @@ id	name	rarity	loc	level	path	F	A	W	E	S	D	N	B	gold	res	sup	unr	exp	lab	fort	scal
 436	Pyramid of Life	1	223	1	Astral					1	1																																																																																														
 437	Totem Collection	1	223	1	Astral					1		1									Luck																																																																																				
 438	Gateway	2	735	1	Astral					1																																													20%																																																		
-439	Distortion	2	735	1	Astral					1																															*	2																		20%																																													
+439	Distortion	2	735	1	Astral					1																															FAWESDNB	2																		20%																																													
 440	Nexus	2	735	1	Astral					1																															S	1																	20%																																														
 441	Village of Strange Men	2	223	1	Astral					1																																														20%																																																	
 442	The Ancient Master	1	16607	1	Astral													8																																																																																							
@@ -570,7 +570,7 @@ id	name	rarity	loc	level	path	F	A	W	E	S	D	N	B	gold	res	sup	unr	exp	lab	fort	scal
 597	The Ebony Circle	2	16607	2	Blood					1	3								lab																						B	2																																									339																						
 598	The Demon Gate	1	16607	3	Blood												10																																88	1																																																							
 599	The Prison of Hearts	1	16607	3	Blood									40			5																																																																																								
-600	The Mountain of Power	2	16392	2	Blood								3																												*	2							403	1							30%																																																
+600	The Mountain of Power	2	16392	2	Blood								3																												FAWESDNB	2							403	1							30%																																																
 601	Hall of Flayed Skins	2	16607	4	Blood					2	2																																																						5%																																								
 602	Assassins Guild	2	223	1	Blood																																																																														428																						
 603	Haunted Torture Chamber	2	735	2	Blood						1																																																					5%																																									
@@ -908,7 +908,7 @@ id	name	rarity	loc	level	path	F	A	W	E	S	D	N	B	gold	res	sup	unr	exp	lab	fort	scal
 935	Wellspring of the Virgins	2	16607	1	Water			1																																																						3%																																											
 936	Sign of Nodens	2	16450	3	Water			2																																																						3%																																											
 937	Rune of Water	1	255	2	Water																																				W	2																																																															
-938	Pharos	2	16448	1	Water																																				*	2																										2		scrying lasts 2 turns																																			
+938	Pharos	2	16448	1	Water																																				FAWESDNB	2																										2		scrying lasts 2 turns																																			
 939	Deep Crevasse	0	255	1	Earth				1																																																																																																
 940	Mud Field	0	223	1	Earth				1																																																																																																
 941	Quicksand	0	223	1	Earth				1																																																																																																
@@ -944,7 +944,7 @@ id	name	rarity	loc	level	path	F	A	W	E	S	D	N	B	gold	res	sup	unr	exp	lab	fort	scal
 971	Gloom Gate	1	255	3	Death						2																														D	2																																																															
 972	Tomb of the Grand Thaumathurg	2	16479	3	Death						1																														D	2																																																															
 973	Sigil of the Ancients	2	16639	3	Death																																				D	3																																																															
-974	Circle of Sending	2	223	2	Death																																				*	2																							2%																																								
+974	Circle of Sending	2	223	2	Death																																				FAWESDNB	2																							2%																																								
 975	Nidus of Power	2	255	2	Death																																																							20%																																													
 976	Conjurer's Circle	2	223	2	Death																																																		20%																																																		
 977	Plague Barrow	2	223	1	Death						1																																																				2%																																										

@@ -9,19 +9,6 @@ var Utils = DMI.Utils;
 var modctx = DMI.modctx;
 var modconstants = DMI.modconstants;
 
-MSite.ritual_string = {
-		'F': 'Fire',
-		'A': 'Air',
-		'W': 'Water',
-		'E': 'Earth',
-		'S': 'Astral',
-		'D': 'Death',
-		'N': 'Nature',
-		'B': 'Blood',
-		'H': 'Holy',
-		'*': 'All',
-}
-
 //////////////////////////////////////////////////////////////////////////
 // PREPARE DATA
 //////////////////////////////////////////////////////////////////////////
@@ -142,11 +129,17 @@ MSite.prepareData_PostMod = function() {
 		
 		o.events = [];
 		for (var evti=0, evt;  evt= modctx.eventdata[evti];  evti++) {
-			if (evt.req_site) {
+			if (evt.req_site || evt.req_foundsite || evt.req_hiddensite || evt.req_nearbysite) {
 				var sitename = evt.description.match(/\[(.*?)\]/);
 				if (sitename && sitename.length > 1 && sitename[1] == o.name) {
 					o.events.push(evt.id);
 				} else if (evt.req_site == o.id) {
+					o.events.push(evt.id);
+				} else if (evt.req_foundsite == o.id) {
+					o.events.push(evt.id);
+				} else if (evt.req_hiddensite == o.id) {
+					o.events.push(evt.id);
+				} else if (evt.req_nearbysite == o.id) {
 					o.events.push(evt.id);
 				}
 			}
@@ -655,7 +648,7 @@ var displayorder = DMI.Utils.cutDisplayOrder(aliases, formats,
 	'airshield', 'air shield',
 	'reveal', 'reveals', {0: 'mundane score graphs', 3: 'magic score graphs', 5: 'dominion score graphs', 999: 'all score graphs'},
 	'rit', 'ritual range', function(v,o){
-		return MSite.ritual_string[v] + ' +' + o.ritrng;
+		return Format.Booster(v) + ' +' + o.ritrng;
 	},
 	'loc', 'location', function(v,o){ return Utils.renderFlags(MSite.bitfieldValues(o.loc, modctx.site_terrain_types_lookup), 1) },
 	'hcom',	'home commanders',	function(v,o){ 

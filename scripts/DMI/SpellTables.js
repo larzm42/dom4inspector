@@ -64,20 +64,24 @@ MSpell.format = {
 	}
 }
 
-function show_summon(unit, count, pathlevel1) {
+function show_summon(unit, count, pathlevel1, spellid) {
 	var ref;
-	if (parseInt(unit) < 0) {
+	if (parseInt(unit) < 0 || (parseInt(spellid) == 320) || (parseInt(spellid) == 975)) {
 		var arr;
 		if (unit == "-16") {
 			arr = MSpell.yazads;
 		} else if (unit == "-17") {
 			arr = MSpell.yatas;
+		} else if (unit == "543") {
+			arr = MSpell.angelichost;
+		} else if (unit == "303") {
+			arr = MSpell.hordefromhell;
 		}
 		if (arr) {
 			//create array of refs
 			var tokens = [];
 			for (var i=0, uid; uid= arr[i];  i++)
-				tokens.push( show_summon(uid, 1) );
+				tokens.push( show_summon(uid, i==0 ? 1 : count) );
 			
 			//comma separated & one per line
 			return tokens.join(', <br />');
@@ -139,6 +143,8 @@ MSpell.tartarianGate = [771, 772, 773, 774, 775, 776, 777];
 MSpell.yazads = [2620, 2621, 2622, 2623, 2624, 2625];
 MSpell.yatas = [2632, 2633, 2634, 2636];
 MSpell.unleashImprisonedOnes = [2498, 2499, 2500];
+MSpell.angelichost = [465, 543];
+MSpell.hordefromhell = [304, 303];
 
 MSpell.uniqueSummon = {
 		1:	/* Bind Ice Devil */ [
@@ -239,7 +245,7 @@ MSpell.effectlookup = {
 			return spellBonus(spell.effects_count, spell.pathlevel1);
 		},
 		37:	function(spell, effect) {
-			return show_summon(effect.raw_argument, spell.effects_count, spell.pathlevel1);
+			return show_summon(effect.raw_argument, spell.effects_count, spell.pathlevel1, spell.id);
 		},
 		38:	function(spell, effect) {
 			return show_summon(effect.raw_argument, spell.effects_count, spell.pathlevel1);
