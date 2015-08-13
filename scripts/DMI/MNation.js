@@ -89,6 +89,26 @@ MNation.prepareData_PreMod = function() {
 }
 
 MNation.prepareData_PostMod = function() {
+	var disableold = modctx.disableoldnations;
+	if (!disableold) {
+		for (var oi=0, o;  o= modctx.nationdata[oi];  oi++) {
+			if (o.disableoldnations) {
+				disableold = true;
+				continue;
+			}
+		}
+	}
+
+	if (disableold) {
+		for (var oi=modctx.nationdata.length-1, o;  o= modctx.nationdata[oi];  oi--) {
+			o.id = parseInt(o.id);
+			
+			if (disableold && o.id < 100) {
+				modctx.nationdata.splice(oi, 1);
+			}
+		}
+	}
+	
 	for (var oi=0, o;  o= modctx.nationdata[oi];  oi++) {
 		o.id = parseInt(o.id);
 		

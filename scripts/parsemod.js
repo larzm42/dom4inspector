@@ -199,7 +199,10 @@ var modctx = DMI.modctx = {
 		misfortune: _ignore,
 		luckevents: _ignore,
 		researchscale: _ignore,
-		
+		disableoldnations: function(cmd, args) {
+			modctx.disableoldnations = true;
+		},
+
 		end: function(c,a,t,fnw) { fnw('no open object'); },
 				
 		//nation modding
@@ -214,7 +217,14 @@ var modctx = DMI.modctx = {
 			modctx._new(c, {n1:id} ,'item', fnw);
 			DMI.MItem.initItem(modctx.item);
 		},
-		selectitem: function(c,a,t,fnw){ modctx._select(c,a,'item',fnw); },
+		selectitem: function(c,a,t,fnw){ 
+			if (a.n1>499 && a.n1<1000)  {
+				modctx._new(c, a,'item', fnw);
+				DMI.MItem.initItem(modctx.item);
+			} else {
+				modctx._select(c,a,'item',fnw); 
+			}
+		},
 		
 		newarmor: function(c,a,t,fnw) {
 			modctx._new(c,a ,'armor',fnw);			
@@ -1238,11 +1248,11 @@ var modctx = DMI.modctx = {
 		comslave:		_bool,
 		
 		raredomsummon:	function(c,a,t){ modctx[t]['raredomsummon'] = argref(a) },
-		battlesum1:	function(c,a,t){ modctx[t]['battlesum'] = argref(a);  modctx[t]['n_battlesum'] = '1' },
-		battlesum2:	function(c,a,t){ modctx[t]['battlesum'] = argref(a);  modctx[t]['n_battlesum'] = '2' },
-		battlesum3:	function(c,a,t){ modctx[t]['battlesum'] = argref(a);  modctx[t]['n_battlesum'] = '3' },
-		battlesum4:	function(c,a,t){ modctx[t]['battlesum'] = argref(a);  modctx[t]['n_battlesum'] = '4' },
-		battlesum5:	function(c,a,t){ modctx[t]['battlesum'] = argref(a);  modctx[t]['n_battlesum'] = '5' },
+		battlesum1:	_ref,
+		battlesum2:	_ref,
+		battlesum3:	_ref,
+		battlesum4:	_ref,
+		battlesum5:	_ref,
 		batstartsum1:	_ref,
 		batstartsum2:	_ref,
 		batstartsum3:	_ref,
@@ -1555,6 +1565,7 @@ var modctx = DMI.modctx = {
 		caverec: function(c,a,t){ modctx[t]['caverec'].push(argref(a)); },
 		cavecom: function(c,a,t){ modctx[t]['cavecom'].push(argref(a)); },
 
+		disableoldnations: _bool,
 		cleargods: _bool,
 		addgod: function(c,a,t){ modctx[t]['addgod'].push(argref(a)); },
 		delgod: function(c,a,t){ modctx[t]['delgod'].push(argref(a)); }
@@ -1867,3 +1878,4 @@ modctx.parseMod = function(str, modnum, modname) {
 
 //namespace args
 }( window.DMI = window.DMI || {}, jQuery ));
+

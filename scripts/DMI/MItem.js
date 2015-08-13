@@ -443,6 +443,7 @@ var displayorder2 = DMI.Utils.cutDisplayOrder(aliases, formats,
 
 	'fireshield',	'fire shield',
 	'banefireshield',	'banefire shield',
+	'autohealer',	'healer',
 	'autodishealer',	'disease healer',
 	'healer',		'healer',
 	'chill',	'cold aura',
@@ -451,7 +452,8 @@ var displayorder2 = DMI.Utils.cutDisplayOrder(aliases, formats,
 	'poisoncloud', 'poison cloud',
 	'diseasecloud',	'disease cloud',
 	'alch', 'alchemy bonus', Format.Percent,
-	
+	'nobadevents',	'fortune teller',	Format.Percent,
+
 	'ivylord',		'ivy lord',
 	'corpselord',		'corpse lord',		function(v){ return '+'+v+' '+Utils.unitRef(534)+' construction'; },
 	'lictorlord',		'lictor lord',		function(v){ return '+'+v+' '+Utils.unitRef(259)+' summoning'; },

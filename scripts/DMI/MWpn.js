@@ -28,7 +28,6 @@ MWpn.prepareData_PostMod = function() {
 		o.id = parseInt(o.id);
 		o.name = o.name || '(undefined)';
 
-		
 		o.renderOverlay = MWpn.renderOverlay;
 		o.matchProperty = MWpn.matchProperty;
 
@@ -54,6 +53,12 @@ MWpn.prepareData_PostMod = function() {
 			if (effects.area_base && effects.area_base != "0") {
 				o.aoe = effects.area_base;
 			}
+		}
+		
+		if (o.dt_aff) {
+			var masks_dict = modctx.afflictions_lookup;
+			var values = bitfields.bitfieldValues(o.dmg, masks_dict);
+			o.dmg = values[0];
 		}
 		
 		//may want to display 0 damage (alongside flags)
@@ -195,6 +200,9 @@ var flagorder = Utils.cutDisplayOrder(aliases, formats,
 	'uwok',	'can be used underwater',
 	'inanimateimmune',	'no effect on inanimate',
 	'norepel',	'cannot repel',
+	'friendlyimmune',	'friendly units immune',
+	'mind',	'mindless units immune',
+	'hardmrneg',	'hard mr negate',
 ]);
 
 var ignorekeys = {
@@ -215,6 +223,12 @@ var ignorekeys = {
 	dt_magic:1,
 	dt_raise:1,
 	dt_paralyze:1,
+	dt_weapondrain:1,
+	dt_drain:1,
+	dt_poison:1,
+	poison:1,
+	sizeresist:1,
+	dt_aff:1,
 	mrnegates:1,
 	armornegating:1,
 	bonus:1,
@@ -452,10 +466,10 @@ MWpn.getEffect = function(weapon) {
 		effect.modifiers_mask = bitfields.longOr(effect.modifiers_mask, "131072");
 	}
 	if (weapon.friendlyimmune) {
-		effect.modifiers_mask = bitfields.longOr(effect.modifiers_mask , "62144");
+		effect.modifiers_mask = bitfields.longOr(effect.modifiers_mask, "262144");
 	}
 	if (weapon.undeadimmune) {
-		effect.modifiers_mask = bitfields.longOr(effect.modifiers_mask , "24288");
+		effect.modifiers_mask = bitfields.longOr(effect.modifiers_mask, "524288");
 	}
 	if (weapon.flyingimmune) {
 		effect.modifiers_mask = bitfields.longOr(effect.modifiers_mask, "1048576");
@@ -516,3 +530,4 @@ MWpn.getEffect = function(weapon) {
 
 //namespace args
 }( window.DMI = window.DMI || {}, jQuery ));
+
