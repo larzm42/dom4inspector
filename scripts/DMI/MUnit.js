@@ -207,6 +207,10 @@ MUnit.prepareData_PostMod = function() {
 			delete o.realms;
 		}
 		
+		if (o.startitem && o.startitem.length == 0) {
+			delete o.startitem;
+		}
+		
 		if (o.mind) {
 			delete o.mind;
 		}
@@ -217,7 +221,7 @@ MUnit.prepareData_PostMod = function() {
 		//unique
 		o.linkname = o.fullname = (o.name || '(undefined)');
 		if (o.fixedname) {
-			o.fullname = 'â€œ'+(o.fixedname) + 'â€œ - '+o.name;
+			o.fullname = '“'+(o.fixedname) + '“ - '+o.name;
 			o.unique='1';
 		}
 		
@@ -1379,9 +1383,9 @@ function chainedUnitRef(o, key, refq) {
     if (Utils.inArray(ref, refq)) {
             if (ref == refq[0]) {
                     if (refq.length == 2)
-                            return 'â‡”&nbsp;'+refq[1];
+                            return '⇔&nbsp;'+refq[1];
                     else
-                            refq.push('â€¹thisâ€º');
+                            refq.push('‹this›');
             }
             else {
                     var i=0; while (refq[i]!=ref) i++;
@@ -1395,17 +1399,17 @@ function chainedUnitRef(o, key, refq) {
                     return chainedUnitRef(nextu, key, refq);
     }
     var n= 1;
-    return 'â‡’&nbsp;'+refq.slice(1).join(' â‡’&nbsp;');
+    return '⇒&nbsp;'+refq.slice(1).join(' ⇒&nbsp;');
 }
 function twinUnitRef(o, key, return_key) {
     var shape2 = modctx.unitlookup[ o[key] ];
     if (shape2) {
             var ref = '<span style="white-space:nowrap;">'+Utils.unitRef(parseInt(shape2.id), shape2.linkname)+'</span>'
             if (shape2[return_key] && o == modctx.unitlookup[ shape2[return_key] ]) {
-                    return  'â‡”&nbsp;'+ref;
+                    return  '⇔&nbsp;'+ref;
             }
             else
-                    return  'â‡’&nbsp;'+ref;
+                    return  '⇒&nbsp;'+ref;
     }
     return '';
 }
