@@ -355,6 +355,10 @@ MSpell.prepareData_PostMod = function() {
 			}
 		}
 		if (effects) {
+			o.spec = effects.modifiers_mask;
+			if (!o.damage) {
+				o.damage = effects.raw_argument;
+			}
 			Utils.addFlags(o, MSpell.bitfieldValues(effects.modifiers_mask, modctx.effect_modifier_bits_lookup), ignorekeys );
 		}
 	}
@@ -621,10 +625,12 @@ var hiddenkeys = Utils.cutDisplayOrder(aliases, formats,
 ]);
 var moddingkeys = Utils.cutDisplayOrder(aliases, formats,
 [
-	'effect',	'effect',	function(v,o){ return v + ' (damage:'+o.damage+')'; },
+	'effect',	'effect',
 	'nextspell',	'nextspell',	function(v,o){ return v.id; },
 	'spec_original',	'special',
 	'effect_number',	'effect number',
+	'damage',	'damage',
+	'spec',	'spec',
 ]);
 var displayorder = Utils.cutDisplayOrder(aliases, formats,
 [
@@ -650,9 +656,7 @@ var ignorekeys = {
 	school:1,
 	researchlevel:1,research:1,sortschool:1,
 
-	damage:1,
 	damagemon:1,
-	spec:1,
 	descr:1,
 	type:1,		
 	mpath:1,
