@@ -225,6 +225,18 @@ MUnit.prepareData_PostMod = function() {
 			o.unique='1';
 		}
 		
+		// horror
+		if (o.horror) {
+			if (o.horror == 1) {
+				o.lesserhorror = 1;
+			} else if (o.horror == 2) {
+				o.greaterhorror = 1;
+			} else if (o.horror == 3) {
+				o.doomhorror = 1;
+			}
+			delete o.horror;
+		}
+		
 		//searchable string
 		o.searchable = o.fullname.toLowerCase();
 		
@@ -1812,7 +1824,10 @@ var flagorder = Utils.cutDisplayOrder(aliases, formats,
 	'slave',	'slave',
 	'bug',	'bug',
 	'uwbug',	'underwater bug',
-	
+	'lesserhorror', 'lesser horror',
+	'greaterhorror', 'greater horror',
+	'doomhorror', 'doom horror',
+
 	'trample',	'trample',
 	'trampswallow',	'swallow',
 	'spy',		'spy',
