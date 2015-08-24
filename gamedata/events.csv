@@ -18,8 +18,8 @@ id	name	rarity	description	requirements	effects	test
 17	A handful of gems have been fo	-1	A handful of gems have been found in a hot valley.	pop0ok 1|heat 1	1d6vis F	
 18	A handful of gems have been fo	-1	A handful of gems have been found in a hot valley.	pop0ok 1|heat 1|luck 0	1d6vis F	
 19	A handful of gems have been fo	-1	A handful of gems have been found in a hot valley.	pop0ok 1|heat 2|luck 0	2d6vis F	
-20	A local wizard has been lynche	-1	A local wizard has been lynched after allegations of turning a peasant into a frog. His magical resources have been transported to the lab.	chaos -1|minpop 10|land 1	1d6vis F|1d6vis A	
-21	A local mage has been lynched 	-1	A local mage has been lynched after allegations of turning a peasant into an oyster. His magical resources have been transported to the lab.	chaos -1|minpop 10|land 0	1d6vis F|1d6vis A	
+20	A local wizard has been lynche	-1	A local wizard has been lynched after allegations of turning a peasant into a frog. His magical resources have been transported to the lab.	chaos -1|minpop 10|land 1	1d6vis F|1d6vis S	
+21	A local mage has been lynched 	-1	A local mage has been lynched after allegations of turning a peasant into an oyster. His magical resources have been transported to the lab.	chaos -1|minpop 10|land 0	1d6vis F|1d6vis S	
 22	A handful of gems have been fo	-1	A handful of gems have been found in the shards of a broken mirror.	pop0ok 1	1d6vis A	
 23	A handful of gems have been fo	-1	A handful of gems have been found in the shards of a broken mirror.	pop0ok 1|luck 1	1d6vis A	
 24	A handful of gems have been fo	-1	A handful of gems have been found in the shards of a broken mirror.	pop0ok 1|luck 2	2d6vis A	
@@ -36,7 +36,7 @@ id	name	rarity	description	requirements	effects	test
 35	A handful of magic gems were f	-1	A handful of magic gems were found under a huge rock.	pop0ok 1|unluck -1	1d6vis E	
 36	A handful of magic gems were f	-1	A handful of magic gems were found under a huge rock.	pop0ok 1|luck 2	1d6vis E	
 37	A handful of magic gems were f	-1	A handful of magic gems were found under a huge rock.	pop0ok 1|luck 3	2d6vis E	
-38	A handful of magic gems have b	-1	A handful of magic gems have been found on a starry night.	pop0ok 1|magic 1	2d6vis A	
+38	A handful of magic gems have b	-1	A handful of magic gems have been found on a starry night.	pop0ok 1|magic 1	2d6vis S	
 39	A handful of magic gems have b	-1	A handful of magic gems have been found in an abandoned graveyard.	pop0ok 1|death 1	2d6vis D	
 40	A few magic gems have been fou	-1	A few magic gems have been found in the moss growing in a torture chamber.	pop0ok 1|land 0	nation 5|1d6vis F	
 41	A few magic gems have been fou	-1	A few magic gems have been found in the black algae covering the floors of a torture chamber.	pop0ok 1|land 0	1d6vis D	
@@ -94,7 +94,7 @@ id	name	rarity	description	requirements	effects	test
 93	Ore deposits have been found a	-1	Ore deposits have been found and a boost in army production is expected.	mountain 1|freesites 1	newsite 69	
 94	A handful of magic gems were f	-1	A handful of magic gems were found in the belly of a dead whale.	pop0ok 1|land 0	2d6vis W	
 95	Some magic gems were found in 	-1	Some magic gems were found in wreck of a sunken ship	pop0ok 1|land 0	2d6vis D	
-96	Magical clams were found and h	-1	Magical clams were found and harvested for pearls	land 0	2d6vis A	
+96	Magical clams were found and h	-1	Magical clams were found and harvested for pearls	land 0	2d6vis S	
 97	A grand festival was held in y	-2	A grand festival was held in your honor. Everyone was celebrating and faith has increased in the province.	temple 1|mydominion 1	incdom 2	
 98	A celebrant of the faith is pr	-2	A celebrant of the faith is preaching justice and bringing hope to the people.	land 1	nation -2|unrest -100|com 241|10d6units 30	
 99	A pilgrim from a distant land 	-2	A pilgrim from a distant land has come to witness miracles in your temple.	temple 1|mydominion 3|minpop 200|land 1	nation -2|com 2331	
@@ -133,7 +133,7 @@ id	name	rarity	description	requirements	effects	test
 132	Your path to ascension has bee	-2	Your path to ascension has been foreseen at the Grey Tower of Nexus and one of the Shadow Seers has been given the task of guiding you.	pop0ok 1|land 1|magic 3	nation -2|com 106	
 133	One of your gardeners has been	-2	One of your gardeners has been feeding the royal gardens with the blood of animals and condemned criminals. Unaware of the danger to himself, he entered the tainted garden and was killed by the awakened vines. For a week no one dared enter the gardens, but then a strange wanderer of the woods arrived and proclaimed that he would tame the garden, should he be made royal gardener. Now, both he and the dark vines serve you with the strength of the bloodthirsty wild.	land 1|magic 2|growth 2|chaos 1|unique 3	nation -2|com 122|1d6units 330	
 134	A fugitive from the hidden kin	-2	A fugitive from the hidden kingdom of Elludia has arrived in your capital. He brings with him a handful of diamonds and swears to serve if you protect him from his former masters.	pop0ok 1|land 1|magic 2|order 2	nation -2|com 629|1d6vis A	
-135	An emissary from the Shadow Se	-2	An emissary from the Shadow Seers of Nexus has arrived in the province. He brings you three gifts from the hidden tower: Astral pearls, a magic item and a pot filled with gold coins.	pop0ok 1|land 1|magic 3|order 0	nation -2|magicitem 2|2d6vis A|gold 200	
+135	An emissary from the Shadow Se	-2	An emissary from the Shadow Seers of Nexus has arrived in the province. He brings you three gifts from the hidden tower: Astral pearls, a magic item and a pot filled with gold coins.	pop0ok 1|land 1|magic 3|order 0	nation -2|magicitem 2|2d6vis S|gold 200	
 136	An enormously wealthy prince f	-2	An enormously wealthy prince from a distant land arrived in your province searching for his beloved lady. Unfortunately for him, he was infected by the plague and died in your care. His riches, a fortune in gold and a number of magic items, were confiscated and transported to your treasury.	land 1|death 3|luck 2	gold 1500|magicitem 1|magicitem 1	
 137	Oleg, an incredibly old alchem	-2	Oleg, an incredibly old alchemist working in one of your laboratories has managed to construct a huge device that transforms base metals into gold. Unfortunately, he died from heart attack when the device actually worked. The device is operational and produces one hundred pounds of gold per month.	land 1|prod 2|magic 2|lab 1|freesites 1|unique 1	newsite 36	
 138	An unnatural plague has swept 	-2	An unnatural plague has swept the province, killing thousands. Magical gems were found in the decaying corpses. Rumors of the mythical Crown of Darkness have circulated in the province ever since.	land 1|minpop 200|death 2|magic 3|turn 15	4d6vis D|4d6vis D|kill 50|unrest 10	
@@ -312,7 +312,7 @@ id	name	rarity	description	requirements	effects	test
 311	A thief has stolen some of you	2	A thief has stolen some of your magic gems.	lab 1|gem 1	gemloss A	
 312	A thief has stolen some of you	2	A thief has stolen some of your magic gems.	lab 1|gem 2	gemloss W	
 313	A thief has stolen some of you	2	A thief has stolen some of your magic gems.	lab 1|gem 3	gemloss E	
-314	A thief has stolen some of you	2	A thief has stolen some of your magic pearls.	lab 1|gem 4	gemloss A	
+314	A thief has stolen some of you	2	A thief has stolen some of your magic pearls.	lab 1|gem 4	gemloss S	
 315	Undisciplined jailers have def	2	Undisciplined jailers have defiled your blood slaves.	lab 1|gem 7	gemloss B	
 316	A master thief has stolen many	2	A master thief has stolen many of your magic gems.	lab 1|unluck -1	gemloss 53	
 317	Magic is fading.	2	Magic is fading.	pop0ok 1|lab 1|unmagic 1	gemloss 53	
@@ -494,7 +494,7 @@ id	name	rarity	description	requirements	effects	test
 493	Disease is spreading.	1	Disease is spreading.	death 1|minpop 20|unluck 1|turn 10	kill 10|disease 2	
 494	The sea is being polluted by t	1	The sea is being polluted by the crowded settlements in this province.	minpop 300|land 0	incscale Death|emigration 5	
 495	A new breed of mosquitoes are 	1	A new breed of mosquitoes are infesting the swamps, spreading disease in the area.	swamp 1|heat 0	kill 1|disease 3	
-496	Some of your magic pearls turn	2	Some of your magic pearls turned out to be fake!	pop0ok 1|gem 4|unluck 1	gemloss A	
+496	Some of your magic pearls turn	2	Some of your magic pearls turned out to be fake!	pop0ok 1|gem 4|unluck 1	gemloss S	
 497	One of your dwarven smiths has	-2	One of your dwarven smiths has been working diligently to fashion a magic item [Star of Heroes].	monster 323|prod 1	magicitem 9	
 498	One of your smiths has been wo	-2	One of your smiths has been working diligently to fashion a magic item [Faithful].	monster 325|prod 1	magicitem 9	
 499	An old dwarf in your service h	-2	An old dwarf in your service has fashioned a smith's hammer imbued with his power and skill.[Dwarven Hammer]	monster 323|prod 1	magicitem 9	
@@ -675,9 +675,9 @@ id	name	rarity	description	requirements	effects	test
 674	An adventurer has returned fro	-2	An adventurer has returned from the Dragon Jaws. Within, he found an object of power. [Dragon Jaws]	foundsite 1	nation -2|com 141|addequip 3	
 675	An adventurer has returned fro	-2	An adventurer has returned from the Dragon Jaws. Within, he found an object of power. [Dragon Jaws]	foundsite 1|luck 2	nation -2|com 141|addequip 4	
 676	A geyser has erupted! [Geyser]	-2	A geyser has erupted! [Geyser]	hiddensite 1	revealsite 1	
-677	An unusual amount of pearls ha	-1	An unusual amount of pearls have been washed up on the beach. Some gleam with otherworldly luster. [Pearl Beach]	pop0ok 1|site 1	2d6vis A|gold 100	
-678	An unusual amount of pearls ha	-2	An unusual amount of pearls have been washed up on the beach. Some gleam with otherworldly luster.	coast 1	2d6vis A|gold 100	
-679	An unusual amount of pearls ha	-2	An unusual amount of pearls have been washed up on the beach. Some gleam with otherworldly luster.	coast 1|luck 2	4d6vis A|gold 200	
+677	An unusual amount of pearls ha	-1	An unusual amount of pearls have been washed up on the beach. Some gleam with otherworldly luster. [Pearl Beach]	pop0ok 1|site 1	2d6vis S|gold 100	
+678	An unusual amount of pearls ha	-2	An unusual amount of pearls have been washed up on the beach. Some gleam with otherworldly luster.	coast 1	2d6vis S|gold 100	
+679	An unusual amount of pearls ha	-2	An unusual amount of pearls have been washed up on the beach. Some gleam with otherworldly luster.	coast 1|luck 2	4d6vis S|gold 200	
 680	A band of renegade Atlantians 	2	A band of renegade Atlantians are raiding the coast. They are led by a vicious Shambler.	coast 1|noseason 3|turn 20|noera 1	com 208|3d6units 1621|3d6units 1681|1d6units 206	
 681	People have disappeared myster	1	People have disappeared mysteriously near the Mausoleum. [Marble Mausoleum]	foundsite 1	stealthcom 405|kill 1	
 682	Ghouls swarm from the caves! [	1	Ghouls swarm from the caves! [Cave of Ghouls]	foundsite 1|pop0ok 1	4com 198|4d6units 198	
@@ -701,7 +701,7 @@ id	name	rarity	description	requirements	effects	test
 700	A flock of aggressive goats ha	-2	A flock of aggressive goats have been donated to the temple.	land 1|temple 1|unique 3	nation -2|4d6units 2227	
 701	A warrior has appeared. Her mi	-2	A warrior has appeared. Her mistress was lost when searching for The Sacred Glen and she now seeks to find her. [The Sacred Glen]	nearbysite 1|land 1|rare 30	nation -2|com 354	
 702	Madness has spread like an epi	1	Madness has spread like an epidemic! A mob chanting unnatural names is attacking the garrison.	coast 1|minpop 10|notnation 92|nation 92|rare 20|turn 8	com 963|3d6units 962|nation 92|newdom 3	
-703	The clam fields have been thri	1	The clam fields have been thriving! [Clam Field]	foundsite 1	1d6vis A|gold 50	
+703	The clam fields have been thri	1	The clam fields have been thriving! [Clam Field]	foundsite 1	1d6vis S|gold 50	
 704	A band of thieving outlaws hav	1	A band of thieving outlaws have attacked the clam fields, eager for its riches. [Clam Field]	foundsite 1	2com 2472|3d6units 2472|1d6units 210	
 705	A False Prophet is spreading h	2	A False Prophet is spreading his lies. Unless found and dealt with, his following will continue to grow.	land 1|turn 8	stealthcom 2275|incdom -2	
 706	An illithid lord and his retin	2	An illithid lord and his retinue have appeared from the Strange Opening. [Strange Opening]	pop0ok 1|foundsite 1	com 445|addequip 1|2d6units 424|1d6units 425|2com 443	
@@ -750,7 +750,7 @@ id	name	rarity	description	requirements	effects	test
 749	A ship has sunk at the Reef! [	-1	A ship has sunk at the Reef! [Reef of Sunken Ships]	foundsite 1	2d6vis -1|gold 50	
 750	A ship has sunk at the Reef! [	-1	A ship has sunk at the Reef! [Reef of Sunken Ships]	foundsite 1|luck 1	3d6vis -1|gold 350	
 751	A ship has sunk at the Reef! I	-1	A ship has sunk at the Reef! It seems to have carried an important mage, who unfortunately drowned during the incident. [Reef of Sunken Ships]	foundsite 1	2d6vis -1|magicitem 2	
-752	A ship has sunk at the Reef! I	-2	A ship has sunk at the Reef! It carried an item of power. [Reef of Sunken Ships]	foundsite 1|luck 1	1d6vis A|magicitem 3	
+752	A ship has sunk at the Reef! I	-2	A ship has sunk at the Reef! It carried an item of power. [Reef of Sunken Ships]	foundsite 1|luck 1	1d6vis S|magicitem 3	
 753	Some survivors from a shipwrec	-2	Some survivors from a shipwreck at the Reef of Sunken Ships have been coerced into service. [Reef of Sunken Ships]	nearbysite 1|coast 1|noera 1	nation -2|com 870|3d6units 871	
 754	Some survivors from a shipwrec	-2	Some survivors from a shipwreck at the Reef of Sunken Ships have been coerced into service. [Reef of Sunken Ships]	nearbysite 1|era 3|coast 1	nation -2|com 1030|com 1031	
 755	Some survivors from a shipwrec	-2	Some survivors from a shipwreck at the Reef of Sunken Ships have been coerced into service. [Reef of Sunken Ships]	nearbysite 1|coast 1|noera 1	nation -2|com 870|3d6units 871	
@@ -1017,11 +1017,11 @@ id	name	rarity	description	requirements	effects	test
 1016	A powerful noble unfortunately	2	A powerful noble unfortunately has lawful claim to this sea. He has now decided to pursue his right by arms.	era 2|order 2|land 0|rare 30|turn 15	com 1060|10d6units 1066|3d6units 1060|com 1061|addequip 2	
 1017	A powerful noble unfortunately	2	A powerful noble unfortunately has lawful claim to this sea. He has now decided to pursue his right by arms.	era 3|order 2|land 0|rare 30|turn 15	com 1060|10d6units 1066|3d6units 1060|com 1061|addequip 2	
 1018	A knight has explored the Laby	-2	A knight has explored the Labyrinth of the Deeps. He returns with magical treasures. [Labyrinth of the Deeps]	foundsite 1|land 0|magic 0	nation -2|com 1060|addequip 2	
-1019	A knight has explored the Laby	-2	A knight has explored the Labyrinth of the Deeps. He returns with magical treasures. [Labyrinth of the Deeps]	foundsite 1|land 0|magic 0	nation -2|com 1060|1d6vis A	
-1020	A knight has explored the Laby	-2	A knight has explored the Labyrinth of the Deeps. He returns with magical treasures. [Labyrinth of the Deeps]	foundsite 1|land 0|magic 3	nation -2|com 1060|2d6vis A	
+1019	A knight has explored the Laby	-2	A knight has explored the Labyrinth of the Deeps. He returns with magical treasures. [Labyrinth of the Deeps]	foundsite 1|land 0|magic 0	nation -2|com 1060|1d6vis S	
+1020	A knight has explored the Laby	-2	A knight has explored the Labyrinth of the Deeps. He returns with magical treasures. [Labyrinth of the Deeps]	foundsite 1|land 0|magic 3	nation -2|com 1060|2d6vis S	
 1021	A valiant knight has explored 	-2	A valiant knight has explored the Labyrinth of the Deeps. He returns with magical treasures. [Labyrinth of the Deeps]	foundsite 1|land 0|magic 0|luck 3	nation -2|com 1060|addequip 3|addequip 2	
 1022	Your mage has explored the Gor	-2	Your mage has explored the Gorge of Mystery. Within, he found an object of power. [Gorge of Mystery]	foundsite 1|land 0|pathastral 1	magicitem 2	
-1023	Your mage has explored the Gor	-2	Your mage has explored the Gorge of Mystery. Within, he found an object of power. And some astral pearls. [Gorge of Mystery]	pop0ok 1|foundsite 1|land 0|pathastral 1|luck 3	magicitem 3|1d6vis A	
+1023	Your mage has explored the Gor	-2	Your mage has explored the Gorge of Mystery. Within, he found an object of power. And some astral pearls. [Gorge of Mystery]	pop0ok 1|foundsite 1|land 0|pathastral 1|luck 3	magicitem 3|1d6vis S	
 1024	One of your mages has found a 	-2	One of your mages has found a cache of magic gems on the Plateau of Shards. [Plateau of Shards]	foundsite 1|land 0|pathearth 1|luck 2	1d6vis E	
 1025	A hunter has seen hoofed creat	2	A hunter has seen hoofed creatures deep in the woods. Women have disappeared from the surrounding farmsteads, only to be found a few days later with addled minds and mysterious smiles on their lips. Unless dealt with, these disturbances are likely to continue.	forest 1|growth 0|chaos 2|noseason 3	stealthcom 227|8d6units 227|unrest 10|stealthcom 227	
 1026	After a month of fasting and p	-2	After a month of fasting and prayer, one of your priests has strengthened his spiritual power.	temple 1|monster 240|dominion 3	holyboost 240	
@@ -1212,14 +1212,14 @@ id	name	rarity	description	requirements	effects	test
 1211	The amazons cannot thrive in y	1	The amazons cannot thrive in your aura of cold. Some of the tribes are trying to take back their sacred land!	cold 2|poptype 41|mydominion 3	2com 349|addequip 1|2com 350|6d6units 351|3d6units 612	
 1212	Some of the amazon tribes are 	1	Some of the amazon tribes are trying to take back their sacred land!	chaos 2|poptype 43|mydominion 3	2com 355|addequip 1|2com 356|6d6units 357|3d6units 369	
 1213	Some tribes of the garnet amaz	1	Some tribes of the garnet amazons will not accept your rule!	rare 50|poptype 41	2com 349|addequip 1|2com 350|10d6units 351|2d6units 612	
-1214	The tomb of a legendary amazon	-2	The tomb of a legendary amazon queen has been found and looted. The natives are upset. [Thunder Bow]	luck 2|poptype 40|turn 20|chaos -1	1d6vis A|gold 50|magicitem 9|unrest 40	
+1214	The tomb of a legendary amazon	-2	The tomb of a legendary amazon queen has been found and looted. The natives are upset. [Thunder Bow]	luck 2|poptype 40|turn 20|chaos -1	1d6vis S|gold 50|magicitem 9|unrest 40	
 1215	The tomb of a legendary amazon	-2	The tomb of a legendary amazon queen has been found and looted. The natives are upset. [Vine Bow]	luck 2|poptype 42|turn 20|chaos -1	1d6vis W|gold 50|magicitem 9|unrest 40|1d6vis N	
 1216	The tomb of a legendary amazon	-2	The tomb of a legendary amazon queen has been found and looted. The natives are upset. [Bow of War]	luck 2|poptype 41|turn 20|chaos -1	1d6vis F|gold 50|magicitem 9|unrest 40	
 1217	The tomb of a legendary amazon	-2	The tomb of a legendary amazon queen has been found and looted. The natives are upset. [Ivory Bow]	luck 2|poptype 43|turn 20|chaos -1	1d6vis E|gold 50|magicitem 9|unrest 40	
-1218	The tomb of an amazon queen ha	-1	The tomb of an amazon queen has been found and looted. The natives are upset. [Longbow of Accuracy]	poptype 40|chaos -1	1d6vis A|gold 25|magicitem 9|unrest 40	
-1219	The tomb of an amazon queen ha	-1	The tomb of an amazon queen has been found and looted. The natives are upset. [Vine Bow]	poptype 42|chaos -1	1d6vis A|gold 25|magicitem 9|unrest 40	
-1220	The tomb of an amazon queen ha	-1	The tomb of an amazon queen has been found and looted. The natives are upset. [Fire Bola]	poptype 41|chaos -1	1d6vis A|gold 25|magicitem 9|unrest 40	
-1221	The tomb of an amazon queen ha	-1	The tomb of an amazon queen has been found and looted. The natives are upset. [Girdle of Might]	poptype 43|chaos -1	1d6vis A|gold 25|magicitem 9|unrest 40	
+1218	The tomb of an amazon queen ha	-1	The tomb of an amazon queen has been found and looted. The natives are upset. [Longbow of Accuracy]	poptype 40|chaos -1	1d6vis S|gold 25|magicitem 9|unrest 40	
+1219	The tomb of an amazon queen ha	-1	The tomb of an amazon queen has been found and looted. The natives are upset. [Vine Bow]	poptype 42|chaos -1	1d6vis S|gold 25|magicitem 9|unrest 40	
+1220	The tomb of an amazon queen ha	-1	The tomb of an amazon queen has been found and looted. The natives are upset. [Fire Bola]	poptype 41|chaos -1	1d6vis S|gold 25|magicitem 9|unrest 40	
+1221	The tomb of an amazon queen ha	-1	The tomb of an amazon queen has been found and looted. The natives are upset. [Girdle of Might]	poptype 43|chaos -1	1d6vis S|gold 25|magicitem 9|unrest 40	
 1222	A native warrior has come into	-1	A native warrior has come into your service. She wishes to prove her worth in battle.	luck 1|poptype 40	nation -2|com 348|addequip 3	
 1223	A native warrior has come into	-1	A native warrior has come into your service. She wishes to prove her worth in battle.	luck 1|poptype 42	nation -2|com 354|addequip 3	
 1224	A native warrior has come into	-1	A native warrior has come into your service. She wishes to prove her worth in battle.	luck 1|poptype 41	nation -2|com 351|addequip 3	
@@ -1228,8 +1228,8 @@ id	name	rarity	description	requirements	effects	test
 1227	A native warrior has come into	-1	A native warrior has come into your service. She wishes to prove her worth in battle.	luck 1|poptype 42	nation -2|com 370|addequip 3	
 1228	A native warrior has come into	-1	A native warrior has come into your service. She wishes to prove her worth in battle.	luck 1|poptype 41	nation -2|com 612|addequip 3	
 1229	A native warrior has come into	-1	A native warrior has come into your service. She wishes to prove her worth in battle.	luck 1|poptype 43	nation -2|com 369|addequip 3	
-1230	A local wizard has been lynche	-2	A local wizard has been lynched after allegations of turning a peasant into a frog. His magical resources have been transported to the lab.	chaos -1|minpop 10|land 1	1d6vis N|1d3vis A	
-1231	A local mage has been lynched 	-2	A local mage has been lynched after allegations of turning a peasant into a lobster. Her magical resources have been transported to the lab.	chaos -1|minpop 10|land 0	1d6vis N|1d3vis A	
+1230	A local wizard has been lynche	-2	A local wizard has been lynched after allegations of turning a peasant into a frog. His magical resources have been transported to the lab.	chaos -1|minpop 10|land 1	1d6vis N|1d3vis S	
+1231	A local mage has been lynched 	-2	A local mage has been lynched after allegations of turning a peasant into a lobster. Her magical resources have been transported to the lab.	chaos -1|minpop 10|land 0	1d6vis N|1d3vis S	
 1232	Long live the King of Old! A K	1	Long live the King of Old! A King of the Mound and his host rises to claim what was once their domain. [Burial Mound]	death 1|site 1|turn 16|site 1|pop0ok 1	com 188|addequip 2|8d6units 194|4d6units 195|3d6units 189	
 1233	Long live the King of Old! A K	1	Long live the King of Old! A King of the Mound and his host rises to claim what was once their domain. [Death Mound Downs]	death 1|site 1|turn 16|site 1|pop0ok 1	com 188|addequip 2|8d6units 194|4d6units 195|3d6units 189	
 1234	Long live the King of Old! A K	-1	Long live the King of Old! A King of the Mound rises to join your cause. [Burial Mound]	death 3|luck 1|turn 16|site 1|pop0ok 1	nation -2|com 188|addequip 2|4d6units 194|3d6units 189	
@@ -1290,10 +1290,10 @@ id	name	rarity	description	requirements	effects	test
 1289	There are rumors of a hidden c	-1	There are rumors of a hidden cave, wherein mages of great power sleep since ages past. [Cave of the Sleepers]	hiddensite 1		
 1290	An experiment in the arcane la	1	An experiment in the arcane laboratory has gone awry! Strange energies were released, affecting one of your mages.	lab 1|researcher 1|turn 15	researchaff 0	
 1291	A Sibyl has foretold the immin	-1	A Sibyl has foretold the imminent ascension of the Awakening God. People flock to the temple and some have volunteered to your armies	turn 20|monster 1557|land 1	incdom 5|nation -2|3d6units 50	
-1292	One of the Harpies could not r	1	One of the Harpies could not resist the gleaming pearls in the treasury.	gem 4|monster 239|capital 1	gemloss A	
+1292	One of the Harpies could not r	1	One of the Harpies could not resist the gleaming pearls in the treasury.	gem 4|monster 239|capital 1	gemloss S	
 1293	A convict attempts revenge!	1	A convict attempts revenge!	turn 10|monster 1645	assassin 482	
 1294	Some soldiers strayed into The	1	Some soldiers strayed into The Forest of Avalon. They were swiftly turned away by the wardens. [The Forest of Avalon]	site 1|era 3	curse 1	
-1295	The Old Ways are lost. Magic f	1	The Old Ways are lost. Magic fades. Some of the gems in your treasury have lost their power. [The Forest of Avalon]	site 1|era 3|unmagic 1|gem 4	gemloss A	
+1295	The Old Ways are lost. Magic f	1	The Old Ways are lost. Magic fades. Some of the gems in your treasury have lost their power. [The Forest of Avalon]	site 1|era 3|unmagic 1|gem 4	gemloss S	
 1296	The Old Ways are lost. Magic f	1	The Old Ways are lost. Magic fades. Some of the gems in your treasury have lost their power. [The Forest of Avalon]	site 1|era 3|unmagic 1|gem 6	gemloss N	
 1297	The Old Ways are lost. Magic f	1	The Old Ways are lost. Magic fades. Some of the gems in your treasury have lost their power. [The Forest of Avalon]	site 1|era 3|unmagic 1|gem 3	gemloss E	
 1298	The natives are complaining.	2	The natives are complaining.	0x4600 1|turn 15|fort 0|temple 0|minpop 50|code 0|poptype 25|unique 5	code 64|unrest 15|0x7000 2	
@@ -1406,8 +1406,8 @@ id	name	rarity	description	requirements	effects	test
 1405	Your mage has found a curious 	0	Your mage has found a curious item among the pebbles. [Eye of Aiming]	pathastral 1|rare 10|unique 2|code -5	magicitem 9	
 1406	Your mage has found a curious 	0	Your mage has found a curious item among the pebbles. [Eyecatcher]	pathastral 1|rare 15|unique 1|code -5	magicitem 9	
 1407	Your mage has found a curious 	0	Your mage has found a curious item among the pebbles. There seems to be no more of interest here. [Eye of Innocence]	pathastral 1|rare 10|unique 1|code -5	magicitem 9|code 0	
-1408	Your mage has found some magic	0	Your mage has found some magical pearls among the pebbles of the beach.	pathastral 1|rare 5|code -5	1d6vis A	
-1409	The Enchanted Current has prod	-1	The Enchanted Current has produced some extra magical pearls this month! [Enchanted Current]	foundsite 1	1d6vis A	
+1408	Your mage has found some magic	0	Your mage has found some magical pearls among the pebbles of the beach.	pathastral 1|rare 5|code -5	1d6vis S	
+1409	The Enchanted Current has prod	-1	The Enchanted Current has produced some extra magical pearls this month! [Enchanted Current]	foundsite 1	1d6vis S	
 1410	Bernlad and his steed have fou	0	Bernlad and his steed have found The Vale of Unicorns! [The Vale of Unicorns]	hiddensite 1|monster 376	revealsite 1	
 1411	Bernlad has bested a fellow Kn	0	Bernlad has bested a fellow Knight. When yielding, the man swore to serve your cause.	poptype 30|rare 10|unique 3|monster 376	nation -2|com 23	
 1412	Preparations for the celebrati	0	Preparations for the celebration of the yearly ritual of the sacred marriage are underway. Come spring the Entu and his Ensi are supposed to be joined in the sacred marriage that will provide fertility for the coming year.	capital 1|fornation 29|rare 5|season 3|code 0|unique 1	0x6B00 1|code 55|taxboost -10|unrest -50	
@@ -1797,9 +1797,9 @@ id	name	rarity	description	requirements	effects	test
 1796	The Tower of Thorns has been f	0	The Tower of Thorns has been found! Within resides a powerful mage. When discovered he transformed into an eagle and escaped! Some of his items were left behind. [Tower of Thorns]	foundsite 1|code 146	magicitem 2|magicitem 3|2d6vis N|incscale3 Death|incscale2 Drain	
 1797	The Tower of Thorns has been f	0	The Tower of Thorns has been found! Within resides a powerful mage. When discovered he transformed into an eagle and escaped! Some of his items were left behind. [Tower of Thorns]	foundsite 1|code 147	magicitem 2|magicitem 3|2d6vis N|incscale3 Death|incscale2 Drain	
 1798	The Tower of Thorns has been f	0	The Tower of Thorns has been found! Within resides a powerful mage. When discovered he transformed into an eagle and escaped! Some of his items were left behind. [Tower of Thorns]	foundsite 1|code 148	magicitem 2|magicitem 3|2d6vis N|incscale3 Death|incscale2 Drain	
-1799	In the droppings of some fabul	-2	In the droppings of some fabulous beast, magical gems have been found!	magic 1|land 1	1d3vis A|1d3vis N	
-1800	In the droppings of some fabul	-2	In the droppings of some fabulous beast, magical gems have been found!	magic 2|land 1	1d3vis A|1d3vis N|1d3vis D	
-1801	In the droppings of some fabul	-2	In the droppings of some fabulous beast, magical gems have been found!	magic 3|land 1	1d3vis A|1d3vis N|1d3vis D|1d3vis F	
+1799	In the droppings of some fabul	-2	In the droppings of some fabulous beast, magical gems have been found!	magic 1|land 1	1d3vis S|1d3vis N	
+1800	In the droppings of some fabul	-2	In the droppings of some fabulous beast, magical gems have been found!	magic 2|land 1	1d3vis S|1d3vis N|1d3vis D	
+1801	In the droppings of some fabul	-2	In the droppings of some fabulous beast, magical gems have been found!	magic 3|land 1	1d3vis S|1d3vis N|1d3vis D|1d3vis F	
 1802	A fabulous beast has been slai	-2	A fabulous beast has been slain. In its belly were found a wealth of magical gems!	magic 3|land 1	2d6vis Elemental|2d6vis Elemental	
 1803	The Lair of a hideous troll ha	-1	The Lair of a hideous troll has been found. Within were the bones of unfortunate travelers. Among the dreadful remnants, gold and magical gems were found. The troll itself escaped.	magic 1|land 1	gold 50|1d3vis Elemental|1d3vis Sorcery	
 1804	The Lair of a hideous troll ha	-1	The Lair of a hideous troll has been found. Within were the bones of unfortunate travelers. Among the dreadful remnants, gold and magical gems were found. The troll itself escaped.	magic 2|land 1	gold 50|1d6vis Elemental|1d6vis Sorcery	
@@ -1816,27 +1816,27 @@ id	name	rarity	description	requirements	effects	test
 1815	Some basilisk eggs have been f	-2	Some basilisk eggs have been found and distilled into magical gems.	magic 1|noseason 3|land 1	1d6vis E	
 1816	Some basilisk eggs have been f	-2	Some basilisk eggs have been found and distilled into magical gems.	magic 2|noseason 3|land 1	1d6vis E	
 1817	Some basilisk eggs have been f	-2	Some basilisk eggs have been found and distilled into magical gems.	magic 3|noseason 3|land 1	2d6vis E	
-1818	The Lair of a Sea Serpent has 	-1	The Lair of a Sea Serpent has been found. Within were the bones of unfortunate travelers. Among the dreadful remnants, gold and magical gems were found. The beast itself escaped.	magic 1|land 0	gold 50|1d3vis Elemental|1d3vis A|1d3vis N|1d3vis D	
-1819	The Lair of a Sea Serpent has 	-1	The Lair of a Sea Serpent has been found. Within were the bones of unfortunate travelers. Among the dreadful remnants, gold and magical gems were found. The beast itself escaped.	magic 2|land 0	gold 50|1d3vis Elemental|1d6vis A|1d6vis N|1d6vis D	
-1820	The Lair of a Sea Serpent has 	-1	The Lair of a Sea Serpent has been found. Within were the bones of unfortunate travelers. Among the dreadful remnants, gold and magical gems were found. The beast itself escaped.	magic 3|land 0	gold 50|1d3vis Elemental|1d6vis A|1d3vis N|1d6vis D	
+1818	The Lair of a Sea Serpent has 	-1	The Lair of a Sea Serpent has been found. Within were the bones of unfortunate travelers. Among the dreadful remnants, gold and magical gems were found. The beast itself escaped.	magic 1|land 0	gold 50|1d3vis Elemental|1d3vis S|1d3vis N|1d3vis D	
+1819	The Lair of a Sea Serpent has 	-1	The Lair of a Sea Serpent has been found. Within were the bones of unfortunate travelers. Among the dreadful remnants, gold and magical gems were found. The beast itself escaped.	magic 2|land 0	gold 50|1d3vis Elemental|1d6vis S|1d6vis N|1d6vis D	
+1820	The Lair of a Sea Serpent has 	-1	The Lair of a Sea Serpent has been found. Within were the bones of unfortunate travelers. Among the dreadful remnants, gold and magical gems were found. The beast itself escaped.	magic 3|land 0	gold 50|1d3vis Elemental|1d6vis S|1d3vis N|1d6vis D	
 1821	Strange corals have sprouted i	-2	Strange corals have sprouted in a previously unexplored part of the sea. Among them lay scattered magical gems of different colors.	magic 1|land 0	1d6vis Elemental	
 1822	Strange corals have sprouted i	-2	Strange corals have sprouted in a previously unexplored part of the sea. Among them lay scattered magical gems of different colors.	magic 2|land 0	1d6vis Elemental	
 1823	Strange corals have sprouted i	-2	Strange corals have sprouted in a previously unexplored part of the sea. Among them lay scattered magical gems of different colors.	magic 3|land 0	2d6vis Elemental	
-1824	The withered and ancient skele	-2	The withered and ancient skeleton of a great sea monster has been found. Within its ribcage, covered by sediment, lay a heap of magical gems!	magic 1|land 0	1d3vis A|1d3vis N	
-1825	The withered and ancient skele	-2	The withered and ancient skeleton of a great sea monster has been found. Within its ribcage, covered by sediment, lay a heap of magical gems!	magic 2|land 0	1d3vis A|1d3vis N|1d3vis D	
-1826	The withered and ancient skele	-2	The withered and ancient skeleton of a great sea monster has been found. Within its ribcage, covered by sediment, lay a heap of magical gems!	magic 3|land 0	1d3vis A|1d3vis N|1d3vis D|1d3vis F	
+1824	The withered and ancient skele	-2	The withered and ancient skeleton of a great sea monster has been found. Within its ribcage, covered by sediment, lay a heap of magical gems!	magic 1|land 0	1d3vis S|1d3vis N	
+1825	The withered and ancient skele	-2	The withered and ancient skeleton of a great sea monster has been found. Within its ribcage, covered by sediment, lay a heap of magical gems!	magic 2|land 0	1d3vis S|1d3vis N|1d3vis D	
+1826	The withered and ancient skele	-2	The withered and ancient skeleton of a great sea monster has been found. Within its ribcage, covered by sediment, lay a heap of magical gems!	magic 3|land 0	1d3vis S|1d3vis N|1d3vis D|1d3vis F	
 1827	A band of mercenaries have ret	-1	A band of mercenaries have returned from campaigning. Tired of a rootless life they now come to swear allegiance to the God of Good Fortune!	luck 2|land 1|turn 10|unique 2|capital 1	nation -2|com 291|addequip 2|8d6units 287|6d6units 288	
 1828	A band of mercenaries have ret	-1	A band of mercenaries have returned from campaigning. Tired of a rootless life they now come to swear allegiance to the God of Good Fortune!	luck 2|land 0|turn 10|unique 2|capital 1	nation -2|com 976|addequip 2|8d6units 975|6d6units 2414	
 1829	A Wraith Lord has come to serv	-2	A Wraith Lord has come to serve the God of Death!	death 3|land 1|pathdeath 2|unique 2|capital 1	nation -2|com 181	
 1830	An Ettin has been tamed by the	-2	An Ettin has been tamed by the clever use of nature magic.	pathnature 2|forest 1|unique 2	nation -2|com 488	
 1831	A Knight clad in black has com	-2	A Knight clad in black has come with his men to serve their dark master.	pathblood 2|land 1|death 2|turn 25|unique 1	nation -2|com 489|addequip 2|4d6units 489	
 1832	A small band of adventurers ha	-2	A small band of adventurers have come to seek fortune in your service.	luck 2|land 1|capital 1|growth 0|unique 1	nation -2|com 2323|com 2325|com 2327|addequip 2	
-1833	A tree in the orchard of one o	-2	A tree in the orchard of one of the farmers has borne magical fruit!	luck 1|magic 1|growth 1|farm 1|season 2	1d6vis Elemental|1d3vis A|1d3vis N	
-1834	A tree in the orchard of one o	-2	A tree in the orchard of one of the farmers has borne magical fruit!	luck 2|magic 1|growth 1|farm 1|season 2	1d6vis Elemental|1d3vis A|1d3vis N|1d3vis D	
-1835	A tree in the orchard of one o	-2	A tree in the orchard of one of the farmers has borne magical fruit!	luck 3|magic 1|growth 1|farm 1|season 2	2d6vis Elemental|1d3vis A|1d3vis N|1d3vis D|1d3vis A	
-1836	A fabulous peacock has been fo	-2	A fabulous peacock has been found. Within its eggs lie magical gems!	luck 1|magic 1|growth 1|land 1|noseason 3	1d6vis Elemental|1d3vis A|1d3vis N	
-1837	A fabulous peacock has been fo	-2	A fabulous peacock has been found. Within its eggs lie magical gems!	luck 2|magic 1|growth 1|land 1|noseason 3	1d6vis Elemental|1d3vis A|1d3vis N|1d3vis D	
-1838	A fabulous peacock has been fo	-2	A fabulous peacock has been found. Within its eggs lie magical gems!	luck 3|magic 1|growth 1|land 1|noseason 3	2d6vis Elemental|1d3vis A|1d3vis N|1d3vis D|1d3vis A	
+1833	A tree in the orchard of one o	-2	A tree in the orchard of one of the farmers has borne magical fruit!	luck 1|magic 1|growth 1|farm 1|season 2	1d6vis Elemental|1d3vis S|1d3vis N	
+1834	A tree in the orchard of one o	-2	A tree in the orchard of one of the farmers has borne magical fruit!	luck 2|magic 1|growth 1|farm 1|season 2	1d6vis Elemental|1d3vis S|1d3vis N|1d3vis D	
+1835	A tree in the orchard of one o	-2	A tree in the orchard of one of the farmers has borne magical fruit!	luck 3|magic 1|growth 1|farm 1|season 2	2d6vis Elemental|1d3vis S|1d3vis N|1d3vis D|1d3vis S	
+1836	A fabulous peacock has been fo	-2	A fabulous peacock has been found. Within its eggs lie magical gems!	luck 1|magic 1|growth 1|land 1|noseason 3	1d6vis Elemental|1d3vis S|1d3vis N	
+1837	A fabulous peacock has been fo	-2	A fabulous peacock has been found. Within its eggs lie magical gems!	luck 2|magic 1|growth 1|land 1|noseason 3	1d6vis Elemental|1d3vis S|1d3vis N|1d3vis D	
+1838	A fabulous peacock has been fo	-2	A fabulous peacock has been found. Within its eggs lie magical gems!	luck 3|magic 1|growth 1|land 1|noseason 3	2d6vis Elemental|1d3vis S|1d3vis N|1d3vis D|1d3vis S	
 1839	The forest has grown wild. Tho	2	The forest has grown wild. Thorns and bramble make the footpaths impassable, wild beast prey upon cattle and travelers alike. This has hampered trade and hindered access to the forest.	growth 2|unluck 0|forest 1|noseason 3	landgold -5|landprod -5	
 1840	The forest has grown wild. Tho	2	The forest has grown wild. Thorns and bramble make the footpaths impassable, wild beast prey upon cattle and travelers alike. This has hampered trade and hindered access to the forest.	growth 2|unluck 1|forest 1|noseason 3	landgold -10|landprod -10	
 1841	The power of the forest spirit	2	The power of the forest spirits have grown. They are now trying to claim the province for themselves!	growth 2|mindef 1|maxtroops 8|forest 1	4com 932|6d6units 932	
@@ -1846,7 +1846,7 @@ id	name	rarity	description	requirements	effects	test
 1845	A dead goat has been found flo	-2	A dead goat has been found floating near the shore. In its rotting belly a handful of death gems were found.	maxunrest 10|minpop 50|coast 1|rare 10	2d6vis D	
 1846	A fertility festival was held 	1	A fertility festival was held in the province. Cattle were sacrificed to a local bloodthirsty deity and faith is decreasing. Consequently the kelp harvest was very good and tax collection has increased.	maxdominion 3|mydominion 1|season 1|minpop 50|land 0	incdom -2|decscale2 Death|taxboost 100	
 1847	Recent turmoil has been subdue	-1	Recent turmoil has been subdued by the competent garrison commander.	minunrest 20|poptype 65|mindef 12|order -1	unrest -30|decscale Turmoil|nation -2|com 976	
-1848	Those are pearls that were his	-1	Those are pearls that were his eyes! In the eye sockets of some drowned sailors astral pearls were found.	land 0|rare 25	1d6vis A	
+1848	Those are pearls that were his	-1	Those are pearls that were his eyes! In the eye sockets of some drowned sailors astral pearls were found.	land 0|rare 25	1d6vis S	
 1849	A local gravedigger has heard 	-1	A local gravedigger has heard scratching and howling from beneath the stone slab covering an old grave. He refuses to open it unless a Black Priest is present. [Black Forest]	fornation 64|turn 20|unique 1|nearbysite 1|code 0	code -11	
 1850	The grave has been opened unde	0	The grave has been opened under the supervision of a Black Priest. Underneath the heavy stone slab a vampire was trapped! It has now joined your cause.	monster 740|code -11	code 0|nation -2|com 1019	
 1851	The Time of the Northmen is at	11	The Time of the Northmen is at hand! They worship a heathen Idol, paying him tribute in blood and plunder! If it is destroyed, their resolve may weaken.	capital 0|0x4600 1|unique 1|turn 23|coast 1|season 1|code 0|noera 3|fort 0|maxtroops 20|0x5400 28	code -19|0x5E00 -14|com 2449|bloodboost 1|bloodboost 1|addequip 1|4com 2532|15d6units 2531|10d6units 2533|2d6units 544	
@@ -2139,7 +2139,7 @@ id	name	rarity	description	requirements	effects	test
 2138	In the midst of winter, orchar	0	In the midst of winter, orchards have born magical fruit!	rare 2|magic 1|land 1|season 3|code -26	code 0|2d6vis N	
 2139	A Woodhenge Druid has traveled	0	A Woodhenge Druid has traveled deep into the forest to seek wisdom. Afterwards, his powers of magic seems to have grown.	rare 5|monster 105|forest 1|growth 1|code -26	code 0|natureboost 105	
 2140	Strange corals have sprouted i	0	Strange corals have sprouted in a previously unexplored part of the sea. Among them lay scattered magical gems of different colors.	rare 3|land 0|code -26	code 0|1d6vis Elemental	
-2141	A tree in the orchard of one o	0	A tree in the orchard of one of the farmers has borne magical fruit!	rare 3|season 2|farm 1|code -26	code 0|1d6vis Elemental|1d3vis A|1d3vis N|1d3vis D	
+2141	A tree in the orchard of one o	0	A tree in the orchard of one of the farmers has borne magical fruit!	rare 3|season 2|farm 1|code -26	code 0|1d6vis Elemental|1d3vis S|1d3vis N|1d3vis D	
 2142	A spirit of summer has awoken 	0	A spirit of summer has awoken early, bringing summer and prosperity to the land!	rare 3|season 0|code -26	decscale2 Cold|decscale2 Death|taxboost 200|landgold 3	
 2143	Men have been lost in the wood	0	Men have been lost in the woods. Locals say a dryad has lured them. A nature mage may be able to cull some secrets from her.	rare 3|forest 1|growth -1|code -26	code 175|stealthcom 237|decscale Drain	
 2144	During the seasonal offerings 	0	During the seasonal offerings to the spirits of the earth, one of them has indeed appeared!	rare 1|luck -1|code -26	code 0|nation -2|com 561	
@@ -2307,7 +2307,7 @@ id	name	rarity	description	requirements	effects	test
 2306	Disease is spreading. To appea	0	Disease is spreading. To appease their punishing lord, the people of this land have erected a new temple.	rare 1|temple 0|code -36	temple 1|kill 2|disease 2	
 2307	A preacher has appeared.	0	A preacher has appeared.	rare 1|death 1|code -36	nation -2|com 2535	
 2308	Plague has struck. A rich nobl	-1	Plague has struck. A rich noble commissioned a skull face, believing that by so altering his visage he would cheat death. His folly was soon apparent and the item has been acquired from his mausoleum. [Skullface]	unique 2|code -36	magicitem 9|kill 2|incscale Death|disease 1	
-2309	A pious mage has died from dis	0	A pious mage has died from disease. His arcane laboratory and his apprentice were willed to the church. [Owl Quill]	rare 1|unique 3|lab 0|code -36	magicitem 9|lab 1|1d6vis A|nation -2|com 478	
+2309	A pious mage has died from dis	0	A pious mage has died from disease. His arcane laboratory and his apprentice were willed to the church. [Owl Quill]	rare 1|unique 3|lab 0|code -36	magicitem 9|lab 1|1d6vis S|nation -2|com 478	
 2310	A sage has come to study the m	0	A sage has come to study the manifestations of the plague.	rare 1|unique 3|code -36	nation -2|com 478|addequip 9	
 2311	One of your mages has found a 	0	One of your mages has found a way to extract magical essence from the phlegm of dying plague victims.	rare 4|pathdeath 2|code -36	3d6vis D	
 2312	Magical gems have been found i	0	Magical gems have been found in the graves of some plague victims.	rare 1|code -36	code 0|code 5|2d6vis F	
@@ -2358,11 +2358,11 @@ id	name	rarity	description	requirements	effects	test
 2357	A group of Atlantean slaves ha	-2	A group of Atlantean slaves have been purchased from a merchant for a fair price.	coast 1|unique 1|turn 10	gold -50|nation -2|com 444|4d6units 424|1unit 425	
 2358	A forest hermit has been convi	-2	A forest hermit has been convinced that the trees of his forest could be put to more productive use.	forest 1|unique 2|magic 1|prod 1|turn 10	nation -2|com 552|addequip 1|2d6units 476	
 2359	Some strange beings have been 	-1	Some strange beings have been encountered in the Huge Crater. They seem to have been looking for something within the crater and when approached they attacked! [Huge Crater]	unique 1|site 1|code 0	code 176|2com 332|addequip 1|6d6units 424	
-2360	A wealth of magical gems have 	0	A wealth of magical gems have been found dispersed in the soil of the crater floor.	nomonster 332|code 176	code 0|4d6vis A|2d6units 3	
+2360	A wealth of magical gems have 	0	A wealth of magical gems have been found dispersed in the soil of the crater floor.	nomonster 332|code 176	code 0|4d6vis S|2d6units 3	
 2361	The locals yearn for bloody sp	-2	The locals yearn for bloody sports. The have established an Arena to satisfy their urges. [Arena]	rare 20|chaos 2|freesites 1|minpop 90	newsite -1	
 2362	A wizard and his apprentices h	-2	A wizard and his apprentices have forsworn their Art and seen the path to salvation! All their belongings have been donated to the church, and the four men now serve in humble gratitude.	unmagic 2|land 1|dominion 6|rare 25	magicitem 2|1d3vis F|1d3vis W|nation -2|4com 2537	
 2363	A coven of witches has been dr	-2	A coven of witches has been driven from the land, their belongings confiscated.	unmagic 1	magicitem 1|1d3vis N|1d3vis D|curse 8	
-2364	A cabal of sorcerers has been 	-2	A cabal of sorcerers has been destroyed, their lab demolished and most of their belongings burnt. A few items were salvaged.	unmagic 1	magicitem 1|1d3vis E|1d3vis A|magicitem 2	
+2364	A cabal of sorcerers has been 	-2	A cabal of sorcerers has been destroyed, their lab demolished and most of their belongings burnt. A few items were salvaged.	unmagic 1	magicitem 1|1d3vis E|1d3vis S|magicitem 2	
 2365	A seer has been strangled to d	-2	A seer has been strangled to death by an angry mob after giving false prophesies of good fortune. One of his eyes looked strange and it has been transported to the capital. [Eye of the Void]	unmagic 1	magicitem 9	
 2366	A former mage, having renounce	-2	A former mage, having renounced his arts, has devised some suits of armor to the benefit of the warriors of faith. [Mirror Armor]	unmagic 2	magicitem 9|magicitem 9|magicitem 9	
 2367	One of your mages has consorte	-1	One of your mages has consorted with a witch in the woods. After an unnaturally short pregnancy, the crone gave birth to a monster, who now follows his father like a loyal dog.	targpath1 6|0x8000 1|forest 1|magic 0|growth 0|0x7E00 0	nation -2|1unit -12|gainaff 549755813888	
@@ -2846,7 +2846,7 @@ id	name	rarity	description	requirements	effects	test
 2845	Tracks on the shore reveal tha	0	Tracks on the shore reveal that groups of creatures emerge from the sea at night-time and roam the coast, probably returning at dawn. A patrolling force may be able to intercept them.	code 227	code 228|order 0	
 2846	Some tracks were found at the 	0	Some tracks were found at the shore, revealing that some kind of creatures emerge from the sea to roam the coast. Unfortunately, your men were set upon by a pack of these monsters! [Bottle of Living Water]	rare 20|targorder 3|code 227	code 0|com 1409|addequip 9|10d6units 1064	
 2847	A smugglers cave was found, it	0	A smugglers cave was found, its contents claimed by the treasury.	targorder 3|rare 20|unique 1|code 228	gold 400|magicitem 1|magicitem 1	
-2848	Some magic pearls were found a	0	Some magic pearls were found at the shore.	targorder 3|rare 20|unique 2|code 228	1d6vis A	
+2848	Some magic pearls were found a	0	Some magic pearls were found at the shore.	targorder 3|rare 20|unique 2|code 228	1d6vis S	
 2849	The sea-creatures have been in	0	The sea-creatures have been intercepted! The pack is lead on a frenzied hunt by a proud ichtycentaur. [Bottle of Living Water]	rare 70|code 228|targorder 3	code 0|com 1409|addequip 9|6d6units 1064	
 2850	Winter has come, putting an en	0	Winter has come, putting an end to the strange occurrences plaguing the coastal province.	season 3|code 228|code 227	code 0	
 2851	More of the strange howling ha	0	More of the strange howling has been heard along the coast. People have disappeared and locals are upset.	rare 15|noseason 3|unique 3|code 227|code 228	unrest 15	
