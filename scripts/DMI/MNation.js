@@ -198,7 +198,21 @@ MNation.prepareData_PostMod = function() {
 				o.foreignunits.push(attr.monster_number);
 			}
 		}
-
+		
+		// look for coast commanders
+		for (var oj=0, attr; attr = modctx.coast_leader_types_by_nation[oj];  oj++) {
+			if (parseInt(attr.nation_number) == o.id) {
+				o.coastcom.push(attr.monster_number);
+			}
+		}
+		
+		// look for coast units
+		for (var oj=0, attr; attr = modctx.coast_troop_types_by_nation[oj];  oj++) {
+			if (parseInt(attr.nation_number) == o.id) {
+				o.coastrec.push(attr.monster_number);
+			}
+		}
+		
 		for (var oj=0, attr; attr = modctx.attributes_by_nation[oj];  oj++) {
 			if (parseInt(attr.nation_number) == o.id) {
 				var attribute = modctx.attributes_lookup[parseInt(attr.attribute_record_id)];

@@ -22,7 +22,7 @@ id	name	type	def	enc	rcost	test
 20	Iron Cap	6	0	0	2
 21	Full Helmet	6	-1	0	5
 22	Coral Cuirass	5	-1	2	7
-23	Coral Hauberk	5	-2	4	10
+23	Coral Hauberk	5	-2	3	10
 24	Coral Cap	6	0	0	2
 25	Turtle Shell Shield	4	3	1	1
 26	Ice Cuirass	5	-1	1	16
@@ -187,7 +187,7 @@ id	name	type	def	enc	rcost	test
 185	Brightmail Haubergeon	5	0	0	0
 186	Shademail Haubergeon	5	0	0	0
 187	Wooden Mask	6	-1	0	0
-188	Sharkskin Cuirass	5	-1	1	2
+188	Sharkskin Cuirass	5	0	1	2
 189	Pearl Shield	4	4	1	8
 190	Coral Barding	5	-2	4	12
 191	Helmet of Invisibility	6	0	0	0
@@ -206,3 +206,8 @@ id	name	type	def	enc	rcost	test
 204	Armor of the Sun	5	-2	3	20
 205	Sun Cuirass	5	-1	2	14
 206	Obsidian Cuirass	5	-1	2	18
+207	Wicker Shield	4	3	1	1
+208	Iron Shield	4	3	1	3
+209	Hoplon	4	3	1	3
+210	Meteorite Cuirass	5	-1	2	18
+211	Meteorite Cap	6	0	0	2

@@ -179,7 +179,6 @@ monster_number	nation_number	test
 1385	36
 6	36
 5	36
-538	36
 52	36
 43	36
 42	36
@@ -518,7 +517,7 @@ monster_number	nation_number	test
 2374	86
 2392	86
 1054	86
-1040	86
+2861	86
 1038	86
 432	87
 207	87
@@ -538,6 +537,7 @@ monster_number	nation_number	test
 2421	89
 1696	89
 1415	89
+2823	89
 1418	89
 1417	89
 2422	89
@@ -547,6 +547,7 @@ monster_number	nation_number	test
 2410	90
 2392	90
 1054	90
+2861	90
 1038	90
 1631	91
 1632	91
@@ -559,3 +560,5 @@ monster_number	nation_number	test
 445	92
 443	92
 333	92
+2833	95
+2835	95

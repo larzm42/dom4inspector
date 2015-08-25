@@ -426,6 +426,8 @@ function downloadData( g_data ) {
            'gamedata/attributes_by_nation.csv'+versionCode,
            'gamedata/fort_leader_types_by_nation.csv'+versionCode,
            'gamedata/fort_troop_types_by_nation.csv'+versionCode,
+           'gamedata/coast_leader_types_by_nation.csv'+versionCode,
+           'gamedata/coast_troop_types_by_nation.csv'+versionCode,
            'gamedata/nonfort_leader_types_by_nation.csv'+versionCode,
            'gamedata/nonfort_troop_types_by_nation.csv'+versionCode,
            'gamedata/pretender_types_by_nation.csv'+versionCode,
@@ -433,7 +435,8 @@ function downloadData( g_data ) {
            'gamedata/unpretender_types_by_nation.csv'+versionCode,
            'gamedata/map_terrain_types.csv'+versionCode,
            'gamedata/site_terrain_types.csv'+versionCode,
-           'gamedata/attributes_by_weapon.csv'+versionCode
+           'gamedata/attributes_by_weapon.csv'+versionCode,
+           'gamedata/attributes_by_armor.csv'+versionCode
 	];
 		
 	var onerror = function( emsg, details ) {
@@ -526,6 +529,10 @@ function parseData( g_data ) {
 			var data = g_data.server_data['gamedata/attributes_by_weapon.csv'+versionCode];
 			if (!data) throw(DMI.Utils.error('ERROR LOADING: gamedata/attributes_by_weapon.csv'));
 			modctx.attributes_by_weapon = parseTextToTable(data);
+		
+			var data = g_data.server_data['gamedata/attributes_by_armor.csv'+versionCode];
+			if (!data) throw(DMI.Utils.error('ERROR LOADING: gamedata/attributes_by_armor.csv'));
+			modctx.attributes_by_armor = parseTextToTable(data);
 		
 			var data = g_data.server_data['gamedata/spells.csv'+versionCode];
 			if (!data) throw(DMI.Utils.error('ERROR LOADING: gamedata/spells.csv'));
@@ -665,6 +672,14 @@ function parseData( g_data ) {
 			var data = g_data.server_data['gamedata/fort_troop_types_by_nation.csv'+versionCode];
 			if (!data) throw(DMI.Utils.error('ERROR LOADING: gamedata/fort_troop_types_by_nation.csv'));
 			modctx.fort_troop_types_by_nation = parseTextToTable(data);
+		
+			var data = g_data.server_data['gamedata/coast_leader_types_by_nation.csv'+versionCode];
+			if (!data) throw(DMI.Utils.error('ERROR LOADING: gamedata/coast_leader_types_by_nation.csv'));
+			modctx.coast_leader_types_by_nation = parseTextToTable(data);
+		
+			var data = g_data.server_data['gamedata/coast_troop_types_by_nation.csv'+versionCode];
+			if (!data) throw(DMI.Utils.error('ERROR LOADING: gamedata/coast_troop_types_by_nation.csv'));
+			modctx.coast_troop_types_by_nation = parseTextToTable(data);
 		
 			var data = g_data.server_data['gamedata/nonfort_leader_types_by_nation.csv'+versionCode];
 			if (!data) throw(DMI.Utils.error('ERROR LOADING: gamedata/nonfort_leader_types_by_nation.csv'));

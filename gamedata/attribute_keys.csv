@@ -34,6 +34,8 @@ number	name	test
 125	<Unknown Attribute>
 126	<Unknown Attribute>
 127	<Unknown Attribute>
+128	<Unknown Attribute>
+129	<Unknown Attribute>
 131	<Unknown Attribute>
 132	<Unknown Attribute>
 133	<Unknown Attribute>
@@ -49,6 +51,7 @@ number	name	test
 144	National Unique Hero {Ntn: #hero6}
 145	National Generic Hero {Ntn: #multihero1}
 146	National Generic Hero {Ntn: #multihero2}
+149	<Unknown Attribute>
 156	<Unknown Attribute>
 157	<Unknown Attribute>
 158	Coastal Fort Commander {Ntn: #coastcom1}
@@ -62,7 +65,7 @@ number	name	test
 169	<Unknown Attribute>
 170	<Unknown Attribute>
 171	<Unknown Attribute>
-172	<Unknown Attribute>
+172	Underwater Fort Commander {Ntn: #uwcom}
 173	<Unknown Attribute>
 174	<Unknown Attribute>
 175	<Unknown Attribute>
@@ -72,12 +75,12 @@ number	name	test
 179	<Unknown Attribute>
 180	<Unknown Attribute>
 185	<Unknown Attribute>
-186	Underwater Fort Commander {Ntn: #uwcom?}
-187	Underwater Fort Commander {Ntn: #uwcom?}
-188	Underwater Fort Commander {Ntn: #uwcom?}
-189	Underwater Fort Troop {Ntn: #uwunit?}
-190	Underwater Fort Troop {Ntn: #uwunit?}
-191	Underwater Fort Troop {Ntn: #uwunit?}
+186	Underwater Fort Commander {Ntn: #uwcom}
+187	Underwater Fort Commander {Ntn: #uwcom}
+188	Underwater Fort Commander {Ntn: #uwcom}
+189	Underwater Fort Troop {Ntn: #uwunit}
+190	Underwater Fort Troop {Ntn: #uwunit}
+191	Underwater Fort Troop {Ntn: #uwunit}
 193	<Unknown Attribute>
 194	<Unknown Attribute>
 195	<Unknown Attribute>
@@ -90,7 +93,7 @@ number	name	test
 207	<Unknown Attribute>
 210	<Unknown Attribute>
 211	<Unknown Attribute>
-213	<Unknown Attribute>
+213	Underwater Fort Troop {Ntn: #uwunit}
 217	<Unknown Attribute>
 220	<Unknown Attribute>
 221	<Unknown Attribute>
@@ -113,6 +116,7 @@ number	name	test
 278	Restrict to Nation {Spl: #restricted}
 279	<Unknown Attribute>
 280	<Unknown Attribute>
+281	<Unknown Attribute>
 287	<Unknown Attribute>
 288	<Unknown Attribute>
 289	Home Realm {Ntn: #homerealm}
@@ -131,6 +135,21 @@ number	name	test
 304	<Unknown Attribute>
 305	<Unknown Attribute>
 306	<Unknown Attribute>
+307	<Unknown Attribute>
+308	<Unknown Attribute>
+309	<Unknown Attribute>
+310	<Unknown Attribute>
+311	<Unknown Attribute>
+312	<Unknown Attribute>
+313	<Unknown Attribute>
+314	Cheap God 20 {Ntn: #cheapgod20}
+315	Cheap God 40 {Ntn: #cheapgod40}
+317	<Unknown Attribute>
+318	<Unknown Attribute>
+319	<Unknown Attribute>
+320	<Unknown Attribute>
+321	<Unknown Attribute>
+322	<Unknown Attribute>
 404	<Unknown Attribute>
 426	Restricted to Realm
 477	<Unknown Attribute>

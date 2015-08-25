@@ -193,6 +193,17 @@ MArmor.renderOverlay = function(o, baseAtt) {
 	h+= 			Utils.renderDetailsFlags(o, flagorder, aliases, formats);
 	h+= 			Utils.renderStrangeDetailsRows(o, ignorekeys, aliases, 'strange');
 	
+	// Attributes
+	for (var oi=0, attr; attr = modctx.attributes_by_armor[oi];  oi++) {
+		if (attr.armor_number == o.id) {
+			var attribute = modctx.attributes_lookup[parseInt(attr.attribute_record_id)];
+			if (attribute.attribute_number != "302") {
+				var specflags = modctx.attribute_keys_lookup[attribute.attribute_number].name;
+				h+= '<tr class="'+attribute.attribute_number+'"><th>'+modctx.attribute_keys_lookup[attribute.attribute_number].name.replace(/{(.*?)}|<|>/g, "")+'</th></tr>'
+			}
+		}
+	}
+
 	//modded
 	if (o.modded) {
 		h+='		<tr class="modded hidden-row"><td colspan="2">' + Utils.renderModded(o) +'</td></tr>';
