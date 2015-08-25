@@ -541,8 +541,28 @@ function list_events(arr) {
 	for (var i=0, uid; uid= arr[i];  i++)
 		tokens.push( Utils.eventRef( arr[i] ) );
 	
-	//comma separated & one per line
-	return tokens.join(', <br />');
+	var h = '';
+	if (tokens.length > 4) {
+		//hide uberlong list
+		h+='<div><div>'+tokens.length+' events ';
+		
+		//button to reveal
+		var codereveal = "$(this).parent('div').hide().parent('div').find('.full-list').show()"
+		h+='<input class="inline-button" style="padding:none" type="button" value="show" onclick="'+codereveal+'"/>';
+		h+='</div>';
+	
+		//the actual list
+		h+='<div class="full-list"style="display:none">';
+		h+='	'+ tokens.join(', <br />');
+		h+='</div>';
+	} else {
+		h+='<div>';
+		h+='	'+ tokens.join(', <br />');
+		h+='</div></div>';
+	}
+
+	return h;
+
 }
 
 //////////////////////////////////////////////////////////////////////////
