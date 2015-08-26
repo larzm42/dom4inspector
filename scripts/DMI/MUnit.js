@@ -748,6 +748,7 @@ MUnit.prepareData_PostNationData = function(o) {
 		if (o.typechar == 'Pretender') {
 			delete o.rcost;
 			delete o.rcostsort;
+			delete o.goldcost;
 		}
 		//sorttype
 		o.sorttype = MUnit.unitSortableTypes[o.typechar];
@@ -1543,6 +1544,7 @@ var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 	'deathrec',	'death recruit',
 	'heatrec',	'heat recruit', function(v) { return String(v) + ' ';},
 	'coldrec',	'cold recruit', function(v) { return String(v) + ' ';},
+	'enchrebate50', '50% ench rebate', function(v) { return modctx.enchantments_lookup[v].name;},
 	
 	'cold',		'cold aura',
 	'heat',		'heat aura',
