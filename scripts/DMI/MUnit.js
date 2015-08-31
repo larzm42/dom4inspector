@@ -1644,7 +1644,7 @@ var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 	'woundfend','affliction reduction chance',	Format.Percent,
 	'startingaff', 'affliction', {4096: 'Blind', 524288: 'Lost an eye', 262144:'Limp'},
 
-	'reaper',	'leper',		Format.Percent,
+	'leper',	'reaper',		Format.Percent,
 	'popkill',	'kills population',	function(v,o){ return Format.PerTurn( parseInt(v) ) },
 	'corpseeater', 'corpse eater',
 	'homesick',	'homesick',		Format.Percent,
