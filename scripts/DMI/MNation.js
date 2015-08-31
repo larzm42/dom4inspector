@@ -431,7 +431,7 @@ MNation.prepareData_PostMod = function() {
 				console.log(basekey+' '+arr[i]+' not found (nation '+o.id+')');
 				continue;
 			}
-			o.capunits = o.capunits.concat(s.units, s.hmon);
+			o.capunits = o.capunits.concat(s.units, s.hmon, s.mon);
 			o.capcommanders = o.capcommanders.concat(s.commanders, s.hcom);
 			for (k in gemkeys) {
 				if (s[k])
