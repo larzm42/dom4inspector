@@ -1392,7 +1392,7 @@ id	name	rarity	description	requirements	effects	test
 1391	The power of The Throne of For	13	The power of The Throne of Fortune is spreading. [The Throne of Fortune]	claimedthrone 1|site 1|rare 35|unique 2|site 1	worlddecscale Misfortune	
 1392	The power of The Throne of Mis	13	The power of The Throne of Misfortune is spreading. [The Throne of Misfortune]	claimedthrone 1|site 1|rare 35|unique 2	worldincscale Misfortune	
 1393	The Throne of Pestilence sprea	13	The Throne of Pestilence spreads its disease throughout the world. [The Throne of Pestilence]	claimedthrone 1|unique 1|code 0|site 1	code -37|worlddisease 1|linger 3|0x6F00 7	
-1394	An extra trone of pestilence r	0	An extra trone of pestilence reset. There are other resetting events also.HIDDEN.	code -37|0x4700 1	notext 1|resetcode -37	
+1394	An extra trone of pestilence r	0	An extra trone of pestilence reset. There are other resetting events also.HIDDEN.	code -37|story 1	notext 1|resetcode -37	
 1395	The Throne of Summer is spread	13	The Throne of Summer is spreading warmth across the world. [The Throne of Summer]	claimedthrone 1|unique 2|site 1	worlddecscale Cold	
 1396	The Throne of Winter is spread	13	The Throne of Winter is spreading cold across the world. [The Throne of Winter]	claimedthrone 1|unique 2|site 1	worldincscale Cold|linger 1	
 1397	Wolves have come to serve the 	-1	Wolves have come to serve the Lord of The Winter Throne. [The Throne of Winter]	land 1|claimedthrone 1|dominion 5|site 1	nation -2|4d6units 284|2d6units 1224|com 1224	
@@ -1776,7 +1776,7 @@ id	name	rarity	description	requirements	effects	test
 1775	The old spells have been broke	0	The old spells have been broken and the abode of The Necromancer revealed! Seeing the opportunities given in your service, he has agreed to follow your command. At least for now... [Necromancer's Lair]	hiddensite 1|pathdeath 3|rare 33|code 139	code 0|revealsite 1|nation -2|com 178|4d6units 533	
 1776	Your mage has dabbled in arts 	0	Your mage has dabbled in arts he does not fully master. The undead servants of The Necromancer has been released upon the province![Necromancer's Lair]	hiddensite 1|pathdeath 3|rare 15|code 139	2com 533|6d6units 533|com 998	
 1777	The old spells have been broke	0	The old spells have been broken and the abode of The Necromancer revealed! Seeing the opportunities given in your service, he has agreed to follow your command. At least for now... [Necromancer's Lair]	foundsite 1|code 139	code 0|nation -2|com 178|4d6units 533	
-1778	The Necromancer has increased 	0	The Necromancer has increased his power! [Necromancer's Lair]	0x4700 1|foundsite 1|targmnr 178|unique 1|rare 15	deathboost 178	
+1778	The Necromancer has increased 	0	The Necromancer has increased his power! [Necromancer's Lair]	story 1|foundsite 1|targmnr 178|unique 1|rare 15	deathboost 178	
 1779	Cattle have disappeared. A far	0	Cattle have disappeared. A farmer found their bones on a scorched patch of earth.[Dragon Lair]	rare 1|0x4600 1|hiddensite 1|code 0	code 141|unrest 3	
 1780	A Red Dragon has been sighted!	0	A Red Dragon has been sighted! Its lair must be nearby, probably full of treasures! A mage highly skilled in fire magic should be able to locate it.[Dragon Lair]	code 141|hiddensite 1	code 142|decscale Drain	
 1781	The Dragon´s Lair has been fo	0	The Dragon´s Lair has been found unguarded! Heaps of gold, gems and magic items have been plundered from its hoard. [Dragon Lair]	foundsite 1|code 142	code 143|gold 1000|magicitem 3|1d6vis Elemental|magicitem 2	
@@ -1850,7 +1850,7 @@ id	name	rarity	description	requirements	effects	test
 1849	A local gravedigger has heard 	-1	A local gravedigger has heard scratching and howling from beneath the stone slab covering an old grave. He refuses to open it unless a Black Priest is present. [Black Forest]	fornation 64|turn 20|unique 1|nearbysite 1|code 0	code -11	
 1850	The grave has been opened unde	0	The grave has been opened under the supervision of a Black Priest. Underneath the heavy stone slab a vampire was trapped! It has now joined your cause.	monster 740|code -11	code 0|nation -2|com 1019	
 1851	The Time of the Northmen is at	11	The Time of the Northmen is at hand! They worship a heathen Idol, paying him tribute in blood and plunder! If it is destroyed, their resolve may weaken.	capital 0|0x4600 1|unique 1|turn 23|coast 1|season 1|code 0|noera 3|fort 0|maxtroops 20|0x5400 28	code -19|0x5E00 -14|com 2449|bloodboost 1|bloodboost 1|addequip 1|4com 2532|15d6units 2531|10d6units 2533|2d6units 544	
-1852	The Northmen settlers have bee	0	The Northmen settlers have been driven from the land, their war leaders killed. No more will their fleets bring havoc to troubled shores across the world! Some of the spoils of their plunder has been recovered.	0x4700 1|nomonster 2449|nomonster 1605|nomonster 1604|nomonster 2194|code -14|code -73|code -85|code -84	code -18|incdom 4|gold 1500|magicitem 3|magicitem 2|resetcode -72|resetcode -73|resetcode -74|resetcode -85|resetcode -84	
+1852	The Northmen settlers have bee	0	The Northmen settlers have been driven from the land, their war leaders killed. No more will their fleets bring havoc to troubled shores across the world! Some of the spoils of their plunder has been recovered.	story 1|nomonster 2449|nomonster 1605|nomonster 1604|nomonster 2194|code -14|code -73|code -85|code -84	code -18|incdom 4|gold 1500|magicitem 3|magicitem 2|resetcode -72|resetcode -73|resetcode -74|resetcode -85|resetcode -84	
 1853	Storms have destroyed many of 	13	Storms have destroyed many of the raiding fleets that have been harrying coasts all across the world. The scourge of the Northmen has ended!	season 0|code 0|code -14	resetcode -14|resetcode -15|resetcode -72	
 1854	A fleet of Dragon-headed ships	0	A fleet of Dragon-headed ships have been sighted at sea.	rare 2|coast 1|maxdef 19|noseason 3|code -14|code 0	code -15	
 1855	Northmen have attacked from th	0	Northmen have attacked from the sea! They come in numbers and seem purposeful in their attacks.	0x4600 2|maxdef 19|maxtroops 20|rare 80|noseason 3|code -15	code 0|com 2532|10d6units 2531|4d6units 2533|2com 2533	
@@ -1863,44 +1863,44 @@ id	name	rarity	description	requirements	effects	test
 1862	A small band of northmen has b	0	A small band of northmen has been encountered. It seemed they were scouting the area. 	rare 2|coast 1|maxdef 18|noseason 3|code -14|code 0	code -15|com 2533|1d6units 2531|1d6units 2533	
 1863	Lord save us from the wrath of	0	Lord save us from the wrath of the Northmen! Your people cry your name in anguish while raiders from the sea bear down upon the land. 	rare 6|coast 1|maxdef 18|noseason 3|code -14|code 0	code 0|com 2532|6d6units 2531|4d6units 2533|2com 2533	
 1864	The Scourge of the Northmen ha	13	The Scourge of the Northmen has been put to an end, their false Idol destroyed and their elders put to the sword by one of the Pretender Gods. No more will they be sent to plunder across the seas.	unique 1|code -18	code 0|resetcode -14|resetcode -15	
-1865	Bands of raiding northmen have	0	Bands of raiding northmen have killed and plundered in the borderlands! Virgins were spared and transported towards their main camp.	rare 40|code -14|unique 5|land 1|code 0|0x4700 1	code -72|kill 2|taxboost -40|unrest 15	
-1866	The sorcerous Idol of the Nort	13	The sorcerous Idol of the Northmen has been paid tribute in virgin blood! It´s burgeoning power can be felt emanating from ##landname##.	0x4700 1|unique 1|targmnr 2449|code -14|code -72	resetcode -72|addequip 1|bloodboost 1|revealprov 1	
-1867	The Idol of the Northmen has b	13	The Idol of the Northmen has been libated in virgin blood! It is growing in power.	0x4700 1|unique 5|targmnr 2449|code -14|code -72	resetcode -72|addequip 1|deathboost 1|com 2532|bloodboost 1	
-1868	The Idol has cast a powerful e	13	The Idol has cast a powerful enchantment! Reaching into the realm of the fallen warriors, it has summoned them back to fight alongside his mortal servants!	0x4700 1|0x4600 3|unique 1|targpath3 5|targmnr 2449|code -14	code -73|deathboost 1|com 2194|4d6units 915|4d6units 2119|0x6F00 6	
+1865	Bands of raiding northmen have	0	Bands of raiding northmen have killed and plundered in the borderlands! Virgins were spared and transported towards their main camp.	rare 40|code -14|unique 5|land 1|code 0|story 1	code -72|kill 2|taxboost -40|unrest 15	
+1866	The sorcerous Idol of the Nort	13	The sorcerous Idol of the Northmen has been paid tribute in virgin blood! It´s burgeoning power can be felt emanating from ##landname##.	story 1|unique 1|targmnr 2449|code -14|code -72	resetcode -72|addequip 1|bloodboost 1|revealprov 1	
+1867	The Idol of the Northmen has b	13	The Idol of the Northmen has been libated in virgin blood! It is growing in power.	story 1|unique 5|targmnr 2449|code -14|code -72	resetcode -72|addequip 1|deathboost 1|com 2532|bloodboost 1	
+1868	The Idol has cast a powerful e	13	The Idol has cast a powerful enchantment! Reaching into the realm of the fallen warriors, it has summoned them back to fight alongside his mortal servants!	story 1|0x4600 3|unique 1|targpath3 5|targmnr 2449|code -14	code -73|deathboost 1|com 2194|4d6units 915|4d6units 2119|0x6F00 6	
 1869	The northmen attacks have decr	13	The northmen attacks have decreased in number. Instead, the Idol seems to be consolidating its power in ##landname##.	monster 2449|code -73	code -85|revealprov 1|4d6units 2531|2d6units 2533|3d6units 2190	
-1870	The idol consolidates its powe	0	The idol consolidates its power.	rare 25|unique 6|0x4700 1|code -85	2com 2194|4d6units 2531|2d6units 2533|2d6units 2190|2com 2190	
-1871	The idol grants its followers 	0	The idol grants its followers power.	rare 15|unique 5|0x4700 1|code -85	pathboost 5	
-1872	The idol grants its followers 	0	The idol grants its followers power.	rare 15|unique 5|0x4700 1|code -85	pathboost 7	
-1873	The idol grants its followers 	0	The idol grants its followers boons.	rare 15|unique 5|0x4700 1|0x7F00 1|code -85	addequip 2	
-1874	The idol grants its followers 	0	The idol grants its followers boons.	rare 15|unique 5|0x4700 1|targpath1 1|code -85	addequip 1	
-1875	The idols host grows.	0	The idols host grows.	rare 10|unique 3|0x4700 1|code -85	2com 2194|2d6units 2531|1d6units 2533|1d6units 2190|2com 2190	
-1876	The idol gets gems and power.	0	The idol gets gems and power.	rare 7|unique 1|0x4700 1|targmnr 2449|code -85	bloodboost 1|addequip 1|1d6units 638	
-1877	The idol gets power.	0	The idol gets power.	rare 7|unique 2|0x4700 1|targmnr 2449|code -85	astralboost 1|1d6units 638	
-1878	The idol gets gems and power.	0	The idol gets gems and power.	rare 7|unique 3|0x4700 1|targmnr 2449|code -85	deathboost 1|addequip 1|1d6units 638	
+1870	The idol consolidates its powe	0	The idol consolidates its power.	rare 25|unique 6|story 1|code -85	2com 2194|4d6units 2531|2d6units 2533|2d6units 2190|2com 2190	
+1871	The idol grants its followers 	0	The idol grants its followers power.	rare 15|unique 5|story 1|code -85	pathboost 5	
+1872	The idol grants its followers 	0	The idol grants its followers power.	rare 15|unique 5|story 1|code -85	pathboost 7	
+1873	The idol grants its followers 	0	The idol grants its followers boons.	rare 15|unique 5|story 1|0x7F00 1|code -85	addequip 2	
+1874	The idol grants its followers 	0	The idol grants its followers boons.	rare 15|unique 5|story 1|targpath1 1|code -85	addequip 1	
+1875	The idols host grows.	0	The idols host grows.	rare 10|unique 3|story 1|code -85	2com 2194|2d6units 2531|1d6units 2533|1d6units 2190|2com 2190	
+1876	The idol gets gems and power.	0	The idol gets gems and power.	rare 7|unique 1|story 1|targmnr 2449|code -85	bloodboost 1|addequip 1|1d6units 638	
+1877	The idol gets power.	0	The idol gets power.	rare 7|unique 2|story 1|targmnr 2449|code -85	astralboost 1|1d6units 638	
+1878	The idol gets gems and power.	0	The idol gets gems and power.	rare 7|unique 3|story 1|targmnr 2449|code -85	deathboost 1|addequip 1|1d6units 638	
 1879	Northmen are raiding the coast	0	Northmen are raiding the coast, but seem to avoid battle.	0x5400 28|rare 3|coast 1|maxdef 16|code -85	kill 1|unrest 10	
 1880	The Idol of the northmen is st	0	The Idol of the northmen is still unopposed! Now strong in magic, it has sent fiends of the nether realms to punish this province!	rare 1|land 1|maxdef 16|code -85	2com 638|2d6units 638	
 1881	The Northmen and their siniste	0	The Northmen and their sinister allies are claiming this land! [Hall of the Draugadrott]	site 0|rare 10|land 1|unique 2|code 0|code -85	code -86|2com 2194|4d6units 2531|4d6units 2533|4d6units 2190	
 1882	The northmen have been driven 	0	The northmen have been driven away! Some of their plunder was salvaged. People in the area are finding faith and hope anew! 	nomonster 2194|land 1|code -87|code -86	code 0|unrest -20|incdom 3|gold 300|magicitem 2	
-1883	The northmen settle. [Hall of 	0	The northmen settle. [Hall of the Draugadrott]	site 1|monster 2194|rare 25|0x4700 1|land 1|code -86|unique 1	code -87|3d6units 2531|3d6units 2533|2d6units 2190|newsite -1	
-1884	The northmen strengthen their 	0	The northmen strengthen their hold.	0x4700 1|targmnr 2194|unique 4|rare 13|land 1|code -87	deathboost 1|addequip 1|3d6units 2531|3d6units 2533|2d6units 2190	
-1885	The Draugadrottir have come to	0	The Draugadrottir have come to claim a land to rule under the waves!	0x4700 1|rare 10|land 0|unique 1|code 0|code -85|0x5400 28	code -86|2com 2194|deathboost 1|5d6units 2190	
-1886	The draug settle. [Hall of the	0	The draug settle. [Hall of the Draugadrott]	monster 2194|rare 25|0x4700 1|land 0|code -86	code -87|newsite -1|2d6units 2190	
-1887	The draug strengthen their hol	0	The draug strengthen their hold.	0x4700 1|targmnr 2194|unique 6|rare 13|land 0|code -87	deathboost 1|addequip 1|2d6units 2190	
-1888	The Draug have been driven awa	0	The Draug have been driven away! People find faith and hope anew! Some of their plunder was salvaged. People in the area are finding faith and hope anew! 	nomonster 2194|land 0|0x4700 1|code -87|code -86	code 0|unrest -20|incdom 3|gold 300|magicitem 2	
-1889	The draugadrott gain power.	0	The draugadrott gain power.	0x4700 1|unique 2|land 0|targmnr 2194|code -87	deathboost 1|waterboost 1|addequip 1	
-1890	The draugadrott gain power.	0	The draugadrott gain power.	0x4700 1|unique 2|land 1|targmnr 2194|code -87	deathboost 1|waterboost 1|addequip 1	
+1883	The northmen settle. [Hall of 	0	The northmen settle. [Hall of the Draugadrott]	site 1|monster 2194|rare 25|story 1|land 1|code -86|unique 1	code -87|3d6units 2531|3d6units 2533|2d6units 2190|newsite -1	
+1884	The northmen strengthen their 	0	The northmen strengthen their hold.	story 1|targmnr 2194|unique 4|rare 13|land 1|code -87	deathboost 1|addequip 1|3d6units 2531|3d6units 2533|2d6units 2190	
+1885	The Draugadrottir have come to	0	The Draugadrottir have come to claim a land to rule under the waves!	story 1|rare 10|land 0|unique 1|code 0|code -85|0x5400 28	code -86|2com 2194|deathboost 1|5d6units 2190	
+1886	The draug settle. [Hall of the	0	The draug settle. [Hall of the Draugadrott]	monster 2194|rare 25|story 1|land 0|code -86	code -87|newsite -1|2d6units 2190	
+1887	The draug strengthen their hol	0	The draug strengthen their hold.	story 1|targmnr 2194|unique 6|rare 13|land 0|code -87	deathboost 1|addequip 1|2d6units 2190	
+1888	The Draug have been driven awa	0	The Draug have been driven away! People find faith and hope anew! Some of their plunder was salvaged. People in the area are finding faith and hope anew! 	nomonster 2194|land 0|story 1|code -87|code -86	code 0|unrest -20|incdom 3|gold 300|magicitem 2	
+1889	The draugadrott gain power.	0	The draugadrott gain power.	story 1|unique 2|land 0|targmnr 2194|code -87	deathboost 1|waterboost 1|addequip 1	
+1890	The draugadrott gain power.	0	The draugadrott gain power.	story 1|unique 2|land 1|targmnr 2194|code -87	deathboost 1|waterboost 1|addequip 1	
 1891	The Sorcerous Idol has sent a 	0	The Sorcerous Idol has sent a demon to slay one of your commanders.	rare 1|commander 1|code -85	assassin 638	
 1892	The Idol has cursed your advan	0	The Idol has cursed your advancing army!	rare 50|unique 2|mintroops 50|code -85	curse 20	
 1893	The Idol has quested out with 	1	The Idol has quested out with its powerful force of will and struck one of your mages!	targpath1 53|0x7E00 0|code -85	gainaff 33554432	
 1894	The Idol has quested out with 	0	The Idol has quested out with its powerful force of will and struck one of your mages!	targpath1 53|0x7E00 0|rare 50|unique 3|code -85	gainaff 33554432	
-1895	The idol grants its followers 	0	The idol grants its followers boons. [Black Bow of Botulf]	rare 15|unique 2|0x4700 1|targmnr 1|code -85	addequip 9	
-1896	The idol grants its followers 	0	The idol grants its followers boons. [Flesh Eater]	rare 15|unique 2|0x4700 1|targmnr 1|code -85	addequip 9	
-1897	The idol grants its followers 	0	The idol grants its followers boons. [Horror Helmet]	rare 15|unique 2|0x4700 1|targmnr 1|code -85	addequip 9	
-1898	The idol grants its followers 	0	The idol grants its followers boons. [Ring of the Warrior]	rare 15|unique 2|0x4700 1|targmnr 1|code -85	addequip 9	
+1895	The idol grants its followers 	0	The idol grants its followers boons. [Black Bow of Botulf]	rare 15|unique 2|story 1|targmnr 1|code -85	addequip 9	
+1896	The idol grants its followers 	0	The idol grants its followers boons. [Flesh Eater]	rare 15|unique 2|story 1|targmnr 1|code -85	addequip 9	
+1897	The idol grants its followers 	0	The idol grants its followers boons. [Horror Helmet]	rare 15|unique 2|story 1|targmnr 1|code -85	addequip 9	
+1898	The idol grants its followers 	0	The idol grants its followers boons. [Ring of the Warrior]	rare 15|unique 2|story 1|targmnr 1|code -85	addequip 9	
 1899	The Sorcerous Idol has sent a 	0	The Sorcerous Idol has sent a demon to slay one of your commanders.	rare 55|commander 1|unique 4|mintroops 10|code -85	assassin 638	
 1900	Dead have risen to attack your	0	Dead have risen to attack your army! Surely, some sorcerous evil must be behind this.	rare 55|unique 2|mintroops 20|fort 0|code -85	4com -2|12d6units -2|12d6units -15	
-1901	The Idol raises fallen warrior	0	The Idol raises fallen warriors to serve once more.	0x4700 1|rare 30|unique 3|code -73	3d6units 915|com 2194|deathboost 1|addequip 1|2d6units 2190	
-1902	The Idol is behung with offeri	0	The Idol is behung with offerings. [Wound Fend Amulet]	0x4700 1|rare 30|unique 1|targmnr 2449|code -73	addequip 9	
+1901	The Idol raises fallen warrior	0	The Idol raises fallen warriors to serve once more.	story 1|rare 30|unique 3|code -73	3d6units 915|com 2194|deathboost 1|addequip 1|2d6units 2190	
+1902	The Idol is behung with offeri	0	The Idol is behung with offerings. [Wound Fend Amulet]	story 1|rare 30|unique 1|targmnr 2449|code -73	addequip 9	
 1903	A fleet of Dragon-headed ships	0	A fleet of Dragon-headed ships have been sighted at sea.	rare 3|coast 1|maxdef 19|code -73|code 0	code -74	
 1904	A fleet of Dragon-headed ships	0	A fleet of Dragon-headed ships have been sighted at sea.	rare 2|coast 1|maxdef 19|code -85|0x5400 28|code 0	code -74	
 1905	Northmen have attacked from th	0	Northmen have attacked from the sea! Among their numbers are undead warriors that put fear into the hearts of even the bravest of men.	maxdef 19|maxtroops 20|rare 80|code -74	code 0|com 2532|4d6units 2531|4d6units 2533|2com 2190|3d6units 2190	
@@ -2036,7 +2036,7 @@ id	name	rarity	description	requirements	effects	test
 2035	The forces of nature are tryin	1	The forces of nature are trying to reclaim this land!	noseason 3|code 174	4com 27|6d6units 27|6d6units 228	
 2036	The Throne of Law has been cla	13	The Throne of Law has been claimed by a righteous pretender. Justice and order permeates through the spheres. [The Throne of Law]	dominion 2|order 1|claimedthrone 1|site 1|unique 1	worlddecscale2 Turmoil|worldunrest -10	
 2037	The Throne of War has been cla	13	The Throne of War has been claimed, bringing a time of strife! [The Throne of War]	site 1|claimedthrone 1|0x4600 1|unique 1|code 0	code -20|worldunrest 4|0x6F00 3	
-2038	The Time of Strife that was br	13	The Time of Strife that was brought upon the world by The Throne of War has ended!	0x4700 1	resetcode -20|code -33|resetcode -34|resetcode -1|0x7300 0|0x7400 0	
+2038	The Time of Strife that was br	13	The Time of Strife that was brought upon the world by The Throne of War has ended!	story 1	resetcode -20|code -33|resetcode -34|resetcode -1|0x7300 0|0x7400 0	
 2039	Local lords are feuding.	1	Local lords are feuding.	code -20	unrest 15	
 2040	An ambitious lord is trying to	1	An ambitious lord is trying to take control.	noera 1|land 1|code -20	com 23|4d6units 22|com 23|3d6units 18	
 2041	The province has been attacked	0	The province has been attacked!	rare 4|unique 1|land 1|code -20	com 875|addequip 1|8d6units 40|6d6units 33|6d6units 29	
@@ -2071,7 +2071,7 @@ id	name	rarity	description	requirements	effects	test
 2070	The governor of the province i	0	The governor of the province is preparing for war.	rare 2|turn 8|land 0|code 0|code -35	code -34|defence 8	
 2071	Disease is spreading.	0	Disease is spreading.	rare 1|land 1|minpop 20|code 0|code -35	code -36|disease 1|kill 1	
 2072	Gaia stirs in her sleep. All a	11	Gaia stirs in her sleep. All across the world, her power manifests. Lands become more fertile and nature flourishes. Many turn their devotion to the Great Mother.	0x4600 1|unique 1|code 0	code -19|0x5E00 -40|worlddecscale3 Death|worldincdom -2|0x6F00 5	
-2073	A wind of decay has swept the 	0	A wind of decay has swept the land.	0x4700 1	resetcode -40|kill 2|disease 2	
+2073	A wind of decay has swept the 	0	A wind of decay has swept the land.	story 1	resetcode -40|kill 2|disease 2	
 2074	A great fertility festival was	0	A great fertility festival was celebrated in the province!	rare 4|growth -1|land 1|code 0|code -40	code -26|decscale2 Death|landgold 3|incdom -2	
 2075	Servants of Gaia are trying to	0	Servants of Gaia are trying to reclaim this land!	rare 2|forest 1|code -40	decscale Death|2com 237|addequip 1|6d6units 227|2d6units 361	
 2076	Servants of Gaia are trying to	0	Servants of Gaia are trying to reclaim this land!	rare 3|forest 1|season 2|code -40	2com 1910	
@@ -2088,7 +2088,7 @@ id	name	rarity	description	requirements	effects	test
 2087	The kraken thrive.	-1	The kraken thrive.	land 0|noseason 3|code -40	com 438	
 2088	A great fertility festival was	0	A great fertility festival was celebrated in the province!	rare 2|growth -1|land 0|code -40	decscale2 Death|landgold 3|incdom -2	
 2089	The Throne of Beasts has been 	13	The Throne of Beasts has been claimed. Its power calls to the wild souls of all that walk on four legs. [The Throne of Beasts]	site 1|claimedthrone 1|unique 1|0x4600 1|code 0|land 1	code -21|0x6F00 4	
-2090	The power of the Throne of Bea	13	The power of the Throne of Beasts has waned.	0x4700 1|code -21	resetcode -95|resetcode -21	
+2090	The power of the Throne of Bea	13	The power of the Throne of Beasts has waned.	story 1|code -21	resetcode -95|resetcode -21	
 2091	A pack of stray dogs have appe	0	A pack of stray dogs have appeared. They seem loyal.[The Throne of Beasts]	site 1|claimedthrone 1|rare 10|unique 2|land 1|code -21	nation -2|1d6units 1769|2d6units 1560|2d6units 1560	
 2092	Werewolves have attacked!	0	Werewolves have attacked!	rare 2|land 1|code -21	2com 633|3d6units 633	
 2093	It is whispered that an old cu	0	It is whispered that an old curse has awoken, calling those affected into the wilderness at full moon.	rare 2|land 1|code -21	stealthcom 633|4d6units 633|unrest 5	
@@ -2103,13 +2103,13 @@ id	name	rarity	description	requirements	effects	test
 2102	A Necromancer has come to advi	0	A Necromancer has come to advise the one who sits on The Throne of Bones. [The Throne of Bones]	unique 1|site 1|claimedthrone 1|land 1|rare 15|code -24	code 0|nation -2|com 310|addequip 1	
 2103	The Necromancer has raised a h	1	The Necromancer has raised a host of longdead warriors to serve his Lord. [The Throne of Bones]	site 1|claimedthrone 1|monster 310	nation -2|2com 190|4d6units 191|2d6units 192|2d6units 189	
 2104	The dead rise and march to the	13	The dead rise and march to the Lord that sits upon The Throne of Bones! [The Throne of Bones]	site 1|claimedthrone 1|unique 1|0x4600 1|code 0	code -23|0x6F00 5	
-2105	An army of shambling dead has 	0	An army of shambling dead has arrived at The Throne of Bones.	code -23|0x4700 1	code 0|nation -2|2com 190|15d6units 194|com 190|15d6units 197|1unit 405|com 398|6d6units -2	
+2105	An army of shambling dead has 	0	An army of shambling dead has arrived at The Throne of Bones.	code -23|story 1	code 0|nation -2|2com 190|15d6units 194|com 190|15d6units 197|1unit 405|com 398|6d6units -2	
 2106	The dead rise from their grave	0	The dead rise from their graves! Some seem to march away towards a distant land, but others remain to bring woe to the living. [The Throne of Bones]	rare 2|site 0|code -23	2com 190|4d6units 194|6d6units 197	
 2107	The dead rise from their grave	0	The dead rise from their graves! [The Throne of Bones]	rare 2|site 0|code -23	2com 190|4d6units 191|2d6units 192|4d6units 197	
 2108	Some death gems have been gath	0	Some death gems have been gathered from the ornaments of the Throne. [The Throne of Bones]	site 1|claimedthrone 1|unique 1|code 0	code -24|2d6vis D	
 2109	A magical trinket has been fou	0	A magical trinket has been found among the skulls heaped around the Throne of Bones. [Champion's Skull]	rare 20|code -24|unique 1	code 0|magicitem 9	
 2110	The Throne of Gaia is spreadin	13	The Throne of Gaia is spreading its influence, awakening forces slumbering under rock and root! [The Throne of Gaia]	unique 1|claimedthrone 1|land 1|dominion 2|code 0	0x7000 4|code -25|worlddecscale Death	
-2111	The forces awoken by the Thron	13	The forces awoken by the Throne of Gaia are slumbering once more.	0x4700 1	resetcode -25	
+2111	The forces awoken by the Thron	13	The forces awoken by the Throne of Gaia are slumbering once more.	story 1	resetcode -25	
 2112	Some servants of Nature have c	0	Some servants of Nature have come to protect the Throne of Gaia from your wilting grasp! [The Throne of Gaia]	site 1|claimedthrone 1|death 0|rare 20|code -25	code 0|com 2487|addequip 1|6d6units 227|8d6units 2276	
 2113	Servants of Gaia are trying to	0	Servants of Gaia are trying to reclaim this land!	forest 1|rare 1|code -25	decscale Death|2com 237|addequip 1|6d6units 227|2d6units 361	
 2114	Servants of Gaia are trying to	0	Servants of Gaia are trying to reclaim this land!	forest 1|rare 2|season 2|code -25	2com 1910	
@@ -2497,15 +2497,15 @@ id	name	rarity	description	requirements	effects	test
 2496	Amaimon, the Dark Flame, has c	1	Amaimon, the Dark Flame, has come into the world!	land 1|nomnr 818|unique 1|0x4600 1|code -47	com 818|addequip 1|2d6units 88|4d6units 304|4d6units 2287	
 2497	Disease is spreading.	0	Disease is spreading.	land 1|minpop 20|monster 820|code -46|code 0	code -36|disease 1|kill 1	
 2498	Disease is spreading through t	0	Disease is spreading through the sea.	land 0|minpop 20|monster 820|code -46|code 0	code -38|disease 1|kill 1	
-2499	Gorlion is strengthening his p	13	Gorlion is strengthening his power!	0x4700 1|rare 15|targmnr 819|code -47	bloodboost 1|deathboost 1|3d6units 638|2d6units 326	
-2500	Gorlion is strengthening his p	13	Gorlion is strengthening his power! He dwells in ##landname## and must be stopped if this world shall live.	code -91|unique 3|land 1|0x4700 1|rare 10|targmnr 819|code -47	code -92|bloodboost 1|deathboost 1|worldincscale3 Turmoil|worldage 2|revealprov 1	
+2499	Gorlion is strengthening his p	13	Gorlion is strengthening his power!	story 1|rare 15|targmnr 819|code -47	bloodboost 1|deathboost 1|3d6units 638|2d6units 326	
+2500	Gorlion is strengthening his p	13	Gorlion is strengthening his power! He dwells in ##landname## and must be stopped if this world shall live.	code -91|unique 3|land 1|story 1|rare 10|targmnr 819|code -47	code -92|bloodboost 1|deathboost 1|worldincscale3 Turmoil|worldage 2|revealprov 1	
 2501	Gorlion has been defeated!	13	Gorlion has been defeated!	nomonster 819|code -92	code 0|worlddecscale Turmoil	
-2502	Mastema, Dweller in the Shadow	13	Mastema, Dweller in the Shadows, has entered this world! There have been signs of his presence in ##landname##. Unless found, he will walk the earth and sow his evil across the lands.[Robe of Shadows]	rare 50|0x4700 1|unique 1|nomnr 492|rare 13|code -45|code 0|land 1	0x6B00 1|revealprov 1|code 189|stealthcom 492|addequip 1|addequip 9|stealthcom 88|4d6units 88	
-2503	The shadow lying over this pro	0	The shadow lying over this province has lifted somewhat, but still an evil presence is felt by those sensitive to such things.	0x4700 1|rare 10|monster 492|code 189|unique 3	code 190|0x6B00 0|killmon 492	
-2504	Mastema moves in the shadows. 	13	Mastema moves in the shadows. His presence can now been felt in ##landname##. [Robe of Shadows]	0x4700 1|rare 90|unique 5|land 1|code 0|code 190	revealprov 1|resetcode 190|0x6B00 1|code 189|stealthcom 492|addequip 1|addequip 9|4d6units 88	
-2505	Shadows deepen.	0	Shadows deepen.	0x4700 1|rare 20|unique 5|code 189	stealthcom 88|2d6units 2287|2d6units 88|incscale2 Turmoil	
-2506	Rejoice! The Dweller in Shadow	13	Rejoice! The Dweller in Shadows has been banished!	0x4700 1|nomonster 492|code 189	code 0|resetcode 189|resetcode 190	
-2507	Mastema has been defeated! In 	0	Mastema has been defeated! In his dwelling place was found a portal of dark power. Some unfortunate virgins were found in the dungeon, probably offered to the demon by locals. [Demon Gate]	0x4700 1|nomonster 492|code 189|unique 1|freesites 1	newsite -1|3d6vis B	
+2502	Mastema, Dweller in the Shadow	13	Mastema, Dweller in the Shadows, has entered this world! There have been signs of his presence in ##landname##. Unless found, he will walk the earth and sow his evil across the lands.[Robe of Shadows]	rare 50|story 1|unique 1|nomnr 492|rare 13|code -45|code 0|land 1	0x6B00 1|revealprov 1|code 189|stealthcom 492|addequip 1|addequip 9|stealthcom 88|4d6units 88	
+2503	The shadow lying over this pro	0	The shadow lying over this province has lifted somewhat, but still an evil presence is felt by those sensitive to such things.	story 1|rare 10|monster 492|code 189|unique 3	code 190|0x6B00 0|killmon 492	
+2504	Mastema moves in the shadows. 	13	Mastema moves in the shadows. His presence can now been felt in ##landname##. [Robe of Shadows]	story 1|rare 90|unique 5|land 1|code 0|code 190	revealprov 1|resetcode 190|0x6B00 1|code 189|stealthcom 492|addequip 1|addequip 9|4d6units 88	
+2505	Shadows deepen.	0	Shadows deepen.	story 1|rare 20|unique 5|code 189	stealthcom 88|2d6units 2287|2d6units 88|incscale2 Turmoil	
+2506	Rejoice! The Dweller in Shadow	13	Rejoice! The Dweller in Shadows has been banished!	story 1|nomonster 492|code 189	code 0|resetcode 189|resetcode 190	
+2507	Mastema has been defeated! In 	0	Mastema has been defeated! In his dwelling place was found a portal of dark power. Some unfortunate virgins were found in the dungeon, probably offered to the demon by locals. [Demon Gate]	story 1|nomonster 492|code 189|unique 1|freesites 1	newsite -1|3d6vis B	
 2508	Your temple has been desecrate	0	Your temple has been desecrated! An acolyte was found strung face down above the altar, the divine statues broken, your glorious visage defaced and entrails scattered in the chancel. Repairs have been costly.	rare 3|temple 1|code -45|code -47|code -46|code 0	code -49|gold -100|incdom -5|incscale2 Turmoil	
 2509	The statues of the temple have	0	The statues of the temple have mysteriously been turned backwards during the night, as if not wanting to look upon the altar.	rare 3|land 1|temple 1|code -46|code -47|code 0	code -49|incdom -3|incscale Turmoil	
 2510	People have been disappearing.	0	People have been disappearing. It may be the work of demons. Or perhaps they just ran away.	code 0|rare 2|land 1|code -46|code -47|code -45	code -49	
@@ -2650,12 +2650,12 @@ id	name	rarity	description	requirements	effects	test
 2649	Undead haunt this forest! [For	1	Undead haunt this forest! [Forest of the Dead]	foundsite 1|commander 1	assassin -4	
 2650	Dark tales are told in the inn	1	Dark tales are told in the inns bordering the wasteland. They speak of a previous age when this land was verdant and its cities the envy of kings. One man ruled the emerging civilization. When nearing the end of his days, he turned to Dark Arts to prolong his life and his rule. This corrupted the king's soul and in the end he used the lifeforce of all his subjects and that of the fertile land itself to avoid death. The kingdom was laid to waste, its soil barren and its people destroyed, their bleached bones littering the land. Some say his magic still lingers. Some say the ruins deep in the wasteland are no longer silent and that the lamentation of its long lost inhabitants can be heard faintly when the desert wind blows from the east.	0x4600 1|turn 12|capital 0|unique 1|freesites 2|waste 1|code 0	code -62|incscale2 Death|unrest 2	
 2651	The Evil that once laid waste 	0	The Evil that once laid waste to this land has awoken! From his dark fortress at the heart of the wasteland, the Necromancer sends forth his minions to claim the land. Only the strength of faith will hold his dark power at bay! [Necromancer's Lair]	rare 15|maxtroops 30|maxdef 17|unique 1|code -62	code -63|com 998|4d6units 533|16d6units -2|2com -3|newsite -1	
-2652	The necromancer himself has ap	0	The necromancer himself has appeared! [Robe of Invulnerability]	0x4700 1|pop0ok 1|unique 1|code -63	code -64|com 299|addequip 1|addequip 9|deathboost 1|12d6units -2|emigration 80|kill 99	
-2653	The necromancer gains power.	0	The necromancer gains power.	rare 20|targmnr 299|0x4700 1|unique 3|code -64	deathboost 1|addequip 1	
-2654	The necromancer gains minions.	0	The necromancer gains minions.	rare 15|pop0ok 1|targmnr 299|0x4700 1|unique 2|code -64	2com 190|12d6units -2	
-2655	The necromancer gains minions.	0	The necromancer gains minions.	0x4600 2|pop0ok 1|rare 15|targmnr 299|0x4700 1|unique 2|code -64	com 1541|2d6units -4|1d6units 533	
-2656	The necromancer gains his Crow	0	The necromancer gains his Crown. [The Crown of Despair]	0x4600 2|targmnr 299|pop0ok 1|0x4700 1|unique 1|code -64	addequip 9	
-2657	The Necromancer is defeated! H	13	The Necromancer is defeated! His shadow has lifted from the surrounding land.	nomonster 299|code -64|0x4700 1|pop0ok 1	code 0|resetcode -63|resetcode -64|resetcode -65|resetcode -66	
+2652	The necromancer himself has ap	0	The necromancer himself has appeared! [Robe of Invulnerability]	story 1|pop0ok 1|unique 1|code -63	code -64|com 299|addequip 1|addequip 9|deathboost 1|12d6units -2|emigration 80|kill 99	
+2653	The necromancer gains power.	0	The necromancer gains power.	rare 20|targmnr 299|story 1|unique 3|code -64	deathboost 1|addequip 1	
+2654	The necromancer gains minions.	0	The necromancer gains minions.	rare 15|pop0ok 1|targmnr 299|story 1|unique 2|code -64	2com 190|12d6units -2	
+2655	The necromancer gains minions.	0	The necromancer gains minions.	0x4600 2|pop0ok 1|rare 15|targmnr 299|story 1|unique 2|code -64	com 1541|2d6units -4|1d6units 533	
+2656	The necromancer gains his Crow	0	The necromancer gains his Crown. [The Crown of Despair]	0x4600 2|targmnr 299|pop0ok 1|story 1|unique 1|code -64	addequip 9	
+2657	The Necromancer is defeated! H	13	The Necromancer is defeated! His shadow has lifted from the surrounding land.	nomonster 299|code -64|story 1|pop0ok 1	code 0|resetcode -63|resetcode -64|resetcode -65|resetcode -66	
 2658	People have begun living in fe	0	People have begun living in fear of the Necromancer. Some trade their loyalty in exchange for life.	rare 10|minpop 15|capital 0|land 1|code 0|code -64	code -65|incscale3 Death|incdom -2|unrest 5	
 2659	Agents of the Necromancer have	0	Agents of the Necromancer have been at work in the province.	rare 10|capital 0|land 1|code 0|code -64	code -65|incscale3 Death|incdom -2|unrest 5	
 2660	Apparitions walk the land at n	0	Apparitions walk the land at night.	rare 10|capital 0|land 1|code 0|code -64	code -65|incscale3 Death|incdom -2|unrest 5	
@@ -2667,8 +2667,8 @@ id	name	rarity	description	requirements	effects	test
 2666	The necromancer has sent his m	0	The necromancer has sent his minions to claim the land!	rare 30|code -66|code -64	kill 10|com 998|2d6units 533|10d6units -2|4com 190|com -3	
 2667	The necromancer has sent his m	0	The necromancer has sent his minions to claim the land!	rare 10|code -65	kill 10|com 998|2d6units 533|10d6units -2|4com 190	
 2668	The necromancer extends his po	0	The necromancer extends his power!	rare 10|land 0|temple 0|code -65|code 0|unique 6	code -65|incscale2 Death|unrest 5|decscale2 Drain	
-2669	A curse has been put upon all 	0	A curse has been put upon all living! Cattle die, their bellies bloated like the victims of famine. The fruits of birth are stillborn. Crops wither in the fields, leaving nothing but ash. People cannot tolerate to live in such a place and have emigrated in large numbers. Many have died prematurely, their years of health seemingly vanished overnight! [Withered Land]	land 1|code -64|0x4700 1|capital 0|rare 15|freesites 1|unique 4|minpop 15|code -65	code -66|incscale3 Death|emigration 80|kill 99|newsite -1	
-2670	The Necromancer has sucked the	13	The Necromancer has sucked the force of life from a whole land! Strengthened by that unwholesome power he may rise to challenge the gods!	unique 4|targmnr 299|code -64|code -66|0x4700 1	resetcode -66|waterboost 1|deathboost 1	
+2669	A curse has been put upon all 	0	A curse has been put upon all living! Cattle die, their bellies bloated like the victims of famine. The fruits of birth are stillborn. Crops wither in the fields, leaving nothing but ash. People cannot tolerate to live in such a place and have emigrated in large numbers. Many have died prematurely, their years of health seemingly vanished overnight! [Withered Land]	land 1|code -64|story 1|capital 0|rare 15|freesites 1|unique 4|minpop 15|code -65	code -66|incscale3 Death|emigration 80|kill 99|newsite -1	
+2670	The Necromancer has sucked the	13	The Necromancer has sucked the force of life from a whole land! Strengthened by that unwholesome power he may rise to challenge the gods!	unique 4|targmnr 299|code -64|code -66|story 1	resetcode -66|waterboost 1|deathboost 1	
 2671	An apparition has been sent to	0	An apparition has been sent to kill one of your commanders.	rare 5|unique 3|0x7E00 0|temple 0|code -65	assassin -3	
 2672	Your servant has found and exp	0	Your servant has found and explored an Ancient Tomb, but was attacked by its undead inhabitant! [Ancient Tomb]	0x7E00 0|unique 1|foundsite 1|targpath1 5|targorder 7	assassin 533	
 2673	Your servant has found and exp	0	Your servant has found and explored an Ancient Tomb. When an item of power was pilfered from the grave offerings, the dead lord rose in anger from his peaceful rest!  [Ancient Tomb]	0x7E00 0|unique 1|foundsite 1|targpath1 5|targorder 7	addequip 2|assassin 533	
@@ -2683,7 +2683,7 @@ id	name	rarity	description	requirements	effects	test
 2682	A dryad has come to serve. [Th	0	A dryad has come to serve. [The Throne of Gaia]	site 1|claimedthrone 1|growth 1|rare 10|code -25	code 0|nation -2|com 237	
 2683	 A great fertility festival wa	0	 A great fertility festival was celebrated in the province.	rare 2|code 0|code -25	notext 1|code -26	
 2684	A great storm has blown for ma	0	A great storm has blown for many days. Some say that an angel of mercy rode the clouds and blew away all evil from the land.	rare 15|code -37	resetcode -36|resetcode -37|unrest -2|decscale Death	
-2685	A flux of unholy power lashes 	0	A flux of unholy power lashes through the ether! It emanates from this province.	code 189|0x4700 1|rare 15|unique 5|targmnr 492	bloodboost 1|addequip 1|incscale2 Turmoil|decscale2 Drain	
+2685	A flux of unholy power lashes 	0	A flux of unholy power lashes through the ether! It emanates from this province.	code 189|story 1|rare 15|unique 5|targmnr 492	bloodboost 1|addequip 1|incscale2 Turmoil|decscale2 Drain	
 2686	EMPTY EVENT SLOT	2	EMPTY EVENT SLOT	rare 0|0x5300 15|unique 1		
 2687	Children have been disappearin	2	Children have been disappearing from settlements close to the woods. The villagers demand that someone look into the matter. At least a handful of men will be needed to effectively search the area.	0x4600 1|fort 0|unique 1|forest 1|code 0	code 195|unrest 2	
 2688	With the aid of a local pathfi	0	With the aid of a local pathfinder, the outskirts of the deep forest has been searched. A grisly heap of small carcasses has been found. Perhaps the remains of rabbits eaten by a wolf? 	commander 1|unique 1|mintroops 5|code 195	code 196	
@@ -2702,19 +2702,19 @@ id	name	rarity	description	requirements	effects	test
 2701	While searching the woods, you	0	While searching the woods, your men found an old barrow! [Skin Shifter's Barrow]	unique 1|targorder 3|rare 15|mintroops 5|freesites 1|code 196|code 197	newsite -1	
 2702	While patrolling the woods, yo	0	While patrolling the woods, your men have been ambushed!	unique 2|rare 15|mintroops 5|targorder 3|code 196|code 197	2com -10|1d3units -10|2d6units -11|2d6units 715|1d3units 718	
 2703	An army of horrible beasts hav	0	An army of horrible beasts have emerged from the woods. Half monster, half men, their human visages are recognized by aghast locals as young men from the area! They are led by evil serpent-women.	rare 25|unique 1|code 195|code 196	code 198|com 609|addequip 1|4com 394|gainaff 549755813888|3d6units -10|12d6units -11|1d3units 718|2d6units 715	
-2704	The Lamia Queen acquires a ser	0	The Lamia Queen acquires a servant. [Ring of Regeneration]	rare 50|unique 1|monster 609|0x4700 1|code 198	com 488|addequip 9	
-2705	The Lamia Queen gains follower	0	The Lamia Queen gains followers and gems.	rare 25|unique 1|targmnr 609|0x4700 1|code 198	1d6units -10|3d6units -10|addequip 1	
-2706	The Lamia Queen gains an item.	0	The Lamia Queen gains an item. [Brazen Vessel]	0x4700 1|rare 25|unique 1|targmnr 609|code 199|code 198	addequip 9|addequip 1	
-2707	The Lamia Queen gains follower	0	The Lamia Queen gains followers and gems.	rare 15|unique 1|targmnr 609|0x4700 1|code 198	1d6units 526|addequip 1	
-2708	The Lamia Queen gains an item.	0	The Lamia Queen gains an item. [Amulet of Antimagic]	rare 25|unique 1|targmnr 609|0x4700 1|code 198	addequip 9|addequip 1	
-2709	The Lamia Queen gains an item.	0	The Lamia Queen gains an item. [Boots of Youth]	rare 25|unique 1|targmnr 609|0x4700 1|code 198	addequip 9|addequip 1	
-2710	Children are disappearing.	0	Children are disappearing.	land 1|rare 25|0x4700 1|code 198|code 0	code 199|unrest 2	
-2711	Young men are disappearing.	0	Young men are disappearing.	land 1|rare 20|0x4700 1|code 198|code 0	code 200	
-2712	The Lamia Queen gains follower	0	The Lamia Queen gains followers and gems.	0x4700 1|unique 4|targmnr 609|code 200|code 198	1d6units -10|2d6units -10|addequip 1|resetcode 200	
-2713	Lamia gains power.	0	Lamia gains power.	0x4700 1|unique 2|targmnr 609|code 199|code 198	bloodboost 1|natureboost 1|resetcode 199	
-2714	Lamia summons demons.	0	Lamia summons demons.	rare 25|0x4700 1|unique 2|targmnr 609|targpath3 7|code 198	2d6units 526	
-2715	Lamia summons Dark Vines when 	0	Lamia summons Dark Vines when her power is strong enough.	0x4700 1|unique 1|targmnr 609|targpath3 6|code 198	1d6units 330	
-2716	Lamia summons more Dark Vines 	0	Lamia summons more Dark Vines when her power is even stronger.	0x4700 1|unique 1|targmnr 609|targpath4 6|code 198	1d6units 330	
+2704	The Lamia Queen acquires a ser	0	The Lamia Queen acquires a servant. [Ring of Regeneration]	rare 50|unique 1|monster 609|story 1|code 198	com 488|addequip 9	
+2705	The Lamia Queen gains follower	0	The Lamia Queen gains followers and gems.	rare 25|unique 1|targmnr 609|story 1|code 198	1d6units -10|3d6units -10|addequip 1	
+2706	The Lamia Queen gains an item.	0	The Lamia Queen gains an item. [Brazen Vessel]	story 1|rare 25|unique 1|targmnr 609|code 199|code 198	addequip 9|addequip 1	
+2707	The Lamia Queen gains follower	0	The Lamia Queen gains followers and gems.	rare 15|unique 1|targmnr 609|story 1|code 198	1d6units 526|addequip 1	
+2708	The Lamia Queen gains an item.	0	The Lamia Queen gains an item. [Amulet of Antimagic]	rare 25|unique 1|targmnr 609|story 1|code 198	addequip 9|addequip 1	
+2709	The Lamia Queen gains an item.	0	The Lamia Queen gains an item. [Boots of Youth]	rare 25|unique 1|targmnr 609|story 1|code 198	addequip 9|addequip 1	
+2710	Children are disappearing.	0	Children are disappearing.	land 1|rare 25|story 1|code 198|code 0	code 199|unrest 2	
+2711	Young men are disappearing.	0	Young men are disappearing.	land 1|rare 20|story 1|code 198|code 0	code 200	
+2712	The Lamia Queen gains follower	0	The Lamia Queen gains followers and gems.	story 1|unique 4|targmnr 609|code 200|code 198	1d6units -10|2d6units -10|addequip 1|resetcode 200	
+2713	Lamia gains power.	0	Lamia gains power.	story 1|unique 2|targmnr 609|code 199|code 198	bloodboost 1|natureboost 1|resetcode 199	
+2714	Lamia summons demons.	0	Lamia summons demons.	rare 25|story 1|unique 2|targmnr 609|targpath3 7|code 198	2d6units 526	
+2715	Lamia summons Dark Vines when 	0	Lamia summons Dark Vines when her power is strong enough.	story 1|unique 1|targmnr 609|targpath3 6|code 198	1d6units 330	
+2716	Lamia summons more Dark Vines 	0	Lamia summons more Dark Vines when her power is even stronger.	story 1|unique 1|targmnr 609|targpath4 6|code 198	1d6units 330	
 2717	Tensions are rising over the p	0	Tensions are rising over the practices of the Ravens Vale Seraphs. There has been manifestations of civil unrest in the capital. Only the wisdom of an Eagle King will calm the opposing factions.	monster 1663|nomonster 1285|nation 14|0x4600 1|rare 10|turn 8|capital 1|unique 1|code 0	code 201|unrest 10|0x6F00 4|0x6B00 1	
 2718	The Caelian Seraphs have broug	0	The Caelian Seraphs have brought a leader of Ravens Vale to court, sentencing him to exile. This has demonstrated Caelian supremacy and removed a quarrelsome voice among the Harab Seraphs.	nation 14|code 201	code 202|incscale2 Turmoil|0x7000 6|0x6B00 0	
 2719	A group of renegades have atta	0	A group of renegades have attacked the province! They are led by an exiled Harab Seraph.	unique 1|fort 0|code 0|code 202|land 1	code 203|com 2618|addequip 1|5d6units 1707|5d6units 1278	
@@ -2751,8 +2751,8 @@ id	name	rarity	description	requirements	effects	test
 2750	A student at the library has g	-1	A student at the library has gained insights! [Library]	unique 1|targpath1 53|foundsite 1	deathboost 1	
 2751	A student at the library has g	-1	A student at the library has gained insights! [Library]	unique 1|targpath1 53|foundsite 1	astralboost 1	
 2752	A forgotten tome has been foun	-1	A forgotten tome has been found at the library. Hidden in a secret repository and warded by magical glyphs, it was probably meant never to be opened. Alas, one of your mages could not resist the temptation. [Library]	foundsite 1|unique 1|targpath1 53	astralboost 1|gainaff 549755813888|assassin -6|0x7500 1	
-2753	Tomb of ice appears in mountai	2	Tomb of ice appears in mountain province HIDDEN. [Tomb of Ice]	turn 15|0x4600 2|noera 1|unique 1|mountain 1|cold 1|0x4700 1|code 0|freesites 1	code 211|0x4200 -1|notext 1	
-2754	City of the Ancients appears H	0	City of the Ancients appears HIDDEN. [City of the Ancients]	capital 0|mountain 0|0x4700 1|unique 1|land 1|freesites 3|code 211|code 0	code 212|0x4200 -1|notext 1	
+2753	Tomb of ice appears in mountai	2	Tomb of ice appears in mountain province HIDDEN. [Tomb of Ice]	turn 15|0x4600 2|noera 1|unique 1|mountain 1|cold 1|story 1|code 0|freesites 1	code 211|0x4200 -1|notext 1	
+2754	City of the Ancients appears H	0	City of the Ancients appears HIDDEN. [City of the Ancients]	capital 0|mountain 0|story 1|unique 1|land 1|freesites 3|code 211|code 0	code 212|0x4200 -1|notext 1	
 2755	The City of the Ancients has b	0	The City of the Ancients has been found! Within its legendary walls are secrets long forgotten and treasures worthy of kings! However, to find these secrets the ruins must be entered by one brave enough to face the perils within. [City of the Ancients]	foundsite 1|unique 1	0x6B00 1	
 2756	While exploring the ancient ru	0	While exploring the ancient ruins, your servants have found an ancient scriptorium, still containing crumbling clay tablets filled with ancient lore. A sage would be able to gain much knowledge from such a wealth of documents, if allowed time and facilities for research. Lacking one learned in dead languages, one of your mages might suffice. [Ancient Scriptorium]	rare 35|targorder 50|unique 1|freesites 1|code 212	code 213|newsite -1	
 2757	A sage has come to study at th	0	A sage has come to study at the Scriptorium. [Ancient Scriptorium]	unique 1|luck 1|foundsite 1|rare 4	nation -2|com 478	
@@ -2775,7 +2775,7 @@ id	name	rarity	description	requirements	effects	test
 2774	The ritual described on the st	0	The ritual described on the stone tablets has been performed, awakening the Rimturse from his long sleep! He is now bound to your service. [Rime Hauberk]	unique 1|rare 50|targorder 108|code 219	nation -2|code 0|resetcode 215|resetcode 216|com 844|addequip 9|addequip 1	
 2775	The ritual described on the st	0	The ritual described on the stone tablets has been performed, awakening the Rimturse from his long sleep! Uttering a spell of summoning, he has brought the ice to life in an attempt to wipe out the expedition! [Rime Hauberk]	unique 1|rare 50|targorder 108|notnation 51|code 219	order 0|code 220|resetcode 215|resetcode 216|com 844|addequip 9|addequip 1|2d6units 831|2d6units 832|2d6units 833	
 2776	The giant has been defeated an	0	The giant has been defeated and his tomb plundered!	unique 1|nomnr 844|code 220	code 0|gold 600	
-2777	The Niefel warlord has summone	0	The Niefel warlord has summoned elementals to his aid.	unique 1|monster 844|0x4700 1|code 220	1d6units 831|1d6units 832|2d6units 833	
+2777	The Niefel warlord has summone	0	The Niefel warlord has summoned elementals to his aid.	unique 1|monster 844|story 1|code 220	1d6units 831|1d6units 832|2d6units 833	
 2778	The ritual described on the st	0	The ritual described on the stone tablets has been performed, awakening the Rimturse from his long sleep! Uttering a spell of summoning, he has brought the ice to life in an attempt to wipe out the expedition! [Rime Hauberk]	unique 1|rare 50|targorder 108|nation 51|code 219	order 0|code 221|resetcode 215|resetcode 216|nation 51|com 844|addequip 9|addequip 1|2d6units 831|2d6units 832|2d6units 831	
 2779	A Rimturse from ancient times 	0	A Rimturse from ancient times has been awakened in a distant land! How this has come to be is a mystery, but he has crushed his summoners and now serves your will.	unique 1|monster 844|fornation 51|code 221	code 0	
 2780	Reset code if Niefel moves. HI	0	Reset code if Niefel moves. HIDDEN.	unique 1|nomnr 844|code 221	code 0|notext 1	
@@ -2821,9 +2821,9 @@ id	name	rarity	description	requirements	effects	test
 2820	The Lake of Living water code 	0	The Lake of Living water code to prevent doubling of event with manual vs spell search, HIDDEN. [Lake of Living Water]	unique 1|hiddensite 1|code 0	code -99|notext 1	
 2821	The Lake of Living water has b	0	The Lake of Living water has been found. Sentient forces dwell below the surface. Perhaps one skilled in the path of water could bind them to service? [Lake of Living Water]	unique 1|foundsite 1|code -99|0x4B00 1	0x6B00 1|code 253	
 2822	A water mage has arrived at th	0	A water mage has arrived at the Lake of Living Water. An attempt to summon the entities residing therein can be made. It is not without danger, for the Lake may not want to be disturbed. [Lake of Living Water]	unique 1|foundsite 1|targpath1 2|code 253	code 226|order 273|0x6F00 8	
-2823	The Lake has grown still. Its 	0	The Lake has grown still. Its magic withdrawn from the world.  [Lake of Living Water]	foundsite 1|0x4700 1|code 226	code 0|order 0	
+2823	The Lake has grown still. Its 	0	The Lake has grown still. Its magic withdrawn from the world.  [Lake of Living Water]	foundsite 1|story 1|code 226	code 0|order 0	
 2824	The Lake of Living water has b	0	The Lake of Living water has been found. Sentient forces dwell below the surface. An attempt to summon the entities residing therein can be made. It is not without danger, for the Lake may not want to be disturbed.[Lake of Living Water]	unique 1|foundsite 1|targpath1 2|code -99	code 226|0x6B00 1|order 273|0x6F00 8	
-2825	The Lake has grown still. Its 	0	The Lake has grown still. Its magic withdrawn from the world.  [Lake of Living Water]	foundsite 1|0x4700 1|code 226	code 0|order 0	
+2825	The Lake has grown still. Its 	0	The Lake has grown still. Its magic withdrawn from the world.  [Lake of Living Water]	foundsite 1|story 1|code 226	code 0|order 0	
 2826	Water elementals live in the L	0	Water elementals live in the Lake. A skillful mage may be able to lure more powerful ones into service, but they seem more willful than is usual with such beings. [Lake of Living Water]	unique 1|foundsite 1|targpath1 2|targorder 100|code 226		
 2827	The Lake of Living Water is le	0	The Lake of Living Water is left alone, once more undisturbed by mortals. On its shores were found some unusual, polished rocks and among them magical gems. [Lake of Living Water]	unique 1|foundsite 1|targpath1 2|targorder 104|code 226	code 0|2d6vis W	
 2828	A summoning was attempted and 	0	A summoning was attempted and the Lake responded with wrath! [Lake of Living Water]	rare 13|unique 3|foundsite 1|targpath1 2|targorder 108|code 226	assassin 412	
@@ -2891,9 +2891,9 @@ id	name	rarity	description	requirements	effects	test
 2890	A master of water magic has un	0	A master of water magic has unraveled the last rune of warding on the throne! Some of the gems that were locked into the spell have been retrieved.	targorder 108|targpath2 2|code 242	code 243|1d6vis W	
 2891	Four robed men have appeared i	0	Four robed men have appeared in the province. They are masters of their respective orders, sworn to protect the Throne of Elements. You have proven worthy, and they will now serve your will.	code 243	code 0|nation -2|com 93|pathboost 1|com 99|pathboost 0|com 312|pathboost 3|pathboost 3|com 309|pathboost 2	
 2892	A violent thunderstorm has str	0	A violent thunderstorm has struck! From the roiling sky a host of magical beings sweep down towards the Throne. They are led by a robed man. [Winged Helmet]	rare 90|season 0|unique 1|code 244	kill 2|taxboost -100|com 93|pathboost 1|pathboost 1|addequip 1|addequip 9|4com 92|pathboost 1|addequip 1|2d6units 520|4d6units 513|1d3units 567|1d3units 568|1d3units 569|2d6units 513	
-2893	Fire ravages the countryside. 	0	Fire ravages the countryside. From the flames comes a host of magical beings, led by a man of power![Red Dragon Scale Mail]	season 1|unique 1|0x4700 1|code 244	kill 1|unrest 10|taxboost -50|decscale2 Cold|com 99|pathboost 0|pathboost 0|addequip 1|addequip 9|4com 98|pathboost 0|addequip 1|2d6units 515|1d3units 814|1d3units 594|1d3units 595|1d3units 596|1d3units 523|1d6units 527	
-2894	An earthquake has struck! In i	0	An earthquake has struck! In its wake comes monsters and spirits, led by a wizard! They march towards the Throne. [Black Steel Plate]	season 2|unique 1|0x4700 1|code 244	kill 1|taxboost -100|com 312|pathboost 3|pathboost 3|pathboost 3|addequip 1|1d6units 512|1d6units 522|1d3units 493|1d3units 494|1d6units 495|1d6units 2526|2com 561|com 447|addequip 9|com 447|addequip 9	
-2895	Temperature has dropped dramat	0	Temperature has dropped dramatically during a snow storm. In its wake comes a Frost Mage and his host of magical beings, making an attempt to wrest the Throne of Elements from your grasp! [Ice Pebble Staff]	season 3|unique 1|0x4700 1|code 244	code 245|kill 1|incscale3 Cold|com 309|pathboost 2|pathboost 2|addequip 1|4com 309|pathboost 2|addequip 1|1d3units 579|5d6units 511|1d3units 831|1d3units 832|1d3units 833|2com 2231|addequip 9	
+2893	Fire ravages the countryside. 	0	Fire ravages the countryside. From the flames comes a host of magical beings, led by a man of power![Red Dragon Scale Mail]	season 1|unique 1|story 1|code 244	kill 1|unrest 10|taxboost -50|decscale2 Cold|com 99|pathboost 0|pathboost 0|addequip 1|addequip 9|4com 98|pathboost 0|addequip 1|2d6units 515|1d3units 814|1d3units 594|1d3units 595|1d3units 596|1d3units 523|1d6units 527	
+2894	An earthquake has struck! In i	0	An earthquake has struck! In its wake comes monsters and spirits, led by a wizard! They march towards the Throne. [Black Steel Plate]	season 2|unique 1|story 1|code 244	kill 1|taxboost -100|com 312|pathboost 3|pathboost 3|pathboost 3|addequip 1|1d6units 512|1d6units 522|1d3units 493|1d3units 494|1d6units 495|1d6units 2526|2com 561|com 447|addequip 9|com 447|addequip 9	
+2895	Temperature has dropped dramat	0	Temperature has dropped dramatically during a snow storm. In its wake comes a Frost Mage and his host of magical beings, making an attempt to wrest the Throne of Elements from your grasp! [Ice Pebble Staff]	season 3|unique 1|story 1|code 244	code 245|kill 1|incscale3 Cold|com 309|pathboost 2|pathboost 2|addequip 1|4com 309|pathboost 2|addequip 1|1d3units 579|5d6units 511|1d3units 831|1d3units 832|1d3units 833|2com 2231|addequip 9	
 2896	The guardians of the Throne ha	0	The guardians of the Throne have been defeated!	unique 1|code 245	code 0	
 2897	Prepare Necromancer event. HID	0	Prepare Necromancer event. HIDDEN. [The Throne of Death]	claimedthrone 1|freesites 1|land 1|site 1|0x4600 1|unique 1|code 0	code 246|notext 1	
 2898	A helpful necromancer has appe	0	A helpful necromancer has appeared, confessing that you are the true Lord of the Afterlife and that none other should sit upon the Throne of Death! He claims to have secret knowledge of its workings and that if brought to the Throne, he will invoke its power in your name.	rare 5|land 1|turn 15|code 246|0x7E00 1|targpath2 5|unique 1|dominion 4|death 2	nation -2|com 310|gainaff 549755813888|gainaff 262144	
@@ -2915,8 +2915,8 @@ id	name	rarity	description	requirements	effects	test
 2914	A mortal vessel cannot hold su	0	A mortal vessel cannot hold such power as resides in the Throne of Death!	rare 8|targmnr 310|0x8100 0|0x8100 0|code 249	resetcode 249|gainaff 33554432	
 2915	By the workings of the Necroma	0	By the workings of the Necromancer, some of the power of the Throne of Death has been released into the mortal realm. Now, even the souls of the living has to answer its call!	rare 5|targmnr 310|0x8100 0|unique 1|code 249	kill 85|12d6units 674|4d6units 674	
 2916	The veil to the Shade Lands ha	0	The veil to the Shade Lands has grown thin by the unlawful use of dark magic, disturbing its residents.	rare 5|monster 310|code 249	assassin 676	
-2917	Reset throne of Gaia and Thron	0	Reset throne of Gaia and Throne of Bones.	0x4700 1|unique 1	notext 1|resetcode -25|resetcode -23	
-2918	Reset throne of beasts in ongo	0	Reset throne of beasts in ongoing games.	0x4700 1|unique 1	notext 1|resetcode -21	
+2917	Reset throne of Gaia and Thron	0	Reset throne of Gaia and Throne of Bones.	story 1|unique 1	notext 1|resetcode -25|resetcode -23	
+2918	Reset throne of beasts in ongo	0	Reset throne of beasts in ongoing games.	story 1|unique 1	notext 1|resetcode -21	
 2919	The Throne of War [The Throne 	0	The Throne of War [The Throne of War]	rare 0|land 1	newsite -1	
 2920	The Throne of Night [The Thron	0	The Throne of Night [The Throne of Night]	rare 0|land 1	newsite -1	
 2921	The Throne of Beasts [The Thro	0	The Throne of Beasts [The Throne of Beasts]	rare 0|land 1	newsite -1	
@@ -2929,15 +2929,15 @@ id	name	rarity	description	requirements	effects	test
 2928	Inspired by your divine presen	-1	Inspired by your divine presence in their land, the faithful have built a glorious temple!	temple 0|0x7E00 1|dominion 7|unique 2	temple 1|incdom 3	
 2929	Crypt in the sand created for 	0	Crypt in the sand created for testing. [Crypt in the Sand]	rare 0	0x4200 -1	
 2930	A Crypt has been found in the 	0	A Crypt has been found in the sand. The wards that bound him broken, an ancient and long forgotten King rises! [Crypt in the Sand]	unique 1|0x4600 1|site 1|code 0|waste 1|targorder 7|targpath1 5	code 251|com 1979|com 1978|addequip 1|4d6units 1980|4d6units 1981|decscale2 Sloth	
-2931	The Dust Priests has raised mo	0	The Dust Priests has raised more of his kin.	rare 25|0x4700 1|targmnr 1978|unique 5|code 251	1d6units 1980|1d6units 1981	
-2932	The Dust King has unearthed an	0	The Dust King has unearthed ancient and hidden treasures. [Boots of Stone]	rare 30|0x4700 1|targmnr 1979|unique 1|code 251	addequip 9	
-2933	The Dust King has unearthed an	0	The Dust King has unearthed ancient and hidden treasures. [Dancing Shield]	rare 30|0x4700 1|targmnr 1979|unique 1|code 251	addequip 9	
-2934	The Dust King has unearthed an	0	The Dust King has unearthed ancient and hidden treasures. [Spirit Mask]	rare 30|0x4700 1|targmnr 1979|unique 1|code 251	addequip 9	
-2935	The Dust Priest has unearthed 	0	The Dust Priest has unearthed ancient and hidden treasures. [Skull of Fire]	rare 25|0x4700 1|targmnr 1978|unique 1|code 251	addequip 9	
-2936	The Dust Priest has unearthed 	0	The Dust Priest has unearthed magical gems.	rare 25|0x4700 1|targmnr 1978|unique 3|code 251	addequip 1	
-2937	The Dust Priest has found anci	0	The Dust Priest has found ancient tablets of power in the buried crypts!	rare 15|0x4700 1|targmnr 1978|unique 2|code 251	pathboost 0	
-2938	The Dust priest has summoned m	0	The Dust priest has summoned monsters of the desert to his aid.	rare 15|0x4700 1|targmnr 1978|unique 3|code 251	2d6units 2233|1d6units 524	
-2939	The Dust King and his High Pri	0	The Dust King and his High Priest have been defeated! In the Crypt, ancient treasures were found. [Skull of Fire]	nomnr 1978|nomnr 1979|0x4700 1|code 251	code 0|gold 400|1d6vis F|magicitem 9	
+2931	The Dust Priests has raised mo	0	The Dust Priests has raised more of his kin.	rare 25|story 1|targmnr 1978|unique 5|code 251	1d6units 1980|1d6units 1981	
+2932	The Dust King has unearthed an	0	The Dust King has unearthed ancient and hidden treasures. [Boots of Stone]	rare 30|story 1|targmnr 1979|unique 1|code 251	addequip 9	
+2933	The Dust King has unearthed an	0	The Dust King has unearthed ancient and hidden treasures. [Dancing Shield]	rare 30|story 1|targmnr 1979|unique 1|code 251	addequip 9	
+2934	The Dust King has unearthed an	0	The Dust King has unearthed ancient and hidden treasures. [Spirit Mask]	rare 30|story 1|targmnr 1979|unique 1|code 251	addequip 9	
+2935	The Dust Priest has unearthed 	0	The Dust Priest has unearthed ancient and hidden treasures. [Skull of Fire]	rare 25|story 1|targmnr 1978|unique 1|code 251	addequip 9	
+2936	The Dust Priest has unearthed 	0	The Dust Priest has unearthed magical gems.	rare 25|story 1|targmnr 1978|unique 3|code 251	addequip 1	
+2937	The Dust Priest has found anci	0	The Dust Priest has found ancient tablets of power in the buried crypts!	rare 15|story 1|targmnr 1978|unique 2|code 251	pathboost 0	
+2938	The Dust priest has summoned m	0	The Dust priest has summoned monsters of the desert to his aid.	rare 15|story 1|targmnr 1978|unique 3|code 251	2d6units 2233|1d6units 524	
+2939	The Dust King and his High Pri	0	The Dust King and his High Priest have been defeated! In the Crypt, ancient treasures were found. [Skull of Fire]	nomnr 1978|nomnr 1979|story 1|code 251	code 0|gold 400|1d6vis F|magicitem 9	
 2940	Wolves have been heard, howlin	0	Wolves have been heard, howling at the moon	0x4600 2|rare 3|land 1|code -21|code 0	code -95|unrest 3	
 2941	Wolves have been heard, howlin	2	Wolves have been heard, howling at the moon	0x4600 2|land 1|code 0	code -95|unrest 3	
 2942	Wolves have been heard, howlin	0	Wolves have been heard, howling at the moon, but nothing happens. HIDDEN	rare 15|code -95	code 0|notext 1	
@@ -3018,33 +3018,33 @@ id	name	rarity	description	requirements	effects	test
 3017	There is war in Hell! Infernal	10	There is war in Hell! Infernal powers become manifest when the conflict spills over into the realm of men.	unique 1|0x4600 1|code 273|rare 33|code 0	code -19|0x5E00 -44|worldincscale2 Turmoil	
 3018	The heavenly law that keeps th	13	The heavenly law that keeps the nether realms apart from the realm of mortals has been broken! [The First Gate]	rare 80|foundsite 1|unique 1|code 273	code -45|revealprov 1	
 3019	Something has shifted in the a	13	Something has shifted in the alignment of the Worlds! A flux of dark energy can be sensed throught the heavenly spheres. This can only mean that one of the legendary gates to Hell have manifested in the realm of mortals! Woe to all, should it be opened![The First Gate]	foundsite 1|unique 1|code 271		
-3020	Stars realign. The risk of War	0	Stars realign. The risk of War in Hell passes... HIDDEN	rare 77|code 273|0x4700 1	code -45|notext 1	
+3020	Stars realign. The risk of War	0	Stars realign. The risk of War in Hell passes... HIDDEN	rare 77|code 273|story 1	code -45|notext 1	
 3021	First Gate appaears, for testi	0	First Gate appaears, for testing, will happen only if forced. [The First Gate]	rare 0|code 0	0x4200 -1	
-3022	Oh, no! The Queen of the Garne	0	Oh, no! The Queen of the Garnet Amazon tribe has ambitions of conquest! HIDDEN [Oasis]	freesites 1|maxturn 1|rare 15|0x4700 1|poptype 41|unique 1|code 0|capital 0|land 1|0x4600 1	code 275|notext 1|newsite -1	
+3022	Oh, no! The Queen of the Garne	0	Oh, no! The Queen of the Garnet Amazon tribe has ambitions of conquest! HIDDEN [Oasis]	freesites 1|maxturn 1|rare 15|story 1|poptype 41|unique 1|code 0|capital 0|land 1|0x4600 1	code 275|notext 1|newsite -1	
 3023	The Land of the Onyx Queen has	0	The Land of the Onyx Queen has been conquered and her palace claimed! Unfortunately, it seems most of the fabled riches of her abode have been sqandered on wine and debauchery! As compensation, her slaves and virgin followers were taken. 	unique 1|code 275	code 0|resetcode 276|resetcode 277|resetcode 278|gold 80|3d6vis B	
-3024	The Garnet Queen comes to powe	0	The Garnet Queen comes to power. HIDDEN	0x4700 1|unique 1|code 275	com 350|10d6units 351|4d6units 612|2com 349|addequip 1	
-3025	The Garnet Queen is crowned. H	0	The Garnet Queen is crowned. HIDDEN	0x4700 1|targmnr 350|unique 1|code 275	fireboost 1|fireboost 1|bloodboost 1|addequip 1|gainaff 549755813888	
-3026	The Garnet Queen is fitted wit	0	The Garnet Queen is fitted with garments. HIDDEN [Blood Thorn]	0x4700 1|0x8100 0|targmnr 350|unique 1|code 275	addequip 9|bloodboost 1|addequip 1	
-3027	The queen replenishes her slav	0	The queen replenishes her slaves.	rare 10|turn 30|0x8100 0|targmnr 350|0x4700 1|unique 3	addequip 1	
-3028	The Garnet Queen is fitted wit	0	The Garnet Queen is fitted with garments. HIDDEN [Lifelong Protection]	rare 20|0x8100 0|targmnr 350|unique 1|code 275|0x4700 1	addequip 9	
-3029	Gryphon riders have been sight	0	Gryphon riders have been sighted flying over the land.	rare 10|0x5C00 275|code 275|capital 0|land 1|code 0|0x4700 1|unique 8	code 276	
-3030	People speak in fear of the Qu	0	People speak in fear of the Queen of the garnet amazon that has come to power in a neighbouring land. She is rumored to be unsurpassed in both beauty and cruelty!	rare 10|code 275|0x5C00 275|capital 0|land 1|code 0|0x4700 1	code 276	
-3031	Ferocious amazons have attacke	0	Ferocious amazons have attacked!	rare 50|code 275|0x4700 1|unique 9|code 276	code 277|2com 349|addequip 1|6d6units 351|2d6units 612	
-3032	The amazons consolidate.	0	The amazons consolidate.	rare 8|code 275|0x4700 1|unique 6|code 277	com 349|addequip 1|5d6units 351|2d6units 304|2d6units 303	
-3033	A devil joins. [Demon Whip]	0	A devil joins. [Demon Whip]	rare 7|code 275|0x4700 1|unique 6|code 277	com 304|addequip 9|2d6units 303|incscale2 Turmoil	
+3024	The Garnet Queen comes to powe	0	The Garnet Queen comes to power. HIDDEN	story 1|unique 1|code 275	com 350|10d6units 351|4d6units 612|2com 349|addequip 1	
+3025	The Garnet Queen is crowned. H	0	The Garnet Queen is crowned. HIDDEN	story 1|targmnr 350|unique 1|code 275	fireboost 1|fireboost 1|bloodboost 1|addequip 1|gainaff 549755813888	
+3026	The Garnet Queen is fitted wit	0	The Garnet Queen is fitted with garments. HIDDEN [Blood Thorn]	story 1|0x8100 0|targmnr 350|unique 1|code 275	addequip 9|bloodboost 1|addequip 1	
+3027	The queen replenishes her slav	0	The queen replenishes her slaves.	rare 10|turn 30|0x8100 0|targmnr 350|story 1|unique 3	addequip 1	
+3028	The Garnet Queen is fitted wit	0	The Garnet Queen is fitted with garments. HIDDEN [Lifelong Protection]	rare 20|0x8100 0|targmnr 350|unique 1|code 275|story 1	addequip 9	
+3029	Gryphon riders have been sight	0	Gryphon riders have been sighted flying over the land.	rare 10|0x5C00 275|code 275|capital 0|land 1|code 0|story 1|unique 8	code 276	
+3030	People speak in fear of the Qu	0	People speak in fear of the Queen of the garnet amazon that has come to power in a neighbouring land. She is rumored to be unsurpassed in both beauty and cruelty!	rare 10|code 275|0x5C00 275|capital 0|land 1|code 0|story 1	code 276	
+3031	Ferocious amazons have attacke	0	Ferocious amazons have attacked!	rare 50|code 275|story 1|unique 9|code 276	code 277|2com 349|addequip 1|6d6units 351|2d6units 612	
+3032	The amazons consolidate.	0	The amazons consolidate.	rare 8|code 275|story 1|unique 6|code 277	com 349|addequip 1|5d6units 351|2d6units 304|2d6units 303	
+3033	A devil joins. [Demon Whip]	0	A devil joins. [Demon Whip]	rare 7|code 275|story 1|unique 6|code 277	com 304|addequip 9|2d6units 303|incscale2 Turmoil	
 3034	The onyx amazons have been def	0	The onyx amazons have been defeated! With her last breath, their priestess promised vengeance from her Queen upon your followers!	code 275|unique 2|code 277	code 278	
 3035	A Horde from Hell has been sen	0	A Horde from Hell has been sent to wreak havoc in your lands!	rare 33|unique 2|code 278|land 1	resetcode 278|com 303|5d6units 304	
 3036	The onyx amazons have been dri	0	The onyx amazons have been driven from the land! Some spoils of war have been transported to the treasury.	unique 2|code 277	code 0|gold 100|magicitem 1|1d3vis F	
-3037	A devil joins. [Demon Whip]	0	A devil joins. [Demon Whip]	rare 5|code 275|0x4700 1|unique 1|code 275	com 304|addequip 9|2d6units 303|incscale2 Turmoil	
-3038	The amazons have organized a s	0	The amazons have organized a slave market. [Slave Market]	rare 10|code 275|0x4700 1|unique 1|code 275	newsite -1	
-3039	The amazons have organized a s	0	The amazons have organized a slave market. [Slave Market]	rare 10|code 275|0x4700 1|unique 1|code 276	newsite -1	
-3040	The Queen of the amazon has en	0	The Queen of the amazon has ensorcelled a barbarian Lord. [Slave Collar]	rare 20|0x4700 1|unique 1|code 275	com 147|addequip 9	
-3041	The barbarian is bestowed an i	0	The barbarian is bestowed an item [Fire Plate]	targmnr 147|0x4700 1|unique 1|code 275	addequip 9	
-3042	A Troll King gets ambitious!	0	A Troll King gets ambitious!	poptype 71|rare 15|0x4700 1|maxturn 2|code 0|0x4600 1	code 279	
-3043	The Troll King has retrieved a	0	The Troll King has retrieved a magic item. [Vine Shield]	unique 1|0x4700 1|targmnr 519|code 279	natureboost 1|addequip 9|addequip 1|com 1037|3d6units 1037	
-3044	The Troll King has retrieved a	0	The Troll King has retrieved a magic item. [Dwarven Hammer]	unique 1|0x4700 1|targmnr 519|code 279	addequip 9	
-3045	The Troll Kings guard has retr	0	The Troll Kings guard has retrieved a magic item. [Vine Shield]	unique 1|0x4700 1|targmnr 1037|code 279	addequip 9	
-3046	The Troll Kings guard has retr	0	The Troll Kings guard has retrieved a magic item. [Star of Heroes]	unique 1|0x4700 1|targmnr 1037|code 279	addequip 9	
+3037	A devil joins. [Demon Whip]	0	A devil joins. [Demon Whip]	rare 5|code 275|story 1|unique 1|code 275	com 304|addequip 9|2d6units 303|incscale2 Turmoil	
+3038	The amazons have organized a s	0	The amazons have organized a slave market. [Slave Market]	rare 10|code 275|story 1|unique 1|code 275	newsite -1	
+3039	The amazons have organized a s	0	The amazons have organized a slave market. [Slave Market]	rare 10|code 275|story 1|unique 1|code 276	newsite -1	
+3040	The Queen of the amazon has en	0	The Queen of the amazon has ensorcelled a barbarian Lord. [Slave Collar]	rare 20|story 1|unique 1|code 275	com 147|addequip 9	
+3041	The barbarian is bestowed an i	0	The barbarian is bestowed an item [Fire Plate]	targmnr 147|story 1|unique 1|code 275	addequip 9	
+3042	A Troll King gets ambitious!	0	A Troll King gets ambitious!	poptype 71|rare 15|story 1|maxturn 2|code 0|0x4600 1	code 279	
+3043	The Troll King has retrieved a	0	The Troll King has retrieved a magic item. [Vine Shield]	unique 1|story 1|targmnr 519|code 279	natureboost 1|addequip 9|addequip 1|com 1037|3d6units 1037	
+3044	The Troll King has retrieved a	0	The Troll King has retrieved a magic item. [Dwarven Hammer]	unique 1|story 1|targmnr 519|code 279	addequip 9	
+3045	The Troll Kings guard has retr	0	The Troll Kings guard has retrieved a magic item. [Vine Shield]	unique 1|story 1|targmnr 1037|code 279	addequip 9	
+3046	The Troll Kings guard has retr	0	The Troll Kings guard has retrieved a magic item. [Star of Heroes]	unique 1|story 1|targmnr 1037|code 279	addequip 9	
 3047	The Troll King has been defeat	0	The Troll King has been defeated! In his abode was found a tresure in gold and magic!	code 279	code 0|gold 300|magicitem 1|magicitem 2|1d6vis E	
 3048	Trolls have been seen, skulkin	0	Trolls have been seen, skulking on the outskirts of rural settlements.	rare 5|unique 3|land 1|code 279	unrest 5	
 3049	Trolls have attacked in force!	0	Trolls have attacked in force! [Midget Masher]	rare 5|unique 1|turn 15|land 1|code 279|fort 0	unrest 5|2com 1037|addequip 9|1d6units 1037|3d6units 518	
@@ -3058,14 +3058,14 @@ id	name	rarity	description	requirements	effects	test
 3057	Your forces attack the monster	0	Your forces attack the monsters nest in the sunken ship, trying to kill it or drive it away. [Ring of Regeneration]	unique 1|targorder 105|code 296	code 297|com 438|addequip 9	
 3058	The Kraken has been killed. It	0	The Kraken has been killed. Its lair in the Sunken Galley seems to yield magical gems, harvested from the empty skulls of its still chained oarsmen. [Sunken Galley]	unique 1|rare 10|code 297	code 0|newsite -1	
 3059	The master of Water Magic has 	0	The master of Water Magic has tamed the Kraken and made it roost the eggs. Its spawn will be under the control of the mage.	0x8000 1|rare 50|targpath1 2|code 296	code 298|0x6F00 8	
-3060	The eggs of the Kraken are all	0	The eggs of the Kraken are all hatched and the mother has left its nest.	unique 1|0x4700 1	code 0	
+3060	The eggs of the Kraken are all	0	The eggs of the Kraken are all hatched and the mother has left its nest.	unique 1|story 1	code 0	
 3061	The Kraken has been angered!	0	The Kraken has been angered!	unique 1|targorder 105|code 296	code 297|com 438|addequip 9	
 3062	A Kraken egg has hatched and t	0	A Kraken egg has hatched and the monster crawling from it made to serve.	unique 6|rare 25|code 298	nation -2|1unit 438	
 3063	A Kraken egg has hatched but t	0	A Kraken egg has hatched but the monster crawling from it has attacked!	unique 2|rare 5|code 298	1unit 438	
-3064	The amazon live in the desert 	0	The amazon live in the desert and need supplies not to starve. [Endless Bag of Wine]	targmnr 147|0x4700 1|unique 1|code 275	addequip 9	
-3065	The barbarian drinks lots of w	0	The barbarian drinks lots of wine. [Endless Bag of Wine]	targmnr 304|0x4700 1|unique 1|code 275	addequip 9	
-3066	The amazon live in the desert 	0	The amazon live in the desert and need supplies not to starve. [Endless Bag of Wine]	turn 20|targmnr 349|0x4700 1|unique 1|code 275	addequip 9	
-3067	The amazon Queen gets reinforc	0	The amazon Queen gets reinforcements.	turn 30|rare 8|code 275|0x4700 1|unique 6|code 275	3d6units 814|2d6units 304|2d6units 303	
+3064	The amazon live in the desert 	0	The amazon live in the desert and need supplies not to starve. [Endless Bag of Wine]	targmnr 147|story 1|unique 1|code 275	addequip 9	
+3065	The barbarian drinks lots of w	0	The barbarian drinks lots of wine. [Endless Bag of Wine]	targmnr 304|story 1|unique 1|code 275	addequip 9	
+3066	The amazon live in the desert 	0	The amazon live in the desert and need supplies not to starve. [Endless Bag of Wine]	turn 20|targmnr 349|story 1|unique 1|code 275	addequip 9	
+3067	The amazon Queen gets reinforc	0	The amazon Queen gets reinforcements.	turn 30|rare 8|code 275|story 1|unique 6|code 275	3d6units 814|2d6units 304|2d6units 303	
 3068	A magical gateway has been fou	0	A magical gateway has been found. It emanates evil power. [The First Gate]	0x4600 1|rare 13|hiddensite 1|unique 1|0x5A00 42|code 0	revealsite 1|incscale2 Turmoil|code -93	
 3069	The locals are conducting demo	2	The locals are conducting demon worship.	land 1|code 0|maxdominion 7	code -49|incdom -3|incscale2 Turmoil	
 3070	Demonic foreshadowing. HIDDEN.	0	Demonic foreshadowing. HIDDEN.	rare 1|land 1|code 0|code -44	notext 1|code -49|incdom -3|incscale2 Turmoil	

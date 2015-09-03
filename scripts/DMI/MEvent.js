@@ -422,6 +422,7 @@ var displayorder = DMI.Utils.cutDisplayOrder(aliases, formats,
 	var requirementkeys = DMI.Utils.cutDisplayOrder(aliases, formats,
 [
 //	dbase key	displayed key		function/dict to format value
+	'req_story',	'story', {'0': 'no', '1': 'yes'},
 	'req_mydominion',	'owner\'s dominion', {'0': 'no', '1': 'yes'},
 	'req_minpop',	'miniumum pop', function(v){ return v*10; },
 	'req_temple',	'temple', {'0': 'no', '1': 'yes'},
