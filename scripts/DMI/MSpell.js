@@ -815,7 +815,7 @@ MSpell.bitfieldValues = function(bitfield, masks_dict) {
 		var flag = "none";
 		var flagIndex = values[value].indexOf("Wpn: #");
 		if (flagIndex != -1) {
-			flag = values[value].substring(flagIndex+6, values[value].length-1)
+			flag = values[value].substring(flagIndex+6, values[value].length-2)
 		}
 		value = values[value].replace(/{(.*?)}/g, "");
 		newValues.push([value, flag]);

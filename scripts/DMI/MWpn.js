@@ -365,23 +365,29 @@ MWpn.renderWpnTable = function(o, isImplicitWpn, showName) {
 
 MWpn.bitfieldValues = function(bitfield, masks_dict) {
 	var magic = true;
+	var nostr = true;
 	var newValues=[];
 	var values = bitfields.bitfieldValues(bitfield, masks_dict);
 	for (var value in values) {
-		if (values[value].indexOf("Hard to Hit Ethereal") == -1) {
+		if (values[value].indexOf("Hard to Hit Ethereal") != -1) {
+			magic = false;
+		} else if (values[value].indexOf("Adds Strength of Wielder") != -1) {
+			nostr = false;
+		} else {
 			var flag = "none";
 			var flagIndex = values[value].indexOf("Wpn: #");
 			if (flagIndex != -1) {
-				flag = values[value].substring(flagIndex+6, values[value].length-1)
+				flag = values[value].substring(flagIndex+6, values[value].length-2)
 			}
 			value = values[value].replace(/{(.*?)}/g, "");
 			newValues.push([value, flag]);
-		} else {
-			magic = false;
 		}
 	}
 	if (magic == true) {
 		newValues.push(["Magic weapon", "magic"]);
+	}
+	if (nostr == true) {
+		newValues.push(["Strength not added to damage", "nostr"]);
 	}
 	return newValues;
 }
