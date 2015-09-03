@@ -19,7 +19,7 @@ bit_value	bit_name	test
 131072	No Effect on Mindless {Wpn: #mind}
 262144	Affects Enemies Only {Wpn: #friendlyimmune}
 524288	No Effect on Undead {Wpn: #undeadimmune}
-1048576	Defence Negate {Wpn: #defnegate}
+1048576	Defense Negate {Wpn: #defnegate}
 2097152	Hard to Hit Ethereal {Wpn: not #magic}
 4194304	Affects Friendlies Only {Wpn: #enemyimmune}
 8388608	May Use Underwater {Wpn: #uwok}
