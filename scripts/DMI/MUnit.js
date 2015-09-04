@@ -101,6 +101,7 @@ MUnit.unitSortableTypes = {
 	'hero (unique)': 		'agb.hero-cmdr',
 	'Hero (Event)': 		'agc.hero-cmdr',
 	'Hero (item)': 			'agd.hero-cmdr',
+	'Hero': 				'age.hero-cmdr',
 	
 	'pretender': 			'aha.pret-cmdr',
 	'Pretender': 			'ahb.pret-cmdr',
