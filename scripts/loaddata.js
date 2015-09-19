@@ -114,7 +114,7 @@ DMI.continueLoading = function() {
 }
 
 function loadModList( g_data ) {
-	var mod_re = new RegExp('<a\\s*href="([\\w\\d\\._-]+?\\.dm)">\\s*\\1\\s*</a>', 'igm');
+	var mod_re = new RegExp('<a\\s*href="([\\w\\d\\s\\._-]+?\\.dm)">\\s*\\1\\s*</a>', 'igm');
 	var g_data = g_data;
 
 	//load mod list from server on startup

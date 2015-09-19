@@ -898,6 +898,7 @@ var modctx = DMI.modctx = {
 		blind:		_bool,
 		unique:		_bool,
 		shatteredsoul:	_num,
+		blessbers: _bool,
 	
 		immobile:	_bool,
 		aquatic:	_bool,
@@ -1565,6 +1566,9 @@ var modctx = DMI.modctx = {
 		caverec: function(c,a,t){ modctx[t]['caverec'].push(argref(a)); },
 		cavecom: function(c,a,t){ modctx[t]['cavecom'].push(argref(a)); },
 
+		noforeignrec: _bool,
+		aigoodbless: _num,
+		
 		disableoldnations: _bool,
 		cleargods: _bool,
 		addgod: function(c,a,t){ modctx[t]['addgod'].push(argref(a)); },

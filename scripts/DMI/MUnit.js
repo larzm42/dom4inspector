@@ -1862,6 +1862,7 @@ var flagorder = Utils.cutDisplayOrder(aliases, formats,
 	'swampsurvival',	'swamp survival',
 	'forestsurvival',	'forest survival',
 	'heal',		'recuperation',
+	'blessbers', 'bless berserk',
 
 	'female',	'female',
 	'stonebeing',	'stone being',
