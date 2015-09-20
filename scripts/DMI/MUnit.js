@@ -1491,7 +1491,7 @@ var displayorder2 = Utils.cutDisplayOrder(aliases, formats,
 
 	'enc',	'encumbrance',	{'0':'0 '},
 	'ap', 	'move',		function(v,o){ 
-		if (o.flying == '0' || parseInt(o.mapmove) > 2) { 
+		if (o.flying != '1' || parseInt(o.mapmove) > 2) { 
 			return o.mapmove + ' / '+o.ap; 
 		} else {
 			return (parseInt(o.mapmove)+1) + ' / '+o.ap; 
