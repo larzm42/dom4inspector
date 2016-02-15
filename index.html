@@ -58,7 +58,38 @@
 	
 	  ga('create', 'UA-51174963-1', 'larzm42.github.io');
 	  ga('send', 'pageview');
+	  
+	function insertParam(key, value)
+	{
+		key = encodeURI(key); value = encodeURI(value);
+    	var kvp = document.location.search.substr(1).split('&');
+
+    	var i=kvp.length; var x; while(i--) 
+    	{
+        	x = kvp[i].split('=');
+
+        	if (x[0]==key)
+        	{
+            	x[1] = value;
+            	kvp[i] = x.join('=');
+            	break;
+        	}
+    	}
+
+		if(i<0) {kvp[kvp.length] = [key,value].join('=');}
+
+    	//this will reload the page, it's likely better to store this until finished
+    	document.location.search = kvp.join('&'); 
+	}
 	
+	function gup( name, url ) {
+  		if (!url) url = location.href;
+  		name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+  		var regexS = "[\\?&]"+name+"=([^&#]*)";
+  		var regex = new RegExp( regexS );
+  		var results = regex.exec( url );
+  		return results == null ? null : results[1];
+	}
 	</script>
 
 	<!-- SHARED -->
@@ -69,8 +100,6 @@
 		<div id="global-tiny-buttons" class="primary-panel">
 			<div style="float:right; clear:right">				
 				<a style="display:block; float:right; clear:right" href="?selectmods=1" id="select-mods-link" class="tinylink" title="select mods from a list or load from the local filesystem (reloads page)">[load mods]</a>
-					<br />
-				<a style="display:block; float:right; clear:right" href="?loadevents=1" id="select-mods-link" class="tinylink" title="select mods from a list or load from the local filesystem (reloads page)">[events]</a>
 					<br />
 				<a style="display:block; float:right; clear:right"href="" id="permalink" class="tinylink" title="link to this page state (use right click > copy link address to share). Pinned details and search setting are encoded in the url.">[permalink]</a>
 			</div>
@@ -250,7 +279,19 @@
 			<input type="button" value="X" class="clear-filters-btn" title="clear filters" />
 
 			search Events: <input type="text" class="search-box" title="filter by name or find id" id="eventq" />
+			<br/>
+			
+			<label for="loadEvents"><input class="load-events" type='checkbox' value='loadEvents' id='loadEvents' onclick='if (this.checked) insertParam("loadEvents","1"); else insertParam("loadEvents","0");'
+        	/>Load Events</label>
+			
 		</div>
+		<script>
+			if (gup("loadEvents") == "1") {
+				document.getElementById("loadEvents").checked = true;
+			} else {
+				document.getElementById("loadEvents").checked = false;
+			}
+		</script>
 		<div class="hidden-block">
 			<div class="filters-text panel eventview">
 				<input type="button" value="X" class="clear-filters-btn" title="clear filters" />

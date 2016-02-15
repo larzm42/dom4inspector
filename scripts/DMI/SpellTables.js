@@ -305,13 +305,25 @@ MSpell.effectlookup = {
 		79:	damage_untested,
 		80:	damage_untested,
 		81:	function (spell, effect) {
-			return modctx.enchantments_lookup[effect.raw_argument].name;
+			if (modctx.enchantments_lookup[effect.raw_argument]) {
+				return modctx.enchantments_lookup[effect.raw_argument].name;
+			} else {
+				return "Unknown";
+			}
 		},
 		82:	function (spell, effect) {
-			return modctx.enchantments_lookup[effect.raw_argument].name;
+			if (modctx.enchantments_lookup[effect.raw_argument]) {
+				return modctx.enchantments_lookup[effect.raw_argument].name;
+			} else {
+				return "Unknown";
+			}
 		},
 		84:	function (spell, effect) {
-			return modctx.enchantments_lookup[effect.raw_argument].name;
+			if (modctx.enchantments_lookup[effect.raw_argument]) {
+				return modctx.enchantments_lookup[effect.raw_argument].name;
+			} else {
+				return "Unknown";
+			}
 		},
 		85:	damage_untested,
 		86:	damage_untested,

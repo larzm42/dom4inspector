@@ -475,7 +475,7 @@ DMI.customFilter = function(o, customjs) {
 	var result;
 	try {
 		var num = function(v){ return parseFloat(v) ? parseFloat(v) : 0; };
-		eval('result = '+customjs);
+		result = eval(customjs);
 		$('#custom-js-error').empty();
 		return result;
 	} 
