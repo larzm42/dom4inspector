@@ -57,7 +57,7 @@ id	name	rarity	description	requirements	effects	test
 56	A famous circus has been touri	-1	A famous circus has been touring in the province. This resulted in extra taxes in addition to the good luck that a circus always brings.	minpop 500|order 0|growth 0|maxunrest 25|noera 1	gold 200|decscale2 Misfortune	
 57	A freak show with local talent	-1	A freak show with local talents has gained fame and is now known throughout the neighboring provinces as well. People are proud of their misfits and taxes have increased.	minpop 500|chaos 2|maxunrest 25	gold 150|decscale Turmoil|unrest -25	
 58	Playful winds have been captur	-1	Playful winds have been captured, distilled into diamonds and transported to your laboratory by your mages.	land 1|season 0	2d6vis A	
-59	Playful winds have been captur	-1	Playful winds have been captured, distilled into diamonds by your mages.	land 1|season 0|luck 3|magic 0	4d6vis A|assassin 0	
+59	Playful winds have been captur	-1	Playful winds have been captured, distilled into diamonds by your mages.	land 1|season 0|luck 3|magic 0	3d6vis A	
 60	A spring fairy has been sighte	-1	A spring fairy has been sighted, spreading joy and laughter in the land.	season 0|land 1	unrest -50|decscale3 Death|decscale2 Misfortune	
 61	The summer heat has been disti	-1	The summer heat has been distilled into glowing rubies by a young mage.	land 1|season 1	1d6vis F	
 62	This summer is unusually hot. 	-1	This summer is unusually hot. In the ashes of a burning bush a small amount of gems were found.	land 1|season 1|heat -1	2d6vis F	
@@ -108,8 +108,8 @@ id	name	rarity	description	requirements	effects	test
 107	A witch was drowned in the wel	-2	A witch was drowned in the well of a village. Thereafter the water has started glowing in the moonlight. This esoteric substance has been distilled into a large quantity of gems.	minpop 10|land 1	4d6vis W	
 108	Priests of the temple have fou	-2	Priests of the temple have found ancient and forgotten vaults containing rich offerings.	temple 1	gold 500|magicitem 3	
 109	A gold nugget of legendary siz	-2	A gold nugget of legendary size has been found and brought to the treasury.		gold 750	
-110	A peasants goose has laid seve	-2	A peasants goose has laid several eggs of gold! Unfortunately it was killed in an ensuing conflict of ownership. The gold eggs were confiscated by the temple to end the conflict.	land 1|temple 1	gold 500	
-111	A peasants oyster has produced	-2	A peasants oyster has produced several giant pearls! Unfortunately the oyster was smashed in an ensuing conflict of ownership. The pearls were confiscated by the temple to end the conflict.	land 1|temple 1	gold 500	
+110	A peasants goose has laid seve	-2	A peasants goose has laid several eggs of gold! Unfortunately it was killed in an ensuing conflict of ownership. The gold eggs were confiscated by the local temple.	land 1|temple 1	gold 500	
+111	A peasants oyster has produced	-2	A peasants oyster has produced several giant pearls! Unfortunately the oyster was smashed in an ensuing conflict of ownership. The pearls were confiscated by the local temple.	land 1|temple 1	gold 500	
 112	Adventurers have plundered the	-2	Adventurers have plundered the lair of a hideous troll. Their leader has been hanged and all unlawfully acquired goods have been confiscated.	rare 50	gold 1000|magicitem 1	
 113	The local merchants guild has 	-2	The local merchants guild has erected a glorious temple in your honor. Unfortunately costs were higher than expected and tax money had to be used for the last fittings. Consequently the province has not been able to pay any tax this month.	temple 0|maxunrest 5|minpop 50	temple 1|taxboost -100	
 114	The skull of a legendary mage 	-2	The skull of a legendary mage has been unearthed and transported to the lab. [Skull Mentor]	pop0ok 1	magicitem 9	
@@ -179,7 +179,7 @@ id	name	rarity	description	requirements	effects	test
 178	Arakiel has sired an offspring	-1	Arakiel has sired an offspring.	land 1|monster 2067	nation -2|com 2075	
 179	One of your Melqarts has reali	0	One of your Melqarts has realized the power inherent in the blood of his brethren. Inviting a Ba'al to a grisly banquet, he slew his guest and feasted upon his heart to gain power.	rare 5|unique 1|turn 15|monster 2032|land 1|monster 2031	nation -2|killcom 2032|bloodboost 2031	
 180	One of your Zamzummim and an A	0	One of your Zamzummim and an Adon have organized a great banquet for Ditan, greatest of the deified Rephaite Lords. By sacrificing himself at the feast, the Zamzummite has traded life for life and passed into Sheol, allowing Ditan and his assembly to manifest in the world of the living.	rare 4|unique 1|turn 25|monster 2011|land 1|monster 2027|dominion 8|nomnr 2046	nation -2|killcom 2011|com 2046|1d6units 2045	
-181	One of your eunuchs has miracu	0	One of your eunuchs has miraculously fathered a child. Faith in your healing powers has increased.	rare 2|land 1|monster 805|dominion 2	incdom 3	
+181	One of your eunuchs has miracu	0	One of your eunuchs has miraculously fathered a child. Faith in your healing powers has increased.	rare 1|land 1|monster 805|dominion 2|unique 3	incdom 3	
 182	One of your Ceremonial Masters	-1	One of your Ceremonial Masters has interpreted the ceremonial calendar of the Ministry.	land 1|monster 807|minpop 500|order 1	gold 250	
 183	One of your Ministers has inte	-1	One of your Ministers has interpreted the signs and made a remarkably accurate calendar for the province.	land 1|monster 804|minpop 500|order 1	gold 500	
 184	One of your Ministers has inte	-1	One of your Ministers has interpreted the signs and made a remarkably accurate calendar for the province.	land 1|monster 804|minpop 100|order 1	gold 250	
@@ -216,7 +216,7 @@ id	name	rarity	description	requirements	effects	test
 215	Naked people have been seen da	-1	Naked people have been seen dancing and singing in the woods. This was seen as a good omen and faith has increased.	dominion 1|forest 1|fullowner 48	incdom 3	
 216	Naked people have been seen da	-1	Naked people have been seen dancing and singing in the woods. This was seen as a good omen and faith has increased.	dominion 1|forest 1|fullowner 16	incdom 3	
 217	Naked people have been seen da	-1	Naked people have been seen dancing and singing in the woods. This was seen as a good omen and faith has increased.	dominion 1|forest 1|fullowner 74	incdom 3	
-218	Naked people have been seen da	-1	Naked people have been seen dancing and singing in the woods. This was seen as an ill omen and faith has decreased.	dominion 1|forest 1|notnation 48|notnation 16|notnation 74	incdom -2	
+218	Naked people have been seen da	1	Naked people have been seen dancing and singing in the woods. This was seen as an ill omen and faith has decreased.	dominion 1|forest 1|notnation 48|notnation 16|notnation 74	incdom -2	
 219	A wave of religious zeal has s	-1	A wave of religious zeal has swept the province and a group of humanbreds committed to your cause has joined your armies.	dominion 2|land 1|fullowner 71	nation -2|8d6units 984	
 220	A wave of religious zeal has s	-1	A wave of religious zeal has swept the province and a group of humanbreds committed to your cause has joined your armies.	dominion 2|land 1|fullowner 45	nation -2|8d6units 372	
 221	A wave of religious zeal has s	-1	A wave of religious zeal has swept the markata population in the province and a chittering group of the annoying creatures has joined your armies.	dominion 2|land 1|fullowner 78	nation -2|16d6units 1118	
@@ -345,7 +345,7 @@ id	name	rarity	description	requirements	effects	test
 344	A well known count has reveale	2	A well known count has revealed himself as a vampire. He and his minions have tried to take control over the province.	magic 0|land 1|turn 15	com 1019|addequip 2|4d6units 405|6d6units 30|5d6units 1022	
 345	A heatwave has struck the land	2	A heatwave has struck the land. Many have died from drought and wildfires.	cold 1|land 1|turn 10	id 13|decscale3 Cold|kill 5	
 346	The temperature has dropped dr	2	The temperature has dropped dramatically and blizzards have devastated the land. Many have died from starvation.	cold 1|land 1|turn 10	id 3|incscale3 Cold|kill 5	
-347	A superstitious lord has roote	2	A superstitious lord has rooted out witches, wizards, mongrels, strangers and half-wits. All have been put to the pyre. Magic has decreased and a substantial portion of the populace has been lost.	minpop 100|chaos -2|magic 2|turn 10	incscale3 Drain|kill 10	
+347	A superstitious lord has roote	2	A superstitious lord has rooted out witches, wizards, mongrels, strangers and half-wits. All have been put to the pyre. Magic has decreased and a substantial portion of the populace has been lost.	land 1|minpop 100|chaos -2|magic 2|turn 10	incscale3 Drain|kill 10	
 348	War has broken out among the l	1	War has broken out among the lords of the land. There is great turmoil and a large part of the population has been killed or fled.	chaos 2|minpop 200|turn 15|capital 0	unrest 25|kill 10|emigration 15	
 349	The weather is getting increas	2	The weather is getting increasingly colder and an unseasonal winter is expected.	land 1|season 2	incscale3 Cold	
 350	The temperature has dropped co	2	The temperature has dropped considerably and the winter is going to be the coldest ever!	season 3|land 1	incscale3 Cold	
@@ -416,7 +416,7 @@ id	name	rarity	description	requirements	effects	test
 415	A witch was caught. While suff	1	A witch was caught. While suffering her sentence of death by lapidation, she uttered a dark curse over the land.	magic 0|minpop 50|land 1	incscale3 Misfortune|decscale2 Drain	
 416	A triton witch master was caug	1	A triton witch master was caught. While suffering his sentence of death staked on the shore of an island, he uttered a dark curse over the land.	magic 0|minpop 50|land 0	incscale3 Misfortune|decscale2 Drain	
 417	A martyr has died. The faithfu	-1	A martyr has died. The faithful rejoice and flock to the temple.	minpop 50|temple 1	incdom 2	
-418	A warlock has been caught red-	-2	A warlock has been caught red-handed. His virgin followers are now kept in your dungeon.	minpop 50	4d6vis B	
+418	A warlock has been caught red-	-2	A warlock has been caught red-handed. His virgin followers are now kept in your dungeon.	minpop 50|land 1	4d6vis B	
 419	Nature gems have been distille	-1	Nature gems have been distilled from the droppings of a magical beast	magic 1|land 1|growth 0	1d6vis N	
 420	The local lawgiver has caught 	-1	The local lawgiver has caught a traitor. After summary trial and execution his belongings have been confiscated.	chaos 2	unrest 20|gold 150|magicitem 1	
 421	A local wizard was found conso	-2	A local wizard was found consorting with demons and -far worse- with rival nations. The foreign agent has been put under the axe and his lab plundered.	chaos 1	1d6vis 53	
@@ -610,7 +610,7 @@ id	name	rarity	description	requirements	effects	test
 609	There are rumors of a hidden s	-1	There are rumors of a hidden site of mystical power. A man claims to have seen a Fountain of Fire in his dreams. Actually, some fire gems were later found in the belly of a goat who had strayed into the wilderness. [Fountain of Fire]	hiddensite 1	decscale Cold|1d6vis F	
 610	There are rumors of a hidden s	-1	There are rumors of a hidden site of mystical power. A man claims to have seen a Fountain of Fire in his dreams. Actually, some fire gems were later found in the belly of a goat who had strayed into the wilderness.	season 1|land 1	decscale Cold|1d6vis F	
 611	A goatherd has found a strange	-1	A goatherd has found a strange pillar in the wilderness. At its base, some magical gems were found. [Bronze Pillar]	hiddensite 1	1d6vis F	
-612	There are rumors of a hidden s	-1	There are rumors of a hidden site of mystical power. Sometimes, in the wilderness, the clanging of hammer against steel has been heard echoing in the night. Also, a magic item has been found hidden under a rock. [The Steel Ovens]	hiddensite 1	decscale Cold|magicitem 3	
+612	There are rumors of a hidden s	-1	There are rumors of a hidden site of mystical power. Sometimes, in the wilderness, the clanging of hammer against steel has been heard echoing in the night. Also, a magic item has been found hidden under a rock. [The Steel Ovens]	site 1	decscale Cold|magicitem 3	
 613	The Wild Forest is working its	1	The Wild Forest is working its magic. A plague of lycanthropy has swept the land. The unfortunate victims howl and rage under the moon. [Wild Forest]	site 1|noseason 3	com 633|3d6units 633|com 633	
 614	A smallish knight has appeared	-1	A smallish knight has appeared on his steed. He seeks the fabled Forest of Truffles. [Forest of Truffles]	nearbysite 1|noera 1|land 1	nation -2|com 1196	
 615	A beardless dwarf has appeared	-1	A beardless dwarf has appeared. He seeks the fabled Forest of Truffles. [Forest of Truffles]	nearbysite 1|noera 1|land 1	nation -2|com 1198	
@@ -790,7 +790,7 @@ id	name	rarity	description	requirements	effects	test
 789	The mere presence of an Anoint	-1	The mere presence of an Anointed has stirred a volcano! [Volcano]	monster 1536|freesites 1|land 1	newsite -1|kill 3|decscale Cold	
 790	Some Magma Children have come 	-1	Some Magma Children have come from the Volcano. They follow the Anointed of Rhuax. [Volcano]	foundsite 1|monster 1536	nation -2|1d6units 640	
 791	An Anathemant has entered the 	-2	An Anathemant has entered the Volcano. He returned reborn, formed anew by the fires of the earth, to spread the holy word as an anointed of Rhuax! [Volcano]	site 1|monster 86	killcom 86|nation -2|com 1536	
-792	An Anathemant Salamander has b	-2	An Anathemant Salamander has been infused by the power of the volcano! [Volcano]	site 1|monster 86	fireboost 86	
+792	An Anathemant Salamander has b	-2	An Anathemant Salamander has been infused by the power of the volcano! [Volcano]	site 1|monster 85	fireboost 86	
 793	One of your warlocks has stole	2	One of your warlocks has stolen blood slaves for experimentation. Unfortunately he was unsuccessful and a demon was released.	gem 7|land 1|monster 1538|commander 1	assassin 304	
 794	One of your warlocks has stole	2	One of your warlocks has stolen blood slaves for experimentation. Unfortunately he was unsuccessful and a demon was released.	gem 7|land 1|monster 89|commander 1538	assassin 304	
 795	Factions among the nobles cons	2	Factions among the nobles constantly vie for power. Conflict has flared recently, leading to a series of assassination attempts.	fornation 71|turn 15|capital 1|chaos -1|commander 1	assassin 1967|assassin 1966|unrest 15	
@@ -856,7 +856,7 @@ id	name	rarity	description	requirements	effects	test
 855	A farmer and his goats have ap	-2	A farmer and his goats have appeared at the gates.	noseason 3|land 1|minpop 10|fort 1	nation -2|com 1565|3d6units 2227	
 856	Your Beast Trainer has managed	-1	Your Beast Trainer has managed to tame more salamanders than expected.	monster 214|capital 1	nation -2|1d6units 213	
 857	Your Beast Trainer has managed	-1	Your Beast Trainer has managed to tame more salamanders than expected.	monster 214|capital 1|luck 1	nation -2|2d6units 213	
-858	One of your warlocks has faile	-2	One of your warlocks has failed an experiment. An insane Misbred now runs amok!	rare 50|lab 1|monster 1538|turn 15|commander 1|land 1	assassin 1661	
+858	One of your warlocks has faile	2	One of your warlocks has failed an experiment. An insane Misbred now runs amok!	rare 50|lab 1|monster 1538|turn 15|commander 1|land 1	assassin 1661	
 859	One of your warlocks has faile	2	One of your warlocks has failed an experiment. A portal to Hell was opened, and uncontrolled demons have surged through.	rare 10|lab 1|monster 89|turn 15|commander 1|land 1	2com 433|addequip 2|3d6units 433|2d6units 526|decscale Drain	
 860	A leader has emerged among the	-2	A leader has emerged among the Lava Warriors.	monster 90|land 1	nation -2|com 90	
 861	A leader has emerged among the	-2	A leader has emerged among the Guardians of the Pyre.	monster 990|land 1	nation -2|com 990	
@@ -1568,7 +1568,7 @@ id	name	rarity	description	requirements	effects	test
 1567	Your Hydra Tamer has located t	0	Your Hydra Tamer has located the nesting place of a full-grown specimen. A handful of men are needed to aid him in the hunt if the Hydra is to be caught.	monster 296|rare 30|code 80	code 81	
 1568	The Hydra was found but could 	0	The Hydra was found but could not be controlled! Angered by attempts to catch it, the beast now runs amok!	monster 296|rare 10|code 81	code 0	
 1569	The Hydra has been caught and 	0	The Hydra has been caught and tamed!	monster 296|rare 10|code 81	code 0	
-1570	During the attempts to catch t	0	During the attempts to catch the Hydra, it was unfortunately killed. In its lair some corpses and treasures were found.	monster 296|rare 10|code 81	code 0	
+1570	During the attempts to catch t	0	During the attempts to catch the Hydra, it was unfortunately killed. In its lair some corpses and treasures were found.	monster 296|rare 10|code 81	code 0|gold 200|magicitem 2	
 1571	A crocodile has attacked!	0	A crocodile has attacked!	monster 296|rare 10|code 80	assassin 2185	
 1572	A swamp monster has attacked!	0	A swamp monster has attacked!	monster 296|rare 10|code 81	assassin 2196	
 1573	A swamp monster has attacked!	0	A swamp monster has attacked!	monster 296|rare 10|code 80	assassin 403	
@@ -1927,7 +1927,7 @@ id	name	rarity	description	requirements	effects	test
 1926	A Horror has attacked one of y	1	A Horror has attacked one of your commanders!	commander 1|code 168|rare 3	assassin 2212	
 1927	The Horror Cult has gained foo	1	The Horror Cult has gained foothold! It seems to be spreading from an adjacent province.	temple 0|code 168|unique 3|maxdominion 6|freesites 1|code 0	code 166|incdom -3	
 1928	Attracted by the activities of	0	Attracted by the activities of the local Cult, Evil has struck the land!	monster 2275|code 168|rare 3	kill 4|com 2211	
-1929	Villagers claim their infant c	-2	Villagers claim their infant children have grown unnaturally ugly. Some have scorned their mothers' breasts and have strange cravings. This is mostly rejected as nonsense by wiser folks.	mountain 1|unique 1|magic -1|freesites 2|code 0|0x4600 1	code 151|0x0600 5|decscale2 Drain	
+1929	Villagers claim their infant c	-2	Villagers claim their infant children have grown unnaturally ugly. Some have scorned their mothers' breasts and have strange cravings. This is mostly rejected as nonsense by wiser folks.	capital 0|mountain 1|unique 1|magic -1|freesites 2|code 0|0x4600 1	code 151|0x0600 5|decscale2 Drain	
 1930	One of your commanders has bee	0	One of your commanders has been waylaid and attacked!	rare 10|unique 2|commander 1|code 151	assassin 518	
 1931	The son of a noble has been se	0	The son of a noble has been set upon by trolls while hunting in the foothills! The local garrison came to aid when hearing the sound of his horn. If he survives, the young man will probably join your cause.	rare 10|unique 1|code 151	com 1037|2d6units 518|nation -2|com 23|2d6units 19	
 1932	Trolls have attacked! They are	0	Trolls have attacked! They are uncharacteristically well equipped and seem to fight with purpose.	rare 5|unique 3|code 151	2com 1037|addequip 2|6d6units 518|2d6units 1037	
@@ -2087,7 +2087,7 @@ id	name	rarity	description	requirements	effects	test
 2086	The kelp forests thrive!	0	The kelp forests thrive!	rare 3|land 0|noseason 3|code -40	landgold 2|taxboost 100|decscale2 Death	
 2087	The kraken thrive.	-1	The kraken thrive.	land 0|noseason 3|code -40	com 438	
 2088	A great fertility festival was	0	A great fertility festival was celebrated in the province!	rare 2|growth -1|land 0|code -40	decscale2 Death|landgold 3|incdom -2	
-2089	The Throne of Beasts has been 	13	The Throne of Beasts has been claimed. Its power calls to the wild souls of all that walk on four legs. [The Throne of Beasts]	site 1|claimedthrone 1|unique 1|0x4600 1|code 0|land 1	code -21|0x6F00 4	
+2089	The Throne of Beasts has been 	13	The Throne of Beasts has been claimed. Its power calls to the wild souls of all that walk on four legs. [The Throne of Beasts]	story 1|site 1|claimedthrone 1|unique 1|0x4600 1|code 0|land 1	code -21|0x6F00 4	
 2090	The power of the Throne of Bea	13	The power of the Throne of Beasts has waned.	story 1|code -21	resetcode -95|resetcode -21	
 2091	A pack of stray dogs have appe	0	A pack of stray dogs have appeared. They seem loyal.[The Throne of Beasts]	site 1|claimedthrone 1|rare 10|unique 2|land 1|code -21	nation -2|1d6units 1769|2d6units 1560|2d6units 1560	
 2092	Werewolves have attacked!	0	Werewolves have attacked!	rare 2|land 1|code -21	2com 633|3d6units 633	
@@ -2102,7 +2102,7 @@ id	name	rarity	description	requirements	effects	test
 2101	A kraken has come to serve the	1	A kraken has come to serve the Throne. [The Throne of the Deeps]	site 1|claimedthrone 1|unique 1|turn 30	nation -2|com 438	
 2102	A Necromancer has come to advi	0	A Necromancer has come to advise the one who sits on The Throne of Bones. [The Throne of Bones]	unique 1|site 1|claimedthrone 1|land 1|rare 15|code -24	code 0|nation -2|com 310|addequip 1	
 2103	The Necromancer has raised a h	1	The Necromancer has raised a host of longdead warriors to serve his Lord. [The Throne of Bones]	site 1|claimedthrone 1|monster 310	nation -2|2com 190|4d6units 191|2d6units 192|2d6units 189	
-2104	The dead rise and march to the	13	The dead rise and march to the Lord that sits upon The Throne of Bones! [The Throne of Bones]	site 1|claimedthrone 1|unique 1|0x4600 1|code 0	code -23|0x6F00 5	
+2104	The dead rise and march to the	13	The dead rise and march to the Lord that sits upon The Throne of Bones! [The Throne of Bones]	story 1|site 1|claimedthrone 1|unique 1|0x4600 1|code 0	code -23|0x6F00 5	
 2105	An army of shambling dead has 	0	An army of shambling dead has arrived at The Throne of Bones.	code -23|story 1	code 0|nation -2|2com 190|15d6units 194|com 190|15d6units 197|1unit 405|com 398|6d6units -2	
 2106	The dead rise from their grave	0	The dead rise from their graves! Some seem to march away towards a distant land, but others remain to bring woe to the living. [The Throne of Bones]	rare 2|site 0|code -23	2com 190|4d6units 194|6d6units 197	
 2107	The dead rise from their grave	0	The dead rise from their graves! [The Throne of Bones]	rare 2|site 0|code -23	2com 190|4d6units 191|2d6units 192|4d6units 197	
@@ -2291,7 +2291,7 @@ id	name	rarity	description	requirements	effects	test
 2290	Plague!	0	Plague!	rare 5|code -36	code 0|kill 2|incscale Death|disease 1	
 2291	Plague!	0	Plague!	rare 3|death 1|code -36	kill 4|incscale Death|disease 1	
 2292	Disease is spreading.	0	Disease is spreading.	rare 4|code -36	kill 4|disease 2	
-2293	A cult has emerged in the wake	0	A cult has emerged in the wake of the recent plague. According to its dogm disease is a blessing, for only through suffering can the holy mysteries be revealed. Perhaps it would be wise to suppress this heresy by erecting a temple of the true faith or sending priests to preach the true tenets to the people.	rare 2|temple 0|maxdominion 5|code -36	code -43|incdom -2|incscale2 Death|disease 10	
+2293	A cult has emerged in the wake	0	A cult has emerged in the wake of the recent plague. According to its dogma disease is a blessing, for only through suffering can the holy mysteries be revealed. Perhaps it would be wise to suppress this heresy by erecting a temple of the true faith or sending priests to preach the true tenets to the people.	rare 2|temple 0|maxdominion 5|code -36	code -43|incdom -2|incscale2 Death|disease 10	
 2294	An unnatural plague has swept 	-1	An unnatural plague has swept the province, killing thousands. Magical gems were found in the decaying corpses. Rumors of the mythical Crown of Darkness have circulated in the province ever since.	death 1|minpop 200|land 1|unluck 1|code -36	code 0|4d6vis D|kill 50|unrest 10|4d6vis D	
 2295	The governor of the province h	0	The governor of the province has died from the plague. His successor is incompetent.	rare 4|order 0|code -36	incscale3 Turmoil|unrest 4|landprod -2	
 2296	A new breed of mosquitoes are 	0	A new breed of mosquitoes are infesting the swamps, spreading disease in the area.	rare 10|heat 0|swamp 1|code -36	kill 1|disease 4	
@@ -2366,7 +2366,7 @@ id	name	rarity	description	requirements	effects	test
 2365	A seer has been strangled to d	-2	A seer has been strangled to death by an angry mob after giving false prophesies of good fortune. One of his eyes looked strange and it has been transported to the capital. [Eye of the Void]	unmagic 1	magicitem 9	
 2366	A former mage, having renounce	-2	A former mage, having renounced his arts, has devised some suits of armor to the benefit of the warriors of faith. [Mirror Armor]	unmagic 2	magicitem 9|magicitem 9|magicitem 9	
 2367	One of your mages has consorte	-1	One of your mages has consorted with a witch in the woods. After an unnaturally short pregnancy, the crone gave birth to a monster, who now follows his father like a loyal dog.	targpath1 6|0x8000 1|forest 1|magic 0|growth 0|0x7E00 0	nation -2|1unit -12|gainaff 549755813888	
-2368	There is war in Hell! Infernal	12	There is war in Hell! Infernal powers become manifest when the conflict spills over into the realm of men.	unique 2|turn 33|0x4600 1|code 0	code -19|0x5E00 -44|worldincscale2 Turmoil|worldritrebate 6|linger 4|0x6F00 5	
+2368	There is war in Hell! Infernal	12	There is war in Hell! Infernal powers become manifest when the conflict spills over into the realm of men.	unique 2|turn 33|0x4600 1|code 0	code -19|0x5E00 -44|worldincscale Turmoil|worldritrebate 6|0x6F00 5	
 2369	The War in Hell has subsided.	13	The War in Hell has subsided.		resetcode -44	
 2370	Your temple has been desecrate	0	Your temple has been desecrated! An acolyte was found strung face down above the altar, the divine statues broken, your glorious visage defaced and entrails scattered in the chancel. Repairs have been costly.	code 0|capital 0|rare 3|temple 1|land 1|code 0|code -44	code -49|incdom -5|incscale2 Turmoil	
 2371	Your temple has been desecrate	2	Your temple has been desecrated! An acolyte was found strung face down above the altar, the divine statues broken, your glorious visage defaced and entrails scattered in the chancel. Repairs have been costly.	0x4600 1|temple 1|code 0	code -49|incdom -5|incscale2 Turmoil	
@@ -2396,7 +2396,7 @@ id	name	rarity	description	requirements	effects	test
 2395	A gateway to the lower realms 	0	A gateway to the lower realms has opened, spewing forth inhabitants of that dismal place! [Demon Gate]	rare 1|freesites 1|unique 3|code -49	code 0|4com 88|3d6units 88|newsite -1	
 2396	People have been disappearing.	0	People have been disappearing. Alien creatures skulk in the night. Locals have given offerings of blood to appease the evil apparitions. [Demon Gate]	rare 1|unique 2|freesites 1|code -49	incdom -2|kill 1|0x4200 -1|stealthcom 88|2d6units 88	
 2397	A conjurer of demons has appea	0	A conjurer of demons has appeared to study the art of Blood Magic under a true master. [Sanguine Dowsing Rod]	rare 5|pathblood 5|unique 2|lab 1|code -49	nation -2|com 95|addequip 9	
-2398	A warlock has been caught red-	0	A warlock has been caught red-handed. His virgins were confiscated.	rare 2|code -49	3d6vis B	
+2398	A warlock has been caught red-	0	A warlock has been caught red-handed. His virgins were confiscated.	rare 2|code -49|land 1	3d6vis B	
 2399	Your temple has been desecrate	0	Your temple has been desecrated! Evil symbols were written in blood on its altar and the remains of a human sacrifice was found.	rare 5|temple 1|code -49	incdom -5|incscale2 Turmoil	
 2400	It is said that there was once	0	It is said that there was once an order of knights in the land. They were destroyed by their own weakness when the Grand Master fell to temptation. The fallen knights have now returned from hell. [Heart Finder Sword]	turn 15|rare 2|unique 1|code -49	code 0|com 811|com 489|addequip 9|2d6units 489	
 2401	Demons are hiding in the provi	0	Demons are hiding in the province, spreading their evil. [Bane Venom Charm]	rare 1|code -49	stealthcom 88|addequip 9|2d6units 88	
@@ -2582,7 +2582,7 @@ id	name	rarity	description	requirements	effects	test
 2581	More men are needed to find th	0	More men are needed to find the warlock!	mintroops 7|maxtroops 29|code 186		
 2582	Your priests have incited reli	0	Your priests have incited religious fury into the hearts of the faithful. They have risen to drive evil from the land!	preach 25|code 186	code 0|com 2540|bloodboost 1|bloodboost 1|addequip 1|nation -2|com -13|addequip 1|1d6units 1560|1d3units 2227|3d6units 1565	
 2583	Prayers have been answered! An	0	Prayers have been answered! An Angel of the Host has come to fight the demonic influence that infests the land.	preach 1|unique 3|order 2|code 186	nation -2|com 543	
-2584	Your blood mage has joined wit	0	Your blood mage has joined with the local warlock and attempted a summoning. Unfortunately the demon broke free! [Armor of Twisting Thorns]	nomnr 900|targpath1 7|rare 15|code 186	code 0|com 900|addequip 1|addequip 9|4d6units 526|nation -2|com 2540|bloodboost 1|bloodboost 1|addequip 1	
+2584	Your blood mage has joined wit	0	Your blood mage has joined with the local warlock and attempted a summoning. Unfortunately the demon broke free! [Ring of Regeneration]	nomnr 900|targpath1 7|rare 15|code 186	code 0|com 900|addequip 1|addequip 9|4d6units 526|nation -2|com 2540|bloodboost 1|bloodboost 1|addequip 1	
 2585	Your blood mage has joined wit	0	Your blood mage has joined with the local warlock and attempted a summoning. Unfortunately the demon broke free! [The Heart of Life]	nomnr 827|targpath1 7|rare 15|code 186	code 0|com 827|addequip 1|addequip 9|4d6units 526|nation -2|com 2540|bloodboost 1|bloodboost 1|addequip 1	
 2586	Your blood mage has joined wit	0	Your blood mage has joined with the local warlock and attempted a summoning. Unfortunately the demons broke free!	targpath1 7|rare 15|code 186	code 0|4com 304|8d6units 2286|nation -2|com 2540|bloodboost 1|bloodboost 1|addequip 1	
 2587	Your blood mage has joined wit	0	Your blood mage has joined with the local warlock and attempted a summoning. A powerful demon was bound!	targpath2 7|rare 15|nomonster 828|code 186	code 0|nation -2|com 828|com 95|addequip 1	
@@ -2596,9 +2596,9 @@ id	name	rarity	description	requirements	effects	test
 2595	One of your mages has tried to	1	One of your mages has tried to make a bargain with the Heliophagus, but was tricked and sent to inferno.	targpath1 53|0x7E00 0|monster 820	banished -13	
 2596	One of your mages has tried to	1	One of your mages has tried to reveal the secrets of demonic power from a powerful devil but only managed to anger the demon and was sent to Kokytos.	targpath1 53|0x7E00 0|monster 821	banished -12	
 2597	One of your mages has tried to	1	One of your mages has tried to reveal the secrets of demonic power from a powerful devil but only managed to anger the demon and was sent to Kokytos.	targpath1 53|0x7E00 0|monster 822	banished -12	
-2598	One of your mages has tried to	1	One of your mages has tried to reveal the secrets of demonic power from a powerful devil but only managed to anger the demon and was sent to Kokytos.	targpath1 53|0x7E00 0|monster 833	banished -12	
-2599	One of your mages has tried to	1	One of your mages has tried to reveal the secrets of demonic power from a powerful devil but only managed to anger the demon and was sent to Kokytos.	targpath1 53|0x7E00 0|monster 834	banished -12	
-2600	One of your mages has tried to	1	One of your mages has tried to reveal the secrets of demonic power from a powerful devil but only managed to anger the demon and was sent to Kokytos.	targpath1 53|0x7E00 0|monster 835	banished -12	
+2598	One of your mages has tried to	1	One of your mages has tried to reveal the secrets of demonic power from a powerful devil but only managed to anger the demon and was sent to Kokytos.	targpath1 53|0x7E00 0|monster 823	banished -12	
+2599	One of your mages has tried to	1	One of your mages has tried to reveal the secrets of demonic power from a powerful devil but only managed to anger the demon and was sent to Kokytos.	targpath1 53|0x7E00 0|monster 824	banished -12	
+2600	One of your mages has tried to	1	One of your mages has tried to reveal the secrets of demonic power from a powerful devil but only managed to anger the demon and was sent to Kokytos.	targpath1 53|0x7E00 0|monster 825	banished -12	
 2601	One of your mages was sucked i	1	One of your mages was sucked into the Demon Gate. If returning is possible, some insights may have been gained. [Demon Gate]	targpath1 53|0x7E00 0|foundsite 1	banished -13|pathboost 4|pathboost 0|fireboost 1	
 2602	One of your mages was sucked i	1	One of your mages was sucked into the Demon Gate. If return-in is possible, some insights may have been gained. [Demon Gate]	targpath1 53|0x7E00 0|foundsite 1	banished -12|pathboost 4|pathboost 2|waterboost 1	
 2603	One of your commanders agreed 	1	One of your commanders agreed to run an errand for The Goat Sun.	0x7E00 0|monster 1405	banished -12	
@@ -2715,13 +2715,13 @@ id	name	rarity	description	requirements	effects	test
 2714	Lamia summons demons.	0	Lamia summons demons.	rare 25|story 1|unique 2|targmnr 609|targpath3 7|code 198	2d6units 526	
 2715	Lamia summons Dark Vines when 	0	Lamia summons Dark Vines when her power is strong enough.	story 1|unique 1|targmnr 609|targpath3 6|code 198	1d6units 330	
 2716	Lamia summons more Dark Vines 	0	Lamia summons more Dark Vines when her power is even stronger.	story 1|unique 1|targmnr 609|targpath4 6|code 198	1d6units 330	
-2717	Tensions are rising over the p	0	Tensions are rising over the practices of the Ravens Vale Seraphs. There has been manifestations of civil unrest in the capital. Only the wisdom of an Eagle King will calm the opposing factions.	monster 1663|nomonster 1285|nation 14|0x4600 1|rare 10|turn 8|capital 1|unique 1|code 0	code 201|unrest 10|0x6F00 4|0x6B00 1	
+2717	Tensions are rising over the p	0	Tensions are rising over the practices of the Ravens Vale Seraphs. There has been manifestations of civil unrest in the capital. Only the wisdom of an Eagle King will calm the opposing factions.	monster 1663|nomonster 1286|nation 14|0x4600 1|rare 10|turn 8|capital 1|unique 1|code 0	code 201|unrest 10|0x6F00 4|0x6B00 1	
 2718	The Caelian Seraphs have broug	0	The Caelian Seraphs have brought a leader of Ravens Vale to court, sentencing him to exile. This has demonstrated Caelian supremacy and removed a quarrelsome voice among the Harab Seraphs.	nation 14|code 201	code 202|incscale2 Turmoil|0x7000 6|0x6B00 0	
 2719	A group of renegades have atta	0	A group of renegades have attacked the province! They are led by an exiled Harab Seraph.	unique 1|fort 0|code 0|code 202|land 1	code 203|com 2618|addequip 1|5d6units 1707|5d6units 1278	
 2720	There have been rumors of a pl	0	There have been rumors of a plague brought upon the land by practice of unclean magic. This has lead to unrest among the populace and hostility towards the inhabitants of Ravens Vale.	rare 20|unique 1|code 202|nation 14|code 201	unrest 10	
-2721	The mere presence of a descend	0	The mere presence of a descendant of the Yazatas is enough to placate the agitated realm.	monster 1285|code 201	code 0|unrest -20|incdom 1	
+2721	The mere presence of a descend	0	The mere presence of a descendant of the Yazatas is enough to placate the agitated realm.	monster 1286|code 201	code 0|unrest -20|incdom 1	
 2722	Some Iceclads have volunteered	0	Some Iceclads have volunteered to patrol the land and subdue any disloyal protests.	rare 15|unique 1|nation 14|code 202	nation -2|2d6units 1285	
-2723	The presence of a descendant o	0	The presence of a descendant of the Yazatas has placated the capital, but dissent remains. Many of the Raptorians feel their clan has been wronged by the courts lately when disputes have been settled to the advantage of the Airyas.	monster 1285|code 202	unrest -20	
+2723	The presence of a descendant o	0	The presence of a descendant of the Yazatas has placated the capital, but dissent remains. Many of the Raptorians feel their clan has been wronged by the courts lately when disputes have been settled to the advantage of the Airyas.	monster 1286|code 202	unrest -20	
 2724	The province has been raided b	0	The province has been raided by a band of renegade raptorians! [Palace of the Eagle Kings]	rare 10|site 0|unique 4|nation 14|code 202|land 1	taxboost -30|unrest 15	
 2725	There are rumors of a band of 	0	There are rumors of a band of raptorians harassing travelers.[Palace of the Eagle Kings]	rare 15|site 0|unique 2|nation 14|code 202	unrest 10	
 2726	One of the cealians has been a	0	One of the cealians has been attacked unexpectedly!	rare 15|targmnr 1284|unique 1|code 202	assassin 676	
@@ -2852,7 +2852,7 @@ id	name	rarity	description	requirements	effects	test
 2851	More of the strange howling ha	0	More of the strange howling has been heard along the coast. People have disappeared and locals are upset.	rare 15|noseason 3|unique 3|code 227|code 228	unrest 15	
 2852	Sea dogs are attacking the coa	2	Sea dogs are attacking the coastal settlements, lead on their frenzied hunt by a proud ichtycentaur. [Bottle of Living Water]	coast 1|unique 1|noseason 3	com 1409|addequip 9|10d6units 1064	
 2853	Sea dogs are attacking the coa	0	Sea dogs are attacking the coastal settlements, lead on their frenzied hunt by a proud ichtycentaur. [Bottle of Living Water]	code 227|code 228|unique 1|coast 1|unique 1|noseason 3	com 1409|addequip 9|10d6units 1064|code 0	
-2854	The province governor has sent	2	The province governor has sent word to the capital. The inhabitants in one of the secluded fishing villages along the coast seem to be engaged in smuggling. However, all attempts to reveal this have failed and she suspects the smugglers have informants among the province officials. The governor therefore asks for aid from the capital. Perhaps someone should be sent to investigate.	0x4600 1|coast 1|notnation 84|notnation 88|freesites 2|code 0	code 229|order 1|0x6B00 1	
+2854	The province governor has sent	2	The province governor has sent word to the capital. The inhabitants in one of the secluded fishing villages along the coast seem to be engaged in smuggling. However, all attempts to reveal this have failed and she suspects the smugglers have informants among the province officials. The governor therefore asks for aid. Perhaps someone should be sent to investigate.	0x4600 1|coast 1|notnation 84|notnation 88|freesites 2|code 0	code 229|order 1|0x6B00 1	
 2855	There has been an assassinatio	0	There has been an assassination attempt!	rare 10|code 231|targorder 100|code 230|code 229	assassin 1576	
 2856	Your agent sends a disturbing 	0	Your agent sends a disturbing report from the coastal village. Some of the inhabitants are afflicted with a deforming disease. They walk hunchbacked and with a wobbling gait, eyes bulging from the strange fever besetting them. This has led them to seek aid with alien gods, secret worship supposedly taking place on a small island off the coast.	rare 80|targorder 100|code 229	code 230|incdom -3	
 2857	When investigating the island,	0	When investigating the island, your agent was attacked!	rare 15|unique 2|targorder 100|code 231|code 230	assassin 757	
@@ -3021,7 +3021,7 @@ id	name	rarity	description	requirements	effects	test
 3020	Stars realign. The risk of War	0	Stars realign. The risk of War in Hell passes... HIDDEN	rare 77|code 273|story 1	code -45|notext 1	
 3021	First Gate appaears, for testi	0	First Gate appaears, for testing, will happen only if forced. [The First Gate]	rare 0|code 0	0x4200 -1	
 3022	Oh, no! The Queen of the Garne	0	Oh, no! The Queen of the Garnet Amazon tribe has ambitions of conquest! HIDDEN [Oasis]	freesites 1|maxturn 1|rare 15|story 1|poptype 41|unique 1|code 0|capital 0|land 1|0x4600 1	code 275|notext 1|newsite -1	
-3023	The Land of the Onyx Queen has	0	The Land of the Onyx Queen has been conquered and her palace claimed! Unfortunately, it seems most of the fabled riches of her abode have been sqandered on wine and debauchery! As compensation, her slaves and virgin followers were taken. 	unique 1|code 275	code 0|resetcode 276|resetcode 277|resetcode 278|gold 80|3d6vis B	
+3023	The Land of the Garnet Queen h	0	The Land of the Garnet Queen has been conquered and her palace claimed! Unfortunately, it seems most of the fabled riches of her abode have been sqandered on wine and debauchery! As compensation, her slaves and virgin followers were taken. 	unique 1|code 275	code 0|resetcode 276|resetcode 277|resetcode 278|gold 80|3d6vis B	
 3024	The Garnet Queen comes to powe	0	The Garnet Queen comes to power. HIDDEN	story 1|unique 1|code 275	com 350|10d6units 351|4d6units 612|2com 349|addequip 1	
 3025	The Garnet Queen is crowned. H	0	The Garnet Queen is crowned. HIDDEN	story 1|targmnr 350|unique 1|code 275	fireboost 1|fireboost 1|bloodboost 1|addequip 1|gainaff 549755813888	
 3026	The Garnet Queen is fitted wit	0	The Garnet Queen is fitted with garments. HIDDEN [Blood Thorn]	story 1|0x8100 0|targmnr 350|unique 1|code 275	addequip 9|bloodboost 1|addequip 1	
@@ -3032,9 +3032,9 @@ id	name	rarity	description	requirements	effects	test
 3031	Ferocious amazons have attacke	0	Ferocious amazons have attacked!	rare 50|code 275|story 1|unique 9|code 276	code 277|2com 349|addequip 1|6d6units 351|2d6units 612	
 3032	The amazons consolidate.	0	The amazons consolidate.	rare 8|code 275|story 1|unique 6|code 277	com 349|addequip 1|5d6units 351|2d6units 304|2d6units 303	
 3033	A devil joins. [Demon Whip]	0	A devil joins. [Demon Whip]	rare 7|code 275|story 1|unique 6|code 277	com 304|addequip 9|2d6units 303|incscale2 Turmoil	
-3034	The onyx amazons have been def	0	The onyx amazons have been defeated! With her last breath, their priestess promised vengeance from her Queen upon your followers!	code 275|unique 2|code 277	code 278	
+3034	The garnet amazons have been d	0	The garnet amazons have been defeated! With her last breath, their priestess promised vengeance from her Queen upon your followers!	code 275|unique 2|code 277	code 278	
 3035	A Horde from Hell has been sen	0	A Horde from Hell has been sent to wreak havoc in your lands!	rare 33|unique 2|code 278|land 1	resetcode 278|com 303|5d6units 304	
-3036	The onyx amazons have been dri	0	The onyx amazons have been driven from the land! Some spoils of war have been transported to the treasury.	unique 2|code 277	code 0|gold 100|magicitem 1|1d3vis F	
+3036	The garnet amazons have been d	0	The garnet amazons have been driven from the land! Some spoils of war have been transported to the treasury.	unique 2|code 277	code 0|gold 100|magicitem 1|1d3vis F	
 3037	A devil joins. [Demon Whip]	0	A devil joins. [Demon Whip]	rare 5|code 275|story 1|unique 1|code 275	com 304|addequip 9|2d6units 303|incscale2 Turmoil	
 3038	The amazons have organized a s	0	The amazons have organized a slave market. [Slave Market]	rare 10|code 275|story 1|unique 1|code 275	newsite -1	
 3039	The amazons have organized a s	0	The amazons have organized a slave market. [Slave Market]	rare 10|code 275|story 1|unique 1|code 276	newsite -1	
@@ -3054,10 +3054,10 @@ id	name	rarity	description	requirements	effects	test
 3053	When the fort was demolished, 	0	When the fort was demolished, a forgotten treasure vault was found!	rare 1|luck 1|targorder 44	gold 200|magicitem 1	
 3054	A tentacled monster has nested	-1	A tentacled monster has nested in the area and is feeding on travellers. Locals demand that something be done! A patrolling force may be able to locate its whereabouts.	unique 1|land 0|capital 0|0x4600 1|code 0	code 280|order 33|unrest 5|0x6B00 1	
 3055	Your minions have located the 	0	Your minions have located the lair of the monster, inside the broken belly of a sunken ship.	targorder 3|rare 30|code 280	code 296|order 33	
-3056	The Kraken seem to be guarding	0	The Kraken seem to be guarding its eggs. A mage skilled in water magic would perhapsmake use of them.	unique 1|targorder 100|code 296	order 288	
+3056	The Kraken seem to be guarding	0	The Kraken seem to be guarding its eggs. A mage skilled in water magic would perhaps make use of them.	unique 1|targorder 100|code 296	order 288	
 3057	Your forces attack the monster	0	Your forces attack the monsters nest in the sunken ship, trying to kill it or drive it away. [Ring of Regeneration]	unique 1|targorder 105|code 296	code 297|com 438|addequip 9	
 3058	The Kraken has been killed. It	0	The Kraken has been killed. Its lair in the Sunken Galley seems to yield magical gems, harvested from the empty skulls of its still chained oarsmen. [Sunken Galley]	unique 1|rare 10|code 297	code 0|newsite -1	
-3059	The master of Water Magic has 	0	The master of Water Magic has tamed the Kraken and made it roost the eggs. Its spawn will be under the control of the mage.	0x8000 1|rare 50|targpath1 2|code 296	code 298|0x6F00 8	
+3059	The master of Water Magic has 	0	The master of Water Magic has tamed the Kraken and made it roost the eggs. Its spawn will be under the control of the mage, even if the monster is left unchained.	targorder 108|rare 50|targpath1 2|code 296	code 298|0x6F00 8	
 3060	The eggs of the Kraken are all	0	The eggs of the Kraken are all hatched and the mother has left its nest.	unique 1|story 1	code 0	
 3061	The Kraken has been angered!	0	The Kraken has been angered!	unique 1|targorder 105|code 296	code 297|com 438|addequip 9	
 3062	A Kraken egg has hatched and t	0	A Kraken egg has hatched and the monster crawling from it made to serve.	unique 6|rare 25|code 298	nation -2|1unit 438	
@@ -3102,35 +3102,92 @@ id	name	rarity	description	requirements	effects	test
 3101	Many have died from a strange 	0	Many have died from a strange disease. Some say it comes from demons infesting the flesh of mortals.	rare 1|0x7E00 0|code -49	code 0|kill 1|gainaff 8	
 3102	A horde of frenzied farmers ha	0	A horde of frenzied farmers have attacked the garrison. They seem raving mad! [Demon Whip]	rare 1|unique 1|maxdef 12|capital 0|code -49	2com 1565|10d6units 1565|com 962|2d6units 962|com 304|addequip 9	
 3103	The Dome of Solid Air has attr	0	The Dome of Solid Air has attracted some playful beings that seem fascinated by its magic. Some of them have been bound by a crafty mage.	rare 2|0x5300 61|targpath2 1|unique 2|0x4600 1|land 1	nation -2|3d6units 562	
-3104	Some demons have been attracte	0	Some demons have been attracted by the blood vortex!	rare 2|unique 2|0x5300 87|0x4600 1|land 1	nation -2|2d6units 88	
-3105	Some demons have been attracte	0	Some demons have been attracted by the blood vortex!	rare 2|unique 2|0x5300 87|0x4600 1|land 1	nation -2|2d6units 286	
+3104	Some demons have been attracte	0	Some demons have been attracted by the blood vortex!	rare 2|unique 2|0x5300 87|0x4600 1|land 1	nation -2|com 88|2d6units 88	
+3105	Some demons have been attracte	0	Some demons have been attracted by the blood vortex!	rare 2|unique 2|0x5300 87|0x4600 1|land 1|cold 2	nation -2|com 632|addequip 1|waterboost 1|2d6units 632	
 3106	Some demons have been attracte	0	Some demons have been attracted by the blood vortex!	rare 1|unique 2|0x5300 87|0x4600 1|land 1	com 88|2d6units 88	
-3107	Some demons have been attracte	0	Some demons have been attracted by the blood vortex!	rare 1|unique 2|0x5300 87|0x4600 1|land 1	com 286|2d6units 286	
-3108	People in the area speak of a 	0	People in the area speak of a legendary swordsman living as a hermit in the forest.	0x4600 1|freesites 1|rare 5|unique 1|forest 1|fornation 42|code 0	code 283|order 1|0x6B00 1	
-3109	Your servant has interrogated 	0	Your servant has interrogated some peasants. They say that only one who is worthy can find the hermit -and who can be more worthy than one of the emperors bloodline?	unique 1|targorder 100|code 283	code 284	
-3110	While sleeping in the woods, t	0	While sleeping in the woods, the supposedly worthy one was approached by a celestial being in his dream. The being put his mark upon the forhead of the prince and claimed that an ordeal must be undertaken before the path to the Ancient Master will be revealed. Will you accept this challenge? Or could it be wise to consult one of the celestial masters first, bringing him here to investigate the spiritual energies of the forest?	unique 7|targorder 100|targmnr 793|code 284	code 285|gainaff 549755813888|order 5	
-3111	During further meditation in t	0	During further meditation in the woods, the Prince was attacked by a Demon of Heavenly Fires!	0x8100 0|targorder 102|targmnr 793|code 285	code 286|assassin 926	
-3112	It seems the Prince was not wo	0	It seems the Prince was not worthy! Perhaps he was not of the emperors blood after all. Perhaps another should be sent.	nomonster 793|code 286	code 284|order 1	
-3113	The Celestial Master has sense	0	The Celestial Master has sensed the divine energies emanating to this forest. The trial will be one of fire!	unique 1|code 285|targmnr 803		
-3114	The blood of the emperor has p	0	The blood of the emperor has prevailed! After the battle, a path was found through a hidden ravine, leading to a secluded glen. There, in a simple hut, an Ancient Master was found sitting on his straw mat. He will offer his knowledge of the arts of war to your servants. Some may even be granted a glimpse of the celestial realm through his guidance. [The Ancient Master]	unique 1|0x8100 0|targmnr 793|code 286	code 287|newsite -1|order 0|0x6B00 0	
-3115	Under the tutelage of the Anci	0	Under the tutelage of the Ancient Master, your servant has glimpsed the Celestial realm!	unique 2|rare 3|targorder 50|code 287	astralboost 1	
-3116	Your servant has been proven w	0	Your servant has been proven worthy and won a gift from the Ancient Master. [Chi Shoes]	unique 3|rare 3|targorder 50|code 287	addequip 9	
-3117	Your servant has been proven w	0	Your servant has been proven worthy and received a gift from the Ancient Master. [Sword of Swiftness]	unique 1|rare 25|targorder 50|targmnr 793|code 287	addequip 9	
-3118	An enemy army approaches.	0	An enemy army approaches.	unique 1|mintroops 80|notnation 42|code 287|code 0	notext 1|code 288	
-3119	A enemy army approaches! The A	0	A enemy army approaches! The Ancient master has summoned some Celestial beings to your aid!	unique 1|code 287|code 288	resetcode 288|code 0|nation -2|com 926|1d6units 1338	
-3120	An enemy has taken over the pr	0	An enemy has taken over the province of the ancient master of Tien.	unique 1|notnation 42|code 287	notext 1|code 0|resetcode 288	
-3121	Preparations â?? check that th	0	Preparations â?? check that there is a swamp in the realm.	turn 15|0x4600 1|rare 3|unique 1|fornation 42|swamp 1|code 0	code 289|notext 1	
-3122	The Emperor has fallen ill! A 	0	The Emperor has fallen ill! A master Alchemist must investigate this malady. To make matters worse, this is an omen of bad fortune and will upset the balance of the empire unless remedied.	capital 1|unique 1|fornation 42|code 289|code 0	code 290|incscale Misfortune|unrest 5|0x6B00 1|0x6F00 12	
-3123	The Emperor has died! Turmoil 	0	The Emperor has died! Turmoil will follow!	unique 1|code 290	code 291|incscale3 Misfortune|incscale3 Turmoil|incdom -3|resetcode 289|0x6B00 0	
-3124	The Alchemist has investigated	0	The Alchemist has investigated the Emperors malady. It is a grievous disease that can only be cured by a certain rare herb. This herb grows in swamplands and a skilled herbalist is needed to find and recognize it.	unique 1|targmnr 1892|code 290		
-3125	The Emperor has fevers!	0	The Emperor has fevers!	rare 10|unique 3|code 290	incscale2 Misfortune|unrest 5	
-3126	The Emperors tongue has becomm	0	The Emperors tongue has becomme swollen and red!	rare 7|unique 1|code 290	incscale2 Misfortune|unrest 5	
-3127	The Emperors stools are strang	0	The Emperors stools are strangely colored!	rare 7|unique 1|code 290	incscale3 Misfortune|unrest 10	
+3107	People in the area speak of a 	0	People in the area speak of a legendary swordsman living as a hermit in the forest.	0x4600 1|freesites 1|rare 5|unique 1|forest 1|fornation 42|code 0	code 283|order 1|0x6B00 1	
+3108	Your servant has interrogated 	0	Your servant has interrogated some peasants. They say that only one who is worthy can find the hermit -and who can be more worthy than one of the emperors bloodline?	unique 1|targorder 100|code 283	code 284	
+3109	While sleeping in the woods, t	0	While sleeping in the woods, the supposedly worthy one was approached by a celestial being in his dream. The being put a mark upon the forhead of the prince and claimed that an ordeal must be undertaken before the path to the Ancient Master will be revealed. Will you accept this challenge? Or could it be wise to consult one of the celestial masters first, bringing him here to investigate the spiritual energies of the forest?	unique 7|targorder 100|targmnr 793|code 284	code 285|gainaff 549755813888|order 5	
+3110	During further meditation in t	0	During further meditation in the woods, the Prince was attacked by a Deamon of Heavenly Fires!	0x8100 0|targorder 102|targmnr 793|code 285	code 286|assassin 926	
+3111	It seems the Prince was not wo	0	It seems the Prince was not worthy! Perhaps he was not of the emperors blood after all. Perhaps another should be sent.	nomonster 793|code 286	code 284|order 1	
+3112	The Celestial Master has sense	0	The Celestial Master has sensed the divine energies emanating to this forest. The trial will be one of fire!	unique 1|code 285|targmnr 803		
+3113	The blood of the emperor has p	0	The blood of the emperor has prevailed! After the battle, a path was found through a hidden ravine, leading to a secluded glen. There, in a simple hut, an Ancient Master was found sitting on his straw mat. He will offer his knowledge of the arts of war to your servants. Some may even be granted a glimpse of the celestial realm through his guidance. [The Ancient Master]	unique 1|0x8100 0|targmnr 793|code 286	code 287|newsite -1|order 0|0x6B00 0	
+3114	Under the tutelage of the Anci	0	Under the tutelage of the Ancient Master, your servant has glimpsed the Celestial realm!	unique 2|rare 3|targorder 50|code 287	astralboost 1	
+3115	Your servant has been proven w	0	Your servant has been proven worthy and won a gift from the Ancient Master. [Chi Shoes]	unique 3|rare 3|targorder 50|code 287	addequip 9	
+3116	The young prince has been prov	0	The young prince has been proven worthy and received a sword from the Ancient Master. The blade sings when whirled through the air by his skilled hands. [Sword of Swiftness]	unique 1|rare 25|targorder 50|targmnr 793|code 287	addequip 9	
+3117	An enemy army approaches.	0	An enemy army approaches.	unique 1|mintroops 80|notnation 42|code 287|code 0	notext 1|code 288	
+3118	A enemy army approaches! The A	0	A enemy army approaches! The Ancient master has summoned some Celestial beings to your aid!	unique 1|code 287|code 288	resetcode 288|code 0|nation -2|com 926|1d6units 1338	
+3119	An enemy has taken over the pr	0	An enemy has taken over the province of the ancient master of Tien.	unique 1|notnation 42|code 287	notext 1|code 0|resetcode 288	
+3120	Preparations â?? check that th	0	Preparations â?? check that there is a swamp in the realm.	turn 15|0x4600 1|rare 3|unique 1|fornation 42|swamp 1|code 0	code 289|notext 1	
+3121	The Emperor has fallen ill! A 	0	The Emperor has fallen ill! A master Alchemist must investigate this malady. To make matters worse, this is an omen of bad fortune and will upset the balance of the empire unless remedied.	capital 1|unique 1|fornation 42|code 289|code 0	code 292|incscale Misfortune|unrest 5|0x6B00 1|0x6F00 12	
+3122	The Emperor has died! Turmoil 	0	The Emperor has died! Turmoil will follow!	unique 1|code 292	code 291|incscale3 Misfortune|incscale3 Turmoil|incdom -3|resetcode 289|0x6B00 0	
+3123	The Alchemist has investigated	0	The Alchemist has investigated the Emperors malady. It is a grievous disease that can only be cured by a certain rare herb. This herb grows in swamplands and a skilled herbalist is needed to find and recognize it.	unique 1|targmnr 1892|code 292	code 290	
+3124	The Emperor has fevers!	0	The Emperor has fevers!	rare 10|unique 3|code 290|code 292	incscale2 Misfortune|unrest 5	
+3125	The Emperors tongue has becomm	0	The Emperors tongue has becomme swollen and red!	rare 7|unique 1|code 290|code 292	incscale2 Misfortune|unrest 5	
+3126	The Emperors stools are strang	0	The Emperors stools are strangely colored!	rare 7|unique 1|code 290|code 292	incscale3 Misfortune|unrest 10	
+3127	The Princes are feuding over s	0	The Princes are feuding over succession!	unique 1|code 291	0x6E00 1|unrest 15|kill 1	
 3128	The Princes are feuding over s	0	The Princes are feuding over succession!	unique 1|code 291	0x6E00 1|unrest 15|kill 1	
-3129	The Princes are feuding over s	0	The Princes are feuding over succession!	unique 1|code 291	0x6E00 1|unrest 15|kill 1	
-3130	A new Emperor has been crowned	0	A new Emperor has been crowned, restoring order and celestial balance!	unique 1|code 291	code 0|unrest -50|incdom 3|decscale3 Turmoil|decscale3 Misfortune	
-3131	An assassination attempt has b	0	An assassination attempt has been made!	unique 1|targmnr 793|code 291	assassin 428	
-3132	Your servant has found the rar	0	Your servant has found the rare herb! It has been sent to the emperors physicians and his strange malady averted!	unique 1|rare 50|code 290|targmnr 1892|swamp 1	resetcode 290|resetcode 289|natureboost 1	
-3133	Your servant has found the rar	0	Your servant has found the rare herb! It has been sent to the emperors physicians and his strange malady averted!	unique 1|rare 25|code 290|targmnr 1892|swamp 1	resetcode 290|resetcode 289|natureboost 1	
-3134	Your servant has found the rar	0	Your servant has found the rare herb! It has been sent to the emperors physicians and his strange malady averted!	unique 1|rare 25|code 290|targmnr 1890|swamp 1	resetcode 290|resetcode 289|natureboost 1	
-3135	Your servant has found the rar	0	Your servant has found the rare herb! It has been sent to the emperors physicians and his strange malady averted!	unique 1|rare 25|code 290|targmnr 1891|swamp 1	resetcode 290|resetcode 289|natureboost 1	
+3129	A new Emperor has been crowned	0	A new Emperor has been crowned, restoring order and celestial balance!	unique 1|code 291	code 0|unrest -50|incdom 3|decscale3 Turmoil|decscale3 Misfortune	
+3130	An assassination attempt has b	0	An assassination attempt has been made!	unique 1|targmnr 793|code 291	assassin 428	
+3131	Your servant has found the rar	0	Your servant has found the rare herb! It has been sent to the emperors physicians and his strange malady averted!	unique 1|rare 50|code 290|targmnr 1892|swamp 1	resetcode 290|resetcode 289|natureboost 1	
+3132	Your servant has found the rar	0	Your servant has found the rare herb! It has been sent to the emperors physicians and his strange malady averted!	unique 1|rare 25|code 290|targmnr 1892|swamp 1	resetcode 290|resetcode 289|natureboost 1	
+3133	Your servant has found the rar	0	Your servant has found the rare herb! It has been sent to the emperors physicians and his strange malady averted!	unique 1|rare 25|code 290|targmnr 1890|swamp 1	resetcode 290|resetcode 289|natureboost 1	
+3134	Your servant has found the rar	0	Your servant has found the rare herb! It has been sent to the emperors physicians and his strange malady averted!	unique 1|rare 25|code 290|targmnr 1891|swamp 1	resetcode 290|resetcode 289|natureboost 1	
+3135	Some demons have been attracte	0	Some demons have been attracted by the blood vortex!	rare 2|unique 2|0x5300 87|0x4600 1|land 1|heat 2	nation -2|com 304|addequip 1|fireboost 1|addequip 1|2d6units 303|1d6units 304	
+3136	Some demons have been attracte	0	Some demons have been attracted by the blood vortex!	rare 2|unique 2|0x5300 87|0x4600 1|land 1|heat 2	nation -2|com 304|addequip 1|fireboost 1|addequip 1|2d6units 303|1d6units 304	
+3137	Some demons have been attracte	0	Some demons have been attracted by the blood vortex!	rare 2|unique 2|0x5300 87|0x4600 1|land 1|cold 2	com 632|addequip 1|waterboost 1|2d6units 632	
+3138	Demonic forces seeking the Blo	0	Demonic forces seeking the Blood Vortex HIDDEN.	rare 10|unique 3|0x5300 87|0x4600 1|land 1|code 0	notext 1|code -49	
+3139	One of your commanders has cau	-1	One of your commanders has caught a frog in the swamp and is keeping it as a pet.	unluck 1|swamp 1	1unit 2222	
+3140	One of your commanders has cau	1	One of your commanders has caught a frog in the swamp and is keeping it as a pet.	luck 0|swamp 1	1unit 2222	
+3141	A superstitious lord has roote	2	A superstitious lord has rooted out witches, wizards, mongrels, strangers and half-wits. All have been staked and left to desiccate on dry land. Magic has decreased and a substantial portion of the populace has been lost.	land 0|minpop 100|chaos -2|magic 2|turn 10	incscale3 Drain|kill 10	
+3142	A dragon has been sighted flyi	1	A dragon has been sighted flying across the land. This is interpreted as a bad omen.	fornation 42|land 1|code 0	code -7	
+3143	A dragon has been sighted flyi	1	A dragon has been sighted flying across the land. This is interpreted as a bad omen.	fornation 42|land 1|code 0	code -7	
+3144	A dragon has been sighted flyi	1	A dragon has been sighted flying across the forest. This is interpreted as a bad omen.	fornation 42|forest 1|code 0	code -7	
+3145	A dragon was seen cicling a mo	1	A dragon was seen cicling a mountain peak. This is interpreted as a bad omen.	fornation 42|mountain 1|code 0	code -7	
+3146	A Minister of Rituals has perf	0	A Minister of Rituals has performed adequate ceremonies to ameliorate the bad omens threatening this province.	rare 15|targmnr 804|code -7	code 0	
+3147	A Ceremonial Master has taken 	0	A Ceremonial Master has taken measures to ameliorate the bad omens threatening this province.	rare 10|targmnr 807|code -7	code 0	
+3148	A dragon has been sighted flyi	0	A dragon has been sighted flying across the land. This is interpreted as a bad omen.	fornation 42|rare 1|land 1|code 290|code 0	code -7	
+3149	A dragon has been sighted flyi	0	A dragon has been sighted flying across the land. This is interpreted as a bad omen.	fornation 42|rare 1|land 1|code 290|code 0	code -33	
+3150	A Minister of Rituals has perf	0	A Minister of Rituals has performed adequate ceremonies to ameliorate the bad omens threatening this province.	rare 15|targmnr 804|code -33	code 0	
+3151	A Ceremonial Master has taken 	0	A Ceremonial Master has taken measures to counter the bad omens threatening this province.	rare 10|targmnr 807|code -33	code 0	
+3152	Oh, no! The Queen of the Onyx 	0	Oh, no! The Queen of the Onyx Amazon tribe has ambitions of conquest! HIDDEN	story 1|land 1|maxturn 1|rare 15|story 1|poptype 43|unique 1|code 0	code 301|notext 1	
+3153	The Land of the Onyx Amazons h	0	The Land of the Onyx Amazons has been conquered!	unique 1|code 301	code 0|resetcode 302|resetcode 303|resetcode 304	
+3154	The Onyx Queen comes to power.	0	The Onyx Queen comes to power. HIDDEN	story 1|unique 1|code 301	com 365|10d6units 357|5d6units 369|2com 355|addequip 1	
+3155	The Onyx Queen is crowned. HID	0	The Onyx Queen is crowned. HIDDEN	story 1|targmnr 365|unique 1|code 301	deathboost 1|deathboost 1|holyboost 1|addequip 1|gainaff 549755813888	
+3156	The Onyx Queen is fitted with 	0	The Onyx Queen is fitted with garments. HIDDEN [Skullface]	story 1|story 1|0x8100 0|targmnr 365|unique 1|code 301	addequip 9|earthboost 1|earthboost 1|addequip 1	
+3157	The queen replenishes her gems	0	The queen replenishes her gems.	rare 15|turn 30|0x8100 0|targmnr 365|story 1	addequip 1	
+3158	The Onyx Queen is fitted with 	0	The Onyx Queen is fitted with garments. HIDDEN [Champion's Skull]	rare 20|0x8100 0|targmnr 365|unique 1|code 301	addequip 9	
+3159	The clapper of hooves and clat	0	The clapper of hooves and clatter of bones have lately been heard at night close to some settlements.	story 1|rare 10|code 301|capital 0|land 1|code 0	code 302|unrest 10	
+3160	People speak in fear of the Qu	0	People speak in fear of the Queen of the Onyx amazon that has come to power in a neighbouring land. She is rumored to be unsurpassed in both cunning and cruelty!	story 1|rare 10|code 301|capital 0|land 1|code 0	code 302	
+3161	Amazons have attacked!	0	Amazons have attacked!	rare 50|code 301|story 1|unique 9|code 302	code 303|2com 355|addequip 1|6d6units 357|2d6units 355	
+3162	The amazons consolidate.	0	The amazons consolidate.	rare 8|code 301|story 1|unique 6|code 303	com 355|addequip 1|5d6units 357|2d6units 369|8d6units -15	
+3163	A minotaur joins. [Implementor	0	A minotaur joins. [Implementor Axe]	rare 7|code 301|story 1|unique 3|code 303	com 234|addequip 9	
+3164	The onyx amazons have been def	0	The onyx amazons have been defeated! With her last breath, their priestess promised vengeance from her Queen upon your followers!	code 301|unique 2|code 303	code 304	
+3165	Undead have risen to wreak hav	0	Undead have risen to wreak havoc in your lands!	rare 33|unique 2|code 304	resetcode 304|com 188|10d6units -15	
+3166	The onyx amazons have been dri	0	The onyx amazons have been driven from the land! Some spoils of war have been transported to the treasury.	unique 2|code 303	code 0|gold 100|magicitem 1|1d3vis D	
+3167	A minotaur joins. [Implementor	0	A minotaur joins. [Implementor Axe]	rare 5|code 301|story 1|unique 1|code 301	com 234|addequip 9	
+3168	The amazons have built a mound	0	The amazons have built a mound. [Burial Mound]	rare 10|code 301|story 1|unique 1|code 301	newsite -1	
+3169	The amazons have built a mound	0	The amazons have built a mound. [Burial Mound]	rare 10|code 301|story 1|unique 1|code 302	newsite -1	
+3170	The minotaur has been equipped	0	The minotaur has been equipped [Copper Plate].	targmnr 234|story 1|unique 3|code 301	addequip 9	
+3171	The Onyx Queen is fitted with 	0	The Onyx Queen is fitted with garments. HIDDEN [Girdle of Might]	story 1|story 1|0x8100 0|targmnr 365|unique 1|code 301	addequip 9	
+3172	The Onyx queen uses her magic 	0	The Onyx queen uses her magic to raise undead!	rare 10|code 301|story 1|unique 6|code 303	com 190|1d6units 369|6d6units -15|6d6units -2|2d6units 357	
+3173	The Onyx queen uses her magic 	0	The Onyx queen uses her magic to raise undead!	turn 66|code 301|story 1|unique 6|code 303	com 190|4d6units 369|12d6units -15|12d6units -2|8d6units 357	
+3174	The Onyx Queen gains more powe	0	The Onyx Queen gains more power. HIDDEN	turn 66|story 1|targmnr 365|unique 1|code 301	deathboost 1|earthboost 1|addequip 1	
+3175	Lately, farmers and merchants 	1	Lately, farmers and merchants have disappeared when traveling one of the local mountain paths.	fornation 42|unique 1|mountain 1|0x4600 1|code 0	code 306|unrest 5|0x6B00 1|order 1	
+3176	Your servant has discovered th	0	Your servant has discovered that a demon is eating travelers! When approached, the fiend proposed a deal: 'Let me feed on the fat merchants that pass this way and their gold will be sent to the coffers of the Emperor!'. If the deal is not struck, a ceremonial master could be sent to banish the demon, or armed men to slay it.	targorder 100|code 306	code 307|order 415	
+3177	Your cunning servant has appro	0	Your cunning servant has approached the demon once again, inquiring about the suggested deal. When pressed, it seems the demon meant to send only the gold, keeping silver and other valuables from his victims! Since gold is scarce, the treasury would have been tricked of most of the proceeds. A new deal is now offered, where all gold, silver, copper and other valuables will be sent to the treasury.	order 100|unique 1|code 306	code 308|order 415	
+3178	Your agent has not been able t	0	Your agent has not been able to find out anything more.	order 100|code 308		
+3179	A deal has been struck!	0	A deal has been struck!	order 102|code 307	code 309|incscale2 Turmoil|landgold 5	
+3180	A deal has been struck!	0	A deal has been struck!	order 102|code 308	code 309|incscale2 Turmoil|landgold 25	
+3181	The Celestial Master has banis	0	The Celestial Master has banished the demon!	order 108|targmnr 803|rare 70|code 307|code 308	code 0|incdom 2|unrest -10|decscale Turmoil	
+3182	The Celestial Master has banis	0	The Celestial Master has banished the demon!	order 108|targmnr 803|rare 10|code 307|code 308	code 0|incdom 2|unrest -10|decscale Turmoil|holyboost 1	
+3183	The Master of the Way has bani	0	The Master of the Way has banished the demon!	order 108|targmnr 808|rare 30|code 307|code 308	code 0|incdom 2|unrest -10|decscale Turmoil|holyboost 1	
+3184	The Minister of Rituals has ba	0	The Minister of Rituals has banished the demon!	order 108|targmnr 804|rare 30|code 307|code 308	code 0|incdom 2|unrest -10|decscale Turmoil|holyboost 1	
+3185	The demon was angered by the s	0	The demon was angered by the shrill chanting and attacked in rage!	order 108|targmnr 803|rare 30|code 307|code 308	assassin 1264|code 310	
+3186	The Master of the Way has bani	0	The Master of the Way has banished the demon!	order 108|targmnr 808|rare 50|code 307|code 308	assassin 1264|code 310	
+3187	The Minister of Rituals has ba	0	The Minister of Rituals has banished the demon!	order 108|targmnr 804|rare 70|code 307|code 308	assassin 1264|code 310	
+3188	The demon has been defeated!	0	The demon has been defeated!	order 108|targmnr 803|code 310	code 0	
+3189	The demon has been defeated!	0	The demon has been defeated!	order 108|targmnr 808|code 310	code 0	
+3190	The demon has been defeated!	0	The demon has been defeated!	order 108|targmnr 804|code 310	code 0	
+3191	Your men attacked the demon wi	0	Your men attacked the demon with the aid of the local militia. It seems the creature heard the approaching soldiers and calld on aid! [Boots of the Behemoth]	order 108|code 307|code 308	code 0|com 1264|gainaff 549755813888|addequip 9|3d6units 1264	
+3192	There is war in Hell! Infernal	10	There is war in Hell! Infernal powers become manifest when the conflict spills over into the realm of men.	code -44	worldincscale Turmoil|worldritrebate 6	
