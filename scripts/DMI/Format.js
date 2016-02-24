@@ -64,19 +64,6 @@ GridFormat.OrderedPaths = function(row, cell, value, columnDef, dataContext) {
 	// return value.replace(/([A-W])/g, '<img alt="$1" class="pathicon Path_$1" src="images/magicicons/Path_$1.png" />').slice(1);	
 	return value.replace(/([A-W])/g, '<span class="pathicon Path_$1">$1</span>').slice(1);
 }
-GridFormat.OrderedPathsNew = function(data, type, row) {
-	if (!data) return '';
-	data = data.replace(/U\d*/, function(s){return DMI.Utils.rndMagicRef(Math.floor(row.id), s);})
-	return data.replace(/([A-W])/g, '<span class="pathicon Path_$1">$1</span>').slice(1);
-}
-GridFormat.BoosterNew = function(data, type, row) {
-	if (!data || data =='0') return '';
-	return data.replace(/\d/,'+').replace(/([A-W])/g, '<span class="pathicon Path_$1">$1</span>');
-}
-GridFormat.PathsNew = function(data, type, row) {
-	if (!data) return '';
-	return data.replace(/([A-W])/g, '<span class="pathicon Path_$1">$1</span>');
-}
 
 
 //gem icons
