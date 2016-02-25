@@ -1,3 +1,5 @@
+var args = [];
+
 DMI.initMobile = function() {
 	$(document).ready(function() {
 	    $('#unitsTable').DataTable( {
@@ -30,65 +32,33 @@ DMI.initMobile = function() {
 	    } );
 	    $.fn.dataTable.ext.search.push(function(settings, data, dataIndex) {
 	    	if (settings.sTableId == "itemsTable") {
-		        var checkedF = $('#pathF').is(':checked');
-		        var checkedA = $('#pathA').is(':checked');
-		        var checkedW = $('#pathW').is(':checked');
-		        var checkedE = $('#pathE').is(':checked');
-		        var checkedS = $('#pathS').is(':checked');
-		        var checkedD = $('#pathD').is(':checked');
-		        var checkedN = $('#pathN').is(':checked');
-		        var checkedB = $('#pathB').is(':checked');
+	    		args.mpaths = '';
+	    		$('.toggle-path:checked').each(function () {
+	    			args.mpaths +=  $(this).val();
+	    		});
+	    		if (args.mpaths) {
+	    			if ($('input.inclusive-search').is(':checked')) {
+	    				var paths = args.mpaths.split("");
+    					for (i = 0; i < paths.length; i++) {
+		    				if(data[3].indexOf(paths[i]) != -1) {
+	   							return true;
+		    				}
+	    				}
+	    				return false;
+	    			} else {
+	    				if (args.mpaths.indexOf(data[3].charAt(0)) == -1)
+	    					return false;
+	    			}
+	    		}
 
-		        if (checkedF && data[3].indexOf('F') == -1) {
-		            return false;
-		        }
-		        if (checkedA && data[3].indexOf('A') == -1) {
-		            return false;
-		        }
-		        if (checkedW && data[3].indexOf('W') == -1) {
-		            return false;
-		        }
-		        if (checkedE && data[3].indexOf('E') == -1) {
-		            return false;
-		        }
-		        if (checkedS && data[3].indexOf('S') == -1) {
-		            return false;
-		        }
-		        if (checkedD && data[3].indexOf('D') == -1) {
-		            return false;
-		        }
-		        if (checkedN && data[3].indexOf('N') == -1) {
-		            return false;
-		        }
-		        if (checkedB && data[3].indexOf('B') == -1) {
-		            return false;
-		        }
 	    	}
 	        return true;
 	    });
 	    var oTable = $('#itemsTable').dataTable();
-	    $('#pathF').on("click", function(e) {
+	    $('.toggle-path').on("click", function(e) {
 	        oTable.fnDraw();
 	    });
-	    $('#pathA').on("click", function(e) {
-	        oTable.fnDraw();
-	    });
-	    $('#pathW').on("click", function(e) {
-	        oTable.fnDraw();
-	    });
-	    $('#pathE').on("click", function(e) {
-	        oTable.fnDraw();
-	    });
-	    $('#pathS').on("click", function(e) {
-	        oTable.fnDraw();
-	    });
-	    $('#pathD').on("click", function(e) {
-	        oTable.fnDraw();
-	    });
-	    $('#pathN').on("click", function(e) {
-	        oTable.fnDraw();
-	    });
-	    $('#pathB').on("click", function(e) {
+	    $('.inclusive-search').on("click", function(e) {
 	        oTable.fnDraw();
 	    });
 	    $('#spellsTable').DataTable( {
