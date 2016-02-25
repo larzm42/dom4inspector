@@ -4,6 +4,7 @@ DMI.initMobile = function() {
 	        data: DMI.modctx.unitdata,
 	        responsive: true,
 	        lengthMenu: [[20, 100, -1], [20, 100, "All"]],
+	        dom: '<"top"fl>rt<"bottom"ip><"clear">',
 	        columns: [
 	            { data: "name", title: "Unit Name" },
 	            { data: "nationname", title: "Nation" },
@@ -18,6 +19,7 @@ DMI.initMobile = function() {
 	        data: DMI.modctx.itemdata,
 	        responsive: true,
 	        lengthMenu: [[20, 100, -1], [20, 100, "All"]],
+	        dom: '<"top"fl>rt<"bottom"ip><"clear">',
 	        columns: [
 	            { data: "name", title: "Item Name", render: itemNameFormatter },
 	            { data: "type", title: "Type" },
@@ -25,11 +27,75 @@ DMI.initMobile = function() {
 	            { data: "mpath", title: "Path req", render: function(data, type, row){ return DMI.GridFormat.Paths(null,null,data,null,row); } },
 	            { data: "boosters", title: "Boosters", render: function(data, type, row){ return DMI.GridFormat.Booster(null,null,data,null,row); } },
 	        ]
-	    } );	
+	    } );
+	    $.fn.dataTable.ext.search.push(function(settings, data, dataIndex) {
+	    	if (settings.sTableId == "itemsTable") {
+		        var checkedF = $('#pathF').is(':checked');
+		        var checkedA = $('#pathA').is(':checked');
+		        var checkedW = $('#pathW').is(':checked');
+		        var checkedE = $('#pathE').is(':checked');
+		        var checkedS = $('#pathS').is(':checked');
+		        var checkedD = $('#pathD').is(':checked');
+		        var checkedN = $('#pathN').is(':checked');
+		        var checkedB = $('#pathB').is(':checked');
+
+		        if (checkedF && data[3].indexOf('F') == -1) {
+		            return false;
+		        }
+		        if (checkedA && data[3].indexOf('A') == -1) {
+		            return false;
+		        }
+		        if (checkedW && data[3].indexOf('W') == -1) {
+		            return false;
+		        }
+		        if (checkedE && data[3].indexOf('E') == -1) {
+		            return false;
+		        }
+		        if (checkedS && data[3].indexOf('S') == -1) {
+		            return false;
+		        }
+		        if (checkedD && data[3].indexOf('D') == -1) {
+		            return false;
+		        }
+		        if (checkedN && data[3].indexOf('N') == -1) {
+		            return false;
+		        }
+		        if (checkedB && data[3].indexOf('B') == -1) {
+		            return false;
+		        }
+	    	}
+	        return true;
+	    });
+	    var oTable = $('#itemsTable').dataTable();
+	    $('#pathF').on("click", function(e) {
+	        oTable.fnDraw();
+	    });
+	    $('#pathA').on("click", function(e) {
+	        oTable.fnDraw();
+	    });
+	    $('#pathW').on("click", function(e) {
+	        oTable.fnDraw();
+	    });
+	    $('#pathE').on("click", function(e) {
+	        oTable.fnDraw();
+	    });
+	    $('#pathS').on("click", function(e) {
+	        oTable.fnDraw();
+	    });
+	    $('#pathD').on("click", function(e) {
+	        oTable.fnDraw();
+	    });
+	    $('#pathN').on("click", function(e) {
+	        oTable.fnDraw();
+	    });
+	    $('#pathB').on("click", function(e) {
+	        oTable.fnDraw();
+	    });
 	    $('#spellsTable').DataTable( {
 	        data: DMI.modctx.spelldata,
 	        responsive: true,
 	        lengthMenu: [[20, 100, -1], [20, 100, "All"]],
+	        dom: '<"top"fl>rt<"bottom"ip><"clear">',
 	        columns: [
 	            { data: "name", title: "Spell Name", render: spellNameFormatter },
 	            { data: "type", title: "Type", render: spellTypeFormatter },
@@ -43,6 +109,7 @@ DMI.initMobile = function() {
 	        data: DMI.modctx.mercdata,
 	        responsive: true,
 	        lengthMenu: [[20, 100, -1], [20, 100, "All"]],
+	        dom: '<"top"fl>rt<"bottom"ip><"clear">',
 	        columns: [
 	            { data: "name", title: "Name" },
 	            { data: "level", title: "Level" },
@@ -54,6 +121,7 @@ DMI.initMobile = function() {
 	        data: DMI.modctx.sitedata,
 	        responsive: true,
 	        lengthMenu: [[20, 100, -1], [20, 100, "All"]],
+	        dom: '<"top"fl>rt<"bottom"ip><"clear">',
 	        columns: [
 	            { data: "name", title: "Site Name" },
 	            { data: "level", title: "Level" },
@@ -67,7 +135,6 @@ DMI.initMobile = function() {
 	} );
 	$('.nav-tabs a:first').tab('show') 
 	return;		
-
 }
 
 function itemConFormatter(data, type, row) {

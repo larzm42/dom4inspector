@@ -5,9 +5,10 @@
 <title>Dom4 Mod Inspector</title>
 	<link rel="shortcut icon" href="favicon.ico" />
 	<link rel="stylesheet" type="text/css" href="scripts/mobile.css?v=30"  />
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.css"> 
+	<link rel="stylesheet" type="text/css" href="scripts/override.css?v=30"  />
 </head>
 <body>
 	<script type="text/javascript">var versionCode='?v=30';</script>
@@ -28,7 +29,7 @@
 	<script type="text/javascript" src="scripts/loaddata.js?v=30"></script>
 	<script type="text/javascript" src="scripts/mobile.js?v=30"></script>
 	   
-	<script type="text/javascript" src="scripts/DMI/CGrid.js?v=30"></script>
+	<!--script type="text/javascript" src="scripts/DMI/CGrid.js?v=30"></script-->
 	<!--script type="text/javascript" src="scripts/DMI/MAffliction.js?v=30"></script-->
 	<script type="text/javascript" src="scripts/DMI/MWpn.js?v=30"></script>
 	<script type="text/javascript" src="scripts/DMI/MArmor.js?v=30"></script>
@@ -63,18 +64,85 @@
 
 		<div class="tab-content">
 			<div id="items" class="tab-pane ">
+				<br>
+				<div class="filters-paths  panel itemview siteview">
+					<label for="pathF">
+						<input class="toggle-path" type='checkbox' value='F' id="pathF"/>
+						<img alt="F" class="Path_F pathicon" src="images/magicicons/Path_F.png" />
+					</label>
+					<label for="pathA">
+						<input class="toggle-path" type='checkbox' value='A' id="pathA"/>
+						<img alt="A" class="Path_A pathicon" src="images/magicicons/Path_A.png" />
+					</label>
+					<label for="pathW">
+						<input class="toggle-path" type='checkbox' value='W' id="pathW"/>
+						<img alt="W" class="Path_W pathicon" src="images/magicicons/Path_W.png" />
+					</label>
+					<label for="pathE">
+						<input class="toggle-path" type='checkbox' value='E' id="pathE"/>
+						<img alt="E" class="Path_E pathicon" src="images/magicicons/Path_E.png" />
+					</label>
+					<label for="pathS">
+						<input class="toggle-path" type='checkbox' value='S' id="pathS"/>
+						<img alt="S" class="Path_S pathicon" src="images/magicicons/Path_S.png" />
+					</label>
+					<label for="pathD">
+						<input class="toggle-path" type='checkbox' value='D' id="pathD"/>
+						<img alt="D" class="Path_D pathicon" src="images/magicicons/Path_D.png" />
+					</label>
+					<label for="pathN">
+						<input class="toggle-path" type='checkbox' value='N' id="pathN"/>
+						<img alt="N" class="Path_N pathicon" src="images/magicicons/Path_N.png" />
+					</label>
+					<label for="pathB">
+						<input class="toggle-path" type='checkbox' value='B' id="pathB"/>
+						<img alt="B" class="Path_B pathicon" src="images/magicicons/Path_B.png" />
+					</label>
+					<br>
+        				<input class="inclusive-search" type='checkbox' value='inclusion' id='pathInclusion'/>inclusive search
+				</div>
+				<div class="filters-items  panel itemview">
+					<select class="type" id="itemtype">
+						<option class="default" value="misc,1-h wpn,2-h wpn,helm,armor,shield,boots"> all item types </option>
+						<option disabled="disabled"> -------------- </option>
+						<option value="misc"> Miscellaneous </option>
+						<option value="helm"> Helmets </option>
+						<option value="armor"> Armor </option>
+						<option value="shield"> Shields </option>
+						<option value="boots"> Boots </option>
+						<option value="1-h wpn"> 1-h weapons </option>
+						<option value="2-h wpn"> 2-h weapons </option>
+						<option disabled="disabled"> -------------- </option>
+						<option value="melee"> All melee weaps </option>
+						<option value="missile"> All missile weaps </option>
+					</select>
+					<select class="constlevel" id="itemlvl">
+						<option class="default" value="8"> Construction 8 </option>
+						<option value="6"> Construction 6 </option>
+						<option value="4"> Construction 4 </option>
+						<option value="2"> Construction 2 </option>
+						<option value="0"> Construction 0 </option>
+						<option disabled="disabled"> -------------- </option>
+						<option value="12"> Unforgeable items</option>
+					</select>
+				</div>
+				
 				<table id="itemsTable" class="display" width="100%"></table>
 			</div>
 			<div id="spells" class="tab-pane ">
+				<br>
 				<table id="spellsTable" class="display" width="100%"></table>
 			</div>
 			<div id="units" class="tab-pane ">
+				<br>
 				<table id="unitsTable" class="display" width="100%"></table>
 			</div>
 			<div id="sites" class="tab-pane ">
+				<br>
 				<table id="sitesTable" class="display" width="100%"></table>
 			</div>
 			<div id="mercs" class="tab-pane ">
+				<br>
 				<table id="mercsTable" class="display" width="100%"></table>
 			</div>
 		</div>

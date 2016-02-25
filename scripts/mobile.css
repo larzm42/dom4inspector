@@ -34,11 +34,11 @@ div.slick-cell .gemicon {
 
 	position:relative;
 }
-.pathicon.Path_D { background-image:url('../images/magicicons/Path_D.png'); width:10px; margin:0px 2px 0px 2px; }
-.pathicon.Path_E { background-image:url('../images/magicicons/Path_E.png'); width:12px; margin:0px 1px 0px 1px; }
-.pathicon.Path_W { background-image:url('../images/magicicons/Path_W.png'); width:11px; margin:0px 1px 0px 2px; }
-.pathicon.Path_N { background-image:url('../images/magicicons/Path_N.png'); width:13px; margin:0px 1px 0px 0px; }
-.pathicon.Path_F { background-image:url('../images/magicicons/Path_F.png'); width:13px; margin:0px 1px 0px 0px; }
+.pathicon.Path_D { background-image:url('../images/magicicons/Path_D.png'); width:10px; margin:-1px 5px 0px 2px; }
+.pathicon.Path_E { background-image:url('../images/magicicons/Path_E.png'); width:12px; margin:-1px 5px 0px 1px; }
+.pathicon.Path_W { background-image:url('../images/magicicons/Path_W.png'); width:11px; margin:-1px 5px 0px 2px; }
+.pathicon.Path_N { background-image:url('../images/magicicons/Path_N.png'); width:13px; margin:-1px 5px 0px 0px; }
+.pathicon.Path_F { background-image:url('../images/magicicons/Path_F.png'); width:13px; margin:-1px 5px 0px 0px; }
 .pathicon.Path_A { background-image:url('../images/magicicons/Path_A.png'); }
 .pathicon.Path_B { background-image:url('../images/magicicons/Path_B.png'); }
 .pathicon.Path_S { background-image:url('../images/magicicons/Path_S.png'); }
@@ -46,19 +46,6 @@ div.slick-cell .gemicon {
 
 .pathicon.Path_R { background-image:url('../images/magicicons/Path_R.png'); width:13px; margin:0px 1px 0px 0px; }
 .pathicon.Path_U { background-image:url('../images/magicicons/Path_U.png'); width:12px; margin:0px 1px 0px 1px; }
-
-label .pathicon, 	div.slick-cell .pathicon 	{ top:3px; }
-label .pathicon.Path_F, div.slick-cell .pathicon.Path_F { top:2px; }	.pathicon.Path_F { top:-1px; }
-label .pathicon.Path_H, div.slick-cell .pathicon.Path_H { top:4px; }	.pathicon.Path_H { top:1px; }
-/*div.slick-cell .pathicon.Path_A { top:2px; }*/
-
-
-/*.pathicon.Path_D { width:11px; padding:0px 1px 0px 2px; }
-.pathicon.Path_E { width:12px; padding:0px 1px 0px 1px; }
-.pathicon.Path_F, .pathicon.Path_A { top:2px; }
-
-.pathicon.Path_R { width:13px; padding:0px 1px 0px 0px; }
-.pathicon.Path_U { width:12px; padding:0px 1px 0px 1px; }*/
 
 .abilityicon {
 	color: transparent;
@@ -71,4 +58,3 @@ label .pathicon.Path_H, div.slick-cell .pathicon.Path_H { top:4px; }	.pathicon.P
 	position:relative;
 }
 .abilityicon.holy { background-image:url('../images/abilityicons/holy.png'); }
-div.slick-cell .abilityicon.holy { top:3px; }
