@@ -2,7 +2,7 @@ bit_value	bit_name	test
 1	Adds Strength of Wielder {Wpn: not #nostr}
 2	Requires Two Hands {Wpn: #twohanded}
 4	+2 Attack vs Shields {Wpn: #flail}
-8	Affects Demons Only {Wpn: #demononly}
+8	Affects Demons and Undead {Wpn: #demonundead}
 16	Affects Magic Beings Only {Wpn: #magiconly}
 32	Heat/Fire {Wpn: #fire}
 64	Armor Piercing {Wpn: #armorpiercing}
