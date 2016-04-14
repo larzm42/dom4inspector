@@ -137,15 +137,27 @@ DMI.CGrid = Utils.Class(function( domname, data, columns, options) {
 	}	
 	function checkClearFilters() {
 		$property = $(this).parents('.property');
-		if ($property.find(" input[type=text]:[value^='']").length
-			|| $property.find(" textarea:[value^='']").length
-			|| $property.find(" input[type=checkbox]:checked").length
-			|| $property.find(" option:not(.default):selected").length 
-		)  
-			$property.find("input.clear-filters-btn").show();
-		else
-			$property.find("input.clear-filters-btn").hide();
-		
+		if($property.length){
+			if ($property.find(" input[type=text]:[value^='']").length
+				|| $property.find(" textarea:[value^='']").length
+				|| $property.find(" input[type=checkbox]:checked").length
+				|| $property.find(" option:not(.default):selected").length 
+			)  
+				$property.find("input.clear-filters-btn").show();
+			else
+				$property.find("input.clear-filters-btn").hide();
+		}else{
+			$panel = $(this).parents('.panel');
+			if ($panel.find(" input[type=text]:[value^='']").length
+				|| $panel.find(" textarea:[value^='']").length
+				|| $panel.find(" input[type=checkbox]:checked").length
+				|| $panel.find(" option:not(.default):selected").length 
+			)  
+				$panel.find("input.clear-filters-btn").show();
+			else
+				$panel.find("input.clear-filters-btn").hide();
+		}
+
 		checkGlobalClearFilters();
 	}
 	
@@ -168,18 +180,18 @@ DMI.CGrid = Utils.Class(function( domname, data, columns, options) {
 	$(that.domselp+" input[type=checkbox]").bind('change click', 	function(e) { that.doSearch(); $(this).saveState(); checkClearFilters.call(this); });
 	$(that.domselp+" select").bind('change', 			function(e) { that.doSearch(); $(this).saveState(); checkClearFilters.call(this); });
 		$(that.domselp+" input.clear-filters-btn").click(function(e) {
-			$property = $(this).parents('.property');
+			$panel = $(this).parents('.panel');
 			//clear inputs and select default options
-			$property.find(" input[type=text]").val('').saveState();
-			$property.find(" textarea").val('').saveState();
-			$property.find(" input[type=checkbox]:checked").prop("checked", false).saveState();
-			$property.find(" option.default").attr('selected', true).parent().saveState();
+			$panel.find(" input[type=text]").val('').saveState();
+			$panel.find(" textarea").val('').saveState();
+			$panel.find(" input[type=checkbox]:checked").prop("checked", false).saveState();
+			$panel.find(" option.default").attr('selected', true).parent().saveState();
 			$(this).hide();
 			
 			checkGlobalClearFilters();
 			that.doSearch();
 
-			$property.find(" input[type=text]").first().focus();
+			$panel.find(" input[type=text]").first().focus();
 	});
 	$(that.domselp+" input.add-property-filter-btn").click(function(e){
 		$(this).prev().clone(true, true).appendTo($(this).parent())
