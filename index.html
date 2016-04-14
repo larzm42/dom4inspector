@@ -183,19 +183,21 @@
 			Search Units: <input type="text" class="search-box" title="filter by name or find id" id="unitq" //>
 		</div>
 		<div class="hidden-block">
-			<div class="filters-text panel unitview">
-				<input type="button" value="X" class="clear-filters-btn" title="clear filters" />
-
-				property (key):<input size="5" type="text" class="search-key" title="search for any named key" id="unitkey" />
-				!<input tabindex="-1" type="checkbox" class="search-not" id="unitnot" title="not (opposite results)">
-				<select tabindex="-1" class="search-comp" id="unitcomp">
-					<option title="regular expression match" class="default" selected="selected" value="=~">=~</option>
-					<option title="equals" value="==">==</option>
-					<option title="greater than or equal (int)" value=">=">&gt;=</option>
-					<option title="less than or equal (int)" value="<=">&lt;=</option>
-				</select>
-				<input size="5" type="text" class="search-val" title="search for any named key=~value"  id="unitval" />
-				<textarea class="customjs" style="width:95%; height:100;" ></textarea>
+			<div class="filters-text panel unitview properties">
+				<div class = "property">
+					<input type="button" value="X" class="clear-filters-btn" title="clear filters" />
+					property (key):<input size="5" type="text" class="search-key" title="search for any named key"/>
+					!<input tabindex="-1" type="checkbox" class="search-not" title="not (opposite results)">
+					<select tabindex="-1" class="search-comp">
+						<option title="regular expression match" class="default" selected="selected" value="=~">=~</option>
+						<option title="equals" value="==">==</option>
+						<option title="greater than or equal (int)" value=">=">&gt;=</option>
+						<option title="less than or equal (int)" value="<=">&lt;=</option>
+					</select>
+					<input size="5" type="text" class="search-val" title="search for any named key=~value" />
+					<textarea class="customjs" style="width:95%; height:100;" ></textarea>
+				</div>
+				<input type="button" value="+" class="add-property-filter-btn" title="add property filter" />
 			</div>
 		</div>
 			
