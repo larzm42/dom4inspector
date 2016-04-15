@@ -480,6 +480,15 @@ DMI.matchProperty = function(o, key, comparitor, match) {
 		if (comparitor(val, match)) return true;
 	}
 	else if ($.isArray(val)) {
+		if(key === 'randompaths' && val.length){
+			var foundPath = false;
+			val.forEach(function(v){
+				if (comparitor(v.paths, match)){
+					foundPath=true;
+				};
+			});
+			if(foundPath) return true;
+		}
 		for (var o, i=0; o=val[i]; i++) {
 			if (o && comparitor(o, match)) return true;
 			if (o.id && comparitor(o.id, match)) return true;
