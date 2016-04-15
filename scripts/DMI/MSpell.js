@@ -453,14 +453,8 @@ MSpell.CGrid = DMI.Utils.Class( DMI.CGrid, function() {
 
 			mpaths: ''
 		};
-		var length = args.properties.length, removed_count = 0;
-		for (var i = 0; i < length; i++){
-			var property = args.properties[i - removed_count];
-			if (property.key == ""){
-				args.properties.splice(i - removed_count, 1);
-				removed_count += 1;
-			}
-		};
+		args.properties = Utils.propertiesWithKeys(args.properties);
+
 		if ($.isEmptyObject(args.schools)) delete args.schools;
 		
 		//whole era
