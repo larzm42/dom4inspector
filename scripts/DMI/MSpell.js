@@ -435,7 +435,7 @@ MSpell.CGrid = DMI.Utils.Class( DMI.CGrid, function() {
 	
 	//reads search boxes
 	this.getSearchArgs = function(domsel) {
-		var args = Utils.merge(this.getPropertyMatchArgs(), {
+		var args = {properties: this.getPropertyMatchArgs(),
 			str: $(that.domselp+" input.search-box").val().toLowerCase(),
 			nation: $(that.domselp+" select.nation").val(),
 			
@@ -452,7 +452,15 @@ MSpell.CGrid = DMI.Utils.Class( DMI.CGrid, function() {
 			aquatic: $(that.domselp+" select.aquatic").val(),
 
 			mpaths: ''
-		});
+		};
+		var length = args.properties.length, removed_count = 0;
+		for (var i = 0; i < length; i++){
+			var property = args.properties[i - removed_count];
+			if (property.key == ""){
+				args.properties.splice(i - removed_count, 1);
+				removed_count += 1;
+			}
+		};
 		if ($.isEmptyObject(args.schools)) delete args.schools;
 		
 		//whole era
@@ -566,10 +574,15 @@ MSpell.CGrid = DMI.Utils.Class( DMI.CGrid, function() {
 		}
 		
 		//key =~ val
-		if (args.key) {
-			var r = o.matchProperty(o, args.key, args.comp, args.val);
-			if (args.not  ?  r  :  !r)
-				return false;
+		if (args.properties) {
+			//need to finalise stats now..
+			DMI.MUnit.prepareForRender(o);
+			for (var i = 0; i < args.properties.length; i++){
+				var prop = args.properties[i];
+				var r =  o.matchProperty(o, prop.key, prop.comp, prop.val);
+				if (prop.not  ?  r  :  !r)
+					return false;
+			}
 		}
 		
 		

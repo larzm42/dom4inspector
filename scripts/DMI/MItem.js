@@ -184,14 +184,23 @@ MItem.CGrid = Utils.Class( DMI.CGrid, function() {
 	
 	//reads search boxes
 	this.getSearchArgs = function() {
-		var args = Utils.merge(this.getPropertyMatchArgs(), {
+		var args = {properties: this.getPropertyMatchArgs(),
 			str: $(that.domselp+" input.search-box").val().toLowerCase(),
 			type: Utils.splitToLookup( $(that.domselp+" select.type").val(), ','),
 			constlevel: parseInt( $(that.domselp+" select.constlevel").val() ),
 			inclusive: $(that.domselp+" input.inclusive-search:checked").val(),
 
 			mpaths: ''
-		});
+		};
+		var length = args.properties.length, removed_count = 0;
+		for (var i = 0; i < length; i++){
+			var property = args.properties[i - removed_count];
+			if (property.key == ""){
+				args.properties.splice(i - removed_count, 1);
+				removed_count += 1;
+			}
+		};
+
 		if ($.isEmptyObject(args.type)) delete args.type;
 
 		//create string of mpaths from checkboxes
@@ -238,12 +247,20 @@ MItem.CGrid = Utils.Class( DMI.CGrid, function() {
 		if (args.type && !(args.type[o.type] || args.type[o.wpnclass]))
 				return false;
 
-		//key =~ val
-		if (args.key) {
-			var r = o.matchProperty(o, args.key, args.comp, args.val);
-			if (args.not  ?  r  :  !r)
-				return false;
+
+		//properties
+		//each is comprised of key =~ val
+		if (args.properties) {
+			//need to finalise stats now..
+			DMI.MUnit.prepareForRender(o);
+			for (var i = 0; i < args.properties.length; i++){
+				var prop = args.properties[i];
+				var r =  o.matchProperty(o, prop.key, prop.comp, prop.val);
+				if (prop.not  ?  r  :  !r)
+					return false;
+			}
 		}
+
 				
 		if (args.customjs) {
 			var res = DMI.customFilter(o, args.customjs);

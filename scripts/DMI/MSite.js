@@ -368,12 +368,20 @@ MSite.CGrid = Utils.Class( DMI.CGrid, function() {
 	
 	//reads search boxes
 	this.getSearchArgs = function() {
-		var args = Utils.merge(this.getPropertyMatchArgs(), {
+		var args = {properties: this.getPropertyMatchArgs(),
 			str: $(that.domselp+" input.search-box").val().toLowerCase(),
 			sitepath: $(that.domselp+" select.sitepath").val() ,
 			sitescale: $(that.domselp+" select.sitescale").val() ,
 			mpaths: ''
-		});
+		};
+		var length = args.properties.length, removed_count = 0;
+		for (var i = 0; i < length; i++){
+			var property = args.properties[i - removed_count];
+			if (property.key == ""){
+				args.properties.splice(i - removed_count, 1);
+				removed_count += 1;
+			}
+		};
 
 		//create string of mpaths from checkboxes
 		$(that.domselp+' .toggle-path:checked').each(function() {
@@ -408,11 +416,18 @@ MSite.CGrid = Utils.Class( DMI.CGrid, function() {
 		if (args.sitescale && !( args.sitescale == o.scale1 || args.sitescale == o.scale2 ))
 			return false;
 
-		//key =~ val
-		if (args.key) {
-			var r = o.matchProperty(o, args.key, args.comp, args.val);
-			if (args.not  ?  r  :  !r)
-				return false;
+
+		//properties
+		//each is comprised of key =~ val
+		if (args.properties) {
+			//need to finalise stats now..
+			DMI.MUnit.prepareForRender(o);
+			for (var i = 0; i < args.properties.length; i++){
+				var prop = args.properties[i];
+				var r =  o.matchProperty(o, prop.key, prop.comp, prop.val);
+				if (prop.not  ?  r  :  !r)
+					return false;
+			}
 		}
 		return true;
 	}

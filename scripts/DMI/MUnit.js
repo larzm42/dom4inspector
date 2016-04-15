@@ -1283,6 +1283,7 @@ MUnit.CGrid = Utils.Class( DMI.CGrid, function() {
 			if (o.nation != args.nation)
 				return false;
 		}
+
 		//properties
 		//each is comprised of key =~ val
 		if (args.properties) {
