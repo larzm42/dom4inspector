@@ -159,8 +159,8 @@
 			search Items: <input type="text" class="search-box" title="filter by name or find id" id="itemq" />
 		</div>
 		<div class="hidden-block">
-			<div class="filters-text panel itemview properties">
-				<div class = "property">
+			<div class="filters-text properties">
+				<div class = "property panel itemview">
 					<input type="button" value="X" class="clear-filters-btn" title="clear filters" />
 					property (key):<input size="5" type="text" class="search-key" title="search for any named key" />
 					!<input tabindex="-1" type="checkbox" class="search-not" title="not (opposite results)">
@@ -173,7 +173,9 @@
 					<input size="5" type="text" class="search-val" title="search for any named key=~value"  />
 					<textarea class="customjs" style="width:95%; height:100;" ></textarea>
 				</div>
-				<input type="button" value="+" class="add-property-filter-btn" title="add property filter" />
+				<div class = "panel itemview">
+					<input type="button" value="+" class="add-property-filter-btn" title="add property filter" />
+				</div>
 			</div>
 		</div>
         
@@ -184,8 +186,8 @@
 			search Spells: <input type="text" class="search-box" title="filter by name or find id" id="spellq" />
 		</div>
 		<div class="hidden-block">
-			<div class="filters-text panel spellview properties">
-				<div class = "property">
+			<div class="filters-text properties">
+				<div class = "property panel spellview">
 					<input type="button" value="X" class="clear-filters-btn" title="clear filters" />
 					property (key):<input size="5" type="text" class="search-key" title="search for any named key" />
 					!<input tabindex="-1" type="checkbox" class="search-not" title="not (opposite results)">
@@ -198,7 +200,9 @@
 					<input size="5" type="text" class="search-val" title="search for any named key=~value"  />
 					<textarea class="customjs" style="width:95%; height:100;" ></textarea>
 				</div>
-				<input type="button" value="+" class="add-property-filter-btn" title="add property filter" />
+				<div class = "panel spellview">
+					<input type="button" value="+" class="add-property-filter-btn" title="add property filter" />
+				</div>
 			</div>
 		</div>
 		<div class="modding-block">
@@ -245,8 +249,8 @@
 			search Sites: <input type="text" class="search-box" title="filter by name or find id" id="siteq" />
 		</div>
 		<div class="hidden-block">
-			<div class="filters-text panel siteview properties">
-				<div class = "property">
+			<div class="filters-text properties">
+				<div class = "property panel siteview">
 					<input type="button" value="X" class="clear-filters-btn" title="clear filters" />
 					property (key):<input size="5" type="text" class="search-key" title="search for any named key"/>
 					!<input tabindex="-1" type="checkbox" class="search-not" title="not (opposite results)">
@@ -259,7 +263,9 @@
 					<input size="5" type="text" class="search-val" title="search for any named key=~value" />
 					<textarea class="customjs" style="width:95%; height:100;" ></textarea>
 				</div>
-				<input type="button" value="+" class="add-property-filter-btn" title="add property filter" />
+				<div class = "property panel siteview">
+					<input type="button" value="+" class="add-property-filter-btn" title="add property filter" />
+				</div>
 			</div>
 		</div>
 
@@ -269,8 +275,8 @@
 			search Mercs: <input type="text" class="search-box" title="filter by name or find id" id="mercq" />
 		</div>
 		<div class="hidden-block">
-			<div class="filters-text panel mercview properties">
-				<div class = "property">
+			<div class="filters-text properties">
+				<div class = "property panel mercview">
 					<input type="button" value="X" class="clear-filters-btn" title="clear filters" />
 					property (key):<input size="5" type="text" class="search-key" title="search for any named key"/>
 					!<input tabindex="-1" type="checkbox" class="search-not" title="not (opposite results)">
@@ -283,7 +289,9 @@
 					<input size="5" type="text" class="search-val" title="search for any named key=~value" />
 					<textarea class="customjs" style="width:95%; height:100;" ></textarea>
 				</div>
-				<input type="button" value="+" class="add-property-filter-btn" title="add property filter" />
+				<div class = "panel mercview">
+					<input type="button" value="+" class="add-property-filter-btn" title="add property filter" />
+				</div>
 			</div>
 		</div>
 
@@ -305,8 +313,8 @@
 			}
 		</script>
 		<div class="hidden-block">
-			<div class="filters-text panel eventview properties">
-				<div class = "property">
+			<div class="filters-text properties">
+				<div class = "property panel eventview">
 					<input type="button" value="X" class="clear-filters-btn" title="clear filters" />
 					property (key):<input size="5" type="text" class="search-key" title="search for any named key"/>
 					!<input tabindex="-1" type="checkbox" class="search-not" title="not (opposite results)">
@@ -319,7 +327,9 @@
 					<input size="5" type="text" class="search-val" title="search for any named key=~value" />
 					<textarea class="customjs" style="width:95%; height:100;" ></textarea>
 				</div>
-				<input type="button" value="+" class="add-property-filter-btn" title="add property filter" />
+				<div class = "panel eventview">
+					<input type="button" value="+" class="add-property-filter-btn" title="add property filter" />
+				</div>
 			</div>
 		</div>
 
@@ -329,8 +339,8 @@
 			Search Wpns: <input type="text" class="search-box" title="filter by name or find id" id="wpnq" //>
 		</div>
 		<div class="hidden-block">
-			<div class="filters-text panel wpnview properties">
-				<div class = "property">
+			<div class="filters-text properties">
+				<div class = "property panel wpnview">
 					<input type="button" value="X" class="clear-filters-btn" title="clear filters" />
 					property (key):<input size="5" type="text" class="search-key" title="search for any named key"/>
 					!<input tabindex="-1" type="checkbox" class="search-not" title="not (opposite results)">
@@ -343,7 +353,9 @@
 					<input size="5" type="text" class="search-val" title="search for any named key=~value" />
 					<textarea class="customjs" style="width:95%; height:100;" ></textarea>
 				</div>
-				<input type="button" value="+" class="add-property-filter-btn" title="add property filter" />
+				<div class = "property panel wpnview">
+					<input type="button" value="+" class="add-property-filter-btn" title="add property filter" />
+				</div>
 			</div>
 		</div>
 
@@ -355,7 +367,7 @@
 		</div>
 		<div class="hidden-block">
 			<div class="filters-text panel armorview properties">
-				<div class = "property">
+				<div class = "property panel armorview">
 					<input type="button" value="X" class="clear-filters-btn" title="clear filters" />
 					property (key):<input size="5" type="text" class="search-key" title="search for any named key"/>
 					!<input tabindex="-1" type="checkbox" class="search-not" title="not (opposite results)">
@@ -368,7 +380,9 @@
 					<input size="5" type="text" class="search-val" title="search for any named key=~value" />
 					<textarea class="customjs" style="width:95%; height:100;" ></textarea>
 				</div>
-				<input type="button" value="+" class="add-property-filter-btn" title="add property filter" />
+				<div class = "property panel armorview">
+					<input type="button" value="+" class="add-property-filter-btn" title="add property filter" />
+				</div>
 			</div>
 		</div>
 
