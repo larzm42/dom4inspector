@@ -179,22 +179,26 @@ DMI.CGrid = Utils.Class(function( domname, data, columns, options) {
 	});
 	$(that.domselp+" input[type=checkbox]").bind('change click', 	function(e) { that.doSearch(); $(this).saveState(); checkClearFilters.call(this); });
 	$(that.domselp+" select").bind('change', 			function(e) { that.doSearch(); $(this).saveState(); checkClearFilters.call(this); });
-		$(that.domselp+" input.clear-filters-btn").click(function(e) {
-			$panel = $(this).parents('.panel');
-			//clear inputs and select default options
-			$panel.find(" input[type=text]").val('').saveState();
-			$panel.find(" textarea").val('').saveState();
-			$panel.find(" input[type=checkbox]:checked").prop("checked", false).saveState();
-			$panel.find(" option.default").attr('selected', true).parent().saveState();
-			$(this).hide();
-			
-			checkGlobalClearFilters();
-			that.doSearch();
+	$(that.domselp+" input.clear-filters-btn").click(function(e) {
+		$panel = $(this).parents('.panel');
+		//removes additional properties
+		if($panel.hasClass("property") && !$panel.is(".property:first-child")){
+			$panel.remove();
+		}
+		//clear inputs and select default options
+		$panel.find(" input[type=text]").val('').saveState();
+		$panel.find(" textarea").val('').saveState();
+		$panel.find(" input[type=checkbox]:checked").prop("checked", false).saveState();
+		$panel.find(" option.default").attr('selected', true).parent().saveState();
+		$(this).hide();
+		
+		checkGlobalClearFilters();
+		that.doSearch();
 
-			$panel.find(" input[type=text]").first().focus();
+		$panel.find(" input[type=text]").first().focus();
 	});
 	$(that.domselp+" input.add-property-filter-btn").click(function(e){
-		$(this).prev().clone(true, true).appendTo($(this).parent())
+		$(this).parent().prev().clone(true, true).appendTo($(this).parents(".properties"))
 	});
 
 	//grid navigation
@@ -347,7 +351,7 @@ DMI.CGrid = Utils.Class(function( domname, data, columns, options) {
 	
 	this.getPropertyMatchArgs = function() {
 		var args = [];
-		$(that.domselp+".properties").children("div.property").each(function(){
+		$(that.domselp).filter(".property").each(function(){
 			args.push({
 				key: ($(this).children("input.search-key:visible").val() || '').toLowerCase(),
 				not: $(this).children("input.search-not:checked").length,
