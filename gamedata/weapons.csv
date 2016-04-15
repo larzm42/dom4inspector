@@ -641,7 +641,7 @@ id	name	effect_record_id	att	def	len	nratt	ammo	secondaryeffect	secondaryeffecta
 639	Spetum	640	0	0	4	1	0	0	0	2
 640	Coral Tipped Javelin	641	-2	0	0	1	2	50	0	1
 641	Bronze Trident	642	0	0	4	1	0	0	0	3
-642	Meteoritic Trident	643	0	0	4	1	0	0	0	5
+642	Meteorite Trident	643	0	0	4	1	0	0	0	5
 643	Bronze Spear	644	0	0	4	1	0	0	0	1
 644	Bronze Long Spear	645	0	-1	5	1	0	0	0	2
 645	Bronze Sword	646	0	2	1	1	0	0	0	3
@@ -667,3 +667,11 @@ id	name	effect_record_id	att	def	len	nratt	ammo	secondaryeffect	secondaryeffecta
 665	Pearl Blade	666	0	2	1	1	0	0	0	4
 666	Torch	667	0	0	1	1	0	0	216	1
 667	Extinguished Torch	668	0	0	1	1	0	0	0	1
+668	Metal Glaive	669	-1	1	4	1	0	0	0	5
+669	Metal Yari	670	1	0	5	1	0	0	0	2
+670	Bone Trident	671	0	0	4	1	0	0	0	1
+671	Stone Dagger	672	1	0	0	1	0	0	0	0
+672	Tiny Tentacle	673	0	0	0	1	0	0	0	0
+673	Bronze Glaive	674	-1	1	4	1	0	0	0	5
+674	Bronze Dagger	675	1	0	0	1	0	0	0	0
+675	Bronze Axe	676	0	-1	1	1	0	0	0	2

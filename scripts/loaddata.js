@@ -35,7 +35,6 @@ DMI.continueLoading = function() {
 	switch(g_data.status) {
 	
 	case 'Load mod list':
-		
 		$('#page-status').html('Loading data...');
 
 		g_data.status = 'Load local mods';
@@ -45,17 +44,13 @@ DMI.continueLoading = function() {
 		}		
 
 	case 'Load local mods':
-	
 		g_data.status = 'Select mods';
 		loadLocalMods( g_data );
-		
 		return;
 		
 	case 'Select mods':
-		
 		$('#mod-selection').show();
 		$('#page-status').html('<h1>Select mods:</h1>');
-		
 		
 		g_data.status = 'Finalising Mods';
 		if (location.search.indexOf('selectmods=1') != -1) {
@@ -64,38 +59,36 @@ DMI.continueLoading = function() {
 		}
 		//else ..
 		
-		
 	case 'Finalising Mods':
-		
 		Utils.clearErrors();
 		$('#mod-selection').hide();
-		
 		g_data.status = 'Downloading files';
 		finaliseModSelection( g_data );
-		
 		return;
 
-
 	case 'Downloading files':
-		
 		$('#page-status').html('Downloading data...');
 		
 		g_data.status = 'Parsing data';
 		downloadData( g_data );
-		
 		return;
 
-		
-	case 'Parsing data':	
-		
-		g_data.status = 'Init interface';
-		parseData( g_data );
-		
+	case 'Downloading mobile files':
+		g_data.status = 'Parsing mobile data';
+		downloadData( g_data );
 		return;
 		
+	case 'Parsing data':	
+		g_data.status = 'Init interface';
+		parseData( g_data );
+		return;
+		
+	case 'Parsing mobile data':	
+		g_data.status = 'Init mobile interface';
+		parseData( g_data );
+		return;
 		
 	case 'Init interface':	
-		
 		//set list of loaded mods (clears loading msg)
 		//note these are full names grabbed when parsing not filenames
 		if (DMI.modctx.loadedmods.length)
@@ -108,13 +101,24 @@ DMI.continueLoading = function() {
 		g_data = null; //oops
 		
 		DMI.initGrids(); //back to main.js
-		
 		return;		
-	}
+		
+	case 'Init mobile interface':	
+		g_data.status = 'relax! have a beer';
+		g_data = null; //oops
+		
+		DMI.initMobile();
+		return;
+	}	
+}
+
+DMI.mobileLoading = function() {
+	g_data.status = g_data.status || 'Downloading mobile files';
+	DMI.continueLoading();
 }
 
 function loadModList( g_data ) {
-	var mod_re = new RegExp('<a\\s*href="([\\w\\d\\._-]+?\\.dm)">\\s*\\1\\s*</a>', 'igm');
+	var mod_re = new RegExp('<a\\s*href="([\\w\\d\\s\\._-]+?\\.dm)">\\s*\\1\\s*</a>', 'igm');
 	var g_data = g_data;
 
 	//load mod list from server on startup
@@ -398,6 +402,7 @@ function downloadData( g_data ) {
            'gamedata/BaseU.csv'+versionCode,
            'gamedata/MagicSites.csv'+versionCode,
            'gamedata/Mercenary.csv'+versionCode,
+           //'gamedata/events.csv'+versionCode,
            'gamedata/events.csv'+versionCode,
            'gamedata/nations.csv'+versionCode,
            'gamedata/armors.csv'+versionCode,
@@ -438,6 +443,10 @@ function downloadData( g_data ) {
            'gamedata/attributes_by_weapon.csv'+versionCode,
            'gamedata/attributes_by_armor.csv'+versionCode
 	];
+	
+	if (location.search.indexOf('loadEvents=1') != -1) {
+		filestoload.concat( 'gamedata/events.csv'+versionCode );
+	}
 		
 	var onerror = function( emsg, details ) {
 		console.log( emsg + "\n" + details );
@@ -549,10 +558,15 @@ function parseData( g_data ) {
 			modctx.mercdata = parseTextToTable(data);
 			modctx.merclookup = createLookup(modctx.mercdata, 'id', 'name');
 
-			var data = g_data.server_data['gamedata/events.csv'+versionCode];
-			if (!data) throw(DMI.Utils.error('ERROR LOADING: gamedata/events.csv'));
-			modctx.eventdata = parseTextToTable(data);
-			modctx.eventlookup = createLookup(modctx.eventdata, 'id', 'name');
+			if (location.search.indexOf('loadEvents=1') != -1) {
+				var data = g_data.server_data['gamedata/events.csv'+versionCode];
+				if (!data) throw(DMI.Utils.error('ERROR LOADING: gamedata/events.csv'));
+				modctx.eventdata = parseTextToTable(data);
+				modctx.eventlookup = createLookup(modctx.eventdata, 'id', 'name');
+			} else {
+				modctx.eventdata = [];
+				modctx.eventlookup = [];
+			}	
 
 			var data = g_data.server_data['gamedata/nations.csv'+versionCode];
 			if (!data) throw(DMI.Utils.error('ERROR LOADING: gamedata/nations.csv'));
@@ -710,7 +724,9 @@ function parseData( g_data ) {
 			DMI.MSite.prepareData_PreMod();
 			DMI.MNation.prepareData_PreMod();
 			DMI.MMerc.prepareData_PreMod();
-			DMI.MEvent.prepareData_PreMod();
+			if (location.search.indexOf('loadEvents=1') != -1) {
+				DMI.MEvent.prepareData_PreMod();
+			}
 	
 			//parse the mods
 			for (var i=0, modname; modname = g_data.server_mods_to_load[i]; i++) {
@@ -753,7 +769,9 @@ function parseData( g_data ) {
 			DMI.MNation.prepareData_PostMod();
 			DMI.MSite.prepareData_PostMod();
 			DMI.MMerc.prepareData_PostMod();
-			DMI.MEvent.prepareData_PostMod();
+			if (location.search.indexOf('loadEvents=1') != -1) {
+				DMI.MEvent.prepareData_PostMod();
+			}
 			
 			//run callback
 			setTimeout(DMI.continueLoading, 1);

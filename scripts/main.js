@@ -9,6 +9,7 @@ if (!console) var console={ log:function(){} };
 //DMI.Options['Show mod cmds'] = (location.search.indexOf('showids')!=-1 && location.search.indexOf('showmodcmds=1')!=-1);
 DMI.Options['Ignore mods'] = (location.search.indexOf('showids=1')!=-1 && location.search.indexOf('ignoremods=1')!=-1);
 DMI.Options['Custom js'] = location.search.indexOf('customjs=1')!=-1;
+DMI.Options['Load events'] = location.search.indexOf('loadEvents=1')!=-1;
 
 //on page load
 $(function() {
@@ -17,6 +18,12 @@ $(function() {
 	//begin the loading process (loaddata.js).. 
 	DMI.continueLoading();
 });
+
+DMI.isFirefoxBrowser = function() 
+{
+    return typeof InstallTrigger !== 'undefined';
+};
+
 
 //called from loaddata.js once all data is loaded
 DMI.initGrids = function() {
@@ -42,8 +49,13 @@ DMI.initGrids = function() {
 			$( "<style>.hidden-block { display:block; } tr.hidden-row { display:table-row; } .hidden-inline {display:inline; }</style>" )
 			.appendTo( "head" );
 		
-			$(".grid-container").css({left:'308px'})
-			$("div.static-overlay-container").css({width:'308px'})
+			if (DMI.isFirefoxBrowser()) {
+				$(".grid-container").css({left:'430px'})
+				$("div.static-overlay-container").css({width:'430px'})
+			} else {
+				$(".grid-container").css({left:'375px'})
+				$("div.static-overlay-container").css({width:'375px'})
+			}
 			
 			if (itemgrid) itemgrid.showIds(1);
 			if (spellgrid) spellgrid.showIds(1);
@@ -62,8 +74,13 @@ DMI.initGrids = function() {
 		}
 		else {
 			$( "<style>.hidden-block, tr.hidden-row, .hidden-inline { display:none; }</style>" ).appendTo( "head" );
-			$(".grid-container").css({left:'308px'})
-			$("div.static-overlay-container").css({width:'308px'})
+			if (DMI.isFirefoxBrowser()) {
+				$(".grid-container").css({left:'350px'})
+				$("div.static-overlay-container").css({width:'350px'})
+			} else {
+				$(".grid-container").css({left:'308px'})
+				$("div.static-overlay-container").css({width:'308px'})
+			}
 
 			if (itemgrid) itemgrid.showIds(0);
 			if (spellgrid) spellgrid.showIds(0);

@@ -254,7 +254,12 @@ MSpell.effectlookup = {
 		40:	damage,
 		41:	damage,
 		42:	function (spell, effect) {
-			return modctx.anon_province_events_lookup[effect.raw_argument].name;
+			if (modctx.anon_province_events_lookup[effect.raw_argument]) {
+				return modctx.anon_province_events_lookup[effect.raw_argument].name;
+			} else {
+				return "Unknown";
+			}
+
 		},
 		43:	function(spell, effect) {
 			return show_summon(effect.raw_argument, spell.effects_count, spell.pathlevel1);
@@ -305,13 +310,25 @@ MSpell.effectlookup = {
 		79:	damage_untested,
 		80:	damage_untested,
 		81:	function (spell, effect) {
-			return modctx.enchantments_lookup[effect.raw_argument].name;
+			if (modctx.enchantments_lookup[effect.raw_argument]) {
+				return modctx.enchantments_lookup[effect.raw_argument].name;
+			} else {
+				return "Unknown";
+			}
 		},
 		82:	function (spell, effect) {
-			return modctx.enchantments_lookup[effect.raw_argument].name;
+			if (modctx.enchantments_lookup[effect.raw_argument]) {
+				return modctx.enchantments_lookup[effect.raw_argument].name;
+			} else {
+				return "Unknown";
+			}
 		},
 		84:	function (spell, effect) {
-			return modctx.enchantments_lookup[effect.raw_argument].name;
+			if (modctx.enchantments_lookup[effect.raw_argument]) {
+				return modctx.enchantments_lookup[effect.raw_argument].name;
+			} else {
+				return "Unknown";
+			}
 		},
 		85:	damage_untested,
 		86:	damage_untested,

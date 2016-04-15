@@ -114,10 +114,10 @@ id	name	rarity	loc	level	path	F	A	W	E	S	D	N	B	gold	res	sup	unr	exp	lab	fort	scal
 113	Gnipahålan	5	0	0	Death				1		4																																																														1010																																
 114	Vanhalla	5	0	0	Air		3																																				1513																														948																																
 115	The Halls of Andvare	5	0	0	Earth				3																																		463																														323																																
-116	The Gorge of Ancient Cities	5	0	0	Water			2	1	3																																	1522																														1521																																
+116	The Gorge of Ancient Cities	5	0	0	Water			2	1	3																																	1522																														1521	2883																															
 117	The Carrion Grove	5	0	0	Nature						1																																787																														901	709																															
 118	The Grove of Gaia	5	0	0	Nature							6																															769																																																														
-119	The Smouldercone	5	0	0	Fire	5																																					1661																														1542	1538	1537																														
+119	The Smouldercone	5	0	0	Fire	5															Heat																						1661																														1542	1538	1537																														
 120	Temple of the All-Consuming Flame	5	0	0	Fire	1																																					1543																														1536																																
 121	Temple of the All-Consuming Flame	5	0	0	Fire	1																																					90																																																														
 122	The Sibylline Caves	5	0	0	Astral					3		1																																																								1					1557																																
