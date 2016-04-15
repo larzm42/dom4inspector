@@ -796,10 +796,7 @@ function parseTextToTable(str) {
 			var val = values[j]
 			if (val != "" && val != "\r") {
 				//if (key == 'id#') key = 'id';
-				if (val == 0){
-					val = "";
-				}
-				o[key] = val;
+				o[key] = values[j];
 			}
 		}
 		t.push(o);	 
