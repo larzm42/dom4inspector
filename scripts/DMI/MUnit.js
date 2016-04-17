@@ -1213,18 +1213,18 @@ MUnit.CGrid = Utils.Class( DMI.CGrid, function() {
 			$(that.domselp+" input.national").prop('checked', false).saveState();
 	});
 	
-	
 
 	//reads search boxes
 	this.getSearchArgs = function(domsel) {
-		var args = Utils.merge(this.getPropertyMatchArgs(), {
+		var args = {properties: this.getPropertyMatchArgs(),
 			str: $(that.domselp+" input.search-box").val().toLowerCase(),
 			nation: $(that.domselp+" select.nation").val(),
 			types: Utils.splitToLookup( $(that.domselp+" select.typechar").val(), ','),
-			
 			generic: $(that.domselp+" input.generic:checked").val(),
 			national: $(that.domselp+" input.national:checked").val()
-		});
+		};
+		args.properties = Utils.propertiesWithKeys(args.properties);
+
 		if ($.isEmptyObject(args.types)) delete args.types;
 		
 		//whole era
@@ -1276,15 +1276,18 @@ MUnit.CGrid = Utils.Class( DMI.CGrid, function() {
 			if (o.nation != args.nation)
 				return false;
 		}
-		
-		//key =~ val
-		if (args.key) {
+
+		//properties
+		//each is comprised of key =~ val
+		if (args.properties) {
 			//need to finalise stats now..
 			DMI.MUnit.prepareForRender(o);
-			
-			var r = o.matchProperty(o, args.key, args.comp, args.val);
-			if (args.not  ?  r  :  !r)
-				return false;
+			for (var i = 0; i < args.properties.length; i++){
+				var prop = args.properties[i];
+				var r =  o.matchProperty(o, prop.key, prop.comp, prop.val);
+				if (prop.not  ?  r  :  !r)
+					return false;
+			}
 		}
 
 		if (args.customjs) {

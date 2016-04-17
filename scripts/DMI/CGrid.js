@@ -136,16 +136,28 @@ DMI.CGrid = Utils.Class(function( domname, data, columns, options) {
 			$("#global-clear-filters-btn").hide();
 	}	
 	function checkClearFilters() {
-		$panel = $(this).parents('.panel');
-		if (       $panel.find(" input[type=text]:[value^='']").length
-			|| $panel.find(" textarea:[value^='']").length
-			|| $panel.find(" input[type=checkbox]:checked").length
-			|| $panel.find(" option:not(.default):selected").length 
-		)  
-			$panel.find("input.clear-filters-btn").show();
-		else
-			$panel.find("input.clear-filters-btn").hide();
-		
+		$property = $(this).parents('.property');
+		if($property.length){
+			if ($property.find(" input[type=text]:[value^='']").length
+				|| $property.find(" textarea:[value^='']").length
+				|| $property.find(" input[type=checkbox]:checked").length
+				|| $property.find(" option:not(.default):selected").length 
+			)  
+				$property.find("input.clear-filters-btn").show();
+			else
+				$property.find("input.clear-filters-btn").hide();
+		}else{
+			$panel = $(this).parents('.panel');
+			if ($panel.find(" input[type=text]:[value^='']").length
+				|| $panel.find(" textarea:[value^='']").length
+				|| $panel.find(" input[type=checkbox]:checked").length
+				|| $panel.find(" option:not(.default):selected").length 
+			)  
+				$panel.find("input.clear-filters-btn").show();
+			else
+				$panel.find("input.clear-filters-btn").hide();
+		}
+
 		checkGlobalClearFilters();
 	}
 	
@@ -168,18 +180,25 @@ DMI.CGrid = Utils.Class(function( domname, data, columns, options) {
 	$(that.domselp+" input[type=checkbox]").bind('change click', 	function(e) { that.doSearch(); $(this).saveState(); checkClearFilters.call(this); });
 	$(that.domselp+" select").bind('change', 			function(e) { that.doSearch(); $(this).saveState(); checkClearFilters.call(this); });
 	$(that.domselp+" input.clear-filters-btn").click(function(e) {
-			$panel = $(this).parents('.panel');
-			//clear inputs and select default options
-			$panel.find(" input[type=text]").val('').saveState();
-			$panel.find(" textarea").val('').saveState();
-			$panel.find(" input[type=checkbox]:checked").prop("checked", false).saveState();
-			$panel.find(" option.default").attr('selected', true).parent().saveState();
-			$(this).hide();
-			
-			checkGlobalClearFilters();
-			that.doSearch();
+		$panel = $(this).parents('.panel');
+		//removes additional properties
+		if($panel.hasClass("property") && !$panel.is(".property:first-child")){
+			$panel.remove();
+		}
+		//clear inputs and select default options
+		$panel.find(" input[type=text]").val('').saveState();
+		$panel.find(" textarea").val('').saveState();
+		$panel.find(" input[type=checkbox]:checked").prop("checked", false).saveState();
+		$panel.find(" option.default").attr('selected', true).parent().saveState();
+		$(this).hide();
+		
+		checkGlobalClearFilters();
+		that.doSearch();
 
-			$panel.find(" input[type=text]").first().focus();
+		$panel.find(" input[type=text]").first().focus();
+	});
+	$(that.domselp+" input.add-property-filter-btn").click(function(e){
+		$(this).parent().prev().clone(true, true).appendTo($(this).parents(".properties"))
 	});
 
 	//grid navigation
@@ -331,49 +350,53 @@ DMI.CGrid = Utils.Class(function( domname, data, columns, options) {
 	////////////////////////////////////////////////////////////////////////////
 	
 	this.getPropertyMatchArgs = function() {
-		var args = {
-			key: ($(that.domselp+" input.search-key:visible").val() || '').toLowerCase(),
-			not: $(that.domselp+" input.search-not:checked").length,
-			comp: $(that.domselp+" select.search-comp").val(),
-			val: $(that.domselp+" input.search-val").val(),
-			customjs: $(that.domselp+" textarea.customjs:visible").val()
-		};
-		if (args.key) {
-			var compstr = args.comp;
-			//args.key = DMI.propertyAliases[args.key] || args.key;
-			args.comp = function(v,c){ return v; };
-			
-			switch (compstr) {
-				case '=~':
-					if (args.val && args.val!='.') {
-						args.comp = function(v,c){ return String(v).match(c); };
-						try{
-							args.val = new RegExp(args.val || '.', 'i');
-						}catch(e){ args.val = /./; }
-					}
-					break;
-					
-				case '==':
-					args.comp = function(v,c){ return v == c; };
-					break;
+		var args = [];
+		$(that.domselp).filter(".property").each(function(){
+			args.push({
+				key: ($(this).children("input.search-key:visible").val() || '').toLowerCase(),
+				not: $(this).children("input.search-not:checked").length,
+				comp: $(this).children("select.search-comp").val(),
+				val: $(this).children("input.search-val").val(),
+				customjs: $(this).children("textarea.customjs:visible").val()
+			});
+		});
+		args.forEach(function(arg){
+			if (arg.key) {
+				var compstr = arg.comp;
+				//arg.key = DMI.propertyAliases[arg.key] || arg.key;
+				arg.comp = function(v,c){ return v; };
 
-				case '<=':
-					if (args.val = parseInt(args.val))
-						args.comp = function(v,c){ return parseInt(v) <= c; };
-					break;
-					
-				case '>=':
-					if (args.val = parseInt(args.val))
-						args.comp = function(v,c){ return  parseInt(v) >= c; };
-					break;
-			}					
-		}		
+				switch (compstr) {
+					case '=~':
+						if (arg.val && arg.val!='.') {
+							arg.comp = function(v,c){ return String(v).match(c); };
+							try{
+								arg.val = new RegExp(arg.val || '.', 'i');
+							}catch(e){ arg.val = /./; }
+						}
+						break;
+
+					case '==':
+						arg.comp = function(v,c){ return v == c; };
+						break;
+
+					case '<=':
+						if (arg.val = parseInt(arg.val))
+							arg.comp = function(v,c){ return parseInt(v) <= c; };
+						break;
+
+					case '>=':
+						if (arg.val = parseInt(arg.val))
+							arg.comp = function(v,c){ return  parseInt(v) >= c; };
+						break;
+				}
+			}
+		});
 		return args;
 	}
 	
 	function filterAndUpdate() {
 		var args = that.getSearchArgs(that.domsel);		
-
 		var renderedRange = that.grid.getRenderedRange();		
 		that.dataView.setFilterArgs(args);
 		that.dataView.setRefreshHints({
@@ -457,6 +480,15 @@ DMI.matchProperty = function(o, key, comparitor, match) {
 		if (comparitor(val, match)) return true;
 	}
 	else if ($.isArray(val)) {
+		if(key === 'randompaths' && val.length){
+			var foundPath = false;
+			val.forEach(function(v){
+				if (comparitor(v.paths, match)){
+					foundPath=true;
+				};
+			});
+			if(foundPath) return true;
+		}
 		for (var o, i=0; o=val[i]; i++) {
 			if (o && comparitor(o, match)) return true;
 			if (o.id && comparitor(o.id, match)) return true;
@@ -468,6 +500,7 @@ DMI.matchProperty = function(o, key, comparitor, match) {
 		if (o.id && comparitor(o.id, match)) return true;
 		if (o.name && comparitor(o.name, match)) return true;
 	}
+
 	return false;
 }
 

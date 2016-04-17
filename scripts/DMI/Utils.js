@@ -186,6 +186,16 @@ Utils.descrFilename = function(name) {
 	return name.replace(/[^a-zA-Z0-9\-]/g,'')+'.txt';
 }
 
+//removes elements with a blank key attribute, used for array of properties for filtering
+Utils.propertiesWithKeys = function(properties){
+	var propsWithKeys = [];
+	properties.forEach(function(prop){
+		if (prop.key !== "")
+			propsWithKeys.push(prop);
+	});
+	return(propsWithKeys);
+}
+
 ///////////////////////////////////////////////////////////////////////////
 // render helpers
 ///////////////////////////////////////////////////////////////////////////

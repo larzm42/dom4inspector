@@ -96,11 +96,14 @@ MArmor.CGrid = Utils.Class( DMI.CGrid, function() {
 
 	//reads search boxes
 	this.getSearchArgs = function() {
-		var args = Utils.merge(this.getPropertyMatchArgs(), {
-			str: $(that.domselp+" input.search-box").val().toLowerCase()
-		});
+		var args = {properties: this.getPropertyMatchArgs(),
+			str: $(that.domselp+" input.search-box").val().toLowerCase(),
+		};
+		args.properties = Utils.propertiesWithKeys(args.properties);
+
 		return args;
 	}
+
 	//apply search
 	this.searchFilter =  function(o, args) {
 		//type in id to ignore filters
@@ -110,11 +113,17 @@ MArmor.CGrid = Utils.Class( DMI.CGrid, function() {
 		if (args.str && o.searchable.indexOf(args.str) == -1)
 			return false;
 
-		//key =~ val
-		if (args.key) {
-			var r = o.matchProperty(o, args.key, args.comp, args.val);
-			if (args.not  ?  r  :  !r)
-				return false;
+		//properties
+		//each is comprised of key =~ val
+		if (args.properties) {
+			//need to finalise stats now..
+			DMI.MUnit.prepareForRender(o);
+			for (var i = 0; i < args.properties.length; i++){
+				var prop = args.properties[i];
+				var r =  o.matchProperty(o, prop.key, prop.comp, prop.val);
+				if (prop.not  ?  r  :  !r)
+					return false;
+			}
 		}
 		return true;
 	}
