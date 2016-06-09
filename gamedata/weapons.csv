@@ -675,3 +675,5 @@ id	name	effect_record_id	att	def	len	nratt	ammo	secondaryeffect	secondaryeffecta
 673	Bronze Glaive	674	-1	1	4	1	0	0	0	5
 674	Bronze Dagger	675	1	0	0	1	0	0	0	0
 675	Bronze Axe	676	0	-1	1	1	0	0	0	2
+676	Fiery Breath	677	0	0	3	1	0	0	0	0
+677	Wing Buff	678	-1	-1	0	1	0	0	0	0

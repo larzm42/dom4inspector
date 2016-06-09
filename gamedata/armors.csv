@@ -212,3 +212,5 @@ id	name	type	def	enc	rcost	test
 210	Meteorite Cuirass	5	-1	2	18
 211	Meteorite Cap	6	0	0	2
 212	Metal Scale Armor	5	-2	3	14
+213	Golden Helmet	6	0	0	0
+214	Golden Armor	5	-2	4	0
