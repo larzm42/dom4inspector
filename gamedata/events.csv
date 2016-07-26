@@ -1927,7 +1927,7 @@ id	name	rarity	description	requirements	effects	test
 1926	A Horror has attacked one of y	1	A Horror has attacked one of your commanders!	commander 1|code 168|rare 3	assassin 2212	
 1927	The Horror Cult has gained foo	1	The Horror Cult has gained foothold! It seems to be spreading from an adjacent province.	temple 0|code 168|unique 3|maxdominion 6|freesites 1|code 0	code 166|incdom -3	
 1928	Attracted by the activities of	0	Attracted by the activities of the local Cult, Evil has struck the land!	monster 2275|code 168|rare 3	kill 4|com 2211	
-1929	Villagers claim their infant c	-2	Villagers claim their infant children have grown unnaturally ugly. Some have scorned their mothers' breasts and have strange cravings. This is mostly rejected as nonsense by wiser folks.	capital 0|mountain 1|unique 1|magic -1|freesites 2|code 0|0x4600 1	code 151|0x0600 5|decscale2 Drain	
+1929	Villagers claim their infant c	-2	Villagers claim their infant children have grown unnaturally ugly. Some have scorned their mothers' breasts and have strange cravings. This is mostly rejected as nonsense by wiser folks.	capital 0|mountain 1|unique 1|magic -1|freesites 2|code 0|0x4600 1|land 1	code 151|0x0600 5|decscale2 Drain	
 1930	One of your commanders has bee	0	One of your commanders has been waylaid and attacked!	rare 10|unique 2|commander 1|code 151	assassin 518	
 1931	The son of a noble has been se	0	The son of a noble has been set upon by trolls while hunting in the foothills! The local garrison came to aid when hearing the sound of his horn. If he survives, the young man will probably join your cause.	rare 10|unique 1|code 151	com 1037|2d6units 518|nation -2|com 23|2d6units 19	
 1932	Trolls have attacked! They are	0	Trolls have attacked! They are uncharacteristically well equipped and seem to fight with purpose.	rare 5|unique 3|code 151	2com 1037|addequip 2|6d6units 518|2d6units 1037	
@@ -3031,11 +3031,11 @@ id	name	rarity	description	requirements	effects	test
 3030	People speak in fear of the Qu	0	People speak in fear of the Queen of the garnet amazon that has come to power in a neighbouring land. She is rumored to be unsurpassed in both beauty and cruelty!	rare 10|code 275|0x5C00 275|capital 0|land 1|code 0|story 1	code 276	
 3031	Ferocious amazons have attacke	0	Ferocious amazons have attacked!	rare 50|code 275|story 1|unique 9|code 276	code 277|2com 349|addequip 1|6d6units 351|2d6units 612	
 3032	The amazons consolidate.	0	The amazons consolidate.	rare 8|code 275|story 1|unique 6|code 277	com 349|addequip 1|5d6units 351|2d6units 304|2d6units 303	
-3033	A devil joins. [Demon Whip]	0	A devil joins. [Demon Whip]	rare 7|code 275|story 1|unique 6|code 277	com 304|addequip 9|2d6units 303|incscale2 Turmoil	
+3033	A devil joins. [Demon Whip]	0	A devil joins. [Demon Whip]	rare 7|code 275|story 1|unique 6|code 277	nation -2|com 304|addequip 9|2d6units 303|incscale2 Turmoil	
 3034	The garnet amazons have been d	0	The garnet amazons have been defeated! With her last breath, their priestess promised vengeance from her Queen upon your followers!	code 275|unique 2|code 277	code 278	
 3035	A Horde from Hell has been sen	0	A Horde from Hell has been sent to wreak havoc in your lands!	rare 33|unique 2|code 278|land 1	resetcode 278|com 303|5d6units 304	
 3036	The garnet amazons have been d	0	The garnet amazons have been driven from the land! Some spoils of war have been transported to the treasury.	unique 2|code 277	code 0|gold 100|magicitem 1|1d3vis F	
-3037	A devil joins. [Demon Whip]	0	A devil joins. [Demon Whip]	rare 5|code 275|story 1|unique 1|code 275	com 304|addequip 9|2d6units 303|incscale2 Turmoil	
+3037	A devil joins. [Demon Whip]	0	A devil joins. [Demon Whip]	rare 5|code 275|story 1|unique 1|code 275	nation -2|com 304|addequip 9|2d6units 303|incscale2 Turmoil	
 3038	The amazons have organized a s	0	The amazons have organized a slave market. [Slave Market]	rare 10|code 275|story 1|unique 1|code 275	newsite -1	
 3039	The amazons have organized a s	0	The amazons have organized a slave market. [Slave Market]	rare 10|code 275|story 1|unique 1|code 276	newsite -1	
 3040	The Queen of the amazon has en	0	The Queen of the amazon has ensorcelled a barbarian Lord. [Slave Collar]	rare 20|story 1|unique 1|code 275	com 147|addequip 9	
@@ -3152,27 +3152,27 @@ id	name	rarity	description	requirements	effects	test
 3151	A Ceremonial Master has taken 	0	A Ceremonial Master has taken measures to counter the bad omens threatening this province.	rare 10|targmnr 807|code -33	code 0	
 3152	Oh, no! The Queen of the Onyx 	0	Oh, no! The Queen of the Onyx Amazon tribe has ambitions of conquest! HIDDEN	story 1|land 1|maxturn 1|rare 15|story 1|poptype 43|unique 1|code 0	code 301|notext 1	
 3153	The Land of the Onyx Amazons h	0	The Land of the Onyx Amazons has been conquered!	unique 1|code 301	code 0|resetcode 302|resetcode 303|resetcode 304	
-3154	The Onyx Queen comes to power.	0	The Onyx Queen comes to power. HIDDEN	story 1|unique 1|code 301	com 365|10d6units 357|5d6units 369|2com 355|addequip 1	
-3155	The Onyx Queen is crowned. HID	0	The Onyx Queen is crowned. HIDDEN	story 1|targmnr 365|unique 1|code 301	deathboost 1|deathboost 1|holyboost 1|addequip 1|gainaff 549755813888	
-3156	The Onyx Queen is fitted with 	0	The Onyx Queen is fitted with garments. HIDDEN [Skullface]	story 1|story 1|0x8100 0|targmnr 365|unique 1|code 301	addequip 9|earthboost 1|earthboost 1|addequip 1	
-3157	The queen replenishes her gems	0	The queen replenishes her gems.	rare 15|turn 30|0x8100 0|targmnr 365|story 1	addequip 1	
-3158	The Onyx Queen is fitted with 	0	The Onyx Queen is fitted with garments. HIDDEN [Champion's Skull]	rare 20|0x8100 0|targmnr 365|unique 1|code 301	addequip 9	
+3154	The Onyx Queen comes to power.	0	The Onyx Queen comes to power. HIDDEN	story 1|unique 1|code 301	notext 1|com 356|10d6units 357|5d6units 369|2com 355|addequip 1	
+3155	The Onyx Queen is crowned. HID	0	The Onyx Queen is crowned. HIDDEN	story 1|targmnr 356|unique 1|code 301	notext 1|deathboost 1|deathboost 1|holyboost 1|addequip 1|gainaff 549755813888	
+3156	The Onyx Queen is fitted with 	0	The Onyx Queen is fitted with garments. HIDDEN [Skullface]	story 1|story 1|0x8100 0|targmnr 356|unique 1|code 301	notext 1|addequip 9|earthboost 1|earthboost 1|addequip 1	
+3157	The queen replenishes her gems	0	The queen replenishes her gems.	rare 15|turn 30|0x8100 0|targmnr 356|story 1	addequip 1	
+3158	The Onyx Queen is fitted with 	0	The Onyx Queen is fitted with garments. HIDDEN [Champion's Skull]	rare 20|0x8100 0|targmnr 355|unique 1|code 301	notext 1|addequip 9	
 3159	The clapper of hooves and clat	0	The clapper of hooves and clatter of bones have lately been heard at night close to some settlements.	story 1|rare 10|code 301|capital 0|land 1|code 0	code 302|unrest 10	
 3160	People speak in fear of the Qu	0	People speak in fear of the Queen of the Onyx amazon that has come to power in a neighbouring land. She is rumored to be unsurpassed in both cunning and cruelty!	story 1|rare 10|code 301|capital 0|land 1|code 0	code 302	
 3161	Amazons have attacked!	0	Amazons have attacked!	rare 50|code 301|story 1|unique 9|code 302	code 303|2com 355|addequip 1|6d6units 357|2d6units 355	
 3162	The amazons consolidate.	0	The amazons consolidate.	rare 8|code 301|story 1|unique 6|code 303	com 355|addequip 1|5d6units 357|2d6units 369|8d6units -15	
-3163	A minotaur joins. [Implementor	0	A minotaur joins. [Implementor Axe]	rare 7|code 301|story 1|unique 3|code 303	com 234|addequip 9	
+3163	A minotaur joins. [Implementor	0	A minotaur joins. [Implementor Axe]	rare 7|code 301|story 1|unique 3|code 303	nation -2|com 234|addequip 9	
 3164	The onyx amazons have been def	0	The onyx amazons have been defeated! With her last breath, their priestess promised vengeance from her Queen upon your followers!	code 301|unique 2|code 303	code 304	
 3165	Undead have risen to wreak hav	0	Undead have risen to wreak havoc in your lands!	rare 33|unique 2|code 304	resetcode 304|com 188|10d6units -15	
 3166	The onyx amazons have been dri	0	The onyx amazons have been driven from the land! Some spoils of war have been transported to the treasury.	unique 2|code 303	code 0|gold 100|magicitem 1|1d3vis D	
-3167	A minotaur joins. [Implementor	0	A minotaur joins. [Implementor Axe]	rare 5|code 301|story 1|unique 1|code 301	com 234|addequip 9	
+3167	A minotaur joins. [Implementor	0	A minotaur joins. [Implementor Axe]	rare 5|code 301|story 1|unique 1|code 301	nation -2|com 234|addequip 9	
 3168	The amazons have built a mound	0	The amazons have built a mound. [Burial Mound]	rare 10|code 301|story 1|unique 1|code 301	newsite -1	
 3169	The amazons have built a mound	0	The amazons have built a mound. [Burial Mound]	rare 10|code 301|story 1|unique 1|code 302	newsite -1	
 3170	The minotaur has been equipped	0	The minotaur has been equipped [Copper Plate].	targmnr 234|story 1|unique 3|code 301	addequip 9	
-3171	The Onyx Queen is fitted with 	0	The Onyx Queen is fitted with garments. HIDDEN [Girdle of Might]	story 1|story 1|0x8100 0|targmnr 365|unique 1|code 301	addequip 9	
+3171	The Onyx Queen is fitted with 	0	The Onyx Queen is fitted with garments. HIDDEN [Girdle of Might]	story 1|story 1|0x8100 0|targmnr 356|unique 1|code 301	notext 1|addequip 9	
 3172	The Onyx queen uses her magic 	0	The Onyx queen uses her magic to raise undead!	rare 10|code 301|story 1|unique 6|code 303	com 190|1d6units 369|6d6units -15|6d6units -2|2d6units 357	
 3173	The Onyx queen uses her magic 	0	The Onyx queen uses her magic to raise undead!	turn 66|code 301|story 1|unique 6|code 303	com 190|4d6units 369|12d6units -15|12d6units -2|8d6units 357	
-3174	The Onyx Queen gains more powe	0	The Onyx Queen gains more power. HIDDEN	turn 66|story 1|targmnr 365|unique 1|code 301	deathboost 1|earthboost 1|addequip 1	
+3174	The Onyx Queen gains more powe	0	The Onyx Queen gains more power. HIDDEN	turn 66|story 1|targmnr 356|unique 1|code 301	notext 1|deathboost 1|earthboost 1|addequip 1	
 3175	Lately, farmers and merchants 	1	Lately, farmers and merchants have disappeared when traveling one of the local mountain paths.	fornation 42|unique 1|mountain 1|0x4600 1|code 0	code 306|unrest 5|0x6B00 1|order 1	
 3176	Your servant has discovered th	0	Your servant has discovered that a demon is eating travelers! When approached, the fiend proposed a deal: 'Let me feed on the fat merchants that pass this way and their gold will be sent to the coffers of the Emperor!'. If the deal is not struck, a ceremonial master could be sent to banish the demon, or armed men to slay it.	targorder 100|code 306	code 307|order 415	
 3177	Your cunning servant has appro	0	Your cunning servant has approached the demon once again, inquiring about the suggested deal. When pressed, it seems the demon meant to send only the gold, keeping silver and other valuables from his victims! Since gold is scarce, the treasury would have been tricked of most of the proceeds. A new deal is now offered, where all gold, silver, copper and other valuables will be sent to the treasury.	order 100|unique 1|code 306	code 308|order 415	

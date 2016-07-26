@@ -183,6 +183,7 @@ id	name	rarity	loc	level	path	F	A	W	E	S	D	N	B	gold	res	sup	unr	exp	lab	fort	scal
 182	Telkhinis	5	0	0	Earth		1	1	3		1																																2839																														2833	2834	2836																														
 183	Telkhinis	5	0	0	Earth		1	1	6		1																																2839																														2833	2834	2836																														
 184	Telkhinis	5	0	0	Earth		1	1	9		1																																2839																														2833	2834	2836																														
+185	Ker-Ys	5	0	0	Water		2	2	1																																		2915																														2917	2919	2921																														
 210	Tar Pits	0	219	1	Fire	1																																																																																																			
 211	Sun Ridge	0	223	1	Fire	2																																																																																																			
 212	Gold Apple Tree	1	223	2	Fire	2																																																																																																			
@@ -1025,3 +1026,4 @@ id	name	rarity	loc	level	path	F	A	W	E	S	D	N	B	gold	res	sup	unr	exp	lab	fort	scal
 1049	Turtle Village	0	64	0	Water																																																																									1292					1294																						
 1050	Ichtyid Enclave	2	96	1	Astral			1		1																																																																				974					2805																						
 1051	Mermage Coven	2	96	1	Water			2																																																																						1065					2815																						
+1052	Isle of the Saoi	2	32	1	Earth			1	1																																																																					2838					2833																						

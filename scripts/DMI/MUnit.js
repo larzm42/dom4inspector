@@ -466,7 +466,7 @@ MUnit.autocalc = function (o) {
 		if (o.inspirational) {
 			ldr_cost = ldr_cost + 10*parseInt(o.inspirational);
 		}
-		if (o.sailsz && parseInt(o.sailsz) > 0) {
+		if (o.sailingship && parseInt(o.sailingshipsize) > 0) {
 			ldr_cost = ldr_cost + .5 * ldr_cost;
 		}
 
@@ -1598,9 +1598,11 @@ var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 	'inept_research',	'inept researcher',
 	
 	'makepearls','pearl cultivator',
-	'sailsz',	'sailing size',
-	'sailmaxsz',	'max passenger size',
-
+	'sailingshipsize',	'sailing ship size',
+	'sailingmaxunitsize',	'sailing max unit size',
+	'sailsize', 'size when sailing',
+	'heroarrivallimit', 'hero turn arrival limit',
+	
 	'ambidextrous',	'ambidextrous',
 	'reinvigoration',		'reinvigoration',
 	'berserk',	'berserker',		Format.SignedZero,

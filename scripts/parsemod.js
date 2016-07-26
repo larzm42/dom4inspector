@@ -907,8 +907,8 @@ var modctx = DMI.modctx = {
 		flying:		_bool,
 		stormimmune:	_bool,
 		sailing: function(c,a,t){
-			modctx.unit['sailsz'] = a.n1;
-			modctx.unit['sailmaxsz'] = a.n2;
+			modctx.unit['sailingshipsize'] = a.n1;
+			modctx.unit['sailingmaxunitsize'] = a.n2;
 		},
 
 		forestsurvival:	_bool,

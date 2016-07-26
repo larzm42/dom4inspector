@@ -494,8 +494,8 @@ var displayorder2 = DMI.Utils.cutDisplayOrder(aliases, formats,
 
 	'heretic',		'heretic',
 
-	'sailsz',		'sailing size',
-	'maxsail',		'max size of passenger',
+	'sailingshipsize',		'sailing ship size',
+	'sailingmaxunitsize',		'sailing max unit size',
 	'flytr',		'flying transport',
 	
 	'patrolbonus',			'patrol bonus',		Format.Signed,
