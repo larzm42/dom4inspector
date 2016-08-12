@@ -40,6 +40,20 @@ function _num_def(n) {
 		modctx[t][c] = a.n1 || String(n);
 	}
 }
+/*
+ * #incunrest of 10 will increase unrest by 1. Discrepancy between the vanilla game csv
+ * and the mod script means we need to divide by 10 before displaying the value.
+*/
+function _num_div_10(c,a,t) {
+	modctx[t][c] = argnum(a) / 10;
+}
+/*
+ * #popkill 5 will kill 50 population. Again, the discrepancy between the vanilla game csv
+ * and the mod script means we need to multiply by 10 to get the right value.
+*/
+function _num_times_10(c,a,t) {
+	modctx[t][c] = argnum(a) * 10;
+}
 function _str_num(c,a,t) { 
 	if (!a.n1 && !a.s) throw "argument missing (number or string expected)";
 	modctx[t][c] = (a.n1 || a.s);
@@ -426,9 +440,9 @@ var modctx = DMI.modctx = {
 		supplybonus: 	_num,
 		nobadevents: 	_num,
 		incprovdef: 	_num,
-		incunrest: 	_num,
+		incunrest: 	_num_div_10,
 		leper: 	_num,
-		popkill: 	_num,
+		popkill: 	_num_times_10,
 		heretic: 	_num,
 		elegist: 	_num,
 		spreaddom: 	_num,
@@ -991,10 +1005,10 @@ var modctx = DMI.modctx = {
 		forgebonus:	_num,
 		douse:		_num,
 		nobadevents:	_num,
-		incunrest:	_num,
+		incunrest:	_num_div_10,
 		spreaddom:	_num,
 		leper:		_num,
-		popkill:	_num,
+		popkill:	_num_times_10,
 		inquisitor:	_bool,
 		heretic:	_num,
 
