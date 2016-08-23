@@ -4,6 +4,8 @@
 var Utils = DMI.Utils;
 var modconstants = DMI.modconstants;
 
+var data_path = "";
+
 
 //basic helpers for setting values
 function argstr(a) {
@@ -826,8 +828,8 @@ var modctx = DMI.modctx = {
 		descr: _str,
 
 		//fx
-		spr1:	function(c,a,t){ modctx[t].sprite.spr1 = a.s; },
-		spr2:	function(c,a,t){ modctx[t].sprite.spr2 = a.s; },
+		spr1:	function(c,a,t){ modctx[t].sprite.spr1 = data_path+"/"+a.s; },
+		spr2:	function(c,a,t){ modctx[t].sprite.spr2 = data_path+"/"+a.s; },
 		speciallook: _ignore,
 		
 		ap:	_num,
@@ -1789,7 +1791,8 @@ var modcom_re_multistr = /#(\w+)\s*"([^"]+)\r?$/;
 var modcom_re_strcont  = /([^"]*)("|)/;
 var modcom_re = /^\s*#(\w+)\s*("([^"]+)"|)(-?\d+\.?\d*|)\s*(-?\d+\.?\d*|)\s*(-?\d+\.?\d*|)\s*/;
 
-modctx.parseMod = function(str, modnum, modname) {
+modctx.parseMod = function(str, modnum, modname, path) {
+	data_path = path;
 	var lines = str.split('\n');
 	for (var i=0; i<lines.length; i++) {
 		var cstr = lines[i], linenum = i+1;
