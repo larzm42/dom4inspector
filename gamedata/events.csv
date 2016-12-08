@@ -68,7 +68,7 @@ id	name	rarity	description	requirements	effects	test
 67	A few ice crystals of fantasti	-1	A few ice crystals of fantastical proportions have fallen in the province.	pop0ok 1|land 1|season 3	2d6vis W	
 68	The hard working farmers of th	-1	The hard working farmers of the province managed to harvest some sturdy crops even during winter. The farmers were overjoyed and managed to pay some extra tax as well.	maxunrest 50|season 3|prod 0|growth 0	unrest -15|gold 100	
 69	The hard working farmers of th	-1	The hard working farmers of the province managed to harvest some sturdy crops even during winter. The farmers were overjoyed and managed to pay some extra tax as well.	maxunrest 50|season 3|prod 2|growth 1	unrest -15|taxboost 200	
-70	A mild winter has enabled your	-1	A mild winter has enabled your traders to travel extensively and livestock to survive the winter.	maxunrest 50|season 3	unrest -20|gold 150	
+70	A mild winter has enabled your	-1	A mild winter has enabled your traders to travel extensively and livestock to survive the winter.	maxunrest 50|season 3|land 1	unrest -20|gold 150	
 71	A young farmer stealing food f	-1	A young farmer stealing food from squirrels found some gems among the acorns and donated them to the temple.	season 3|land 1|temple 1|growth 0	1d6vis N	
 72	A handful of magic fire gems w	-1	A handful of magic fire gems were found by digging in a spot where the snow would not settle.	season 3|land 1|cold 1	1d6vis F	
 73	A handful of magic gems have b	-1	A handful of magic gems have been found in the prime of the season.	noseason 2|noseason 3	1d6vis N	
@@ -1252,7 +1252,7 @@ id	name	rarity	description	requirements	effects	test
 1251	Manufacturing methods have bee	-2	Manufacturing methods have been improved.	turn 20|minpop 300|prod 1|era 3	landprod 15	
 1252	The temple burned when sloppy 	2	The temple burned when sloppy acolytes forgot to watch the holy candles after sundown.	temple 1|land 1|unluck 2|turn 15	temple 0	
 1253	The temple burned when sloppy 	1	The temple burned when sloppy acolytes forgot to watch the holy candles after sundown.	temple 1|land 1|unluck 3|turn 15	temple 0	
-1254	Locusts have destroyed the har	1	Locusts have destroyed the harvest.	farm 1|unluck 1|growth -1|season 1	taxboost -100|unrest 10	
+1254	Locusts have destroyed the har	1	Locusts have destroyed the harvest.	farm 1|unluck 1|growth -1|season 1|land 1	taxboost -100|unrest 10	
 1255	Toads are raining from the sky	2	Toads are raining from the sky!	magic 1|land 1|noseason 3	incscale3 Misfortune|unrest 25	
 1256	Heavy rains have destroyed the	1	Heavy rains have destroyed the roads, hampering trade.	unluck 1|land 1|noseason 3	taxboost -50|landgold -5	
 1257	Heavy rains have destroyed the	2	Heavy rains have destroyed the roads, hampering trade.	unluck -1|land 1|noseason 3	taxboost -50|landgold -5	
@@ -1265,7 +1265,7 @@ id	name	rarity	description	requirements	effects	test
 1264	The wolves are hungry this win	1	The wolves are hungry this winter and locals are being attacked and killed by the score. Some of the beasts are monstrously large.	land 1|season 3|unluck 3	2com 1224|4d6units 1224|12d6units 284|kill 2|unrest 15	
 1265	Many have been afflicted by a 	2	Many have been afflicted by a convulsive disease, known as Evil Fire.	minpop 200|swamp 1|season 2|death 0	kill 4	
 1266	A band of renegade Shrimp Sold	-2	A band of renegade Shrimp Soldiers have been recruited into your service.	land 0|turn 15|unluck -1	nation -2|2com 2102|7d6units 2101	
-1267	An evil Lord and his hirelings	2	An evil Lord and his hirelings are trying to take over the land!	land 1|noera 1	com 389|2com 339|addequip 1|6d6units 287|5d6units 286	
+1267	An evil Lord and his hirelings	2	An evil Lord and his hirelings are trying to take over the land!	land 1|noera 1|turn 15	com 389|2com 339|addequip 1|6d6units 287|5d6units 286	
 1268	One of the Sleepers has stirre	1	One of the Sleepers has stirred! [Cave of the Sleepers]	foundsite 1|turn 25	nation -2|com 477|addequip 1	
 1269	One of the Sleepers has stirre	-1	One of the Sleepers has stirred! [Cave of the Sleepers]	foundsite 1|turn 25	com 477|addequip 1	
 1270	One of the Sleepers has stirre	1	One of the Sleepers has stirred! [Cave of the Sleepers]	foundsite 1|turn 25	nation -2|com 99|addequip 1	

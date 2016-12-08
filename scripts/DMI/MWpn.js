@@ -39,6 +39,7 @@ MWpn.prepareData_PostMod = function() {
 			if (effects.effect_number == "2") {
 				o.dmg = effects.raw_argument;
 			} else if (effects.effect_number == "11") {
+				if (effects.raw_argument != 258)
 				o.dmg = modctx.special_damage_types_lookup[parseInt(effects.raw_argument)].bit_name;
 			} else if (effects.effect_number == "108") {
 				o.dmg = modctx.other_planes_lookup[parseInt(effects.raw_argument)].name;

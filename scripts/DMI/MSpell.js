@@ -221,6 +221,10 @@ MSpell.prepareData_PostMod = function() {
 			if (parseInt(o.gemcost) > 0 && !o.fatiguecost) {
 				o.fatiguecost = parseInt(o.gemcost) * 100;
 			}
+			// Fix for Life for a Life
+			else if (parseInt(o.gemcost) > 0 && !o.modded) {
+				o.fatiguecost += parseInt(o.gemcost) * 100;
+			}
 			o.fatiguecostsort = parseInt(o.fatiguecost);
 		}
 		if (o.gemcost && parseInt(o.gemcost) > 0) {
