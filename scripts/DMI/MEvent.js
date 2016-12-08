@@ -404,7 +404,7 @@ MEvent.magicitemArr = function(v,o) {
 		//comma separated & one per line
 		return tokens.join(', <br />');
 	} else {
-		return MEvent.formatMagicItem(uid, o); 
+		return MEvent.formatMagicItem(v, o); 
 	}
 }
 
