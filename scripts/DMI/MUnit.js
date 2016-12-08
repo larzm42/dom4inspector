@@ -810,9 +810,9 @@ MUnit.prepareForRender = function(o) {
 
 		//set sprite url
 		if (o.sprite.spr1) {
-			o.sprite.url1 = 'mods/' + o.sprite.spr1.replace('.tga', '.png').replace(/^.\//, '');
+			o.sprite.url1 = o.sprite.data_path.replace(/\\/g,'/') + '/' + o.sprite.spr1.replace('.tga', '.png').replace(/^.\//, '');
 		    if (o.sprite.spr2) {
-		    	o.sprite.url2 = 'mods/' + o.sprite.spr2.replace('.tga', '.png').replace(/^.\//, '');
+		    	o.sprite.url2 = o.sprite.data_path.replace(/\\/g,'/') + '/' + o.sprite.spr2.replace('.tga', '.png').replace(/^.\//, '');
 		    }
 		} else {
 			o.sprite.url1 = 'images/sprites/' + Utils.paddedNum(o.sprite.unitid,4)+'_1.png'; 

@@ -842,8 +842,14 @@ var modctx = DMI.modctx = {
 		descr: _str,
 
 		//fx
-		spr1:	function(c,a,t){ modctx[t].sprite.spr1 = data_path+"/"+a.s; },
-		spr2:	function(c,a,t){ modctx[t].sprite.spr2 = data_path+"/"+a.s; },
+		spr1:	function(c,a,t){ 
+			modctx[t].sprite.spr1 = a.s; 
+			modctx[t].sprite.data_path = data_path; 
+		},
+		spr2:	function(c,a,t){ 
+			modctx[t].sprite.spr2 = a.s; 
+			modctx[t].sprite.data_path = data_path; 
+		},
 		speciallook: _ignore,
 		
 		ap:	_num,

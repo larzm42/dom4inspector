@@ -1,7 +1,7 @@
 {
   "name": "Dominions 4 Inspector",
-  "version": "4.26",
-  "description": "A ",
+  "version": "4.28",
+  "description": "A data inspector for Dominions 4.",
   "main": "main.js",
   "scripts": {
     "start": "electron main.js"
