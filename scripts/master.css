@@ -656,8 +656,6 @@ div.spell table.spell-effect.nextspell {
 	background: #ffffff;
 }
 
-
-
 table.spell-effect {
 }
 /*
@@ -675,10 +673,6 @@ div > div.national-spell {
 	/*border-bottom: 2px solid #7b7bef; /*national spell color from dom3*/
 	border-bottom: 2px solid #6190CD; /*slickgrid blue*/
 }
-
-
-
-
 
 span.flag:first-letter {text-transform:capitalize;}
 th:first-letter {text-transform:capitalize;}

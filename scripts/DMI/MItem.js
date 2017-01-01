@@ -434,6 +434,9 @@ var displayorder2 = DMI.Utils.cutDisplayOrder(aliases, formats,
 	'woundfend',	'affliction protection',		Format.Percent,
 	'taint',	'horrormark chance', Format.Percent,
 	'aging',	'advanced aging', 
+	
+	'dragonmastery', 'Dragon mastery',
+	'patience', 'patience',
 
 	'morale',		'morale bonus',		Format.Signed,
 	'exp',		'experience bonus',	Format.SignedPerTurn,

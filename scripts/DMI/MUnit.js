@@ -204,6 +204,16 @@ MUnit.prepareData_PostMod = function() {
 		o.renderOverlay = MUnit.renderOverlay;
 		o.matchProperty = MUnit.matchProperty;
 		
+		if (!o.size) {
+			o.size = 2;
+		}
+		if (!o.ap) {
+			o.ap = 12;
+		}
+		if (!o.mapmove) {
+			o.mapmove = 2;
+		}
+		
 		if (o.realms && o.realms.length == 0) {
 			delete o.realms;
 		}
@@ -799,11 +809,15 @@ MUnit.prepareForRender = function(o) {
 		var _isCmdr = isCmdr(o);
 
 		//set sprite url
-		if (o.sprite.spr1)
-			o.sprite.url = 'mods/' + o.sprite.spr1.replace('.tga', '.png').replace(/^.\//, '')
-		else
-			o.sprite.url = 'images/sprites/' + Utils.paddedNum(o.sprite.unitid,4)+'_1.png'; 
-		
+		if (o.sprite.spr1) {
+			o.sprite.url1 = 'mods/' + o.sprite.spr1.replace('.tga', '.png').replace(/^.\//, '');
+		    if (o.sprite.spr2) {
+		    	o.sprite.url2 = 'mods/' + o.sprite.spr2.replace('.tga', '.png').replace(/^.\//, '');
+		    }
+		} else {
+			o.sprite.url1 = 'images/sprites/' + Utils.paddedNum(o.sprite.unitid,4)+'_1.png'; 
+			o.sprite.url2 = 'images/sprites/' + Utils.paddedNum(o.sprite.unitid,4)+'_2.png'; 
+		}
 		
 		//local helper: apply bonus to stat and add it to tooltip
 		o.titles = {};
@@ -1006,6 +1020,9 @@ MUnit.prepareForRender = function(o) {
 			o.isold = '1';
 			
 			var oldmult = 1 + Math.floor(4 * oldyears / parseInt(o.maxage));
+			if (oldmult > 6) {
+				oldmult = 6;
+			}
 			bonus('old age', 'str', -1 * oldmult);
 			bonus('old age', 'att', -1 * oldmult);
 			bonus('old age', 'def', -1 * oldmult);
@@ -1665,6 +1682,7 @@ var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 	'crossbreeder',	'crossbreader',
 	'patience', 'patience',
 	'uwdamage', 'underwater damage',
+	'landdamage', 'land damage',
 	'digest', 'digest',
 	'acidsplash', 'acid splash',
 	'incorporate', 'incorporate',
@@ -1969,7 +1987,7 @@ MUnit.renderOverlay = function(o, isPopup) {
 
 	//body
 	h+='	<div class="overlay-main" style="clear:both;">';
-	h+='	<img style="float:right; clear:right;" src="'+o.sprite.url+'" />';
+	h+='	<img style="float:right; clear:right;" title="Toggle attack sprite" src="'+o.sprite.url1+'" onmouseover="this.style.cursor=\'pointer\'" onclick="if (this.src.indexOf(\''+o.sprite.url1+'\') != -1) {this.src = \''+o.sprite.url2+'\';} else { this.src = \''+o.sprite.url1+'\';}"/>';
 	h+='	<div style="float:right; clear:right; max-width:50%;">';
 	var tags = [];
 	for (var i=0; i<o.weapons.length; i++)

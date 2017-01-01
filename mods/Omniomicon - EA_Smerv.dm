@@ -1,6 +1,6 @@
 #modname "Project OMNIOMICON - EA_Smerv"
 #description "Project Omniomicon (Chapter 3 - Smerv ALPHA 1) by Pymous (http://www.pymous.com). Thanks to David88 for Alpha testing, ideas, descriptions corrections and bug reporting!" 
-#version 0.10 -- 19/09/2015 Beta 1.0
+#version 0.11 -- 26/09/2015 Beta 1.1
 #icon "Omniomicon/smerv_banner.tga"
 
 #selectnation 103 -- smerv
@@ -8,7 +8,7 @@
 #epithet "Rotten Blood"
 #era 1 ---- Early Era
 #brief "The Smervs are terrible creatures and a growing threat. How could these once secretive and cowardly scavengers become aggressive and bloodthirsty? Some speak of rage and magic, others demons and bloody rituals. The Smervs are gathering and now rampage, kill, plunder and desecrate graveyards, spreading chaos and death. Nothing seems able to stop their madness..."
-#descr "Despite having their own language and a complex social structure, the Smervs were always considered more animals than intelligent beings. No one cared for them as they were never very numerous and never tried to trade or estabilish any relationship with other civilizations. Often mistaken for hyenas - with which they share many physical characteristics and probably originate from - they are however intelligent creatures with their own religious beliefs and specific rituals. It is believed theses rituals led them to summon a great evil which has now taken control of their species - the Smervs are now led by some strange demonic forces, guided by blood, violence and death, and the known world start to tremble before them..."
+#descr "Despite having their own language and a complex social structure, the Smervs were always considered more animals than intelligent beings. No one cared for them as they were never very numerous and never tried to trade or establish any relationship with other civilizations. Often mistaken for hyenas - with which they share many physical characteristics and probably originate from - they are however intelligent creatures with their own religious beliefs and specific rituals. It is believed theses rituals led them to summon a great evil which has now taken control of their species - the Smervs are now led by Zlodmor demons, guided by blood, violence and death, and the known world start to tremble before them..."
 #summary "Note: Smerv dominion spread turmoil(chaos) and the nation can't recruit foreign non-Smervs units.
 
 
@@ -268,11 +268,12 @@ Its gigantic size and the grisly spectacle of the rotting meat are a vision of u
 #demon
 #okleader -- 
 #expertundeadleader
+#heal -- dont work?
 #fear 10 -- peur de l'etrange?
 #itemslots 12348 -- 12288 + 60
 #magicskill 5 3 -- death magic
 #diseasecloud 6 
-#poisonres 25
+--#poisonres 25
 --#digest 3 -- digest
 #incorporate 3
 #hpoverslow 100
@@ -308,7 +309,7 @@ Its gigantic size and the grisly spectacle of the rotting meat are a vision of u
 
 #newmonster 4633
 #name "Blood Fountain" --- 
-#descr "The blood fountain is the sacred receptacle for the distilled blood of the demonic Red Smervs. The precious red liquid is regularly collected by slaves (mostly human, because of their numbers) and used to prepare food based on its stage of decay.
+#descr "The blood fountain is the Zlodmor sacred receptacle for distilled blood. The precious red liquid is regularly collected from slaves (mostly human, because of their numbers) and used to prepare different kind of meal based with a controlled stage of decay.
 It is believed that the presence of such a large amount of blood, combined with the morbid rituals practised nearby has attracted and bound a Greater Demon to the fountain who is able to manipulate both the Smervs and lesser demons."
 #spr1 "./Omniomicon/Smerv/smerv_pretender_bloodfountain.tga"
 #spr2 "./Omniomicon/Smerv/smerv_pretender_bloodfountain2.tga"  
@@ -359,14 +360,14 @@ It is believed that the presence of such a large amount of blood, combined with 
 #end
 
 #newmonster 4634 -- MAGE TITAN
-#name "Bloodbone" --- O
-#descr "The Bloodbone is a strange and fearsome creature."
+#name "Bloodbone Behemoth" --- O
+#descr "The Bloodbone Behemoth is a strange and fearsome Zlodmor demon."
 #spr1 "./Omniomicon/Smerv/smerv_pretender_redbones.tga" 
 #spr2 "./Omniomicon/Smerv/smerv_pretender_redbones2.tga" 
 #demon
 #undead
 #pierceres
-#poisonres 25
+--#poisonres 25
 #slashres
 #okleader -- 
 #expertundeadleader
@@ -393,11 +394,12 @@ It is believed that the presence of such a large amount of blood, combined with 
 #mapmove 3 
 #ap 25 
 #weapon 63 -- life drain
+#weapon 609 -- grab and swallow
 #end
 
 #newmonster 4635 -- MAGE TITAN
 #name "Blood Elemental" --- O
-#descr "The Blood Elemental was born from the flowing juices of the corpses of the Meat Mountain and the morbid rituals practised there by the unwitting Smervs. A major demon of Blood and Water, he possess extraordinary power and has taken full control of Smerv nation and its destiny."
+#descr "The Blood Elemental was born from the flowing juices of the corpses of the Meat Mountain and the morbid rituals practised there by the unwitting Smervs. A major demon of Blood and Water, he possess extraordinary power and has taken full control of Smervs and Zlodmors."
 #spr1 "./Omniomicon/Smerv/smerv_pretender_bloodelemental.tga" 
 #spr2 "./Omniomicon/Smerv/smerv_pretender_bloodelemental2.tga" 
 #demon
@@ -409,7 +411,7 @@ It is believed that the presence of such a large amount of blood, combined with 
 #siegebonus 10
 #incorporate 2
 #digest 3
-#poisonres 25
+--#poisonres 25
 #pierceres 
 #bluntres
 #pierceres
@@ -445,7 +447,7 @@ It is believed that the presence of such a large amount of blood, combined with 
 
 #newmonster 4636 -- RAINBOW 
 #name "Samatan" --- 
-#descr "Smervs call it Samatan, and he is believed to be one if not the first Demonsmerv. Bring back to life from a grandiose death ritual to honor a smerv leader, this is now a Demon of great power and knowledge who spread Chaos."
+#descr "Smervs call it Samatan, and he is believed to be the first Zlodmor. Bring back to life from a grandiose death ritual to honor a fallen Feral Alpha, this is now a Demon of great power and knowledge who spread Chaos."
 #spr1 "./Omniomicon/Smerv/smerv_pretender_rainbow.tga" 
 #spr2 "./Omniomicon/Smerv/smerv_pretender_rainbow2.tga" 
 #demon
@@ -489,50 +491,19 @@ It is believed that the presence of such a large amount of blood, combined with 
 ---------------------------------------------
 
 
-#newmonster 4600 --- BASE TEMPLATE
-#name "Smerv"
-#descr "Once discrete scavengers feeding on dead flesh and bones, the smervs no longer hesitate to attack the living. Their impressive speed and great jaw capable of crushing bones make a terrifying enemy. Some of them do not hesitate to complete this natural arsenal of improvised weapons useless to the dead but effective against the living. The law of the strongest prevails among smervs weaklings, most will settle for remains and often only those bones that Bloodbone Recycler will find of no use."
-#spr1 "./Omniomicon/Smerv/smerv_test.tga"
-#spr2 "./Omniomicon/Smerv/smerv_test2.tga"
-#stealthy 0 
-#darkvision 50
-#chaosrec 2
-#deathrec 1 
-#undisciplined
-#patrolbonus 1 -- small patrol bonus due to their furtivity and way of life
-#wastesurvival
-#supplybonus 1 -- they can feed themselves on rotten corpses or even just bones of dead beiings
-----
-#gcost 8
-#rcost 0 -- 0 ressource cost
-----
-#weapon 1250 -- smerv bite
----
-#hp 8
-#size 2
-#str 11
-#att 9
-#def 10
-#prec 10
-#prot 0
-#mor 10
-#mr 8 
-#enc 2
-#ap 20
-#mapmove 3 
-#end
+
 
 -----------------------------------------------------------------------------------------------------
 
 #newmonster 4601 --- BLOOD MASTER SLOW REC HOLY2
-#name "Great Smort"
-#descr "If the presence of a Smort on a battlefield does not go unnoticed, what to say about that of the Great Smort? An infernal bloodcurdling brouhara who will only stop by the destruction of one of the two armies."
+#name "Zlodmor Archpriest"
+#descr "If the presence of a Zlodmor Priest on a battlefield does not go unnoticed, what to say about that of an Archpriest? An infernal bloodcurdling brouhara who will only stop by the destruction of one of the two armies."
 #spr1 "./Omniomicon/Smerv/smerv_masterpriest.tga"
 #spr2 "./Omniomicon/Smerv/smerv_masterpriest2.tga"
 #demon -- IS DEMON
 #undead
 #holy
-#chaosrec 10
+--#chaosrec 10
 #demon -- demon
 #goodleader -- smerv only respect strength
 #goodundeadleader -- smerv only respect strength
@@ -565,14 +536,14 @@ It is believed that the presence of such a large amount of blood, combined with 
 #end
 
 #newmonster 4602 --- BLOOD PRIEST LVL1
-#name "Smort"
+#name "Zlodmor Priest"
 #descr "When these demonic creatures are present on the battlefield, all Smervs start to grow tremendous piercing tones while charging -IiiiiEt! IiiiiiEt!-."
 #spr1 "./Omniomicon/Smerv/smerv_deathpriest.tga"
 #spr2 "./Omniomicon/Smerv/smerv_deathpriest2.tga"
 #demon -- IS DEMON
 #undead
 #holy
-#chaosrec 10
+--#chaosrec 10
 #okleader -- smerv only respect strength
 #okundeadleader
 #wastesurvival
@@ -602,14 +573,14 @@ It is believed that the presence of such a large amount of blood, combined with 
 #end
 
 #newmonster 4603 --- DEATH MAGE CAPITAL ONLY
-#name "Gamey Master"
+#name "Zlodmor Gamy Master"
 #descr "These demons are working with Carcassors, from which they receive large amounts of corpses and body parts from slains ennemies or simply dead bodies. No one knows what the Gamey Master exactly do with all this bloody material, but it seems an important process for the Smervs. Some have started to speculate that it is some kind of meat granary, others that it used to feed the armored Smervs in the forts, but none of these assumptions makes really sense."
 #spr1 "./Omniomicon/Smerv/smerv_gameymaster.tga"
 #spr2 "./Omniomicon/Smerv/smerv_gameymaster2.tga"
 #demon -- IS DEMON
 #undead
 #holy
-#chaosrec 10
+--#chaosrec 10
 #okleader -- smerv only respect strength
 #okundeadleader
 #wastesurvival
@@ -639,13 +610,13 @@ It is believed that the presence of such a large amount of blood, combined with 
 #end
 
 #newmonster 4604 --- DEATH MAGE
-#name "Carcassor"
+#name "Zlodmor Carcassor"
 #descr "Carcassors pick up any dead bodies or body parts that can be found on battlefields or elsewhere before they are consumed by their peers. They seems to have some magic knowledge but spend most of their time hacking corpses in parts with their huge falchion. The carcasses, bones and any body parts are then collected and  sent back at the Capital to the Gamey Masters."
 #spr1 "./Omniomicon/Smerv/smerv_carcassor.tga"
 #spr2 "./Omniomicon/Smerv/smerv_carcassor2.tga"
 #demon -- IS DEMON
 #undead
-#chaosrec 10
+--#chaosrec 10
 #okleader -- smerv only respect strength
 #okundeadleader
 #wastesurvival
@@ -674,14 +645,14 @@ It is believed that the presence of such a large amount of blood, combined with 
 #end
 
 #newmonster 4605 --- BLOOD/WATER MAGE
-#name "Blood Distiller"
+#name "Zlodmor Blood Distiller"
 #descr "These Demonic Smervs for some reason do not consume any meat or carcass based food. Rather they feed exclusively on gamy blood in all its forms and level or rot. Blood Distillers are the bloody cooks, bleeding the poor prisoners captured by slavers to collect the precious red liquid, while maintaining them alive as long as possible."
 #spr1 "./Omniomicon/Smerv/smerv_blooddistiller.tga"
 #spr2 "./Omniomicon/Smerv/smerv_blooddistiller2.tga"
 #demon -- IS DEMON
 #undead
 #holy
-#chaosrec 10
+--#chaosrec 10
 #okleader -- smerv only respect strength
 #goodundeadleader 
 #douse 2 -- bloodsearch bonus 
@@ -713,14 +684,14 @@ It is believed that the presence of such a large amount of blood, combined with 
 #end
 
 #newmonster 4654 --- MEAT CONSERVATOR
-#name "Smerv Conservator"
+#name "Zlodmor Freezer"
 #descr "This strange demon use his knowledge in magic to keep corpses, meat and blood from rotting too much by cooling them and controlling their temperature. Many of them are located to the Capital, taking care of the rotten Meat Mountain and gamy blood reserves."
 #spr1 "./Omniomicon/Smerv/smerv_conservator.tga"
 #spr2 "./Omniomicon/Smerv/smerv_conservator2.tga"
 #demon -- IS DEMON
 #undead
 #holy
-#chaosrec 10
+--#chaosrec 10
 #okleader -- smerv only respect strength
 #okundeadleader 
 #wastesurvival
@@ -782,13 +753,13 @@ It is believed that the presence of such a large amount of blood, combined with 
 #end
 
 #newmonster 4606 --- EARTH MAGE
-#name "Bloodbone Recycler"
+#name "Zlodmor Bloodbone Recycler"
 #descr "This strange demon looks like some kind of artisan fashioning artifacts, weapons and armor from raw bones materials. Much of corpses covering the battlefields are boned to be confiscated by the Bloodbone Recycler. Cemeteries are also popular places where this demon like to spend time."
 #spr1 "./Omniomicon/Smerv/smerv_bonerecycler.tga"
 #spr2 "./Omniomicon/Smerv/smerv_bonerecycler2.tga"
 #demon -- IS DEMON
 #undead
-#chaosrec 10
+--#chaosrec 10
 #okleader -- smerv only respect strength
 #okundeadleader
 #wastesurvival
@@ -819,7 +790,7 @@ It is believed that the presence of such a large amount of blood, combined with 
 #mapmove 3 
 #end
 
-#newmonster 4607 --- SCOUT -- a supprimer? en faire assassin?
+#newmonster 4607 --- SCOUT -- a supprimer? en faire assassin? UNUSED
 #name "Smerv Runner"
 #descr "Scout"
 #spr1 "./Omniomicon/Smerv/smerv_scout.tga"
@@ -852,21 +823,22 @@ It is believed that the presence of such a large amount of blood, combined with 
 #end
 
 #newmonster 4608 --- WEAK LEADER BUT STEALTHY + FOREIGN REC
-#name "Smerv Packleader"
-#descr "Once discrete scavengers feeding on dead flesh and bones, the Smervs no longer hesitate to attack the living. Their impressive speed and great jaw capable of crushing bones make a terrifying enemy. Some of them do not hesitate to complete this natural arsenal of improvised weapons useless to the dead but effective against the living. The law of the strongest prevails among smervs weaklings and most will settle for remains often only those bones and whose Boneblood Recycler's will be of no use."
+#name "Feral Smerv Alpha"
+#descr "The leaders of the weakest, most inconsequential Smervs have honed what small gifts they possess to a razor edge, creeping forth to savage the living and the dead before retreating into hiding once more."
 #spr1 "./Omniomicon/Smerv/smerv_leaderweak.tga"
 #spr2 "./Omniomicon/Smerv/smerv_leaderweak2.tga"
 #stealthy 0 -- stealthy
 #darkvision 50
-#chaosrec 6 -- high bonus for chaos level
-#deathrec 3 -- high bonus for death level
+#chaosrec 5 -- high bonus for chaos level
+#deathrec 5 -- high bonus for death level
 #okleader
 #patrolbonus 1 -- small patrol bonus due to their furtivity and way of life
 #wastesurvival
 #female
+#supplybonus 1 
 ----
 #gcost 10010
-#rcost 0 --
+#rcost 1 --
 ----
 #weapon 1252 -- bone dagger
 #weapon 1250 -- smerv bite
@@ -887,7 +859,7 @@ It is believed that the presence of such a large amount of blood, combined with 
 
 #newmonster 4609 --- SCAVENGERS LEADER (+FOREIGN REC)
 #name "Smerv Scavleader"
-#descr "Smervs scavengers (although by definition all Smervs are scavengers) are composed of the most aggressive and experienced elements. Their arsenal is relatively well developed and consists even of a some kind of proto-armor made of bone and crafted by Bloodbone Recyclers. Mercilessly, Smervs Scavengers devastate, plunder and kill whole days and nights, wreaking havoc forever."
+#descr "Queens of the roving packs of scavengers, Scavleaders naturally rise to the top by being the cleverest and most aggressive around. They hold their positions by exercising their ruthless strength against enemies, their subordinates and anyone else they can find. Where the Scavleaders go, death and chaos follow."
 #spr1 "./Omniomicon/Smerv/smerv_leaderscavenger.tga"
 #spr2 "./Omniomicon/Smerv/smerv_leaderscavenger2.tga"
 #darkvision 50
@@ -896,11 +868,13 @@ It is believed that the presence of such a large amount of blood, combined with 
 #goodleader 
 #pillagebonus 2
 #incunrest 5
+#supplybonus 1 
 #female
 #reqtemple
+#wastesurvival
 ----
 #gcost 10010
-#rcost 0
+#rcost 1
 ----
 #weapon 1253 -- bone mace
 #weapon 1250 -- smerv bite
@@ -928,14 +902,15 @@ It is believed that the presence of such a large amount of blood, combined with 
 #spr1 "./Omniomicon/Smerv/smerv_warchief.tga"
 #spr2 "./Omniomicon/Smerv/smerv_warchief2.tga"
 #darkvision 50
-#chaosrec 10
+-- #chaosrec 10
 #expertleader
 #berserk 3
 #female
 #wastesurvival
+#pillagebonus 1
 ----
 #gcost 10010
-#rcost 0
+#rcost 1
 ----
 #weapon 10 -- falchion
 #weapon 1250 -- smerv bite
@@ -958,14 +933,14 @@ It is believed that the presence of such a large amount of blood, combined with 
 #end
 
 #newmonster 4611 --- BLOODCHIEF (WAR, CAPITAL ONLY)
-#name "Smerv Bloodseeker"
-#descr "Bloodseekers are Demonic warriors who usually lead the Red Smervs, Whiteskulls or any other demonic forces into bloody hunting, killing and pillaging."
+#name "Zlodmor Bloodseeker"
+#descr "Bloodseekers are Zlodmor warriors who usually lead the Red Smervs, Whiteskulls or any other demonic forces into bloody hunting, killing and pillaging."
 #spr1 "./Omniomicon/Smerv/smerv_bloodchief.tga"
 #demon
 #undead
 #holy
 #magicskill 7 1 -- blood magic
-#chaosrec 10
+--#chaosrec 10
 #goodleader
 #expertundeadleader
 #wastesurvival
@@ -977,7 +952,7 @@ It is believed that the presence of such a large amount of blood, combined with 
 #researchbonus -3 -- used to fighting, not labrat
 ----
 #gcost 10010
-#rcost 0
+#rcost 1
 ----
 #weapon 1253 -- bone mace
 #weapon 1253 -- bone mace
@@ -1004,25 +979,23 @@ It is believed that the presence of such a large amount of blood, combined with 
 -------------UNITS----------------------------UNITS-----------------------UNITS-------------------UNITS-------------------UNITS-------------------UNITS----------
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
-#newmonster 4612 --- ARMED SMERV 
-#name "Armed Smerv"
-#descr "Once discrete scavengers feeding on dead flesh and bones, the smervs no longer hesitate to attack the living. Their impressive speed and great jaw capable of crushing bones make a terrifying enemy. Some of them do not hesitate to complete this natural arsenal of improvised weapons useless to the dead but effective against the living. The law of the strongest prevails among smervs weaklings, most will settle for remains and often only those bones that Bloodbone Recycler will find of no use."
-#spr1 "./Omniomicon/Smerv/smerv_dagger.tga"
-#spr2 "./Omniomicon/Smerv/smerv_dagger2.tga"
-#stealthy 0 -- change value?
+#newmonster 4600 --- BASE TEMPLATE
+#name "Feral Smerv"
+#descr "Once discreet scavengers feeding on dead flesh and bones, the smervs no longer hesitate to attack the living. Their impressive speed and great jaw capable of crushing bones make a terrifying enemy. The more a land falls into wildness and death, the more smervs creep forth in search of corpse-meat and bone. The law of the strongest prevails among Smerv weaklings, most will settle for remains and often only those bones that Bloodbone Recycler will find of no use."
+#spr1 "./Omniomicon/Smerv/smerv_test.tga"
+#spr2 "./Omniomicon/Smerv/smerv_test2.tga"
+#stealthy 0 
 #darkvision 50
-#chaosrec 2
+#chaosrec 1
 #deathrec 1 
 #undisciplined
 #patrolbonus 1 -- small patrol bonus due to their furtivity and way of life
 #wastesurvival
-#supplybonus 1 -- 
+#supplybonus 1 -- they can feed themselves on rotten corpses or even just bones of dead beiings
 ----
-#gcost 10
-#rcost 0 -- 0 resource cost
+#gcost 9
+#rcost 1 -- 
 ----
-#weapon 1252 -- bone dagger
 #weapon 1250 -- smerv bite
 ---
 #hp 8
@@ -1035,30 +1008,61 @@ It is believed that the presence of such a large amount of blood, combined with 
 #mor 10
 #mr 8 
 #enc 2
-#ap 20 -- fast light moving 
-#mapmove 3 -- fast moving light
+#ap 20
+#mapmove 3 
 #end
 
+#newmonster 4612 --- ARMED SMERV 
+#copystats 4600 -- Copy Basic Smerv template
+#name "Feral Armed Smerv"
+#descr "Once discreet scavengers feeding on dead flesh and bones, the smervs no longer hesitate to attack the living. Their impressive speed and great jaw capable of crushing bones make a terrifying enemy. Some of them do not hesitate to complete this natural arsenal of improvised weapons useless to the dead but effective against the living. The law of the strongest prevails among Smerv weaklings, most will settle for remains and often only those bones that Bloodbone Recycler will find of no use."
+#spr1 "./Omniomicon/Smerv/smerv_dagger.tga"
+#spr2 "./Omniomicon/Smerv/smerv_dagger2.tga"
+----
+#gcost 11
+----
+#weapon 1250 -- smerv bite
+#weapon 1252 -- bone dagger
+---
+#end
+
+#newmonster 4620 --- HURLER (stones and bones thrower)
+#copystats 4600 -- Copy Basic Smerv template
+#name "Feral Smerv Hurler"
+#descr "Once discreet scavengers feeding on dead flesh and bones, the smervs no longer hesitate to attack the living. Their impressive speed and great jaw capable of crushing bones make a terrifying enemy. Some of them do not hesitate to complete this natural arsenal of improvised weapons useless to the dead but effective against the living. The law of the strongest prevails among Smerv weaklings, most will settle for remains and often only those bones that Bloodbone Recycler will find of no use."
+#spr1 "./Omniomicon/Smerv/smerv_hurler.tga"
+#spr2 "./Omniomicon/Smerv/smerv_hurler2.tga"
+----
+#gcost 10
+----
+#weapon 1255 -- Bones and stones
+#weapon 1250 -- smerv bite
+---
+#end
+
+
+
+
 #newmonster 4613 --- SCAVENGER (dagger)
-#name "Smerv Light Scavenger"
-#descr "Smervs scavengers (although by definition all Smervs are scavengers) are composed of the most aggressive and experienced elements. Their arsenal is relatively well developed and consists even of a some kind of proto-armor made of bone and crafted by Bloodbone Recyclers. Mercilessly, Smervs Scavengers devastate, plunder and kill whole days and nights, wreaking havoc forever."
+#name "Smerv Scavenger (dagger)"
+#descr "Smerv scavengers (although by definition all Smervs are scavengers) are composed of the most aggressive and experienced elements. Their arsenal is relatively well developed and consists even of a some kind of proto-armor made of bone and crafted by Bloodbone Recyclers. Mercilessly, Smerv Scavengers devastate, plunder and kill days and nights, wreaking havoc forever."
 #spr1 "./Omniomicon/Smerv/smerv_bonedagger.tga"
 #spr2 "./Omniomicon/Smerv/smerv_bonedagger2.tga"
 #darkvision 50
 #chaosrec 2 -- just chaosrec 
 -- #deathrec 2
-#pillagebonus 1 -- pillage
+#pillagebonus 2 -- pillage
 #incunrest 1 -- 1/10=0.1% unrest increase per unit/month due to scavenger roaming in the province
 #wastesurvival
 #supplybonus 1 -- 
 #reqtemple -- to simulate the need of additional supply
 ----
 #gcost 12
-#rcost -1 -- 0 resource cost
+#rcost 1
 ----
 #weapon 1252 -- bone dagger
 #weapon 1250 -- smerv bite
-#armor 570 -- smerv bone armor
+--#armor 570 -- smerv bone armor
 #armor 150 -- bone helmet
 ---
 #hp 9
@@ -1076,56 +1080,32 @@ It is believed that the presence of such a large amount of blood, combined with 
 #end
 
 #newmonster 4614 --- SCAVENGER (mace)
-#name "Smerv Scavenger"
-#descr "Smervs scavengers (although by definition all Smervs are scavengers) are composed of the most aggressive and experienced elements. Their arsenal is relatively well developed and consists even of a some kind of proto-armor made of bone and crafted by Bloodbone Recyclers. Mercilessly, Smervs Scavengers devastate, plunder and kill whole days and nights, wreaking havoc forever."
+#copystats 4613 -- Copy Smerv Scavenger
+#name "Smerv Scavenger (mace)"
+#descr "Smerv scavengers (although by definition all Smervs are scavengers) are composed of the most aggressive and experienced elements. Their arsenal is relatively well developed and consists even of a some kind of proto-armor made of bone and crafted by Bloodbone Recyclers. Mercilessly, Smerv Scavengers devastate, plunder and kill days and nights, wreaking havoc forever."
 #spr1 "./Omniomicon/Smerv/smerv_bonemace.tga"
 #spr2 "./Omniomicon/Smerv/smerv_bonemace2.tga"
-#darkvision 50
-#chaosrec 2 -- just chaosrec 
--- #deathrec 2
-#pillagebonus 1 -- pillage
-#incunrest 1 -- 1/10=0.1% unrest increase per unit/month due to scavenger roaming in the province
-#wastesurvival
-#supplybonus 1 --
-#reqtemple -- to simulate the need of additional supply 
 ----
 #gcost 14
-#rcost 0 -- 0 resource cost
+#rcost 1 -- 0 resource cost
 ----
 #weapon 1253 -- bone mace
 #weapon 1250 -- smerv bite
 #armor 570 -- smerv bone armor
 #armor 150 -- bone helmet
 ---
-#hp 9
-#size 2
-#str 12
-#att 10
-#def 11
-#prec 10
-#prot 0
-#mor 11
-#mr 9 
-#enc 2
-#ap 18 -- lower due to armor and weapon carrying (they can't run as fast)
-#mapmove 3 
+#ap 16 -- lower due to weapon length when running
 #end
 
 #newmonster 4615 --- SCAVENGER (MACE + BUCKLER)
+#copystats 4613 -- Copy Smerv Scavenger
 #name "Smerv Heavy Scavenger"
-#descr "Smervs scavengers (although by definition all Smervs are scavengers) are composed of the most aggressive and experienced elements. Their arsenal is relatively well developed and consists even of a some kind of proto-armor made of bone and crafted by Bloodbone Recyclers. Mercilessly, Smervs Scavengers devastate, plunder and kill whole days and nights, wreaking havoc forever."
+#descr "Smerv scavengers (although by definition all Smervs are scavengers) are composed of the most aggressive and experienced elements. Their arsenal is relatively well developed and consists even of a some kind of proto-armor made of bone and crafted by Bloodbone Recyclers. Mercilessly, Smerv Scavengers devastate, plunder and kill days and nights, wreaking havoc forever."
 #spr1 "./Omniomicon/Smerv/smerv_scavengerheavy.tga"
 #spr2 "./Omniomicon/Smerv/smerv_scavengerheavy2.tga"
-#darkvision 50
-#chaosrec 2 -- just chaosrec 
-#pillagebonus 1 -- pillage
-#incunrest 1 -- 1/10=0.1% unrest increase per unit/month due to scavenger roaming in the province
-#wastesurvival
-#supplybonus 1 -- 
-#reqtemple
 ----
 #gcost 16
-#rcost 0 -- 0 resource cost
+#rcost 1
 ----
 #weapon 1253 -- bone mace
 #weapon 1250 -- smerv bite
@@ -1133,53 +1113,25 @@ It is believed that the presence of such a large amount of blood, combined with 
 #armor 571 -- bone buckler
 #armor 150 -- bone helmet
 ---
-#hp 9
-#size 2
-#str 12
-#att 10
-#def 11
-#prec 10
-#prot 0
-#mor 11
-#mr 9 
-#enc 2
-#ap 16 -- lower due to armor and weapon carrying (they can't run as fast)
+#ap 14 -- lower due to armor + weapon + buckler
 #mapmove 2 -- lower 
 #end
 
 #newmonster 4616 --- SCAVENGER (ranged: JAVELINER)
-#name "Smerv Bone Thrower"
-#descr "Smervs scavengers (although by definition all Smervs are scavengers) are composed of the most aggressive and experienced elements. Their arsenal is relatively well developed and consists even of a some kind of proto-armor made of bone and crafted by Bloodbone Recyclers. Mercilessly, Smervs Scavengers devastate, plunder and kill whole days and nights, wreaking havoc forever."
+#copystats 4613 -- Copy Smerv Scavenger
+#name "Smerv Bone Slinger"
+#descr "Smerv scavengers (although by definition all Smervs are scavengers) are composed of the most aggressive and experienced elements. Their arsenal is relatively well developed and consists even of a some kind of proto-armor made of bone and crafted by Bloodbone Recyclers. Mercilessly, Smerv Scavengers devastate, plunder and kill days and nights, wreaking havoc forever."
 #spr1 "./Omniomicon/Smerv/smerv_thrower.tga"
 #spr2 "./Omniomicon/Smerv/smerv_thrower2.tga"
-#darkvision 50
-#chaosrec 2 -- just chaosrec 
-#pillagebonus 1 -- pillage
-#incunrest 1 -- 1/10=0.1% unrest increase per unit/month due to scavenger roaming in the province
-#wastesurvival
-#supplybonus 1 -- 
-#reqtemple
 ----
 #gcost 12
-#rcost 0 -- 0 resource cost
+#rcost 1 
 ----
 #weapon 1254 -- bone javelin
 #weapon 1250 -- smerv bite
 -- #armor 570 -- smerv bone armor
 #armor 150 -- bone helmet
 ---
-#hp 9
-#size 2
-#str 12
-#att 10
-#def 11
-#prec 10
-#prot 0
-#mor 11
-#mr 9 
-#enc 2
-#ap 18 -- lower due to armor and weapon carrying (they can't run as fast)
-#mapmove 3 
 #end
 
 #newmonster 4617 --- SMERV MACE WARRIOR
@@ -1190,9 +1142,10 @@ It is believed that the presence of such a large amount of blood, combined with 
 #darkvision 50
 --#berserk 3 -- berserk
 #wastesurvival
+#pillagebonus 1
 ----
 #gcost 20
-#rcost 0 -- 0 resource cost
+#rcost 1
 ----
 #weapon 12 -- mace
 #weapon 1250 -- smerv bite
@@ -1214,6 +1167,42 @@ It is believed that the presence of such a large amount of blood, combined with 
 #mapmove 2 -- lower than normal smerv due to armor and/or weapon encumbrance 
 #end
 
+#newmonster 4638 --- SMERV SWORD WARRIOR (shortword + bucler)
+#copystats 4617 -- COPY SMERV MACE WARRIOR
+#name "Smerv Sword Warrior"
+#descr "Surprising sight at first, these Smervs are covered with mail armor. Equipped with the weapons of their fallen enemies or crafted by some of the few Smith slaves, they are trained by Demonic forces in their strange makeshift camps. These Smervs have nothing in common with their scavengers ancestors. Formed in handling weapons, they represent a serious threat that can fight on equal terms with civilized nations."
+#spr1 "./Omniomicon/Smerv/smerv_warriorsword.tga"
+#spr2 "./Omniomicon/Smerv/smerv_warriorsword2.tga"
+----
+#gcost 22
+#rcost 1
+----
+#weapon 6 -- shortsword
+#weapon 1250 -- smerv bite
+#armor 572 -- Mail hood
+#armor 8 -- Chain Mail Cuirass
+#armor 1 -- buckler
+---
+#end
+
+#newmonster 4619 --- SMERV SPEAR WARRIOR
+#name "Smerv Spear Warrior"
+#copystats 4617 -- COPY SMERV MACE WARRIOR
+#descr "Surprising sight at first, these Smervs are covered with mail armor. Equipped with the weapons of their fallen enemies or crafted by some of the few Smith slaves, they are trained by Demonic forces in their strange makeshift camps. These Smervs have nothing in common with their scavengers ancestors. Formed in handling weapons, they represent a serious threat that can fight on equal terms with civilized nations."
+#spr1 "./Omniomicon/Smerv/smerv_warriorspear.tga"
+#spr2 "./Omniomicon/Smerv/smerv_warriorspear2.tga"
+----
+#gcost 20
+#rcost 1
+----
+#weapon 1 -- spear
+#weapon 1250 -- smerv bite
+#armor 572 -- Mail hood
+#armor 8 -- Chain Mail Cuirass
+#armor 1 -- buckler
+---
+#end
+
 #newmonster 4618 --- SMERV REAPER
 #name "Smerv Reaper"
 #descr "Surprising sight at first, these Smervs are covered with mail armor. Equipped with the weapons of their fallen enemies or crafted by some of the few Smith slaves, they are trained by Demonic forces in their strange makeshift camps. These Smervs have nothing in common with their scavengers ancestors. Formed in handling weapons, they represent a serious threat that can fight on equal terms with civilized nations."
@@ -1223,9 +1212,12 @@ It is believed that the presence of such a large amount of blood, combined with 
 #berserk 3 -- berserk
 #wastesurvival
 #chaosrec 2 -- just chaosrec 
+#undisciplined
+#pillagebonus 2 -- pillage
+#incunrest 1 -- 1/10=0.1% unrest increase per unit/month due to scavenger roaming in the province
 ----
 #gcost 18
-#rcost 0 -- 0 resource cost
+#rcost 1
 ----
 #weapon 10 -- falchion
 #weapon 1250 -- smerv bite
@@ -1247,135 +1239,25 @@ It is believed that the presence of such a large amount of blood, combined with 
 #mapmove 2 -- lower than normal smerv due to armor and/or weapon encumbrance 
 #end
 
-#newmonster 4638 --- SMERV SWORD WARRIOR (shortword + bucler)
-#name "Smerv Sword Warrior"
-#descr "Surprising sight at first, these Smervs are covered with mail armor. Equipped with the weapons of their fallen enemies or crafted by some of the few Smith slaves, they are trained by Demonic forces in their strange makeshift camps. These Smervs have nothing in common with their scavengers ancestors. Formed in handling weapons, they represent a serious threat that can fight on equal terms with civilized nations."
-#spr1 "./Omniomicon/Smerv/smerv_warriorsword.tga"
-#spr2 "./Omniomicon/Smerv/smerv_warriorsword2.tga"
-#darkvision 50
---#berserk 3 -- berserk
-#wastesurvival
-----
-#gcost 22
-#rcost 0 -- 0 resource cost
-----
-#weapon 6 -- shortsword
-#weapon 1250 -- smerv bite
-#armor 572 -- Mail hood
-#armor 8 -- Chain Mail Cuirass
-#armor 1 -- buckler
---#armor 1 -- buckler
----
-#hp 10
-#size 2
-#str 13
-#att 11
-#def 12
-#prec 10
-#prot 0
-#mor 12
-#mr 10 
-#enc 2
-#ap 12 -- lower than normal smerv due to armor and/or weapon encumbrance
-#mapmove 2 -- lower than normal smerv due to armor and/or weapon encumbrance 
-#end
-
 #newmonster 4637 --- SMERV SMASHER
+#copystats 4618 -- COPY SMERV REAPER
 #name "Smerv Smasher"
 #descr "Surprising sight at first, these Smervs are covered with mail armor. Equipped with the weapons of their fallen enemies or crafted by some of the few Smith slaves, they are trained by Demonic forces in their strange makeshift camps. These Smervs have nothing in common with their scavengers ancestors. Formed in handling weapons, they represent a serious threat that can fight on equal terms with civilized nations."
 #spr1 "./Omniomicon/Smerv/smerv_warriormorningstar.tga"
 #spr2 "./Omniomicon/Smerv/smerv_warriormorningstar2.tga"
-#darkvision 50
-#berserk 3 -- berserk
-#wastesurvival
-#chaosrec 2 -- just chaosrec 
 ----
 #gcost 18
-#rcost 0 -- 0 resource cost
+#rcost 1
 ----
 #weapon 1261 -- morningstar
 #weapon 1250 -- smerv bite
 #armor 572 -- Mail hood
 #armor 8 -- Chain Mail Cuirass
---#armor 1 -- buckler
 ---
-#hp 10
-#size 2
-#str 13
-#att 11
-#def 12
-#prec 10
-#prot 0
-#mor 12
-#mr 10 
-#enc 2
-#ap 16 -- lower than normal smerv due to armor and/or weapon encumbrance
-#mapmove 2 -- lower than normal smerv due to armor and/or weapon encumbrance 
 #end
 
-#newmonster 4619 --- SMERV SPEAR WARRIOR
-#name "Smerv Spear Warrior"
-#descr "Surprising sight at first, these Smervs are covered with mail armor. Equipped with the weapons of their fallen enemies or crafted by some of the few Smith slaves, they are trained by Demonic forces in their strange makeshift camps. These Smervs have nothing in common with their scavengers ancestors. Formed in handling weapons, they represent a serious threat that can fight on equal terms with civilized nations."
-#spr1 "./Omniomicon/Smerv/smerv_warriorspear.tga"
-#spr2 "./Omniomicon/Smerv/smerv_warriorspear2.tga"
-#darkvision 50
---#berserk 3 -- berserk
-#wastesurvival
-----
-#gcost 20
-#rcost 0 -- 0 resource cost
-----
-#weapon 1 -- spear
-#weapon 1250 -- smerv bite
-#armor 572 -- Mail hood
-#armor 8 -- Chain Mail Cuirass
-#armor 1 -- buckler
----
-#hp 10
-#size 2
-#str 13
-#att 11
-#def 12
-#prec 10
-#prot 0
-#mor 12
-#mr 10 
-#enc 2
-#ap 12 -- lower than normal smerv due to armor and/or weapon encumbrance
-#mapmove 2 -- lower than normal smerv due to armor and/or weapon encumbrance 
-#end
 
-#newmonster 4620 --- HURLER (stones and bones thrower)
-#name "Smerv Hurler"
-#descr "Once discrete scavengers feeding on dead flesh and bones, the smervs no longer hesitate to attack the living. Their impressive speed and great jaw capable of crushing bones make a terrifying enemy. Some of them do not hesitate to complete this natural arsenal of improvised weapons useless to the dead but effective against the living. The law of the strongest prevails among smervs weaklings, most will settle for remains and often only those bones that Bloodbone Recycler will find of no use."
-#spr1 "./Omniomicon/Smerv/smerv_hurler.tga"
-#spr2 "./Omniomicon/Smerv/smerv_hurler2.tga"
-#darkvision 50
-#chaosrec 2
-#deathrec 1 
-#undisciplined
--- #patrolbonus 1 -- small patrol bonus due to their furtivity and way of life
-#wastesurvival
-----
-#gcost 10
-#rcost 0 -- 0 resource cost
-----
-#weapon 1255 -- Bones and stones
-#weapon 1250 -- smerv bite
----
-#hp 8
-#size 2
-#str 11
-#att 9
-#def 10
-#prec 10
-#prot 0
-#mor 10
-#mr 8 
-#enc 2
-#ap 20 -- fast light moving 
-#mapmove 3 -- fast moving light
-#end
+
 
 #newmonster 4621 --- SCAVENGER (mace)
 #name "Smerv Slaver"
@@ -1389,7 +1271,7 @@ It is believed that the presence of such a large amount of blood, combined with 
 #wastesurvival
 ----
 #gcost 20
-#rcost 0 -- 0 resource cost
+#rcost 1
 ----
 #weapon 1253 -- bone mace
 #weapon 1250 -- smerv bite
@@ -1417,7 +1299,7 @@ It is believed that the presence of such a large amount of blood, combined with 
 --------------------------------------------------
 
 #newmonster 4622 --- WHITESKULL (demon  from halfdead smerv)
-#name "Smerv Whiteskull"
+#name "Zlodmor Whiteskull"
 #descr "Description missing"
 #spr1 "./Omniomicon/Smerv/smerv_whiteskull.tga"
 #spr2 "./Omniomicon/Smerv/smerv_whiteskull2.tga"
@@ -1430,9 +1312,10 @@ It is believed that the presence of such a large amount of blood, combined with 
 #supplybonus -1
 #berserk 2 -- because 2 + 1 from blessbers = 3
 #blessbers
+#montag 4603 -- MONTAG FOR ALL WHITESKULLS
 ----
 #gcost 0
-#rcost 0 -- 0 resource cost
+#rcost 1
 ----
 #weapon 29 -- claw
 #weapon 1250 -- smerv bite
@@ -1452,6 +1335,100 @@ It is believed that the presence of such a large amount of blood, combined with 
 #ap 20 -- 
 #mapmove 3 -- 
 #end
+
+#newmonster 4655 --- WHITESKULL MACE
+#copystats 4622 -- Copy Whiteskulls stats
+#name "Zlodmor Whiteskull (mace)"
+#descr "Description missing"
+#spr1 "./Omniomicon/Smerv/smerv_whiteskull_macebuckler.tga"
+#spr2 "./Omniomicon/Smerv/smerv_whiteskull_macebuckler2.tga"
+----
+#gcost 0
+#rcost 1
+----
+#weapon 12 -- mace
+#weapon 1250 -- smerv bite
+#armor 8 -- chain mail cuirass
+#armor 1 -- buckler
+---
+#ap 12 -- 
+#mapmove 2 -- 
+#end
+
+#newmonster 4656 --- WHITESKULL SWORD
+#copystats 4622 -- Copy Whiteskulls stats
+#name "Zlodmor Whiteskull (sword)"
+#descr "Description missing"
+#spr1 "./Omniomicon/Smerv/smerv_whiteskull_sword.tga"
+#spr2 "./Omniomicon/Smerv/smerv_whiteskull_sword2.tga"
+----
+#gcost 0
+#rcost 1
+----
+#weapon 6 -- shortword
+#weapon 1250 -- smerv bite
+#armor 8 -- chain mail cuirass
+#armor 1 -- buckler
+---
+#ap 12 -- 
+#mapmove 2 -- 
+#end
+
+#newmonster 4657 --- WHITESKULL SPEAR
+#copystats 4622 -- Copy Whiteskulls stats
+#name "Zlodmor Whiteskull (spear)"
+#descr "Description missing"
+#spr1 "./Omniomicon/Smerv/smerv_whiteskull_spear.tga"
+#spr2 "./Omniomicon/Smerv/smerv_whiteskull_spear2.tga"
+----
+#gcost 0
+#rcost 1
+----
+#weapon 1 -- spear
+#weapon 1250 -- smerv bite
+#armor 8 -- chain mail cuirass
+#armor 1 -- buckler
+---
+#ap 12 -- 
+#mapmove 2 -- 
+#end
+
+#newmonster 4658 --- WHITESKULL MORNINGSTAR
+#copystats 4622 -- Copy Whiteskulls stats
+#name "Zlodmor Whiteskull (morningstar)"
+#descr "Description missing"
+#spr1 "./Omniomicon/Smerv/smerv_whiteskull_morningstar.tga"
+#spr2 "./Omniomicon/Smerv/smerv_whiteskull_morningstar2.tga"
+----
+#gcost 0
+#rcost 1
+----
+#weapon 1261 -- morningstar
+#weapon 1250 -- smerv bite
+#armor 8 -- chain mail cuirass
+---
+#ap 16 -- 
+#mapmove 2 -- 
+#end
+
+#newmonster 4658 --- WHITESKULL FALCHION
+#copystats 4622 -- Copy Whiteskulls stats
+#name "Zlodmor Whiteskull (falchion)"
+#descr "Description missing"
+#spr1 "./Omniomicon/Smerv/smerv_whiteskull_reaper.tga"
+#spr2 "./Omniomicon/Smerv/smerv_whiteskull_reaper2.tga"
+----
+#gcost 0
+#rcost 1
+----
+#weapon 10 -- falchion
+#weapon 1250 -- smerv bite
+#armor 8 -- chain mail cuirass
+---
+#ap 16 -- 
+#mapmove 2 -- 
+#end
+
 
 #newmonster 4639 --- SKELETON 
 #name "Smerv Skeleton"
@@ -1563,7 +1540,7 @@ It is believed that the presence of such a large amount of blood, combined with 
 #end
 
 #newmonster 4646 --- SKELETON DEMON
-#name "Smerv Skeletal Demon"
+#name "Zlodmor Bloodbone"
 #descr "Description missing"
 #spr1 "./Omniomicon/Smerv/smerv_skeleton_demon.tga"
 #spr2 "./Omniomicon/Smerv/smerv_skeleton_demon2.tga"
@@ -1603,7 +1580,7 @@ It is believed that the presence of such a large amount of blood, combined with 
 
 #newmonster 4647 --- SKELETON DEMON - MACE!
 #copystats 4646 -- COPY DEMON SKELETON TEMPLATE
-#name "Smerv Skeletal Demon"
+#name "Zlodmor Bloodbone"
 #spr1 "./Omniomicon/Smerv/smerv_skeleton_demon_mace.tga"
 #spr2 "./Omniomicon/Smerv/smerv_skeleton_demon_mace2.tga"
 ----
@@ -1615,7 +1592,7 @@ It is believed that the presence of such a large amount of blood, combined with 
 
 #newmonster 4648 --- SKELETON DEMON - HEAVY SCAV!
 #copystats 4646 -- COPY DEMON SKELETON TEMPLATE
-#name "Smerv Skeletal Demon"
+#name "Zlodmor Bloodbone"
 #spr1 "./Omniomicon/Smerv/smerv_skeleton_demon_heavyscavenger.tga"
 #spr2 "./Omniomicon/Smerv/smerv_skeleton_demon_heavyscavenger2.tga"
 ----
@@ -1628,7 +1605,7 @@ It is believed that the presence of such a large amount of blood, combined with 
 
 #newmonster 4649 --- SKELETON DEMON - HEAVY SCAV!
 #copystats 4646 -- COPY DEMON SKELETON TEMPLATE
-#name "Smerv Skeletal Demon"
+#name "Zlodmor Bloodbone"
 #spr1 "./Omniomicon/Smerv/smerv_skeleton_demon_macebuckler.tga"
 #spr2 "./Omniomicon/Smerv/smerv_skeleton_demon_macebuckler2.tga"
 ----
@@ -1641,7 +1618,7 @@ It is believed that the presence of such a large amount of blood, combined with 
 
 #newmonster 4650 --- SKELETON DEMON - HEAVY SCAV!
 #copystats 4646 -- COPY DEMON SKELETON TEMPLATE
-#name "Smerv Skeletal Demon"
+#name "Zlodmor Bloodbone"
 #spr1 "./Omniomicon/Smerv/smerv_skeleton_demon_sword.tga"
 #spr2 "./Omniomicon/Smerv/smerv_skeleton_demon_sword2.tga"
 ----
@@ -1654,7 +1631,7 @@ It is believed that the presence of such a large amount of blood, combined with 
 
 #newmonster 4651 --- SKELETON DEMON - HEAVY SCAV!
 #copystats 4646 -- COPY DEMON SKELETON TEMPLATE
-#name "Smerv Skeletal Demon"
+#name "Zlodmor Bloodbone"
 #spr1 "./Omniomicon/Smerv/smerv_skeleton_demon_morningstar.tga"
 #spr2 "./Omniomicon/Smerv/smerv_skeleton_demon_morningstar2.tga"
 ----
@@ -1666,7 +1643,7 @@ It is believed that the presence of such a large amount of blood, combined with 
 
 #newmonster 4652 --- SKELETON DEMON - HEAVY SCAV!
 #copystats 4646 -- COPY DEMON SKELETON TEMPLATE
-#name "Smerv Skeletal Demon"
+#name "Zlodmor Bloodbone"
 #spr1 "./Omniomicon/Smerv/smerv_skeleton_demon_reaper.tga"
 #spr2 "./Omniomicon/Smerv/smerv_skeleton_demon_reaper2.tga"
 ----
@@ -1877,7 +1854,7 @@ It is believed that the presence of such a large amount of blood, combined with 
 ---
 
 #newspell 
-#name "Bind Smerv Skeletal Demons"
+#name "Bind Zlodmor Bloodbones"
 #descr "The caster sacrifices several blood slaves to contact and bind Demons inside well prepared Smervs bones."
 #school 6 -- blood
 #researchlevel 2
@@ -1893,7 +1870,7 @@ It is believed that the presence of such a large amount of blood, combined with 
 #end
 
 #newspell 
-#name "Bind Smerv Skeletal Demons Troop"
+#name "Bind Zlodmor Bloodbones Troop"
 #descr "The caster sacrifices several blood slaves to contact and bind Demons inside well prepared Smervs bones."
 #school 6 -- blood
 #researchlevel 4
@@ -1909,7 +1886,7 @@ It is believed that the presence of such a large amount of blood, combined with 
 #end
 
 #newspell 
-#name "Bind Smerv Skeletal Demons Army"
+#name "Bind Zlodmor Bloodbones Army"
 #descr "The caster sacrifices several blood slaves to contact and bind Demons inside well prepared Smervs bones."
 #school 6 -- blood
 #researchlevel 6
@@ -1924,8 +1901,12 @@ It is believed that the presence of such a large amount of blood, combined with 
 #restricted 103 -- Restricted to Smervs
 #end
 
+---
+-----
+---
+
 #newspell 
-#name "Bind Smerv Whiteskulls"
+#name "Bind Zlodmor Whiteskulls"
 #descr "The caster sacrifices several blood slaves to contact and bind powerful Demons inside fresh Smervs carcasses."
 #school 6 -- blood
 #researchlevel 3
@@ -1933,13 +1914,44 @@ It is believed that the presence of such a large amount of blood, combined with 
 #path 1 5 -- death
 #pathlevel 0 2 --  lvl 2
 #pathlevel 1 1 --  lvl 1
-#damage 4622 -- Whiteskull
+#damage -4603 -- MONTAG WHITESKULLS
 #effect 10001 -- summon monsters ritual
-#fatiguecost 2000 -- 20 slaves
+#fatiguecost 3000 -- 30 slaves
 #nreff 10 -- nombre d effets 10
 #restricted 103 -- Restricted to Smervs
 #end
 
+#newspell 
+#name "Bind Zlodmor Whiteskulls Troop"
+#descr "The caster sacrifices several blood slaves to contact and bind powerful Demons inside fresh Smervs carcasses."
+#school 6 -- blood
+#researchlevel 5
+#path 0 7 -- blood
+#path 1 5 -- death
+#pathlevel 0 3 --  lvl 3
+#pathlevel 1 2 --  lvl 2
+#damage -4603 -- MONTAG WHITESKULLS
+#effect 10001 -- summon monsters ritual
+#fatiguecost 6000 -- 60 slaves
+#nreff 30 -- nombre d effets 30
+#restricted 103 -- Restricted to Smervs
+#end
+
+#newspell 
+#name "Bind Zlodmor Whiteskulls Army"
+#descr "The caster sacrifices several blood slaves to contact and bind powerful Demons inside fresh Smervs carcasses."
+#school 6 -- blood
+#researchlevel 7
+#path 0 7 -- blood
+#path 1 5 -- death
+#pathlevel 0 4 --  lvl 3
+#pathlevel 1 3 --  lvl 3
+#damage -4603 -- MONTAG WHITESKULLS
+#effect 10001 -- summon monsters ritual
+#fatiguecost 9000 -- 90 slaves
+#nreff 70 -- nombre d effets 70
+#restricted 103 -- Restricted to Smervs
+#end
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 ----- NEW EVENTS----------- NEW EVENTS----------- NEW EVENTS----------- NEW EVENTS--------- NEW EVENTS--------- NEW EVENTS------

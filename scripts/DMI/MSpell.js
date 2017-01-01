@@ -197,6 +197,14 @@ MSpell.prepareData_PostMod = function() {
 			}
 		}
 
+		/*
+		 * Mod spells that copied vanilla spells were keeping the gemcost from the vanilla spell.
+		 * Resetting that here so we get the correct value. If these aren't overridden by the mod,
+		 * the copied value should still work.
+		 */
+		if(o.modded && o.fatiguecost) {
+			o.gemcost = parseInt(o.fatiguecost) / 100;
+		}
 		//combat fatiguecost
 		if (o.type == 'Ritual'){
 			if (!o.gemcost) {
@@ -205,7 +213,16 @@ MSpell.prepareData_PostMod = function() {
 			delete o.fatiguecost;
 			o.fatiguecostsort = -1;
 		} else {
-			if (parseInt(o.gemcost) > 0) {
+			/*
+			 * Removed the += here, but this was sending fatiguecosts high. Now it only 
+			 * sets the fatiguecost if it doesn't already have a value. This could be an issue
+			 * if it did need to add to another value!
+			 */
+			if (parseInt(o.gemcost) > 0 && !o.fatiguecost) {
+				o.fatiguecost = parseInt(o.gemcost) * 100;
+			}
+			// Fix for Life for a Life
+			else if (parseInt(o.gemcost) > 0 && !o.modded) {
 				o.fatiguecost += parseInt(o.gemcost) * 100;
 			}
 			o.fatiguecostsort = parseInt(o.fatiguecost);
@@ -877,7 +894,13 @@ MSpell.getEffect = function(spell) {
 			effect.ritual = 0;
 		}
 	}
+	/*
+	 * Stun effects weren't showing up, so added the effect here.
+	 * Not sure if any more are missing or what the effect of just removing
+	 * this condition would be.
+	 */
 	if (effect.effect_number == "1" ||
+		effect.effect_number == "3" ||
 		effect.effect_number == "21" ||
 		effect.effect_number == "26" ||
 		effect.effect_number == "31" ||
