@@ -1,7 +1,7 @@
-#modname "Magic Enhanced TEST VERSION"
+#modname "Magic Enhanced 1.31"
 #description "Adds many additional spells, items and monsters including national versions. Also enhances some vanilla spells with extra effects or options."
 #icon "./MagicEnhanced/logo.tga"
-#version 1.test
+#version 1.31
 
 -- WEAPONS
 
