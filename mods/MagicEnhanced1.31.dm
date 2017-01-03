@@ -7872,7 +7872,7 @@ wings they are slow flyers. If an Ember Lord's body is destroyed it will exlode 
 #poisonres 20
 #mountainsurvival
 #leper 10
-#incunrest 15
+#incunrest 150
 #demon
 #neednoteat
 #amphibian
@@ -8400,6 +8400,7 @@ wings they are slow flyers. If an Ember Lord's body is destroyed it will exlode 
 #weapon 1630
 #weapon 1631
 #weapon 1632
+#armor 21
 #montag 5000
 #end
 
@@ -8662,7 +8663,7 @@ wings they are slow flyers. If an Ember Lord's body is destroyed it will exlode 
 #magicskill 4 3
 #magicskill 7 2
 #spy
-#mindslime 1
+#mindslime 10
 #weapon 63 -- Life Drain
 #startitem 932 -- Trident of Dulness
 #montag 5000
@@ -13729,8 +13730,8 @@ Eventually Tiamat was cut asunder and her children scattered to the four corners
 #researchlevel 9
 #path 0 7
 #pathlevel 0 7
-#path 0 0
-#pathlevel 0 5
+#path 1 0
+#pathlevel 1 5
 #effect 10081
 #damage 456 -- Blasphemy
 #nreff 1
@@ -21148,7 +21149,8 @@ into unhealthy marshlands, thick with the stench of rotting vegetation. With thi
 #provrange 1
 #nowatertrace 1
 #nolandtrace 1
-#fatiguecost 0#spec 8388608 -- Use UW
+#fatiguecost 0
+#spec 8388608 -- Use UW
 #restricted 95 -- Therodos
 #nextspell "Blessings of the Dancer"
 #end
@@ -21740,7 +21742,7 @@ into unhealthy marshlands, thick with the stench of rotting vegetation. With thi
 #path 1 1
 #pathlevel 1 2
 #fatiguecost 100
-#effect 1043  -- 1 turn of border summoning
+#effect 43  -- 1 turn of border summoning
 #damage 64 -- Knight of Avalon
 #aoe 4 -- AOE acts as number of effects for some reason.
 #explspr 0
