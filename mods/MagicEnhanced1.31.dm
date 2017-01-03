@@ -21149,7 +21149,8 @@ into unhealthy marshlands, thick with the stench of rotting vegetation. With thi
 #provrange 1
 #nowatertrace 1
 #nolandtrace 1
-#fatiguecost 0#spec 8388608 -- Use UW
+#fatiguecost 0
+#spec 8388608 -- Use UW
 #restricted 95 -- Therodos
 #nextspell "Blessings of the Dancer"
 #end
