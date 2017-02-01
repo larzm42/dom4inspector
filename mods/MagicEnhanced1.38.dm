@@ -7279,6 +7279,7 @@ wings they are slow flyers. If an Ember Lord's body is destroyed it will exlode 
 #magicskill 4 3
 #magicskill 8 1
 #poorleader
+#montag 5003
 #weapon 59 -- Rod of Death
 #weapon 1606 -- Confusion
 #onebattlespell 594 -- Doom
@@ -7306,6 +7307,7 @@ wings they are slow flyers. If an Ember Lord's body is destroyed it will exlode 
 #armor 148 -- Crown
 #batstartsum1d6 1821 -- Morrigan
 #makemonsters1 1821 -- Morrigan
+#montag 5003
 #okleader
 #okundeadleader
 #end
@@ -7331,6 +7333,7 @@ wings they are slow flyers. If an Ember Lord's body is destroyed it will exlode 
 #magicskill 5 2
 #magicskill 1 3
 #magicskill 2 2
+#montag 5003
 #weapon 487 -- Spear of the Morrigan
 #weapon 58 -- Wail
 #armor 50 -- Weightless Scale
@@ -21988,7 +21991,8 @@ into unhealthy marshlands, thick with the stench of rotting vegetation. With thi
 #effect 10042
 #damage -1
 #nreff 1
-#fatiguecost 0#spec 8388608 -- Use UW
+#fatiguecost 0
+#spec 8388608 -- Use UW
 #restricted 95 -- Therodos
 #nextspell "Blessings of the Dancer"
 #end
