@@ -1191,7 +1191,7 @@ var modctx = DMI.modctx = {
 		bodyguard:		_num,
 		masterrit:		_num,
 		inspiringres:	_num,
-		divineins:		_num,
+		divineins:		_bool,
 		firerange:		_num,
 		airrange:		_num,
 		waterrange:		_num,
