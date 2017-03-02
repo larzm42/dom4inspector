@@ -79,7 +79,7 @@ function lookupTruncation(longname, object, minlen) {
 	while (longname.length > minlen) { 
 		longname = longname.substr(0, longname.length-1);
 		if (object[longname])
-			return longname; 
+			return longname;
 	}
 	return null;
 }
@@ -714,7 +714,12 @@ var modctx = DMI.modctx = {
 		uwok:		_bool,
 		
 		secondaryeffect:	_ref,
-		secondaryeffectalways:	_ref
+		secondaryeffectalways:	_ref,
+
+		natural: _bool,
+		internal: _bool,
+		ferrous: _bool,
+		flammable: _bool
 		
 
 	},
@@ -968,7 +973,12 @@ var modctx = DMI.modctx = {
 		summerpower:	_num,
 		fallpower:	_num,
 		winterpower:	_num,
-		
+
+		chaospower: _num,
+		deathpower: _num,
+		magicpower: _num,
+		slothpower: _num,
+
 		ambidextrous:	_num,
 		banefireshield:	_num,
 		berserk:	_num,
@@ -1153,7 +1163,6 @@ var modctx = DMI.modctx = {
 
 		voidsanity:		_num,
 		invulnerable:	_num,
-		magicpower:		_num,
 		randomspell:	_num,
 		reclimit:		_num,
 		homerealm: 		function(c,a,t){ modctx[t]['realms'].push(argref(a)); },
@@ -1174,7 +1183,6 @@ var modctx = DMI.modctx = {
 		deathdisease:	_num,
 		deathparalyze:	_num,
 		deathfire:		_num,
-		chaospower:		_num,
 		digest:			_num,
 		incorporate:	_num,
 		incprovdef:		_num,
@@ -1226,7 +1234,6 @@ var modctx = DMI.modctx = {
 		iceforging:		_num,
 		guardspiritbonus:	_num,
 
-		spy:			_bool,
 		slowrec:		_bool,
 		noslowrec:		_bool,
 		reqlab:			_bool,
@@ -1278,6 +1285,12 @@ var modctx = DMI.modctx = {
 		batstartsum3d6:	_ref,
 		batstartsum4d6:	_ref,
 		batstartsum5d6:	_ref,
+
+		fixedresearch: _num,
+		slothresearch: _num,
+		transformation: _num,
+		undcommand: _num,
+		magiccommand: _num,
 
 	},
 
@@ -1382,7 +1395,7 @@ var modctx = DMI.modctx = {
 	//nation selected
 	nationcommands: {
 		end: function(c,a,t){ modctx[t] = null; },
-		
+
 		clearnation: function(c,a,t) {
 			var o = modctx.nation;
 			var keepstats = {
@@ -1431,6 +1444,10 @@ var modctx = DMI.modctx = {
 				}
 			}
 		},
+		clear: function(c,a,t) {
+			modctx.nationcommands.clearnation(c,a,t);
+		},
+
 		//units
 		startcom: _ignore,//_ref,
 		startscout: _ignore,//_ref,
@@ -1808,7 +1825,10 @@ modctx.parseMod = function(str, modnum, modname) {
 	for (var i=0; i<lines.length; i++) {
 		var cstr = lines[i], linenum = i+1;
 		var cmd, args;
-		
+
+		// check for comments
+		if (cstr.startsWith('--')) continue;
+
 		//check for open quote
 		var a = modcom_re_multistr.exec(lines[i]);
 		if (a) {
