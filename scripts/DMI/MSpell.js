@@ -299,7 +299,9 @@ MSpell.prepareData_PostMod = function() {
 				} else {
 					var u = modctx.unitlookup[uid];
 					if (!u) {
-						console.log('Unit '+uid+' not found (Spell '+_o.id+')');
+						if (uid > 0) {
+							console.log('Unit '+uid+' not found (Spell '+_o.id+')');
+						}
 						break;
 					}
 
