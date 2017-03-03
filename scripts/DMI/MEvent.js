@@ -14,6 +14,10 @@ var modconstants = DMI.modconstants;
 // PREPARE DATA
 //////////////////////////////////////////////////////////////////////////
 
+MEvent.initEvent = function(o) {
+	o.description = "";
+};
+
 MEvent.prepareData_PreMod = function() {
 	for (var oi=0, o;  o= modctx.eventdata[oi];  oi++) {
 		if (o.requirements) {
