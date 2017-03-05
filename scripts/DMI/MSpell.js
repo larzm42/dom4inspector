@@ -911,6 +911,7 @@ MSpell.getEffect = function(spell) {
 		effect.effect_number == "43" ||
 		effect.effect_number == "50" ||
 		effect.effect_number == "81" ||
+		effect.effect_number == "82" ||
 		effect.effect_number == "93" ||
 		effect.effect_number == "119") {
 		if (spell.damagemon) {
@@ -919,7 +920,16 @@ MSpell.getEffect = function(spell) {
 			effect.raw_argument = spell.damage;
 		}
 	}
-	
+
+	// Need to add new enchantments to the list
+	if (effect.effect_number == "81" || effect.effect_number == "82") {
+		if (!modctx.enchantments_lookup[effect.raw_argument]) {
+			var enchant = {name: spell.name, number: effect.raw_argument};
+			modctx.enchantments.push(enchant);
+			modctx.enchantments_lookup[effect.raw_argument] = enchant;
+		}
+	}
+
 	if (spell.spec) {
 		effect.modifiers_mask = spell.spec; 
 	} else if (!effect.modifiers_mask) {

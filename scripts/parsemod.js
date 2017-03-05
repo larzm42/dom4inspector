@@ -1879,7 +1879,7 @@ var modctx = DMI.modctx = {
 
 		// Effects
 		nation: _num, //lookup
-		msg:	function(c,a,t){ modctx[t]['description'] = argref(a); },
+		msg:	function(c,a,t){ modctx[t]['description'] = argref(a); modctx[t]['name'] = argref(a).substr(0,25); },
 
 		notext: _bool,
 		nolog: _bool,
@@ -1923,10 +1923,10 @@ var modctx = DMI.modctx = {
 		assassin : _str_num, //lookup
 		stealthcom  : _str_num, //lookup
 		com  : _str_num, //lookup
-		_2com  : _str_num, //bugger
-		_3com  : _str_num, //bugger
-		_4com  : _str_num, //bugger
-		_5com  : _str_num, //bugger
+		_2com  : _str_num,
+		_3com  : _str_num,
+		_4com  : _str_num,
+		_5com  : _str_num,
 		tempunits  : _str_num, //lookup
 		_1unit  : _str_num, //lookup
 		_1d3units  : _str_num, //lookup
