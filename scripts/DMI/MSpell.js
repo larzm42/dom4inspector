@@ -879,13 +879,18 @@ MSpell.worksOnDryLand = function(spell) {
 
 MSpell.getEffect = function(spell) {
 	var effect = {};
+
+	// When modifying effects, we need to be careful to use a copy, not a reference,
+	// otherwise modifications will be shared between all spells/weapons with the same effect.
+	// I don't like this JSON hack, but it's apparently the accepted JS way of doing it
+
 	if (spell.effect_record_id) {
-		effect = modctx.effects_lookup[spell.effect_record_id];
+		effect = JSON.parse(JSON.stringify(modctx.effects_lookup[spell.effect_record_id]));
 	}
 	
 	if (spell.copyspell) {
 		var otherspell = DMI.modctx.spelllookup[spell.copyspell];
-		effect = modctx.effects_lookup[otherspell.effect_record_id];
+		effect = JSON.parse(JSON.stringify(modctx.effects_lookup[otherspell.effect_record_id]));
 	}
 	if (spell.effect) {
 		if (parseInt(spell.effect) > 10000) {
