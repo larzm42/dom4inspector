@@ -706,14 +706,16 @@ var effectkeys = DMI.Utils.cutDisplayOrder(aliases, formats,
 
 	'tempunits', 'units', {'0': 'permanent', '1': 'temporary'},
 
-		'hiddensite', 'hidden site', MEvent.formatNewSite,
-		'removesite', 'remove site', MEvent.formatNewSite,
+	'hiddensite', 'hidden site', MEvent.formatNewSite,
+	'removesite', 'remove site', MEvent.formatNewSite,
 
 	'gainmark', 'gain horror mark',
 
-		'flagland', 'event flag', {'0': 'remove', '1': 'add'},
+	'flagland', 'event flag', {'0': 'remove', '1': 'add'},
 
-		'delay', 'next event in'
+	'nationench', 'units owned by controller of', MEvent.formatReqSpell,
+
+	'delay', 'next event in'
 	]);
 var flagorder = DMI.Utils.cutDisplayOrder(aliases, formats,
 [

@@ -448,6 +448,7 @@ var modctx = DMI.modctx = {
 		berserk: 	_num,
 		darkvision: 	_num,
 		digest: 	_num,
+		aciddigest: 	_num,
 		incorporate: 	_num,
 		castledef: 	_num,
 		siegebonus: 	_num,
@@ -522,20 +523,20 @@ var modctx = DMI.modctx = {
 //			to.nations = [];
 //			for (var i=0, m; m= from.nations[i]; i++) to.nations[i] = m;
 		},
-		domsummon:	_str,
-		domsummon2:	_str,
-		domsummon20:	_str,
-		raredomsummon:	_str,
-		summon1:	_str,
-		summon2: _str,
-		summon3: _str,
-		summon4: _str,
-		summon5: _str,
-		makemonsters1: _str,
-		makemonsters2: _str,
-		makemonsters3: _str,
-		makemonsters4: _str,
-		makemonsters5: _str,
+		domsummon:	_str_num,
+		domsummon2:	_str_num,
+		domsummon20:	_str_num,
+		raredomsummon:	_str_num,
+		summon1:	_str_num,
+		summon2: _str_num,
+		summon3: _str_num,
+		summon4: _str_num,
+		summon5: _str_num,
+		makemonsters1: _str_num,
+		makemonsters2: _str_num,
+		makemonsters3: _str_num,
+		makemonsters4: _str_num,
+		makemonsters5: _str_num,
 		battlesum1:	function(c,a,t){ modctx[t]['battlesum'] = argref(a);  modctx[t]['n_battlesum'] = '1' },
 		battlesum2:	function(c,a,t){ modctx[t]['battlesum'] = argref(a);  modctx[t]['n_battlesum'] = '2' },
 		battlesum3:	function(c,a,t){ modctx[t]['battlesum'] = argref(a);  modctx[t]['n_battlesum'] = '3' },
@@ -609,6 +610,17 @@ var modctx = DMI.modctx = {
 		drainimmune: _bool,
 		magicimmune: _bool,
 		comslave: _bool,
+		restricteditem: _num,
+		sneakunit: _num,
+		command: _num,
+		magiccommand: _num,
+		undcommand: _num,
+		raiseonkill: _num,
+		raiseshape: _str_num,
+		incscale: _num,
+		decscale: _num,
+		reform: _num,
+		haltheretic: _num,
 
 		magicboost: function(c,a,t){
 			var pstr = modconstants[10][argnum(a)];
@@ -645,6 +657,21 @@ var modctx = DMI.modctx = {
 			for (var k in to)   if (!ignorestats[k]) delete to[k];
 			for (var k in from) if (!ignorestats[k]) to[k] = from[k];
 				
+		},
+		clear: function(c,a,t) {
+			var o = modctx.site;
+			var keepstats = {
+				//KEEP
+				modded:1,
+				id:1,
+				name:1
+			};
+			for (var k in o) {
+				if (!keepstats[k]) {
+					if ($.isArray(o[k])) o[k] = [];
+					else delete o[k];
+				}
+			}
 		},
 
 		def: 		_num,
@@ -752,6 +779,36 @@ var modctx = DMI.modctx = {
 			modctx.armor.name = argtrim(a);
 			modctx.armorlookup[argtrim(a).toLowerCase()] = modctx.armor;
 		},
+		copyarmor: function(c,a,t){
+			var from = modctx.armorlookup[a.n1] || modctx.armorlookup[($.trim(a.s) || '-1').toLowerCase()];
+			if (!from) throw 'original armor not found';
+			var ignorestats = {
+				//stats to NOT copy
+				modded:1,
+				id:1
+				//name:1,
+			};
+			var to = modctx.armor;
+			for (var k in to)   if (!ignorestats[k]) delete to[k];
+			for (var k in from) if (!ignorestats[k]) to[k] = from[k];
+
+		},
+		clear: function(c,a,t) {
+			var o = modctx.site;
+			var keepstats = {
+				//KEEP
+				modded:1,
+				id:1,
+				name:1
+			};
+			for (var k in o) {
+				if (!keepstats[k]) {
+					if ($.isArray(o[k])) o[k] = [];
+					else delete o[k];
+				}
+			}
+		},
+
 		type: 	_num,
 		def:	_num,
 		rcost: 	_num,
@@ -1200,6 +1257,7 @@ var modctx = DMI.modctx = {
 		deathparalyze:	_num,
 		deathfire:		_num,
 		digest:			_num,
+		aciddigest:		_num,
 		incorporate:	_num,
 		incprovdef:		_num,
 		elegist:		_num,
@@ -1310,8 +1368,36 @@ var modctx = DMI.modctx = {
 		airshield: _num,
 		overcharged: _num,
 		poisonskin: _num,
-		xploss: _num
+		xploss: _num,
+		incscale: _num,
+		decscale: _num,
+		reform: _num,
+		domrec: _num,
+		haltheretic: _num,
+		scalewalls: _bool,
+		landdamage: _num,
+		homeshape: _str_num,
+		foreignshape : _str_num,
+		blessfly: _bool,
+		plant: _bool,
+		userestricteditem: _num,
+		uwheat: _num,
+		raiseonkill: _num,
+		raiseshape: _str_num,
+		acidshield: _num,
+		hpoverslow: _num,
+		enchrebate50: _ref,
+		mindslime: _num,
+		prophetshape: _str_num,
 
+		fireattuned: _num,
+		airattuned: _num,
+		waterattuned: _num,
+		earthattuned: _num,
+		astralattuned: _num,
+		deathattuned: _num,
+		natureattuned: _num,
+		bloodattuned: _num,
 	},
 
 	//spell selected
@@ -1392,19 +1478,22 @@ var modctx = DMI.modctx = {
 		range:		_num,
 		precision:	_num,
 		spec:		_num,
-		
+
 		restricted: function(c,a,t){ modctx.spell.nations.push(argref(a)); }, //deferr lookups
+		notfornation: function(c,a,t){ modctx.spell.nations.push(argref(a)); }, //deferr lookups
 
 		damagemon: 		_str,
 				
 		provrange:		_num,
 		onlygeosrc:		_num,
 		onlygeodst:		_num,
-		onlyfriendlydst:	_num,
+		onlyfriendlydst:_num,
 		onlyowndst:		_num,
 		nowatertrace:	_num,
 		nolandtrace:	_num,
 		walkable:		_num,
+		onlyatsite: 	_num,
+		farsumcom:		_num,
 
 		//fx
 		flightspr:	_ignore,
@@ -1987,6 +2076,7 @@ var modctx = DMI.modctx = {
 		flagland : _num,
 		delay : _num,
 		delay25 : _num,
+		delay50 : _num,
 		order  : _num, //lookup
 
 		code  : _num,
@@ -1995,6 +2085,7 @@ var modctx = DMI.modctx = {
 		purgecalendar  : _num,
 		purgedelayed  : _num,
 		transform: _str_num, //lookup
+		nationench: _num,
 
 		id:	function(c,a,t){ modctx[t]['eff_id'] = argref(a); }
 	},
