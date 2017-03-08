@@ -525,7 +525,23 @@ var displayorder2 = DMI.Utils.cutDisplayOrder(aliases, formats,
 	'affliction',		'afflicts bearer',	Utils.afflictionRef,
 	'cannotwear',		'restriction',		{2:'cannot be worn by mounted units', 536870912:'can only be worn by coldblooded units', 1073741824:'cannot be worn by inanimate units'},
 	'restrictions',		'restrictions',		
-	'special',		'special',		Utils.parseObjectRefs
+	'special',		'special',		Utils.parseObjectRefs,
+	'restricteditem', 'unit restriction',
+	'sneakunit','grant stealth', Format.SignedZero,
+	'command', 'grant leadership',
+	'magiccommand', 'grant magic leadership',
+	'undcommand', 'grant undead leadership',
+	'raiseonkill', 'raise victims as soulless',	Format.Percent,
+	'incscale',	'increase scale', function(v,o){ return Utils.getScale(v); },
+	'decscale',	'increase scale', function(v,o){ return Utils.getScaleInverted(v); },
+	'reform',	'chance to reform when killed',	Format.Percent,
+	'haltheretic',	'fatigue sacreds',		Format.SignedZero,
+	'raiseshape', 'raises unit',	Utils.unitRef,
+
+	'digest', 'digest',
+	'aciddigest', 'acid digest',
+	'incorporate', 'incorporate',
+
 ]);
 var flagorder = DMI.Utils.cutDisplayOrder(aliases, formats,
 [
