@@ -1684,6 +1684,7 @@ var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 	'uwdamage', 'underwater damage',
 	'landdamage', 'land damage',
 	'digest', 'digest',
+	'aciddigest', 'acid digest',
 	'acidsplash', 'acid splash',
 	'incorporate', 'incorporate',
 	'bonusspells', 'bonus spells',
@@ -1693,15 +1694,7 @@ var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 	'tainted',	'horrormark chance',		Format.Percent,
 	'special',	'special',
 	'explodeondeath',	'explode on death',
-	'transformation', 'transformation', {'-1': 'bad result', '1': 'good result ' },
-	'fireattuned', 'fire attuned',
-	'airattuned', 'air attuned',
-	'waterattuned', 'water attuned',
-	'earthattuned', 'earth attuned',
-	'astralattuned', 'astral attuned',
-	'deathattuned', 'death attuned',
-	'natureattuned', 'nature attuned',
-	'bloodattuned', 'blood attuned',
+	'transformation', 'transformation', {'-1': 'bad result', '0': 'disabled', '1': 'good result' },
 	'guardspiritbonus', 'guardian spirit',
 	'startitem',	'starts with',	function(v,o){ 
 		return Utils.itemRef(v); 
@@ -1808,11 +1801,36 @@ var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 	'insane',	'insane',		Format.Percent,
 	
 	'voidsanity',		'void sanity',		
-	'voidsum',		'void summoning',	Format.Signed, //rl'yeh	
+	'voidsum',		'void summoning',	Format.Signed, //rl'yeh
+
+	'xploss',	'lose XP on transform',	Format.Percent,
+	'incscale',	'increase scale', function(v,o){ return Utils.getScale(v); },
+	'decscale',	'increase scale', function(v,o){ return Utils.getScaleInverted(v); },
+	'domrec',	'domrec (?)',
+	'haltheretic',	'fatigue sacreds',		Format.SignedZero,
+	'homeshape', 'shape in home province', function(v,o){	return twinUnitRef(o, 'homeshape', 'foreignshape');	},
+	'foreignshape', 'shape outside home province', function(v,o){	return twinUnitRef(o, 'foreignshape', 'homeshape');	},
+	'userestricteditem', 'can use item restriction', //TODO: link this to the item list
+	'blessfly', 'fly when blessed',
+	'plant', 'is a plant',
+	'uwheat', 'heat aura (even underwater)',
+	'raiseonkill', 'raise victims as soulless',	Format.Percent,
+	'acidshield', 'acid shield',
+	'hpoverslow', 'hp overflow (fades)', Format.Percent,
+	'raiseshape', 'raises unit',	Utils.unitRef,
+
+	'fireattuned', 'bonus fire magic', Format.Percent,
+	'airattuned', 'bonus air magic', Format.Percent,
+	'waterattuned', 'bonus water magic', Format.Percent,
+	'earthattuned', 'bonus earth magic', Format.Percent,
+	'astralattuned', 'bonus astral magic', Format.Percent,
+	'deathattuned', 'bonus death magic', Format.Percent,
+	'natureattuned', 'bonus nature magic', Format.Percent,
+	'bloodattuned', 'bonus blood magic', Format.Percent,
+
 	'events', 'triggered events', list_events,
 	'recruitedby', 'recruited from', list_sites,
-	'summonedfrom', 'summoned from', list_sites
-	
+	'summonedfrom', 'summoned from', list_sites,
 ]);
 var flagorder = Utils.cutDisplayOrder(aliases, formats,
 [
@@ -1896,7 +1914,8 @@ var flagorder = Utils.cutDisplayOrder(aliases, formats,
 	'eyeloss',	Utils.afflictionRef('Eyeloss')+' on attackers',
 	
 	'inquisitor',		'inquisitor'
-]);
+
+	]);
 var hiddenkeys = Utils.cutDisplayOrder(aliases, formats,
 [
 	'id', 		'unit id',	function(v){ return Math.floor(v); }
