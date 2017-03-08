@@ -140,7 +140,7 @@ MSpell.prepareData_PostMod = function() {
 				o.type = 'Combat';
 			}
 			o.rng_bat = effects.range_base;
-			if (effects.range_per_level != "0") {
+			if (effects.range_per_level && effects.range_per_level != "0") {
 				o.rng_bat = parseInt(o.rng_bat) + (parseInt(o.pathlevel1) * parseInt(effects.range_per_level));
 				o.rng_bat = o.rng_bat + "+ [" + effects.range_per_level + "/lvl]";
 			}
@@ -879,18 +879,26 @@ MSpell.worksOnDryLand = function(spell) {
 
 MSpell.getEffect = function(spell) {
 	var effect = {};
+
+	// When modifying effects, we need to be careful to use a copy, not a reference,
+	// otherwise modifications will be shared between all spells/weapons with the same effect.
+	// I don't like this JSON hack, but it's apparently the accepted JS way of doing it
+
 	if (spell.effect_record_id) {
-		effect = modctx.effects_lookup[spell.effect_record_id];
+		effect = JSON.parse(JSON.stringify(modctx.effects_lookup[spell.effect_record_id]));
 	}
 	
 	if (spell.copyspell) {
 		var otherspell = DMI.modctx.spelllookup[spell.copyspell];
-		effect = modctx.effects_lookup[otherspell.effect_record_id];
+		effect = JSON.parse(JSON.stringify(modctx.effects_lookup[otherspell.effect_record_id]));
 	}
 	if (spell.effect) {
-		if (parseInt(spell.effect) > 1000) {
+		if (parseInt(spell.effect) > 10000) {
 			effect.effect_number = parseInt(spell.effect) - 10000;
 			effect.ritual = 1;
+		} else if (parseInt(spell.effect) > 1000) {
+			effect.effect_number = parseInt(spell.effect) % 1000; //Edge of map???
+			effect.duration = Math.floor(parseInt(spell.effect) / 1000);
 		} else {
 			effect.effect_number = parseInt(spell.effect);
 			effect.ritual = 0;
