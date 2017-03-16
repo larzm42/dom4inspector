@@ -17,6 +17,7 @@ var modconstants = DMI.modconstants;
 
 MSpell.initSpell = function(o) {
 	o.nations = [];
+	o.notnations = [];
 }
 
 MSpell.nationList = function (o) {
@@ -41,12 +42,12 @@ MSpell.prepareData_PreMod = function() {
 		o.path2  = modconstants[16][o.path2];
 
 		o.nations = MSpell.nationList(o);
+		o.notnations = [];
 		
 		o.nextspell = o.next_spell;
 		
 	}
 }
-
 
 MSpell.prepareData_PostMod = function() {
 	for (var oi=0, o;  o= modctx.spelldata[oi];  oi++) {
@@ -73,6 +74,18 @@ MSpell.prepareData_PostMod = function() {
 			n.spells.push(o);
 		}
 		delete o.nations;
+
+		// Parse the notnations to a list of IDs
+		var parsedNations = [];
+		for (var ni=0, nid, n; nid= o.notnations[ni]; ni++) {
+			if (!(n= modctx.nationlookup[nid])) {
+				console.log('nation "'+nid+ '" not found (spell '+o.id+')');
+				continue;
+			}
+			//n.removeSpell(o);
+			parsedNations[nid] = true;
+		}
+		o.notnations = parsedNations;
 
 		o.renderOverlay = MSpell.renderOverlay;
 		o.matchProperty = MSpell.matchProperty;
@@ -554,7 +567,11 @@ MSpell.CGrid = DMI.Utils.Class( DMI.CGrid, function() {
 			if (!o.nations[args.nation.id])
 				return false;
 		}
-		
+		if (args.nation && o.notnations) {
+			if (o.notnations[args.nation.id])
+				return false;
+		}
+
 		//aquatic
 		if (args.aquatic) {
 			if (args.aquatic == 'uw' && !DMI.MSpell.worksUnderwater(o))
@@ -694,7 +711,7 @@ var ignorekeys = {
 	range:1,
 	aoe:1,
 
-	summonsunits:1,	nations:1, eracodes:1, nationname:1,
+	summonsunits:1,	nations:1, notnations:1, eracodes:1, nationname:1,
 	
 	//common fields
 	name:1,description:1,

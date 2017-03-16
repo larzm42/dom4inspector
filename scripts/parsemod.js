@@ -650,7 +650,8 @@ var modctx = DMI.modctx = {
 			var ignorestats = {
 				//stats to NOT copy
 				modded:1,
-				id:1
+				id:1,
+				used_by:1
 				//name:1,
 			};
 			var to = modctx.wpn;
@@ -1427,8 +1428,9 @@ var modctx = DMI.modctx = {
 			};
 			for (var k in o)
 				if (!keepstats[k]) delete o[k];
-			
+
 			o.nations = [];
+			o.notnations = [];
 		},
 		copyspell: function(c,a,t){
 			var from = modctx.spelllookup[a.n1] || modctx.spelllookup[($.trim(a.s) || '-1').toLowerCase()];
@@ -1446,6 +1448,10 @@ var modctx = DMI.modctx = {
 			//deep copy arrays
 			to.nations = [];
 			for (var i=0, m; m= from.nations[i]; i++) to.nations[i] = m;
+			if (from.notnations) {
+				to.notnations = [];
+				for (var i=0, m; m= from.notnations[i]; i++) to.notnations[i] = m;
+			}
 		},
 		school:		_num,
 		researchlevel:	_num,
@@ -1483,7 +1489,7 @@ var modctx = DMI.modctx = {
 		spec:		_num,
 
 		restricted: function(c,a,t){ modctx.spell.nations.push(argref(a)); }, //deferr lookups
-		notfornation: function(c,a,t){ modctx.spell.nations.push(argref(a)); }, //deferr lookups
+		notfornation: function(c,a,t){ modctx.spell.notnations.push(argref(a)); },
 
 		damagemon: 		_str,
 				
