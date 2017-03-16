@@ -1729,8 +1729,8 @@ var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 		return v + ' (' + Utils.unitRef(o.id+1) + ')';
 	},
 	
-	'domsummon',	'dominion attracts units',	function(v,o){ 
-		return Format.PerTurn( Utils.unitRef(v) ); 
+	'domsummon',	'dominion attracts units',	function(v,o){
+		return Utils.unitRef(v);
 	},
 	'makemonster',	'makes units',	function(v,o){ 
 		return Utils.is(o.n_makemonster) ?  Utils.unitRef(v)+' x '+o.n_makemonster  :  Utils.unitRef(v); 
@@ -1795,7 +1795,16 @@ var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 	'batstartsum6d6',	'summons in battle',	function(v,o){ 
 		return Utils.unitRef(v)+' x 6d6'; 
 	},
-	
+	'raredomsummon',	'dominion rarely attracts units',	function(v,o){
+		return Utils.unitRef(v);
+	},
+	'ownsmonrec',	'recruit when player owns',	function(v,o){ //TODO: reverse lookup
+		return Utils.unitRef(v);
+	},
+	'monpresentrec',	'recruit when present',	function(v,o){ //TODO: reverse lookup
+		return Utils.unitRef(v);
+	},
+
 	'heretic',		'heretic',
 	'shatteredsoul',	'shattered soul', 	Format.Percent, //tartarian
 	'insane',	'insane',		Format.Percent,
