@@ -906,9 +906,12 @@ var modctx = DMI.modctx = {
 			
 			to.armor = [];
 			for (var i=0, m; m= from.armor[i]; i++) to.armor[i] = m;
-			
+
 			to.randompaths = [];
 			for (var i=0, m; m= from.randompaths[i]; i++) to.randompaths[i] = m;
+
+			to.startitem = [];
+			for (var i=0, m; m= from.startitem[i]; i++) to.startitem[i] = m;
 		},
 		copyspr: function(c,a,t){
 			var from = modctx.unitlookup[a.n1] || modctx.unitlookup[$.trim((a.s || '-1').toLowerCase())];
