@@ -399,8 +399,8 @@ MUnit.prepareData_PostMod = function() {
 		}
 		
 		//resource costs
-		o.rcost = parseInt(o.rcost);
-		o.rcostsort = parseInt(o.rcost);
+		o.rcost = parseInt(o.rcost || 1);
+		o.rcostsort = parseInt(o.rcost || 1);
 		o.ressize = parseInt(o.ressize) || 2; //{1:0.5,  2:1,  3:1.5,  4:2,  5:2.5,  6:3}[o.ressize || '2'];
 
 		//filter out weapons we cant find
