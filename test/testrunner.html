@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mocha Tests</title>
+    <link rel="stylesheet" href="../node_modules/mocha/mocha.css">
+</head>
+<body>
+<div id="mocha"></div>
+<script src="../node_modules/mocha/mocha.js"></script>
+<script src="../node_modules/chai/chai.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="../scripts/DMI/Format.js"></script>
+<script src="../scripts/DMI/Utils.js"></script>
+<script>mocha.setup('bdd')</script>
+
+<!-- load code you want to test here -->
+<script src="../scripts/DMI/MUnit.js"></script>
+
+<!-- load your test files here -->
+<script src="unit_data.js"></script>
+<script src="autocalc.js"></script>
+
+<script>
+    mocha.run();
+</script>
+</body>
+</html>

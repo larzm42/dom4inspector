@@ -476,7 +476,7 @@ MUnit.autocalc = function (o) {
 		if (o.inspirational) {
 			ldr_cost = ldr_cost + 10*parseInt(o.inspirational);
 		}
-		if (o.sailingship && parseInt(o.sailingshipsize) > 0) {
+		if (o.sailingshipsize && parseInt(o.sailingshipsize) > 0) {
 			ldr_cost = ldr_cost + .5 * ldr_cost;
 		}
 
