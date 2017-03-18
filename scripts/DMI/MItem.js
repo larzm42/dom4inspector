@@ -16,6 +16,7 @@ var modconstants = DMI.modconstants;
 
 MItem.initItem = function(o) {
 	o.nations = [];
+	o.restricted = [];
 }
 
 MItem.prepareData_PreMod = function() {
@@ -51,8 +52,21 @@ MItem.prepareData_PostMod = function() {
 		if (o.descr)
 			o.descr = '<p>' + o.descr.replace('\n','</p><p>') + '</p>';	
 		
-		if (o.restricted && o.restricted.length == 0) {
-			delete o.restricted;
+		if (o.restricted) {
+			// Parse the restricted nations to a list of IDs
+			var parsedNations = [];
+			for (var ni=0, nid, n; nid= o.restricted[ni]; ni++) {
+				if (!(n= modctx.nationlookup[nid])) {
+					console.log('nation "'+nid+ '" not found (item '+o.id+')');
+					continue;
+				}
+				parsedNations.push(n.id);
+			}
+			o.restricted = parsedNations;
+
+			if (o.restricted.length == 0) {
+				delete o.restricted;
+			}
 		}
 		
 		//serachable string
@@ -273,20 +287,9 @@ MItem.CGrid = Utils.Class( DMI.CGrid, function() {
 		if (args.generic && o.restricted)
 			return false;
 
-		//era
-		if (args.eracode && o.eracodes) {
-			if (!o.eracodes[args.eracode])
-				return false;
-		}
-		else if (args.eracode && o.nations && o.nations.length > 0) {
-			//loop here
-			//if (o.nation.eracode != args.eracode)
-			//	return false;
-		}
-
 		//nation
-		if (args.nation && o.nations && o.nations.length > 0) {
-			if (!o.nations[args.nation.id])
+		if (args.nation && o.restricted) {
+			if (!o.restricted.includes(args.nation))
 				return false;
 		}
 
