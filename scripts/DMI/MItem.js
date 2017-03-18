@@ -180,7 +180,30 @@ MItem.CGrid = Utils.Class( DMI.CGrid, function() {
 	
 	//in closure scope
 	var that = this;
-	
+
+	//selecting a nation
+	$(that.domselp+" select.nation").bind('change', function(e) {
+		//clicked a nation? (or era.. but not "any")
+		if (! $(that.domselp+" select.nation option.default").prop('selected')) {
+			//currently showing "all units"?
+			if ( $(that.domselp+" select.typechar option.default").prop('selected')) {
+				//show only national units
+				$(that.domselp+" select.typechar option.available").prop('selected', true).parent().saveState();
+				$(that.domselp+" input.national").prop('checked', true).saveState();
+				$(that.domselp+".filters-units input.clear-filters-btn").show();
+			}
+		}
+	});
+
+	//selecting national/generic deselects the other
+	$(that.domselp+" input.national").bind('change click', function(e) {
+		if ($(this).prop('checked'))
+			$(that.domselp+" input.generic").prop('checked', false).saveState();
+	});
+	$(that.domselp+" input.generic").bind('change click', function(e) {
+		if ($(this).prop('checked'))
+			$(that.domselp+" input.national").prop('checked', false).saveState();
+	});
 	
 	//reads search boxes
 	this.getSearchArgs = function() {
@@ -189,7 +212,9 @@ MItem.CGrid = Utils.Class( DMI.CGrid, function() {
 			type: Utils.splitToLookup( $(that.domselp+" select.type").val(), ','),
 			constlevel: parseInt( $(that.domselp+" select.constlevel").val() ),
 			inclusive: $(that.domselp+" input.inclusive-search:checked").val(),
-
+			nation: $(that.domselp+" select.nation").val(),
+			generic: $(that.domselp+" input.generic:checked").val(),
+			national: $(that.domselp+" input.national:checked").val(),
 			mpaths: ''
 		};
 		args.properties = Utils.propertiesWithKeys(args.properties);
@@ -241,6 +266,29 @@ MItem.CGrid = Utils.Class( DMI.CGrid, function() {
 		if (args.type && !(args.type[o.type] || args.type[o.wpnclass]))
 				return false;
 
+		//national (national units only)
+		if (args.national && (!o.restricted))
+			return false;
+		//generic (generic units only)
+		if (args.generic && o.restricted)
+			return false;
+
+		//era
+		if (args.eracode && o.eracodes) {
+			if (!o.eracodes[args.eracode])
+				return false;
+		}
+		else if (args.eracode && o.nations && o.nations.length > 0) {
+			//loop here
+			//if (o.nation.eracode != args.eracode)
+			//	return false;
+		}
+
+		//nation
+		if (args.nation && o.nations && o.nations.length > 0) {
+			if (!o.nations[args.nation.id])
+				return false;
+		}
 
 		//properties
 		//each is comprised of key =~ val
