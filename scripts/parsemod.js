@@ -246,7 +246,7 @@ var modctx = DMI.modctx = {
 			DMI.MItem.initItem(modctx.item);
 		},
 		selectitem: function(c,a,t,fnw){ 
-			if (a.n1>499 && a.n1<1500)  { // This is an evil hack
+			if (a.n1>499 && a.n1<1000)  {
 				modctx._new(c, a,'item', fnw);
 				DMI.MItem.initItem(modctx.item);
 			} else {
