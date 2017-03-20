@@ -3,8 +3,6 @@
 
 .idea
 node_modules/
-/test/
-
 
 # User-specific stuff:
 .idea/**/workspace.xml
