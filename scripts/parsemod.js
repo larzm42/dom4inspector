@@ -40,6 +40,12 @@ function _num_def(n) {
 		modctx[t][c] = a.n1 || String(n);
 	}
 }
+function _num_plus(n) {
+	var n = n;
+	return function(c,a,t) {
+		modctx[t][c] = parseInt(argnum(a)) + n;
+	}
+}
 /*
  * #incunrest of 10 will increase unrest by 1. Discrepancy between the vanilla game csv
  * and the mod script means we need to divide by 10 before displaying the value.
@@ -1027,7 +1033,7 @@ var modctx = DMI.modctx = {
 		darkvision:	_num,
 		startingaff: 	_num,
 	
-		stealthy:	_num_def(0),
+		stealthy:	_num_plus(40),
 		illusion:	_bool,
 		spy:		_bool,
 		assassin:	_bool,
