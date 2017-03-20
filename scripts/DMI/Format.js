@@ -75,7 +75,12 @@ GridFormat.Gems = function(row, cell, value, columnDef, dataContext) {
 	if (!value) return '';
 	return value.replace(/([A-W])/g, '<span class="gemicon Gem_$1">$1</span>');
 }
-
+GridFormat.OrderedGems = function(row, cell, value, columnDef, dataContext) {
+	if (!value) return '';
+	value = value.replace(/U\d*/, function(s){return DMI.Utils.rndMagicRef(Math.floor(dataContext.id), s);})
+	// return value.replace(/([A-W])/g, '<img alt="$1" class="pathicon Path_$1" src="images/magicicons/Path_$1.png" />').slice(1);
+	return value.replace(/([A-W])/g, '<span class="gemicon Gem_$1">$1</span>').slice(1);
+}
 
 //render a named ability icon
 Format.AbilityIcon = function(name, title) {
@@ -85,8 +90,12 @@ Format.AbilityIcon = function(name, title) {
 //simple functions for formatting values
 Format.Percent = function(v) {
 	v = String(v);
-	if (v=='0') return v; 
-	return v+ '%'; 
+	if (v=='0') return v;
+
+	if (v.indexOf('%') == -1) {
+		return v+ '%';
+	}
+	return v;
 }; 
 Format.Signed = function(v) {
 	v = String(v);
