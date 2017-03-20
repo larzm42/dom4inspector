@@ -1223,12 +1223,12 @@ var modctx = DMI.modctx = {
 	
 		nametype:	_num,
 		
-		noleader:	function(c,a,t){ modctx[t]['leader'] = 0; },
-		poorleader:	function(c,a,t){ modctx[t]['leader'] = 10; },
-		okleader:	function(c,a,t){ modctx[t]['leader'] = 40; },
-		goodleader:	function(c,a,t){ modctx[t]['leader'] = 80; },
-		expertleader:	function(c,a,t){ modctx[t]['leader'] = 120; },
-		superiorleader:	function(c,a,t){ modctx[t]['leader'] = 160; },
+		noleader:	function(c,a,t){ modctx[t]['leader'] = 0; modctx[t]['baseleadership'] = 0; },
+		poorleader:	function(c,a,t){ modctx[t]['leader'] = 10; modctx[t]['baseleadership'] = 10;},
+		okleader:	function(c,a,t){ modctx[t]['leader'] = 40; modctx[t]['baseleadership'] = 40;},
+		goodleader:	function(c,a,t){ modctx[t]['leader'] = 80; modctx[t]['baseleadership'] = 80;},
+		expertleader:	function(c,a,t){ modctx[t]['leader'] = 120; modctx[t]['baseleadership'] = 120;},
+		superiorleader:	function(c,a,t){ modctx[t]['leader'] = 160; modctx[t]['baseleadership'] = 160;},
 		command:		_num,
 		
 		nomagicleader:		function(c,a,t){ modctx[t]['magicleader'] = 0; },
