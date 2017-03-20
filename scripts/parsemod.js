@@ -397,7 +397,7 @@ var modctx = DMI.modctx = {
 		coldres: 	_num,
 		shockres: 	_num,
 		poisonres: 	_num,
-		restricted: function(c,a,t){ modctx.item.nations.push(argref(a)); }, //deferr lookups
+		restricted: function(c,a,t){ modctx.item.restricted.push(argref(a)); }, //deferr lookups
 		pen: 	_num,
 		autospellrepeat: 	_num,
 		randomspell: 	_num,
