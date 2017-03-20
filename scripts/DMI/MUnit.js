@@ -399,8 +399,8 @@ MUnit.prepareData_PostMod = function() {
 		}
 		
 		//resource costs
-		o.rcost = parseInt(o.rcost);
-		o.rcostsort = parseInt(o.rcost);
+		o.rcost = parseInt(o.rcost || 1);
+		o.rcostsort = parseInt(o.rcost || 1);
 		o.ressize = parseInt(o.ressize) || 2; //{1:0.5,  2:1,  3:1.5,  4:2,  5:2.5,  6:3}[o.ressize || '2'];
 
 		//filter out weapons we cant find
@@ -476,7 +476,7 @@ MUnit.autocalc = function (o) {
 		if (o.inspirational) {
 			ldr_cost = ldr_cost + 10*parseInt(o.inspirational);
 		}
-		if (o.sailingship && parseInt(o.sailingshipsize) > 0) {
+		if (o.sailingshipsize && parseInt(o.sailingshipsize) > 0) {
 			ldr_cost = ldr_cost + .5 * ldr_cost;
 		}
 
@@ -1729,8 +1729,8 @@ var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 		return v + ' (' + Utils.unitRef(o.id+1) + ')';
 	},
 	
-	'domsummon',	'dominion attracts units',	function(v,o){ 
-		return Format.PerTurn( Utils.unitRef(v) ); 
+	'domsummon',	'dominion attracts units',	function(v,o){
+		return Utils.unitRef(v);
 	},
 	'makemonster',	'makes units',	function(v,o){ 
 		return Utils.is(o.n_makemonster) ?  Utils.unitRef(v)+' x '+o.n_makemonster  :  Utils.unitRef(v); 
@@ -1795,7 +1795,16 @@ var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 	'batstartsum6d6',	'summons in battle',	function(v,o){ 
 		return Utils.unitRef(v)+' x 6d6'; 
 	},
-	
+	'raredomsummon',	'dominion rarely attracts units',	function(v,o){
+		return Utils.unitRef(v);
+	},
+	'ownsmonrec',	'recruit when player owns',	function(v,o){ //TODO: reverse lookup
+		return Utils.unitRef(v);
+	},
+	'monpresentrec',	'recruit when present',	function(v,o){ //TODO: reverse lookup
+		return Utils.unitRef(v);
+	},
+
 	'heretic',		'heretic',
 	'shatteredsoul',	'shattered soul', 	Format.Percent, //tartarian
 	'insane',	'insane',		Format.Percent,

@@ -59,12 +59,19 @@ function _str_num(c,a,t) {
 	modctx[t][c] = (a.n1 || a.s);
 }
 
-function argref(a) { 
+function argref(a) {
 	if (!a.n1 && !a.s) throw "argument missing (number or string expected)";
 	return a.n1 || $.trim(a.s.toLowerCase());
 }
-function _ref(c,a,t) { 
+function _ref(c,a,t) {
 	modctx[t][c] = argref(a);
+}
+function _ref_optional(c,a,t) {
+	if (a.n1 || a.s) {
+		modctx[t][c] = a.n1 || $.trim(a.s.toLowerCase());
+	} else {
+		modctx[t][c] = 1;
+	}
 }
 function _bool(c,a,t) {
 	if (a.n1 || a.s) throw "unexpected argument (none expected)";
@@ -397,7 +404,7 @@ var modctx = DMI.modctx = {
 		coldres: 	_num,
 		shockres: 	_num,
 		poisonres: 	_num,
-		restricted: function(c,a,t){ modctx.item.nations.push(argref(a)); }, //deferr lookups
+		restricted: function(c,a,t){ modctx.item.restricted.push(argref(a)); }, //deferr lookups
 		pen: 	_num,
 		autospellrepeat: 	_num,
 		randomspell: 	_num,
@@ -1402,6 +1409,9 @@ var modctx = DMI.modctx = {
 		deathattuned: _num,
 		natureattuned: _num,
 		bloodattuned: _num,
+
+		ownsmonrec:		function(c,a,t){ modctx[t]['ownsmonrec'] = argref(a) },
+		monpresentrec: 	function(c,a,t){ modctx[t]['monpresentrec'] = argref(a) }
 	},
 
 	//spell selected
@@ -1495,6 +1505,7 @@ var modctx = DMI.modctx = {
 				
 		provrange:		_num,
 		onlygeosrc:		_num,
+		nogeosrc:		_num,
 		onlygeodst:		_num,
 		onlyfriendlydst:_num,
 		onlyowndst:		_num,
@@ -1507,7 +1518,8 @@ var modctx = DMI.modctx = {
 		//fx
 		flightspr:	_ignore,
 		explspr:	_ignore,
-		sound:		_ignore
+		sound:		_ignore,
+		sample:		_ignore
 	},
 
 	//nation selected
@@ -1576,7 +1588,10 @@ var modctx = DMI.modctx = {
 
 		addrecunit: function(c,a,t){ modctx[t]['units'].push(argref(a)); },
 		addreccom: function(c,a,t){ modctx[t]['commanders'].push(argref(a)); },
-		
+
+		landrec: function(c,a,t){ modctx[t]['landunit'].push(argref(a)); },
+		landcom: function(c,a,t){ modctx[t]['landcom'].push(argref(a)); },
+
 		uwunit1: function(c,a,t){ modctx[t]['uwunit'][1] = argref(a); },
 		uwunit2: function(c,a,t){ modctx[t]['uwunit'][2] = argref(a); },
 		uwunit3: function(c,a,t){ modctx[t]['uwunit'][3] = argref(a); },
@@ -1696,7 +1711,9 @@ var modctx = DMI.modctx = {
 
 		aiholdgod: _ignore,
 		godrebirth: _ignore,
-				
+
+		templegems: _ignore,
+
 		coastunit1: function(c,a,t){ modctx[t]['coastrec'][1] = argref(a); },
 		coastunit2: function(c,a,t){ modctx[t]['coastrec'][2] = argref(a); },
 		coastunit3: function(c,a,t){ modctx[t]['coastrec'][2] = argref(a); },
@@ -2058,15 +2075,15 @@ var modctx = DMI.modctx = {
 		gainmark: _bool,
 		banished: _num, //lookup
 		addequip: _num, //lookup, maybe
-		fireboost: _str_num, //lookup
-		airboost: _str_num, //lookup
-		waterboost: _str_num, //lookup
-		earthboost: _str_num, //lookup
-		astralboost: _str_num, //lookup
-		deathboost: _str_num, //lookup
-		natureboost: _str_num, //lookup
-		bloodboost: _str_num, //lookup
-		holyboost: _str_num, //lookup
+		fireboost: _ref_optional, //lookup
+		airboost: _ref_optional, //lookup
+		waterboost: _ref_optional, //lookup
+		earthboost: _ref_optional, //lookup
+		astralboost: _ref_optional, //lookup
+		deathboost: _ref_optional, //lookup
+		natureboost: _ref_optional, //lookup
+		bloodboost: _ref_optional, //lookup
+		holyboost: _ref_optional, //lookup
 		pathboost: _num, //lookup
 		worldincscale  : _num, //lookup
 		worldincscale2  : _num, //lookup
