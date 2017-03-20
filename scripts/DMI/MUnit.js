@@ -608,7 +608,7 @@ MUnit.autocalc = function (o) {
 		o.goldcost = parseInt(cost + special_cost);
 		o.goldcost = o.goldcost + parseInt(o.basecost) - 10000;
 		if (o.slow_to_recruit && parseInt(o.slow_to_recruit) > 0 && o.type != 'u') {
-			o.goldcost = MUnit.roundIfNeeded(o.goldcost * 0.9);
+			o.goldcost = o.goldcost * 0.9;
 		}
 		if (o.holy && parseInt(o.holy) > 0) {
 			o.goldcost = o.goldcost * 1.3;

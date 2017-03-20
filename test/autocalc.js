@@ -18,4 +18,18 @@ describe('Autocalc', function() {
             expect(unit.goldcost).to.equal(100);
         });
     });
+    describe('Knoss Raider Chief', function () {
+        it('Should cost 70', function() {
+            var unit = JSON.parse(knoss_raider_chief);
+            DMI.MUnit.autocalc(unit);
+            expect(unit.goldcost).to.equal(70);
+        });
+    });
+    describe('Wanax', function () {
+        it('Should cost 430', function() {
+            var unit = JSON.parse(wanax);
+            DMI.MUnit.autocalc(unit);
+            expect(unit.goldcost).to.equal(430);
+        });
+    });
 });
