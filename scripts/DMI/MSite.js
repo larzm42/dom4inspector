@@ -168,8 +168,10 @@ MSite.prepareData_PostMod = function() {
 		for (var evti=0, evt;  evt= modctx.eventdata[evti];  evti++) {
 			if (evt.req_site || evt.req_foundsite || evt.req_hiddensite || evt.req_nearbysite) {
 				var sitename = evt.description.match(/\[(.*?)\]/);
-				if (sitename && sitename.length > 1 && sitename[1] == o.name) {
-					o.events.push(evt.id);
+				if (sitename && sitename.length > 1) {
+					if (sitename[1] == o.name) {
+						o.events.push(evt.id);
+					}
 				} else if (evt.req_site == o.id) {
 					o.events.push(evt.id);
 				} else if (evt.req_foundsite == o.id) {
@@ -189,8 +191,10 @@ MSite.prepareData_PostMod = function() {
 		for (var evti=0, evt;  evt= modctx.eventdata[evti];  evti++) {
 			if (evt.newsite) {
 				var sitename = evt.description.match(/\[(.*?)\]/);
-				if (sitename && sitename.length > 1 && sitename[1] == o.name) {
-					o.newsiteevents.push(evt.id);
+				if (sitename && sitename.length > 1) {
+					if (sitename[1] == o.name) {
+						o.newsiteevents.push(evt.id);
+					}
 				} else if (evt.newsite == o.id) {
 					o.newsiteevents.push(evt.id);
 				}
