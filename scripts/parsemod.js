@@ -677,7 +677,7 @@ var modctx = DMI.modctx = {
 			var to = modctx.wpn;
 			for (var k in to)   if (!ignorestats[k]) delete to[k];
 			for (var k in from) if (!ignorestats[k]) to[k] = from[k];
-				
+			to.name = "copied (rename pls)";
 		},
 		clear: function(c,a,t) {
 			var o = modctx.site;
@@ -813,7 +813,7 @@ var modctx = DMI.modctx = {
 			var to = modctx.armor;
 			for (var k in to)   if (!ignorestats[k]) delete to[k];
 			for (var k in from) if (!ignorestats[k]) to[k] = from[k];
-
+			to.name = "copied (rename pls)";
 		},
 		clear: function(c,a,t) {
 			var o = modctx.site;
