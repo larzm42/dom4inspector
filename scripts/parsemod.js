@@ -358,10 +358,17 @@ var modctx = DMI.modctx = {
 		},
 		
 		newsite: function(c,a,t,fnw) {
+			if (a.n1 == '' || a.n1 == '0') {
+				//get first unused id
+				var id = modctx.sitedata.length;
+				while (modctx.sitelookup[id]) id++;
+				a.n1 = id;
+			} else {
+				if (a.n1<1500 || a.n1>1999) throw 'invalid id';
+			}
+
 			modctx._new(c,a ,'site',fnw);
 			DMI.MSite.initSite(modctx.site);
-
-			if (a.n1<1500 || a.n1>1999) throw 'invalid id';
 		},
 		selectsite: function(c,a,t,fnw){ modctx._select(c,a,'site',fnw); },
 
@@ -531,10 +538,10 @@ var modctx = DMI.modctx = {
 			var to = modctx.item;
 			for (var k in to)   if (!ignorestats[k]) delete to[k];
 			for (var k in from) if (!ignorestats[k]) to[k] = from[k];
-				
+
 			//deep copy arrays
-//			to.nations = [];
-//			for (var i=0, m; m= from.nations[i]; i++) to.nations[i] = m;
+			to.restricted = [];
+			for (var i=0, m; m= from.restricted[i]; i++) to.restricted[i] = m;
 		},
 		domsummon:	_str_num,
 		domsummon2:	_str_num,
@@ -670,7 +677,7 @@ var modctx = DMI.modctx = {
 			var to = modctx.wpn;
 			for (var k in to)   if (!ignorestats[k]) delete to[k];
 			for (var k in from) if (!ignorestats[k]) to[k] = from[k];
-				
+			to.name = "copied (rename pls)";
 		},
 		clear: function(c,a,t) {
 			var o = modctx.site;
@@ -743,6 +750,7 @@ var modctx = DMI.modctx = {
 		enemyimmune:		_bool,
 		friendlyimmune:		_bool,
 		undeadonly:		_bool,
+		demononly:		_bool,
 		norepel:		_bool,
 		unrepel:		_bool,
 		beam:		_bool,
@@ -805,7 +813,7 @@ var modctx = DMI.modctx = {
 			var to = modctx.armor;
 			for (var k in to)   if (!ignorestats[k]) delete to[k];
 			for (var k in from) if (!ignorestats[k]) to[k] = from[k];
-
+			to.name = "copied (rename pls)";
 		},
 		clear: function(c,a,t) {
 			var o = modctx.site;
@@ -1033,7 +1041,10 @@ var modctx = DMI.modctx = {
 		darkvision:	_num,
 		startingaff: 	_num,
 	
-		stealthy:	_num_plus(40),
+		stealthy:	function(c,a,t) {
+			var n = a.n1 ? a.n1 : 0;
+			modctx[t][c] = n + 40;
+		},
 		illusion:	_bool,
 		spy:		_bool,
 		assassin:	_bool,
@@ -1111,6 +1122,9 @@ var modctx = DMI.modctx = {
 		popkill:	_num_times_10,
 		inquisitor:	_bool,
 		heretic:	_num,
+		insane:	_num,
+		sailsize:	_num,
+		latehero:	_num,
 
 		itemslots:	function(c,a,t){
 			var bitfield = parseInt(argnum(a));
@@ -1417,7 +1431,9 @@ var modctx = DMI.modctx = {
 		bloodattuned: _num,
 
 		ownsmonrec:		function(c,a,t){ modctx[t]['ownsmonrec'] = argref(a) },
-		monpresentrec: 	function(c,a,t){ modctx[t]['monpresentrec'] = argref(a) }
+		monpresentrec: 	function(c,a,t){ modctx[t]['monpresentrec'] = argref(a) },
+
+		drake: _bool
 	},
 
 	//spell selected
@@ -1518,7 +1534,7 @@ var modctx = DMI.modctx = {
 		nowatertrace:	_num,
 		nolandtrace:	_num,
 		walkable:		_num,
-		onlyatsite: 	_num,
+		onlyatsite: 	_ref,
 		farsumcom:		_num,
 
 		//fx
@@ -1715,7 +1731,6 @@ var modctx = DMI.modctx = {
 		golemhp: _ignore,
 		tradecoast: _ignore,
 
-		aiholdgod: _ignore,
 		godrebirth: _ignore,
 
 		templegems: _ignore,
@@ -1740,7 +1755,25 @@ var modctx = DMI.modctx = {
 
 		noforeignrec: _bool,
 		aigoodbless: _num,
-		
+
+		aiholdgod: _ignore,
+		aiawake : _ignore,
+		bloodnation : _ignore,
+		aimusthavemag : _ignore,
+		aifirenation: _ignore,
+		aiairnation : _ignore,
+		aiwaternation : _ignore,
+		aiearthnation : _ignore,
+		aiastralnation : _ignore,
+		aideathnation : _ignore,
+		ainaturenation : _ignore,
+		aibloodnation : _ignore,
+
+		cheapgod20: _ignore,
+		cheapgod40: _ignore,
+		killcappop: _ignore,
+		guardspirit: _ignore,
+
 		disableoldnations: _bool,
 		cleargods: _bool,
 		addgod: function(c,a,t){ modctx[t]['addgod'].push(argref(a)); },
@@ -1932,7 +1965,7 @@ var modctx = DMI.modctx = {
 		req_nearbysite : _num, //sitename
 		req_claimedthrone : _num, //sitename
 		req_unclaimedthrone : _num, //sitename
-		req_fullowner : _bool,
+		req_fullowner : _num,
 		req_mydominion : _num,
 		req_dominion : _num,
 		req_maxdominion : _num,
