@@ -660,7 +660,11 @@ var modctx = DMI.modctx = {
 			if (!name) throw 'unnamed weapon';
 		},
 		name: function(c,a,t) {
-			if (modctx.wpn.name) delete modctx.wpnlookup[modctx.wpn.name.toLowerCase()];
+			// Technically we probably should do this, but it causes issues with copied weapons
+			// Worst case removing it is probably some things work in the inspector which break in game
+			// Maybe. Honestly I don't have a good solution to this without implementing reference counting
+			// and fuck doing that
+			//if (modctx.wpn.name) delete modctx.wpnlookup[modctx.wpn.name.toLowerCase()];
 			modctx.wpn.name = argtrim(a);
 			modctx.wpnlookup[argtrim(a).toLowerCase()] = modctx.wpn;
 		},
@@ -677,7 +681,6 @@ var modctx = DMI.modctx = {
 			var to = modctx.wpn;
 			for (var k in to)   if (!ignorestats[k]) delete to[k];
 			for (var k in from) if (!ignorestats[k]) to[k] = from[k];
-			to.name = "copied (rename pls)";
 		},
 		clear: function(c,a,t) {
 			var o = modctx.site;
@@ -797,7 +800,11 @@ var modctx = DMI.modctx = {
 			if (!name) throw 'unnamed armor';
 		},
 		name: function(c,a,t) {
-			if (modctx.armor.name) delete modctx.armorlookup[modctx.armor.name.toLowerCase()];
+			// Technically we probably should do this, but it causes issues with copied weapons
+			// Worst case removing it is probably some things work in the inspector which break in game
+			// Maybe. Honestly I don't have a good solution to this without implementing reference counting
+			// and fuck doing that
+			// if (modctx.armor.name) delete modctx.armorlookup[modctx.armor.name.toLowerCase()];
 			modctx.armor.name = argtrim(a);
 			modctx.armorlookup[argtrim(a).toLowerCase()] = modctx.armor;
 		},
@@ -813,7 +820,6 @@ var modctx = DMI.modctx = {
 			var to = modctx.armor;
 			for (var k in to)   if (!ignorestats[k]) delete to[k];
 			for (var k in from) if (!ignorestats[k]) to[k] = from[k];
-			to.name = "copied (rename pls)";
 		},
 		clear: function(c,a,t) {
 			var o = modctx.site;
