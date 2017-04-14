@@ -1049,7 +1049,7 @@ var modctx = DMI.modctx = {
 	
 		stealthy:	function(c,a,t) {
 			var n = a.n1 ? a.n1 : 0;
-			modctx[t][c] = n + 40;
+			modctx[t][c] = parseInt(n) + 40;
 		},
 		illusion:	_bool,
 		spy:		_bool,
