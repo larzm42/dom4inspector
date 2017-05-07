@@ -14,6 +14,9 @@ var modconstants = DMI.modconstants;
 // PREPARE DATA
 //////////////////////////////////////////////////////////////////////////
 
+MMerc.initMerc = function(o) {
+};
+
 MMerc.prepareData_PreMod = function() {
 	for (var oi=0, o;  o= modctx.mercdata[oi];  oi++) {
 	}

@@ -1256,6 +1256,10 @@ MUnit.CGrid = Utils.Class( DMI.CGrid, function() {
 	
 	//apply search
 	this.searchFilter =  function(o, args) {
+		// Bit of a hack - don't display units with the name "Empty"
+		// They need to exist so people can select and edit them
+		if (o.name === "Empty") return false;
+
 		//type in id to ignore filters
 		if (args.str && args.str == String(o.id)) return true;
 		
