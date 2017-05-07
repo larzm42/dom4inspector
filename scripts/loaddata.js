@@ -441,7 +441,8 @@ function downloadData( g_data ) {
            'gamedata/map_terrain_types.csv'+versionCode,
            'gamedata/site_terrain_types.csv'+versionCode,
            'gamedata/attributes_by_weapon.csv'+versionCode,
-           'gamedata/attributes_by_armor.csv'+versionCode
+			'gamedata/attributes_by_armor.csv'+versionCode,
+			'gamedata/nametypes.csv'+versionCode
 	];
 	
 	if (location.search.indexOf('loadEvents=1') != -1) {
@@ -714,8 +715,13 @@ function parseData( g_data ) {
 			var data = g_data.server_data['gamedata/realms.csv'+versionCode];
 			if (!data) throw(DMI.Utils.error('ERROR LOADING: gamedata/realms.csv'));
 			modctx.realms = parseTextToTable(data);
-			
-			//before applying mod (order is important!)
+
+			var data = g_data.server_data['gamedata/nametypes.csv'+versionCode];
+			if (!data) throw(DMI.Utils.error('ERROR LOADING: gamedata/nametypes.csv'));
+			modctx.nametypedata = parseTextToTable(data);
+			modctx.nametypelookup = createLookup(modctx.nametypedata, 'id');
+
+    //before applying mod (order is important!)
 			DMI.MWpn.prepareData_PreMod();
 			DMI.MArmor.prepareData_PreMod();
 			DMI.MItem.prepareData_PreMod();

@@ -116,7 +116,7 @@ var modctx = DMI.modctx = {
 	processCommand: function(cmd, args, warningFn) {
 		var fullcmd = cmd;
 		
-		var types = ['unit', 'spell', 'wpn', 'item', 'armor', 'nation', 'site', 'event'];
+		var types = ['unit', 'spell', 'wpn', 'item', 'armor', 'nation', 'site', 'event', 'nametype', 'merc'];
 		for (var j=0, type; type=types[j]; j++) {
 			if (modctx[type]) {
 				//lookup cmd for open object
@@ -165,8 +165,10 @@ var modctx = DMI.modctx = {
 
 	//helpers
 	_checkContextClosed: function(fnwarn) {
-		if (modctx.item || modctx.armor || modctx.wpn || modctx.unit || modctx.spell) {
-			modctx.item = modctx.armor = modctx.wpn = modctx.unit = modctx.spell = null;
+		if (modctx.item || modctx.armor || modctx.wpn || modctx.unit || modctx.spell ||
+			modctx.nation || modctx.site || modctx.merc || modctx.event || modctx.nametype ) {
+			modctx.item = modctx.armor = modctx.wpn = modctx.unit = modctx.spell = modctx.nation = modctx.site =
+				modctx.merc = modctx.event = modctx.nametype = null;
 			fnwarn('missing #end');
 		}
 	},
@@ -370,7 +372,10 @@ var modctx = DMI.modctx = {
 			modctx._new(c,a ,'site',fnw);
 			DMI.MSite.initSite(modctx.site);
 		},
-		selectsite: function(c,a,t,fnw){ modctx._select(c,a,'site',fnw); },
+
+		selectsite: function(c,a,t,fnw){
+			modctx._select(c,a,'site',fnw);
+		},
 
 		newevent: function(c,a,t,fnw) {
 			var id = modctx.eventdata.length;
@@ -379,8 +384,26 @@ var modctx = DMI.modctx = {
 			modctx._new(c, {n1:id} ,'event', fnw);
 
 			DMI.MEvent.initEvent(modctx.event);
-		}
-	},
+		},
+
+        selectnametype: function(c,a,t,fnw) {
+            modctx._select(c,a,'nametype',fnw);
+
+            if (a.n1 >= 100 && a.n1 <= 152) return;
+            if (a.n1 >= 161 && a.n1 <= 299) return;
+
+            throw 'invalid id';
+        },
+
+		newmerc: function(c,a,t,fnw) {
+            var id = modctx.mercdata.length;
+            while (modctx.merclookup[id]) id++;
+
+            modctx._new(c, {n1:id} ,'merc', fnw);
+
+            DMI.MMerc.initMerc(modctx.merc);
+        }
+    },
 
 	//item selected
 	itemcommands: {
@@ -1439,7 +1462,8 @@ var modctx = DMI.modctx = {
 		ownsmonrec:		function(c,a,t){ modctx[t]['ownsmonrec'] = argref(a) },
 		monpresentrec: 	function(c,a,t){ modctx[t]['monpresentrec'] = argref(a) },
 
-		drake: _bool
+		drake: _bool,
+        addupkeep: _num
 	},
 
 	//spell selected
@@ -2164,6 +2188,36 @@ var modctx = DMI.modctx = {
 		id:	function(c,a,t){ modctx[t]['eff_id'] = argref(a); }
 	},
 
+    //nametype selected
+    nametypecommands: {
+        end: function(c,a,t){
+            modctx[t] = null;
+        },
+		clear: _ignore,
+        addname: _ignore
+    },
+
+    //merc selected
+    merccommands: {
+        end: function(c,a,t){
+            modctx[t] = null;
+        },
+        name: _str,
+        bossname: _str,
+        com: _ref,
+        unit: _ref,
+        nrunits: _num,
+        level: _num,
+        minmen: _num,
+
+        minpay: _num,
+        xp: _num,
+        randequip: _num,
+        recrate: _num,
+        item: _ref,
+        eramask: _num
+    },
+
 	//member data
 	loadedmods: [],
 	
@@ -2200,11 +2254,16 @@ var modctx = DMI.modctx = {
 	merclookup: undefined,
 	merc: null,
 
-	eventdata: undefined,
-	eventlookup: undefined,
-	event: null,
-	
-	// setWpnDamageType: function(key) {
+    eventdata: undefined,
+    eventlookup: undefined,
+    event: null,
+
+    nametypedata: undefined,
+    nametypelookup: undefined,
+    nametype: null,
+
+
+    // setWpnDamageType: function(key) {
 	// 	if (modctx.wpn) {
 	// 		for (var k in modctx.dmg_types) {
 	// 			delete modctx.wpn[k];
