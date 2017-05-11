@@ -935,7 +935,8 @@ var modctx = DMI.modctx = {
 			o.randompaths = [];
 		},
 		copystats: function(c,a,t){
-			var from = modctx.unitlookup[a.n1] || modctx.unitlookup[$.trim(a.s.toLowerCase())];
+			var from = modctx.unitlookup[a.n1];
+            if (!from && a.s) from = modctx.unitlookup[$.trim(a.s.toLowerCase())];
 			if (!from) throw 'original unit not found';
 			var ignorestats = {
 			//IGNORE
