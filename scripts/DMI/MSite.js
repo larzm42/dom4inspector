@@ -168,8 +168,10 @@ MSite.prepareData_PostMod = function() {
 		for (var evti=0, evt;  evt= modctx.eventdata[evti];  evti++) {
 			if (evt.req_site || evt.req_foundsite || evt.req_hiddensite || evt.req_nearbysite) {
 				var sitename = evt.description.match(/\[(.*?)\]/);
-				if (sitename && sitename.length > 1 && sitename[1] == o.name) {
-					o.events.push(evt.id);
+				if (sitename && sitename.length > 1) {
+					if (sitename[1] == o.name) {
+						o.events.push(evt.id);
+					}
 				} else if (evt.req_site == o.id) {
 					o.events.push(evt.id);
 				} else if (evt.req_foundsite == o.id) {
@@ -189,8 +191,10 @@ MSite.prepareData_PostMod = function() {
 		for (var evti=0, evt;  evt= modctx.eventdata[evti];  evti++) {
 			if (evt.newsite) {
 				var sitename = evt.description.match(/\[(.*?)\]/);
-				if (sitename && sitename.length > 1 && sitename[1] == o.name) {
-					o.newsiteevents.push(evt.id);
+				if (sitename && sitename.length > 1) {
+					if (sitename[1] == o.name) {
+						o.newsiteevents.push(evt.id);
+					}
 				} else if (evt.newsite == o.id) {
 					o.newsiteevents.push(evt.id);
 				}
@@ -403,6 +407,8 @@ MSite.CGrid = Utils.Class( DMI.CGrid, function() {
 			str: $(that.domselp+" input.search-box").val().toLowerCase(),
 			sitepath: $(that.domselp+" select.sitepath").val() ,
 			sitescale: $(that.domselp+" select.sitescale").val() ,
+			siteterrain: $(that.domselp+" select.siteterrain").val() ,
+			sitetype: $(that.domselp+" select.sitetype").val() ,
 			mpaths: ''
 		};
 		args.properties = Utils.propertiesWithKeys(args.properties);
@@ -425,12 +431,13 @@ MSite.CGrid = Utils.Class( DMI.CGrid, function() {
 		
 		//magic paths
 		if (args.mpaths) {
+			var found = false;
 			var arr = args.mpaths.split("");
 			for (var jj=0, pathStr; pathStr=arr[jj]; jj++) {
 				if (o.mpath.indexOf(pathStr) != -1)
-					return true;
+					found = true;
 			}
-			return false;
+			if (!found) return false;
 		}
 		
 		//site path
@@ -438,9 +445,22 @@ MSite.CGrid = Utils.Class( DMI.CGrid, function() {
 			return false;
 
 		//site scale
-		if (args.sitescale && !( o.scales.includes(args.sitescale)))
+		if (args.sitescale && (!o.scales || !o.scales.includes(args.sitescale)))
 			return false;
 
+		//site terrain
+		if (args.siteterrain && args.siteterrain > 0 && !(o.loc & args.siteterrain))
+			return false;
+
+		//site terrain
+		if (args.sitetype) {
+			if (args.sitetype == "Normal" && o.rarity > 4)
+				return false;
+			if (args.sitetype == "Special" && o.rarity !== 5)
+				return false;
+			if (args.sitetype == "Thrones" && o.rarity < 11)
+				return false;
+		}
 
 		//properties
 		//each is comprised of key =~ val

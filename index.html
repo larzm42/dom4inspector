@@ -468,36 +468,66 @@
 			/><img alt="H" class="Path_H pathicon" src="images/magicicons/Path_H.png" /></label>		
 		</div>
         <!-- /PATH CHECKBOXES LINE1 -->
-        
-        <!-- PATH CHECKBOXES LINE1 -->
-		<div class="filters-paths  panel itemview siteview">
+
+		<!-- PATH CHECKBOXES LINE1 -->
+		<div class="filters-paths  panel itemview">
 			<input type="button" value="X" class="clear-filters-btn" title="clear filters" />
 
-			<label for="pathF"><input class="toggle-path" type='checkbox' value='F' id="pathF" 
+			<label for="pathF"><input class="toggle-path" type='checkbox' value='F' id="pathF"
 			/><img alt="F" class="Path_F pathicon" src="images/magicicons/Path_F.png" /></label>
-			
-			<label for="pathA"><input class="toggle-path" type='checkbox' value='A' id="pathA" 
+
+			<label for="pathA"><input class="toggle-path" type='checkbox' value='A' id="pathA"
 			/><img alt="A" class="Path_A pathicon" src="images/magicicons/Path_A.png" /></label>
-			
-			<label for="pathW"><input class="toggle-path" type='checkbox' value='W' id="pathW" 
+
+			<label for="pathW"><input class="toggle-path" type='checkbox' value='W' id="pathW"
 			/><img alt="W" class="Path_W pathicon" src="images/magicicons/Path_W.png" /></label>
-			
-			<label for="pathE"><input class="toggle-path" type='checkbox' value='E' id="pathE" 
+
+			<label for="pathE"><input class="toggle-path" type='checkbox' value='E' id="pathE"
 			/><img alt="E" class="Path_E pathicon" src="images/magicicons/Path_E.png" /></label>
-			
-			<label for="pathS"><input class="toggle-path" type='checkbox' value='S' id="pathS" 
+
+			<label for="pathS"><input class="toggle-path" type='checkbox' value='S' id="pathS"
 			/><img alt="S" class="Path_S pathicon" src="images/magicicons/Path_S.png" /></label>
-			
-			<label for="pathD"><input class="toggle-path" type='checkbox' value='D' id="pathD" 
+
+			<label for="pathD"><input class="toggle-path" type='checkbox' value='D' id="pathD"
 			/><img alt="D" class="Path_D pathicon" src="images/magicicons/Path_D.png" /></label>
-			
-			<label for="pathN"><input class="toggle-path" type='checkbox' value='N' id="pathN" 
+
+			<label for="pathN"><input class="toggle-path" type='checkbox' value='N' id="pathN"
 			/><img alt="N" class="Path_N pathicon" src="images/magicicons/Path_N.png" /></label>
-			
-			<label for="pathB"><input class="toggle-path" type='checkbox' value='B' id="pathB" 
+
+			<label for="pathB"><input class="toggle-path" type='checkbox' value='B' id="pathB"
 			/><img alt="B" class="Path_B pathicon" src="images/magicicons/Path_B.png" /></label>
 		</div>
-        <!-- /PATH CHECKBOXES LINE1 -->
+		<!-- /PATH CHECKBOXES LINE1 -->
+		
+		<!-- PATH CHECKBOXES LINE1 -->
+		<div class="filters-paths  panel siteview">
+			<input type="button" value="X" class="clear-filters-btn" title="clear filters" />
+
+			<label for="pathF"><input class="toggle-path" type='checkbox' value='F' id="pathF"
+			/><img alt="F" class="Gem_F pathicon" src="images/magicicons/Gem_F.png" /></label>
+
+			<label for="pathA"><input class="toggle-path" type='checkbox' value='A' id="pathA"
+			/><img alt="A" class="Gem_A pathicon" src="images/magicicons/Gem_A.png" /></label>
+
+			<label for="pathW"><input class="toggle-path" type='checkbox' value='W' id="pathW"
+			/><img alt="W" class="Gem_W pathicon" src="images/magicicons/Gem_W.png" /></label>
+
+			<label for="pathE"><input class="toggle-path" type='checkbox' value='E' id="pathE"
+			/><img alt="E" class="Gem_E pathicon" src="images/magicicons/Gem_E.png" /></label>
+
+			<label for="pathS"><input class="toggle-path" type='checkbox' value='S' id="pathS"
+			/><img alt="S" class="Gem_S pathicon" src="images/magicicons/Gem_S.png" /></label>
+
+			<label for="pathD"><input class="toggle-path" type='checkbox' value='D' id="pathD"
+			/><img alt="D" class="Gem_D pathicon" src="images/magicicons/Gem_D.png" /></label>
+
+			<label for="pathN"><input class="toggle-path" type='checkbox' value='N' id="pathN"
+			/><img alt="N" class="Gem_N pathicon" src="images/magicicons/Gem_N.png" /></label>
+
+			<label for="pathB"><input class="toggle-path" type='checkbox' value='B' id="pathB"
+			/><img alt="B" class="Gem_B pathicon" src="images/magicicons/Gem_B.png" /></label>
+		</div>
+		<!-- /PATH CHECKBOXES LINE1 -->
 
 
         <!-- PATH CHECKBOXES LINE2 -->
@@ -687,6 +717,28 @@
 				<option value="Drain"> Drain </option>
 				<option value="Magic"> Magic </option>
 			</select>
+			<select class="siteterrain" id="siteterrainid">
+				<option class="default" value="0"> all terrains </option>
+				<option disabled="disabled"> -------------- </option>
+				<option value="1"> Plain </option>
+				<option value="2"> Forest </option>
+				<option value="4"> Mountain </option>
+				<option value="8"> Waste </option>
+				<option value="16"> Farm </option>
+				<option value="32"> Sea </option>
+				<option value="64"> Coast </option>
+				<option value="128"> Swamp </option>
+				<option value="256"> Deep sea </option>
+				<option value="512"> Cave </option>
+				<option value="16384"> Unique </option>
+			</select>
+			<select class="sitetype" id="sitetypeid">
+				<option value=""> all types </option>
+				<option disabled="disabled"> -------------- </option>
+				<option class="default" value="Normal"> Normal </option>
+				<option value="Capitals"> Capitals </option>
+				<option value="Thrones"> Thrones </option>
+			</select>
 		</div>
 				
 	</div>
@@ -802,7 +854,7 @@
 	<!-- TAIL -->
 	<p id="page-tail">
 		<br/>
-		<a href="http://www.illwinter.com/dom4/history.html">[ver 4.29]</a>
+		<a href="http://www.illwinter.com/dom4/history.html">[ver 4.30]</a>
 		<br/>
 		<a href="https://github.com/larzm42/dom4inspector/wiki">[About]</a>
 		<br/>

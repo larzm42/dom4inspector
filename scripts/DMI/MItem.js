@@ -15,14 +15,11 @@ var modconstants = DMI.modconstants;
 //////////////////////////////////////////////////////////////////////////
 
 MItem.initItem = function(o) {
-	o.nations = [];
 	o.restricted = [];
 }
 
 MItem.prepareData_PreMod = function() {
 	for (var oi=0, o;  o= modctx.itemdata[oi];  oi++) {
-		o.nations = [];
-
 		o.restricted = [];
 		var nations = Utils.keyListToTable(o, 'restricted');
 		for (var oj=0, nation; nation = nations[oj]; oj++) {

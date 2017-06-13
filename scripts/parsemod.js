@@ -42,6 +42,12 @@ function _num_def(n) {
 		modctx[t][c] = a.n1 || String(n);
 	}
 }
+function _num_plus(n) {
+	var n = n;
+	return function(c,a,t) {
+		modctx[t][c] = parseInt(argnum(a)) + n;
+	}
+}
 /*
  * #incunrest of 10 will increase unrest by 1. Discrepancy between the vanilla game csv
  * and the mod script means we need to divide by 10 before displaying the value.
@@ -112,7 +118,7 @@ var modctx = DMI.modctx = {
 	processCommand: function(cmd, args, warningFn) {
 		var fullcmd = cmd;
 		
-		var types = ['unit', 'spell', 'wpn', 'item', 'armor', 'nation', 'site', 'event'];
+		var types = ['unit', 'spell', 'wpn', 'item', 'armor', 'nation', 'site', 'event', 'nametype', 'merc'];
 		for (var j=0, type; type=types[j]; j++) {
 			if (modctx[type]) {
 				//lookup cmd for open object
@@ -161,8 +167,10 @@ var modctx = DMI.modctx = {
 
 	//helpers
 	_checkContextClosed: function(fnwarn) {
-		if (modctx.item || modctx.armor || modctx.wpn || modctx.unit || modctx.spell) {
-			modctx.item = modctx.armor = modctx.wpn = modctx.unit = modctx.spell = null;
+		if (modctx.item || modctx.armor || modctx.wpn || modctx.unit || modctx.spell ||
+			modctx.nation || modctx.site || modctx.merc || modctx.event || modctx.nametype ) {
+			modctx.item = modctx.armor = modctx.wpn = modctx.unit = modctx.spell = modctx.nation = modctx.site =
+				modctx.merc = modctx.event = modctx.nametype = null;
 			fnwarn('missing #end');
 		}
 	},
@@ -354,12 +362,22 @@ var modctx = DMI.modctx = {
 		},
 		
 		newsite: function(c,a,t,fnw) {
+			if (a.n1 == '' || a.n1 == '0') {
+				//get first unused id
+				var id = modctx.sitedata.length;
+				while (modctx.sitelookup[id]) id++;
+				a.n1 = id;
+			} else {
+				if (a.n1<1500 || a.n1>1999) throw 'invalid id';
+			}
+
 			modctx._new(c,a ,'site',fnw);
 			DMI.MSite.initSite(modctx.site);
-
-			if (a.n1<1500 || a.n1>1999) throw 'invalid id';
 		},
-		selectsite: function(c,a,t,fnw){ modctx._select(c,a,'site',fnw); },
+
+		selectsite: function(c,a,t,fnw){
+			modctx._select(c,a,'site',fnw);
+		},
 
 		newevent: function(c,a,t,fnw) {
 			var id = modctx.eventdata.length;
@@ -368,8 +386,26 @@ var modctx = DMI.modctx = {
 			modctx._new(c, {n1:id} ,'event', fnw);
 
 			DMI.MEvent.initEvent(modctx.event);
-		}
-	},
+		},
+
+        selectnametype: function(c,a,t,fnw) {
+            modctx._select(c,a,'nametype',fnw);
+
+            if (a.n1 >= 100 && a.n1 <= 152) return;
+            if (a.n1 >= 161 && a.n1 <= 299) return;
+
+            throw 'invalid id';
+        },
+
+		newmerc: function(c,a,t,fnw) {
+            var id = modctx.mercdata.length;
+            while (modctx.merclookup[id]) id++;
+
+            modctx._new(c, {n1:id} ,'merc', fnw);
+
+            DMI.MMerc.initMerc(modctx.merc);
+        }
+    },
 
 	//item selected
 	itemcommands: {
@@ -527,10 +563,10 @@ var modctx = DMI.modctx = {
 			var to = modctx.item;
 			for (var k in to)   if (!ignorestats[k]) delete to[k];
 			for (var k in from) if (!ignorestats[k]) to[k] = from[k];
-				
+
 			//deep copy arrays
-//			to.nations = [];
-//			for (var i=0, m; m= from.nations[i]; i++) to.nations[i] = m;
+			to.restricted = [];
+			for (var i=0, m; m= from.restricted[i]; i++) to.restricted[i] = m;
 		},
 		domsummon:	_str_num,
 		domsummon2:	_str_num,
@@ -649,7 +685,11 @@ var modctx = DMI.modctx = {
 			if (!name) throw 'unnamed weapon';
 		},
 		name: function(c,a,t) {
-			if (modctx.wpn.name) delete modctx.wpnlookup[modctx.wpn.name.toLowerCase()];
+			// Technically we probably should do this, but it causes issues with copied weapons
+			// Worst case removing it is probably some things work in the inspector which break in game
+			// Maybe. Honestly I don't have a good solution to this without implementing reference counting
+			// and fuck doing that
+			//if (modctx.wpn.name) delete modctx.wpnlookup[modctx.wpn.name.toLowerCase()];
 			modctx.wpn.name = argtrim(a);
 			modctx.wpnlookup[argtrim(a).toLowerCase()] = modctx.wpn;
 		},
@@ -666,7 +706,6 @@ var modctx = DMI.modctx = {
 			var to = modctx.wpn;
 			for (var k in to)   if (!ignorestats[k]) delete to[k];
 			for (var k in from) if (!ignorestats[k]) to[k] = from[k];
-				
 		},
 		clear: function(c,a,t) {
 			var o = modctx.site;
@@ -739,6 +778,7 @@ var modctx = DMI.modctx = {
 		enemyimmune:		_bool,
 		friendlyimmune:		_bool,
 		undeadonly:		_bool,
+		demononly:		_bool,
 		norepel:		_bool,
 		unrepel:		_bool,
 		beam:		_bool,
@@ -785,7 +825,11 @@ var modctx = DMI.modctx = {
 			if (!name) throw 'unnamed armor';
 		},
 		name: function(c,a,t) {
-			if (modctx.armor.name) delete modctx.armorlookup[modctx.armor.name.toLowerCase()];
+			// Technically we probably should do this, but it causes issues with copied weapons
+			// Worst case removing it is probably some things work in the inspector which break in game
+			// Maybe. Honestly I don't have a good solution to this without implementing reference counting
+			// and fuck doing that
+			// if (modctx.armor.name) delete modctx.armorlookup[modctx.armor.name.toLowerCase()];
 			modctx.armor.name = argtrim(a);
 			modctx.armorlookup[argtrim(a).toLowerCase()] = modctx.armor;
 		},
@@ -801,7 +845,6 @@ var modctx = DMI.modctx = {
 			var to = modctx.armor;
 			for (var k in to)   if (!ignorestats[k]) delete to[k];
 			for (var k in from) if (!ignorestats[k]) to[k] = from[k];
-
 		},
 		clear: function(c,a,t) {
 			var o = modctx.site;
@@ -894,7 +937,8 @@ var modctx = DMI.modctx = {
 			o.randompaths = [];
 		},
 		copystats: function(c,a,t){
-			var from = modctx.unitlookup[a.n1] || modctx.unitlookup[$.trim(a.s.toLowerCase())];
+			var from = modctx.unitlookup[a.n1];
+            if (!from && a.s) from = modctx.unitlookup[$.trim(a.s.toLowerCase())];
 			if (!from) throw 'original unit not found';
 			var ignorestats = {
 			//IGNORE
@@ -1035,7 +1079,10 @@ var modctx = DMI.modctx = {
 		darkvision:	_num,
 		startingaff: 	_num,
 	
-		stealthy:	_num_def(0),
+		stealthy:	function(c,a,t) {
+			var n = a.n1 ? a.n1 : 0;
+			modctx[t][c] = parseInt(n) + 40;
+		},
 		illusion:	_bool,
 		spy:		_bool,
 		assassin:	_bool,
@@ -1113,6 +1160,9 @@ var modctx = DMI.modctx = {
 		popkill:	_num_times_10,
 		inquisitor:	_bool,
 		heretic:	_num,
+		insane:	_num,
+		sailsize:	_num,
+		latehero:	_num,
 
 		itemslots:	function(c,a,t){
 			var bitfield = parseInt(argnum(a));
@@ -1231,12 +1281,12 @@ var modctx = DMI.modctx = {
 	
 		nametype:	_num,
 		
-		noleader:	function(c,a,t){ modctx[t]['leader'] = 0; },
-		poorleader:	function(c,a,t){ modctx[t]['leader'] = 10; },
-		okleader:	function(c,a,t){ modctx[t]['leader'] = 40; },
-		goodleader:	function(c,a,t){ modctx[t]['leader'] = 80; },
-		expertleader:	function(c,a,t){ modctx[t]['leader'] = 120; },
-		superiorleader:	function(c,a,t){ modctx[t]['leader'] = 160; },
+		noleader:	function(c,a,t){ modctx[t]['leader'] = 0; modctx[t]['baseleadership'] = 0; },
+		poorleader:	function(c,a,t){ modctx[t]['leader'] = 10; modctx[t]['baseleadership'] = 10;},
+		okleader:	function(c,a,t){ modctx[t]['leader'] = 40; modctx[t]['baseleadership'] = 40;},
+		goodleader:	function(c,a,t){ modctx[t]['leader'] = 80; modctx[t]['baseleadership'] = 80;},
+		expertleader:	function(c,a,t){ modctx[t]['leader'] = 120; modctx[t]['baseleadership'] = 120;},
+		superiorleader:	function(c,a,t){ modctx[t]['leader'] = 160; modctx[t]['baseleadership'] = 160;},
 		command:		_num,
 		
 		nomagicleader:		function(c,a,t){ modctx[t]['magicleader'] = 0; },
@@ -1419,7 +1469,10 @@ var modctx = DMI.modctx = {
 		bloodattuned: _num,
 
 		ownsmonrec:		function(c,a,t){ modctx[t]['ownsmonrec'] = argref(a) },
-		monpresentrec: 	function(c,a,t){ modctx[t]['monpresentrec'] = argref(a) }
+		monpresentrec: 	function(c,a,t){ modctx[t]['monpresentrec'] = argref(a) },
+
+		drake: _bool,
+        addupkeep: _num
 	},
 
 	//spell selected
@@ -1520,7 +1573,7 @@ var modctx = DMI.modctx = {
 		nowatertrace:	_num,
 		nolandtrace:	_num,
 		walkable:		_num,
-		onlyatsite: 	_num,
+		onlyatsite: 	_ref,
 		farsumcom:		_num,
 
 		//fx
@@ -1717,7 +1770,6 @@ var modctx = DMI.modctx = {
 		golemhp: _ignore,
 		tradecoast: _ignore,
 
-		aiholdgod: _ignore,
 		godrebirth: _ignore,
 
 		templegems: _ignore,
@@ -1742,7 +1794,25 @@ var modctx = DMI.modctx = {
 
 		noforeignrec: _bool,
 		aigoodbless: _num,
-		
+
+		aiholdgod: _ignore,
+		aiawake : _ignore,
+		bloodnation : _ignore,
+		aimusthavemag : _ignore,
+		aifirenation: _ignore,
+		aiairnation : _ignore,
+		aiwaternation : _ignore,
+		aiearthnation : _ignore,
+		aiastralnation : _ignore,
+		aideathnation : _ignore,
+		ainaturenation : _ignore,
+		aibloodnation : _ignore,
+
+		cheapgod20: _ignore,
+		cheapgod40: _ignore,
+		killcappop: _ignore,
+		guardspirit: _ignore,
+
 		disableoldnations: _bool,
 		cleargods: _bool,
 		addgod: function(c,a,t){ modctx[t]['addgod'].push(argref(a)); },
@@ -1934,7 +2004,7 @@ var modctx = DMI.modctx = {
 		req_nearbysite : _num, //sitename
 		req_claimedthrone : _num, //sitename
 		req_unclaimedthrone : _num, //sitename
-		req_fullowner : _bool,
+		req_fullowner : _num,
 		req_mydominion : _num,
 		req_dominion : _num,
 		req_maxdominion : _num,
@@ -2127,6 +2197,36 @@ var modctx = DMI.modctx = {
 		id:	function(c,a,t){ modctx[t]['eff_id'] = argref(a); }
 	},
 
+    //nametype selected
+    nametypecommands: {
+        end: function(c,a,t){
+            modctx[t] = null;
+        },
+		clear: _ignore,
+        addname: _ignore
+    },
+
+    //merc selected
+    merccommands: {
+        end: function(c,a,t){
+            modctx[t] = null;
+        },
+        name: _str,
+        bossname: _str,
+        com: _ref,
+        unit: _ref,
+        nrunits: _num,
+        level: _num,
+        minmen: _num,
+
+        minpay: _num,
+        xp: _num,
+        randequip: _num,
+        recrate: _num,
+        item: _ref,
+        eramask: _num
+    },
+
 	//member data
 	loadedmods: [],
 	
@@ -2163,11 +2263,16 @@ var modctx = DMI.modctx = {
 	merclookup: undefined,
 	merc: null,
 
-	eventdata: undefined,
-	eventlookup: undefined,
-	event: null,
-	
-	// setWpnDamageType: function(key) {
+    eventdata: undefined,
+    eventlookup: undefined,
+    event: null,
+
+    nametypedata: undefined,
+    nametypelookup: undefined,
+    nametype: null,
+
+
+    // setWpnDamageType: function(key) {
 	// 	if (modctx.wpn) {
 	// 		for (var k in modctx.dmg_types) {
 	// 			delete modctx.wpn[k];

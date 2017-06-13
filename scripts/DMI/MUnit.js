@@ -608,7 +608,7 @@ MUnit.autocalc = function (o) {
 		o.goldcost = parseInt(cost + special_cost);
 		o.goldcost = o.goldcost + parseInt(o.basecost) - 10000;
 		if (o.slow_to_recruit && parseInt(o.slow_to_recruit) > 0 && o.type != 'u') {
-			o.goldcost = MUnit.roundIfNeeded(o.goldcost * 0.9);
+			o.goldcost = o.goldcost * 0.9;
 		}
 		if (o.holy && parseInt(o.holy) > 0) {
 			o.goldcost = o.goldcost * 1.3;
@@ -1256,6 +1256,10 @@ MUnit.CGrid = Utils.Class( DMI.CGrid, function() {
 	
 	//apply search
 	this.searchFilter =  function(o, args) {
+		// Bit of a hack - don't display units with the name "Empty"
+		// They need to exist so people can select and edit them
+		if (o.name === "Empty") return false;
+
 		//type in id to ignore filters
 		if (args.str && args.str == String(o.id)) return true;
 		

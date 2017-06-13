@@ -209,6 +209,7 @@ var flagorder = Utils.cutDisplayOrder(aliases, formats,
 	'woodenweapon',	'wooden weapon',
 	'uwok',	'can be used underwater',
 	'inanimateimmune',	'no effect on inanimate',
+	'undeadimmune',	'no effect on undead',
 	'norepel',	'cannot repel',
 	'friendlyimmune',	'friendly units immune',
 	'mind',	'mindless units immune',
@@ -228,7 +229,7 @@ var ignorekeys = {
 	dt_stun:1,
 	dt_large:1,
 	dt_small:1,
-	dt_large:1,
+	dt_cap:1,
 	dt_holy:1,
 	dt_magic:1,
 	dt_raise:1,
@@ -254,7 +255,7 @@ var ignorekeys = {
 	cold:1,
 
 	wpnclass:1,
-	isImplicitWpn:1, showName:1,
+	showName:1,
 	searchable:1, renderOverlay:1, matchProperty:1
 };
 	
