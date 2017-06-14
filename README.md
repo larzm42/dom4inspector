@@ -66,7 +66,7 @@ Ctrl (over a popup) : disable dragging to enable text selection with the mouse (
 
 ### Feedback
 
-Post feedback [here](http://www.desura.com/games/dominions-4-thrones-of-ascensions/forum/thread/dom-4-data-inspector).
+Post feedback [here](http://steamcommunity.com/app/259060/discussions/0/392184342869643127/).
 
 ### Credit
 
