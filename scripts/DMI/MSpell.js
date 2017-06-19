@@ -371,13 +371,16 @@ MSpell.prepareData_PostMod = function() {
 				}
 				for (var i=0, uid;  uid= arr[i];  i++) {
 					var u = modctx.unitlookup[uid];
-					//add to list of summoned units (to be attached to nations later)
-					o.summonsunits = o.summonsunits || [];
-					o.summonsunits.push(u);
 
-					//attach spell to unit
-					u.summonedby = u.summonedby || [];
-					u.summonedby.push( o );					
+					if (u) {
+                        //add to list of summoned units (to be attached to nations later)
+                        o.summonsunits = o.summonsunits || [];
+                        o.summonsunits.push(u);
+
+                        //attach spell to unit
+                        u.summonedby = u.summonedby || [];
+                        u.summonedby.push( o );
+                    }
 				}
 			}
 			if (_o == _o.nextspell) break;
