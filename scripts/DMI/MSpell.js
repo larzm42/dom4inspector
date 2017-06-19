@@ -932,7 +932,9 @@ MSpell.getEffect = function(spell) {
 	 */
 	if (effect.effect_number == "1" ||
 		effect.effect_number == "3" ||
-		effect.effect_number == "21" ||
+        effect.effect_number == "10" ||
+        effect.effect_number == "21" ||
+        effect.effect_number == "23" ||
 		effect.effect_number == "26" ||
 		effect.effect_number == "31" ||
 		effect.effect_number == "37" ||
