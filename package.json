@@ -1,0 +1,8 @@
+{
+  "name": "dom4inspector",
+  "version": "0.0.1",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
+  }
+}

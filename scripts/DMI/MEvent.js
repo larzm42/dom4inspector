@@ -14,6 +14,10 @@ var modconstants = DMI.modconstants;
 // PREPARE DATA
 //////////////////////////////////////////////////////////////////////////
 
+MEvent.initEvent = function(o) {
+	o.description = "";
+};
+
 MEvent.prepareData_PreMod = function() {
 	for (var oi=0, o;  o= modctx.eventdata[oi];  oi++) {
 		if (o.requirements) {
@@ -217,10 +221,12 @@ MEvent.formatEventGems = function(v,o,str) {
 		return 'All' + str;
 	} else if (v.indexOf('Random') != -1) {
 		return 'Random' + str;
+	} else if (!isNaN(parseInt(v))) {
+		return Format.Gems(modconstants[16][v]) + str;
 	}
-	return Format.Gems(v) + str; 
+	return Format.Gems(v) + str;
 }
-MEvent.formatMagicItem = function(v,o) {
+MEvent.formatMagicEquip = function(v, o) {
 	var ret = 'Unknown';
 	switch(parseInt(v)) {
 	case 0: ret = 'const lvl 0'; break;
@@ -230,7 +236,9 @@ MEvent.formatMagicItem = function(v,o) {
 	case 4: ret = 'const lvl 4-6'; break;
 	case 9: 
 		var itemname = o.description.match(/\[(.*?)\]/);
-		ret = Utils.itemRef(itemname[1]); 
+		if (itemname && itemname[0].length > 0) {
+			ret = Utils.itemRef(itemname[1]);
+		}
 		break;
 	}
 	return ret;
@@ -250,15 +258,18 @@ MEvent.formatNewSite = function(v,o) {
 MEvent.formatReqSite = function(v,o) {
 	var ret = 'Unknown';
 	var sitename = o.description.match(/\[(.*?)\]/);
-	switch(parseInt(v)) {
-	case 0: 
-		ret = Utils.siteRef(sitename[1]) + ' (Not present)'; 
-		break;
-	case 1: 
-		ret =  Utils.siteRef(sitename[1]) + ' (Present)'; 
-		break;
-	default:
-		return Utils.siteRef(sitename[1]);
+
+	if (sitename) {
+		switch(parseInt(v)) {
+			case 0:
+				ret = Utils.siteRef(sitename[1]) + ' (Not present)';
+				break;
+			case 1:
+				ret =  Utils.siteRef(sitename[1]) + ' (Present)';
+				break;
+			default:
+				return Utils.siteRef(sitename[1]);
+		}
 	}
 	return ret;
 }
@@ -303,6 +314,28 @@ MEvent.formatGainaff = function(v,o) {
 	var values = bitfields.bitfieldValues(v, masks_dict);
 	return values[0];
 }
+	MEvent.formatReqSpell = function(v,o) {
+		var ench = modctx.enchantments_lookup[parseInt(v)];
+		if (ench) {
+			return ench.name;
+		}
+		return "Undefined (" + v + ")";
+	}
+	MEvent.formatYesNo = function(v,o) {
+		switch(parseInt(v)) {
+			case 0: return 'no';
+			case 1: return 'yes';
+		}
+		return 'error';
+	}
+	MEvent.formatAlwaysNever = function(v,o) {
+		switch(parseInt(v)) {
+			case 0: return 'never';
+			case 1: return 'always';
+		}
+		return 'error';
+	}
+
 MEvent.gainaffArr = function(v,o) {
 	if (v.push) {
 		//create array of refs
@@ -316,7 +349,6 @@ MEvent.gainaffArr = function(v,o) {
 		return MEvent.formatGainaff( v, o ); 
 	}
 }
-
 MEvent.monsterArr = function(v,o,str) {
 	if (v.push) {
 		//create array of refs
@@ -394,17 +426,30 @@ MEvent.gemArr = function(v, o, str) {
 		return MEvent.formatEventGems(v, o, str); 
 	}
 }
-MEvent.magicitemArr = function(v,o) {
+MEvent.magicEquipArr = function(v, o) {
 	if (v.push) {
 		//create array of refs
 		var tokens = [];
 		for (var i=0, uid; uid= v[i];  i++)
-			tokens.push( MEvent.formatMagicItem(uid, o) );
+			tokens.push( MEvent.formatMagicEquip(uid, o) );
 		
 		//comma separated & one per line
 		return tokens.join(', <br />');
 	} else {
-		return MEvent.formatMagicItem(v, o); 
+		return MEvent.formatMagicEquip(v, o);
+	}
+}
+MEvent.itemArr = function(v,o) {
+	if (v.push) {
+		//create array of refs
+		var tokens = [];
+		for (var i=0, uid; uid= v[i];  i++)
+			tokens.push( Utils.itemRef( parseInt(uid) ) );
+
+		//comma separated & one per line
+		return tokens.join(', <br />');
+	} else {
+		return Utils.itemRef(parseInt(v));
 	}
 }
 
@@ -433,13 +478,13 @@ var displayorder = DMI.Utils.cutDisplayOrder(aliases, formats,
 	var requirementkeys = DMI.Utils.cutDisplayOrder(aliases, formats,
 [
 //	dbase key	displayed key		function/dict to format value
-	'req_story',	'story', {'0': 'no', '1': 'yes'},
-	'req_mydominion',	'owner\'s dominion', {'0': 'no', '1': 'yes'},
+	'req_story',	'story', MEvent.formatYesNo,
+	'req_mydominion',	'owner\'s dominion', MEvent.formatYesNo,
 	'req_minpop',	'miniumum pop', function(v){ return v*10; },
-	'req_temple',	'temple', {'0': 'no', '1': 'yes'},
-	'req_lab',	'lab', {'0': 'no', '1': 'yes'},
-	'req_fort',	'fort', {'0': 'no', '1': 'yes'},
-	'req_commander',	'commander', {'0': 'no', '1': 'yes'},
+	'req_temple',	'temple', MEvent.formatYesNo,
+	'req_lab',	'lab', MEvent.formatYesNo,
+	'req_fort',	'fort', MEvent.formatYesNo,
+	'req_commander',	'commander', MEvent.formatYesNo,
 	'req_capital',	'capital', {'0': 'never in capitals', '1': 'only in capitals'},
 	'req_claimedthrone',	'claimed throne', {'0': 'must not be claimed', '1': 'must be claimed'},
 	'req_researcher',	'researcher present', function(v){ return ' '; },
@@ -511,12 +556,33 @@ var displayorder = DMI.Utils.cutDisplayOrder(aliases, formats,
 	'req_noera',	'not era', {'1': 'early', '2': 'mid', '3': 'late'},
 	'req_rare',	'rare', Format.Percent,
 	'req_freesites', 'free sites available',
-	'req_unique', 'unique',
+	'req_unique', 'max per game',
 	'req_fullowner', 'full province owner',
 	'req_preach', 'preaching', Format.Percent,
 	
 	'req_targorder', 'target order', MEvent.formatTargOrder,
-	
+
+	'req_targitem', 'item', MEvent.itemArr,
+
+	'req_ench', 'enchantment active', MEvent.formatReqSpell,
+	'req_noench', 'enchantment inactive', MEvent.formatReqSpell,
+	'req_myench', 'own enchantment', MEvent.formatReqSpell,
+	'req_friendlyench', 'friendly enchantment', MEvent.formatReqSpell,
+	'req_hostileench', 'enemy enchantment', MEvent.formatReqSpell,
+	'req_enchdom', 'enchant in own dominion', MEvent.formatReqSpell,
+	'req_permonth', 'max per month',
+	'req_indepok', 'happens to independants', MEvent.formatYesNo,
+
+	'req_owncapital', 'happens in owner\'s capital', MEvent.formatAlwaysNever,
+	'req_nositenbr', 'no site', Utils.siteRef,
+
+	'req_nearbycode', 'nearby event code', Utils.eventRef,
+
+	'req_maxpop', 'maximum population', function(v){ return v*10; },
+	'req_targgod',	'target', {'0': 'cannot be god', '1': 'must be god'},
+	'req_targhumanoid',	'target', {'0': 'cannot have hands', '1': 'must have hands'},
+	'req_targmale',	'target', {'0': 'must be female', '1': 'must be male'},
+
 	'linkedReqCodes', 'triggering events', list_events,
 ]);
 var effectkeys = DMI.Utils.cutDisplayOrder(aliases, formats,
@@ -557,11 +623,12 @@ var effectkeys = DMI.Utils.cutDisplayOrder(aliases, formats,
 	'landprod',	'province resources', Format.Signed,
 	'taxboost',	'province tax', Format.Percent,
 	'nation',	'owning nation', {'-1': 'random enemy', '-2': 'province owner'},
-	'magicitem', 'magic item', MEvent.magicitemArr,
+	'magicitem', 'magic item', MEvent.magicEquipArr,
 	'unrest',	'unrest', Format.Signed,
 	'lab', 'lab', {'0': 'lab destroyed', '1': 'new lab'},
 	'temple', 'temple', {'0': 'temple destroyed', '1': 'temple gained'},
 	'fort',	'fort',
+	'addsite', 'new site', MEvent.formatNewSite,
 	'newsite', 'new site', MEvent.formatNewSite,
 	'kill',	'kill pop', Format.Percent,
 	'incpop',	'increase pop',
@@ -569,7 +636,7 @@ var effectkeys = DMI.Utils.cutDisplayOrder(aliases, formats,
 	'curse',	'curse units', Format.Percent,
 	'disease',	'disease units', Format.Percent,
 	'strikeunits',	'unit damage',
-	'addequip', 'add equipment', MEvent.magicitemArr,
+	'addequip', 'add equipment', MEvent.magicEquipArr,
 	'eff_id', 'event identifier',
 	'newdom',	'new province dominion',
 	'revolt',	'province revolts', function(v){ return ' '; },
@@ -594,15 +661,15 @@ var effectkeys = DMI.Utils.cutDisplayOrder(aliases, formats,
 		
 	'killmon',	'kill unit', MEvent.monsterArr,
 	'killcom',	'kill commander', MEvent.monsterArr,
-	'fireboost',	'boost fire', function(v,o){ return v == 1 ? '1' : Utils.unitRef(parseInt(v)); },
-	'airboost',		'boost air', function(v,o){ return v == 1 ? '1' : Utils.unitRef(parseInt(v)); },
-	'waterboost',	'boost water', function(v,o){ return v == 1 ? '1' : Utils.unitRef(parseInt(v)); },
-	'earthboost',	'boost earth', function(v,o){ return v == 1 ? '1' : Utils.unitRef(parseInt(v)); }, 
-	'astralboost',	'boost astral', function(v,o){ return v == 1 ? '1' : Utils.unitRef(parseInt(v)); }, 
-	'deathboost',	'boost death', function(v,o){ return v == 1 ? '1' : Utils.unitRef(parseInt(v)); }, 
-	'natureboost',	'boost nature', function(v,o){ return v == 1 ? '1' : Utils.unitRef(parseInt(v)); }, 
-	'bloodboost',	'boost bood', function(v,o){ return v == 1 ? '1' : Utils.unitRef(parseInt(v)); }, 
-	'holyboost',	'boost holy', function(v,o){ return v == 1 ? '1' : Utils.unitRef(parseInt(v)); }, 
+	'fireboost',	'boost fire', function(v,o){ return v == 1 ? '1' : Utils.unitRef(v);  },
+	'airboost',		'boost air', function(v,o){ return v == 1 ? '1' : Utils.unitRef(v); },
+	'waterboost',	'boost water', function(v,o){ return v == 1 ? '1' : Utils.unitRef(v);  },
+	'earthboost',	'boost earth', function(v,o){ return v == 1 ? '1' : Utils.unitRef(v);  },
+	'astralboost',	'boost astral', function(v,o){ return v == 1 ? '1' : Utils.unitRef(v);  },
+	'deathboost',	'boost death', function(v,o){ return v == 1 ? '1' : Utils.unitRef(v);  },
+	'natureboost',	'boost nature', function(v,o){ return v == 1 ? '1' : Utils.unitRef(v);  },
+	'bloodboost',	'boost bood', function(v,o){ return v == 1 ? '1' : Utils.unitRef(v);  },
+	'holyboost',	'boost holy', function(v,o){ return v == 1 ? '1' : Utils.unitRef(v);  },
 
 	'stealthcom',	'stealthy commander', MEvent.monsterArr,
 	'assassin',	'assassin', MEvent.monsterArr,
@@ -634,7 +701,22 @@ var effectkeys = DMI.Utils.cutDisplayOrder(aliases, formats,
 	'linkedCodes', 'triggered events', list_events,
 	'linkedResetCodes', 'reset events', list_events,
 
-]);
+	'nolog', 'hidden event', MEvent.formatYesNo,
+	'transform', 'transform to unit', MEvent.monsterArr,
+
+	'tempunits', 'units', {'0': 'permanent', '1': 'temporary'},
+
+	'hiddensite', 'hidden site', MEvent.formatNewSite,
+	'removesite', 'remove site', MEvent.formatNewSite,
+
+	'gainmark', 'gain horror mark',
+
+	'flagland', 'event flag', {'0': 'remove', '1': 'add'},
+
+	'nationench', 'units owned by controller of', MEvent.formatReqSpell,
+
+	'delay', 'next event in'
+	]);
 var flagorder = DMI.Utils.cutDisplayOrder(aliases, formats,
 [
 //	dbase key	displayed key		function/dict to format value

@@ -399,8 +399,8 @@ MUnit.prepareData_PostMod = function() {
 		}
 		
 		//resource costs
-		o.rcost = parseInt(o.rcost);
-		o.rcostsort = parseInt(o.rcost);
+		o.rcost = parseInt(o.rcost || 1);
+		o.rcostsort = parseInt(o.rcost || 1);
 		o.ressize = parseInt(o.ressize) || 2; //{1:0.5,  2:1,  3:1.5,  4:2,  5:2.5,  6:3}[o.ressize || '2'];
 
 		//filter out weapons we cant find
@@ -476,7 +476,7 @@ MUnit.autocalc = function (o) {
 		if (o.inspirational) {
 			ldr_cost = ldr_cost + 10*parseInt(o.inspirational);
 		}
-		if (o.sailingship && parseInt(o.sailingshipsize) > 0) {
+		if (o.sailingshipsize && parseInt(o.sailingshipsize) > 0) {
 			ldr_cost = ldr_cost + .5 * ldr_cost;
 		}
 
@@ -608,10 +608,10 @@ MUnit.autocalc = function (o) {
 		o.goldcost = parseInt(cost + special_cost);
 		o.goldcost = o.goldcost + parseInt(o.basecost) - 10000;
 		if (o.slow_to_recruit && parseInt(o.slow_to_recruit) > 0 && o.type != 'u') {
-			o.goldcost = Math.round(o.goldcost * .9); 
+			o.goldcost = o.goldcost * 0.9;
 		}
 		if (o.holy && parseInt(o.holy) > 0) {
-			o.goldcost = Math.round(o.goldcost * 1.3); 
+			o.goldcost = o.goldcost * 1.3;
 		}
 		o.goldcost = MUnit.roundIfNeeded(o.goldcost);
 	} else {
@@ -1256,6 +1256,10 @@ MUnit.CGrid = Utils.Class( DMI.CGrid, function() {
 	
 	//apply search
 	this.searchFilter =  function(o, args) {
+		// Bit of a hack - don't display units with the name "Empty"
+		// They need to exist so people can select and edit them
+		if (o.name === "Empty") return false;
+
 		//type in id to ignore filters
 		if (args.str && args.str == String(o.id)) return true;
 		
@@ -1684,6 +1688,7 @@ var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 	'uwdamage', 'underwater damage',
 	'landdamage', 'land damage',
 	'digest', 'digest',
+	'aciddigest', 'acid digest',
 	'acidsplash', 'acid splash',
 	'incorporate', 'incorporate',
 	'bonusspells', 'bonus spells',
@@ -1693,15 +1698,7 @@ var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 	'tainted',	'horrormark chance',		Format.Percent,
 	'special',	'special',
 	'explodeondeath',	'explode on death',
-	'transformation', 'transformation', {'-1': 'bad result', '1': 'good result ' },
-	'fireattuned', 'fire attuned',
-	'airattuned', 'air attuned',
-	'waterattuned', 'water attuned',
-	'earthattuned', 'earth attuned',
-	'astralattuned', 'astral attuned',
-	'deathattuned', 'death attuned',
-	'natureattuned', 'nature attuned',
-	'bloodattuned', 'blood attuned',
+	'transformation', 'transformation', {'-1': 'bad result', '0': 'disabled', '1': 'good result' },
 	'guardspiritbonus', 'guardian spirit',
 	'startitem',	'starts with',	function(v,o){ 
 		return Utils.itemRef(v); 
@@ -1736,8 +1733,8 @@ var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 		return v + ' (' + Utils.unitRef(o.id+1) + ')';
 	},
 	
-	'domsummon',	'dominion attracts units',	function(v,o){ 
-		return Format.PerTurn( Utils.unitRef(v) ); 
+	'domsummon',	'dominion attracts units',	function(v,o){
+		return Utils.unitRef(v);
 	},
 	'makemonster',	'makes units',	function(v,o){ 
 		return Utils.is(o.n_makemonster) ?  Utils.unitRef(v)+' x '+o.n_makemonster  :  Utils.unitRef(v); 
@@ -1802,17 +1799,51 @@ var displayorder3 = Utils.cutDisplayOrder(aliases, formats,
 	'batstartsum6d6',	'summons in battle',	function(v,o){ 
 		return Utils.unitRef(v)+' x 6d6'; 
 	},
-	
+	'raredomsummon',	'dominion rarely attracts units',	function(v,o){
+		return Utils.unitRef(v);
+	},
+	'ownsmonrec',	'recruit when player owns',	function(v,o){ //TODO: reverse lookup
+		return Utils.unitRef(v);
+	},
+	'monpresentrec',	'recruit when present',	function(v,o){ //TODO: reverse lookup
+		return Utils.unitRef(v);
+	},
+
 	'heretic',		'heretic',
 	'shatteredsoul',	'shattered soul', 	Format.Percent, //tartarian
 	'insane',	'insane',		Format.Percent,
 	
 	'voidsanity',		'void sanity',		
-	'voidsum',		'void summoning',	Format.Signed, //rl'yeh	
+	'voidsum',		'void summoning',	Format.Signed, //rl'yeh
+
+	'xploss',	'lose XP on transform',	Format.Percent,
+	'incscale',	'increase scale', function(v,o){ return Utils.getScale(v); },
+	'decscale',	'increase scale', function(v,o){ return Utils.getScaleInverted(v); },
+	'domrec',	'domrec (?)',
+	'haltheretic',	'fatigue sacreds',		Format.SignedZero,
+	'homeshape', 'shape in home province', function(v,o){	return twinUnitRef(o, 'homeshape', 'foreignshape');	},
+	'foreignshape', 'shape outside home province', function(v,o){	return twinUnitRef(o, 'foreignshape', 'homeshape');	},
+	'userestricteditem', 'can use item restriction', //TODO: link this to the item list
+	'blessfly', 'fly when blessed',
+	'plant', 'is a plant',
+	'uwheat', 'heat aura (even underwater)',
+	'raiseonkill', 'raise victims as soulless',	Format.Percent,
+	'acidshield', 'acid shield',
+	'hpoverslow', 'hp overflow (fades)', Format.Percent,
+	'raiseshape', 'raises unit',	Utils.unitRef,
+
+	'fireattuned', 'bonus fire magic', Format.Percent,
+	'airattuned', 'bonus air magic', Format.Percent,
+	'waterattuned', 'bonus water magic', Format.Percent,
+	'earthattuned', 'bonus earth magic', Format.Percent,
+	'astralattuned', 'bonus astral magic', Format.Percent,
+	'deathattuned', 'bonus death magic', Format.Percent,
+	'natureattuned', 'bonus nature magic', Format.Percent,
+	'bloodattuned', 'bonus blood magic', Format.Percent,
+
 	'events', 'triggered events', list_events,
 	'recruitedby', 'recruited from', list_sites,
-	'summonedfrom', 'summoned from', list_sites
-	
+	'summonedfrom', 'summoned from', list_sites,
 ]);
 var flagorder = Utils.cutDisplayOrder(aliases, formats,
 [
@@ -1896,7 +1927,8 @@ var flagorder = Utils.cutDisplayOrder(aliases, formats,
 	'eyeloss',	Utils.afflictionRef('Eyeloss')+' on attackers',
 	
 	'inquisitor',		'inquisitor'
-]);
+
+	]);
 var hiddenkeys = Utils.cutDisplayOrder(aliases, formats,
 [
 	'id', 		'unit id',	function(v){ return Math.floor(v); }

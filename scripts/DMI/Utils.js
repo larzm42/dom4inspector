@@ -338,7 +338,51 @@ Utils.renderModded = function(o) {
 	h+='		</p>';
 
 	return h;
-}	
+}
+
+////////////////////////////////////////////////////////////
+// Some parsing functions
+////////////////////////////////////////////////////////////
+
+	Utils.getScale = function(o) {
+		if (!isNaN(parseInt(o))) {
+			switch(parseInt(o)) {
+				case 0:
+					return 'Turmoil';
+				case 1:
+					return 'Sloth';
+				case 2:
+					return 'Cold';
+				case 3:
+					return 'Death';
+				case 4:
+					return 'Misfortune';
+				case 5:
+					return 'Drain';
+			}
+		}
+		return o;
+	}
+
+	Utils.getScaleInverted = function(o) {
+		if (!isNaN(parseInt(o))) {
+			switch(parseInt(o)) {
+				case 0:
+					return 'Order';
+				case 1:
+					return 'Productivity';
+				case 2:
+					return 'Heat';
+				case 3:
+					return 'Growth';
+				case 4:
+					return 'Luck';
+				case 5:
+					return 'Magic';
+			}
+		}
+		return o;
+	}
 
 
 ////////////////////////////////////////////////////////////

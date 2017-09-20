@@ -17,6 +17,7 @@ var modconstants = DMI.modconstants;
 
 MSpell.initSpell = function(o) {
 	o.nations = [];
+	o.notnations = [];
 }
 
 MSpell.nationList = function (o) {
@@ -41,12 +42,12 @@ MSpell.prepareData_PreMod = function() {
 		o.path2  = modconstants[16][o.path2];
 
 		o.nations = MSpell.nationList(o);
+		o.notnations = [];
 		
 		o.nextspell = o.next_spell;
 		
 	}
 }
-
 
 MSpell.prepareData_PostMod = function() {
 	for (var oi=0, o;  o= modctx.spelldata[oi];  oi++) {
@@ -73,6 +74,18 @@ MSpell.prepareData_PostMod = function() {
 			n.spells.push(o);
 		}
 		delete o.nations;
+
+		// Parse the notnations to a list of IDs
+		var parsedNations = [];
+		for (var ni=0, nid, n; nid= o.notnations[ni]; ni++) {
+			if (!(n= modctx.nationlookup[nid])) {
+				console.log('nation "'+nid+ '" not found (spell '+o.id+')');
+				continue;
+			}
+			//n.removeSpell(o);
+			parsedNations[nid] = true;
+		}
+		o.notnations = parsedNations;
 
 		o.renderOverlay = MSpell.renderOverlay;
 		o.matchProperty = MSpell.matchProperty;
@@ -140,7 +153,7 @@ MSpell.prepareData_PostMod = function() {
 				o.type = 'Combat';
 			}
 			o.rng_bat = effects.range_base;
-			if (effects.range_per_level != "0") {
+			if (effects.range_per_level && effects.range_per_level != "0") {
 				o.rng_bat = parseInt(o.rng_bat) + (parseInt(o.pathlevel1) * parseInt(effects.range_per_level));
 				o.rng_bat = o.rng_bat + "+ [" + effects.range_per_level + "/lvl]";
 			}
@@ -299,7 +312,9 @@ MSpell.prepareData_PostMod = function() {
 				} else {
 					var u = modctx.unitlookup[uid];
 					if (!u) {
-						console.log('Unit '+uid+' not found (Spell '+_o.id+')');
+						if (uid > 0) {
+							console.log('Unit '+uid+' not found (Spell '+_o.id+')');
+						}
 						break;
 					}
 
@@ -356,13 +371,16 @@ MSpell.prepareData_PostMod = function() {
 				}
 				for (var i=0, uid;  uid= arr[i];  i++) {
 					var u = modctx.unitlookup[uid];
-					//add to list of summoned units (to be attached to nations later)
-					o.summonsunits = o.summonsunits || [];
-					o.summonsunits.push(u);
 
-					//attach spell to unit
-					u.summonedby = u.summonedby || [];
-					u.summonedby.push( o );					
+					if (u) {
+                        //add to list of summoned units (to be attached to nations later)
+                        o.summonsunits = o.summonsunits || [];
+                        o.summonsunits.push(u);
+
+                        //attach spell to unit
+                        u.summonedby = u.summonedby || [];
+                        u.summonedby.push( o );
+                    }
 				}
 			}
 			if (_o == _o.nextspell) break;
@@ -552,7 +570,11 @@ MSpell.CGrid = DMI.Utils.Class( DMI.CGrid, function() {
 			if (!o.nations[args.nation.id])
 				return false;
 		}
-		
+		if (args.nation && o.notnations) {
+			if (o.notnations[args.nation.id])
+				return false;
+		}
+
 		//aquatic
 		if (args.aquatic) {
 			if (args.aquatic == 'uw' && !DMI.MSpell.worksUnderwater(o))
@@ -667,7 +689,8 @@ var displayorder = Utils.cutDisplayOrder(aliases, formats,
 	'duration',	'duration',	function(v,o){ return o.duration == 1 ? v+' round' : v+' rounds' },
 	'gemcost',	'gems required',	Format.Gems,
 	'onlyowndst', 'target own province', {0:'false', 1:'true'},
-	'onlygeosrc', 'source terrain', function(v,o){ return Utils.renderFlags(MSpell.bitfieldValues(o.onlygeosrc, modctx.map_terrain_types_lookup), 1) },
+	'onlygeosrc', 'required terrain', function(v,o){ return Utils.renderFlags(MSpell.bitfieldValues(o.onlygeosrc, modctx.map_terrain_types_lookup), 1) },
+	'nogeosrc', 'banned terrain', function(v,o){ return Utils.renderFlags(MSpell.bitfieldValues(o.nogeosrc, modctx.map_terrain_types_lookup), 1) },
 	'onlygeodst', 'destination terrain', function(v,o){ return Utils.renderFlags(MSpell.bitfieldValues(o.onlygeodst, modctx.map_terrain_types_lookup), 1) },
 	'onlyfriendlydst', 'target allied provinces', {0:'false', 1:'true'},
 	'nowatertrace', 'cannot trace through water', {0:'false', 1:'true'},
@@ -692,7 +715,7 @@ var ignorekeys = {
 	range:1,
 	aoe:1,
 
-	summonsunits:1,	nations:1, eracodes:1, nationname:1,
+	summonsunits:1,	nations:1, notnations:1, eracodes:1, nationname:1,
 	
 	//common fields
 	name:1,description:1,
@@ -877,18 +900,26 @@ MSpell.worksOnDryLand = function(spell) {
 
 MSpell.getEffect = function(spell) {
 	var effect = {};
+
+	// When modifying effects, we need to be careful to use a copy, not a reference,
+	// otherwise modifications will be shared between all spells/weapons with the same effect.
+	// I don't like this JSON hack, but it's apparently the accepted JS way of doing it
+
 	if (spell.effect_record_id) {
-		effect = modctx.effects_lookup[spell.effect_record_id];
+		effect = JSON.parse(JSON.stringify(modctx.effects_lookup[spell.effect_record_id]));
 	}
 	
 	if (spell.copyspell) {
 		var otherspell = DMI.modctx.spelllookup[spell.copyspell];
-		effect = modctx.effects_lookup[otherspell.effect_record_id];
+		effect = JSON.parse(JSON.stringify(modctx.effects_lookup[otherspell.effect_record_id]));
 	}
 	if (spell.effect) {
-		if (parseInt(spell.effect) > 1000) {
+		if (parseInt(spell.effect) > 10000) {
 			effect.effect_number = parseInt(spell.effect) - 10000;
 			effect.ritual = 1;
+		} else if (parseInt(spell.effect) > 1000) {
+			effect.effect_number = parseInt(spell.effect) % 1000; //Edge of map???
+			effect.duration = Math.floor(parseInt(spell.effect) / 1000);
 		} else {
 			effect.effect_number = parseInt(spell.effect);
 			effect.ritual = 0;
@@ -901,7 +932,9 @@ MSpell.getEffect = function(spell) {
 	 */
 	if (effect.effect_number == "1" ||
 		effect.effect_number == "3" ||
-		effect.effect_number == "21" ||
+        effect.effect_number == "10" ||
+        effect.effect_number == "21" ||
+        effect.effect_number == "23" ||
 		effect.effect_number == "26" ||
 		effect.effect_number == "31" ||
 		effect.effect_number == "37" ||
@@ -909,6 +942,7 @@ MSpell.getEffect = function(spell) {
 		effect.effect_number == "43" ||
 		effect.effect_number == "50" ||
 		effect.effect_number == "81" ||
+		effect.effect_number == "82" ||
 		effect.effect_number == "93" ||
 		effect.effect_number == "119") {
 		if (spell.damagemon) {
@@ -917,7 +951,16 @@ MSpell.getEffect = function(spell) {
 			effect.raw_argument = spell.damage;
 		}
 	}
-	
+
+	// Need to add new enchantments to the list
+	if (effect.effect_number == "81" || effect.effect_number == "82") {
+		if (!modctx.enchantments_lookup[effect.raw_argument]) {
+			var enchant = {name: spell.name, number: effect.raw_argument};
+			modctx.enchantments.push(enchant);
+			modctx.enchantments_lookup[effect.raw_argument] = enchant;
+		}
+	}
+
 	if (spell.spec) {
 		effect.modifiers_mask = spell.spec; 
 	} else if (!effect.modifiers_mask) {

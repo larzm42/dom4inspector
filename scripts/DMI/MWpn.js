@@ -209,6 +209,7 @@ var flagorder = Utils.cutDisplayOrder(aliases, formats,
 	'woodenweapon',	'wooden weapon',
 	'uwok',	'can be used underwater',
 	'inanimateimmune',	'no effect on inanimate',
+	'undeadimmune',	'no effect on undead',
 	'norepel',	'cannot repel',
 	'friendlyimmune',	'friendly units immune',
 	'mind',	'mindless units immune',
@@ -228,7 +229,7 @@ var ignorekeys = {
 	dt_stun:1,
 	dt_large:1,
 	dt_small:1,
-	dt_large:1,
+	dt_cap:1,
 	dt_holy:1,
 	dt_magic:1,
 	dt_raise:1,
@@ -254,7 +255,7 @@ var ignorekeys = {
 	cold:1,
 
 	wpnclass:1,
-	isImplicitWpn:1, showName:1,
+	showName:1,
 	searchable:1, renderOverlay:1, matchProperty:1
 };
 	
@@ -404,8 +405,13 @@ MWpn.bitfieldValues = function(bitfield, masks_dict) {
 
 MWpn.getEffect = function(weapon) {
 	var effect = {};
+
+	// When modifying effects, we need to be careful to use a copy, not a reference,
+	// otherwise modifications will be shared between all spells/weapons with the same effect.
+	// I don't like this JSON hack, but it's apparently the accepted JS way of doing it
+	
 	if (weapon.effect_record_id) {
-		effect = modctx.effects_lookup[weapon.effect_record_id];
+		effect = JSON.parse(JSON.stringify(modctx.effects_lookup[weapon.effect_record_id]));
 	}
 	if (weapon.dt_stun) {
 		effect.effect_number = 3;

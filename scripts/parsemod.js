@@ -40,6 +40,12 @@ function _num_def(n) {
 		modctx[t][c] = a.n1 || String(n);
 	}
 }
+function _num_plus(n) {
+	var n = n;
+	return function(c,a,t) {
+		modctx[t][c] = parseInt(argnum(a)) + n;
+	}
+}
 /*
  * #incunrest of 10 will increase unrest by 1. Discrepancy between the vanilla game csv
  * and the mod script means we need to divide by 10 before displaying the value.
@@ -59,12 +65,19 @@ function _str_num(c,a,t) {
 	modctx[t][c] = (a.n1 || a.s);
 }
 
-function argref(a) { 
+function argref(a) {
 	if (!a.n1 && !a.s) throw "argument missing (number or string expected)";
 	return a.n1 || $.trim(a.s.toLowerCase());
 }
-function _ref(c,a,t) { 
+function _ref(c,a,t) {
 	modctx[t][c] = argref(a);
+}
+function _ref_optional(c,a,t) {
+	if (a.n1 || a.s) {
+		modctx[t][c] = a.n1 || $.trim(a.s.toLowerCase());
+	} else {
+		modctx[t][c] = 1;
+	}
 }
 function _bool(c,a,t) {
 	if (a.n1 || a.s) throw "unexpected argument (none expected)";
@@ -79,7 +92,7 @@ function lookupTruncation(longname, object, minlen) {
 	while (longname.length > minlen) { 
 		longname = longname.substr(0, longname.length-1);
 		if (object[longname])
-			return longname; 
+			return longname;
 	}
 	return null;
 }
@@ -103,18 +116,25 @@ var modctx = DMI.modctx = {
 	processCommand: function(cmd, args, warningFn) {
 		var fullcmd = cmd;
 		
-		var types = ['unit', 'spell', 'wpn', 'item', 'armor', 'nation', 'site'];		
+		var types = ['unit', 'spell', 'wpn', 'item', 'armor', 'nation', 'site', 'event', 'nametype', 'merc'];
 		for (var j=0, type; type=types[j]; j++) {
 			if (modctx[type]) {
 				//lookup cmd for open object
 				var cmdlookup = modctx[type+'commands'];
 				var fn = cmdlookup[cmd];
-				
+
+				//special case - some event commands start with a number
+				if (!fn) {
+					var num = parseInt(cmd);
+					if (!isNaN(num)) {
+						fn = cmdlookup['_'+cmd];
+					}
+				}
 				//not found.. lookup shortened command
 				if (!fn) {
 					fn = cmdlookup[cmd = lookupTruncation(cmd, cmdlookup, 3)];
 					if (fn) warningFn('unrecognised cmd.. assuming you meant: #'+cmd)
-				}			
+				}
 				//still not found.. abort
 				if (!fn) throw 'command not found for ' + type + (modctx.commands[fullcmd] ? ' (missing #end ?)' : '');
 			
@@ -145,8 +165,10 @@ var modctx = DMI.modctx = {
 
 	//helpers
 	_checkContextClosed: function(fnwarn) {
-		if (modctx.item || modctx.armor || modctx.wpn || modctx.unit || modctx.spell) {
-			modctx.item = modctx.armor = modctx.wpn = modctx.unit = modctx.spell = null;
+		if (modctx.item || modctx.armor || modctx.wpn || modctx.unit || modctx.spell ||
+			modctx.nation || modctx.site || modctx.merc || modctx.event || modctx.nametype ) {
+			modctx.item = modctx.armor = modctx.wpn = modctx.unit = modctx.spell = modctx.nation = modctx.site =
+				modctx.merc = modctx.event = modctx.nametype = null;
 			fnwarn('missing #end');
 		}
 	},
@@ -338,13 +360,50 @@ var modctx = DMI.modctx = {
 		},
 		
 		newsite: function(c,a,t,fnw) {
+			if (a.n1 == '' || a.n1 == '0') {
+				//get first unused id
+				var id = modctx.sitedata.length;
+				while (modctx.sitelookup[id]) id++;
+				a.n1 = id;
+			} else {
+				if (a.n1<1500 || a.n1>1999) throw 'invalid id';
+			}
+
 			modctx._new(c,a ,'site',fnw);
 			DMI.MSite.initSite(modctx.site);
-
-			if (a.n1<1500 || a.n1>1999) throw 'invalid id';
 		},
-		selectsite: function(c,a,t,fnw){ modctx._select(c,a,'site',fnw); }
-	},
+
+		selectsite: function(c,a,t,fnw){
+			modctx._select(c,a,'site',fnw);
+		},
+
+		newevent: function(c,a,t,fnw) {
+			var id = modctx.eventdata.length;
+			while (modctx.eventlookup[id]) id++;
+
+			modctx._new(c, {n1:id} ,'event', fnw);
+
+			DMI.MEvent.initEvent(modctx.event);
+		},
+
+        selectnametype: function(c,a,t,fnw) {
+            modctx._select(c,a,'nametype',fnw);
+
+            if (a.n1 >= 100 && a.n1 <= 152) return;
+            if (a.n1 >= 161 && a.n1 <= 299) return;
+
+            throw 'invalid id';
+        },
+
+		newmerc: function(c,a,t,fnw) {
+            var id = modctx.mercdata.length;
+            while (modctx.merclookup[id]) id++;
+
+            modctx._new(c, {n1:id} ,'merc', fnw);
+
+            DMI.MMerc.initMerc(modctx.merc);
+        }
+    },
 
 	//item selected
 	itemcommands: {
@@ -381,7 +440,7 @@ var modctx = DMI.modctx = {
 		coldres: 	_num,
 		shockres: 	_num,
 		poisonres: 	_num,
-		restricted: function(c,a,t){ modctx.item.nations.push(argref(a)); }, //deferr lookups
+		restricted: function(c,a,t){ modctx.item.restricted.push(argref(a)); }, //deferr lookups
 		pen: 	_num,
 		autospellrepeat: 	_num,
 		randomspell: 	_num,
@@ -432,6 +491,7 @@ var modctx = DMI.modctx = {
 		berserk: 	_num,
 		darkvision: 	_num,
 		digest: 	_num,
+		aciddigest: 	_num,
 		incorporate: 	_num,
 		castledef: 	_num,
 		siegebonus: 	_num,
@@ -501,25 +561,25 @@ var modctx = DMI.modctx = {
 			var to = modctx.item;
 			for (var k in to)   if (!ignorestats[k]) delete to[k];
 			for (var k in from) if (!ignorestats[k]) to[k] = from[k];
-				
+
 			//deep copy arrays
-//			to.nations = [];
-//			for (var i=0, m; m= from.nations[i]; i++) to.nations[i] = m;
+			to.restricted = [];
+			for (var i=0, m; m= from.restricted[i]; i++) to.restricted[i] = m;
 		},
-		domsummon:	_str,
-		domsummon2:	_str,
-		domsummon20:	_str,
-		raredomsummon:	_str,
-		summon1:	_str,
-		summon2: _str,
-		summon3: _str,
-		summon4: _str,
-		summon5: _str,
-		makemonsters1: _str,
-		makemonsters2: _str,
-		makemonsters3: _str,
-		makemonsters4: _str,
-		makemonsters5: _str,
+		domsummon:	_str_num,
+		domsummon2:	_str_num,
+		domsummon20:	_str_num,
+		raredomsummon:	_str_num,
+		summon1:	_str_num,
+		summon2: _str_num,
+		summon3: _str_num,
+		summon4: _str_num,
+		summon5: _str_num,
+		makemonsters1: _str_num,
+		makemonsters2: _str_num,
+		makemonsters3: _str_num,
+		makemonsters4: _str_num,
+		makemonsters5: _str_num,
 		battlesum1:	function(c,a,t){ modctx[t]['battlesum'] = argref(a);  modctx[t]['n_battlesum'] = '1' },
 		battlesum2:	function(c,a,t){ modctx[t]['battlesum'] = argref(a);  modctx[t]['n_battlesum'] = '2' },
 		battlesum3:	function(c,a,t){ modctx[t]['battlesum'] = argref(a);  modctx[t]['n_battlesum'] = '3' },
@@ -593,6 +653,17 @@ var modctx = DMI.modctx = {
 		drainimmune: _bool,
 		magicimmune: _bool,
 		comslave: _bool,
+		restricteditem: _num,
+		sneakunit: _num,
+		command: _num,
+		magiccommand: _num,
+		undcommand: _num,
+		raiseonkill: _num,
+		raiseshape: _str_num,
+		incscale: _num,
+		decscale: _num,
+		reform: _num,
+		haltheretic: _num,
 
 		magicboost: function(c,a,t){
 			var pstr = modconstants[10][argnum(a)];
@@ -612,7 +683,11 @@ var modctx = DMI.modctx = {
 			if (!name) throw 'unnamed weapon';
 		},
 		name: function(c,a,t) {
-			if (modctx.wpn.name) delete modctx.wpnlookup[modctx.wpn.name.toLowerCase()];
+			// Technically we probably should do this, but it causes issues with copied weapons
+			// Worst case removing it is probably some things work in the inspector which break in game
+			// Maybe. Honestly I don't have a good solution to this without implementing reference counting
+			// and fuck doing that
+			//if (modctx.wpn.name) delete modctx.wpnlookup[modctx.wpn.name.toLowerCase()];
 			modctx.wpn.name = argtrim(a);
 			modctx.wpnlookup[argtrim(a).toLowerCase()] = modctx.wpn;
 		},
@@ -622,13 +697,28 @@ var modctx = DMI.modctx = {
 			var ignorestats = {
 				//stats to NOT copy
 				modded:1,
-				id:1
+				id:1,
+				used_by:1
 				//name:1,
 			};
 			var to = modctx.wpn;
 			for (var k in to)   if (!ignorestats[k]) delete to[k];
 			for (var k in from) if (!ignorestats[k]) to[k] = from[k];
-				
+		},
+		clear: function(c,a,t) {
+			var o = modctx.site;
+			var keepstats = {
+				//KEEP
+				modded:1,
+				id:1,
+				name:1
+			};
+			for (var k in o) {
+				if (!keepstats[k]) {
+					if ($.isArray(o[k])) o[k] = [];
+					else delete o[k];
+				}
+			}
 		},
 
 		def: 		_num,
@@ -686,6 +776,7 @@ var modctx = DMI.modctx = {
 		enemyimmune:		_bool,
 		friendlyimmune:		_bool,
 		undeadonly:		_bool,
+		demononly:		_bool,
 		norepel:		_bool,
 		unrepel:		_bool,
 		beam:		_bool,
@@ -714,7 +805,12 @@ var modctx = DMI.modctx = {
 		uwok:		_bool,
 		
 		secondaryeffect:	_ref,
-		secondaryeffectalways:	_ref
+		secondaryeffectalways:	_ref,
+
+		natural: _bool,
+		internal: _bool,
+		ferrous: _bool,
+		flammable: _bool
 		
 
 	},
@@ -727,10 +823,43 @@ var modctx = DMI.modctx = {
 			if (!name) throw 'unnamed armor';
 		},
 		name: function(c,a,t) {
-			if (modctx.armor.name) delete modctx.armorlookup[modctx.armor.name.toLowerCase()];
+			// Technically we probably should do this, but it causes issues with copied weapons
+			// Worst case removing it is probably some things work in the inspector which break in game
+			// Maybe. Honestly I don't have a good solution to this without implementing reference counting
+			// and fuck doing that
+			// if (modctx.armor.name) delete modctx.armorlookup[modctx.armor.name.toLowerCase()];
 			modctx.armor.name = argtrim(a);
 			modctx.armorlookup[argtrim(a).toLowerCase()] = modctx.armor;
 		},
+		copyarmor: function(c,a,t){
+			var from = modctx.armorlookup[a.n1] || modctx.armorlookup[($.trim(a.s) || '-1').toLowerCase()];
+			if (!from) throw 'original armor not found';
+			var ignorestats = {
+				//stats to NOT copy
+				modded:1,
+				id:1
+				//name:1,
+			};
+			var to = modctx.armor;
+			for (var k in to)   if (!ignorestats[k]) delete to[k];
+			for (var k in from) if (!ignorestats[k]) to[k] = from[k];
+		},
+		clear: function(c,a,t) {
+			var o = modctx.site;
+			var keepstats = {
+				//KEEP
+				modded:1,
+				id:1,
+				name:1
+			};
+			for (var k in o) {
+				if (!keepstats[k]) {
+					if ($.isArray(o[k])) o[k] = [];
+					else delete o[k];
+				}
+			}
+		},
+
 		type: 	_num,
 		def:	_num,
 		rcost: 	_num,
@@ -806,7 +935,8 @@ var modctx = DMI.modctx = {
 			o.randompaths = [];
 		},
 		copystats: function(c,a,t){
-			var from = modctx.unitlookup[a.n1] || modctx.unitlookup[$.trim(a.s.toLowerCase())];
+			var from = modctx.unitlookup[a.n1];
+            if (!from && a.s) from = modctx.unitlookup[$.trim(a.s.toLowerCase())];
 			if (!from) throw 'original unit not found';
 			var ignorestats = {
 			//IGNORE
@@ -827,9 +957,12 @@ var modctx = DMI.modctx = {
 			
 			to.armor = [];
 			for (var i=0, m; m= from.armor[i]; i++) to.armor[i] = m;
-			
+
 			to.randompaths = [];
 			for (var i=0, m; m= from.randompaths[i]; i++) to.randompaths[i] = m;
+
+			to.startitem = [];
+			for (var i=0, m; m= from.startitem[i]; i++) to.startitem[i] = m;
 		},
 		copyspr: function(c,a,t){
 			var from = modctx.unitlookup[a.n1] || modctx.unitlookup[$.trim((a.s || '-1').toLowerCase())];
@@ -938,7 +1071,10 @@ var modctx = DMI.modctx = {
 		darkvision:	_num,
 		startingaff: 	_num,
 	
-		stealthy:	_num_def(0),
+		stealthy:	function(c,a,t) {
+			var n = a.n1 ? a.n1 : 0;
+			modctx[t][c] = parseInt(n) + 40;
+		},
 		illusion:	_bool,
 		spy:		_bool,
 		assassin:	_bool,
@@ -968,7 +1104,12 @@ var modctx = DMI.modctx = {
 		summerpower:	_num,
 		fallpower:	_num,
 		winterpower:	_num,
-		
+
+		chaospower: _num,
+		deathpower: _num,
+		magicpower: _num,
+		slothpower: _num,
+
 		ambidextrous:	_num,
 		banefireshield:	_num,
 		berserk:	_num,
@@ -1011,6 +1152,9 @@ var modctx = DMI.modctx = {
 		popkill:	_num_times_10,
 		inquisitor:	_bool,
 		heretic:	_num,
+		insane:	_num,
+		sailsize:	_num,
+		latehero:	_num,
 
 		itemslots:	function(c,a,t){
 			var bitfield = parseInt(argnum(a));
@@ -1129,12 +1273,12 @@ var modctx = DMI.modctx = {
 	
 		nametype:	_num,
 		
-		noleader:	function(c,a,t){ modctx[t]['leader'] = 0; },
-		poorleader:	function(c,a,t){ modctx[t]['leader'] = 10; },
-		okleader:	function(c,a,t){ modctx[t]['leader'] = 40; },
-		goodleader:	function(c,a,t){ modctx[t]['leader'] = 80; },
-		expertleader:	function(c,a,t){ modctx[t]['leader'] = 120; },
-		superiorleader:	function(c,a,t){ modctx[t]['leader'] = 160; },
+		noleader:	function(c,a,t){ modctx[t]['leader'] = 0; modctx[t]['baseleadership'] = 0; },
+		poorleader:	function(c,a,t){ modctx[t]['leader'] = 10; modctx[t]['baseleadership'] = 10;},
+		okleader:	function(c,a,t){ modctx[t]['leader'] = 40; modctx[t]['baseleadership'] = 40;},
+		goodleader:	function(c,a,t){ modctx[t]['leader'] = 80; modctx[t]['baseleadership'] = 80;},
+		expertleader:	function(c,a,t){ modctx[t]['leader'] = 120; modctx[t]['baseleadership'] = 120;},
+		superiorleader:	function(c,a,t){ modctx[t]['leader'] = 160; modctx[t]['baseleadership'] = 160;},
 		command:		_num,
 		
 		nomagicleader:		function(c,a,t){ modctx[t]['magicleader'] = 0; },
@@ -1153,7 +1297,6 @@ var modctx = DMI.modctx = {
 
 		voidsanity:		_num,
 		invulnerable:	_num,
-		magicpower:		_num,
 		randomspell:	_num,
 		reclimit:		_num,
 		homerealm: 		function(c,a,t){ modctx[t]['realms'].push(argref(a)); },
@@ -1174,8 +1317,8 @@ var modctx = DMI.modctx = {
 		deathdisease:	_num,
 		deathparalyze:	_num,
 		deathfire:		_num,
-		chaospower:		_num,
 		digest:			_num,
+		aciddigest:		_num,
 		incorporate:	_num,
 		incprovdef:		_num,
 		elegist:		_num,
@@ -1191,7 +1334,7 @@ var modctx = DMI.modctx = {
 		bodyguard:		_num,
 		masterrit:		_num,
 		inspiringres:	_num,
-		divineins:		_num,
+		divineins:		_bool,
 		firerange:		_num,
 		airrange:		_num,
 		waterrange:		_num,
@@ -1226,7 +1369,6 @@ var modctx = DMI.modctx = {
 		iceforging:		_num,
 		guardspiritbonus:	_num,
 
-		spy:			_bool,
 		slowrec:		_bool,
 		noslowrec:		_bool,
 		reqlab:			_bool,
@@ -1279,6 +1421,50 @@ var modctx = DMI.modctx = {
 		batstartsum4d6:	_ref,
 		batstartsum5d6:	_ref,
 
+		fixedresearch: _num,
+		slothresearch: _num,
+		transformation: _num,
+		undcommand: _num,
+		magiccommand: _num,
+		airshield: _num,
+		overcharged: _num,
+		poisonskin: _num,
+		xploss: _num,
+		incscale: _num,
+		decscale: _num,
+		reform: _num,
+		domrec: _num,
+		haltheretic: _num,
+		scalewalls: _bool,
+		landdamage: _num,
+		homeshape: _str_num,
+		foreignshape : _str_num,
+		blessfly: _bool,
+		plant: _bool,
+		userestricteditem: _num,
+		uwheat: _num,
+		raiseonkill: _num,
+		raiseshape: _str_num,
+		acidshield: _num,
+		hpoverslow: _num,
+		enchrebate50: _ref,
+		mindslime: _num,
+		prophetshape: _str_num,
+
+		fireattuned: _num,
+		airattuned: _num,
+		waterattuned: _num,
+		earthattuned: _num,
+		astralattuned: _num,
+		deathattuned: _num,
+		natureattuned: _num,
+		bloodattuned: _num,
+
+		ownsmonrec:		function(c,a,t){ modctx[t]['ownsmonrec'] = argref(a) },
+		monpresentrec: 	function(c,a,t){ modctx[t]['monpresentrec'] = argref(a) },
+
+		drake: _bool,
+        addupkeep: _num
 	},
 
 	//spell selected
@@ -1305,8 +1491,9 @@ var modctx = DMI.modctx = {
 			};
 			for (var k in o)
 				if (!keepstats[k]) delete o[k];
-			
+
 			o.nations = [];
+			o.notnations = [];
 		},
 		copyspell: function(c,a,t){
 			var from = modctx.spelllookup[a.n1] || modctx.spelllookup[($.trim(a.s) || '-1').toLowerCase()];
@@ -1324,6 +1511,10 @@ var modctx = DMI.modctx = {
 			//deep copy arrays
 			to.nations = [];
 			for (var i=0, m; m= from.nations[i]; i++) to.nations[i] = m;
+			if (from.notnations) {
+				to.notnations = [];
+				for (var i=0, m; m= from.notnations[i]; i++) to.notnations[i] = m;
+			}
 		},
 		school:		_num,
 		researchlevel:	_num,
@@ -1359,30 +1550,35 @@ var modctx = DMI.modctx = {
 		range:		_num,
 		precision:	_num,
 		spec:		_num,
-		
+
 		restricted: function(c,a,t){ modctx.spell.nations.push(argref(a)); }, //deferr lookups
+		notfornation: function(c,a,t){ modctx.spell.notnations.push(argref(a)); },
 
 		damagemon: 		_str,
 				
 		provrange:		_num,
 		onlygeosrc:		_num,
+		nogeosrc:		_num,
 		onlygeodst:		_num,
-		onlyfriendlydst:	_num,
+		onlyfriendlydst:_num,
 		onlyowndst:		_num,
 		nowatertrace:	_num,
 		nolandtrace:	_num,
 		walkable:		_num,
+		onlyatsite: 	_ref,
+		farsumcom:		_num,
 
 		//fx
 		flightspr:	_ignore,
 		explspr:	_ignore,
-		sound:		_ignore
+		sound:		_ignore,
+		sample:		_ignore
 	},
 
 	//nation selected
 	nationcommands: {
 		end: function(c,a,t){ modctx[t] = null; },
-		
+
 		clearnation: function(c,a,t) {
 			var o = modctx.nation;
 			var keepstats = {
@@ -1431,6 +1627,10 @@ var modctx = DMI.modctx = {
 				}
 			}
 		},
+		clear: function(c,a,t) {
+			modctx.nationcommands.clearnation(c,a,t);
+		},
+
 		//units
 		startcom: _ignore,//_ref,
 		startscout: _ignore,//_ref,
@@ -1441,7 +1641,10 @@ var modctx = DMI.modctx = {
 
 		addrecunit: function(c,a,t){ modctx[t]['units'].push(argref(a)); },
 		addreccom: function(c,a,t){ modctx[t]['commanders'].push(argref(a)); },
-		
+
+		landrec: function(c,a,t){ modctx[t]['landunit'].push(argref(a)); },
+		landcom: function(c,a,t){ modctx[t]['landcom'].push(argref(a)); },
+
 		uwunit1: function(c,a,t){ modctx[t]['uwunit'][1] = argref(a); },
 		uwunit2: function(c,a,t){ modctx[t]['uwunit'][2] = argref(a); },
 		uwunit3: function(c,a,t){ modctx[t]['uwunit'][3] = argref(a); },
@@ -1559,9 +1762,10 @@ var modctx = DMI.modctx = {
 		golemhp: _ignore,
 		tradecoast: _ignore,
 
-		aiholdgod: _ignore,
 		godrebirth: _ignore,
-				
+
+		templegems: _ignore,
+
 		coastunit1: function(c,a,t){ modctx[t]['coastrec'][1] = argref(a); },
 		coastunit2: function(c,a,t){ modctx[t]['coastrec'][2] = argref(a); },
 		coastunit3: function(c,a,t){ modctx[t]['coastrec'][2] = argref(a); },
@@ -1582,13 +1786,33 @@ var modctx = DMI.modctx = {
 
 		noforeignrec: _bool,
 		aigoodbless: _num,
-		
+
+		aiholdgod: _ignore,
+		aiawake : _ignore,
+		bloodnation : _ignore,
+		aimusthavemag : _ignore,
+		aifirenation: _ignore,
+		aiairnation : _ignore,
+		aiwaternation : _ignore,
+		aiearthnation : _ignore,
+		aiastralnation : _ignore,
+		aideathnation : _ignore,
+		ainaturenation : _ignore,
+		aibloodnation : _ignore,
+
+		cheapgod20: _ignore,
+		cheapgod40: _ignore,
+		killcappop: _ignore,
+		guardspirit: _ignore,
+
 		disableoldnations: _bool,
 		cleargods: _bool,
 		addgod: function(c,a,t){ modctx[t]['addgod'].push(argref(a)); },
 		delgod: function(c,a,t){ modctx[t]['delgod'].push(argref(a)); }
 
 	},
+
+	//site selected
 	sitecommands: {
 		end: function(c,a,t){
 			var name = modctx[t].name; 
@@ -1640,80 +1864,361 @@ var modctx = DMI.modctx = {
 
 		gold: _num,
 		res: _num,
-		incscale: _ignore,//_num, //See Table 21 (Scale)
-		decscale: _ignore,//_num, //See Table 21 (Opposite)
+		incscale: function(c,a,t){ modctx[t]['scales'].push(Utils.getScale(argnum(a))); },
+		decscale: function(c,a,t){ modctx[t]['scales'].push(Utils.getScaleInverted(argnum(a))); },
 		
-		lab: _ignore,//_bool,
-		heal: _ignore,//_num,
-		curse: _ignore,//_num,
-		disease: _ignore,//_num,
-		horrormark: _ignore,//_num,
-		holyfire: _ignore,//_num,
-		holypower: _ignore,//_num,
+		lab: _bool,
+		heal: _num,
+		curse: _num,
+		disease: _num,
+		horrormark: function(c,a,t){ modctx[t]['horror'] = argnum(a); },
+		holyfire: _num,
+		holypower: function(c,a,t){ modctx[t]['holypow'] = argnum(a); },
 
-		conjcost: _ignore,//_num,
-		altcost: _ignore,//_num,
-		evocost: _ignore,//_num,
-		constcost: _ignore,//_num,
-		enchcost: _ignore,//_num,
-		thaucost: _ignore,//_num,
-		bloodcost: _ignore,//_num,
+		conjcost: function(c,a,t){ modctx[t]['conj'] = argnum(a); },
+		altcost: function(c,a,t){ modctx[t]['alter'] = argnum(a); },
+		evocost: function(c,a,t){ modctx[t]['evo'] = argnum(a); },
+		constcost: function(c,a,t){ modctx[t]['const'] = argnum(a); },
+		enchcost: function(c,a,t){ modctx[t]['ench'] = argnum(a); },
+		thaucost: function(c,a,t){ modctx[t]['thau'] = argnum(a); },
+		bloodcost: function(c,a,t){ modctx[t]['blood'] = argnum(a); },
 		
-		decunrest: _ignore,
-		supply: _ignore,
-		voidgate: _ignore,
-		fort: _ignore,
+		decunrest: function(c,a,t){ modctx[t]['unr'] = -argnum(a); },
+		supply: function(c,a,t){ modctx[t]['sup'] = argnum(a); },
+		voidgate: _num,
+		fort: _num,
 		fortpart: _ignore,
-		scry: _ignore,
-		firerange: _ignore,
-		airrange: _ignore,
-		waterrange: _ignore,
-		earthrange: _ignore,
-		astralrange: _ignore,
-		deathrange: _ignore,
-		naturerange: _ignore,
-		bloodrange: _ignore,
-		elementrange: _ignore,
-		sorceryrange: _ignore,
-		allrange: _ignore,
-		xp: _ignore,
-		adventureruin: _ignore,
+		scry: _num,
+		firerange: function(c,a,t){ modctx[t]['rit'] += 'F'; modctx[t]['ritrng'] = argnum(a); },
+		airrange: function(c,a,t){ modctx[t]['rit'] += 'A'; modctx[t]['ritrng'] = argnum(a); },
+		waterrange: function(c,a,t){ modctx[t]['rit'] += 'W'; modctx[t]['ritrng'] = argnum(a); },
+		earthrange: function(c,a,t){ modctx[t]['rit'] += 'E'; modctx[t]['ritrng'] = argnum(a); },
+		astralrange: function(c,a,t){ modctx[t]['rit'] += 'S'; modctx[t]['ritrng'] = argnum(a); },
+		deathrange: function(c,a,t){ modctx[t]['rit'] += 'D'; modctx[t]['ritrng'] = argnum(a); },
+		naturerange: function(c,a,t){ modctx[t]['rit'] += 'N'; modctx[t]['ritrng'] = argnum(a); },
+		bloodrange: function(c,a,t){ modctx[t]['rit'] += 'B'; modctx[t]['ritrng'] = argnum(a); },
+		elementrange: function(c,a,t){ modctx[t]['rit'] += 'FAWE'; modctx[t]['ritrng'] = argnum(a); },
+		sorceryrange: function(c,a,t){ modctx[t]['rit'] += 'SDNB'; modctx[t]['ritrng'] = argnum(a); },
+		allrange: function(c,a,t){ modctx[t]['rit'] += 'FAWESDNB'; modctx[t]['ritrng'] = argnum(a); },
+		xp: function(c,a,t){ modctx[t]['exp'] = argnum(a); },
+		adventureruin: function(c,a,t){ modctx[t]['adventure'] = argnum(a); },
 		cluster: _ignore,
-		dominion: _ignore,
-		goddomchaos: _ignore,
-		goddomlazy: _ignore,
-		goddomcold: _ignore,
-		goddomdeath: _ignore,
-		goddommisfortune: _ignore,
-		goddomdrain: _ignore,
-		blesshp: _ignore,
-		blessmr: _ignore,
-		blessmor: _ignore,
-		blessstr: _ignore,
-		blessatt: _ignore,
-		blessdef: _ignore,
-		blessprec: _ignore,
-		blessfireres: _ignore,
-		blesscoldres: _ignore,
-		blessshockres: _ignore,
-		blesspoisres: _ignore,
-		blessairshld: _ignore,
-		blessreinvig: _ignore,
-		blessdtv: _ignore,
-		blessanimawe: _ignore,
-		blessawe: _ignore,
-		blessdarkvis: _ignore,
+		dominion: function(c,a,t){ modctx[t]['domspread'] = argnum(a); },
+		goddomchaos: function(c,a,t){ modctx[t]['turmoil'] = argnum(a); },
+		goddomlazy: function(c,a,t){ modctx[t]['sloth'] = argnum(a); },
+		goddomcold: function(c,a,t){ modctx[t]['cold'] = argnum(a); },
+		goddomdeath: function(c,a,t){ modctx[t]['death'] = argnum(a); },
+		goddommisfortune: function(c,a,t){ modctx[t]['misfortune'] = argnum(a); },
+		goddomdrain: function(c,a,t){ modctx[t]['drain'] = argnum(a); },
+		blesshp: function(c,a,t){ modctx[t]['hp'] = argnum(a); },
+		blessmr: function(c,a,t){ modctx[t]['mr'] = argnum(a); },
+		blessmor: function(c,a,t){ modctx[t]['mor'] = argnum(a); },
+		blessstr: function(c,a,t){ modctx[t]['str'] = argnum(a); },
+		blessatt: function(c,a,t){ modctx[t]['att'] = argnum(a); },
+		blessdef: function(c,a,t){ modctx[t]['def'] = argnum(a); },
+		blessprec: function(c,a,t){ modctx[t]['prec'] = argnum(a); },
+		blessfireres: function(c,a,t){ modctx[t]['fireres'] = argnum(a); },
+		blesscoldres: function(c,a,t){ modctx[t]['coldres'] = argnum(a); },
+		blessshockres: function(c,a,t){ modctx[t]['shockres'] = argnum(a); },
+		blesspoisres: function(c,a,t){ modctx[t]['poisonres'] = argnum(a); },
+		blessairshld: function(c,a,t){ modctx[t]['airshield'] = argnum(a); },
+		blessreinvig: function(c,a,t){ modctx[t]['reinvigoration'] = argnum(a); },
+		blessdtv: function(c,a,t){ modctx[t]['undying'] = argnum(a); },
+		blessanimawe: function(c,a,t){ modctx[t]['aawe'] = argnum(a); },
+		blessawe: function(c,a,t){ modctx[t]['awe'] = argnum(a); },
+		blessdarkvis: function(c,a,t){ modctx[t]['darkvision'] = argnum(a); },
 
-		temple: _ignore,
+		temple: _bool,
 		claim: _ignore,
 		evil: _ignore,
 		wild: _ignore,
 
-		summon: _ignore
+		summon: function(c,a,t){ modctx[t]['sum'].push(argref(a)); },
+		summonlvl2: function(c,a,t){ modctx[t]['suml2'].push(argref(a)); },
+		summonlvl3: function(c,a,t){ modctx[t]['suml3'].push(argref(a)); },
+		summonlvl4: function(c,a,t){ modctx[t]['suml4'].push(argref(a)); }
 
 	},
 
-	
+	//event selected
+	eventcommands: {
+
+		end: function(c,a,t){
+			var rarity = modctx[t].rarity;
+			modctx[t] = null;
+			if (!rarity) throw 'no rarity set for '+t;
+		},
+
+		rarity: _num, //do a lookup
+		req_rare: _num,
+		req_unique: _num,
+
+		// Requirements
+		req_story: _num,
+		req_indepok : _num,
+		req_era : _num,
+		req_noera : _num,
+		req_turn : _num,
+		req_maxturn : _num,
+		req_season : _num,
+		req_noseason : _num,
+		req_gem : _num,
+		req_nation : _num, //nation
+		req_fornation : _num, //nation
+		req_notnation : _num, //nation
+		req_capital : _num,
+		req_owncapital : _num,
+		req_poptype : _num,
+		req_pop0ok : _bool,
+		req_maxpop : _num,
+		req_minpop : _num,
+		req_mindef : _num,
+		req_maxdef : _num,
+		req_minunrest : _num,
+		req_maxunrest : _num,
+		req_lab: _num,
+		req_temple : _num,
+		req_fort : _num,
+		req_land : _num,
+		req_coast : _num,
+		req_mountain : _num,
+		req_forest : _num,
+		req_farm : _num,
+		req_swamp : _num,
+		req_waste : _num,
+		req_cave : _num,
+		req_freshwater : _num,
+		req_freesites : _num,
+		req_nositenbr : _num, // Site ref
+		req_foundsite : _num, //sitename
+		req_hiddensite : _num, //sitename
+		req_site : _num, //sitename
+		req_nearbysite : _num, //sitename
+		req_claimedthrone : _num, //sitename
+		req_unclaimedthrone : _num, //sitename
+		req_fullowner : _num,
+		req_mydominion : _num,
+		req_dominion : _num,
+		req_maxdominion : _num,
+		req_chaos : _num,
+		req_lazy : _num,
+		req_cold : _num,
+		req_death : _num,
+		req_unluck : _num,
+		req_unmagic : _num,
+		req_order : _num,
+		req_prod : _num,
+		req_heat : _num,
+		req_growth : _num,
+		req_luck : _num,
+		req_magic : _num,
+		req_commander : _num,
+		req_monster : _str_num, //lookup
+		req_nomonster : _str_num, //lookup
+		req_nomnr : _str_num, //lookup
+		req_mintroops : _num,
+		req_maxtroops : _num,
+		req_humanoidres : _bool,
+		req_researcher : _bool,
+		req_preach : _num,
+		req_pathfire : _num,
+		req_pathair : _num,
+		req_pathwater : _num,
+		req_pathearth : _num,
+		req_pathastral : _num,
+		req_pathdeath : _num,
+		req_pathnature : _num,
+		req_pathblood : _num,
+		req_pathholy : _num,
+		req_nopathfire : _num,
+		req_nopathair : _num,
+		req_nopathwater : _num,
+		req_nopathearth : _num,
+		req_nopathastral : _num,
+		req_nopathdeath : _num,
+		req_nopathnature : _num,
+		req_nopathblood : _num,
+		req_nopathholy : _num,
+		req_nopathall : _num,
+		req_targmnr : _str_num, //lookup
+		req_targgod : _num,
+		req_targhumanoid : _num,
+		req_targmale : _num,
+		req_targpath1 : _num, //lookup
+		req_targpath2 : _num, //lookup
+		req_targpath3 : _num, //lookup
+		req_targpath4 : _num, //lookup
+		req_targaff : _num, //lookup
+		req_targorder : _num, //lookup
+		req_code : _num, // ideally lookup, would be really hard though
+		req_anycode : _num,
+		req_nearbycode : _num,
+		req_nearowncode : _num,
+		req_permonth : _num,
+		req_noench : _num, //lookup
+		req_ench : _num, //lookup
+		req_myench : _num, //lookup
+		req_friendlyench : _num, //lookup
+		req_hostileench : _num, //lookup
+		req_enchdom : _num, //lookup
+		req_targitem: _num, //lookup
+		req_gold : _num,
+		killpop : _num,
+
+		// Effects
+		nation: _num, //lookup
+		msg:	function(c,a,t){ modctx[t]['description'] = argref(a); modctx[t]['name'] = argref(a).substr(0,25); },
+
+		notext: _bool,
+		nolog: _bool,
+		magicitem : _num, //lookup, maybe
+		gold: _num,
+		exactgold: _num,
+		_1d3vis: _num, //lookup
+		_1d6vis: _num, //lookup
+		_2d4vis: _num, //lookup
+		_2d6vis: _num, //lookup
+		_3d6vis: _num, //lookup
+		_4d6vis: _num, //lookup
+		gemloss : _num, //lookup
+		incscale : _num, //lookup
+		incscale2 : _num, //lookup
+		incscale3 : _num, //lookup
+		decscale : _num, //lookup
+		decscale2 : _num, //lookup
+		decscale3 : _num, //lookup
+		landgold : _num,
+		landprod : _num,
+		taxboost : _num,
+		defence : _num,
+		kill : _num,
+		incpop : _num,
+		emigration : _num,
+		unrest : _num,
+		incdom : _num,
+		fort : _num, //lookup
+		temple : _num,
+		lab : _num,
+		revealsite: _bool,
+		addsite : _num, //lookup
+		hiddensite : _num, //lookup
+		removesite : _num, //lookup
+		visitors : _bool,
+		newdom : _num,
+		revolt : _bool,
+		revealprov : _bool,
+
+		assassin : _str_num, //lookup
+		stealthcom  : _str_num, //lookup
+		com  : _str_num, //lookup
+		_2com  : _str_num,
+		_3com  : _str_num,
+		_4com  : _str_num,
+		_5com  : _str_num,
+		tempunits  : _str_num, //lookup
+		_1unit  : _str_num, //lookup
+		_1d3units  : _str_num, //lookup
+		_1d6units  : _str_num, //lookup
+		_2d6units  : _str_num, //lookup
+		_3d6units  : _str_num, //lookup
+		_4d6units  : _str_num, //lookup
+		_5d6units  : _str_num, //lookup
+		_6d6units  : _str_num, //lookup
+		_7d6units  : _str_num, //lookup
+		_8d6units  : _str_num, //lookup
+		_9d6units  : _str_num, //lookup
+		_10d6units  : _str_num, //lookup
+		_11d6units  : _str_num, //lookup
+		_12d6units  : _str_num, //lookup
+		_13d6units  : _str_num, //lookup
+		_14d6units  : _str_num, //lookup
+		_15d6units  : _str_num, //lookup
+		_16d6units  : _str_num, //lookup
+		strikeunits  : _str_num, //lookup
+		killmon  : _str_num, //lookup
+		killcom  : _str_num, //lookup
+
+		curse: _num,
+		disease: _num,
+		researchaff: _num, //lookup
+		gainaff: _num, //lookup
+		gainmark: _bool,
+		banished: _num, //lookup
+		addequip: _num, //lookup, maybe
+		fireboost: _ref_optional, //lookup
+		airboost: _ref_optional, //lookup
+		waterboost: _ref_optional, //lookup
+		earthboost: _ref_optional, //lookup
+		astralboost: _ref_optional, //lookup
+		deathboost: _ref_optional, //lookup
+		natureboost: _ref_optional, //lookup
+		bloodboost: _ref_optional, //lookup
+		holyboost: _ref_optional, //lookup
+		pathboost: _num, //lookup
+		worldincscale  : _num, //lookup
+		worldincscale2  : _num, //lookup
+		worldincscale3  : _num, //lookup
+		worlddecscale  : _num, //lookup
+		worlddecscale2  : _num, //lookup
+		worlddecscale3  : _num, //lookup
+		worldunrest  : _num,
+		worldincdom  : _num,
+		worldritrebate : _num, //lookup
+		worlddarkness : _bool,
+		worldcurse : _num,
+		worlddisease : _num,
+		worldmark : _num,
+		worldheal : _num,
+		worldage : _num,
+		linger : _num,
+
+		flagland : _num,
+		delay : _num,
+		delay25 : _num,
+		delay50 : _num,
+		order  : _num, //lookup
+
+		code  : _num,
+		code2  : _num,
+		resetcode  : _num,
+		purgecalendar  : _num,
+		purgedelayed  : _num,
+		transform: _str_num, //lookup
+		nationench: _num,
+
+		id:	function(c,a,t){ modctx[t]['eff_id'] = argref(a); }
+	},
+
+    //nametype selected
+    nametypecommands: {
+        end: function(c,a,t){
+            modctx[t] = null;
+        },
+		clear: _ignore,
+        addname: _ignore
+    },
+
+    //merc selected
+    merccommands: {
+        end: function(c,a,t){
+            modctx[t] = null;
+        },
+        name: _str,
+        bossname: _str,
+        com: _ref,
+        unit: _ref,
+        nrunits: _num,
+        level: _num,
+        minmen: _num,
+
+        minpay: _num,
+        xp: _num,
+        randequip: _num,
+        recrate: _num,
+        item: _ref,
+        eramask: _num
+    },
+
 	//member data
 	loadedmods: [],
 	
@@ -1750,11 +2255,16 @@ var modctx = DMI.modctx = {
 	merclookup: undefined,
 	merc: null,
 
-	eventdata: undefined,
-	eventlookup: undefined,
-	event: null,
-	
-	// setWpnDamageType: function(key) {
+    eventdata: undefined,
+    eventlookup: undefined,
+    event: null,
+
+    nametypedata: undefined,
+    nametypelookup: undefined,
+    nametype: null,
+
+
+    // setWpnDamageType: function(key) {
 	// 	if (modctx.wpn) {
 	// 		for (var k in modctx.dmg_types) {
 	// 			delete modctx.wpn[k];
@@ -1808,7 +2318,10 @@ modctx.parseMod = function(str, modnum, modname) {
 	for (var i=0; i<lines.length; i++) {
 		var cstr = lines[i], linenum = i+1;
 		var cmd, args;
-		
+
+		// check for comments
+		if (cstr.startsWith('--')) continue;
+
 		//check for open quote
 		var a = modcom_re_multistr.exec(lines[i]);
 		if (a) {

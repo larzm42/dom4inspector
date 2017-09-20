@@ -17,9 +17,14 @@ MSite.initSite = function(o) {
 	o.hmon = [];
 	o.hcom = [];	
 	o.mon = [];
-	o.com = [];	
-	o.sum = [];	
-	o.provdef = [];	
+	o.com = [];
+	o.sum = [];
+	o.suml2 = [];
+	o.suml3 = [];
+	o.suml4 = [];
+	o.provdef = [];
+	o.scales = [];
+	o.rit = '';
 }
 MSite.prepareData_PreMod = function() {
 	for (var oi=0, o;  o= modctx.sitedata[oi];  oi++) {
@@ -27,8 +32,12 @@ MSite.prepareData_PreMod = function() {
 		o.hcom = [];	
 		o.mon = [];
 		o.com = [];	
-		o.sum = [];	
-		o.provdef = [];	
+		o.sum = [];
+		o.suml2 = [];
+		o.suml3 = [];
+		o.suml4 = [];
+		o.provdef = [];
+		o.scales = [];
 		var capunit = Utils.keyListToTable(o, 'hmon');
 		for (var oj=0, cap; cap = capunit[oj]; oj++) {
 			o.hmon.push(cap);
@@ -61,6 +70,37 @@ MSite.prepareData_PreMod = function() {
 }
 
 MSite.prepareData_PostMod = function() {
+	function parseSummoned(o, sum){
+            for (var cc=0; uid=sum[cc]; cc++) {
+                var found = false;
+                for (var uniti=0, unit;  unit= modctx.unitdata[uniti];  uniti++) {
+                    if (Math.round(unit.id) == uid && unit.nations && o.nations) {
+                        for (var ii=0,natid; natid=o.nations[ii]; ii++) {
+                            if (unit.nations[natid] && !found) {
+                                unit.summonedfrom = unit.summonedfrom || [];
+                                unit.summonedfrom.push( o );
+                                found = true;
+                            }
+                        }
+                    } else if (Math.round(unit.id) == uid && !found) {
+                        unit.summonedfrom = unit.summonedfrom || [];
+                        unit.summonedfrom.push( o );
+                        found = true;
+                    }
+                }
+                if (!found) {
+                    for (var cc=0; uid=sum[cc]; cc++) {
+                        for (var uniti=0, unit;  unit= modctx.unitdata[uniti];  uniti++) {
+                            if (Math.round(unit.id) == uid && unit.nations && o.nations) {
+                                unit.summonedfrom = unit.summonedfrom || [];
+                                unit.summonedfrom.push( o );
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
 	for (var oi=0, o;  o= modctx.sitedata[oi];  oi++) {
 		
 		o.renderOverlay = MSite.renderOverlay;
@@ -85,20 +125,17 @@ MSite.prepareData_PostMod = function() {
 		//searchable string
 		o.searchable = o.name.toLowerCase();
 
-		if (!o.scale1) {
-			o.scale1 = '';
-			o.scale1sort = 'z';
-		} else {
-			o.scale1sort = o.scale1;
+		if (o.scale1) {
+			o.scales.push(o.scale1);
 		}
-		
-		if (!o.scale2) {
-			o.scale2 = '';
-			o.scale2sort = 'z';
-		} else {
-			o.scale2sort = o.scale2;
+		if (o.scale2) {
+			o.scales.push(o.scale2);
 		}
-		
+		if (o.scales.length === 0) {
+			delete o.scales;
+		}
+
+
 		//magic gems
 		o.mpath = '';
 		for (var i=0; i<modconstants.pathkeys.length; i++) {
@@ -131,8 +168,10 @@ MSite.prepareData_PostMod = function() {
 		for (var evti=0, evt;  evt= modctx.eventdata[evti];  evti++) {
 			if (evt.req_site || evt.req_foundsite || evt.req_hiddensite || evt.req_nearbysite) {
 				var sitename = evt.description.match(/\[(.*?)\]/);
-				if (sitename && sitename.length > 1 && sitename[1] == o.name) {
-					o.events.push(evt.id);
+				if (sitename && sitename.length > 1) {
+					if (sitename[1] == o.name) {
+						o.events.push(evt.id);
+					}
 				} else if (evt.req_site == o.id) {
 					o.events.push(evt.id);
 				} else if (evt.req_foundsite == o.id) {
@@ -152,8 +191,10 @@ MSite.prepareData_PostMod = function() {
 		for (var evti=0, evt;  evt= modctx.eventdata[evti];  evti++) {
 			if (evt.newsite) {
 				var sitename = evt.description.match(/\[(.*?)\]/);
-				if (sitename && sitename.length > 1 && sitename[1] == o.name) {
-					o.newsiteevents.push(evt.id);
+				if (sitename && sitename.length > 1) {
+					if (sitename[1] == o.name) {
+						o.newsiteevents.push(evt.id);
+					}
 				} else if (evt.newsite == o.id) {
 					o.newsiteevents.push(evt.id);
 				}
@@ -303,37 +344,30 @@ MSite.prepareData_PostMod = function() {
 				}
 			}
 		}
+
 		if (o.sum.length == 0) {
 			delete o.sum;
 		} else {
-			for (var cc=0; uid=o.sum[cc]; cc++) {
-				var found = false;
-				for (var uniti=0, unit;  unit= modctx.unitdata[uniti];  uniti++) {
-					if (Math.round(unit.id) == uid && unit.nations && o.nations) {
-						for (var ii=0,natid; natid=o.nations[ii]; ii++) {
-							if (unit.nations[natid] && !found) {
-								unit.summonedfrom = unit.summonedfrom || [];
-								unit.summonedfrom.push( o );
-								found = true;
-							}
-						}
-					} else if (Math.round(unit.id) == uid && !found) {
-						unit.summonedfrom = unit.summonedfrom || [];
-						unit.summonedfrom.push( o );
-						found = true;
-					}
-				}
-				if (!found) {
-					for (var cc=0; uid=o.sum[cc]; cc++) {
-						for (var uniti=0, unit;  unit= modctx.unitdata[uniti];  uniti++) {
-							if (Math.round(unit.id) == uid && unit.nations && o.nations) {
-								unit.summonedfrom = unit.summonedfrom || [];
-								unit.summonedfrom.push( o );
-							}
-						}
-					}
-				}
-			}
+			parseSummoned(o, o.sum);
+		}
+		if (o.suml2.length == 0) {
+			delete o.suml2;
+		} else {
+			parseSummoned(o, o.suml2);
+		}
+		if (o.suml3.length == 0) {
+			delete o.suml3;
+		} else {
+			parseSummoned(o, o.suml3);
+		}
+		if (o.suml4.length == 0) {
+			delete o.suml4;
+		} else {
+			parseSummoned(o, o.suml4);
+		}
+
+		if (o.rit == '') {
+			delete o.rit;
 		}
 	}
 	
@@ -352,9 +386,10 @@ MSite.CGrid = Utils.Class( DMI.CGrid, function() {
 		{ id: "level",     width: 40, name: "Level", field: "level", sortable: true },
 		{ id: "rarirt",     width: 40, name: "Rarity", field: "rarity", sortable: true },
 		{ id: "path",      width: 50, name: "Path", field: "path", sortable: true },
-		{ id: "scale1",      width: 50, name: "Scale", field: "scale1sort", sortable: true, formatter: formatScale  },
-		{ id: "scale2",      width: 50, name: "Scale", field: "scale2sort", sortable: true, formatter: formatScale },
-		{ id: "listed_gempath",    width: 120, name: "Gems", field: "listed_gempath", sortable: true, formatter: DMI.GridFormat.OrderedPaths },
+		{ id: "scales",      width: 50, name: "Scale", field: "scales", sortable: true, formatter: formatScale  },
+		//{ id: "scale1",      width: 50, name: "Scale", field: "scale1sort", sortable: true, formatter: formatScale  },
+		//{ id: "scale2",      width: 50, name: "Scale", field: "scale2sort", sortable: true, formatter: formatScale },
+		{ id: "listed_gempath",    width: 120, name: "Gems", field: "listed_gempath", sortable: true, formatter: DMI.GridFormat.OrderedGems },
 	];
 	
 	this.superClass.call(this, 'site', modctx.sitedata, columns); //superconstructor
@@ -372,6 +407,8 @@ MSite.CGrid = Utils.Class( DMI.CGrid, function() {
 			str: $(that.domselp+" input.search-box").val().toLowerCase(),
 			sitepath: $(that.domselp+" select.sitepath").val() ,
 			sitescale: $(that.domselp+" select.sitescale").val() ,
+			siteterrain: $(that.domselp+" select.siteterrain").val() ,
+			sitetype: $(that.domselp+" select.sitetype").val() ,
 			mpaths: ''
 		};
 		args.properties = Utils.propertiesWithKeys(args.properties);
@@ -394,12 +431,13 @@ MSite.CGrid = Utils.Class( DMI.CGrid, function() {
 		
 		//magic paths
 		if (args.mpaths) {
+			var found = false;
 			var arr = args.mpaths.split("");
 			for (var jj=0, pathStr; pathStr=arr[jj]; jj++) {
 				if (o.mpath.indexOf(pathStr) != -1)
-					return true;
+					found = true;
 			}
-			return false;
+			if (!found) return false;
 		}
 		
 		//site path
@@ -407,9 +445,22 @@ MSite.CGrid = Utils.Class( DMI.CGrid, function() {
 			return false;
 
 		//site scale
-		if (args.sitescale && !( args.sitescale == o.scale1 || args.sitescale == o.scale2 ))
+		if (args.sitescale && (!o.scales || !o.scales.includes(args.sitescale)))
 			return false;
 
+		//site terrain
+		if (args.siteterrain && args.siteterrain > 0 && !(o.loc & args.siteterrain))
+			return false;
+
+		//site terrain
+		if (args.sitetype) {
+			if (args.sitetype == "Normal" && o.rarity > 4)
+				return false;
+			if (args.sitetype == "Special" && o.rarity !== 5)
+				return false;
+			if (args.sitetype == "Thrones" && o.rarity < 11)
+				return false;
+		}
 
 		//properties
 		//each is comprised of key =~ val
@@ -463,13 +514,13 @@ MSite.CGrid = Utils.Class( DMI.CGrid, function() {
 				}
 				//switch sort column header icon
 				if ( $('#siteboosterordericon')
-				     .attr({alt:L, src:'images/magicicons/Path_'+L+'.png', 'class':'pathicon Path_'+L})
+				     .attr({alt:L, src:'images/magicicons/Gem_'+L+'.png', 'class':'gemicon Gem_'+L})
 				     .css('visibility','visible')
 				     .length==0 ) 
 				{
 					//add icon if not exists yet
 					$(".slick-header-column[id*=listed_gempath]")
-					.append('<img id="siteboosterordericon" alt="'+L+'" class="pathicon Path_'+L+'" src="images/magicicons/Path_'+L+'.png" />')
+					.append(' <img id="siteboosterordericon" alt="'+L+'" class="gemicon Gem_'+L+'" src="images/magicicons/Gem_'+L+'.png" />')
 					.find(".slick-sort-indicator").css('visibility','hidden');
 				}
 				//fix sort direction
@@ -586,10 +637,10 @@ var displayorder = DMI.Utils.cutDisplayOrder(aliases, formats,
 	//'path',	'path',
 	//'level', 'level',
 	'mpath',	'gems',	function(v,o){
-		return Format.Paths(v.replace(/U\d*/, function(s){return Utils.rndMagicRef(Math.floor(o.id), s);}));
+		return Format.Gems(v.replace(/U\d*/, function(s){return Utils.rndMagicRef(Math.floor(o.id), s);}));
 	},
 	'mpath2',	'gems when claimed',	function(v,o){
-		return Format.Paths(v.replace(/U\d*/, function(s){return Utils.rndMagicRef(Math.floor(o.id), s);}));
+		return Format.Gems(v.replace(/U\d*/, function(s){return Utils.rndMagicRef(Math.floor(o.id), s);}));
 	},
 	'rarity', 'rarity',
 	'gold', 'generates gold',
@@ -598,24 +649,23 @@ var displayorder = DMI.Utils.cutDisplayOrder(aliases, formats,
 	'unr', 'unrest',
 	'exp', 'enter to gain xp',
 	'fort', 'creates fort',
-	'scale1', 'increases',
-	'scale2', 'increases',
-	'voidgate', 'summon void creatures',
-	'conj', 'conjuration bonus',
-	'alter', 'alteration bonus',
-	'evo', 'evocation bonus',
-	'const', 'construction bonus',
-	'ench', 'enchantment bonus',
-	'thau', 'thaumaturgy bonus',
-	'blood', 'blood bonus',
+	'scales', 'increases',
+	'voidgate', 'summon void creatures', Format.Percent,
+	'conj', 'conjuration bonus', Format.Percent,
+	'alter', 'alteration bonus', Format.Percent,
+	'evo', 'evocation bonus', Format.Percent,
+	'const', 'construction bonus', Format.Percent,
+	'ench', 'enchantment bonus', Format.Percent,
+	'thau', 'thaumaturgy bonus', Format.Percent,
+	'blood', 'blood bonus', Format.Percent,
 	'heal', 'healing',
 	'disease', 'spreads disease',
-	'curse', 'curses',
-	'horror', 'horrormark chance',
-	'holyfire', 'holy fire',
-	'holypow', 'holy power',
+	'curse', 'curses', Format.Percent,
+	'horror', 'horrormark chance', Format.Percent,
+	'holyfire', 'holy fire', Format.Percent,
+	'holypow', 'holy power', Format.Percent,
 	'scry', 'enter to scry',
-	'adventure', 'adventure',
+	'adventure', 'adventure', Format.Percent,
 	'domspread', 'spreads dominion',
 	'domconflict', 'dominion conflict bonus',
 	'turmoil', 'dominion gets', function(v,o) {
@@ -675,6 +725,8 @@ var displayorder = DMI.Utils.cutDisplayOrder(aliases, formats,
 	'awe', 'awe',
 	'reinvigoration', 'reinvigoration',
 	'airshield', 'air shield',
+	'hp', 'hit points',
+	'mr', 'magic resistance',
 	'reveal', 'reveals', {0: 'mundane score graphs', 3: 'magic score graphs', 5: 'dominion score graphs', 999: 'all score graphs'},
 	'rit', 'ritual range', function(v,o){
 		return Format.Booster(v) + ' +' + o.ritrng;
@@ -692,8 +744,17 @@ var displayorder = DMI.Utils.cutDisplayOrder(aliases, formats,
 	'mon',	'units',	function(v,o){ 
 		return list_units(v, o); 
 	},
-	'sum',	'summon',	function(v,o){ 
-		return list_units(v, o); 
+	'sum',	'summon',	function(v,o){
+		return list_units(v, o);
+	},
+	'suml2',	'summon (lvl 2)',	function(v,o){
+		return list_units(v, o);
+	},
+	'suml3',	'summon (lvl 3)',	function(v,o){
+		return list_units(v, o);
+	},
+	'suml4',	'summon (lvl 4)',	function(v,o){
+		return list_units(v, o);
 	},
 	'provdefcom',	'extra PD (commander)',	Utils.unitRef,
 	'provdef',	'extra PD (unit)',	function(v,o){ 
@@ -708,7 +769,8 @@ var displayorder = DMI.Utils.cutDisplayOrder(aliases, formats,
 var flagorder = DMI.Utils.cutDisplayOrder(aliases, formats,
 [
 //	dbase key	displayed key		function/dict to format value
-	'lab',	'generates lab'
+		'lab',	'generates lab',
+		'temple',	'generates temple'
 ]);
 var hiddenkeys = DMI.Utils.cutDisplayOrder(aliases, formats,
 [
@@ -724,7 +786,7 @@ var ignorekeys = {
 	A:1, B:1, D:1, E:1, F:1, N:1, S:1, W:1, H:1,
 	A2:1, B2:1, D2:1, E2:1, F2:1, N2:1, S2:1, W2:1, H2:1,
 	ritrng:1, listed_gempath:1,
-	scale1sort:1, scale2sort:1,
+	scale1:1, scale2:1,
 	
 	//common fields
 	name:1,descr:1,
